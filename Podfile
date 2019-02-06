@@ -12,3 +12,8 @@ target 'VerIDUI' do
   pod 'Ver-ID-Core', '~> 1.0'
 
 end
+
+target 'Ver-ID Sample' do
+  use_frameworks!
+  pod 'Ver-ID-Core', '~> 1.0'
+end

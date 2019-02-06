@@ -1,0 +1,3 @@
+[submodule "VerIDModels"]
+	path = VerIDModels
+	url = https://github.com/AppliedRecognition/Ver-ID-Models.git
