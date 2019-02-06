@@ -8,12 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */; };
+		3B6A70DB2208BC3C00B137C4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */; };
+		3B6A70DC2208BC3C00B137C4 /* VerIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */; };
+		3B6A70DD2208BC3C00B137C4 /* VerIDNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D62208BC3B00B137C4 /* VerIDNavigationController.swift */; };
+		3B6A70DE2208BC3C00B137C4 /* StillCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */; };
+		3B6A70DF2208BC3C00B137C4 /* VerIDRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */; };
+		3B6A70E02208BC3C00B137C4 /* FaceDetectionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */; };
+		3B6A70E62208BD8400B137C4 /* PaddedRoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */; };
+		3B6A70E72208BD8400B137C4 /* FaceOvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */; };
+		3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */; };
+		3B6A70EB2208C29300B137C4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EA2208C29300B137C4 /* Session.swift */; };
+		3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */; };
+		811F176AD28B5B05645D890C /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDViewController.swift; sourceTree = "<group>"; };
+		3B6A70D62208BC3B00B137C4 /* VerIDNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDNavigationController.swift; sourceTree = "<group>"; };
+		3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StillCameraViewController.swift; sourceTree = "<group>"; };
+		3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDRegistrationViewController.swift; sourceTree = "<group>"; };
+		3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceDetectionAlertController.swift; sourceTree = "<group>"; };
+		3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedRoundedLabel.swift; sourceTree = "<group>"; };
+		3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOvalLayer.swift; sourceTree = "<group>"; };
+		3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		3B6A70EA2208C29300B137C4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDViewControllerDelegate.swift; sourceTree = "<group>"; };
+		499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
+		A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
+		D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811F176AD28B5B05645D890C /* Pods_VerIDUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,6 +61,8 @@
 			children = (
 				3B326B1822089C88005DAE1E /* VerIDUI */,
 				3B326B1722089C88005DAE1E /* Products */,
+				94170ABA6C56107F2BFDEB39 /* Pods */,
+				8C808952AB38275225E61B6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,10 +77,39 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */,
+				3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */,
+				3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */,
+				3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */,
+				3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */,
+				3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */,
+				3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */,
+				3B6A70D62208BC3B00B137C4 /* VerIDNavigationController.swift */,
+				3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */,
+				3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */,
 				3B326B1922089C88005DAE1E /* VerIDUI.h */,
 				3B326B1A22089C88005DAE1E /* Info.plist */,
+				3B6A70EA2208C29300B137C4 /* Session.swift */,
+				3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */,
 			);
 			path = VerIDUI;
+			sourceTree = "<group>";
+		};
+		8C808952AB38275225E61B6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94170ABA6C56107F2BFDEB39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */,
+				A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +130,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B326B1E22089C88005DAE1E /* Build configuration list for PBXNativeTarget "VerIDUI" */;
 			buildPhases = (
+				DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */,
 				3B326B1122089C88005DAE1E /* Headers */,
 				3B326B1222089C88005DAE1E /* Sources */,
 				3B326B1322089C88005DAE1E /* Frameworks */,
@@ -95,6 +156,7 @@
 				TargetAttributes = {
 					3B326B1522089C88005DAE1E = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -125,11 +187,44 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VerIDUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3B326B1222089C88005DAE1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B6A70E72208BD8400B137C4 /* FaceOvalLayer.swift in Sources */,
+				3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */,
+				3B6A70DD2208BC3C00B137C4 /* VerIDNavigationController.swift in Sources */,
+				3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */,
+				3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */,
+				3B6A70DE2208BC3C00B137C4 /* StillCameraViewController.swift in Sources */,
+				3B6A70E02208BC3C00B137C4 /* FaceDetectionAlertController.swift in Sources */,
+				3B6A70E62208BD8400B137C4 /* PaddedRoundedLabel.swift in Sources */,
+				3B6A70EB2208C29300B137C4 /* Session.swift in Sources */,
+				3B6A70DC2208BC3C00B137C4 /* VerIDViewController.swift in Sources */,
+				3B6A70DF2208BC3C00B137C4 /* VerIDRegistrationViewController.swift in Sources */,
+				3B6A70DB2208BC3C00B137C4 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +355,9 @@
 		};
 		3B326B1F22089C88005DAE1E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -268,6 +365,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -279,6 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,7 +385,9 @@
 		};
 		3B326B2022089C88005DAE1E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -294,6 +395,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
