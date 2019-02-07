@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B56E809220B668700004F94 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E808220B668700004F94 /* Media.xcassets */; };
+		3B56E80E220B674E00004F94 /* liveness_detection_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80A220B674D00004F94 /* liveness_detection_2.mp4 */; };
+		3B56E80F220B674E00004F94 /* liveness_detection_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80B220B674D00004F94 /* liveness_detection_3.mp4 */; };
+		3B56E810220B674E00004F94 /* registration_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80C220B674D00004F94 /* registration_2.mp4 */; };
+		3B56E811220B674E00004F94 /* registration_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80D220B674E00004F94 /* registration_3.mp4 */; };
 		3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */; };
 		3B6A70DB2208BC3C00B137C4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */; };
 		3B6A70DC2208BC3C00B137C4 /* VerIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */; };
-		3B6A70DD2208BC3C00B137C4 /* VerIDNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D62208BC3B00B137C4 /* VerIDNavigationController.swift */; };
 		3B6A70DE2208BC3C00B137C4 /* StillCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */; };
 		3B6A70DF2208BC3C00B137C4 /* VerIDRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */; };
 		3B6A70E02208BC3C00B137C4 /* FaceDetectionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */; };
@@ -26,6 +30,15 @@
 		3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36E220AF128002C11BE /* Assets.xcassets */; };
 		3BE9F372220AF128002C11BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F370220AF128002C11BE /* LaunchScreen.storyboard */; };
 		3BE9F37A220AF493002C11BE /* VerIDModels in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F379220AF492002C11BE /* VerIDModels */; };
+		3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
+		3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3BE9F3D3220AFB72002C11BE /* VerIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3C5220AFB6D002C11BE /* VerIDViewController.xib */; };
+		3BE9F3D4220AFB72002C11BE /* FaceDetectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3C7220AFB6D002C11BE /* FaceDetectionAlertController.xib */; };
+		3BE9F3D6220AFB72002C11BE /* VerIDRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3CB220AFB6F002C11BE /* VerIDRegistrationViewController.xib */; };
+		3BE9F3D7220AFB72002C11BE /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3CD220AFB70002C11BE /* Tips.storyboard */; };
+		3BE9F3D8220AFB72002C11BE /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3CF220AFB71002C11BE /* Result.storyboard */; };
+		3BE9F3D9220AFB72002C11BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3D1220AFB71002C11BE /* Localizable.strings */; };
+		3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */; };
 		811F176AD28B5B05645D890C /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */; };
 		91CA8B1530BD46D94800F50D /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BFAD913361090A4FC769B9A /* Pods_Ver_ID_Sample.framework */; };
 /* End PBXBuildFile section */
@@ -40,16 +53,34 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3BE9F37D220AF8DD002C11BE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0BD552F8392D39C73F0B251C /* Pods-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		0BFAD913361090A4FC769B9A /* Pods_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B56E808220B668700004F94 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3B56E80A220B674D00004F94 /* liveness_detection_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_2.mp4; sourceTree = "<group>"; };
+		3B56E80B220B674D00004F94 /* liveness_detection_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_3.mp4; sourceTree = "<group>"; };
+		3B56E80C220B674D00004F94 /* registration_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = registration_2.mp4; sourceTree = "<group>"; };
+		3B56E80D220B674E00004F94 /* registration_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = registration_3.mp4; sourceTree = "<group>"; };
 		3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDViewController.swift; sourceTree = "<group>"; };
-		3B6A70D62208BC3B00B137C4 /* VerIDNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDNavigationController.swift; sourceTree = "<group>"; };
 		3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StillCameraViewController.swift; sourceTree = "<group>"; };
 		3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDRegistrationViewController.swift; sourceTree = "<group>"; };
 		3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceDetectionAlertController.swift; sourceTree = "<group>"; };
@@ -66,6 +97,25 @@
 		3BE9F371220AF128002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BE9F373220AF128002C11BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE9F379220AF492002C11BE /* VerIDModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VerIDModels; sourceTree = SOURCE_ROOT; };
+		3BE9F3C6220AFB6D002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VerIDViewController.xib; sourceTree = "<group>"; };
+		3BE9F3C8220AFB6D002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/FaceDetectionAlertController.xib; sourceTree = "<group>"; };
+		3BE9F3CC220AFB6F002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VerIDRegistrationViewController.xib; sourceTree = "<group>"; };
+		3BE9F3CE220AFB70002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tips.storyboard; sourceTree = "<group>"; };
+		3BE9F3D0220AFB71002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Result.storyboard; sourceTree = "<group>"; };
+		3BE9F3D2220AFB72002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3BE9F3DC220AFB8C002C11BE /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/FaceDetectionAlertController.strings; sourceTree = "<group>"; };
+		3BE9F3DD220AFB90002C11BE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/FaceDetectionAlertController.strings; sourceTree = "<group>"; };
+		3BE9F3DF220AFBA2002C11BE /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3BE9F3E0220AFBA5002C11BE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3BE9F3E5220AFBBF002C11BE /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Result.strings; sourceTree = "<group>"; };
+		3BE9F3E6220AFBC1002C11BE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Result.strings; sourceTree = "<group>"; };
+		3BE9F3EA220AFBCD002C11BE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Tips.strings; sourceTree = "<group>"; };
+		3BE9F3EC220AFBD4002C11BE /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Tips.strings; sourceTree = "<group>"; };
+		3BE9F3EF220AFBFE002C11BE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VerIDRegistrationViewController.strings; sourceTree = "<group>"; };
+		3BE9F3F0220AFC04002C11BE /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/VerIDRegistrationViewController.strings; sourceTree = "<group>"; };
+		3BE9F3F3220AFC11002C11BE /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/VerIDViewController.strings; sourceTree = "<group>"; };
+		3BE9F3F4220AFC15002C11BE /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/VerIDViewController.strings; sourceTree = "<group>"; };
+		3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewControllersFactory.swift; sourceTree = "<group>"; };
 		499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
 		A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
 		CF6F05DAD06B0C752A98ABFF /* Pods-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91CA8B1530BD46D94800F50D /* Pods_Ver_ID_Sample.framework in Frameworks */,
+				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +166,12 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3BE9F3C7220AFB6D002C11BE /* FaceDetectionAlertController.xib */,
+				3BE9F3D1220AFB71002C11BE /* Localizable.strings */,
+				3BE9F3CF220AFB71002C11BE /* Result.storyboard */,
+				3BE9F3CD220AFB70002C11BE /* Tips.storyboard */,
+				3BE9F3CB220AFB6F002C11BE /* VerIDRegistrationViewController.xib */,
+				3BE9F3C5220AFB6D002C11BE /* VerIDViewController.xib */,
 				3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */,
 				3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */,
 				3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */,
@@ -122,15 +179,28 @@
 				3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */,
 				3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */,
 				3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */,
-				3B6A70D62208BC3B00B137C4 /* VerIDNavigationController.swift */,
 				3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */,
 				3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */,
 				3B326B1922089C88005DAE1E /* VerIDUI.h */,
 				3B326B1A22089C88005DAE1E /* Info.plist */,
 				3B6A70EA2208C29300B137C4 /* Session.swift */,
 				3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */,
+				3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */,
+				3B56E808220B668700004F94 /* Media.xcassets */,
+				3B56E812220B675D00004F94 /* Video */,
 			);
 			path = VerIDUI;
+			sourceTree = "<group>";
+		};
+		3B56E812220B675D00004F94 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				3B56E80A220B674D00004F94 /* liveness_detection_2.mp4 */,
+				3B56E80B220B674D00004F94 /* liveness_detection_3.mp4 */,
+				3B56E80C220B674D00004F94 /* registration_2.mp4 */,
+				3B56E80D220B674E00004F94 /* registration_3.mp4 */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
@@ -209,6 +279,7 @@
 				3BE9F362220AF125002C11BE /* Frameworks */,
 				3BE9F363220AF125002C11BE /* Resources */,
 				7B029016142EE52C1EE6634D /* [CP] Embed Pods Frameworks */,
+				3BE9F37D220AF8DD002C11BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -246,6 +317,8 @@
 			knownRegions = (
 				en,
 				Base,
+				vi,
+				fr,
 			);
 			mainGroup = 3B326B0C22089C88005DAE1E;
 			productRefGroup = 3B326B1722089C88005DAE1E /* Products */;
@@ -263,6 +336,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE9F3D6220AFB72002C11BE /* VerIDRegistrationViewController.xib in Resources */,
+				3BE9F3D8220AFB72002C11BE /* Result.storyboard in Resources */,
+				3B56E809220B668700004F94 /* Media.xcassets in Resources */,
+				3B56E810220B674E00004F94 /* registration_2.mp4 in Resources */,
+				3BE9F3D7220AFB72002C11BE /* Tips.storyboard in Resources */,
+				3BE9F3D9220AFB72002C11BE /* Localizable.strings in Resources */,
+				3BE9F3D4220AFB72002C11BE /* FaceDetectionAlertController.xib in Resources */,
+				3B56E80F220B674E00004F94 /* liveness_detection_3.mp4 in Resources */,
+				3BE9F3D3220AFB72002C11BE /* VerIDViewController.xib in Resources */,
+				3B56E811220B674E00004F94 /* registration_3.mp4 in Resources */,
+				3B56E80E220B674E00004F94 /* liveness_detection_2.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,9 +425,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */,
 				3B6A70E72208BD8400B137C4 /* FaceOvalLayer.swift in Sources */,
 				3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */,
-				3B6A70DD2208BC3C00B137C4 /* VerIDNavigationController.swift in Sources */,
 				3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */,
 				3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */,
 				3B6A70DE2208BC3C00B137C4 /* StillCameraViewController.swift in Sources */,
@@ -390,6 +474,66 @@
 				3BE9F371220AF128002C11BE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3BE9F3C5220AFB6D002C11BE /* VerIDViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BE9F3C6220AFB6D002C11BE /* Base */,
+				3BE9F3F3220AFC11002C11BE /* fr */,
+				3BE9F3F4220AFC15002C11BE /* vi */,
+			);
+			name = VerIDViewController.xib;
+			sourceTree = "<group>";
+		};
+		3BE9F3C7220AFB6D002C11BE /* FaceDetectionAlertController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BE9F3C8220AFB6D002C11BE /* Base */,
+				3BE9F3DC220AFB8C002C11BE /* vi */,
+				3BE9F3DD220AFB90002C11BE /* fr */,
+			);
+			name = FaceDetectionAlertController.xib;
+			sourceTree = "<group>";
+		};
+		3BE9F3CB220AFB6F002C11BE /* VerIDRegistrationViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BE9F3CC220AFB6F002C11BE /* Base */,
+				3BE9F3EF220AFBFE002C11BE /* fr */,
+				3BE9F3F0220AFC04002C11BE /* vi */,
+			);
+			name = VerIDRegistrationViewController.xib;
+			sourceTree = "<group>";
+		};
+		3BE9F3CD220AFB70002C11BE /* Tips.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BE9F3CE220AFB70002C11BE /* Base */,
+				3BE9F3EA220AFBCD002C11BE /* fr */,
+				3BE9F3EC220AFBD4002C11BE /* vi */,
+			);
+			name = Tips.storyboard;
+			sourceTree = "<group>";
+		};
+		3BE9F3CF220AFB71002C11BE /* Result.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BE9F3D0220AFB71002C11BE /* Base */,
+				3BE9F3E5220AFBBF002C11BE /* vi */,
+				3BE9F3E6220AFBC1002C11BE /* fr */,
+			);
+			name = Result.storyboard;
+			sourceTree = "<group>";
+		};
+		3BE9F3D1220AFB71002C11BE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BE9F3D2220AFB72002C11BE /* Base */,
+				3BE9F3DF220AFBA2002C11BE /* vi */,
+				3BE9F3E0220AFBA5002C11BE /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -448,7 +592,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -507,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -527,7 +671,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -556,7 +700,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -580,6 +724,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BD552F8392D39C73F0B251C /* Pods-Ver-ID Sample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CSD8L9EK66;
@@ -599,6 +744,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CF6F05DAD06B0C752A98ABFF /* Pods-Ver-ID Sample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CSD8L9EK66;
