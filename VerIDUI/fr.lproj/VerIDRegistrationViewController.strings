@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "Tkr-iJ-3Yz"; */
+"Tkr-iJ-3Yz.normalTitle" = "Annuler";
+
+/* Class = "UILabel"; text = "Camera access denied"; ObjectID = "cKt-nZ-iLk"; */
+"cKt-nZ-iLk.text" = "Accès à la caméra refusé";
+
+/* Class = "UILabel"; text = "Preparing face detection"; ObjectID = "pFK-rq-7cB"; */
+"pFK-rq-7cB.text" = "En cours de préparation de la détection de visages";

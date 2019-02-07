@@ -1,0 +1,75 @@
+/* (No Comment) */
+"Align your face with the oval" = "Vui lòng di chuyển khuôn mặt vào khuôn viền.";
+
+/* Displayed when an authentication session fails. */
+"Authentication failed" = "Xác thực thất bại.Vui lòng tham khảo gợi ý để thực hiện lại.";
+
+/* Error description indicating that a face bearing, e.g., left, cannot be matched to registered faces because they don't contain that bearing. */
+"Bearing not registered for user" = "Góc nghiêng %1$@ chưa được đăng ký cho người dùng %2$@";
+
+/* Error description indicating that a face cannot be detected in the supplied image. */
+"Face not found" = "Không nhận diện được khuôn mặt";
+
+/* Error description indicating that the quality of the detected faces makes them unsuitable for face recognition. */
+"Faces not suitable for recognition" = "Không nhận diện được khuôn mặt";
+
+/* Displayed above the face when the user correctly followed the directions and should stay still. */
+"Great, hold it" = "Tuyệt vời, xin đừng dịch chuyển";
+
+/* Displayed when a liveness detection session succeeds. */
+"Great. Session succeeded." = "Tuyệt vời, nhận diện thành công";
+
+/* Displayed when a registration session succeeds. */
+"Great. You are now registered." = "Tuyệt vời, đăng ký thành công";
+
+/* Displayed when an authentication session succeeds. */
+"Great. You authenticated using your face." = "Tuyệt vời, đã xác thực khuôn mặt";
+
+/* Spoken direction when the user correctly follows the directions and should stay still. */
+"Hold it" = "Xin đừng dịch chuyển";
+
+/* Description of an error indicating the library failed to load due to a missing API secret. */
+"Missing API secret" = "Thiếu thông tin API";
+
+/* Description of an error indicating the library failed to load due to missing resource files. */
+"Missing resources URL" = "Thiếu URL tài nguyên";
+
+/* Label on a button used to dismiss an alert dialog */
+"OK" = "OK";
+
+/* Instruction displayed to the user if they disable access to the camera */
+"Please go to settings and enable camera in the settings for app." = "Xin vào phần cài đặt để mở chức năng camera cho %@.";
+
+/* Displayed above the face when the session is finishing. */
+"Please wait" = "Xin vui lòng chờ";
+
+/* Displayed in the camera view when the app is preparing face detection */
+"Preparing face detection" = "Đang nhận diện khuôn mặt";
+
+/* Displayed when a registration session fails. */
+"Registration failed" = "Đăng ký thất bại";
+
+/* Displayed when a liveness detection session fails. */
+"Session failed" = "Nhận diện thất bại";
+
+/* Displayed as an instruction during face detection along with an arrow indicating direction */
+"Slowly turn to follow the arrow" = "Di chuyển từ từ theo hướng mũi tên";
+
+/* Shown in a dialog as an instruction */
+"Turn your head in the direction of the arrow" = "Xoay đầu theo hướng mũi tên";
+
+/* Error description indicating that an image supplied for face detection cannot be decoded. */
+"Unable to decode image" = "Không thể xử lý ảnh";
+
+/* Description of an error indicating the library failed to load due to being unable to create one if its classes. */
+"Unable to initialize resource loader" = "Không thể tải dữ liệu ban đầu";
+
+/* Alert message when unable to resume the session running */
+"Unable to resume" = "Không thể tiếp tục";
+
+/* Error description indicating the client was trying to authenticate as a user who is not registered */
+"User not registered" = "Người dùng chưa đăng ký";
+
+/* Shown in a dialog as an explanation of why the face session is failing */
+"You may have turned too far. Only turn in the requested direction until the oval turns green." = "Di chuyển mặt theo hướng dẫn đến khi khung hình chuyển màu xanh";
+

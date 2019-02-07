@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerIDViewController" customModule="VerIDUI" customModuleProvider="target">
+            <connections>
+                <outlet property="directionLabel" destination="pFK-rq-7cB" id="wf1-jf-j3p"/>
+                <outlet property="directionLabelYConstraint" destination="8AK-uk-67L" id="OaH-6w-805"/>
+                <outlet property="noCameraLabel" destination="cKt-nZ-iLk" id="6YH-jL-Pq2"/>
+                <outlet property="overlayView" destination="vbV-fj-w3F" id="KTe-NL-nbp"/>
+                <outlet property="sceneView" destination="0AK-Ep-DAz" id="vpN-t6-9Zw"/>
+                <outlet property="view" destination="Ocl-Sv-K49" id="9s4-rP-ZAS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Ocl-Sv-K49">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AK-Ep-DAz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </sceneKitView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vbV-fj-w3F">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI" customModuleProvider="target">
+                    <rect key="frame" x="72" y="270" width="231.5" height="27"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera access denied" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKt-nZ-iLk">
+                    <rect key="frame" x="16" y="323.5" width="343" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkr-iJ-3Yz">
+                    <rect key="frame" x="161" y="586" width="53" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.2970355308" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="NmV-uS-uoX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Tkr-iJ-3Yz" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="0k8-lM-R46"/>
+                <constraint firstAttribute="trailing" secondItem="0AK-Ep-DAz" secondAttribute="trailing" id="6uE-Xn-Zwk"/>
+                <constraint firstItem="pFK-rq-7cB" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="7hp-ld-h2L"/>
+                <constraint firstItem="pFK-rq-7cB" firstAttribute="top" secondItem="Ocl-Sv-K49" secondAttribute="top" constant="270" id="8AK-uk-67L"/>
+                <constraint firstItem="vbV-fj-w3F" firstAttribute="trailing" secondItem="0AK-Ep-DAz" secondAttribute="trailing" id="PmK-uz-qJZ"/>
+                <constraint firstItem="vbV-fj-w3F" firstAttribute="leading" secondItem="0AK-Ep-DAz" secondAttribute="leading" id="THR-Zb-Zsm"/>
+                <constraint firstItem="mT4-EL-2C3" firstAttribute="bottom" secondItem="Tkr-iJ-3Yz" secondAttribute="bottom" constant="48" id="WRt-kV-hCj"/>
+                <constraint firstItem="0AK-Ep-DAz" firstAttribute="top" secondItem="Ocl-Sv-K49" secondAttribute="top" id="b81-cB-ElA"/>
+                <constraint firstItem="cKt-nZ-iLk" firstAttribute="leading" secondItem="Ocl-Sv-K49" secondAttribute="leadingMargin" id="bRx-iH-0hW"/>
+                <constraint firstItem="cKt-nZ-iLk" firstAttribute="centerY" secondItem="Ocl-Sv-K49" secondAttribute="centerY" id="cFc-cb-V8U"/>
+                <constraint firstItem="cKt-nZ-iLk" firstAttribute="trailing" secondItem="Ocl-Sv-K49" secondAttribute="trailingMargin" id="lVs-eh-vrC"/>
+                <constraint firstItem="vbV-fj-w3F" firstAttribute="top" secondItem="0AK-Ep-DAz" secondAttribute="top" id="nIW-hB-wGh"/>
+                <constraint firstItem="vbV-fj-w3F" firstAttribute="bottom" secondItem="0AK-Ep-DAz" secondAttribute="bottom" id="oYu-f7-SuC"/>
+                <constraint firstAttribute="bottom" secondItem="0AK-Ep-DAz" secondAttribute="bottom" id="rUI-mw-cmX"/>
+                <constraint firstItem="pFK-rq-7cB" firstAttribute="width" relation="lessThanOrEqual" secondItem="Ocl-Sv-K49" secondAttribute="width" id="uKj-M1-nwn"/>
+                <constraint firstItem="0AK-Ep-DAz" firstAttribute="leading" secondItem="Ocl-Sv-K49" secondAttribute="leading" id="wz8-er-Y6L"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="mT4-EL-2C3"/>
+        </view>
+    </objects>
+</document>
