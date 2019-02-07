@@ -10,19 +10,23 @@ import UIKit
 import AVKit
 import VerIDCore
 
-protocol ResultViewControllerDelegate: class {
+public protocol ResultViewControllerProtocol: class {
+    var delegate: ResultViewControllerDelegate? { get set }
+}
+
+public protocol ResultViewControllerDelegate: class {
     func resultViewControllerDidCancel(_ viewController: ResultViewController)
     func resultViewController(_ viewController: ResultViewController, didFinishWithResult result: SessionResult)
 }
 
-class ResultViewController: UIViewController {
+public class ResultViewController: UIViewController, ResultViewControllerProtocol {
     
     var result: SessionResult?
     var settings: SessionSettings?
-    weak var delegate: ResultViewControllerDelegate?
+    public var delegate: ResultViewControllerDelegate?
     @IBOutlet weak var textView: UITextView!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
     }
@@ -39,12 +43,12 @@ class ResultViewController: UIViewController {
     }
 }
 
-class SuccessViewController: ResultViewController {
+public class SuccessViewController: ResultViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var checkmarkView: UIImageView!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         guard let result = self.result else {
             return
@@ -88,13 +92,13 @@ class SuccessViewController: ResultViewController {
     
 }
 
-class FailureViewController: ResultViewController {
+public class FailureViewController: ResultViewController {
     
     var looper: Any?
     
     @IBOutlet weak var videoContainerView: UIView!
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         if let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
             self.navigationItem.title = appName
@@ -108,7 +112,7 @@ class FailureViewController: ResultViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let bundle = Bundle(for: type(of: self))
         let density = UIScreen.main.scale
@@ -135,7 +139,7 @@ class FailureViewController: ResultViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if #available(iOS 10, *) {
             (self.looper as? AVPlayerLooper)?.disableLooping()

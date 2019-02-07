@@ -10,11 +10,11 @@ import Foundation
 import CoreMedia
 import VerIDCore
 
-protocol VerIDViewControllerDelegate: class {
+public protocol VerIDViewControllerDelegate: class {
     
-    func viewControllerDidCancel(_ viewController: VerIDViewController)
+    func viewControllerDidCancel(_ viewController: VerIDViewControllerProtocol)
     
-    func viewController(_ viewController: VerIDViewController, didFailWithError error: Error)
+    func viewController(_ viewController: VerIDViewControllerProtocol, didFailWithError error: Error)
     
-    func viewController(_ viewController: VerIDViewController, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withRotation rotation: CGFloat)
+    func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withRotation rotation: CGFloat)
 }

@@ -14,6 +14,13 @@ import Accelerate
 import SceneKit
 import VerIDCore
 
+public protocol VerIDViewControllerProtocol: class {
+    var delegate: VerIDViewControllerDelegate? { get set }
+    func imageScaleTransformAtImageSize(_ size: CGSize) -> CGAffineTransform
+    func didProduceSessionResult(_ sessionResult: SessionResult, from faceDetectionResult: FaceDetectionResult)
+    func drawCameraOverlay(bearing: Bearing, text: String?, isHighlighted: Bool, ovalBounds: CGRect, cutoutBounds: CGRect?, faceAngle: EulerAngle?, showArrow: Bool, offsetAngleFromBearing: EulerAngle?)
+}
+
 /**
  Base class for Ver-ID view controllers.
  
@@ -22,20 +29,22 @@ import VerIDCore
  - See: `VerIDRegistrationViewController`
  `VerIDAuthenticationViewController`
  */
-public class VerIDViewController: StillCameraViewController, ImageProviderService {
+public class VerIDViewController: StillCameraViewController, ImageProviderService, VerIDViewControllerProtocol {
     
     public func dequeueImage() throws -> VerIDImage {
         var buffer: CMSampleBuffer?
-        captureSessionQueue.sync {
-            if let currentBuffer = self.currentSampleBuffer {
-                let status = CMSampleBufferCreateCopy(allocator: kCFAllocatorDefault, sampleBuffer: currentBuffer, sampleBufferOut: &buffer)
-                if status != 0 {
-                    buffer = nil
+        while buffer == nil {
+            captureSessionQueue.sync {
+                if let currentBuffer = self.currentSampleBuffer {
+                    let status = CMSampleBufferCreateCopy(allocator: kCFAllocatorDefault, sampleBuffer: currentBuffer, sampleBufferOut: &buffer)
+                    if status != 0 {
+                        buffer = nil
+                    }
                 }
+                self.currentSampleBuffer = nil
             }
-            self.currentSampleBuffer = nil
         }
-        if buffer != nil {
+//        if buffer != nil {
             let orientation: CGImagePropertyOrientation
             switch self.imageOrientation {
             case .up:
@@ -56,10 +65,10 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
                 orientation = .leftMirrored
             }
             return VerIDImage(sampleBuffer: buffer!, orientation: orientation)
-        } else {
-            // TODO
-            throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
-        }
+//        } else {
+//            // TODO
+//            throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
+//        }
     }
     
     
@@ -75,7 +84,7 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
     
     /// The colour behind the face 'cutout'
     let backgroundColour = UIColor(white: 0, alpha: 0.5)
-    let highlightedColour = UIColor(red: 0, green: 1, blue: 0, alpha: 1)
+    let highlightedColour = UIColor(red: 0.21176470588235, green: 0.68627450980392, blue: 0.0, alpha: 1.0)
     let highlightedTextColour = UIColor.white
     let neutralColour = UIColor.white
     let neutralTextColour = UIColor.black
@@ -83,7 +92,7 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
     // MARK: -
     
     /// The Ver-ID view controller delegate
-    weak var delegate: VerIDViewControllerDelegate?
+    public var delegate: VerIDViewControllerDelegate?
     /// Set this to distinguish between different view controllers if your delegate handles more than one Ver-ID view controller
     var identifier: String?
     
@@ -116,6 +125,8 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Views
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,6 +197,8 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK: -
+    
     @IBAction func cancel(_ sender: Any? = nil) {
         self.stopCamera()
         self.delegate?.viewControllerDidCancel(self)
@@ -233,15 +246,20 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
 //        }
 //    }
     
-    func didProduceSessionResult(_ sessionResult: SessionResult, from faceDetectionResult: FaceDetectionResult) {
+    public func didProduceSessionResult(_ sessionResult: SessionResult, from faceDetectionResult: FaceDetectionResult) {
         
     }
     
-    func drawCameraOverlay(bearing: Bearing, text: String?, isHighlighted: Bool, ovalBounds: CGRect, cutoutBounds: CGRect?, faceAngle: EulerAngle?, showArrow: Bool, offsetAngleFromBearing: EulerAngle?) {
+    // MARK: - Face and arrows
+    
+    public func drawCameraOverlay(bearing: Bearing, text: String?, isHighlighted: Bool, ovalBounds: CGRect, cutoutBounds: CGRect?, faceAngle: EulerAngle?, showArrow: Bool, offsetAngleFromBearing: EulerAngle?) {
         self.directionLabel.textColor = isHighlighted ? highlightedTextColour : neutralTextColour
         self.directionLabel.text = text
         self.directionLabel.backgroundColor = isHighlighted ? highlightedColour : neutralColour
         self.directionLabel.isHidden = text == nil
+        
+        self.directionLabelYConstraint.constant = max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0)
+        
         self.faceOvalLayer.setOvalBounds(ovalBounds, cutoutBounds: cutoutBounds, strokeColour: isHighlighted ? highlightedColour : neutralColour)
         if let angle = faceAngle, let offsetAngle = offsetAngleFromBearing, showArrow {
             self.drawArrowInFaceRect(ovalBounds, faceAngle: angle, requestedBearing: bearing, offsetAngleFromBearing: offsetAngle)
@@ -295,7 +313,7 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
         if let context = UIGraphicsGetCurrentContext() {
             let layer = CAShapeLayer()
             layer.fillColor = UIColor.clear.cgColor
-            layer.strokeColor = UIColor.black.cgColor
+            layer.strokeColor = UIColor.white.cgColor
             layer.lineCap = CAShapeLayerLineCap.round
             layer.lineJoin = CAShapeLayerLineJoin.round
             layer.lineWidth = lineWidth
@@ -348,7 +366,7 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
     ///
     /// - Parameter size: Size of the image where the face was detected
     /// - Returns: Affine transform to be used when scaling detected faces to fit the display
-    func imageScaleTransformAtImageSize(_ size: CGSize) -> CGAffineTransform {
+    public func imageScaleTransformAtImageSize(_ size: CGSize) -> CGAffineTransform {
         let rect = AVMakeRect(aspectRatio: self.overlayView.bounds.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
         let scale = self.overlayView.bounds.width / rect.width
         var scaleTransform: CGAffineTransform = CGAffineTransform(translationX: 0-rect.minX, y: 0-rect.minY).concatenating(CGAffineTransform(scaleX: scale, y: scale))

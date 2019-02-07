@@ -25,14 +25,14 @@ class FaceDetectionAlertController: UIViewController {
     
     let message: String?
     let videoURL: URL?
-    weak var delegate: FaceDetectionAlertControllerDelegate?
+    var delegate: FaceDetectionAlertControllerDelegate?
     var looper: Any?
     
     public init(message: String?, videoURL: URL?, delegate: FaceDetectionAlertControllerDelegate) {
         self.message = message
         self.videoURL = videoURL
         self.delegate = delegate
-        super.init(nibName: "FaceDetectionAlertController", bundle: Bundle(identifier: "com.appliedrec.Ver-ID"))
+        super.init(nibName: "FaceDetectionAlertController", bundle: Bundle(for: type(of: self)))
     }
     
     required init?(coder aDecoder: NSCoder) {

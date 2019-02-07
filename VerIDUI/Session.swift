@@ -11,7 +11,7 @@ import VerIDCore
 import CoreMedia
 import AVFoundation
 
-public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate {
+public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
     
     // MARK: - Public properties
     
@@ -19,6 +19,7 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     public var resultEvaluationFactory: ResultEvaluationServiceFactory
     public var imageWriterFactory: ImageWriterServiceFactory
     public var videoWriterFactory: VideoWriterServiceFactory?
+    public var sessionViewControllersFactory: SessionViewControllersFactory
     
     public weak var delegate: VerIDUI.SessionDelegate?
     
@@ -26,7 +27,8 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     // MARK: - Private properties
     
-    private var viewController: VerIDViewController?
+    private var viewController: (UIViewController & VerIDViewControllerProtocol & ImageProviderService)?
+    
     private lazy var operationQueue: OperationQueue = {
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1
@@ -56,13 +58,13 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
             self.resultEvaluationFactory = VerIDLivenessDetectionEvaluationServiceFactory(environment: environment)
         }
         self.imageWriterFactory = VerIDImageWriterServiceFactory()
+        self.sessionViewControllersFactory = VerIDSessionViewControllersFactory(settings: settings)
     }
     
     // MARK: - Public methods
     
     public func start() {
         DispatchQueue.main.async {
-            self.startTime = CACurrentMediaTime()
             if let videoURL = self.settings.videoURL, let videoWriterFactory = self.videoWriterFactory {
                 if FileManager.default.isDeletableFile(atPath: videoURL.path) {
                     try? FileManager.default.removeItem(at: videoURL)
@@ -74,60 +76,75 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
                 self.delegate?.session(self, didFailWithError: NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil))
                 return
             }
-            self.viewController = VerIDViewController(nibName: nil)
+            do {
+                self.viewController = try self.sessionViewControllersFactory.makeVerIDViewController()
+            } catch {
+                self.finishWithError(error)
+                return
+            }
             self.viewController?.delegate = self
-            self.faceDetection = self.faceDetectionFactory.makeFaceDetectionService(settings: self.settings)
             while let presented = root.presentedViewController {
                 root = presented
             }
             self.navigationController = UINavigationController(rootViewController: self.viewController!)
             root.present(self.navigationController!, animated: true) {
-                let op = SessionOperation(imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
-                op.delegate = self
-                let finishOp = BlockOperation()
-                finishOp.addExecutionBlock { [unowned finishOp] in
-                    if finishOp.isCancelled {
-                        return
-                    }
-                    if let videoWriter = self.videoWriterService {
-                        videoWriter.finish() { url in
-                            op.result.videoURL = url
-                            self.showResult(op.result)
-                        }
-                    } else {
-                        self.showResult(op.result)
-                    }
-                }
-                finishOp.addDependency(op)
-                self.operationQueue.addOperations([op, finishOp], waitUntilFinished: false)
+                self.startOperations()
             }
         }
     }
     
     public func cancel() {
         self.operationQueue.cancelAllOperations()
+        self.viewController = nil
         DispatchQueue.main.async {
-            self.navigationController?.dismiss(animated: true) {
+            guard let navController = self.navigationController else {
                 self.delegate?.sessionWasCanceled(self)
+                return
             }
             self.navigationController = nil
+            navController.dismiss(animated: true) {
+                self.delegate?.sessionWasCanceled(self)
+            }
         }
     }
     
     // MARK: - Private methods
     
+    private func startOperations() {
+        self.startTime = CACurrentMediaTime()
+        self.faceDetection = nil
+        self.faceDetection = self.faceDetectionFactory.makeFaceDetectionService(settings: self.settings)
+        let op = SessionOperation(imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
+        op.delegate = self
+        let finishOp = BlockOperation()
+        finishOp.addExecutionBlock {
+            if finishOp.isCancelled || op.result.isCanceled {
+                return
+            }
+            if let videoWriter = self.videoWriterService {
+                videoWriter.finish() { url in
+                    op.result.videoURL = url
+                    self.showResult(op.result)
+                }
+            } else {
+                self.showResult(op.result)
+            }
+        }
+        finishOp.addDependency(op)
+        self.operationQueue.addOperations([op, finishOp], waitUntilFinished: false)
+    }
+    
     private func showResult(_ result: SessionResult) {
         self.operationQueue.cancelAllOperations()
         if self.settings.showResult {
             DispatchQueue.main.async {
-                let bundle = Bundle(for: type(of: self))
-                let storyboard = UIStoryboard(name: "Result", bundle: bundle)
-                let storyboardId = result.error != nil ? "failure" : "success"
-                let resultViewController = storyboard.instantiateViewController(withIdentifier: storyboardId) as! ResultViewController
-                resultViewController.result = result
-                resultViewController.settings = self.settings
-                resultViewController.delegate = self
-                self.navigationController?.pushViewController(resultViewController, animated: true)
+                do {
+                    let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
+                    resultViewController.delegate = self
+                    self.navigationController?.pushViewController(resultViewController, animated: true)
+                } catch {
+                    self.finishWithError(error)
+                }
             }
         } else {
             self.finishWithResult(result)
@@ -135,15 +152,36 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     }
     
     private func finishWithResult(_ result: SessionResult) {
+        self.operationQueue.cancelAllOperations()
+        self.viewController = nil
+        if let error = result.error {
+            self.finishWithError(error)
+            return
+        }
         DispatchQueue.main.async {
-            self.navigationController?.dismiss(animated: true) {
-                if let error = result.error {
-                    self.delegate?.session(self, didFailWithError: error)
-                } else {
-                    self.delegate?.session(self, didFinishWithResult: result)
-                }
+            guard let navController = self.navigationController else {
+                self.delegate?.session(self, didFinishWithResult: result)
+                return
             }
             self.navigationController = nil
+            navController.dismiss(animated: true) {
+                self.delegate?.session(self, didFinishWithResult: result)
+            }
+        }
+    }
+    
+    private func finishWithError(_ error: Error) {
+        self.operationQueue.cancelAllOperations()
+        self.viewController = nil
+        DispatchQueue.main.async {
+            guard let navController = self.navigationController else {
+                self.delegate?.session(self, didFailWithError: error)
+                return
+            }
+            self.navigationController = nil
+            navController.dismiss(animated: true) {
+                self.delegate?.session(self, didFailWithError: error)
+            }
         }
     }
     
@@ -177,16 +215,15 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     // MARK: - Ver-ID view controller delegate
     
-    func viewControllerDidCancel(_ viewController: VerIDViewController) {
+    public func viewControllerDidCancel(_ viewController: VerIDViewControllerProtocol) {
         self.cancel()
     }
     
-    func viewController(_ viewController: VerIDViewController, didFailWithError error: Error) {
-        self.operationQueue.cancelAllOperations()
-        self.delegate?.session(self, didFailWithError: error)
+    public func viewController(_ viewController: VerIDViewControllerProtocol, didFailWithError error: Error) {
+        self.finishWithError(error)
     }
     
-    func viewController(_ viewController: VerIDViewController, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withRotation rotation: CGFloat) {
+    public func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withRotation rotation: CGFloat) {
         self.videoWriterService?.writeSampleBuffer(sampleBuffer, rotation: rotation)
     }
     
@@ -194,9 +231,6 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     public func operationDidOutputSessionResult(_ result: SessionResult, fromFaceDetectionResult faceDetectionResult: FaceDetectionResult) {
         guard let defaultFaceBounds = self.faceDetection?.defaultFaceBounds(in: faceDetectionResult.imageSize) else {
-            return
-        }
-        guard let transform = self.viewController?.imageScaleTransformAtImageSize(faceDetectionResult.imageSize) else {
             return
         }
         let bundle = Bundle(for: type(of: self))
@@ -218,7 +252,9 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
             offsetAngleFromBearing = nil
             spokenText = nil
         } else {
-            self.viewController?.didProduceSessionResult(result, from: faceDetectionResult)
+            DispatchQueue.main.async {
+                self.viewController?.didProduceSessionResult(result, from: faceDetectionResult)
+            }
             switch faceDetectionResult.status {
             case .faceFixed, .faceAligned:
                 labelText = NSLocalizedString("Great, hold it", tableName: nil, bundle: bundle, value: "Great, hold it", comment: "Displayed above the face when the user correctly followed the directions and should stay still.")
@@ -258,28 +294,31 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
                 spokenText = NSLocalizedString("Align your face with the oval", tableName: nil, bundle: bundle, value: "Align your face with the oval", comment: "")
             }
         }
-        self.viewController?.drawCameraOverlay(bearing: faceDetectionResult.requestedBearing, text: labelText, isHighlighted: isHighlighted, ovalBounds: ovalBounds.applying(transform), cutoutBounds: cutoutBounds?.applying(transform), faceAngle: faceAngle, showArrow: showArrow, offsetAngleFromBearing: offsetAngleFromBearing)
-        if let error = result.error {
-            self.operationQueue.cancelAllOperations()
+        DispatchQueue.main.async {
+            guard let transform = self.viewController?.imageScaleTransformAtImageSize(faceDetectionResult.imageSize) else {
+                return
+            }
+            self.viewController?.drawCameraOverlay(bearing: faceDetectionResult.requestedBearing, text: labelText, isHighlighted: isHighlighted, ovalBounds: ovalBounds.applying(transform), cutoutBounds: cutoutBounds?.applying(transform), faceAngle: faceAngle, showArrow: showArrow, offsetAngleFromBearing: offsetAngleFromBearing)
+        }
+        if result.error != nil {
             if self.retryCount < self.settings.maxRetryCount {
+                self.operationQueue.cancelAllOperations()
                 let message: String
                 if faceDetectionResult.status == .faceTurnedTooFar {
                     message = NSLocalizedString("You may have turned too far. Only turn in the requested direction until the oval turns green.", tableName: nil, bundle: bundle, value: "You may have turned too far. Only turn in the requested direction until the oval turns green.", comment: "Shown in a dialog as an explanation of why the face session is failing")
                 } else {
                     message = NSLocalizedString("Turn your head in the direction of the arrow", tableName: nil, bundle: bundle, value: "Turn your head in the direction of the arrow", comment: "Shown in a dialog as an instruction")
                 }
-                let density = UIScreen.main.scale
-                let densityInt = density > 2 ? 3 : 2
-                let videoFileName = self.settings is RegistrationSessionSettings ? "registration" : "liveness_detection"
-                let videoName = String(format: "%@_%d", videoFileName, densityInt)
-                let url = bundle.url(forResource: videoName, withExtension: "mp4")
-                let alert = FaceDetectionAlertController(message: message, videoURL: url, delegate: self)
-                alert.modalPresentationStyle = .overFullScreen
-                self.viewController?.present(alert, animated: true, completion: nil)
-            } else {
-                // TODO: Hide view controller
-                // Return failure
-                self.delegate?.session(self, didFailWithError: error)
+                DispatchQueue.main.async {
+                    let density = UIScreen.main.scale
+                    let densityInt = density > 2 ? 3 : 2
+                    let videoFileName = self.settings is RegistrationSessionSettings ? "registration" : "liveness_detection"
+                    let videoName = String(format: "%@_%d", videoFileName, densityInt)
+                    let url = bundle.url(forResource: videoName, withExtension: "mp4")
+                    let alert = FaceDetectionAlertController(message: message, videoURL: url, delegate: self)
+                    alert.modalPresentationStyle = .overFullScreen
+                    self.viewController?.present(alert, animated: true, completion: nil)
+                }
             }
             return
         }
@@ -290,29 +329,38 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     func faceDetectionAlertController(_ controller: FaceDetectionAlertController, didCloseDialogWithAction action: FaceDetectionAlertControllerAction) {
         self.viewController?.dismiss(animated: true) {
-            if action == .showTips {
-                self.retryCount += 1
-                let bundle = Bundle(for: type(of: self))
-                if let tipsController = UIStoryboard(name: "Tips", bundle: bundle).instantiateInitialViewController() {
+            switch action {
+            case .showTips:
+                do {
+                    let tipsController = try self.sessionViewControllersFactory.makeTipsViewController()
+                    tipsController.tipsViewControllerDelegate = self
                     self.navigationController?.pushViewController(tipsController, animated: true)
+                } catch {
+                    self.finishWithError(error)
                 }
-            } else if action == .retry {
+            case .retry:
                 self.retryCount += 1
-                self.start()
+                self.startOperations()
+            case .cancel:
+                self.cancel()
             }
         }
-        if action == .cancel {
-            self.cancel()
-        }
+    }
+    
+    // MARK: - Tips view controller delegate
+    
+    public func didDismissTipsInViewController(_ viewController: TipsViewControllerProtocol) {
+        self.retryCount += 1
+        self.startOperations()
     }
     
     // MARK: - Result view controller delegate
     
-    func resultViewControllerDidCancel(_ viewController: ResultViewController) {
+    public func resultViewControllerDidCancel(_ viewController: ResultViewController) {
         self.cancel()
     }
     
-    func resultViewController(_ viewController: ResultViewController, didFinishWithResult result: SessionResult) {
+    public func resultViewController(_ viewController: ResultViewController, didFinishWithResult result: SessionResult) {
         self.finishWithResult(result)
     }
 }

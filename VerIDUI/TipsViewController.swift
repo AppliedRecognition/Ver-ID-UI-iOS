@@ -8,8 +8,14 @@
 
 import UIKit
 
-class TipsViewController: UIPageViewController, UIPageViewControllerDataSource {
-
+class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, TipsViewControllerProtocol {
+    
+    // MARK: - Tips view controller protocol
+    
+    var tipsViewControllerDelegate: TipsViewControllerDelegate?
+    
+    // MARK: -
+    
     lazy var tipControllers: [UIViewController] = {
         guard let storyboard = self.storyboard else {
             return []
@@ -26,6 +32,13 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource {
         self.dataSource = self
         if let initialController = self.tipControllers.first {
             self.setViewControllers([initialController], direction: .forward, animated: false, completion: nil)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            self.tipsViewControllerDelegate?.didDismissTipsInViewController(self)
         }
     }
     
@@ -52,4 +65,12 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource {
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
+}
+
+public protocol TipsViewControllerDelegate: class {
+    func didDismissTipsInViewController(_ viewController: TipsViewControllerProtocol)
+}
+
+public protocol TipsViewControllerProtocol: class {
+    var tipsViewControllerDelegate: TipsViewControllerDelegate? { get set }
 }
