@@ -13,17 +13,19 @@ import VerIDCore
 class AppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate {
 
     var window: UIWindow?
-    var verid: VerID?
     
     // MARK: - Ver-ID factory delegate
 
     func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        self.verid = instance
+        guard let viewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "start") as? ViewController else {
+            return
+        }
+        viewController.verid = instance
+        self.window?.rootViewController = viewController
     }
     
     func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
-        self.verid = nil
-        
+        NSLog("Failed to create Ver-ID instance: %@", error.localizedDescription)
     }
     
     // MARK: - UI Application delegate
