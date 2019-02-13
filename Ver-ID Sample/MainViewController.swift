@@ -108,10 +108,8 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
         guard let environment = self.environment else {
             return
         }
-        let requiredPoseCount = UserDefaults.standard.integer(forKey: "livenessDetectionPoses")
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, livenessDetection: .regular)
         settings.showResult = true
-        settings.numberOfResultsToCollect = requiredPoseCount + 1
 //        if let videoURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("video.mov") {
 //            settings.videoURL = videoURL
 //        }
