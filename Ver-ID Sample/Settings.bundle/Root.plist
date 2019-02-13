@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Security level</string>
+			<key>FooterText</key>
+			<string>Higher levels lower the false acceptance rate (FAR) at the expense of false rejection rate (FRR)</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Security level</string>
+			<key>Key</key>
+			<string>securityLevel</string>
+			<key>DefaultValue</key>
+			<string>2</string>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Lowest</string>
+				<string>Low</string>
+				<string>Normal</string>
+				<string>High</string>
+				<string>Highest</string>
+			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Liveness detection</string>
+			<key>FooterText</key>
+			<string>Liveness detection prevents spoofing Ver-ID with a picture</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Liveness detection</string>
+			<key>Key</key>
+			<string>livenessDetectionPoses</string>
+			<key>DefaultValue</key>
+			<string>1</string>
+			<key>Values</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+			</array>
+			<key>Titles</key>
+			<array>
+				<string>Liveness detection off</string>
+				<string>Require 1 pose</string>
+				<string>Require 2 poses</string>
+				<string>Require 3 poses</string>
+				<string>Require 4 poses</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

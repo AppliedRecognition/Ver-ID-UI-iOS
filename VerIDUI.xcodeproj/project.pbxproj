@@ -24,8 +24,19 @@
 		3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */; };
 		3B6A70EB2208C29300B137C4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EA2208C29300B137C4 /* Session.swift */; };
 		3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */; };
-		3BE9F368220AF125002C11BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F367220AF125002C11BE /* AppDelegate.swift */; };
-		3BE9F36A220AF125002C11BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F369220AF125002C11BE /* ViewController.swift */; };
+		3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044E221425BE00B3B312 /* MainViewController.swift */; };
+		3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
+		3BB2045D221425BF00B3B312 /* ExportCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */; };
+		3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20452221425BE00B3B312 /* RegistrationData.swift */; };
+		3BB2045F221425BF00B3B312 /* RegistrationDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20453221425BF00B3B312 /* RegistrationDownloading.swift */; };
+		3BB20460221425BF00B3B312 /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20454221425BF00B3B312 /* QRCodeScanViewController.swift */; };
+		3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20456221425BF00B3B312 /* IntroViewController.swift */; };
+		3BB20463221425BF00B3B312 /* RegistrationUploading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20457221425BF00B3B312 /* RegistrationUploading.swift */; };
+		3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */; };
+		3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20459221425BF00B3B312 /* ErrorViewController.swift */; };
+		3BB204672214263600B3B312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB204662214263600B3B312 /* AppDelegate.swift */; };
+		3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */; };
+		3BB2046B221428B900B3B312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046D221428B900B3B312 /* Main.storyboard */; };
 		3BE9F36D220AF125002C11BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36B220AF125002C11BE /* Main.storyboard */; };
 		3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36E220AF128002C11BE /* Assets.xcassets */; };
 		3BE9F372220AF128002C11BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F370220AF128002C11BE /* LaunchScreen.storyboard */; };
@@ -89,9 +100,20 @@
 		3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		3B6A70EA2208C29300B137C4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDViewControllerDelegate.swift; sourceTree = "<group>"; };
+		3BB2044E221425BE00B3B312 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3BB2044F221425BE00B3B312 /* VerIDUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUser.swift; sourceTree = "<group>"; };
+		3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportCodeViewController.swift; sourceTree = "<group>"; };
+		3BB20452221425BE00B3B312 /* RegistrationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
+		3BB20453221425BF00B3B312 /* RegistrationDownloading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationDownloading.swift; sourceTree = "<group>"; };
+		3BB20454221425BF00B3B312 /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
+		3BB20456221425BF00B3B312 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		3BB20457221425BF00B3B312 /* RegistrationUploading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationUploading.swift; sourceTree = "<group>"; };
+		3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationImportViewController.swift; sourceTree = "<group>"; };
+		3BB20459221425BF00B3B312 /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		3BB204662214263600B3B312 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3BB20469221428AE00B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3BB2046C221428B900B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BE9F365220AF125002C11BE /* Ver-ID Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BE9F367220AF125002C11BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3BE9F369220AF125002C11BE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3BE9F36C220AF125002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BE9F36E220AF128002C11BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BE9F371220AF128002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -206,9 +228,20 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3BB204662214263600B3B312 /* AppDelegate.swift */,
+				3BB20459221425BF00B3B312 /* ErrorViewController.swift */,
+				3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */,
+				3BB20456221425BF00B3B312 /* IntroViewController.swift */,
+				3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */,
+				3BB2046D221428B900B3B312 /* Main.storyboard */,
+				3BB2044E221425BE00B3B312 /* MainViewController.swift */,
+				3BB20454221425BF00B3B312 /* QRCodeScanViewController.swift */,
+				3BB20452221425BE00B3B312 /* RegistrationData.swift */,
+				3BB20453221425BF00B3B312 /* RegistrationDownloading.swift */,
+				3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */,
+				3BB20457221425BF00B3B312 /* RegistrationUploading.swift */,
+				3BB2044F221425BE00B3B312 /* VerIDUser.swift */,
 				3BE9F379220AF492002C11BE /* VerIDModels */,
-				3BE9F367220AF125002C11BE /* AppDelegate.swift */,
-				3BE9F369220AF125002C11BE /* ViewController.swift */,
 				3BE9F36B220AF125002C11BE /* Main.storyboard */,
 				3BE9F36E220AF128002C11BE /* Assets.xcassets */,
 				3BE9F370220AF128002C11BE /* LaunchScreen.storyboard */,
@@ -357,6 +390,8 @@
 				3BE9F372220AF128002C11BE /* LaunchScreen.storyboard in Resources */,
 				3BE9F37A220AF493002C11BE /* VerIDModels in Resources */,
 				3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */,
+				3BB2046B221428B900B3B312 /* Main.storyboard in Resources */,
+				3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */,
 				3BE9F36D220AF125002C11BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,8 +479,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BE9F36A220AF125002C11BE /* ViewController.swift in Sources */,
-				3BE9F368220AF125002C11BE /* AppDelegate.swift in Sources */,
+				3BB204672214263600B3B312 /* AppDelegate.swift in Sources */,
+				3BB2045F221425BF00B3B312 /* RegistrationDownloading.swift in Sources */,
+				3BB20463221425BF00B3B312 /* RegistrationUploading.swift in Sources */,
+				3BB2045D221425BF00B3B312 /* ExportCodeViewController.swift in Sources */,
+				3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */,
+				3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */,
+				3BB20460221425BF00B3B312 /* QRCodeScanViewController.swift in Sources */,
+				3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */,
+				3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */,
+				3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */,
+				3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +504,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BB20469221428AE00B3B312 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3BB2046D221428B900B3B312 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BB2046C221428B900B3B312 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		3BE9F36B220AF125002C11BE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

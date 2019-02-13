@@ -43,6 +43,9 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
                 }
                 self.currentSampleBuffer = nil
             }
+            if buffer == nil {
+                usleep(10000)
+            }
         }
 //        if buffer != nil {
             let orientation: CGImagePropertyOrientation

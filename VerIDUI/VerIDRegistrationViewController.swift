@@ -34,7 +34,7 @@ class VerIDRegistrationViewController: VerIDViewController {
     }
     
     override func didProduceSessionResult(_ sessionResult: SessionResult, from faceDetectionResult: FaceDetectionResult) {
-        guard !sessionResult.isReady && (requestedBearing == nil || requestedBearing! != faceDetectionResult.requestedBearing || faceDetectionResult.status == .faceAligned) else {
+        guard !sessionResult.isReady && sessionResult.error == nil && (requestedBearing == nil || requestedBearing! != faceDetectionResult.requestedBearing || faceDetectionResult.status == .faceAligned) else {
             return
         }
         requestedBearing = faceDetectionResult.requestedBearing
@@ -59,7 +59,8 @@ class VerIDRegistrationViewController: VerIDViewController {
         case .leftUp:
             imageName = "head_thumbnail_left_up"
         }
-        guard let bundle = Bundle(identifier: "com.appliedrec.Ver-ID"), let image = UIImage(named: imageName, in: bundle, compatibleWith: nil) else {
+        let bundle = Bundle(for: type(of: self))
+        guard let image = UIImage(named: imageName, in: bundle, compatibleWith: nil) else {
             return
         }
         for i in 0..<settings.numberOfResultsToCollect {

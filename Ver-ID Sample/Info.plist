@@ -20,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Used for face detection</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -43,7 +45,5 @@
 	</array>
 	<key>com.appliedrec.verid.apiSecret</key>
 	<string>8b9e453482dd12942c372c3e0c5688a83e70edc5ae916cd065d49621fe619f67</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Used for face detection</string>
 </dict>
 </plist>

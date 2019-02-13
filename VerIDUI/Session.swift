@@ -10,6 +10,7 @@ import UIKit
 import VerIDCore
 import CoreMedia
 import AVFoundation
+import os
 
 public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
     
@@ -31,6 +32,7 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     private lazy var operationQueue: OperationQueue = {
         let queue = OperationQueue()
+        queue.qualityOfService = .userInitiated
         queue.maxConcurrentOperationCount = 1
         return queue
     }()
@@ -87,9 +89,8 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
                 root = presented
             }
             self.navigationController = UINavigationController(rootViewController: self.viewController!)
-            root.present(self.navigationController!, animated: true) {
-                self.startOperations()
-            }
+            root.present(self.navigationController!, animated: true)
+            self.startOperations()
         }
     }
     
@@ -242,6 +243,9 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
         let showArrow: Bool
         let offsetAngleFromBearing: EulerAngle?
         let spokenText: String?
+        DispatchQueue.main.async {
+            self.viewController?.didProduceSessionResult(result, from: faceDetectionResult)
+        }
         if result.isProcessing {
             labelText = NSLocalizedString("Please wait", tableName: nil, bundle: bundle, value: "Please wait", comment: "Displayed above the face when the session is finishing.")
             isHighlighted = true
@@ -252,9 +256,6 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
             offsetAngleFromBearing = nil
             spokenText = nil
         } else {
-            DispatchQueue.main.async {
-                self.viewController?.didProduceSessionResult(result, from: faceDetectionResult)
-            }
             switch faceDetectionResult.status {
             case .faceFixed, .faceAligned:
                 labelText = NSLocalizedString("Great, hold it", tableName: nil, bundle: bundle, value: "Great, hold it", comment: "Displayed above the face when the user correctly followed the directions and should stay still.")
@@ -302,13 +303,15 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
         }
         if result.error != nil {
             if self.retryCount < self.settings.maxRetryCount {
-                self.operationQueue.cancelAllOperations()
                 let message: String
                 if faceDetectionResult.status == .faceTurnedTooFar {
                     message = NSLocalizedString("You may have turned too far. Only turn in the requested direction until the oval turns green.", tableName: nil, bundle: bundle, value: "You may have turned too far. Only turn in the requested direction until the oval turns green.", comment: "Shown in a dialog as an explanation of why the face session is failing")
-                } else {
+                } else if faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost {
                     message = NSLocalizedString("Turn your head in the direction of the arrow", tableName: nil, bundle: bundle, value: "Turn your head in the direction of the arrow", comment: "Shown in a dialog as an instruction")
+                } else {
+                    return
                 }
+                self.operationQueue.cancelAllOperations()
                 DispatchQueue.main.async {
                     let density = UIScreen.main.scale
                     let densityInt = density > 2 ? 3 : 2

@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Ver-ID Sample
 //
-//  Created by Jakub Dolejs on 06/02/2019.
-//  Copyright © 2019 Applied Recognition. All rights reserved.
+//  Created by Jakub Dolejs on 20/01/2016.
+//  Copyright © 2016 Applied Recognition, Inc. All rights reserved.
 //
 
 import UIKit
@@ -11,54 +11,78 @@ import VerIDCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate {
+    
+    // MARK: - Instance variables
 
     var window: UIWindow?
+    var profilePictureURL: URL?
     
-    // MARK: - Ver-ID factory delegate
-
-    func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        guard let viewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "start") as? ViewController else {
+    // MARK: - Application delegate methods
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        reload()
+        return true
+    }
+    
+    func reload() {
+        guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
             return
         }
-        viewController.verid = instance
-        self.window?.rootViewController = viewController
+        navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
+        // Load Ver-ID
+        // API secret is read from the app's Info.plist
+        let factory = VerIDFactory()
+        factory.delegate = self
+        factory.createVerID()
+    }
+    
+    // MARK: -
+    
+    func showError() {
+        guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
+            return
+        }
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "error")
+        navigationController.setViewControllers([initialViewController], animated: false)
+    }
+    
+    // MARK: - Ver-ID factory delegate
+    
+    func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
+        guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
+            return
+        }
+        let initialViewController: UIViewController
+        do {
+            let users = try instance.userManagement.users()
+            if users.isEmpty {
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "intro")
+                (initialViewController as? IntroViewController)?.environment = instance
+            } else {
+                initialViewController = storyboard.instantiateViewController(withIdentifier: "start")
+                (initialViewController as? MainViewController)?.environment = instance
+            }
+            // Replace the root in the navigation view controller.
+            navigationController.setViewControllers([initialViewController], animated: false)
+        } catch {
+            self.showError()
+        }
     }
     
     func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
-        NSLog("Failed to create Ver-ID instance: %@", error.localizedDescription)
+        self.showError()
     }
     
-    // MARK: - UI Application delegate
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let veridFactory = VerIDFactory()
-        veridFactory.delegate = self
-        veridFactory.createVerID()
-        return true
+    // MARK: - Registration upload/download
+    
+    /// Implement RegistrationUploading if you want your app to handle exporting face registrations
+    var registrationUploading: RegistrationUploading? {
+        return nil
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
+    /// Implement RegistrationDownloading if you want your app to handle importing face registrations
+    var registrationDownloading: RegistrationDownloading? {
+        return nil
     }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
 
