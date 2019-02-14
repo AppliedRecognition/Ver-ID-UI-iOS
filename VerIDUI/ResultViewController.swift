@@ -68,13 +68,33 @@ public class SuccessViewController: ResultViewController {
                 }
                 return
             }
-            let croppedImage: UIImage? = nil
-            // TODO: Crop image
-//            if #available(iOS 10.0, *) {
-//                croppedImage = ImageUtil.centerImage(image, onEyesOfFace: face).grayscale?.blurred
-//            } else {
-//                croppedImage = ImageUtil.centerImage(image, onEyesOfFace: face).grayscale
-//            }
+            let centre = CGPoint(x: face.leftEye.x + (face.rightEye.x - face.leftEye.x) / 2, y: face.leftEye.y + (face.rightEye.y - face.leftEye.y) / 2)
+            let xDist = min(image.size.width - centre.x, centre.x)
+            let yDist = min(image.size.height - centre.y, centre.y)
+            let cropRect = CGRect(x: centre.x-xDist, y: centre.y-yDist, width: xDist*2, height: yDist*2)
+            UIGraphicsBeginImageContext(cropRect.size)
+            defer {
+                UIGraphicsEndImageContext()
+            }
+            image.draw(at: CGPoint(x: 0-cropRect.minX, y: 0-cropRect.minY))
+            var croppedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? image
+            do {
+                croppedImage = try ImageUtil.grayscaleImage(from: croppedImage)
+            } catch {
+                
+            }
+            if let blurFilter = CIFilter(name: "CIGaussianBlur"), let cropFilter = CIFilter(name: "CICrop") {
+                let ciImage = croppedImage.ciImage ?? CIImage(cgImage: croppedImage.cgImage!)
+                blurFilter.setValue(ciImage, forKey: kCIInputImageKey)
+                blurFilter.setValue(16, forKey: kCIInputRadiusKey)
+                if let output = blurFilter.outputImage {
+                    cropFilter.setValue(output, forKey: kCIInputImageKey)
+                    cropFilter.setValue(CIVector(cgRect: ciImage.extent), forKey: "inputRectangle")
+                    if let cropped = cropFilter.outputImage {
+                        croppedImage = UIImage(ciImage: cropped, scale: 1, orientation: image.imageOrientation)
+                    }
+                }
+            }
             DispatchQueue.main.async {
                 self.imageView.image = croppedImage
                 self.imageView.contentMode = .scaleAspectFill
