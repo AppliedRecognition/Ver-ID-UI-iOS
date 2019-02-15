@@ -248,7 +248,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
     ///   - session: The session that finished
     ///   - result: The session result
     func session(_ session: Session, didFinishWithResult result: SessionResult) {
-        if let from = result.imageURLs(withBearing: .straight).first, let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
+        if session.settings is RegistrationSessionSettings, let from = result.imageURLs(withBearing: .straight).first, let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
             try? FileManager.default.removeItem(at: to)
             try? FileManager.default.copyItem(at: from, to: to)
         }
