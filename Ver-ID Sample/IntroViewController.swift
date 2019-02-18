@@ -90,6 +90,10 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         }
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, livenessDetection: .regular, showResult: true)
         settings.appendIfUserExists = false
+        let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
+        let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
+        settings.yawThreshold = CGFloat(yawThreshold)
+        settings.pitchThreshold = CGFloat(pitchThreshold)
         let session = Session(environment: environment, settings: settings)
         session.delegate = self
         session.start()

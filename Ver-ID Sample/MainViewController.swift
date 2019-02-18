@@ -96,6 +96,10 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
         guard let environment = self.environment else {
             return
         }
+        let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
+        let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
+        self.registrationSettings.yawThreshold = CGFloat(yawThreshold)
+        self.registrationSettings.pitchThreshold = CGFloat(pitchThreshold)
         let session = Session(environment: environment, settings: self.registrationSettings)
         session.delegate = self
         session.start()
@@ -113,6 +117,10 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
 //        if let videoURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("video.mov") {
 //            settings.videoURL = videoURL
 //        }
+        let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
+        let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
+        settings.yawThreshold = CGFloat(yawThreshold)
+        settings.pitchThreshold = CGFloat(pitchThreshold)
         let session = Session(environment: environment, settings: settings)
         session.delegate = self
         session.start()
