@@ -23,8 +23,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
     
     /// Settings to use for user registration
     let registrationSettings: RegistrationSessionSettings = {
-        let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, livenessDetection: .regular, showResult: true)
-        settings.appendIfUserExists = true
+        let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
         return settings
     }()
     
@@ -112,7 +111,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
         guard let environment = self.environment else {
             return
         }
-        let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, livenessDetection: .regular)
+        let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId)
         settings.showResult = true
 //        if let videoURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("video.mov") {
 //            settings.videoURL = videoURL
