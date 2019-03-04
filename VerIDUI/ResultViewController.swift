@@ -72,12 +72,15 @@ public class SuccessViewController: ResultViewController {
             let xDist = min(image.size.width - centre.x, centre.x)
             let yDist = min(image.size.height - centre.y, centre.y)
             let cropRect = CGRect(x: centre.x-xDist, y: centre.y-yDist, width: xDist*2, height: yDist*2)
-            UIGraphicsBeginImageContext(cropRect.size)
-            defer {
-                UIGraphicsEndImageContext()
+            var croppedImage: UIImage = image
+            if !cropRect.isEmpty {
+                UIGraphicsBeginImageContext(cropRect.size)
+                defer {
+                    UIGraphicsEndImageContext()
+                }
+                image.draw(at: CGPoint(x: 0-cropRect.minX, y: 0-cropRect.minY))
+                croppedImage = UIGraphicsGetImageFromCurrentImageContext() ?? image
             }
-            image.draw(at: CGPoint(x: 0-cropRect.minX, y: 0-cropRect.minY))
-            var croppedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() ?? image
             do {
                 croppedImage = try ImageUtil.grayscaleImage(from: croppedImage)
             } catch {
