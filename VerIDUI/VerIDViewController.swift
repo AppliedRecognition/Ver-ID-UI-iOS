@@ -16,9 +16,7 @@ import VerIDCore
 
 public protocol VerIDViewControllerProtocol: class {
     var delegate: VerIDViewControllerDelegate? { get set }
-    func imageScaleTransformAtImageSize(_ size: CGSize) -> CGAffineTransform
-    func didProduceSessionResult(_ sessionResult: SessionResult, from faceDetectionResult: FaceDetectionResult)
-    func drawCameraOverlay(bearing: Bearing, text: String?, isHighlighted: Bool, ovalBounds: CGRect, cutoutBounds: CGRect?, faceAngle: EulerAngle?, showArrow: Bool, offsetAngleFromBearing: EulerAngle?)
+    func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?)
 }
 
 /**
@@ -29,7 +27,7 @@ public protocol VerIDViewControllerProtocol: class {
  - See: `VerIDRegistrationViewController`
  `VerIDAuthenticationViewController`
  */
-public class VerIDViewController: StillCameraViewController, ImageProviderService, VerIDViewControllerProtocol {
+public class VerIDViewController: CameraViewController, ImageProviderService, VerIDViewControllerProtocol {
     
     public func dequeueImage() throws -> VerIDImage {
         var buffer: CMSampleBuffer?
@@ -94,10 +92,11 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
     
     // MARK: -
     
+    private let synth: AVSpeechSynthesizer
+    private var lastSpokenText: String?
+    
     /// The Ver-ID view controller delegate
     public var delegate: VerIDViewControllerDelegate?
-    /// Set this to distinguish between different view controllers if your delegate handles more than one Ver-ID view controller
-    var identifier: String?
     
     var focusPointOfInterest: CGPoint? {
         didSet {
@@ -122,7 +121,9 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
     
     public init(nibName: String? = nil) {
         let nib = nibName ?? "VerIDViewController"
+        self.synth = AVSpeechSynthesizer()
         super.init(nibName: nib, bundle: Bundle(for: type(of: self)))
+        self.videoDataOutput = AVCaptureVideoDataOutput()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -207,55 +208,92 @@ public class VerIDViewController: StillCameraViewController, ImageProviderServic
         self.delegate?.viewControllerDidCancel(self)
     }
     
-    override func configureOutputs() {
+    override open func configureOutputs() {
         super.configureOutputs()
-        self.videoDataOutput.alwaysDiscardsLateVideoFrames = true
-        self.videoDataOutput.setSampleBufferDelegate(self, queue: self.captureSessionQueue)
+        self.videoDataOutput?.alwaysDiscardsLateVideoFrames = true
+        self.videoDataOutput?.setSampleBufferDelegate(self, queue: self.captureSessionQueue)
     }
     
-    func didShowCameraAccessDeniedLabel() {
-        
-    }
-    
-    override func cameraBecameUnavailable(reason: String) {
+    override open func cameraBecameUnavailable(reason: String) {
         super.cameraBecameUnavailable(reason: reason)
         self.noCameraLabel.isHidden = false
         self.noCameraLabel.text = reason
-        self.didShowCameraAccessDeniedLabel()
     }
     
-    func removePreviewLayerSublayers() {
-        if let previewLayer = self.cameraPreviewView?.videoPreviewLayer, let subs = previewLayer.sublayers {
-            for sub in subs {
-                if sub is CAShapeLayer {
-                    sub.removeFromSuperlayer()
-                }
+    private func speakText(_ text: String?) {
+        if self.delegate?.settings.speakPrompts == true, let toSay = text, self.lastSpokenText == nil || self.lastSpokenText! != toSay {
+            self.lastSpokenText = toSay
+            let utterance = AVSpeechUtterance(string: toSay)
+            if let language = Locale.current.languageCode, language.starts(with: "en") || language.starts(with: "fr") {
+                utterance.voice = AVSpeechSynthesisVoice(language: language)
+            } else {
+                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             }
+            self.synth.speak(utterance)
         }
     }
     
-//    func logFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult) {
-//        if let eventLogService = self.eventLogService {
-//            UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, false, UIScreen.main.scale)
-//            defer {
-//                UIGraphicsEndImageContext()
-//            }
-//            let rect = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-//            self.view.drawHierarchy(in: rect, afterScreenUpdates: true)
-//            guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
-//                return
-//            }
-//            eventLogService.addFaceDetectionResult(faceDetectionResult, sessionResult: sessionResult, image: image)
-//        }
-//    }
-    
-    public func didProduceSessionResult(_ sessionResult: SessionResult, from faceDetectionResult: FaceDetectionResult) {
-        
+    open func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
+        let bundle = Bundle(for: type(of: self))
+        let labelText: String?
+        let isHighlighted: Bool
+        let ovalBounds: CGRect
+        let cutoutBounds: CGRect?
+        let faceAngle: EulerAngle?
+        let showArrow: Bool
+        let spokenText: String?
+        if sessionResult.isProcessing {
+            labelText = NSLocalizedString("Please wait", tableName: nil, bundle: bundle, value: "Please wait", comment: "Displayed above the face when the session is finishing.")
+            isHighlighted = true
+            ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
+            cutoutBounds = nil
+            faceAngle = nil
+            showArrow = false
+            spokenText = nil
+        } else {
+            switch faceDetectionResult.status {
+            case .faceFixed, .faceAligned:
+                labelText = NSLocalizedString("Great, hold it", tableName: nil, bundle: bundle, value: "Great, hold it", comment: "Displayed above the face when the user correctly followed the directions and should stay still.")
+                isHighlighted = true
+                ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
+                cutoutBounds = nil
+                faceAngle = nil
+                showArrow = false
+                spokenText = NSLocalizedString("Hold it", tableName: nil, bundle: bundle, value: "Hold it", comment: "Spoken direction when the user correctly follows the directions and should stay still.")
+            case .faceMisaligned:
+                labelText = NSLocalizedString("Slowly turn to follow the arrow", tableName: nil, bundle: bundle, value: "Slowly turn to follow the arrow", comment: "Displayed as an instruction during face detection along with an arrow indicating direction")
+                isHighlighted = false
+                ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
+                cutoutBounds = nil
+                faceAngle = faceDetectionResult.faceAngle
+                showArrow = true
+                spokenText = NSLocalizedString("Slowly turn to follow the arrow", tableName: nil, bundle: bundle, value: "Slowly turn to follow the arrow", comment: "")
+            case .faceTurnedTooFar:
+                labelText = nil
+                isHighlighted = false
+                ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
+                cutoutBounds = nil
+                faceAngle = nil
+                showArrow = false
+                spokenText = nil
+            default:
+                labelText = NSLocalizedString("Align your face with the oval", tableName: nil, bundle: bundle, value: "Align your face with the oval", comment: "")
+                isHighlighted = false
+                ovalBounds = defaultFaceBounds
+                cutoutBounds = faceDetectionResult.faceBounds
+                faceAngle = nil
+                showArrow = false
+                spokenText = NSLocalizedString("Align your face with the oval", tableName: nil, bundle: bundle, value: "Align your face with the oval", comment: "")
+            }
+        }
+        let transform = self.imageScaleTransformAtImageSize(faceDetectionResult.imageSize)
+        self.drawCameraOverlay(bearing: faceDetectionResult.requestedBearing, text: labelText, isHighlighted: isHighlighted, ovalBounds: ovalBounds.applying(transform), cutoutBounds: cutoutBounds?.applying(transform), faceAngle: faceAngle, showArrow: showArrow, offsetAngleFromBearing: offsetAngleFromBearing)
+        self.speakText(spokenText)
     }
     
-    // MARK: - Face and arrows
+    // MARK: - Drawing face guide oval and arrows
     
-    public func drawCameraOverlay(bearing: Bearing, text: String?, isHighlighted: Bool, ovalBounds: CGRect, cutoutBounds: CGRect?, faceAngle: EulerAngle?, showArrow: Bool, offsetAngleFromBearing: EulerAngle?) {
+    open func drawCameraOverlay(bearing: Bearing, text: String?, isHighlighted: Bool, ovalBounds: CGRect, cutoutBounds: CGRect?, faceAngle: EulerAngle?, showArrow: Bool, offsetAngleFromBearing: EulerAngle?) {
         self.directionLabel.textColor = isHighlighted ? highlightedTextColour : neutralTextColour
         self.directionLabel.text = text
         self.directionLabel.backgroundColor = isHighlighted ? highlightedColour : neutralColour
