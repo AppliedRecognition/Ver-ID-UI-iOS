@@ -9,6 +9,7 @@
 import Foundation
 import VerIDCore
 
+/// Protocol for a factory that creates view controllers used by Ver-ID session
 public protocol SessionViewControllersFactory {
     func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol & ImageProviderService
     func makeResultViewController(result: SessionResult) throws -> UIViewController & ResultViewControllerProtocol
@@ -29,7 +30,7 @@ public class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
     
     public func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol & ImageProviderService {
         if self.settings is RegistrationSessionSettings {
-            return VerIDRegistrationViewController(settings: self.settings)
+            return VerIDRegistrationViewController()
         } else {
             return VerIDViewController(nibName: nil)
         }

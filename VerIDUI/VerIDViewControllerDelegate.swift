@@ -12,6 +12,8 @@ import VerIDCore
 
 public protocol VerIDViewControllerDelegate: class {
     
+    var settings: SessionSettings { get }
+    
     func viewControllerDidCancel(_ viewController: VerIDViewControllerProtocol)
     
     func viewController(_ viewController: VerIDViewControllerProtocol, didFailWithError error: Error)

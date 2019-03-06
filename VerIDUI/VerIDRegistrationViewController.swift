@@ -14,10 +14,8 @@ class VerIDRegistrationViewController: VerIDViewController {
     @IBOutlet var detectedFaceStackView: UIStackView!
     
     var requestedBearing: Bearing?
-    let settings: SessionSettings
     
-    public init(settings: SessionSettings) {
-        self.settings = settings
+    public init() {
         super.init(nibName: "VerIDRegistrationViewController")
     }
     
@@ -27,13 +25,17 @@ class VerIDRegistrationViewController: VerIDViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 0..<settings.numberOfResultsToCollect {
+        guard let delegate = self.delegate else {
+            return
+        }
+        for _ in 0..<delegate.settings.numberOfResultsToCollect {
             let imageView = createImageView()
             detectedFaceStackView.addArrangedSubview(imageView)
         }
     }
     
-    override func didProduceSessionResult(_ sessionResult: SessionResult, from faceDetectionResult: FaceDetectionResult) {
+    override func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
+        super.drawFaceFromResult(faceDetectionResult, sessionResult: sessionResult, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
         guard !sessionResult.isReady && sessionResult.error == nil && (requestedBearing == nil || requestedBearing! != faceDetectionResult.requestedBearing || faceDetectionResult.status == .faceAligned) else {
             return
         }
@@ -61,6 +63,9 @@ class VerIDRegistrationViewController: VerIDViewController {
         }
         let bundle = Bundle(for: type(of: self))
         guard let image = UIImage(named: imageName, in: bundle, compatibleWith: nil) else {
+            return
+        }
+        guard let settings = self.delegate?.settings else {
             return
         }
         for i in 0..<settings.numberOfResultsToCollect {

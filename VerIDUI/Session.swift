@@ -12,18 +12,25 @@ import CoreMedia
 import AVFoundation
 import os
 
+/// Ver-ID session
 public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
-    
     // MARK: - Public properties
     
+    /// Factory that creates face detection service
     public var faceDetectionFactory: FaceDetectionServiceFactory
+    /// Factory that creates result evaluation service
     public var resultEvaluationFactory: ResultEvaluationServiceFactory
+    /// Factory that creates image writer service
     public var imageWriterFactory: ImageWriterServiceFactory
+    /// Factory that creates video writer service
     public var videoWriterFactory: VideoWriterServiceFactory?
+    /// Factory that creates view controllers used in the session
     public var sessionViewControllersFactory: SessionViewControllersFactory
     
+    /// Session delegate
     public weak var delegate: VerIDUI.SessionDelegate?
     
+    /// Session settings
     public let settings: SessionSettings
     
     // MARK: - Private properties
@@ -41,15 +48,16 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     private var retryCount = 0
     private var startTime: Double = 0
     
-    private let synth: AVSpeechSynthesizer
-    private var lastSpokenText: String?
-    
     private var navigationController: UINavigationController?
     
     // MARK: - Constructor
 
+    /// Session constructor
+    ///
+    /// - Parameters:
+    ///   - environment: Ver-ID environment used by factory classes
+    ///   - settings: Session settings
     public init(environment: VerID, settings: SessionSettings) {
-        self.synth = AVSpeechSynthesizer()
         self.settings = settings
         self.faceDetectionFactory = VerIDFaceDetectionServiceFactory(environment: environment)
         if settings is RegistrationSessionSettings {
@@ -65,6 +73,7 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     // MARK: - Public methods
     
+    /// Start the session
     public func start() {
         DispatchQueue.main.async {
             if let videoURL = self.settings.videoURL, let videoWriterFactory = self.videoWriterFactory {
@@ -94,6 +103,7 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
         }
     }
     
+    /// Cancel the session
     public func cancel() {
         self.operationQueue.cancelAllOperations()
         self.viewController = nil
@@ -186,21 +196,12 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
         }
     }
     
-    private func speakText(_ text: String?) {
-        if self.settings.speakPrompts, let toSay = text, self.lastSpokenText == nil || self.lastSpokenText! != toSay {
-            self.lastSpokenText = toSay
-            let utterance = AVSpeechUtterance(string: toSay)
-            if let language = Locale.current.languageCode, language.starts(with: "en") || language.starts(with: "fr") {
-                utterance.voice = AVSpeechSynthesisVoice(language: language)
-            } else {
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-            }
-            self.synth.speak(utterance)
-        }
-    }
-    
     // MARK: - Image provider
     
+    /// Dequeue an image from the Ver-ID view controller
+    ///
+    /// - Returns: Image to be used for face detection
+    /// - Throws: Error if the view controller is nil or if the session expired
     public func dequeueImage() throws -> VerIDImage {
         if self.startTime + self.settings.expiryTime < CACurrentMediaTime() {
             // Session expired
@@ -216,93 +217,51 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     // MARK: - Ver-ID view controller delegate
     
+    /// User requested to cancel the session in the view controller
+    ///
+    /// - Parameter viewController: View controller that wants to cancel the session
     public func viewControllerDidCancel(_ viewController: VerIDViewControllerProtocol) {
         self.cancel()
     }
     
+    /// View controller failed
+    ///
+    /// - Parameters:
+    ///   - viewController: View controller that failed
+    ///   - error: Description of the failure
     public func viewController(_ viewController: VerIDViewControllerProtocol, didFailWithError error: Error) {
         self.finishWithError(error)
     }
     
+    /// View controller captured a sample buffer from the camera
+    ///
+    /// - Parameters:
+    ///   - viewController: View controller that captured the sample buffer
+    ///   - sampleBuffer: Sample buffer received from the camera
+    ///   - rotation: Angle of rotation of the data in the sample buffer
     public func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withRotation rotation: CGFloat) {
         self.videoWriterService?.writeSampleBuffer(sampleBuffer, rotation: rotation)
     }
     
     // MARK: - Session operation delegate
     
+    /// Session operation evaluated the face detection result and produced a session result
+    ///
+    /// - Parameters:
+    ///   - result: Session result
+    ///   - faceDetectionResult: Face detection result used to generate the session result
+    /// - Note: This method is called as the session progresses. The final session result is be obtained at the end of the session operation. You can use this method, for example, to prevent the session from finishing in some circumstances.
     public func operationDidOutputSessionResult(_ result: SessionResult, fromFaceDetectionResult faceDetectionResult: FaceDetectionResult) {
         guard let defaultFaceBounds = self.faceDetection?.defaultFaceBounds(in: faceDetectionResult.imageSize) else {
             return
         }
-        let bundle = Bundle(for: type(of: self))
-        let labelText: String?
-        let isHighlighted: Bool
-        let ovalBounds: CGRect
-        let cutoutBounds: CGRect?
-        let faceAngle: EulerAngle?
-        let showArrow: Bool
-        let offsetAngleFromBearing: EulerAngle?
-        let spokenText: String?
+        let offsetAngleFromBearing: EulerAngle? = faceDetectionResult.status == .faceMisaligned ? self.faceDetection?.offsetFromAngle(faceDetectionResult.faceAngle ?? EulerAngle(yaw: 0, pitch: 0, roll: 0), toBearing: faceDetectionResult.requestedBearing) : nil
         DispatchQueue.main.async {
-            self.viewController?.didProduceSessionResult(result, from: faceDetectionResult)
-        }
-        if result.isProcessing {
-            labelText = NSLocalizedString("Please wait", tableName: nil, bundle: bundle, value: "Please wait", comment: "Displayed above the face when the session is finishing.")
-            isHighlighted = true
-            ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
-            cutoutBounds = nil
-            faceAngle = nil
-            showArrow = false
-            offsetAngleFromBearing = nil
-            spokenText = nil
-        } else {
-            switch faceDetectionResult.status {
-            case .faceFixed, .faceAligned:
-                labelText = NSLocalizedString("Great, hold it", tableName: nil, bundle: bundle, value: "Great, hold it", comment: "Displayed above the face when the user correctly followed the directions and should stay still.")
-                isHighlighted = true
-                ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
-                cutoutBounds = nil
-                faceAngle = nil
-                showArrow = false
-                offsetAngleFromBearing = nil
-                spokenText = NSLocalizedString("Hold it", tableName: nil, bundle: bundle, value: "Hold it", comment: "Spoken direction when the user correctly follows the directions and should stay still.")
-            case .faceMisaligned:
-                labelText = NSLocalizedString("Slowly turn to follow the arrow", tableName: nil, bundle: bundle, value: "Slowly turn to follow the arrow", comment: "Displayed as an instruction during face detection along with an arrow indicating direction")
-                isHighlighted = false
-                ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
-                cutoutBounds = nil
-                faceAngle = faceDetectionResult.faceAngle
-                showArrow = true
-                offsetAngleFromBearing = self.faceDetection?.offsetFromAngle(faceAngle ?? EulerAngle(yaw: 0, pitch: 0, roll: 0), toBearing: faceDetectionResult.requestedBearing)
-                spokenText = NSLocalizedString("Slowly turn to follow the arrow", tableName: nil, bundle: bundle, value: "Slowly turn to follow the arrow", comment: "")
-            case .faceTurnedTooFar:
-                labelText = nil
-                isHighlighted = false
-                ovalBounds = faceDetectionResult.faceBounds ?? defaultFaceBounds
-                cutoutBounds = nil
-                faceAngle = nil
-                showArrow = false
-                offsetAngleFromBearing = nil
-                spokenText = nil
-            default:
-                labelText = NSLocalizedString("Align your face with the oval", tableName: nil, bundle: bundle, value: "Align your face with the oval", comment: "")
-                isHighlighted = false
-                ovalBounds = defaultFaceBounds
-                cutoutBounds = faceDetectionResult.faceBounds
-                faceAngle = nil
-                showArrow = false
-                offsetAngleFromBearing = nil
-                spokenText = NSLocalizedString("Align your face with the oval", tableName: nil, bundle: bundle, value: "Align your face with the oval", comment: "")
-            }
-        }
-        DispatchQueue.main.async {
-            guard let transform = self.viewController?.imageScaleTransformAtImageSize(faceDetectionResult.imageSize) else {
-                return
-            }
-            self.viewController?.drawCameraOverlay(bearing: faceDetectionResult.requestedBearing, text: labelText, isHighlighted: isHighlighted, ovalBounds: ovalBounds.applying(transform), cutoutBounds: cutoutBounds?.applying(transform), faceAngle: faceAngle, showArrow: showArrow, offsetAngleFromBearing: offsetAngleFromBearing)
+            self.viewController?.drawFaceFromResult(faceDetectionResult, sessionResult: result, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
         }
         if result.error != nil {
             if self.retryCount < self.settings.maxRetryCount {
+                let bundle = Bundle(for: type(of: self))
                 let message: String
                 if faceDetectionResult.status == .faceTurnedTooFar {
                     message = NSLocalizedString("You may have turned too far. Only turn in the requested direction until the oval turns green.", tableName: nil, bundle: bundle, value: "You may have turned too far. Only turn in the requested direction until the oval turns green.", comment: "Shown in a dialog as an explanation of why the face session is failing")
@@ -325,11 +284,15 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
             }
             return
         }
-        self.speakText(spokenText)
     }
     
     // MARK: - Face detection alert controller delegate
     
+    /// Called when the user dismisses the dialog that is shown when the session fails due to the user not fulfilling the liveness detection requirements.
+    ///
+    /// - Parameters:
+    ///   - controller: Alert controller that's being dismissed
+    ///   - action: Action the user selected to dismiss the alert controller
     func faceDetectionAlertController(_ controller: FaceDetectionAlertController, didCloseDialogWithAction action: FaceDetectionAlertControllerAction) {
         self.viewController?.dismiss(animated: true) {
             switch action {
@@ -352,6 +315,9 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     // MARK: - Tips view controller delegate
     
+    /// Called after the user views liveness detection session tips
+    ///
+    /// - Parameter viewController: Tips view controller that's being dismissed
     public func didDismissTipsInViewController(_ viewController: TipsViewControllerProtocol) {
         self.retryCount += 1
         self.startOperations()
@@ -377,8 +343,22 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     }
 }
 
+/// Session delegate protocol
 public protocol SessionDelegate: class {
+    /// Called when the session successfully finishes
+    ///
+    /// - Parameters:
+    ///   - session: Session that finished
+    ///   - result: Session result
     func session(_ session: Session, didFinishWithResult result: SessionResult)
+    /// Called when the session fails
+    ///
+    /// - Parameters:
+    ///   - session: Session that failed
+    ///   - error: Error that caused the failure
     func session(_ session: Session, didFailWithError error: Error)
+    /// Called when the session was canceled
+    ///
+    /// - Parameter session: Session that was canceled
     func sessionWasCanceled(_ session: Session)
 }
