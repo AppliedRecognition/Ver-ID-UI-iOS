@@ -359,11 +359,20 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     // MARK: - Result view controller delegate
     
-    public func resultViewControllerDidCancel(_ viewController: ResultViewController) {
+    /// Called when the user cancels the session while viewing the result of the session
+    ///
+    /// - Parameter viewController: View controller that requested to cancel the session
+    /// - Note: This will be only be called on failed sessions. Sessions that succeed do not offer the option to cancel.
+    public func resultViewControllerDidCancel(_ viewController: ResultViewControllerProtocol) {
         self.cancel()
     }
     
-    public func resultViewController(_ viewController: ResultViewController, didFinishWithResult result: SessionResult) {
+    /// Called when the user acknowledges the result of the session
+    ///
+    /// - Parameters:
+    ///   - viewController: View controller that was dismissed after the user viewed the result
+    ///   - result: Session result
+    public func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: SessionResult) {
         self.finishWithResult(result)
     }
 }

@@ -15,8 +15,8 @@ public protocol ResultViewControllerProtocol: class {
 }
 
 public protocol ResultViewControllerDelegate: class {
-    func resultViewControllerDidCancel(_ viewController: ResultViewController)
-    func resultViewController(_ viewController: ResultViewController, didFinishWithResult result: SessionResult)
+    func resultViewControllerDidCancel(_ viewController: ResultViewControllerProtocol)
+    func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: SessionResult)
 }
 
 public class ResultViewController: UIViewController, ResultViewControllerProtocol {
