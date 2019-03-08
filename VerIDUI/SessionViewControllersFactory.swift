@@ -13,7 +13,7 @@ import VerIDCore
 @objc public protocol SessionViewControllersFactory {
     /// Make an instance of a view controller that collects images from the camera and displays the session progress
     ///
-    /// - Returns: View controller that conforms to the `VerIDViewControllerProtocol` and `ImageProviderService` protocols
+    /// - Returns: View controller that conforms to the `VerIDViewControllerProtocol` protocol
     /// - Throws: Error if the creation fails
     @objc func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol
     /// Make an instance of a view controller that shows the result of a Ver-ID session and
