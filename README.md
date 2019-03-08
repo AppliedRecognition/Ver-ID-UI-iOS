@@ -62,4 +62,6 @@ class MyViewController: UIViewController, VerIDFactoryDelegate, SessionDelegate 
 }
 ~~~
 
-Reference documentation can be found on the project's [Github page](https://appliedrecognition.github.io/Ver-ID-UI-iOS/).
+## API Reference Documentation
+- [Ver-ID Core](https://appliedrecognition.github.io/Ver-ID-Core-Apple)
+- [Ver-ID UI](https://appliedrecognition.github.io/Ver-ID-UI-iOS)
