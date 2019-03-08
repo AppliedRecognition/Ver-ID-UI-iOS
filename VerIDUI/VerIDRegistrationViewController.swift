@@ -9,6 +9,7 @@
 import UIKit
 import VerIDCore
 
+/// Subclass of `VerIDViewController` that displays faces collected during the session
 class VerIDRegistrationViewController: VerIDViewController {
 
     @IBOutlet var detectedFaceStackView: UIStackView!

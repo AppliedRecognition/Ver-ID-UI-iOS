@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Layer that's drawn on the camera preview to outline the detected face
 class FaceOvalLayer: CALayer {
     
     private(set) var ovalBounds: CGRect = CGRect.zero

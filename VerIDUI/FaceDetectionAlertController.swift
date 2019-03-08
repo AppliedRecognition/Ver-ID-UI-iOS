@@ -9,11 +9,23 @@
 import UIKit
 import AVFoundation
 
-enum FaceDetectionAlertControllerAction {
-    case cancel, showTips, retry
+/// Action selected by the user to recover from the failure
+@objc public enum FaceDetectionAlertControllerAction: Int {
+    /// The user selected to cancel the session
+    case cancel
+    /// The user asked to view tips
+    case showTips
+    /// The user asked to retry the session
+    case retry
 }
 
-class FaceDetectionAlertController: UIViewController {
+/// Protocol for alert controller that is displayed when a session fails and the user is allowed to retry
+@objc public protocol FaceDetectionAlertControllerProtocol: class {
+    /// Controller delegate
+    @objc var delegate: FaceDetectionAlertControllerDelegate? { get set }
+}
+
+class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControllerProtocol {
     
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var messageLabelBackgroundView: UIView!
@@ -28,10 +40,9 @@ class FaceDetectionAlertController: UIViewController {
     var delegate: FaceDetectionAlertControllerDelegate?
     var looper: Any?
     
-    public init(message: String?, videoURL: URL?, delegate: FaceDetectionAlertControllerDelegate) {
+    public init(message: String?, videoURL: URL?) {
         self.message = message
         self.videoURL = videoURL
-        self.delegate = delegate
         super.init(nibName: "FaceDetectionAlertController", bundle: Bundle(for: type(of: self)))
     }
     
@@ -109,6 +120,12 @@ class FaceDetectionAlertController: UIViewController {
     }
 }
 
-protocol FaceDetectionAlertControllerDelegate: class {
-    func faceDetectionAlertController(_ controller: FaceDetectionAlertController, didCloseDialogWithAction action: FaceDetectionAlertControllerAction)
+/// Protocol for delegates of alert controller that is displayed when a session fails and the user is allowed to retry
+@objc public protocol FaceDetectionAlertControllerDelegate: class {
+    /// Called when the user closes the alert dialog
+    ///
+    /// - Parameters:
+    ///   - controller: The alert dialog that was closed
+    ///   - action: Action used to close the dialog
+    @objc func faceDetectionAlertController(_ controller: FaceDetectionAlertControllerProtocol, didCloseDialogWithAction action: FaceDetectionAlertControllerAction)
 }

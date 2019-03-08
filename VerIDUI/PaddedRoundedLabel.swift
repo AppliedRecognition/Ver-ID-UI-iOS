@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Label with padding and rounded corners
 class PaddedRoundedLabel: UILabel {
     
     var verticalInset: CGFloat = 4.0

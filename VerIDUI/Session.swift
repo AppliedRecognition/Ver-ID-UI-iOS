@@ -13,29 +13,29 @@ import AVFoundation
 import os
 
 /// Ver-ID session
-public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
+@objc public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
     // MARK: - Public properties
     
     /// Factory that creates face detection service
-    public var faceDetectionFactory: FaceDetectionServiceFactory
+    @objc public var faceDetectionFactory: FaceDetectionServiceFactory
     /// Factory that creates result evaluation service
-    public var resultEvaluationFactory: ResultEvaluationServiceFactory
+    @objc public var resultEvaluationFactory: ResultEvaluationServiceFactory
     /// Factory that creates image writer service
-    public var imageWriterFactory: ImageWriterServiceFactory
+    @objc public var imageWriterFactory: ImageWriterServiceFactory
     /// Factory that creates video writer service
-    public var videoWriterFactory: VideoWriterServiceFactory?
+    @objc public var videoWriterFactory: VideoWriterServiceFactory?
     /// Factory that creates view controllers used in the session
-    public var sessionViewControllersFactory: SessionViewControllersFactory
+    @objc public var sessionViewControllersFactory: SessionViewControllersFactory
     
     /// Session delegate
-    public weak var delegate: VerIDUI.SessionDelegate?
+    @objc public weak var delegate: VerIDUI.SessionDelegate?
     
     /// Session settings
-    public let settings: SessionSettings
+    @objc public let settings: SessionSettings
     
     // MARK: - Private properties
     
-    private var viewController: (UIViewController & VerIDViewControllerProtocol & ImageProviderService)?
+    private var viewController: (UIViewController & VerIDViewControllerProtocol)?
     
     private lazy var operationQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -47,8 +47,13 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     private var faceDetection: FaceDetectionService?
     private var retryCount = 0
     private var startTime: Double = 0
+    private var startDispatchTime: DispatchTime = .now()
     
     private var navigationController: UINavigationController?
+    
+    private var image: VerIDImage?
+    private let imageLock = DispatchSemaphore(value: 0)
+    private let imageLock2 = DispatchSemaphore(value: 1)
     
     // MARK: - Constructor
 
@@ -60,13 +65,7 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     public init(environment: VerID, settings: SessionSettings) {
         self.settings = settings
         self.faceDetectionFactory = VerIDFaceDetectionServiceFactory(environment: environment)
-        if settings is RegistrationSessionSettings {
-            self.resultEvaluationFactory = VerIDRegistrationEvaluationServiceFactory(environment: environment)
-        } else if settings is AuthenticationSessionSettings {
-            self.resultEvaluationFactory = VerIDAuthenticationEvaluationServiceFactory(environment: environment)
-        } else {
-            self.resultEvaluationFactory = VerIDLivenessDetectionEvaluationServiceFactory(environment: environment)
-        }
+        self.resultEvaluationFactory = VerIDResultEvaluationServiceFactory(environment: environment)
         self.imageWriterFactory = VerIDImageWriterServiceFactory()
         self.sessionViewControllersFactory = VerIDSessionViewControllersFactory(settings: settings)
     }
@@ -123,6 +122,7 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     
     private func startOperations() {
         self.startTime = CACurrentMediaTime()
+        self.startDispatchTime = .now()
         self.faceDetection = nil
         self.faceDetection = self.faceDetectionFactory.makeFaceDetectionService(settings: self.settings)
         let op = SessionOperation(imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
@@ -203,16 +203,16 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     /// - Returns: Image to be used for face detection
     /// - Throws: Error if the view controller is nil or if the session expired
     public func dequeueImage() throws -> VerIDImage {
-        if self.startTime + self.settings.expiryTime < CACurrentMediaTime() {
+        if imageLock.wait(timeout: self.startDispatchTime+self.settings.expiryTime) == .timedOut {
             // Session expired
             // TODO
             throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
         }
-        guard let vc = self.viewController else {
-            // TODO
-            throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
+        imageLock2.wait()
+        defer {
+            imageLock2.signal()
         }
-        return try vc.dequeueImage()
+        return image!
     }
     
     // MARK: - Ver-ID view controller delegate
@@ -238,9 +238,29 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     /// - Parameters:
     ///   - viewController: View controller that captured the sample buffer
     ///   - sampleBuffer: Sample buffer received from the camera
-    ///   - rotation: Angle of rotation of the data in the sample buffer
-    public func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withRotation rotation: CGFloat) {
-        self.videoWriterService?.writeSampleBuffer(sampleBuffer, rotation: rotation)
+    ///   - orientation: Image orientation of the data in the sample buffer
+    public func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withOrientation orientation: CGImagePropertyOrientation) {
+        var buffer: CMSampleBuffer?
+        let status = CMSampleBufferCreateCopy(allocator: kCFAllocatorDefault, sampleBuffer: sampleBuffer, sampleBufferOut: &buffer)
+        guard status == 0 else {
+            return
+        }
+        let rotation: CGFloat
+        switch orientation {
+        case .right, .rightMirrored:
+            rotation = 90
+        case .left, .leftMirrored:
+            rotation = 270
+        case .down, .downMirrored:
+            rotation = 0
+        case .up, .upMirrored:
+            rotation = 180
+        }
+        self.videoWriterService?.writeSampleBuffer(buffer!, rotation: CGFloat(Measurement(value: Double(rotation), unit: UnitAngle.degrees).converted(to: .radians).value))
+        imageLock2.wait()
+        image = VerIDImage(sampleBuffer: buffer!, orientation: orientation)
+        imageLock2.signal()
+        imageLock.signal()
     }
     
     // MARK: - Session operation delegate
@@ -259,30 +279,17 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
         DispatchQueue.main.async {
             self.viewController?.drawFaceFromResult(faceDetectionResult, sessionResult: result, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
         }
-        if result.error != nil {
-            if self.retryCount < self.settings.maxRetryCount {
-                let bundle = Bundle(for: type(of: self))
-                let message: String
-                if faceDetectionResult.status == .faceTurnedTooFar {
-                    message = NSLocalizedString("You may have turned too far. Only turn in the requested direction until the oval turns green.", tableName: nil, bundle: bundle, value: "You may have turned too far. Only turn in the requested direction until the oval turns green.", comment: "Shown in a dialog as an explanation of why the face session is failing")
-                } else if faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost {
-                    message = NSLocalizedString("Turn your head in the direction of the arrow", tableName: nil, bundle: bundle, value: "Turn your head in the direction of the arrow", comment: "Shown in a dialog as an instruction")
-                } else {
-                    return
-                }
+        if result.error != nil && self.retryCount < self.settings.maxRetryCount && (faceDetectionResult.status == .faceTurnedTooFar || faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost) {
+            do {
+                let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
                 self.operationQueue.cancelAllOperations()
                 DispatchQueue.main.async {
-                    let density = UIScreen.main.scale
-                    let densityInt = density > 2 ? 3 : 2
-                    let videoFileName = self.settings is RegistrationSessionSettings ? "registration" : "liveness_detection"
-                    let videoName = String(format: "%@_%d", videoFileName, densityInt)
-                    let url = bundle.url(forResource: videoName, withExtension: "mp4")
-                    let alert = FaceDetectionAlertController(message: message, videoURL: url, delegate: self)
+                    alert.delegate = self
                     alert.modalPresentationStyle = .overFullScreen
                     self.viewController?.present(alert, animated: true, completion: nil)
                 }
+            } catch {
             }
-            return
         }
     }
     
@@ -293,7 +300,7 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
     /// - Parameters:
     ///   - controller: Alert controller that's being dismissed
     ///   - action: Action the user selected to dismiss the alert controller
-    func faceDetectionAlertController(_ controller: FaceDetectionAlertController, didCloseDialogWithAction action: FaceDetectionAlertControllerAction) {
+    public func faceDetectionAlertController(_ controller: FaceDetectionAlertControllerProtocol, didCloseDialogWithAction action: FaceDetectionAlertControllerAction) {
         self.viewController?.dismiss(animated: true) {
             switch action {
             case .showTips:
@@ -344,21 +351,21 @@ public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegat
 }
 
 /// Session delegate protocol
-public protocol SessionDelegate: class {
+@objc public protocol SessionDelegate: class {
     /// Called when the session successfully finishes
     ///
     /// - Parameters:
     ///   - session: Session that finished
     ///   - result: Session result
-    func session(_ session: Session, didFinishWithResult result: SessionResult)
+    @objc func session(_ session: Session, didFinishWithResult result: SessionResult)
     /// Called when the session fails
     ///
     /// - Parameters:
     ///   - session: Session that failed
     ///   - error: Error that caused the failure
-    func session(_ session: Session, didFailWithError error: Error)
+    @objc func session(_ session: Session, didFailWithError error: Error)
     /// Called when the session was canceled
     ///
     /// - Parameter session: Session that was canceled
-    func sessionWasCanceled(_ session: Session)
+    @objc func sessionWasCanceled(_ session: Session)
 }

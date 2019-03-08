@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+/// View that shows camera preview
 class CameraPreviewView: UIView {
 
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {

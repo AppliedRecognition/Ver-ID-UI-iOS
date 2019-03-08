@@ -10,16 +10,27 @@ import UIKit
 import AVKit
 import VerIDCore
 
-public protocol ResultViewControllerProtocol: class {
-    var delegate: ResultViewControllerDelegate? { get set }
+/// Protocol for view controller that shows the results of Ver-ID sessions
+@objc public protocol ResultViewControllerProtocol: class {
+    /// Result view controller delegate
+    @objc var delegate: ResultViewControllerDelegate? { get set }
 }
 
-public protocol ResultViewControllerDelegate: class {
-    func resultViewControllerDidCancel(_ viewController: ResultViewControllerProtocol)
-    func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: SessionResult)
+/// Result view controller delegate
+@objc public protocol ResultViewControllerDelegate: class {
+    /// Called when the user cancels the session after reviewing the result
+    ///
+    /// - Parameter viewController: View controller from which the session was canceled
+    @objc func resultViewControllerDidCancel(_ viewController: ResultViewControllerProtocol)
+    /// Called when the user acknowledges the session result and finishes the session
+    ///
+    /// - Parameters:
+    ///   - viewController: View controller from which the session was finished
+    ///   - result: Result of the session
+    @objc func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: SessionResult)
 }
 
-public class ResultViewController: UIViewController, ResultViewControllerProtocol {
+class ResultViewController: UIViewController, ResultViewControllerProtocol {
     
     var result: SessionResult?
     var settings: SessionSettings?
@@ -43,7 +54,7 @@ public class ResultViewController: UIViewController, ResultViewControllerProtoco
     }
 }
 
-public class SuccessViewController: ResultViewController {
+class SuccessViewController: ResultViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var checkmarkView: UIImageView!
@@ -115,7 +126,7 @@ public class SuccessViewController: ResultViewController {
     
 }
 
-public class FailureViewController: ResultViewController {
+class FailureViewController: ResultViewController {
     
     var looper: Any?
     

@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+/// View controller that displays a camera preview
 @objc open class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
@@ -47,7 +48,7 @@ import AVFoundation
     }
     
     /// Override this if you want to use other than than the back (selfie) camera
-    var captureDevice: AVCaptureDevice! {
+    @objc open var captureDevice: AVCaptureDevice! {
         if #available(iOS 10.0, *) {
             return AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
         } else {
@@ -78,7 +79,7 @@ import AVFoundation
         }
     }
     
-    private (set) internal var imageOrientation: UIImage.Orientation = .right
+    private (set) internal var imageOrientation: CGImagePropertyOrientation = .right
     
     var videoGravity: AVLayerVideoGravity {
         return .resizeAspectFill
@@ -164,7 +165,7 @@ import AVFoundation
     }
     
     private var _videoRotation: CGFloat = 0
-    private let videoRotationQueue = DispatchQueue(label: "com.appliedrec.videorotation")
+    private let videoRotationLock = DispatchSemaphore(value: 1)
     
     private func updateVideoRotation() {
         let rotation: CGFloat
@@ -178,17 +179,20 @@ import AVFoundation
         case .landscapeRight:
             rotation = 0
         }
-        videoRotationQueue.async {
-            self._videoRotation = rotation
+        videoRotationLock.wait()
+        defer {
+            videoRotationLock.signal()
         }
+        _videoRotation = rotation
     }
     
     var videoRotation: CGFloat {
         var rotation: CGFloat = 0
-        videoRotationQueue.sync {
-            rotation = _videoRotation
+        videoRotationLock.wait()
+        defer {
+            videoRotationLock.signal()
         }
-        return rotation
+        return _videoRotation
     }
     
     private func configureCaptureSession() {

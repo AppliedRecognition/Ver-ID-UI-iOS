@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// View controller that shows tips
 class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, TipsViewControllerProtocol {
     
     // MARK: - Tips view controller protocol
@@ -67,10 +68,16 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, 
     }
 }
 
-public protocol TipsViewControllerDelegate: class {
-    func didDismissTipsInViewController(_ viewController: TipsViewControllerProtocol)
+/// Tips view controller delegate
+@objc public protocol TipsViewControllerDelegate: class {
+    /// Called when the user the tips view controller
+    ///
+    /// - Parameter viewController: View controller that was dismissed
+    @objc func didDismissTipsInViewController(_ viewController: TipsViewControllerProtocol)
 }
 
-public protocol TipsViewControllerProtocol: class {
-    var tipsViewControllerDelegate: TipsViewControllerDelegate? { get set }
+/// Tips view controller protocol
+@objc public protocol TipsViewControllerProtocol: class {
+    /// Tips view controller delegate
+    @objc var tipsViewControllerDelegate: TipsViewControllerDelegate? { get set }
 }
