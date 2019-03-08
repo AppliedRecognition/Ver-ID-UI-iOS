@@ -1,0 +1,30 @@
+clean: true
+sdk: iphoneos
+xcodebuild_arguments:
+ - -workspace
+ - VerIDUI.xcworkspace
+ - -scheme
+ - VerIDUI
+author: Applied Recognition, Inc.
+module: VerIDUI
+min_acl: public
+exclude: ZIPFoundation/*
+skip_undocumented: true
+hide_documentation_coverage: true
+custom_categories:
+ - name: Session
+   children:
+   - Session
+   - SessionDelegate
+ - name: View Controllers
+   children:
+   - SessionViewControllersFactory
+   - VerIDViewControllerProtocol
+   - VerIDViewControllerDelegate
+   - VerIDViewController
+   - ResultViewControllerProtocol
+   - ResultViewControllerDelegate
+   - TipsViewControllerProtocol
+   - TipsViewControllerDelegate
+   - FaceDetectionAlertControllerProtocol
+   - FaceDetectionAlertControllerDelegate
