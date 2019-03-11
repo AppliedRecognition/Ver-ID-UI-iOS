@@ -16,7 +16,6 @@
 		3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */; };
 		3B6A70DB2208BC3C00B137C4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */; };
 		3B6A70DC2208BC3C00B137C4 /* VerIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */; };
-		3B6A70DE2208BC3C00B137C4 /* StillCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */; };
 		3B6A70DF2208BC3C00B137C4 /* VerIDRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */; };
 		3B6A70E02208BC3C00B137C4 /* FaceDetectionAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */; };
 		3B6A70E62208BD8400B137C4 /* PaddedRoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */; };
@@ -37,6 +36,7 @@
 		3BB204672214263600B3B312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB204662214263600B3B312 /* AppDelegate.swift */; };
 		3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */; };
 		3BB2046B221428B900B3B312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046D221428B900B3B312 /* Main.storyboard */; };
+		3BC55B6C2236E37E00BCDD9D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */; };
 		3BE9F36D220AF125002C11BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36B220AF125002C11BE /* Main.storyboard */; };
 		3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36E220AF128002C11BE /* Assets.xcassets */; };
 		3BE9F372220AF128002C11BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F370220AF128002C11BE /* LaunchScreen.storyboard */; };
@@ -92,7 +92,6 @@
 		3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDViewController.swift; sourceTree = "<group>"; };
-		3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StillCameraViewController.swift; sourceTree = "<group>"; };
 		3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDRegistrationViewController.swift; sourceTree = "<group>"; };
 		3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceDetectionAlertController.swift; sourceTree = "<group>"; };
 		3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedRoundedLabel.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		3BB204662214263600B3B312 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BB20469221428AE00B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BB2046C221428B900B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		3BE9F365220AF125002C11BE /* Ver-ID Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BE9F36C220AF125002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BE9F36E220AF128002C11BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,6 +188,7 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */,
 				3BE9F3C7220AFB6D002C11BE /* FaceDetectionAlertController.xib */,
 				3BE9F3D1220AFB71002C11BE /* Localizable.strings */,
 				3BE9F3CF220AFB71002C11BE /* Result.storyboard */,
@@ -199,7 +200,6 @@
 				3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */,
 				3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */,
 				3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */,
-				3B6A70D72208BC3B00B137C4 /* StillCameraViewController.swift */,
 				3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */,
 				3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */,
 				3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */,
@@ -465,7 +465,7 @@
 				3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */,
 				3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */,
 				3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */,
-				3B6A70DE2208BC3C00B137C4 /* StillCameraViewController.swift in Sources */,
+				3BC55B6C2236E37E00BCDD9D /* CameraViewController.swift in Sources */,
 				3B6A70E02208BC3C00B137C4 /* FaceDetectionAlertController.swift in Sources */,
 				3B6A70E62208BD8400B137C4 /* PaddedRoundedLabel.swift in Sources */,
 				3B6A70EB2208C29300B137C4 /* Session.swift in Sources */,
