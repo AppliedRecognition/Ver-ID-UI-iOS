@@ -229,7 +229,7 @@ import VerIDCore
         let faceAngle: EulerAngle?
         let showArrow: Bool
         let spokenText: String?
-        if sessionResult.isProcessing {
+        if let settings = self.delegate?.settings, sessionResult.attachments.count >= settings.numberOfResultsToCollect {
             labelText = NSLocalizedString("Please wait", tableName: nil, bundle: bundle, value: "Please wait", comment: "Displayed above the face when the session is finishing.")
             isHighlighted = true
             ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds

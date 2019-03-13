@@ -37,7 +37,7 @@ class VerIDRegistrationViewController: VerIDViewController {
     
     override func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
         super.drawFaceFromResult(faceDetectionResult, sessionResult: sessionResult, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
-        guard !sessionResult.isReady && sessionResult.error == nil && (requestedBearing == nil || requestedBearing! != faceDetectionResult.requestedBearing || faceDetectionResult.status == .faceAligned) else {
+        guard sessionResult.error == nil && (requestedBearing == nil || requestedBearing! != faceDetectionResult.requestedBearing || faceDetectionResult.status == .faceAligned) else {
             return
         }
         requestedBearing = faceDetectionResult.requestedBearing
@@ -77,11 +77,14 @@ class VerIDRegistrationViewController: VerIDViewController {
                 sub.removeFromSuperview()
             }
             let viewSize = imageView.frame.size
-            let images: [UIImage] = sessionResult.faceImages(withBearing: requestedBearing!).compactMap({
-                guard let image = UIImage(contentsOfFile: $0.value.path) else {
+            let images: [UIImage] = sessionResult.attachments.compactMap({
+                guard $0.bearing == self.requestedBearing else {
                     return nil
                 }
-                let originalBounds = $0.key.bounds
+                guard let path = $0.imageURL?.path, let image = UIImage(contentsOfFile: path) else {
+                    return nil
+                }
+                let originalBounds = $0.face.bounds
                 var scaledBoundsSize = CGSize(width: originalBounds.width, height: originalBounds.height)
                 if viewSize.width / viewSize.height > originalBounds.width / originalBounds.height {
                     // View is "fatter" match widths
@@ -92,7 +95,7 @@ class VerIDRegistrationViewController: VerIDViewController {
                     scaledBoundsSize.width = viewSize.height / originalBounds.height * originalBounds.width
                 }
                 let transform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
-                let bounds = $0.key.bounds.applying(transform)
+                let bounds = $0.face.bounds.applying(transform)
                 let imageTransform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
                 let scaledImageSize = image.size.applying(imageTransform)
                 UIGraphicsBeginImageContext(bounds.size)

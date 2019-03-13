@@ -14,6 +14,11 @@ import os
 
 /// Ver-ID session
 @objc public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
+    
+    @objc public enum SessionError: Int, Error {
+        case failedToStart
+    }
+    
     // MARK: - Public properties
     
     /// Factory that creates face detection service
@@ -82,14 +87,13 @@ import os
                 self.videoWriterService = try? videoWriterFactory.makeVideoWriterService(url: videoURL)
             }
             guard var root = UIApplication.shared.keyWindow?.rootViewController else {
-                // TODO
-                self.delegate?.session(self, didFailWithError: NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil))
+                self.delegate?.session(self, didFinishWithResult: SessionResult(error: SessionError.failedToStart))
                 return
             }
             do {
                 self.viewController = try self.sessionViewControllersFactory.makeVerIDViewController()
             } catch {
-                self.finishWithError(error)
+                self.finishWithResult(SessionResult(error: error))
                 return
             }
             self.viewController?.delegate = self
@@ -129,7 +133,7 @@ import os
         op.delegate = self
         let finishOp = BlockOperation()
         finishOp.addExecutionBlock {
-            if finishOp.isCancelled || op.result.isCanceled {
+            if finishOp.isCancelled {
                 return
             }
             if let videoWriter = self.videoWriterService {
@@ -154,7 +158,7 @@ import os
                     resultViewController.delegate = self
                     self.navigationController?.pushViewController(resultViewController, animated: true)
                 } catch {
-                    self.finishWithError(error)
+                    self.finishWithResult(SessionResult(error: error))
                 }
             }
         } else {
@@ -165,10 +169,6 @@ import os
     private func finishWithResult(_ result: SessionResult) {
         self.operationQueue.cancelAllOperations()
         self.viewController = nil
-        if let error = result.error {
-            self.finishWithError(error)
-            return
-        }
         DispatchQueue.main.async {
             guard let navController = self.navigationController else {
                 self.delegate?.session(self, didFinishWithResult: result)
@@ -177,21 +177,6 @@ import os
             self.navigationController = nil
             navController.dismiss(animated: true) {
                 self.delegate?.session(self, didFinishWithResult: result)
-            }
-        }
-    }
-    
-    private func finishWithError(_ error: Error) {
-        self.operationQueue.cancelAllOperations()
-        self.viewController = nil
-        DispatchQueue.main.async {
-            guard let navController = self.navigationController else {
-                self.delegate?.session(self, didFailWithError: error)
-                return
-            }
-            self.navigationController = nil
-            navController.dismiss(animated: true) {
-                self.delegate?.session(self, didFailWithError: error)
             }
         }
     }
@@ -230,7 +215,7 @@ import os
     ///   - viewController: View controller that failed
     ///   - error: Description of the failure
     public func viewController(_ viewController: VerIDViewControllerProtocol, didFailWithError error: Error) {
-        self.finishWithError(error)
+        self.finishWithResult(SessionResult(error: error))
     }
     
     /// View controller captured a sample buffer from the camera
@@ -309,7 +294,8 @@ import os
                     tipsController.tipsViewControllerDelegate = self
                     self.navigationController?.pushViewController(tipsController, animated: true)
                 } catch {
-                    self.finishWithError(error)
+                    let result = SessionResult(error: error)
+                    self.finishWithResult(result)
                 }
             case .retry:
                 self.retryCount += 1
@@ -358,12 +344,6 @@ import os
     ///   - session: Session that finished
     ///   - result: Session result
     @objc func session(_ session: Session, didFinishWithResult result: SessionResult)
-    /// Called when the session fails
-    ///
-    /// - Parameters:
-    ///   - session: Session that failed
-    ///   - error: Error that caused the failure
-    @objc func session(_ session: Session, didFailWithError error: Error)
     /// Called when the session was canceled
     ///
     /// - Parameter session: Session that was canceled

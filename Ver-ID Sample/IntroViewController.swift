@@ -138,7 +138,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     }
 
     func session(_ session: Session, didFinishWithResult result: SessionResult) {
-        if let storyboard = self.storyboard {
+        if let storyboard = self.storyboard, result.error == nil {
             if let from = result.imageURLs(withBearing: .straight).first, let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
                 try? FileManager.default.removeItem(at: to)
                 try? FileManager.default.copyItem(at: from, to: to)
@@ -149,10 +149,6 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             viewController.environment = self.environment
             self.navigationController?.setViewControllers([viewController], animated: false)
         }
-    }
-    
-    func session(_ session: Session, didFailWithError error: Error) {
-        
     }
     
     func sessionWasCanceled(_ session: Session) {

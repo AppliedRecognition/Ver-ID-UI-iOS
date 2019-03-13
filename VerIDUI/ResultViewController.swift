@@ -65,18 +65,15 @@ class SuccessViewController: ResultViewController {
             return
         }
         DispatchQueue.global().async {
-            let face: Face
-            let image: UIImage
-            if let (_face, imageURL) = result.faceImages(withBearing: .straight).first, let _image = UIImage(contentsOfFile: imageURL.path) {
-                face = _face
-                image = _image
-            } else if let (_face, imageURL) = result.faceImages.first, let _image = UIImage(contentsOfFile: imageURL.path) {
-                face = _face
-                image = _image
-            } else {
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(named: "liveness_detection001", in: Bundle(for: type(of: self)), compatibleWith: nil)
-                }
+            let facesWithImage = result.attachments.filter({ $0.imageURL != nil })
+            if facesWithImage.isEmpty {
+                self.showDefaultImage()
+                return
+            }
+            let detectedFace = facesWithImage.filter({ $0.bearing == .straight }).first ?? facesWithImage.first!
+            let face = detectedFace.face
+            guard let image = UIImage(contentsOfFile: detectedFace.imageURL!.path) else {
+                self.showDefaultImage()
                 return
             }
             let centre = CGPoint(x: face.leftEye.x + (face.rightEye.x - face.leftEye.x) / 2, y: face.leftEye.y + (face.rightEye.y - face.leftEye.y) / 2)
@@ -124,6 +121,11 @@ class SuccessViewController: ResultViewController {
         }
     }
     
+    private func showDefaultImage() {
+        DispatchQueue.main.async {
+            self.imageView.image = UIImage(named: "liveness_detection001", in: Bundle(for: type(of: self)), compatibleWith: nil)
+        }
+    }
 }
 
 class FailureViewController: ResultViewController {
