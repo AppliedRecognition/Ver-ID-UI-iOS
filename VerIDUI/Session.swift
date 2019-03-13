@@ -73,6 +73,9 @@ import os
         self.resultEvaluationFactory = VerIDResultEvaluationServiceFactory(environment: environment)
         self.imageWriterFactory = VerIDImageWriterServiceFactory()
         self.sessionViewControllersFactory = VerIDSessionViewControllersFactory(settings: settings)
+        if settings.videoURL != nil {
+            self.videoWriterFactory = VerIDVideoWriterServiceFactory()
+        }
     }
     
     // MARK: - Public methods
