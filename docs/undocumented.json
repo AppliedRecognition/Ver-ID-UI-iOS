@@ -71,6 +71,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/Session.swift",
+      "line": 18,
+      "symbol": "Session.SessionError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/SessionViewControllersFactory.swift",
       "line": 40,
       "symbol": "VerIDSessionViewControllersFactoryError",
@@ -148,5 +155,5 @@
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/jakub/Applied-Recognition"
+  "source_directory": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS"
 }

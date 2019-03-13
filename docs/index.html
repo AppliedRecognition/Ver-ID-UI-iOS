@@ -94,15 +94,79 @@
         <section>
           <section class="section">
             
-            <h1 id='veridui' class='heading'>VerIDUI</h1>
-<h3 id='authors' class='heading'>Authors</h3>
+            <p><img src="https://img.shields.io/cocoapods/v/Ver-ID-UI.svg" alt="Cocoapods"></p>
+<h1 id='ver-id-ui-for-ios' class='heading'>Ver-ID UI for iOS</h1>
+<h2 id='usage' class='heading'>Usage</h2>
 
-<p>Applied Recognition, Inc.</p>
+<ol>
+<li>Before running a Ver-ID UI session you will need to import the <code>VerIDCore</code> framework and create an instance of <code>VerID</code>.</li>
+<li>Have your class implement the <code>VerIDFactoryDelegate</code> protocol. You will receive a callback when the <code>VerID</code> instance is created or when the creation fails.</li>
+<li>In the class that runs the Ver-ID UI session import <code>VerIDUI</code>.</li>
+<li>Pass the <code>VerID</code> instance to the <code><a href="Classes/Session.html">Session</a></code> constructor along with the session settings.</li>
+</ol>
+<h3 id='example' class='heading'>Example</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
+<span class="kd">import</span> <span class="kt">VerIDCore</span>
+<span class="kd">import</span> <span class="kt">VerIDUI</span>
+
+<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">VerIDFactoryDelegate</span><span class="p">,</span> <span class="kt">SessionDelegate</span> <span class="p">{</span>
+
+    <span class="kd">func</span> <span class="nf">runLivenessDetection</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// You may want to display an activity indicator as the instance creation may take up to a few seconds</span>
+        <span class="k">let</span> <span class="nv">factory</span> <span class="o">=</span> <span class="kt">VerIDFactory</span><span class="p">()</span>
+        <span class="c1">// Set your class as the factory's delegate</span>
+        <span class="c1">// The delegate methods will be called when the session is created or if the creation fails</span>
+        <span class="n">factory</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="c1">// Create an instance of Ver-ID</span>
+        <span class="n">factory</span><span class="o">.</span><span class="nf">createVerID</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="c1">// MARK: - Ver-ID factory delegate</span>
+
+    <span class="kd">func</span> <span class="nf">veridFactory</span><span class="p">(</span><span class="n">_</span> <span class="nv">factory</span><span class="p">:</span> <span class="kt">VerIDFactory</span><span class="p">,</span> <span class="n">didCreateVerID</span> <span class="nv">instance</span><span class="p">:</span> <span class="kt">VerID</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Ver-ID instance was created</span>
+        <span class="c1">// Create liveness detection settings</span>
+        <span class="k">let</span> <span class="nv">settings</span> <span class="o">=</span> <span class="kt">LivenessDetectionSessionSettings</span><span class="p">()</span>
+        <span class="c1">// Show the result of the session to the user</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">showResult</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="c1">// Create a Ver-ID UI session</span>
+        <span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">Session</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="n">instance</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="n">settings</span><span class="p">)</span>
+        <span class="c1">// Set your class as a delegate of the session to receive the session outcome</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+        <span class="c1">// Start the session</span>
+        <span class="n">session</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">veridFactory</span><span class="p">(</span><span class="n">_</span> <span class="nv">factory</span><span class="p">:</span> <span class="kt">VerIDFactory</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">NSLog</span><span class="p">(</span><span class="s">"Failed to create Ver-ID instance: %@"</span><span class="p">,</span> <span class="n">error</span><span class="o">.</span><span class="n">localizedDescription</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// MARK: - Session delegate</span>
+
+    <span class="kd">func</span> <span class="nf">sessionWasCanceled</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">Session</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Session was canceled</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">Session</span><span class="p">,</span> <span class="n">didFinishWithResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">SessionResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Session finished successfully</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">Session</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Session failed</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='api-reference-documentation' class='heading'>API Reference Documentation</h2>
+
+<ul>
+<li><a href="https://appliedrecognition.github.io/Ver-ID-Core-Apple">Ver-ID Core</a></li>
+<li><a href="https://appliedrecognition.github.io/Ver-ID-UI-iOS">Ver-ID UI</a></li>
+</ul>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-03-08)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-03-13)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
