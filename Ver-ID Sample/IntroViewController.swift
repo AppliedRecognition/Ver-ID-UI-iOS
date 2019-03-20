@@ -93,6 +93,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
+        settings.numberOfResultsToCollect = 1
         let session = Session(environment: environment, settings: settings)
         session.delegate = self
         session.start()

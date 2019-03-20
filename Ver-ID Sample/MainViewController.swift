@@ -24,6 +24,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
     /// Settings to use for user registration
     let registrationSettings: RegistrationSessionSettings = {
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
+        settings.numberOfResultsToCollect = 1
         return settings
     }()
     
