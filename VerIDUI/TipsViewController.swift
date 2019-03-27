@@ -46,14 +46,14 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, 
     // MARK: - Page view controller data source
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = self.tipControllers.index(of: viewController), index + 1 < self.tipControllers.count else {
+        guard let index = self.tipControllers.firstIndex(of: viewController), index + 1 < self.tipControllers.count else {
             return nil
         }
         return self.tipControllers[index + 1]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = self.tipControllers.index(of: viewController), index > 0 else {
+        guard let index = self.tipControllers.firstIndex(of: viewController), index > 0 else {
             return nil
         }
         return self.tipControllers[index - 1]

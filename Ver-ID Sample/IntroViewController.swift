@@ -117,14 +117,14 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = self.introViewControllers.index(of: viewController), index > 0 else {
+        guard let index = self.introViewControllers.firstIndex(of: viewController), index > 0 else {
             return nil
         }
         return self.introViewControllers[index - 1]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = self.introViewControllers.index(of: viewController), index + 1 < self.introViewControllers.count else {
+        guard let index = self.introViewControllers.firstIndex(of: viewController), index + 1 < self.introViewControllers.count else {
             return nil
         }
         return self.introViewControllers[index + 1]
