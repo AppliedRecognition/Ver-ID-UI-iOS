@@ -135,17 +135,17 @@ import os
         let op = SessionOperation(imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
         op.delegate = self
         let finishOp = BlockOperation()
-        finishOp.addExecutionBlock {
-            if finishOp.isCancelled {
+        finishOp.addExecutionBlock { [weak finishOp, weak self] in
+            if finishOp != nil && finishOp!.isCancelled {
                 return
             }
-            if let videoWriter = self.videoWriterService {
+            if let videoWriter = self?.videoWriterService {
                 videoWriter.finish() { url in
                     op.result.videoURL = url
-                    self.showResult(op.result)
+                    self?.showResult(op.result)
                 }
             } else {
-                self.showResult(op.result)
+                self?.showResult(op.result)
             }
         }
         finishOp.addDependency(op)
