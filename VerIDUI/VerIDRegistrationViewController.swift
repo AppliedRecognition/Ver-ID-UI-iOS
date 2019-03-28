@@ -31,9 +31,22 @@ class VerIDRegistrationViewController: VerIDViewController {
             return
         }
         if self.detectedFaceStackView.arrangedSubviews.isEmpty {
-            for _ in 0..<settings.numberOfResultsToCollect {
+            for i in 0..<settings.numberOfResultsToCollect {
+                let bearingIndex = i % settings.bearingsToRegister.count
+                let bearing = settings.bearingsToRegister[bearingIndex]
                 let imageView = createImageView()
+                imageView.alpha = 0.5
                 detectedFaceStackView.addArrangedSubview(imageView)
+                DispatchQueue.global().async {
+                    guard let image = self.imageForBearing(bearing) else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        if self.isViewLoaded {
+                            imageView.image = image
+                        }
+                    }
+                }
             }
         }
         for i in 0..<settings.numberOfResultsToCollect {
@@ -43,40 +56,58 @@ class VerIDRegistrationViewController: VerIDViewController {
             for sub in imageView.subviews {
                 sub.removeFromSuperview()
             }
+            guard imageView.alpha < 1.0 else {
+                continue
+            }
+            guard i < sessionResult.attachments.count else {
+                continue
+            }
             let viewSize = imageView.frame.size
-            let bearingIndex = i % settings.bearingsToRegister.count
-            let bearing = settings.bearingsToRegister[bearingIndex]
-            var image: UIImage? = self.imageForBearing(bearing)
-            imageView.alpha = 0.5
-            imageView.transform = CGAffineTransform.identity
-            if i < sessionResult.attachments.count {
-                let attachment = sessionResult.attachments[i]
-                if attachment.bearing == bearing, let path = attachment.imageURL?.path, let faceImage = UIImage(contentsOfFile: path) {
-                    let originalBounds = attachment.face.bounds
-                    var scaledBoundsSize = CGSize(width: originalBounds.width, height: originalBounds.height)
-                    if viewSize.width / viewSize.height > originalBounds.width / originalBounds.height {
-                        // View is "fatter" match widths
-                        scaledBoundsSize.width = viewSize.width
-                        scaledBoundsSize.height = viewSize.width / originalBounds.width * originalBounds.height
-                    } else {
-                        scaledBoundsSize.height = viewSize.height
-                        scaledBoundsSize.width = viewSize.height / originalBounds.height * originalBounds.width
+            let attachment = sessionResult.attachments[i]
+            guard let path = attachment.imageURL?.path else {
+                continue
+            }
+            imageView.alpha = 1.0
+            DispatchQueue.global().async {
+                guard let faceImage = UIImage(contentsOfFile: path) else {
+                    DispatchQueue.main.async {
+                        imageView.alpha = 0.5
                     }
-                    let transform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
-                    let bounds = attachment.face.bounds.applying(transform)
-                    let imageTransform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
-                    let scaledImageSize = faceImage.size.applying(imageTransform)
-                    UIGraphicsBeginImageContext(bounds.size)
-                    faceImage.draw(in: CGRect(x: 0-bounds.minX, y: 0-bounds.minY, width: scaledImageSize.width, height: scaledImageSize.height))
-                    image = UIGraphicsGetImageFromCurrentImageContext()
-                    UIGraphicsEndImageContext()
-                    imageView.alpha = 1
+                    return
+                }
+                let originalBounds = attachment.face.bounds
+                var scaledBoundsSize = CGSize(width: originalBounds.width, height: originalBounds.height)
+                if viewSize.width / viewSize.height > originalBounds.width / originalBounds.height {
+                    // View is "fatter" match widths
+                    scaledBoundsSize.width = viewSize.width
+                    scaledBoundsSize.height = viewSize.width / originalBounds.width * originalBounds.height
+                } else {
+                    scaledBoundsSize.height = viewSize.height
+                    scaledBoundsSize.width = viewSize.height / originalBounds.height * originalBounds.width
+                }
+                let transform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
+                let bounds = originalBounds.applying(transform)
+                let imageTransform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
+                let scaledImageSize = faceImage.size.applying(imageTransform)
+                UIGraphicsBeginImageContext(bounds.size)
+                faceImage.draw(in: CGRect(x: 0-bounds.minX, y: 0-bounds.minY, width: scaledImageSize.width, height: scaledImageSize.height))
+                let image = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                DispatchQueue.main.async {
+                    guard self.isViewLoaded else {
+                        return
+                    }
+                    guard let image = image else {
+                        imageView.alpha = 0.5
+                        return
+                    }
+                    imageView.alpha = 1.0
                     if settings.cameraPosition == .front {
                         imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
                     }
+                    imageView.image = image
                 }
             }
-            imageView.image = image
             if i+1 == sessionResult.attachments.count {
                 let activityIndicatorView = UIActivityIndicatorView(frame: detectedFaceStackView.arrangedSubviews[i].bounds)
                 activityIndicatorView.startAnimating()
