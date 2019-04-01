@@ -27,13 +27,13 @@ import VerIDCore
     /// - Parameters:
     ///   - viewController: View controller from which the session was finished
     ///   - result: Result of the session
-    @objc func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: SessionResult)
+    @objc func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: VerIDSessionResult)
 }
 
 class ResultViewController: UIViewController, ResultViewControllerProtocol {
     
-    var result: SessionResult?
-    var settings: SessionSettings?
+    var result: VerIDSessionResult?
+    var settings: VerIDSessionSettings?
     public var delegate: ResultViewControllerDelegate?
     @IBOutlet weak var textView: UITextView!
     

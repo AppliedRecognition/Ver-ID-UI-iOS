@@ -10,7 +10,7 @@ import UIKit
 import VerIDUI
 import VerIDCore
 
-class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, SessionDelegate, QRCodeScanViewControllerDelegate {
+class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, VerIDSessionDelegate, QRCodeScanViewControllerDelegate {
     
     lazy var introViewControllers: [UIViewController] = {
         guard let storyboard = self.storyboard else {
@@ -94,7 +94,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
         settings.numberOfResultsToCollect = 1
-        let session = Session(environment: environment, settings: settings)
+        let session = VerIDSession(environment: environment, settings: settings)
         session.delegate = self
         session.start()
     }
@@ -138,7 +138,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         return 0
     }
 
-    func session(_ session: Session, didFinishWithResult result: SessionResult) {
+    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
         if let storyboard = self.storyboard, result.error == nil {
             if let from = result.imageURLs(withBearing: .straight).first, let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
                 try? FileManager.default.removeItem(at: to)
@@ -152,7 +152,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         }
     }
     
-    func sessionWasCanceled(_ session: Session) {
+    func sessionWasCanceled(_ session: VerIDSession) {
         
     }
 }

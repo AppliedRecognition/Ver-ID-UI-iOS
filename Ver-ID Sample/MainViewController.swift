@@ -10,7 +10,7 @@ import UIKit
 import VerIDCore
 import VerIDUI
 
-class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewControllerDelegate {
+class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanViewControllerDelegate {
     
     // MARK: - Interface builder views
 
@@ -100,7 +100,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
         self.registrationSettings.yawThreshold = CGFloat(yawThreshold)
         self.registrationSettings.pitchThreshold = CGFloat(pitchThreshold)
-        let session = Session(environment: environment, settings: self.registrationSettings)
+        let session = VerIDSession(environment: environment, settings: self.registrationSettings)
         session.delegate = self
         session.start()
     }
@@ -121,7 +121,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
-        let session = Session(environment: environment, settings: settings)
+        let session = VerIDSession(environment: environment, settings: settings)
         session.delegate = self
         session.start()
     }
@@ -255,7 +255,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
     /// - Parameters:
     ///   - session: The session that finished
     ///   - result: The session result
-    func session(_ session: Session, didFinishWithResult result: SessionResult) {
+    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
         if session.settings is RegistrationSessionSettings, result.error == nil, let from = result.imageURLs(withBearing: .straight).first, let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
             try? FileManager.default.removeItem(at: to)
             try? FileManager.default.copyItem(at: from, to: to)
@@ -263,7 +263,7 @@ class MainViewController: UIViewController, SessionDelegate, QRCodeScanViewContr
         self.updateUserDisplay()
     }
     
-    func sessionWasCanceled(_ session: Session) {
+    func sessionWasCanceled(_ session: VerIDSession) {
         
     }
     

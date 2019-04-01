@@ -22,7 +22,7 @@ class VerIDRegistrationViewController: VerIDViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
+    override func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
         super.drawFaceFromResult(faceDetectionResult, sessionResult: sessionResult, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
         guard self.detectedFaceStackView.arrangedSubviews.isEmpty || (sessionResult.error == nil && faceDetectionResult.status == .faceAligned) else {
             return

@@ -21,7 +21,7 @@ import VerIDCore
     /// - Parameter result: Session result that should be displayed by the view controller
     /// - Returns: View controller that conforms to the `ResultViewControllerProtocol` protocol
     /// - Throws: Error if the creation fails
-    @objc func makeResultViewController(result: SessionResult) throws -> UIViewController & ResultViewControllerProtocol
+    @objc func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol
     /// Make an instance of a view controller that shows tips on how to successfully finish a Ver-ID session
     ///
     /// - Returns: View controller that conforms to the `TipsViewControllerProtocol` protocol
@@ -34,7 +34,7 @@ import VerIDCore
     ///   - faceDetectionResult: The face detection result that lead to the session failure
     /// - Returns: View controller that conforms to the `FaceDetectionAlertControllerProtocol` protocol
     /// - Throws: Error if the creation fails
-    @objc func makeFaceDetectionAlertController(settings: SessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol
+    @objc func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol
 }
 
 public enum VerIDSessionViewControllersFactoryError: Int, Error {
@@ -43,9 +43,9 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
 
 class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
     
-    public let settings: SessionSettings
+    public let settings: VerIDSessionSettings
     
-    public init(settings: SessionSettings) {
+    public init(settings: VerIDSessionSettings) {
         self.settings = settings
     }
     
@@ -57,7 +57,7 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         }
     }
     
-    func makeResultViewController(result: SessionResult) throws -> UIViewController & ResultViewControllerProtocol {
+    func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol {
         let bundle = Bundle(for: type(of: self))
         let storyboard = UIStoryboard(name: "Result", bundle: bundle)
         let storyboardId = result.error != nil ? "failure" : "success"
@@ -77,7 +77,7 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         return tipsController
     }
     
-    func makeFaceDetectionAlertController(settings: SessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
+    func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
         let bundle = Bundle(for: type(of: self))
         let message: String
         if faceDetectionResult.status == .faceTurnedTooFar {

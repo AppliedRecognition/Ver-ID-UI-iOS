@@ -14,7 +14,7 @@ import VerIDCore
 @objc public protocol VerIDViewControllerDelegate: class {
     
     /// Session settings
-    @objc var settings: SessionSettings { get }
+    @objc var settings: VerIDSessionSettings { get }
     
     /// Called when the user cancels the session, e.g., by tapping the cancel button
     ///

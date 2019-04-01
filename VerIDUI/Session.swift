@@ -13,7 +13,7 @@ import AVFoundation
 import os
 
 /// Ver-ID session
-@objc public class Session: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
+@objc public class VerIDSession: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
     
     @objc public enum SessionError: Int, Error {
         case failedToStart
@@ -33,10 +33,10 @@ import os
     @objc public var sessionViewControllersFactory: SessionViewControllersFactory
     
     /// Session delegate
-    @objc public weak var delegate: VerIDUI.SessionDelegate?
+    @objc public weak var delegate: VerIDSessionDelegate?
     
     /// Session settings
-    @objc public let settings: SessionSettings
+    @objc public let settings: VerIDSessionSettings
     
     // MARK: - Private properties
     
@@ -67,7 +67,7 @@ import os
     /// - Parameters:
     ///   - environment: Ver-ID environment used by factory classes
     ///   - settings: Session settings
-    public init(environment: VerID, settings: SessionSettings) {
+    public init(environment: VerID, settings: VerIDSessionSettings) {
         self.settings = settings
         self.faceDetectionFactory = VerIDFaceDetectionServiceFactory(environment: environment)
         self.resultEvaluationFactory = VerIDResultEvaluationServiceFactory(environment: environment)
@@ -90,13 +90,13 @@ import os
                 self.videoWriterService = try? videoWriterFactory.makeVideoWriterService(url: videoURL)
             }
             guard var root = UIApplication.shared.keyWindow?.rootViewController else {
-                self.delegate?.session(self, didFinishWithResult: SessionResult(error: SessionError.failedToStart))
+                self.delegate?.session(self, didFinishWithResult: VerIDSessionResult(error: SessionError.failedToStart))
                 return
             }
             do {
                 self.viewController = try self.sessionViewControllersFactory.makeVerIDViewController()
             } catch {
-                self.finishWithResult(SessionResult(error: error))
+                self.finishWithResult(VerIDSessionResult(error: error))
                 return
             }
             self.viewController?.delegate = self
@@ -134,7 +134,7 @@ import os
         do {
             self.faceDetection = try self.faceDetectionFactory.makeFaceDetectionService(settings: self.settings)
         } catch {
-            self.showResult(SessionResult(error: error))
+            self.showResult(VerIDSessionResult(error: error))
             return
         }
         let op = SessionOperation(imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
@@ -157,7 +157,7 @@ import os
         self.operationQueue.addOperations([op, finishOp], waitUntilFinished: false)
     }
     
-    private func showResult(_ result: SessionResult) {
+    private func showResult(_ result: VerIDSessionResult) {
         self.operationQueue.cancelAllOperations()
         if self.settings.showResult {
             DispatchQueue.main.async {
@@ -166,7 +166,7 @@ import os
                     resultViewController.delegate = self
                     self.navigationController?.pushViewController(resultViewController, animated: true)
                 } catch {
-                    self.finishWithResult(SessionResult(error: error))
+                    self.finishWithResult(VerIDSessionResult(error: error))
                 }
             }
         } else {
@@ -174,7 +174,7 @@ import os
         }
     }
     
-    private func finishWithResult(_ result: SessionResult) {
+    private func finishWithResult(_ result: VerIDSessionResult) {
         self.operationQueue.cancelAllOperations()
         self.viewController = nil
         DispatchQueue.main.async {
@@ -223,7 +223,7 @@ import os
     ///   - viewController: View controller that failed
     ///   - error: Description of the failure
     public func viewController(_ viewController: VerIDViewControllerProtocol, didFailWithError error: Error) {
-        self.finishWithResult(SessionResult(error: error))
+        self.finishWithResult(VerIDSessionResult(error: error))
     }
     
     /// View controller captured a sample buffer from the camera
@@ -264,7 +264,7 @@ import os
     ///   - result: Session result
     ///   - faceDetectionResult: Face detection result used to generate the session result
     /// - Note: This method is called as the session progresses. The final session result is be obtained at the end of the session operation. You can use this method, for example, to prevent the session from finishing in some circumstances.
-    public func operationDidOutputSessionResult(_ result: SessionResult, fromFaceDetectionResult faceDetectionResult: FaceDetectionResult) {
+    public func operationDidOutputSessionResult(_ result: VerIDSessionResult, fromFaceDetectionResult faceDetectionResult: FaceDetectionResult) {
         guard let defaultFaceBounds = self.faceDetection?.defaultFaceBounds(in: faceDetectionResult.imageSize) else {
             return
         }
@@ -302,7 +302,7 @@ import os
                     tipsController.tipsViewControllerDelegate = self
                     self.navigationController?.pushViewController(tipsController, animated: true)
                 } catch {
-                    let result = SessionResult(error: error)
+                    let result = VerIDSessionResult(error: error)
                     self.finishWithResult(result)
                 }
             case .retry:
@@ -339,21 +339,25 @@ import os
     /// - Parameters:
     ///   - viewController: View controller that was dismissed after the user viewed the result
     ///   - result: Session result
-    public func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: SessionResult) {
+    public func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: VerIDSessionResult) {
         self.finishWithResult(result)
     }
 }
 
 /// Session delegate protocol
-@objc public protocol SessionDelegate: class {
+@objc public protocol VerIDSessionDelegate: class {
     /// Called when the session successfully finishes
     ///
     /// - Parameters:
     ///   - session: Session that finished
     ///   - result: Session result
-    @objc func session(_ session: Session, didFinishWithResult result: SessionResult)
+    @objc func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult)
     /// Called when the session was canceled
     ///
     /// - Parameter session: Session that was canceled
-    @objc func sessionWasCanceled(_ session: Session)
+    @objc func sessionWasCanceled(_ session: VerIDSession)
 }
+
+@available(*, deprecated, renamed: "VerIDSession") public typealias Session = VerIDSession
+
+@available(*, deprecated, renamed: "VerIDSessionDelegate") public typealias SessionDelegate = VerIDSessionDelegate

@@ -25,7 +25,7 @@ import VerIDCore
     ///   - sessionResult: Current result of the session
     ///   - defaultFaceBounds: Face bounds to display if the result does not contain a face
     ///   - offsetAngleFromBearing: Difference between the angle of the requested bearing and the angle of the detected face – use this to show the user where to move
-    @objc func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?)
+    @objc func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?)
 }
 
 /// Ver-ID SDK's default implementation of the `VerIDViewControllerProtocol`
@@ -220,7 +220,7 @@ import VerIDCore
     ///   - sessionResult: Interim session result
     ///   - defaultFaceBounds: Face bounds that will be displayed if no face is detected or before it's inside the oval
     ///   - offsetAngleFromBearing: Angle to use to draw the arrow showing the user where to move
-    open func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: SessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
+    open func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
         let bundle = Bundle(for: type(of: self))
         let labelText: String?
         let isHighlighted: Bool
