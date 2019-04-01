@@ -131,7 +131,12 @@ import os
         self.startTime = CACurrentMediaTime()
         self.startDispatchTime = .now()
         self.faceDetection = nil
-        self.faceDetection = self.faceDetectionFactory.makeFaceDetectionService(settings: self.settings)
+        do {
+            self.faceDetection = try self.faceDetectionFactory.makeFaceDetectionService(settings: self.settings)
+        } catch {
+            self.showResult(SessionResult(error: error))
+            return
+        }
         let op = SessionOperation(imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
         op.delegate = self
         let finishOp = BlockOperation()
