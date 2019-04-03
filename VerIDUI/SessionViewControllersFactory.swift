@@ -84,6 +84,8 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
             message = NSLocalizedString("You may have turned too far. Only turn in the requested direction until the oval turns green.", tableName: nil, bundle: bundle, value: "You may have turned too far. Only turn in the requested direction until the oval turns green.", comment: "Shown in a dialog as an explanation of why the face session is failing")
         } else if faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost {
             message = NSLocalizedString("Turn your head in the direction of the arrow", tableName: nil, bundle: bundle, value: "Turn your head in the direction of the arrow", comment: "Shown in a dialog as an instruction")
+        } else if faceDetectionResult.status == .movedTooFast {
+            message = NSLocalizedString("Please turn slowly", comment: "Shown in a dialog as an explanation why the face session is failing")
         } else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
