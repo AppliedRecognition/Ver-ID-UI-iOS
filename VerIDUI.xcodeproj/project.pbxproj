@@ -424,7 +424,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh",
 				"${PODS_ROOT}/Ver-ID-Core/VerIDCore.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -433,7 +433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */ = {
