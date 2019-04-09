@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Session  Reference</title>
+    <title>Other Protocols  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Section/Session" class="dashAnchor"></a>
-    <a title="Session  Reference"></a>
+    <a name="//apple_ref/swift/Section/Other Protocols" class="dashAnchor"></a>
+    <a title="Other Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">VerIDUI Docs</a></p>
@@ -21,23 +21,12 @@
       <p id="breadcrumbs">
         <a href="index.html">VerIDUI Reference</a>
         <img id="carat" src="img/carat.png" />
-        Session  Reference
+        Other Protocols  Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a href="Session.html">Session</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/Session.html">Session</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/SessionDelegate.html">SessionDelegate</a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-group-name">
             <a href="View Controllers.html">View Controllers</a>
             <ul class="nav-group-tasks">
@@ -79,6 +68,9 @@
               <li class="nav-group-task">
                 <a href="Classes/CameraViewController.html">CameraViewController</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/VerIDSession.html">VerIDSession</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -89,13 +81,22 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Session</h1>
-            
+            <h1>Other Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -103,38 +104,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)Session"></a>
-                    <a name="//apple_ref/swift/Class/Session" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)Session">Session</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Ver-ID session</p>
-
-                        <a href="Classes/Session.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kt">Session</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">ImageProviderService</span><span class="p">,</span> <span class="kt"><a href="Protocols/VerIDViewControllerDelegate.html">VerIDViewControllerDelegate</a></span><span class="p">,</span> <span class="kt">SessionOperationDelegate</span><span class="p">,</span> <span class="kt"><a href="Protocols/FaceDetectionAlertControllerDelegate.html">FaceDetectionAlertControllerDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ResultViewControllerDelegate.html">ResultViewControllerDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/TipsViewControllerDelegate.html">TipsViewControllerDelegate</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@VerIDUI@objc(pl)SessionDelegate"></a>
-                    <a name="//apple_ref/swift/Protocol/SessionDelegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(pl)SessionDelegate">SessionDelegate</a>
+                    <a name="/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate"></a>
+                    <a name="//apple_ref/swift/Protocol/VerIDSessionDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate">VerIDSessionDelegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -144,14 +116,14 @@
                       <div class="abstract">
                         <p>Session delegate protocol</p>
 
-                        <a href="Protocols/SessionDelegate.html" class="slightly-smaller">See more</a>
+                        <a href="Protocols/VerIDSessionDelegate.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SessionDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">VerIDSessionDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                         </div>
                       </div>
@@ -163,7 +135,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-03-13)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-04-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
