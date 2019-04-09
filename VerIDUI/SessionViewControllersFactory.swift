@@ -6,7 +6,7 @@
 //  Copyright © 2019 Applied Recognition. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import VerIDCore
 
 /// Protocol for a factory that creates view controllers used by Ver-ID session

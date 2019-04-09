@@ -6,7 +6,7 @@
 //  Copyright © 2019 Applied Recognition. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreMedia
 import VerIDCore
 
