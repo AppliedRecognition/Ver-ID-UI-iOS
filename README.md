@@ -3,7 +3,7 @@
 # Ver-ID UI for iOS
 
 ## Prerequisites
-To build this project and run the sample app you will need a Apple Mac computer with these applications:
+To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
 - [Xcode 10.2](https://itunes.apple.com/us/app/xcode/id497799835) or newer
 - [Git](https://git-scm.com)
@@ -24,7 +24,7 @@ To build this project and run the sample app you will need a Apple Mac computer 
 1. The **VerIDUI.xcworkspace** should now be open in **Xcode**.
 1. You can now build and run the **Ver-ID Sample** target on your iOS device.
 
-## Adding Ver-ID into your own project
+## Adding Ver-ID to your own project
 
 1. [Request an API secret](https://dev.ver-id.com/admin/register) for your app. We will need your app's bundle ID.
 1. Add the following entry in your app's **Info.plist** substituting `[API secret]` for the API secret obtained in step 1:
