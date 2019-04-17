@@ -22,11 +22,16 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
     var environment: VerID?
     
     /// Settings to use for user registration
-    let registrationSettings: RegistrationSessionSettings = {
+    var registrationSettings: RegistrationSessionSettings {
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
-        settings.numberOfResultsToCollect = 1
+        let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
+        let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
+        let numberOfFacesToRegister = UserDefaults.standard.integer(forKey: "numberOfFacesToRegister")
+        settings.yawThreshold = CGFloat(yawThreshold)
+        settings.pitchThreshold = CGFloat(pitchThreshold)
+        settings.numberOfResultsToCollect = numberOfFacesToRegister
         return settings
-    }()
+    }
     
     // MARK: - Override from UIViewController
     
@@ -96,10 +101,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
         guard let environment = self.environment else {
             return
         }
-        let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
-        let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
-        self.registrationSettings.yawThreshold = CGFloat(yawThreshold)
-        self.registrationSettings.pitchThreshold = CGFloat(pitchThreshold)
         let session = VerIDSession(environment: environment, settings: self.registrationSettings)
         session.delegate = self
         session.start()

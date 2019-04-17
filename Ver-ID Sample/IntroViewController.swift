@@ -91,9 +91,10 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
         let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
+        let numberOfFacesToRegister = UserDefaults.standard.integer(forKey: "numberOfFacesToRegister")
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
-        settings.numberOfResultsToCollect = 1
+        settings.numberOfResultsToCollect = numberOfFacesToRegister
         let session = VerIDSession(environment: environment, settings: settings)
         session.delegate = self
         session.start()

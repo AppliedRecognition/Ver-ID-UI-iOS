@@ -20,7 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate {
     // MARK: - Application delegate methods
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        reload()
+        self.profilePictureURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("profilePicture").appendingPathExtension("jpg")
+        let faceExtractQualityThreshold: Float = (VerIDFactory().faceDetectionFactory as? VerIDFaceDetectionRecognitionFactory)?.settings.faceExtractQualityThreshold ?? 8.0
+        let livenessDetectionSettings = LivenessDetectionSessionSettings()
+        UserDefaults.standard.register(defaults: [
+            "livenessDetectionPoses": NSNumber(value: 1),
+            "yawThreshold": livenessDetectionSettings.yawThreshold as NSNumber,
+            "pitchThreshold": livenessDetectionSettings.pitchThreshold as NSNumber,
+            "authenticationThreshold": NSNumber(value: 3.5),
+            "faceExtractQualityThreshold": NSNumber(value: faceExtractQualityThreshold),
+            "numberOfFacesToRegister": NSNumber(value: 1)
+            ])
+        self.reload()
         return true
     }
     
@@ -38,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate {
     
     // MARK: -
     
-    func showError() {
+    func displayError() {
         guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
             return
         }
@@ -52,25 +63,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate {
         guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
             return
         }
+        instance.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.float(forKey: "authenticationThreshold"))
         let initialViewController: UIViewController
-        do {
-            let users = try instance.userManagement.users()
-            if users.isEmpty {
-                initialViewController = storyboard.instantiateViewController(withIdentifier: "intro")
-                (initialViewController as? IntroViewController)?.environment = instance
+        if let users = try? instance.userManagement.users(), users.contains(VerIDUser.defaultUserId) {
+            if let controller = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController {
+                // Instantiate the main view controller.
+                controller.environment = instance
+                initialViewController = controller
             } else {
-                initialViewController = storyboard.instantiateViewController(withIdentifier: "start")
-                (initialViewController as? MainViewController)?.environment = instance
+                self.displayError()
+                return
             }
-            // Replace the root in the navigation view controller.
-            navigationController.setViewControllers([initialViewController], animated: false)
-        } catch {
-            self.showError()
+        } else if let controller = storyboard.instantiateViewController(withIdentifier: "intro") as? IntroViewController {
+            controller.environment = instance
+            initialViewController = controller
+        } else {
+            displayError()
+            return
         }
+        // Replace the root in the navigation view controller.
+        navigationController.setViewControllers([initialViewController], animated: false)
     }
     
     func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
-        self.showError()
+        self.displayError()
     }
     
     // MARK: - Registration upload/download
