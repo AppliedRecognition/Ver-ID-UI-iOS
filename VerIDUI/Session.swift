@@ -58,7 +58,8 @@ import os
     
     private var image: VerIDImage?
     private let imageLock = DispatchSemaphore(value: 0)
-    private let imageLock2 = DispatchSemaphore(value: 1)
+    
+    private let imageAcquisitionSignposting = Signposting(category: "Image acquisition")
     
     // MARK: - Constructor
 
@@ -201,10 +202,6 @@ import os
             // TODO
             throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
         }
-        imageLock2.wait()
-        defer {
-            imageLock2.signal()
-        }
         return image!
     }
     
@@ -234,7 +231,10 @@ import os
     ///   - orientation: Image orientation of the data in the sample buffer
     public func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withOrientation orientation: CGImagePropertyOrientation) {
         var buffer: CMSampleBuffer?
+        let copyBufferSignpost = imageAcquisitionSignposting.createSignpost(name: "Copy image buffer")
+        imageAcquisitionSignposting.logStart(signpost: copyBufferSignpost)
         let status = CMSampleBufferCreateCopy(allocator: kCFAllocatorDefault, sampleBuffer: sampleBuffer, sampleBufferOut: &buffer)
+        imageAcquisitionSignposting.logEnd(signpost: copyBufferSignpost)
         guard status == 0 else {
             return
         }
@@ -248,11 +248,18 @@ import os
             rotation = 0
         case .up, .upMirrored:
             rotation = 180
+        @unknown default:
+            rotation = 0
         }
+        let writeVideoSignpost = imageAcquisitionSignposting.createSignpost(name: "Write video buffer")
+        imageAcquisitionSignposting.logStart(signpost: writeVideoSignpost)
         self.videoWriterService?.writeSampleBuffer(buffer!, rotation: CGFloat(Measurement(value: Double(rotation), unit: UnitAngle.degrees).converted(to: .radians).value))
-        imageLock2.wait()
+        imageAcquisitionSignposting.logEnd(signpost: writeVideoSignpost)
         image = VerIDImage(sampleBuffer: buffer!, orientation: orientation)
-        imageLock2.signal()
+        let convertToGrayscaleSignpost = imageAcquisitionSignposting.createSignpost(name: "Convert image to grayscale")
+        imageAcquisitionSignposting.logStart(signpost: convertToGrayscaleSignpost)
+        let _ = image!.grayscalePixels
+        imageAcquisitionSignposting.logEnd(signpost: convertToGrayscaleSignpost)
         imageLock.signal()
     }
     
