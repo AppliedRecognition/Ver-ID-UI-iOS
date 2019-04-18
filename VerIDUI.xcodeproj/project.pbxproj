@@ -37,9 +37,7 @@
 		3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */; };
 		3BB2046B221428B900B3B312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046D221428B900B3B312 /* Main.storyboard */; };
 		3BC55B6C2236E37E00BCDD9D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */; };
-		3BE9F36D220AF125002C11BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36B220AF125002C11BE /* Main.storyboard */; };
 		3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36E220AF128002C11BE /* Assets.xcassets */; };
-		3BE9F372220AF128002C11BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F370220AF128002C11BE /* LaunchScreen.storyboard */; };
 		3BE9F37A220AF493002C11BE /* VerIDModels in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F379220AF492002C11BE /* VerIDModels */; };
 		3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
 		3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -114,9 +112,7 @@
 		3BB2046C221428B900B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		3BE9F365220AF125002C11BE /* Ver-ID Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BE9F36C220AF125002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BE9F36E220AF128002C11BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3BE9F371220AF128002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BE9F373220AF128002C11BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE9F379220AF492002C11BE /* VerIDModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VerIDModels; sourceTree = SOURCE_ROOT; };
 		3BE9F3C6220AFB6D002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VerIDViewController.xib; sourceTree = "<group>"; };
@@ -242,9 +238,7 @@
 				3BB20457221425BF00B3B312 /* RegistrationUploading.swift */,
 				3BB2044F221425BE00B3B312 /* VerIDUser.swift */,
 				3BE9F379220AF492002C11BE /* VerIDModels */,
-				3BE9F36B220AF125002C11BE /* Main.storyboard */,
 				3BE9F36E220AF128002C11BE /* Assets.xcassets */,
-				3BE9F370220AF128002C11BE /* LaunchScreen.storyboard */,
 				3BE9F373220AF128002C11BE /* Info.plist */,
 			);
 			path = "Ver-ID Sample";
@@ -388,12 +382,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BE9F372220AF128002C11BE /* LaunchScreen.storyboard in Resources */,
 				3BE9F37A220AF493002C11BE /* VerIDModels in Resources */,
 				3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */,
 				3BB2046B221428B900B3B312 /* Main.storyboard in Resources */,
 				3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */,
-				3BE9F36D220AF125002C11BE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +416,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh",
 				"${PODS_ROOT}/Ver-ID-Core/VerIDCore.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -433,7 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */ = {
@@ -519,22 +511,6 @@
 				3BB2046C221428B900B3B312 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3BE9F36B220AF125002C11BE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BE9F36C220AF125002C11BE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3BE9F370220AF128002C11BE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BE9F371220AF128002C11BE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		3BE9F3C5220AFB6D002C11BE /* VerIDViewController.xib */ = {
