@@ -26,6 +26,8 @@ import VerIDCore
     ///   - defaultFaceBounds: Face bounds to display if the result does not contain a face
     ///   - offsetAngleFromBearing: Difference between the angle of the requested bearing and the angle of the detected face – use this to show the user where to move
     @objc func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?)
+    @objc func loadResultImage(_ url: URL, forFace face: Face)
+    @objc func clearOverlays()
 }
 
 /// Ver-ID SDK's default implementation of the `VerIDViewControllerProtocol`
@@ -276,6 +278,14 @@ import VerIDCore
         let transform = self.imageScaleTransformAtImageSize(faceDetectionResult.imageSize)
         self.drawCameraOverlay(bearing: faceDetectionResult.requestedBearing, text: labelText, isHighlighted: isHighlighted, ovalBounds: ovalBounds.applying(transform), cutoutBounds: cutoutBounds?.applying(transform), faceAngle: faceAngle, showArrow: showArrow, offsetAngleFromBearing: offsetAngleFromBearing)
         self.speakText(spokenText)
+    }
+    
+    open func loadResultImage(_ url: URL, forFace face: Face) {
+        
+    }
+    
+    public func clearOverlays() {
+        
     }
     
     // MARK: - Sample Capture

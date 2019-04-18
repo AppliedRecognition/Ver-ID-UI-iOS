@@ -129,6 +129,7 @@ import os
     // MARK: - Private methods
     
     private func startOperations() {
+        self.viewController?.clearOverlays()
         self.startTime = CACurrentMediaTime()
         self.startDispatchTime = .now()
         self.faceDetection = nil
@@ -290,6 +291,12 @@ import os
                 }
             } catch {
             }
+        }
+    }
+    
+    public func operationDidFinishWritingImage(_ url: URL, forFace face: Face) {
+        DispatchQueue.main.async {
+            self.viewController?.loadResultImage(url, forFace: face)
         }
     }
     

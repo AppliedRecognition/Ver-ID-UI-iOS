@@ -22,11 +22,8 @@ class VerIDRegistrationViewController: VerIDViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
-        super.drawFaceFromResult(faceDetectionResult, sessionResult: sessionResult, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
-        guard self.detectedFaceStackView.arrangedSubviews.isEmpty || (sessionResult.error == nil && faceDetectionResult.status == .faceAligned) else {
-            return
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
             return
         }
@@ -49,8 +46,15 @@ class VerIDRegistrationViewController: VerIDViewController {
                 }
             }
         }
-        for i in 0..<settings.numberOfResultsToCollect {
-            guard let imageView = detectedFaceStackView.arrangedSubviews[i] as? UIImageView else {
+    }
+    
+    override func loadResultImage(_ url: URL, forFace face: Face) {
+        guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
+            return
+        }
+        let group = DispatchGroup()
+        for view in detectedFaceStackView.arrangedSubviews {
+            guard let imageView = view as? UIImageView else {
                 return
             }
             for sub in imageView.subviews {
@@ -59,23 +63,17 @@ class VerIDRegistrationViewController: VerIDViewController {
             guard imageView.alpha < 1.0 else {
                 continue
             }
-            guard i < sessionResult.attachments.count else {
-                continue
-            }
             let viewSize = imageView.frame.size
-            let attachment = sessionResult.attachments[i]
-            guard let path = attachment.imageURL?.path else {
-                continue
-            }
             imageView.alpha = 1.0
             DispatchQueue.global().async {
-                guard let faceImage = UIImage(contentsOfFile: path) else {
+                guard let faceImage = UIImage(contentsOfFile: url.path) else {
                     DispatchQueue.main.async {
                         imageView.alpha = 0.5
                     }
                     return
                 }
-                let originalBounds = attachment.face.bounds
+                group.enter()
+                let originalBounds = face.bounds
                 var scaledBoundsSize = CGSize(width: originalBounds.width, height: originalBounds.height)
                 if viewSize.width / viewSize.height > originalBounds.width / originalBounds.height {
                     // View is "fatter" match widths
@@ -94,6 +92,9 @@ class VerIDRegistrationViewController: VerIDViewController {
                 let image = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
                 DispatchQueue.main.async {
+                    defer {
+                        group.leave()
+                    }
                     guard self.isViewLoaded else {
                         return
                     }
@@ -108,10 +109,47 @@ class VerIDRegistrationViewController: VerIDViewController {
                     imageView.image = image
                 }
             }
-            if i+1 == sessionResult.attachments.count {
-                let activityIndicatorView = UIActivityIndicatorView(frame: detectedFaceStackView.arrangedSubviews[i].bounds)
-                activityIndicatorView.startAnimating()
-                imageView.addSubview(activityIndicatorView)
+            break
+        }
+        DispatchQueue.global().async {
+            group.wait()
+            DispatchQueue.main.async {
+                guard self.isViewLoaded else {
+                    return
+                }
+                if let imageView = self.detectedFaceStackView.arrangedSubviews.filter({ $0.alpha == 1.0 }).last {
+                    let activityIndicatorView = UIActivityIndicatorView(frame: imageView.bounds)
+                    activityIndicatorView.startAnimating()
+                    imageView.addSubview(activityIndicatorView)
+                }
+            }
+        }
+    }
+    
+    override func clearOverlays() {
+        guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
+            return
+        }
+        guard self.detectedFaceStackView != nil else {
+            return
+        }
+        for i in 0..<self.detectedFaceStackView.arrangedSubviews.count {
+            guard let imageView = self.detectedFaceStackView.arrangedSubviews[i] as? UIImageView else {
+                return
+            }
+            imageView.alpha = 0.5
+            imageView.transform = CGAffineTransform.identity
+            let bearingIndex = i % settings.bearingsToRegister.count
+            let bearing = settings.bearingsToRegister[bearingIndex]
+            DispatchQueue.global().async {
+                guard let image = self.imageForBearing(bearing) else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    if self.isViewLoaded {
+                        imageView.image = image
+                    }
+                }
             }
         }
     }
