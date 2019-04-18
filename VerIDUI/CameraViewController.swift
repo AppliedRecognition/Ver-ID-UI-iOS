@@ -178,6 +178,8 @@ import AVFoundation
             rotation = 180
         case .landscapeRight:
             rotation = 0
+        @unknown default:
+            fatalError()
         }
         videoRotationLock.wait()
         defer {

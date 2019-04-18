@@ -62,6 +62,8 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
             self.showCameraAccessDenied()
         case .restricted:
             self.showCameraAccessRestricted()
+        @unknown default:
+            fatalError()
         }
     }
     
