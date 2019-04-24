@@ -1,16 +1,16 @@
 PODS:
-  - Ver-ID-Core (1.0.0)
+  - Ver-ID-Core (1.0.1)
 
 DEPENDENCIES:
-  - Ver-ID-Core (= 1.0.0)
+  - Ver-ID-Core (= 1.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Ver-ID-Core
 
 SPEC CHECKSUMS:
-  Ver-ID-Core: 446750cc833c08fd3737abea049d2c5298d1957e
+  Ver-ID-Core: a74a2592d1bf070d0d6041bb29c1336d86d4dbd6
 
-PODFILE CHECKSUM: aa9902e6d89aff7388eeec29ec4fc4c56c508d70
+PODFILE CHECKSUM: c22c3162f151062203722e3c840f2227df071c3d
 
 COCOAPODS: 1.5.2

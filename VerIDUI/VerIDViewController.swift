@@ -31,7 +31,7 @@ import VerIDCore
 }
 
 /// Ver-ID SDK's default implementation of the `VerIDViewControllerProtocol`
-@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol {
+@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     /// The view that holds the camera feed.
     @IBOutlet var noCameraLabel: UILabel!

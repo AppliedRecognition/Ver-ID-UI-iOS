@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 /// View controller that displays a camera preview
-@objc open class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+@objc open class CameraViewController: UIViewController {
     
     let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
     private let captureSession = AVCaptureSession()
