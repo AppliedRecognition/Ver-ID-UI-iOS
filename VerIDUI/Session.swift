@@ -61,6 +61,8 @@ import os
     
     private let imageAcquisitionSignposting = Signposting(category: "Image acquisition")
     
+    private var imageQueue: DispatchQueue?
+    
     // MARK: - Constructor
 
     /// Session constructor
@@ -129,6 +131,7 @@ import os
     // MARK: - Private methods
     
     private func startOperations() {
+        self.imageQueue = DispatchQueue(label: "com.appliedrec.image", qos: .userInitiated, attributes: [], autoreleaseFrequency: .inherit, target: nil)
         self.viewController?.clearOverlays()
         self.startTime = CACurrentMediaTime()
         self.startDispatchTime = .now()
@@ -146,6 +149,7 @@ import os
             if finishOp != nil && finishOp!.isCancelled {
                 return
             }
+            self?.imageQueue = nil
             if let videoWriter = self?.videoWriterService {
                 videoWriter.finish() { url in
                     op.result.videoURL = url
@@ -203,7 +207,13 @@ import os
             // TODO
             throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
         }
-        return image!
+        guard let img = self.image else {
+            throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
+        }
+        self.imageQueue?.async {
+            self.image = nil
+        }
+        return img
     }
     
     // MARK: - Ver-ID view controller delegate
@@ -232,36 +242,56 @@ import os
     ///   - orientation: Image orientation of the data in the sample buffer
     public func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withOrientation orientation: CGImagePropertyOrientation) {
         var buffer: CMSampleBuffer?
-        let copyBufferSignpost = imageAcquisitionSignposting.createSignpost(name: "Copy image buffer")
-        imageAcquisitionSignposting.logStart(signpost: copyBufferSignpost)
-        let status = CMSampleBufferCreateCopy(allocator: kCFAllocatorDefault, sampleBuffer: sampleBuffer, sampleBufferOut: &buffer)
-        imageAcquisitionSignposting.logEnd(signpost: copyBufferSignpost)
-        guard status == 0 else {
-            return
+        var isBufferCopied: Bool = false
+        func copyBuffer() -> Bool {
+            let copyBufferSignpost = self.imageAcquisitionSignposting.createSignpost(name: "Copy image buffer")
+            self.imageAcquisitionSignposting.logStart(signpost: copyBufferSignpost)
+            let status = CMSampleBufferCreateCopy(allocator: kCFAllocatorDefault, sampleBuffer: sampleBuffer, sampleBufferOut: &buffer)
+            self.imageAcquisitionSignposting.logEnd(signpost: copyBufferSignpost)
+            return status == 0
         }
-        let rotation: CGFloat
-        switch orientation {
-        case .right, .rightMirrored:
-            rotation = 90
-        case .left, .leftMirrored:
-            rotation = 270
-        case .down, .downMirrored:
-            rotation = 0
-        case .up, .upMirrored:
-            rotation = 180
-        @unknown default:
-            rotation = 0
+        if let videoWriter = self.videoWriterService {
+            isBufferCopied = copyBuffer()
+            if !isBufferCopied {
+                return
+            }
+            let rotation: CGFloat
+            switch orientation {
+            case .right, .rightMirrored:
+                rotation = 90
+            case .left, .leftMirrored:
+                rotation = 270
+            case .down, .downMirrored:
+                rotation = 0
+            case .up, .upMirrored:
+                rotation = 180
+            @unknown default:
+                rotation = 0
+            }
+            let writeVideoSignpost = imageAcquisitionSignposting.createSignpost(name: "Write video buffer")
+            imageAcquisitionSignposting.logStart(signpost: writeVideoSignpost)
+            videoWriter.writeSampleBuffer(buffer!, rotation: CGFloat(Measurement(value: Double(rotation), unit: UnitAngle.degrees).converted(to: .radians).value))
+            imageAcquisitionSignposting.logEnd(signpost: writeVideoSignpost)
         }
-        let writeVideoSignpost = imageAcquisitionSignposting.createSignpost(name: "Write video buffer")
-        imageAcquisitionSignposting.logStart(signpost: writeVideoSignpost)
-        self.videoWriterService?.writeSampleBuffer(buffer!, rotation: CGFloat(Measurement(value: Double(rotation), unit: UnitAngle.degrees).converted(to: .radians).value))
-        imageAcquisitionSignposting.logEnd(signpost: writeVideoSignpost)
-        image = VerIDImage(sampleBuffer: buffer!, orientation: orientation)
-        let convertToGrayscaleSignpost = imageAcquisitionSignposting.createSignpost(name: "Convert image to grayscale")
-        imageAcquisitionSignposting.logStart(signpost: convertToGrayscaleSignpost)
-        let _ = image!.grayscalePixels
-        imageAcquisitionSignposting.logEnd(signpost: convertToGrayscaleSignpost)
-        imageLock.signal()
+        if !isBufferCopied {
+            if !copyBuffer() {
+                return
+            }
+        }
+        self.imageQueue?.async {
+            if self.image != nil {
+                return
+            }
+            self.image = VerIDImage(sampleBuffer: buffer!, orientation: orientation)
+            let convertToGrayscaleSignpost = self.imageAcquisitionSignposting.createSignpost(name: "Convert image to grayscale")
+            self.imageAcquisitionSignposting.logStart(signpost: convertToGrayscaleSignpost)
+            if let (grayscale, size) = try? ImageUtil.grayscaleBufferFromVerIDImage(self.image!) {
+                self.image!.grayscalePixels = grayscale
+                self.image!.size = size
+            }
+            self.imageAcquisitionSignposting.logEnd(signpost: convertToGrayscaleSignpost)
+            self.imageLock.signal()
+        }
     }
     
     // MARK: - Session operation delegate
