@@ -11,7 +11,6 @@ import AVFoundation
 import CoreMedia
 import ImageIO
 import Accelerate
-import SceneKit
 import VerIDCore
 
 /// Ver-ID view controller protocol – displays the Ver-ID session progress
@@ -36,10 +35,8 @@ import VerIDCore
     /// The view that holds the camera feed.
     @IBOutlet var noCameraLabel: UILabel!
     @IBOutlet var directionLabel: PaddedRoundedLabel!
-    @IBOutlet var sceneView: SCNView!
     @IBOutlet var directionLabelYConstraint: NSLayoutConstraint!
     @IBOutlet var overlayView: UIView!
-    var sphereNode: SCNNode!
     
     // MARK: - Colours
     
@@ -116,23 +113,7 @@ import VerIDCore
         let bundle = Bundle(for: type(of: self))
         directionLabel.text = NSLocalizedString("Preparing face detection", tableName: nil, bundle: bundle, value: "Preparing face detection", comment: "Displayed in the camera view when the app is preparing face detection")
         directionLabel.backgroundColor = UIColor.white
-        sphereNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.clear
         self.startCamera()
-        let scene = SCNScene()
-        sceneView.scene = scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        // Orthographic projection
-        cameraNode.camera!.usesOrthographicProjection = true
-        cameraNode.camera!.orthographicScale = Double(view.bounds.height) / 2
-        cameraNode.camera!.zFar = Double(view.bounds.width) * 10
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: Float(view.bounds.width))
-        scene.rootNode.addChildNode(cameraNode)
-        let sphere = SCNSphere(radius: view.bounds.width / 2)
-        sphere.segmentCount = 100
-        sphereNode = SCNNode(geometry: sphere)
-        scene.rootNode.addChildNode(sphereNode)
-        sphere.firstMaterial?.diffuse.contents = UIColor.clear
     }
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -311,79 +292,17 @@ import VerIDCore
         
         self.directionLabelYConstraint.constant = max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0)
         
-        self.faceOvalLayer.setOvalBounds(ovalBounds, cutoutBounds: cutoutBounds, strokeColour: isHighlighted ? highlightedColour : neutralColour)
-        if let angle = faceAngle, let offsetAngle = offsetAngleFromBearing, showArrow {
-            self.drawArrowInFaceRect(ovalBounds, faceAngle: angle, requestedBearing: bearing, offsetAngleFromBearing: offsetAngle)
+        let angle: CGFloat?
+        let distance: CGFloat?
+        if showArrow, let offsetAngle = offsetAngleFromBearing {
+            angle = atan2(CGFloat(0.0-offsetAngle.pitch), CGFloat(offsetAngle.yaw))
+            distance = hypot(offsetAngle.yaw, 0-offsetAngle.pitch) * 2;
         } else {
-            self.sphereNode?.geometry?.firstMaterial?.diffuse.contents = UIColor.clear
+            angle = nil
+            distance = nil
         }
-    }
-    
-    private func drawArrowInFaceRect(_ rect: CGRect, faceAngle: EulerAngle, requestedBearing: Bearing, offsetAngleFromBearing: EulerAngle) {
-        guard let sphere = self.sphereNode.geometry as? SCNSphere else {
-            return
-        }
-        sphere.radius = rect.width / 2
-        let size = CGSize(width: CGFloat.pi * 2 * sphere.radius, height: CGFloat.pi * sphere.radius)
-        let translation = CGAffineTransform(translationX: size.width / 2, y: size.height / 2)
-        let transform = CGAffineTransform(scaleX: size.width / 360, y: size.height / 180).concatenating(translation)
-        let arrowTip: CGPoint
-        let endAngle: CGFloat = 50
-        let endAngle45deg: CGFloat = CGFloat(sin(Double.pi/4)) * endAngle
-        switch requestedBearing {
-        case .straight:
-            arrowTip = CGPoint.zero.applying(translation)
-        case .left:
-            arrowTip = CGPoint(x: 0-endAngle, y: 0).applying(transform)
-        case .leftUp:
-            arrowTip = CGPoint(x: 0-endAngle45deg, y: 0-endAngle45deg/2).applying(transform)
-        case .up:
-            arrowTip = CGPoint(x: 0, y: 0-endAngle/2).applying(transform)
-        case .rightUp:
-            arrowTip = CGPoint(x: endAngle45deg, y: 0-endAngle45deg/2).applying(transform)
-        case .right:
-            arrowTip = CGPoint(x: endAngle, y: 0).applying(transform)
-        case .rightDown:
-            arrowTip = CGPoint(x: endAngle45deg, y: endAngle45deg/2).applying(transform)
-        case .down:
-            arrowTip = CGPoint(x: 0, y: endAngle/2).applying(transform)
-        case .leftDown:
-            arrowTip = CGPoint(x: 0-endAngle45deg, y: endAngle45deg/2)
-        }
-        let angle = atan2(CGFloat(0.0-offsetAngleFromBearing.pitch), CGFloat(offsetAngleFromBearing.yaw))
-        let lineWidth = rect.width * 0.038
-        let progress = hypot(CGFloat(offsetAngleFromBearing.yaw), CGFloat(0-offsetAngleFromBearing.pitch)) * 2
-        let arrowLength = size.height * 0.15
-        let arrowStemLength = min(max(arrowLength * progress, arrowLength * 0.75), arrowLength * 2.25)
-        let arrowAngle = CGFloat(Measurement(value: 40, unit: UnitAngle.degrees).converted(to: .radians).value)
-        let arrowPoint1 = CGPoint(x: arrowTip.x + cos(angle + CGFloat.pi - arrowAngle) * arrowLength * 0.6, y: arrowTip.y + sin(angle + CGFloat.pi - arrowAngle) * arrowLength * 0.6)
-        let arrowPoint2 = CGPoint(x: arrowTip.x + cos(angle + CGFloat.pi + arrowAngle) * arrowLength * 0.6, y: arrowTip.y + sin(angle + CGFloat.pi + arrowAngle) * arrowLength * 0.6)
-        let arrowStart = CGPoint(x: arrowTip.x + cos(angle + CGFloat.pi) * arrowStemLength, y: arrowTip.y + sin(angle + CGFloat.pi) * arrowStemLength)
         
-        UIGraphicsBeginImageContext(size)
-        if let context = UIGraphicsGetCurrentContext() {
-            let layer = CAShapeLayer()
-            layer.fillColor = UIColor.clear.cgColor
-            layer.strokeColor = UIColor.white.cgColor
-            layer.lineCap = CAShapeLayerLineCap.round
-            layer.lineJoin = CAShapeLayerLineJoin.round
-            layer.lineWidth = lineWidth
-            let path = UIBezierPath()
-            path.move(to: arrowPoint1)
-            path.addLine(to: arrowTip)
-            path.addLine(to: arrowPoint2)
-            path.move(to: arrowTip)
-            path.addLine(to: arrowStart)
-            layer.path = path.cgPath
-            layer.render(in: context)
-        }
-        if let arrowImage = UIGraphicsGetImageFromCurrentImageContext() {
-            sphere.firstMaterial?.diffuse.contents = arrowImage
-        }
-        UIGraphicsEndImageContext()
-        self.sphereNode.position.x = Float(rect.midX - self.view.bounds.width / 2)
-        self.sphereNode.position.y = Float(self.view.bounds.height / 2 - rect.midY)
-        self.sphereNode.eulerAngles = SCNVector3(GLKMathDegreesToRadians(Float(faceAngle.pitch)*1.5), 0, 0)
+        self.faceOvalLayer.setOvalBounds(ovalBounds, cutoutBounds: cutoutBounds, angle: angle, distance: distance, strokeColour: isHighlighted ? highlightedColour : neutralColour)
     }
     
     private var faceOvalLayer: FaceOvalLayer {
