@@ -200,12 +200,13 @@ import VerIDCore
         guard let delegate = self.delegate else {
             return super.captureDevice
         }
+        let camPosition: AVCaptureDevice.Position = delegate.settings.useFrontCamera ? .front : .back
         if #available(iOS 10.0, *) {
-            return AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: delegate.settings.cameraPosition)
+            return AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: camPosition)
         } else {
             let devices = AVCaptureDevice.devices(for: .video)
             for device in devices {
-                if device.position == delegate.settings.cameraPosition {
+                if device.position == camPosition {
                     return device
                 }
             }

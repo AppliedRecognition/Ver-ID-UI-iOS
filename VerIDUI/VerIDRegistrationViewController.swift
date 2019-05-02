@@ -103,7 +103,7 @@ class VerIDRegistrationViewController: VerIDViewController {
                         return
                     }
                     imageView.alpha = 1.0
-                    if settings.cameraPosition == .front {
+                    if settings.useFrontCamera {
                         imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
                     }
                     imageView.image = image
