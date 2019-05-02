@@ -96,20 +96,69 @@
             
             <p><img src="https://img.shields.io/cocoapods/v/Ver-ID-UI.svg" alt="Cocoapods"></p>
 <h1 id='ver-id-ui-for-ios' class='heading'>Ver-ID UI for iOS</h1>
-<h2 id='usage' class='heading'>Usage</h2>
+<h2 id='prerequisites' class='heading'>Prerequisites</h2>
+
+<p>To build this project and to run the sample app you will need a Apple Mac computer with these applications:</p>
+
+<ul>
+<li><a href="https://itunes.apple.com/us/app/xcode/id497799835">Xcode 10.2</a> or newer</li>
+<li><a href="https://git-scm.com">Git</a></li>
+<li><a href="https://git-lfs.github.com">Git LFS</a></li>
+<li><a href="https://cocoapods.org">CocoaPods</a></li>
+</ul>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<ol>
+<li><p>Open <strong>Terminal</strong> and enter the following commands:</p>
+<pre class="highlight shell"><code>git clone <span class="nt">--recurse-submodules</span> https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git
+<span class="nb">cd </span>Ver-ID-UI-iOS
+pod <span class="nb">install
+</span>open VerIDUI.xcworkspace
+</code></pre></li>
+<li><p>The <strong>VerIDUI.xcworkspace</strong> should now be open in <strong>Xcode</strong>.</p></li>
+<li><p>You can now build and run the <strong>Ver-ID Sample</strong> target on your iOS device.</p></li>
+</ol>
+<h2 id='adding-ver-id-to-your-own-project' class='heading'>Adding Ver-ID to your own project</h2>
+
+<ol>
+<li><a href="https://dev.ver-id.com/admin/register">Request an API secret</a> for your app. We will need your app&rsquo;s bundle ID.</li>
+<li><p>Add the following entry in your app&rsquo;s <strong>Info.plist</strong> substituting <code>[API secret]</code> for the API secret obtained in step 1:</p>
+<pre class="highlight xml"><code><span class="nt">&lt;key&gt;</span>com.appliedrec.verid.apiSecret<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;string&gt;</span>[API secret]<span class="nt">&lt;/string&gt;</span>
+</code></pre></li>
+<li><p>Your app&rsquo;s asset bundle must include <a href="https://github.com/AppliedRecognition/Ver-ID-Models/tree/b125fd172f4e24953c5b232f49f323ceb6a69b70">VerIDModels</a>. Clone the folder using Git instead of downloading the Zip archive. Your system must have <a href="https://git-lfs.github.com">Git LFS</a> installed prior to cloning the folder.</p>
+<pre class="highlight shell"><code>git clone <span class="nt">-b</span> matrix-16 https://github.com/AppliedRecognition/Ver-ID-Models.git VerIDModels
+</code></pre></li>
+<li><p>Open your project in Xcode. In the top menu go to <strong>File / Add Files to <q>Your project name</q>&hellip;</strong> or press <strong>⌥⌘A</strong>. Select the cloned <strong>VerIDModels</strong> folder and tick the toggle <strong>Create folder references for any added folders</strong>. Press <strong>Add</strong>.</p></li>
+<li><p>If your project is using <a href="https://cocoapods.org">CocoaPods</a> for dependency management, open the project&rsquo;s <strong>Podfile</strong>. Otherwise make sure CocoaPods is installed and in your project&rsquo;s folder create a file named <strong>Podfile</strong> (without an extension).</p></li>
+<li><p>Let&rsquo;s assume your project is called <strong>MyProject</strong> and it has an app target called <strong>MyApp</strong>. Open the <strong>Podfile</strong> in a text editor and enter the following:</p>
+<pre class="highlight ruby"><code><span class="n">project</span> <span class="s1">'MyProject.xcodeproj'</span>
+<span class="n">workspace</span> <span class="s1">'MyProject.xcworkspace'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'10.0'</span>
+<span class="n">target</span> <span class="s1">'MyApp'</span> <span class="k">do</span>
+    <span class="n">use_frameworks!</span>
+    <span class="n">pod</span> <span class="s1">'Ver-ID-UI'</span>
+<span class="k">end</span>
+</code></pre></li>
+<li><p>Save the Podfile. Open <strong>Terminal</strong> and navigate to your project&rsquo;s folder. Then enter:</p>
+<pre class="highlight shell"><code>pod <span class="nb">install</span>
+</code></pre></li>
+<li><p>You can now open <strong>MyProject.xcworkspace</strong> in <strong>Xcode</strong> and Ver-ID will be available to use in your app <strong>MyApp</strong>.</p></li>
+</ol>
+<h2 id='running-ver-id-sessions' class='heading'>Running Ver-ID sessions</h2>
 
 <ol>
 <li>Before running a Ver-ID UI session you will need to import the <code>VerIDCore</code> framework and create an instance of <code>VerID</code>.</li>
 <li>Have your class implement the <code>VerIDFactoryDelegate</code> protocol. You will receive a callback when the <code>VerID</code> instance is created or when the creation fails.</li>
-<li>In the class that runs the Ver-ID UI session import <code>VerIDUI</code>.</li>
-<li>Pass the <code>VerID</code> instance to the <code>Session</code> constructor along with the session settings.</li>
+<li>In the class that runs the Ver-ID session import <code>VerIDUI</code>.</li>
+<li>Pass the <code>VerID</code> instance to the <code><a href="Classes/VerIDSession.html">VerIDSession</a></code> constructor along with the session settings.</li>
 </ol>
 <h3 id='example' class='heading'>Example</h3>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
 <span class="kd">import</span> <span class="kt">VerIDCore</span>
 <span class="kd">import</span> <span class="kt">VerIDUI</span>
 
-<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">VerIDFactoryDelegate</span><span class="p">,</span> <span class="kt">SessionDelegate</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">VerIDFactoryDelegate</span><span class="p">,</span> <span class="kt">VerIDSessionDelegate</span> <span class="p">{</span>
 
     <span class="kd">func</span> <span class="nf">runLivenessDetection</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// You may want to display an activity indicator as the instance creation may take up to a few seconds</span>
@@ -130,7 +179,7 @@
         <span class="c1">// Show the result of the session to the user</span>
         <span class="n">settings</span><span class="o">.</span><span class="n">showResult</span> <span class="o">=</span> <span class="kc">true</span>
         <span class="c1">// Create a Ver-ID UI session</span>
-        <span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">Session</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="n">instance</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="n">settings</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">VerIDSession</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="n">instance</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="n">settings</span><span class="p">)</span>
         <span class="c1">// Set your class as a delegate of the session to receive the session outcome</span>
         <span class="n">session</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
         <span class="c1">// Start the session</span>
@@ -143,15 +192,15 @@
 
     <span class="c1">// MARK: - Session delegate</span>
 
-    <span class="kd">func</span> <span class="nf">sessionWasCanceled</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">Session</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">sessionWasCanceled</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">VerIDSession</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Session was canceled</span>
     <span class="p">}</span>
 
-    <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">Session</span><span class="p">,</span> <span class="n">didFinishWithResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">SessionResult</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">VerIDSession</span><span class="p">,</span> <span class="n">didFinishWithResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">VerIDSessionResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Session finished successfully</span>
     <span class="p">}</span>
 
-    <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">Session</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">VerIDSession</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Session failed</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -166,7 +215,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-04-09)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-05-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

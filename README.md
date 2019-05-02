@@ -48,7 +48,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	platform :ios, '10.0'
 	target 'MyApp' do
 		use_frameworks!
-		pod 'Ver-ID-UI', '~> 1.0.0-beta'
+		pod 'Ver-ID-UI'
 	end
 	~~~
 1. Save the Podfile. Open **Terminal** and navigate to your project's folder. Then enter:
