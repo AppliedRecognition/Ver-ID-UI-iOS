@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.swift_version = "5"
   s.source       = { :http => "https://ver-id.s3.amazonaws.com/ios/veridui/1.0.5/VerIDUI.zip" }
   s.vendored_framework = "VerIDUI.framework"
-  s.dependency 'Ver-ID-Core', '1.0.5'
+  s.dependency 'Ver-ID-Core', '~> 1.0'
 end
