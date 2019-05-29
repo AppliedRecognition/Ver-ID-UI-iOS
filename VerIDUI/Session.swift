@@ -70,7 +70,7 @@ import os
     /// - Parameters:
     ///   - environment: Ver-ID environment used by factory classes
     ///   - settings: Session settings
-    public init(environment: VerID, settings: VerIDSessionSettings) {
+    @objc public init(environment: VerID, settings: VerIDSessionSettings) {
         self.settings = settings
         self.faceDetectionFactory = VerIDFaceDetectionServiceFactory(environment: environment)
         self.resultEvaluationFactory = VerIDResultEvaluationServiceFactory(environment: environment)
@@ -84,7 +84,7 @@ import os
     // MARK: - Public methods
     
     /// Start the session
-    public func start() {
+    @objc public func start() {
         DispatchQueue.main.async {
             if let videoURL = self.settings.videoURL, let videoWriterFactory = self.videoWriterFactory {
                 if FileManager.default.isDeletableFile(atPath: videoURL.path) {
@@ -113,7 +113,7 @@ import os
     }
     
     /// Cancel the session
-    public func cancel() {
+    @objc public func cancel() {
         self.operationQueue.cancelAllOperations()
         self.viewController = nil
         DispatchQueue.main.async {
