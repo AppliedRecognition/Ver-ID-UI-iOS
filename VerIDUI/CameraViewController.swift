@@ -62,7 +62,6 @@ import AVFoundation
         }
     }
     
-    var stillImageOutput: AVCapturePhotoOutput?
     var videoDataOutput: AVCaptureVideoDataOutput?
     var metadataOutput: AVCaptureMetadataOutput?
     
@@ -255,15 +254,6 @@ import AVFoundation
         }
         
         self.configureOutputs()
-        
-        if let output = self.stillImageOutput {
-            guard self.captureSession.canAddOutput(output) else {
-                print("Could not add still image output to the session")
-                self.setupResult = .configurationFailed
-                return
-            }
-            self.captureSession.addOutput(output)
-        }
         
         if let output = self.videoDataOutput, output.sampleBufferDelegate == nil {
             self.captureSession.removeOutput(output)

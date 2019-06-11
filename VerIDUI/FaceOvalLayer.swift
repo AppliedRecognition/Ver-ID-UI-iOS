@@ -71,7 +71,12 @@ class FaceOvalLayer: CALayer {
     private func drawArrow(in bounds: CGRect, angle: CGFloat, distance: CGFloat) {
         let arrowLength = bounds.width / 5
         let stemLength = min(max(arrowLength * distance, arrowLength * 0.75), arrowLength * 1.7)
-        let arrowAngle = CGFloat(Measurement(value: 40, unit: UnitAngle.degrees).converted(to: .radians).value)
+        let arrowAngle: CGFloat
+        if #available(iOS 10.0, *) {
+            arrowAngle = CGFloat(Measurement(value: 40, unit: UnitAngle.degrees).converted(to: .radians).value)
+        } else {
+            arrowAngle = 40 * CGFloat.pi / 180
+        }
         let arrowTip = CGPoint(x: bounds.midX + cos(angle) * arrowLength / 2, y: bounds.midY + sin(angle) * arrowLength / 2)
         let arrowPoint1 = CGPoint(x: arrowTip.x + cos(angle + CGFloat.pi - arrowAngle) * arrowLength * 0.6, y: arrowTip.y + sin(angle + CGFloat.pi - arrowAngle) * arrowLength * 0.6)
         let arrowPoint2 = CGPoint(x: arrowTip.x + cos(angle + CGFloat.pi + arrowAngle) * arrowLength * 0.6, y: arrowTip.y + sin(angle + CGFloat.pi + arrowAngle) * arrowLength * 0.6)

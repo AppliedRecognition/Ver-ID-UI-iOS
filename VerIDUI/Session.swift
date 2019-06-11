@@ -270,7 +270,13 @@ import os
             }
             let writeVideoSignpost = imageAcquisitionSignposting.createSignpost(name: "Write video buffer")
             imageAcquisitionSignposting.logStart(signpost: writeVideoSignpost)
-            videoWriter.writeSampleBuffer(buffer!, rotation: CGFloat(Measurement(value: Double(rotation), unit: UnitAngle.degrees).converted(to: .radians).value))
+            let rotationRadians: CGFloat
+            if #available(iOS 10.0, *) {
+                rotationRadians = CGFloat(Measurement(value: Double(rotation), unit: UnitAngle.degrees).converted(to: .radians).value)
+            } else {
+                rotationRadians = rotation * CGFloat.pi / 180
+            }
+            videoWriter.writeSampleBuffer(buffer!, rotation: rotationRadians)
             imageAcquisitionSignposting.logEnd(signpost: writeVideoSignpost)
         }
         if !isBufferCopied {
