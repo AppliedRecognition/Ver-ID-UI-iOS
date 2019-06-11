@@ -91,7 +91,7 @@ class QRCodeScanViewController: UIViewController, AVCaptureMetadataOutputObjects
     private func startScan() {
         self.barcodeScanQueue.async {
             self.captureSession = AVCaptureSession()
-            guard let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+            guard let camera = AVCaptureDevice.default(for: .video) else {
                 return
             }
             guard let videoInput = try? AVCaptureDeviceInput(device: camera) else {
