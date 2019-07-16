@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/AppliedRecognition"
   s.license      = { :type => "COMMERCIAL", :file => "LICENCE.txt" }
   s.author       = "Jakub Dolejs"
-  s.platform     = :ios, "10.0"
+  s.platform     = :ios, "9.0"
   s.swift_version = "5"
   s.source       = { :http => "https://ver-id.s3.amazonaws.com/ios/veridui/1.2.0/VerIDUI.zip" }
   s.vendored_framework = "VerIDUI.framework"
