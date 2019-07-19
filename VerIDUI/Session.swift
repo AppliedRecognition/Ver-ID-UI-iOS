@@ -38,6 +38,8 @@ import os
     /// Session settings
     @objc public let settings: VerIDSessionSettings
     
+    let environment: VerID
+    
     internal(set) public var viewController: (UIViewController & VerIDViewControllerProtocol)?
     
     // MARK: - Private properties
@@ -71,6 +73,7 @@ import os
     ///   - environment: Ver-ID environment used by factory classes
     ///   - settings: Session settings
     @objc public init(environment: VerID, settings: VerIDSessionSettings) {
+        self.environment = environment
         self.settings = settings
         self.faceDetectionFactory = VerIDFaceDetectionServiceFactory(environment: environment)
         self.resultEvaluationFactory = VerIDResultEvaluationServiceFactory(environment: environment)
@@ -142,7 +145,7 @@ import os
             self.showResult(VerIDSessionResult(error: error))
             return
         }
-        let op = SessionOperation(imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
+        let op = SessionOperation(environment: self.environment, imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
         op.delegate = self
         let finishOp = BlockOperation()
         finishOp.addExecutionBlock { [weak finishOp, weak self] in
@@ -204,8 +207,7 @@ import os
     public func dequeueImage() throws -> VerIDImage {
         if imageLock.wait(timeout: self.startDispatchTime+self.settings.expiryTime) == .timedOut {
             // Session expired
-            // TODO
-            throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
+            throw VerIDError.sessionTimeout
         }
         guard let img = self.image else {
             throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
