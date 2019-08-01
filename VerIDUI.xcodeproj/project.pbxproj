@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */; };
 		3B6A70EB2208C29300B137C4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EA2208C29300B137C4 /* Session.swift */; };
 		3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */; };
+		3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */; };
 		3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044E221425BE00B3B312 /* MainViewController.swift */; };
 		3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
 		3BB2045D221425BF00B3B312 /* ExportCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */; };
@@ -97,6 +98,7 @@
 		3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		3B6A70EA2208C29300B137C4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDViewControllerDelegate.swift; sourceTree = "<group>"; };
+		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
 		3BB2044E221425BE00B3B312 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BB2044F221425BE00B3B312 /* VerIDUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUser.swift; sourceTree = "<group>"; };
 		3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportCodeViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */,
 				3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */,
 				3BE9F3C7220AFB6D002C11BE /* FaceDetectionAlertController.xib */,
 				3BE9F3D1220AFB71002C11BE /* Localizable.strings */,
@@ -415,17 +418,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh",
-				"${PODS_ROOT}/Ver-ID-Core/VerIDCore.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VerIDCore.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */ = {
@@ -454,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */,
+				3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */,
 				3B6A70E72208BD8400B137C4 /* FaceOvalLayer.swift in Sources */,
 				3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */,
 				3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */,
@@ -636,6 +639,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERID_SDK_VERSION = 1.3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -695,6 +699,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERID_SDK_VERSION = 1.3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

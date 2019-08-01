@@ -34,13 +34,14 @@ import os
     
     /// Session delegate
     @objc public weak var delegate: VerIDSessionDelegate?
+    @objc public weak var viewDelegate: VerIDSessionViewDelegate?
     
     /// Session settings
     @objc public let settings: VerIDSessionSettings
     
     let environment: VerID
     
-    internal(set) public var viewController: (UIViewController & VerIDViewControllerProtocol)?
+    private var viewController: (UIViewController & VerIDViewControllerProtocol)?
     
     // MARK: - Private properties
     
@@ -87,17 +88,13 @@ import os
     // MARK: - Public methods
     
     /// Start the session
-    @objc open func start() {
+    @objc public func start() {
         DispatchQueue.main.async {
             if let videoURL = self.settings.videoURL, let videoWriterFactory = self.videoWriterFactory {
                 if FileManager.default.isDeletableFile(atPath: videoURL.path) {
                     try? FileManager.default.removeItem(at: videoURL)
                 }
                 self.videoWriterService = try? videoWriterFactory.makeVideoWriterService(url: videoURL)
-            }
-            guard var root = UIApplication.shared.keyWindow?.rootViewController else {
-                self.delegate?.session(self, didFinishWithResult: VerIDSessionResult(error: SessionError.failedToStart))
-                return
             }
             do {
                 self.viewController = try self.sessionViewControllersFactory.makeVerIDViewController()
@@ -106,34 +103,90 @@ import os
                 return
             }
             self.viewController?.delegate = self
-            while let presented = root.presentedViewController {
-                root = presented
-            }
-            self.navigationController = UINavigationController(rootViewController: self.viewController!)
-            root.present(self.navigationController!, animated: true)
             self.startOperations()
         }
     }
     
     /// Cancel the session
-    @objc open func cancel() {
+    @objc public func cancel() {
         self.operationQueue.cancelAllOperations()
         self.viewController = nil
         DispatchQueue.main.async {
-            guard let navController = self.navigationController else {
+            self.closeViews {
                 self.delegate?.sessionWasCanceled(self)
+            }
+        }
+    }
+    
+    // MARK: - Methods to overwrite to implement custom user interface
+    
+    /// Present view controller that provides images for face detection
+    ///
+    /// - Parameter viewController: Ver-ID view controller
+    @objc private func presentVerIDViewController(_ viewController: UIViewController & VerIDViewControllerProtocol) {
+        if let viewDelegate = self.viewDelegate {
+            viewDelegate.presentVerIDViewController(viewController)
+            return
+        }
+        if self.navigationController == nil {
+            guard var root = UIApplication.shared.keyWindow?.rootViewController else {
+                self.delegate?.session(self, didFinishWithResult: VerIDSessionResult(error: SessionError.failedToStart))
                 return
             }
-            self.navigationController = nil
-            navController.dismiss(animated: true) {
-                self.delegate?.sessionWasCanceled(self)
+            while let presented = root.presentedViewController {
+                root = presented
             }
+            self.navigationController = UINavigationController(rootViewController: viewController)
+            root.present(self.navigationController!, animated: true)
+        } else {
+            self.navigationController!.viewControllers = [viewController]
+        }
+    }
+    
+    /// Present view controller showing the result of the session
+    ///
+    /// - Parameter viewController: Result view controller
+    @objc private func presentResultViewController(_ viewController: UIViewController & ResultViewControllerProtocol) {
+        if let viewDelegate = self.viewDelegate {
+            viewDelegate.presentResultViewController(viewController)
+            return
+        }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    /// Present view controller showing tips on running Ver-ID sessions
+    ///
+    /// - Parameter viewController: Tips view controller
+    @objc private func presentTipsViewController(_ viewController: UIViewController & TipsViewControllerProtocol) {
+        if let viewDelegate = self.viewDelegate {
+            viewDelegate.presentTipsViewController(viewController)
+            return
+        }
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    /// Close views when session finishes
+    ///
+    /// - Parameter callback: Callback to be issued when views are closed
+    @objc private func closeViews(callback: @escaping () -> Void) {
+        if let viewDelegate = self.viewDelegate {
+            viewDelegate.closeViews(callback: callback)
+            return
+        }
+        guard let navController = self.navigationController else {
+            callback()
+            return
+        }
+        self.navigationController = nil
+        navController.dismiss(animated: true) {
+            callback()
         }
     }
     
     // MARK: - Private methods
     
     private func startOperations() {
+        self.presentVerIDViewController(self.viewController!)
         self.imageQueue = DispatchQueue(label: "com.appliedrec.image", qos: .userInitiated, attributes: [], autoreleaseFrequency: .inherit, target: nil)
         self.viewController?.clearOverlays()
         self.startTime = CACurrentMediaTime()
@@ -173,7 +226,7 @@ import os
                 do {
                     let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
                     resultViewController.delegate = self
-                    self.navigationController?.pushViewController(resultViewController, animated: true)
+                    self.presentResultViewController(resultViewController)
                 } catch {
                     self.finishWithResult(VerIDSessionResult(error: error))
                 }
@@ -187,12 +240,7 @@ import os
         self.operationQueue.cancelAllOperations()
         self.viewController = nil
         DispatchQueue.main.async {
-            guard let navController = self.navigationController else {
-                self.delegate?.session(self, didFinishWithResult: result)
-                return
-            }
-            self.navigationController = nil
-            navController.dismiss(animated: true) {
+            self.closeViews {
                 self.delegate?.session(self, didFinishWithResult: result)
             }
         }
@@ -352,7 +400,7 @@ import os
                 do {
                     let tipsController = try self.sessionViewControllersFactory.makeTipsViewController()
                     tipsController.tipsViewControllerDelegate = self
-                    self.navigationController?.pushViewController(tipsController, animated: true)
+                    self.presentTipsViewController(tipsController)
                 } catch {
                     let result = VerIDSessionResult(error: error)
                     self.finishWithResult(result)
