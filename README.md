@@ -33,8 +33,8 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	<key>com.appliedrec.verid.apiSecret</key>
 	<string>[API secret]</string>
 	~~~
-1. ~~Your app's asset bundle must include [VerIDModels](https://github.com/AppliedRecognition/Ver-ID-Models/tree/b125fd172f4e24953c5b232f49f323ceb6a69b70). Clone the folder using Git instead of downloading the Zip archive. Your system must have [Git LFS](https://git-lfs.github.com) installed prior to cloning the folder.~~<br/><br/>**As of version 1.2.2 VerIDModels are packaged in the VerIDCore.framework on which the VerIDUI.framework depends. If you've been including the VerIDModels folder with your app you can now delete it from your project.**
-1. Open your project in Xcode. In the top menu go to **File / Add Files to "Your project name"...** or press **⌥⌘A**. Select the cloned **VerIDModels** folder and tick the toggle **Create folder references for any added folders**. Press **Add**.
+1. ~~Your app's asset bundle must include [VerIDModels](https://github.com/AppliedRecognition/Ver-ID-Models/tree/b125fd172f4e24953c5b232f49f323ceb6a69b70). Clone the folder using Git instead of downloading the Zip archive. Your system must have [Git LFS](https://git-lfs.github.com) installed prior to cloning the folder.~~
+1. ~~Open your project in Xcode. In the top menu go to **File / Add Files to "Your project name"...** or press **⌥⌘A**. Select the cloned **VerIDModels** folder and tick the toggle **Create folder references for any added folders**. Press **Add**.~~<br/><br/>**As of version 1.2.2 VerIDModels are packaged in the VerIDCore.framework on which the VerIDUI.framework depends. If you've been including the VerIDModels folder with your app you can now delete it from your project.**
 1. If your project is using [CocoaPods](https://cocoapods.org) for dependency management, open the project's **Podfile**. Otherwise make sure CocoaPods is installed and in your project's folder create a file named **Podfile** (without an extension).
 1. Let's assume your project is called **MyProject** and it has an app target called **MyApp**. Open the **Podfile** in a text editor and enter the following:
 
