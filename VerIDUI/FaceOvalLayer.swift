@@ -18,6 +18,17 @@ class FaceOvalLayer: CALayer {
     private(set) var angle: CGFloat?
     private(set) var distance: CGFloat?
     
+    override init(layer: Any) {
+        if let ovalLayer = layer as? FaceOvalLayer {
+            self.strokeColor = ovalLayer.strokeColor
+            self.backgroundColour = ovalLayer.backgroundColour
+        } else {
+            self.strokeColor = UIColor.white
+            self.backgroundColour = UIColor(white: 0, alpha: 0.5)
+        }
+        super.init(layer: layer)
+    }
+    
     init(strokeColor: UIColor, backgroundColor: UIColor) {
         self.strokeColor = strokeColor
         self.backgroundColour = backgroundColor
