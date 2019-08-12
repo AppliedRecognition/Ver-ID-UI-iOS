@@ -34,6 +34,8 @@ import os
     
     /// Session delegate
     @objc public weak var delegate: VerIDSessionDelegate?
+    
+    /// Delegate that manages presenting the session views
     @objc public weak var viewDelegate: VerIDSessionViewDelegate?
     
     /// Session settings
