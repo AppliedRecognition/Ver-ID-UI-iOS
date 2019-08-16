@@ -108,10 +108,6 @@ class MyViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDele
     func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
         // Session finished successfully
     }
-    
-    func session(_ session: VerIDSession, didFailWithError error: Error) {
-        // Session failed
-    }
 }
 ~~~
 
