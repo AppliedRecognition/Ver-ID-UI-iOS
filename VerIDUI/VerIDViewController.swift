@@ -148,6 +148,9 @@ import VerIDCore
     override open func configureOutputs() {
         super.configureOutputs()
         self.videoDataOutput?.alwaysDiscardsLateVideoFrames = true
+        if let pixelFormats = self.videoDataOutput?.availableVideoPixelFormatTypes, pixelFormats.contains(kCVPixelFormatType_32BGRA) {
+            self.videoDataOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:kCVPixelFormatType_32BGRA]
+        }
         self.videoDataOutput?.setSampleBufferDelegate(self, queue: self.captureSessionQueue)
     }
     

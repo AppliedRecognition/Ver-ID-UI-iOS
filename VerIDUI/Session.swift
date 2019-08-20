@@ -341,13 +341,6 @@ import os
                 return
             }
             self.image = VerIDImage(sampleBuffer: buffer!, orientation: orientation)
-            let convertToGrayscaleSignpost = self.imageAcquisitionSignposting.createSignpost(name: "Convert image to grayscale")
-            self.imageAcquisitionSignposting.logStart(signpost: convertToGrayscaleSignpost)
-            if let (grayscale, size) = try? ImageUtil.grayscaleBufferFromVerIDImage(self.image!) {
-                self.image!.grayscalePixels = grayscale
-                self.image!.size = size
-            }
-            self.imageAcquisitionSignposting.logEnd(signpost: convertToGrayscaleSignpost)
             self.imageLock.signal()
         }
     }
