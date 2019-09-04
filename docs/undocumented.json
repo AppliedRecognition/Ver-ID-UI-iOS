@@ -86,21 +86,21 @@
     },
     {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/Session.swift",
-      "line": 385,
+      "line": 378,
       "symbol": "VerIDSession.operationDidFinishWritingImage(_:forFace:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/Session.swift",
-      "line": 463,
+      "line": 456,
       "symbol": "Session",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/Session.swift",
-      "line": 465,
+      "line": 458,
       "symbol": "SessionDelegate",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
@@ -191,21 +191,21 @@
     },
     {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/VerIDViewController.swift",
-      "line": 154,
+      "line": 157,
       "symbol": "VerIDViewController.cameraBecameUnavailable(reason:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/VerIDViewController.swift",
-      "line": 265,
+      "line": 268,
       "symbol": "VerIDViewController.loadResultImage(_:forFace:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Core-Apple/Ver-ID-UI-iOS/VerIDUI/VerIDViewController.swift",
-      "line": 269,
+      "line": 272,
       "symbol": "VerIDViewController.clearOverlays()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
