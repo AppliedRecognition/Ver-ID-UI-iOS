@@ -91,7 +91,27 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         }
         let density = UIScreen.main.scale
         let densityInt = density > 2 ? 3 : 2
-        let videoFileName = self.settings is RegistrationSessionSettings ? "registration" : "liveness_detection"
+        let videoFileName: String
+        switch faceDetectionResult.requestedBearing {
+        case .left:
+            videoFileName = "left"
+        case .right:
+            videoFileName = "right"
+        case .down:
+            videoFileName = "down"
+        case .up:
+            videoFileName = "up"
+        case .rightUp:
+            videoFileName = "right_up"
+        case .rightDown:
+            videoFileName = "right_down"
+        case .leftDown:
+            videoFileName = "left_down"
+        case .leftUp:
+            videoFileName = "left_up"
+        default:
+            videoFileName = "up_to_centre"
+        }
         let videoName = String(format: "%@_%d", videoFileName, densityInt)
         let url = bundle.url(forResource: videoName, withExtension: "mp4")
         return FaceDetectionAlertController(message: message, videoURL: url)
