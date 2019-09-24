@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JH9-dS-ikX">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JH9-dS-ikX">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,29 +11,26 @@
         <!--Success-->
         <scene sceneID="X9d-IB-Hwt">
             <objects>
-                <viewController storyboardIdentifier="success" id="JH9-dS-ikX" customClass="SuccessViewController" customModule="VerID" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="success" id="JH9-dS-ikX" customClass="SuccessViewController" customModule="VerIDUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VtJ-gm-3lP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Yu-rx-iLg">
-                                <rect key="frame" x="0.0" y="64" width="320" height="252"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Great. Session succeeded." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Yu-yW-jNo">
-                                <rect key="frame" x="16" y="324" width="288" height="224"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Great. Session succeeded." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yu-yW-jNo">
+                                <rect key="frame" x="16" y="314" width="288" height="234"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                </variation>
                             </textView>
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="QXR-YG-7O6">
-                                <rect key="frame" x="0.0" y="64" width="320" height="252"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xz6-0y-Gn7">
-                                <rect key="frame" x="0.0" y="70" width="320" height="240"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="240"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Kq4-7B-kmP"/>
@@ -43,7 +38,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3Yu-rx-iLg" firstAttribute="bottom" secondItem="7vy-qn-Lou" secondAttribute="bottom" id="0ER-09-JNl"/>
                             <constraint firstItem="7vy-qn-Lou" firstAttribute="bottom" secondItem="4Yu-yW-jNo" secondAttribute="bottom" constant="20" id="2FL-9r-dfj"/>
@@ -109,19 +104,19 @@
         <!--Ver-ID-->
         <scene sceneID="KoK-1E-oeS">
             <objects>
-                <viewController storyboardIdentifier="failure" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3sy-Zb-RZM" customClass="FailureViewController" customModule="VerID" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="failure" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3sy-Zb-RZM" customClass="FailureViewController" customModule="VerIDUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YoV-YA-qcX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIj-m0-auY">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7c-bw-IXn">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="252"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="262"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIP-Qe-sFQ">
-                                                <rect key="frame" x="0.0" y="6" width="320" height="240"/>
+                                                <rect key="frame" x="0.0" y="11" width="320" height="240"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="240" id="OP7-PZ-soE"/>
@@ -129,24 +124,21 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="RIP-Qe-sFQ" firstAttribute="centerY" secondItem="z7c-bw-IXn" secondAttribute="centerY" id="0w7-Uf-sXG"/>
                                             <constraint firstItem="RIP-Qe-sFQ" firstAttribute="centerX" secondItem="z7c-bw-IXn" secondAttribute="centerX" id="mFx-SG-NNM"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-1t-DgG">
-                                        <rect key="frame" x="16" y="260" width="288" height="236"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-1t-DgG">
+                                        <rect key="frame" x="16" y="270" width="288" height="246"/>
                                         <string key="text">When prompted turn your face slowly to follow the direction of the arrow until the frame turns green and the arrow disappears. Then hold still until prompted to turn in a different direction.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        </variation>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="z7c-bw-IXn" firstAttribute="height" secondItem="sIj-m0-auY" secondAttribute="height" multiplier="0.5" id="0lf-g7-G4E"/>
                                     <constraint firstItem="VfP-1t-DgG" firstAttribute="leading" secondItem="sIj-m0-auY" secondAttribute="leadingMargin" id="1HW-gI-nzr"/>

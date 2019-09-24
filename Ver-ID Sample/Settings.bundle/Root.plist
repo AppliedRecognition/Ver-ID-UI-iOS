@@ -238,6 +238,16 @@
 				<string>3 faces</string>
 			</array>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>Enable face template encryption</string>
+			<key>Key</key>
+			<string>faceTemplateEncryption</string>
+			<key>DefaultValue</key>
+			<true/>
+		</dict>
 	</array>
 </dict>
 </plist>

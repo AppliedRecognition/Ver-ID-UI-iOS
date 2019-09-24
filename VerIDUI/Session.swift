@@ -362,15 +362,15 @@ import os
             self.viewController?.drawFaceFromResult(faceDetectionResult, sessionResult: result, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
         }
         if result.error != nil && self.retryCount < self.settings.maxRetryCount && (faceDetectionResult.status == .faceTurnedTooFar || faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost || faceDetectionResult.status == .movedTooFast) {
-            do {
-                let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
-                self.operationQueue.cancelAllOperations()
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                do {
+                    self.operationQueue.cancelAllOperations()
+                    let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
                     alert.delegate = self
                     alert.modalPresentationStyle = .overFullScreen
                     self.viewController?.present(alert, animated: true, completion: nil)
+                } catch {
                 }
-            } catch {
             }
         }
     }

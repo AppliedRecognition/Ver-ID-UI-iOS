@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IKg-96-7AY">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IKg-96-7AY">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +14,7 @@
             <objects>
                 <navigationController id="IKg-96-7AY" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GbO-PM-Bxg">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,14 +30,14 @@
             <objects>
                 <viewController storyboardIdentifier="loading" id="dLL-lT-wXe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qP1-xh-YDx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="esB-RB-AdK">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="esB-RB-AdK">
+                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="esB-RB-AdK" firstAttribute="centerX" secondItem="qP1-xh-YDx" secondAttribute="centerX" id="FF5-iw-Rse"/>
                             <constraint firstItem="esB-RB-AdK" firstAttribute="centerY" secondItem="qP1-xh-YDx" secondAttribute="centerY" id="N09-2O-nY5"/>
@@ -57,11 +55,11 @@
             <objects>
                 <viewController storyboardIdentifier="start" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="lDi-Y0-Nst" customClass="MainViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CET-gn-7ul">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YXh-NC-MhT">
-                                <rect key="frame" x="0.0" y="64" width="320" height="120"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Suk-S5-xE1">
                                         <rect key="frame" x="16" y="16" width="88" height="88"/>
@@ -69,17 +67,14 @@
                                             <constraint firstAttribute="width" secondItem="Suk-S5-xE1" secondAttribute="height" multiplier="1:1" id="qyP-aL-9Ua"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JG-vJ-IOq">
-                                        <rect key="frame" x="120" y="49.5" width="87" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JG-vJ-IOq">
+                                        <rect key="frame" x="120" y="48" width="93.333333333333314" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        </variation>
                                     </label>
                                     <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remove" translatesAutoresizingMaskIntoConstraints="NO" id="6Fd-s6-Lef">
-                                        <rect key="frame" x="264" y="48" width="24" height="24"/>
+                                        <rect key="frame" x="358" y="48" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="1EQ-Dg-ZOD"/>
                                             <constraint firstAttribute="width" constant="24" id="f4G-LR-gxX"/>
@@ -89,7 +84,7 @@
                                         </connections>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="2JG-vJ-IOq" firstAttribute="leading" secondItem="Suk-S5-xE1" secondAttribute="trailing" constant="16" id="07p-Sc-RGW"/>
                                     <constraint firstItem="2JG-vJ-IOq" firstAttribute="centerY" secondItem="YXh-NC-MhT" secondAttribute="centerY" id="A13-sw-qeb"/>
@@ -102,40 +97,31 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2L5-AZ-rGK">
-                                <rect key="frame" x="0.0" y="184" width="320" height="384"/>
+                                <rect key="frame" x="0.0" y="164" width="414" height="572"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OXh-Ly-TQn">
-                                        <rect key="frame" x="74.5" y="116.5" width="171" height="151"/>
+                                        <rect key="frame" x="121" y="210" width="172" height="152"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWt-SU-8ff">
-                                                <rect key="frame" x="0.0" y="0.0" width="171" height="51"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="172" height="48"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                 <state key="normal" title="Authenticate"/>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="44"/>
-                                                </variation>
                                                 <connections>
                                                     <action selector="authenticate:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="3SX-Kq-UnX"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-As-QjX">
-                                                <rect key="frame" x="0.0" y="67" width="171" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <rect key="frame" x="0.0" y="64" width="172" height="36"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <state key="normal" title="Register more faces"/>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                </variation>
                                                 <connections>
                                                     <action selector="register:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="cAx-Bd-PCk"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4V4-ef-yln">
-                                                <rect key="frame" x="0.0" y="117" width="171" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <rect key="frame" x="0.0" y="116" width="172" height="36"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <state key="normal" title="Import more faces"/>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                </variation>
                                                 <connections>
                                                     <segue destination="VvO-ed-ijz" kind="show" id="CEe-GC-lM0"/>
                                                 </connections>
@@ -143,7 +129,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="OXh-Ly-TQn" firstAttribute="centerY" secondItem="2L5-AZ-rGK" secondAttribute="centerY" id="Jzl-Jh-A8n"/>
                                     <constraint firstItem="OXh-Ly-TQn" firstAttribute="centerX" secondItem="2L5-AZ-rGK" secondAttribute="centerX" id="mMa-ZW-9cy"/>
@@ -200,14 +186,14 @@
                         <viewControllerLayoutGuide type="bottom" id="hbx-8g-0Wn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hsr-yp-qJL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Skv-gl-KIh">
-                                <rect key="frame" x="138.5" y="248.5" width="43" height="71"/>
+                                <rect key="frame" x="184" y="331.66666666666669" width="46" height="72.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😢" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikU-TW-Pr4">
-                                        <rect key="frame" x="0.0" y="0.0" width="43" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="28.666666666666668"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -216,12 +202,9 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-Rp-cPg">
-                                        <rect key="frame" x="0.0" y="37" width="43" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <rect key="frame" x="0.0" y="36.666666666666629" width="46" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <state key="normal" title="Retry"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        </variation>
                                         <connections>
                                             <action selector="reloadVerID:" destination="PK2-fj-HWm" eventType="touchUpInside" id="R5O-NM-iCZ"/>
                                         </connections>
@@ -229,7 +212,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Skv-gl-KIh" firstAttribute="centerX" secondItem="hsr-yp-qJL" secondAttribute="centerX" id="ZjA-vp-k24"/>
                             <constraint firstItem="Skv-gl-KIh" firstAttribute="centerY" secondItem="hsr-yp-qJL" secondAttribute="centerY" id="qm7-VE-8bk"/>
@@ -248,34 +231,34 @@
             <objects>
                 <viewController id="VvO-ed-ijz" customClass="QRCodeScanViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="et7-mg-FeC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCo-TI-rvw">
-                                <rect key="frame" x="0.0" y="64" width="320" height="252"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="346"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch this app on another device, share registration and scan the code presented by the other app." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLC-NZ-cfG">
-                                <rect key="frame" x="24" y="444" width="272" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch this app on another device, share registration and scan the code presented by the other app." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLC-NZ-cfG">
+                                <rect key="frame" x="71" y="590" width="272" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="FQN-hG-cHj"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="256" id="Gc2-0t-Uf8"/>
                                     <constraint firstAttribute="height" constant="100" id="XkC-F7-n5H"/>
                                     <constraint firstAttribute="width" constant="272" id="tPW-zu-5Ye"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="qr_code" translatesAutoresizingMaskIntoConstraints="NO" id="ryG-qC-zoQ">
-                                <rect key="frame" x="96" y="316" width="128" height="128"/>
+                                <rect key="frame" x="143" y="462" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="w8P-DS-1VJ"/>
                                     <constraint firstAttribute="height" constant="128" id="wfF-2e-KZ2"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="fLC-NZ-cfG" firstAttribute="top" secondItem="wCo-TI-rvw" secondAttribute="bottom" priority="999" constant="200" id="3wI-gE-Yh9"/>
                             <constraint firstItem="wCo-TI-rvw" firstAttribute="top" secondItem="dWA-Yl-LnB" secondAttribute="top" id="5gt-W1-Kk1"/>
@@ -335,76 +318,41 @@
             <objects>
                 <viewController storyboardIdentifier="introPage1" id="OXs-Ed-qmK" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D5z-h0-8S1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_head_straight" translatesAutoresizingMaskIntoConstraints="NO" id="wG6-Zw-hQ0">
-                                <rect key="frame" x="0.0" y="20" width="320" height="274"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0fR-Oz-60l">
-                                <rect key="frame" x="16" y="302" width="288" height="246"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Ver-ID Person SDK">
-                                        <attributes>
-                                            <font key="NSFont" size="32" name=".SFNSDisplay"/>
-                                            <font key="NSOriginalFont" size="32" name=".SFNSDisplay"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <font key="NSFont" size="36" name=".SFNSText"/>
-                                            <font key="NSOriginalFont" size="36" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" This app demonstrates how Ver-ID performs two common user authentication tasks.">
-                                        <attributes>
-                                            <font key="NSFont" size="18" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <attributedString key="attributedText">
-                                        <fragment content="Ver-ID Person SDK">
-                                            <attributes>
-                                                <font key="NSFont" size="36" name=".SFNSDisplay"/>
-                                                <font key="NSOriginalFont" size="48" name=".SFNSDisplay"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" ">
-                                            <attributes>
-                                                <font key="NSFont" size="36" name=".SFNSText"/>
-                                                <font key="NSOriginalFont" size="36" name=".SFNSText"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" This app demonstrates how Ver-ID performs two common user authentication tasks.">
-                                            <attributes>
-                                                <font key="NSFont" size="24" name=".AppleSystemUIFont"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </variation>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DPn-V6-KOy">
+                                <rect key="frame" x="20" y="384" width="374" height="86.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ver-ID Person SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bho-H7-m1S">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app demonstrates how Ver-ID performs two common user authentication tasks." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6f-o8-cLK">
+                                        <rect key="frame" x="0.0" y="44" width="374" height="42.333333333333343"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="0fR-Oz-60l" firstAttribute="trailing" secondItem="D5z-h0-8S1" secondAttribute="trailingMargin" id="8qC-y7-9o9"/>
-                            <constraint firstItem="0fR-Oz-60l" firstAttribute="leading" secondItem="wG6-Zw-hQ0" secondAttribute="trailing" constant="8" id="HlL-ht-Kjc"/>
+                            <constraint firstItem="DPn-V6-KOy" firstAttribute="leading" secondItem="D5z-h0-8S1" secondAttribute="leadingMargin" id="3fu-ZE-LtI"/>
+                            <constraint firstItem="DPn-V6-KOy" firstAttribute="leading" secondItem="wG6-Zw-hQ0" secondAttribute="trailing" constant="16" id="3hc-TH-JuU"/>
                             <constraint firstItem="wG6-Zw-hQ0" firstAttribute="bottom" secondItem="Bbu-YH-9z3" secondAttribute="bottom" id="JiH-he-P5E"/>
-                            <constraint firstItem="0fR-Oz-60l" firstAttribute="leading" secondItem="D5z-h0-8S1" secondAttribute="leadingMargin" id="Umh-Ft-rJd"/>
-                            <constraint firstItem="Bbu-YH-9z3" firstAttribute="bottom" secondItem="0fR-Oz-60l" secondAttribute="bottom" constant="20" id="bAj-JB-tIb"/>
-                            <constraint firstItem="0fR-Oz-60l" firstAttribute="top" secondItem="wG6-Zw-hQ0" secondAttribute="bottom" constant="8" id="gqa-ao-ozN"/>
-                            <constraint firstItem="0fR-Oz-60l" firstAttribute="top" secondItem="Bbu-YH-9z3" secondAttribute="top" constant="20" id="kCG-KL-Dqd"/>
+                            <constraint firstItem="DPn-V6-KOy" firstAttribute="top" secondItem="D5z-h0-8S1" secondAttribute="topMargin" constant="32" id="TzR-0i-oCJ"/>
                             <constraint firstItem="wG6-Zw-hQ0" firstAttribute="trailing" secondItem="Bbu-YH-9z3" secondAttribute="trailing" id="klH-Wr-epl"/>
                             <constraint firstItem="wG6-Zw-hQ0" firstAttribute="width" secondItem="Bbu-YH-9z3" secondAttribute="width" multiplier="0.5" id="ng9-yb-JgM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DPn-V6-KOy" secondAttribute="trailing" id="pkk-EU-VYE"/>
+                            <constraint firstItem="DPn-V6-KOy" firstAttribute="top" secondItem="wG6-Zw-hQ0" secondAttribute="bottom" constant="16" id="qS5-BV-eW9"/>
                             <constraint firstItem="wG6-Zw-hQ0" firstAttribute="leading" secondItem="Bbu-YH-9z3" secondAttribute="leading" id="rn0-E4-NfK"/>
                             <constraint firstItem="wG6-Zw-hQ0" firstAttribute="height" secondItem="Bbu-YH-9z3" secondAttribute="height" multiplier="0.5" id="vfu-pY-qgl"/>
                             <constraint firstItem="wG6-Zw-hQ0" firstAttribute="top" secondItem="Bbu-YH-9z3" secondAttribute="top" id="wnp-bz-KQ1"/>
@@ -414,8 +362,8 @@
                             <mask key="constraints">
                                 <exclude reference="JiH-he-P5E"/>
                                 <exclude reference="ng9-yb-JgM"/>
-                                <exclude reference="HlL-ht-Kjc"/>
-                                <exclude reference="kCG-KL-Dqd"/>
+                                <exclude reference="3hc-TH-JuU"/>
+                                <exclude reference="TzR-0i-oCJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -424,106 +372,60 @@
                                 <exclude reference="klH-Wr-epl"/>
                                 <include reference="ng9-yb-JgM"/>
                                 <exclude reference="vfu-pY-qgl"/>
-                                <include reference="HlL-ht-Kjc"/>
-                                <exclude reference="Umh-Ft-rJd"/>
-                                <exclude reference="gqa-ao-ozN"/>
-                                <include reference="kCG-KL-Dqd"/>
+                                <exclude reference="3fu-ZE-LtI"/>
+                                <include reference="3hc-TH-JuU"/>
+                                <include reference="TzR-0i-oCJ"/>
+                                <exclude reference="qS5-BV-eW9"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0X-iS-OsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616" y="152"/>
+            <point key="canvasLocation" x="2615.1999999999998" y="151.57421289355324"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="snW-b9-UyS">
             <objects>
                 <viewController storyboardIdentifier="introPage2" id="dsd-bj-DE6" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NAh-WM-UiH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="multiple_heads" translatesAutoresizingMaskIntoConstraints="NO" id="hlX-Nw-mks">
-                                <rect key="frame" x="0.0" y="20" width="320" height="274"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
+                                <color key="backgroundColor" red="0.94899803400039673" green="0.94876343011856079" blue="0.96863216161727905" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lgl-Q2-VuK">
-                                <rect key="frame" x="16" y="302" width="288" height="246"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="1. ">
-                                        <attributes>
-                                            <font key="NSFont" size="32" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Registration">
-                                        <attributes>
-                                            <font key="NSFont" size="32" name=".SFNSText"/>
-                                            <font key="NSOriginalFont" size="32" name=".SFNSText"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="  The app collects images of your face and stores them as templates.">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="18"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <attributedString key="attributedText">
-                                        <fragment content="1. ">
-                                            <attributes>
-                                                <font key="NSFont" size="36" name=".SFNSText"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="Registration">
-                                            <attributes>
-                                                <font key="NSFont" size="36" name=".SFNSText"/>
-                                                <font key="NSOriginalFont" size="32" name=".SFNSText"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" ">
-                                            <attributes>
-                                                <font key="NSFont" metaFont="system" size="18"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" ">
-                                            <attributes>
-                                                <font key="NSFont" size="24" name=".AppleSystemUIFont"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="The app collects images of your face and stores them as templates.">
-                                            <attributes>
-                                                <font key="NSFont" size="24" name=".AppleSystemUIFont"/>
-                                                <font key="NSOriginalFont" size="24" name=".SFNSText"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </variation>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hfM-vY-3hb">
+                                <rect key="frame" x="20" y="384" width="374" height="94.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P02-2B-qBl">
+                                        <rect key="frame" x="0.0" y="0.0" width="180.33333333333334" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The app collects images of your face and stores them as templates." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npg-vO-3GA">
+                                        <rect key="frame" x="0.0" y="52" width="370.66666666666669" height="42.333333333333343"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="lgl-Q2-VuK" firstAttribute="top" secondItem="qwG-nR-AVG" secondAttribute="top" constant="20" id="54l-iK-1nf"/>
-                            <constraint firstItem="qwG-nR-AVG" firstAttribute="bottom" secondItem="lgl-Q2-VuK" secondAttribute="bottom" constant="20" id="AMr-8b-af9"/>
-                            <constraint firstItem="lgl-Q2-VuK" firstAttribute="trailing" secondItem="NAh-WM-UiH" secondAttribute="trailingMargin" id="FNf-lg-rb9"/>
                             <constraint firstItem="hlX-Nw-mks" firstAttribute="height" secondItem="qwG-nR-AVG" secondAttribute="height" multiplier="0.5" id="KzF-Ms-lDL"/>
                             <constraint firstItem="hlX-Nw-mks" firstAttribute="width" secondItem="qwG-nR-AVG" secondAttribute="width" multiplier="0.5" id="PJK-w1-MjF"/>
-                            <constraint firstItem="lgl-Q2-VuK" firstAttribute="leading" secondItem="hlX-Nw-mks" secondAttribute="trailing" constant="8" id="exm-xD-K42"/>
+                            <constraint firstItem="hfM-vY-3hb" firstAttribute="leading" secondItem="NAh-WM-UiH" secondAttribute="leadingMargin" id="SfW-Ki-NFE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hfM-vY-3hb" secondAttribute="trailing" id="bWt-xS-rjv"/>
+                            <constraint firstItem="hfM-vY-3hb" firstAttribute="top" secondItem="hlX-Nw-mks" secondAttribute="bottom" constant="16" id="fZm-Wm-AJ7"/>
+                            <constraint firstItem="hfM-vY-3hb" firstAttribute="leading" secondItem="hlX-Nw-mks" secondAttribute="trailing" constant="16" id="l8G-et-8QV"/>
                             <constraint firstItem="hlX-Nw-mks" firstAttribute="leading" secondItem="qwG-nR-AVG" secondAttribute="leading" id="lm7-cE-mLE"/>
                             <constraint firstItem="hlX-Nw-mks" firstAttribute="trailing" secondItem="qwG-nR-AVG" secondAttribute="trailing" id="nJi-v7-ttX"/>
-                            <constraint firstItem="lgl-Q2-VuK" firstAttribute="top" secondItem="hlX-Nw-mks" secondAttribute="bottom" constant="8" id="noO-eX-xTP"/>
+                            <constraint firstItem="hfM-vY-3hb" firstAttribute="top" secondItem="qwG-nR-AVG" secondAttribute="top" constant="32" id="oxC-6i-wsB"/>
                             <constraint firstItem="hlX-Nw-mks" firstAttribute="bottom" secondItem="qwG-nR-AVG" secondAttribute="bottom" id="poR-8E-vLB"/>
-                            <constraint firstItem="lgl-Q2-VuK" firstAttribute="leading" secondItem="NAh-WM-UiH" secondAttribute="leadingMargin" id="sRP-hw-FFy"/>
                             <constraint firstItem="hlX-Nw-mks" firstAttribute="top" secondItem="qwG-nR-AVG" secondAttribute="top" id="w4e-E5-il5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qwG-nR-AVG"/>
@@ -531,8 +433,8 @@
                             <mask key="constraints">
                                 <exclude reference="PJK-w1-MjF"/>
                                 <exclude reference="poR-8E-vLB"/>
-                                <exclude reference="54l-iK-1nf"/>
-                                <exclude reference="exm-xD-K42"/>
+                                <exclude reference="l8G-et-8QV"/>
+                                <exclude reference="oxC-6i-wsB"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -541,10 +443,10 @@
                                 <include reference="PJK-w1-MjF"/>
                                 <exclude reference="nJi-v7-ttX"/>
                                 <include reference="poR-8E-vLB"/>
-                                <include reference="54l-iK-1nf"/>
-                                <include reference="exm-xD-K42"/>
-                                <exclude reference="noO-eX-xTP"/>
-                                <exclude reference="sRP-hw-FFy"/>
+                                <exclude reference="SfW-Ki-NFE"/>
+                                <exclude reference="fZm-Wm-AJ7"/>
+                                <include reference="l8G-et-8QV"/>
+                                <include reference="oxC-6i-wsB"/>
                             </mask>
                         </variation>
                     </view>
@@ -558,92 +460,52 @@
             <objects>
                 <viewController storyboardIdentifier="introPage3" id="7mN-g6-oYn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MbE-Py-FpN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authentication" translatesAutoresizingMaskIntoConstraints="NO" id="Bc0-HF-WF3">
-                                <rect key="frame" x="0.0" y="20" width="320" height="274"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
+                                <color key="backgroundColor" red="0.94899803400039673" green="0.94876343011856079" blue="0.96863216161727905" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U23-Ny-CSn">
-                                <rect key="frame" x="16" y="302" width="288" height="246"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="2. ">
-                                        <attributes>
-                                            <font key="NSFont" size="32" name=".SFNSDisplay"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Authentication">
-                                        <attributes>
-                                            <font key="NSFont" size="32" name=".SFNSDisplay"/>
-                                            <font key="NSOriginalFont" size="32" name=".SFNSDisplay"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="  The app captures images of you and verifies them against the templates collected at registration.">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system" size="18"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <attributedString key="attributedText">
-                                        <fragment content="2. ">
-                                            <attributes>
-                                                <font key="NSFont" size="36" name=".SFNSText"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="Authentication">
-                                            <attributes>
-                                                <font key="NSFont" size="36" name=".SFNSText"/>
-                                                <font key="NSOriginalFont" size="32" name=".SFNSDisplay"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="  ">
-                                            <attributes>
-                                                <font key="NSFont" size="24" name=".SFNSText"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="The app captures images of you and verifies them against the templates collected at registration.">
-                                            <attributes>
-                                                <font key="NSFont" size="24" name=".SFNSText"/>
-                                                <font key="NSOriginalFont" size="24" name=".SFNSText"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </variation>
-                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Rp7-ds-F1c">
+                                <rect key="frame" x="20" y="384" width="374" height="116.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Authentication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZR7-l6-MfH">
+                                        <rect key="frame" x="0.0" y="0.0" width="218.33333333333334" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The app captures images of you and verifies them against the templates collected at registration." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-2I-swV">
+                                        <rect key="frame" x="0.0" y="51.999999999999993" width="342.66666666666669" height="64.333333333333314"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Rp7-ds-F1c" firstAttribute="top" secondItem="Bc0-HF-WF3" secondAttribute="bottom" constant="16" id="0ml-zO-tU7"/>
                             <constraint firstItem="Bc0-HF-WF3" firstAttribute="bottom" secondItem="gJF-9p-hRM" secondAttribute="bottom" id="1tZ-I4-PMX"/>
-                            <constraint firstItem="U23-Ny-CSn" firstAttribute="leading" secondItem="MbE-Py-FpN" secondAttribute="leadingMargin" id="8ue-lC-LXO"/>
-                            <constraint firstItem="U23-Ny-CSn" firstAttribute="leading" secondItem="Bc0-HF-WF3" secondAttribute="trailing" constant="8" id="AKa-IT-cFN"/>
+                            <constraint firstItem="Rp7-ds-F1c" firstAttribute="leading" secondItem="MbE-Py-FpN" secondAttribute="leadingMargin" id="BTM-Ak-Djp"/>
                             <constraint firstItem="Bc0-HF-WF3" firstAttribute="top" secondItem="gJF-9p-hRM" secondAttribute="top" id="NMi-AD-inx"/>
-                            <constraint firstItem="gJF-9p-hRM" firstAttribute="bottom" secondItem="U23-Ny-CSn" secondAttribute="bottom" constant="20" id="RHi-Fq-fRW"/>
                             <constraint firstItem="Bc0-HF-WF3" firstAttribute="height" secondItem="gJF-9p-hRM" secondAttribute="height" multiplier="0.5" id="XkO-Xz-wLN"/>
+                            <constraint firstItem="Rp7-ds-F1c" firstAttribute="top" secondItem="gJF-9p-hRM" secondAttribute="top" constant="32" id="bxw-cZ-zT8"/>
                             <constraint firstItem="Bc0-HF-WF3" firstAttribute="trailing" secondItem="gJF-9p-hRM" secondAttribute="trailing" id="dRA-Gb-YGG"/>
                             <constraint firstItem="Bc0-HF-WF3" firstAttribute="width" secondItem="gJF-9p-hRM" secondAttribute="width" multiplier="0.5" id="dgw-rN-5wD"/>
-                            <constraint firstItem="U23-Ny-CSn" firstAttribute="trailing" secondItem="MbE-Py-FpN" secondAttribute="trailingMargin" id="iSA-RE-hqT"/>
-                            <constraint firstItem="U23-Ny-CSn" firstAttribute="top" secondItem="Bc0-HF-WF3" secondAttribute="bottom" constant="8" id="kCv-0L-mML"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rp7-ds-F1c" secondAttribute="trailing" id="gQg-cs-hnQ"/>
                             <constraint firstItem="Bc0-HF-WF3" firstAttribute="leading" secondItem="gJF-9p-hRM" secondAttribute="leading" id="l6T-nn-vfC"/>
-                            <constraint firstItem="U23-Ny-CSn" firstAttribute="top" secondItem="gJF-9p-hRM" secondAttribute="top" constant="20" id="vM7-GU-1zn"/>
+                            <constraint firstItem="Rp7-ds-F1c" firstAttribute="leading" secondItem="Bc0-HF-WF3" secondAttribute="trailing" constant="16" id="xha-LR-X5l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gJF-9p-hRM"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="1tZ-I4-PMX"/>
                                 <exclude reference="dgw-rN-5wD"/>
-                                <exclude reference="AKa-IT-cFN"/>
-                                <exclude reference="vM7-GU-1zn"/>
+                                <exclude reference="bxw-cZ-zT8"/>
+                                <exclude reference="xha-LR-X5l"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -652,10 +514,10 @@
                                 <exclude reference="XkO-Xz-wLN"/>
                                 <exclude reference="dRA-Gb-YGG"/>
                                 <include reference="dgw-rN-5wD"/>
-                                <exclude reference="8ue-lC-LXO"/>
-                                <include reference="AKa-IT-cFN"/>
-                                <exclude reference="kCv-0L-mML"/>
-                                <include reference="vM7-GU-1zn"/>
+                                <exclude reference="0ml-zO-tU7"/>
+                                <exclude reference="BTM-Ak-Djp"/>
+                                <include reference="bxw-cZ-zT8"/>
+                                <include reference="xha-LR-X5l"/>
                             </mask>
                         </variation>
                     </view>
@@ -669,14 +531,14 @@
             <objects>
                 <viewController modalPresentationStyle="overFullScreen" id="rwU-7F-opS" customClass="ExportCodeViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cUG-ee-8wB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OR3-Zc-JP7">
-                                <rect key="frame" x="0.0" y="124" width="320" height="320"/>
+                                <rect key="frame" x="19.666666666666657" y="180.66666666666663" width="375" height="375"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h6H-MY-weD">
-                                        <rect key="frame" x="25" y="25" width="270" height="270"/>
+                                        <rect key="frame" x="52.333333333333314" y="52.333333333333343" width="270" height="270"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="270" id="1yr-RX-S2a"/>
                                             <constraint firstAttribute="width" constant="270" id="xoU-H5-DDb"/>
@@ -693,7 +555,7 @@
                                 </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ryk-yO-qAx">
-                                <rect key="frame" x="0.0" y="80" width="320" height="44"/>
+                                <rect key="frame" x="19.666666666666657" y="136.66666666666666" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Scan to import" id="Dvh-0c-CvW">
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ags-jd-O0k">
@@ -731,20 +593,20 @@
             <objects>
                 <viewController id="CMy-Ea-9WB" customClass="RegistrationImportViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rgA-yc-YsO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D9T-NG-LrH">
-                                <rect key="frame" x="0.0" y="64" width="320" height="252"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="346"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register the downloaded faces of this person?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtp-Qx-n4n">
-                                <rect key="frame" x="16" y="332" width="288" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register the downloaded faces of this person?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtp-Qx-n4n">
+                                <rect key="frame" x="20" y="406" width="374" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mtp-Qx-n4n" firstAttribute="trailing" secondItem="rgA-yc-YsO" secondAttribute="trailingMargin" id="81b-hk-Jnl"/>
                             <constraint firstItem="D9T-NG-LrH" firstAttribute="height" secondItem="ah3-fX-aPj" secondAttribute="height" multiplier="0.5" id="M86-vW-1NI"/>
