@@ -17,7 +17,7 @@ def getSwiftFiles(dir, swiftFiles):
             if dirname != "build":
                 getSwiftFiles(dirpath+dirname, swiftFiles)
 swiftFiles = []
-getSwiftFiles("./VerIDUI/", swiftFiles)
+getSwiftFiles("../", swiftFiles)
 
 swiftFiles = unique(swiftFiles)
 
