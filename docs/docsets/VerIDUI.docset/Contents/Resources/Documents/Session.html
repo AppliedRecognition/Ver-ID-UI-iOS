@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Other Protocols  Reference</title>
+    <title>Session  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Section/Other Protocols" class="dashAnchor"></a>
-    <a title="Other Protocols  Reference"></a>
+    <a name="//apple_ref/swift/Section/Session" class="dashAnchor"></a>
+    <a title="Session  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">VerIDUI Docs</a></p>
@@ -21,14 +21,31 @@
       <p id="breadcrumbs">
         <a href="index.html">VerIDUI Reference</a>
         <img id="carat" src="img/carat.png" />
-        Other Protocols  Reference
+        Session  Reference
       </p>
     </div>
     <div class="content-wrapper">
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="View Controllers.html">View Controllers</a>
+            <a href="Session.html">Session</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/VerIDSession.html">VerIDSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/VerIDSessionViewDelegate.html">VerIDSessionViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TranslatedStrings.html">TranslatedStrings</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="View%20Controllers.html">View Controllers</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/SessionViewControllersFactory.html">SessionViewControllersFactory</a>
@@ -60,35 +77,16 @@
               <li class="nav-group-task">
                 <a href="Protocols/FaceDetectionAlertControllerDelegate.html">FaceDetectionAlertControllerDelegate</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other Classes.html">Other Classes</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/CameraViewController.html">CameraViewController</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Classes/VerIDSession.html">VerIDSession</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Other Enums.html">Other Enumerations</a>
+            <a href="Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/FaceDetectionAlertControllerAction.html">FaceDetectionAlertControllerAction</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Other Protocols.html">Other Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/VerIDSessionViewDelegate.html">VerIDSessionViewDelegate</a>
               </li>
             </ul>
           </li>
@@ -97,13 +95,41 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Other Protocols</h1>
-            <p>The following protocols are available globally.</p>
-
+            <h1>Session</h1>
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession"></a>
+                    <a name="//apple_ref/swift/Class/VerIDSession" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession">VerIDSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Ver-ID session</p>
+
+                        <a href="Classes/VerIDSession.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">VerIDSession</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">ImageProviderService</span><span class="p">,</span> <span class="kt"><a href="Protocols/VerIDViewControllerDelegate.html">VerIDViewControllerDelegate</a></span><span class="p">,</span> <span class="kt">SessionOperationDelegate</span><span class="p">,</span> <span class="kt"><a href="Protocols/FaceDetectionAlertControllerDelegate.html">FaceDetectionAlertControllerDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ResultViewControllerDelegate.html">ResultViewControllerDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/TipsViewControllerDelegate.html">TipsViewControllerDelegate</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -168,11 +194,49 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@VerIDUI@objc(cs)TranslatedStrings"></a>
+                    <a name="//apple_ref/swift/Class/TranslatedStrings" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)TranslatedStrings">TranslatedStrings</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides translated strings for the Ver-ID UI</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.8.0
+
+</div>
+
+                        <a href="Classes/TranslatedStrings.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">TranslatedStrings</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">XMLParserDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-09-04)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-09-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

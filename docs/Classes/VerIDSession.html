@@ -28,7 +28,24 @@
       <nav class="sidebar">
         <ul class="nav-groups">
           <li class="nav-group-name">
-            <a href="../View Controllers.html">View Controllers</a>
+            <a href="../Session.html">Session</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/VerIDSession.html">VerIDSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VerIDSessionViewDelegate.html">VerIDSessionViewDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TranslatedStrings.html">TranslatedStrings</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../View%20Controllers.html">View Controllers</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Protocols/SessionViewControllersFactory.html">SessionViewControllersFactory</a>
@@ -60,35 +77,16 @@
               <li class="nav-group-task">
                 <a href="../Protocols/FaceDetectionAlertControllerDelegate.html">FaceDetectionAlertControllerDelegate</a>
               </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Other Classes.html">Other Classes</a>
-            <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/CameraViewController.html">CameraViewController</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Classes/VerIDSession.html">VerIDSession</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Other Enums.html">Other Enumerations</a>
+            <a href="../Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/FaceDetectionAlertControllerAction.html">FaceDetectionAlertControllerAction</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="../Other Protocols.html">Other Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="../Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/VerIDSessionViewDelegate.html">VerIDSessionViewDelegate</a>
               </li>
             </ul>
           </li>
@@ -356,6 +354,82 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:translatedStrings:"></a>
+                    <a name="//apple_ref/swift/Method/init(environment:settings:translatedStrings:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:translatedStrings:">init(environment:settings:translatedStrings:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Session constructor</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.8.0
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="kt">VerID</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt">VerIDSessionSettings</span><span class="p">,</span> <span class="nv">translatedStrings</span><span class="p">:</span> <span class="kt"><a href="../Classes/TranslatedStrings.html">TranslatedStrings</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>environment</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Ver-ID environment used by factory classes</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>settings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Session settings</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>translatedStrings</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Translated strings for the session</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:"></a>
                     <a name="//apple_ref/swift/Method/init(environment:settings:)" class="dashAnchor"></a>
                     <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:">init(environment:settings:)</a>
@@ -374,7 +448,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="kt">VerID</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt">VerIDSessionSettings</span><span class="p">)</span></code></pre>
+<span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="kt">VerID</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt">VerIDSessionSettings</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -1036,8 +1110,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-09-04)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-09-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
