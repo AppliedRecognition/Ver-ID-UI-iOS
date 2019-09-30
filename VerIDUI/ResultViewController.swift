@@ -34,12 +34,14 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol {
     
     var result: VerIDSessionResult?
     var settings: VerIDSessionSettings?
-    public var delegate: ResultViewControllerDelegate?
+    public var delegate: ResultViewControllerDelegate?    
+    var translatedStrings: TranslatedStrings?
     @IBOutlet weak var textView: UITextView!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
+        self.navigationItem.rightBarButtonItem?.title = self.translatedStrings?["Done"]
     }
     
     @IBAction func cancel(_ sender: Any?=nil) {
@@ -64,6 +66,7 @@ class SuccessViewController: ResultViewController {
         guard let result = self.result else {
             return
         }
+        self.navigationItem.title = self.translatedStrings?["Success"]
         DispatchQueue.global().async {
             let facesWithImage = result.attachments.filter({ $0.imageURL != nil })
             if facesWithImage.isEmpty {
@@ -113,11 +116,11 @@ class SuccessViewController: ResultViewController {
             }
         }
         if settings is RegistrationSessionSettings {
-            self.textView.text = NSLocalizedString("Great. You are now registered.", tableName: nil, bundle: Bundle(for: type(of: self)), value: "Great. You are now registered.", comment: "Displayed when a registration session succeeds.")
+            self.textView.text = self.translatedStrings?["Great. You are now registered."]
         } else if settings is AuthenticationSessionSettings {
-            self.textView.text = NSLocalizedString("Great. You authenticated using your face.", tableName: nil, bundle: Bundle(for: type(of: self)), value: "Great. You authenticated using your face.", comment: "Displayed when an authentication session succeeds.")
+            self.textView.text = self.translatedStrings?["Great. You authenticated using your face."]
         } else {
-            self.textView.text = NSLocalizedString("Great. Session succeeded.", tableName: nil, bundle: Bundle(for: type(of: self)), value: "Great. Session succeeded.", comment: "Displayed when a liveness detection session succeeds.")
+            self.textView.text = self.translatedStrings?["Great. Session succeeded."]
         }
     }
     
@@ -136,15 +139,13 @@ class FailureViewController: ResultViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        if let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
-            self.navigationItem.title = appName
-        }
+        self.title = self.translatedStrings?["Failed"]
         if settings is RegistrationSessionSettings {
-            self.textView.text = NSLocalizedString("Registration failed", tableName: nil, bundle: Bundle(for: type(of: self)), value: "Registration failed", comment: "Displayed when a registration session fails.")
+            self.textView.text = self.translatedStrings?["Registration failed"]
         } else if settings is AuthenticationSessionSettings {
-            self.textView.text = NSLocalizedString("Authentication failed", tableName: nil, bundle: Bundle(for: type(of: self)), value: "Authentication failed", comment: "Displayed when an authentication session fails.")
+            self.textView.text = self.translatedStrings?["Authentication failed"]
         } else {
-            self.textView.text = NSLocalizedString("Session failed", tableName: nil, bundle: Bundle(for: type(of: self)), value: "Session failed", comment: "Displayed when a liveness detection session fails.")
+            self.textView.text = self.translatedStrings?["Session failed"]
         }
     }
     

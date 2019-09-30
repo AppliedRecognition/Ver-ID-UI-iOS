@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings language="vi">
+    <string>
+        <original>Resume session</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>You may have turned too far. Only turn in the requested direction until the oval turns green.</original>
+        <translation>Di chuyển mặt theo hướng dẫn đến khi khung hình chuyển màu xanh</translation>
+    </string>
+    <string>
+        <original>Turn your head in the direction of the arrow</original>
+        <translation>Xoay đầu theo hướng mũi tên</translation>
+    </string>
+    <string>
+        <original>Please turn slowly</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>Done</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>Success</original>
+        <translation>Thành công</translation>
+    </string>
+    <string>
+        <original>Great. You are now registered.</original>
+        <translation>Tuyệt vời, đăng ký thành công</translation>
+    </string>
+    <string>
+        <original>Great. You authenticated using your face.</original>
+        <translation>Tuyệt vời, đã xác thực khuôn mặt</translation>
+    </string>
+    <string>
+        <original>Great. Session succeeded.</original>
+        <translation>Tuyệt vời. Đã hoàn tất.</translation>
+    </string>
+    <string>
+        <original>Failed</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>Registration failed</original>
+        <translation>Đăng ký thất bại</translation>
+    </string>
+    <string>
+        <original>Authentication failed</original>
+        <translation>Xác thực thất bại.Vui lòng tham khảo gợi ý để thực hiện lại.</translation>
+    </string>
+    <string>
+        <original>Session failed</original>
+        <translation>Nhận diện thất bại</translation>
+    </string>
+    <string>
+        <original>Unable to resume</original>
+        <translation>Không thể tiếp tục</translation>
+    </string>
+    <string>
+        <original>OK</original>
+        <translation>OK</translation>
+    </string>
+    <string>
+        <original>Cancel</original>
+        <translation>Huỷ</translation>
+    </string>
+    <string>
+        <original>Show tips</original>
+        <translation>Xem gợi ý</translation>
+    </string>
+    <string>
+        <original>Try again</original>
+        <translation>Thử lại</translation>
+    </string>
+    <string>
+        <original>Camera access denied</original>
+        <translation>Truy cập Camera bị từ chối</translation>
+    </string>
+    <string>
+        <original>Please go to settings and enable camera in the settings for %@.</original>
+        <translation>Xin vào phần cài đặt để mở chức năng camera cho %@.</translation>
+    </string>
+    <string>
+        <original>Preparing face detection</original>
+        <translation>Chuẩn bị nhận diện khuôn mặt</translation>
+    </string>
+    <string>
+        <original>Please wait</original>
+        <translation>Xin vui lòng chờ</translation>
+    </string>
+    <string>
+        <original>Great, hold it</original>
+        <translation>Tuyệt vời, xin đừng dịch chuyển</translation>
+    </string>
+    <string>
+        <original>Hold it</original>
+        <translation>Xin đừng dịch chuyển</translation>
+    </string>
+    <string>
+        <original>Slowly turn to follow the arrow</original>
+        <translation>Di chuyển từ từ theo hướng mũi tên</translation>
+    </string>
+    <string>
+        <original>Align your face with the oval</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>Avoid standing in a light that throws sharp shadows like in sharp sunlight or directly under a lamp.</original>
+        <translation>Vui lòng di chuyển đến nơi không chói sáng vào màn hình.</translation>
+    </string>
+    <string>
+        <original>Avoid standing in front of busy backgrounds.</original>
+        <translation>Vui lòng di chuyển đến nơi có nền đơn giản hơn để nhận diện khuôn mặt được rõ.</translation>
+    </string>
+    <string>
+        <original>If you can, take off your glasses.</original>
+        <translation>Vui lòng tháo kính ra.</translation>
+    </string>
+</strings>

@@ -1,10 +1,12 @@
 clean: true
-sdk: iphoneos
+sdk: iphonesimulator
 xcodebuild_arguments:
  - -workspace
  - VerIDUI.xcworkspace
  - -scheme
  - VerIDUI
+ - -sdk
+ - iphonesimulator
 author: Applied Recognition, Inc.
 module: VerIDUI
 min_acl: public
@@ -14,8 +16,10 @@ hide_documentation_coverage: true
 custom_categories:
  - name: Session
    children:
-   - Session
-   - SessionDelegate
+   - VerIDSession
+   - VerIDSessionDelegate
+   - VerIDSessionViewDelegate
+   - TranslatedStrings
  - name: View Controllers
    children:
    - SessionViewControllersFactory
@@ -28,3 +32,4 @@ custom_categories:
    - TipsViewControllerDelegate
    - FaceDetectionAlertControllerProtocol
    - FaceDetectionAlertControllerDelegate
+   - CameraViewController

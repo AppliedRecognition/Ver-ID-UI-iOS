@@ -37,6 +37,7 @@ import VerIDCore
     @IBOutlet var directionLabel: PaddedRoundedLabel!
     @IBOutlet var directionLabelYConstraint: NSLayoutConstraint!
     @IBOutlet var overlayView: UIView!
+    @IBOutlet var cancelButton: UIButton!
     
     // MARK: - Colours
     
@@ -100,19 +101,22 @@ import VerIDCore
         self.directionLabel.textColor = UIColor.black
         self.directionLabel.backgroundColor = UIColor.white
         self.noCameraLabel.isHidden = true
+        self.noCameraLabel.text = self.translatedStrings?["Camera access denied"]
         self.currentImageOrientation = imageOrientation
-        let bundle = Bundle(for: type(of: self))
         if let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
-            self.noCameraLabel.text = String(format: NSLocalizedString("Please go to settings and enable camera in the settings for app.", tableName: nil, bundle: bundle, value: "Please go to settings and enable camera in the settings for %@.", comment: "Instruction displayed to the user if they disable access to the camera"), appName)
+            self.noCameraLabel.text = self.translatedStrings?["Please go to settings and enable camera in the settings for %@.", appName]
         }
+        self.directionLabel.text = self.translatedStrings?["Preparing face detection"]
+        self.cancelButton.setTitle(self.translatedStrings?["Cancel"], for: .normal)
     }
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        directionLabel.isHidden = false
-        let bundle = Bundle(for: type(of: self))
-        directionLabel.text = NSLocalizedString("Preparing face detection", tableName: nil, bundle: bundle, value: "Preparing face detection", comment: "Displayed in the camera view when the app is preparing face detection")
+        directionLabel.text = self.translatedStrings?["Preparing face detection"]
+        directionLabel.isHidden = directionLabel.text == nil
         directionLabel.backgroundColor = UIColor.white
+        directionLabel.textColor = UIColor.black
+        cancelButton.isHidden = false
         self.startCamera()
     }
     
@@ -168,14 +172,13 @@ import VerIDCore
     }
     
     private func speakText(_ text: String?) {
-        if self.delegate?.settings.speakPrompts == true, let toSay = text, self.lastSpokenText == nil || self.lastSpokenText! != toSay {
+        if self.delegate?.settings.speakPrompts == true, let toSay = text, self.lastSpokenText == nil || self.lastSpokenText! != toSay, var language = self.translatedStrings?.resolvedLanguage {
             self.lastSpokenText = toSay
             let utterance = AVSpeechUtterance(string: toSay)
-            if let language = Locale.current.languageCode, language.starts(with: "en") || language.starts(with: "fr") {
-                utterance.voice = AVSpeechSynthesisVoice(language: language)
-            } else {
-                utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            if let region = self.translatedStrings?.resolvedRegion {
+                language.append("-\(region)")
             }
+            utterance.voice = AVSpeechSynthesisVoice(language: language)
             self.synth.speak(utterance)
         }
     }
@@ -208,7 +211,6 @@ import VerIDCore
     ///   - defaultFaceBounds: Face bounds that will be displayed if no face is detected or before it's inside the oval
     ///   - offsetAngleFromBearing: Angle to use to draw the arrow showing the user where to move
     open func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
-        let bundle = Bundle(for: type(of: self))
         let labelText: String?
         let isHighlighted: Bool
         let ovalBounds: CGRect
@@ -217,7 +219,7 @@ import VerIDCore
         let showArrow: Bool
         let spokenText: String?
         if let settings = self.delegate?.settings, sessionResult.attachments.count >= settings.numberOfResultsToCollect {
-            labelText = NSLocalizedString("Please wait", tableName: nil, bundle: bundle, value: "Please wait", comment: "Displayed above the face when the session is finishing.")
+            labelText = self.translatedStrings?["Please wait"]
             isHighlighted = true
             ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
             cutoutBounds = nil
@@ -227,21 +229,21 @@ import VerIDCore
         } else {
             switch faceDetectionResult.status {
             case .faceFixed, .faceAligned:
-                labelText = NSLocalizedString("Great, hold it", tableName: nil, bundle: bundle, value: "Great, hold it", comment: "Displayed above the face when the user correctly followed the directions and should stay still.")
+                labelText = self.translatedStrings?["Great, hold it"]
                 isHighlighted = true
                 ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
                 cutoutBounds = nil
                 faceAngle = nil
                 showArrow = false
-                spokenText = NSLocalizedString("Hold it", tableName: nil, bundle: bundle, value: "Hold it", comment: "Spoken direction when the user correctly follows the directions and should stay still.")
+                spokenText = self.translatedStrings?["Hold it"]
             case .faceMisaligned:
-                labelText = NSLocalizedString("Slowly turn to follow the arrow", tableName: nil, bundle: bundle, value: "Slowly turn to follow the arrow", comment: "Displayed as an instruction during face detection along with an arrow indicating direction")
+                labelText = self.translatedStrings?["Slowly turn to follow the arrow"]
                 isHighlighted = false
                 ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
                 cutoutBounds = nil
                 faceAngle = faceDetectionResult.faceAngle
                 showArrow = true
-                spokenText = NSLocalizedString("Slowly turn to follow the arrow", tableName: nil, bundle: bundle, value: "Slowly turn to follow the arrow", comment: "")
+                spokenText = self.translatedStrings?["Slowly turn to follow the arrow"]
             case .faceTurnedTooFar:
                 labelText = nil
                 isHighlighted = false
@@ -251,13 +253,13 @@ import VerIDCore
                 showArrow = false
                 spokenText = nil
             default:
-                labelText = NSLocalizedString("Align your face with the oval", tableName: nil, bundle: bundle, value: "Align your face with the oval", comment: "")
+                labelText = self.translatedStrings?["Align your face with the oval"]
                 isHighlighted = false
                 ovalBounds = defaultFaceBounds
                 cutoutBounds = faceDetectionResult.faceBounds.isNull ? nil : faceDetectionResult.faceBounds
                 faceAngle = nil
                 showArrow = false
-                spokenText = NSLocalizedString("Align your face with the oval", tableName: nil, bundle: bundle, value: "Align your face with the oval", comment: "")
+                spokenText = self.translatedStrings?["Align your face with the oval"]
             }
         }
         let transform = self.imageScaleTransformAtImageSize(faceDetectionResult.imageSize)
@@ -270,7 +272,9 @@ import VerIDCore
     }
     
     public func clearOverlays() {
-        
+        self.directionLabel?.isHidden = true
+        self.overlayView?.isHidden = true
+        self.cancelButton?.isHidden = true
     }
     
     // MARK: - Sample Capture
@@ -292,6 +296,7 @@ import VerIDCore
         self.directionLabel.text = text
         self.directionLabel.backgroundColor = isHighlighted ? highlightedColour : neutralColour
         self.directionLabel.isHidden = text == nil
+        self.cancelButton.isHidden = false
         
         self.directionLabelYConstraint.constant = max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0)
         
@@ -304,7 +309,7 @@ import VerIDCore
             angle = nil
             distance = nil
         }
-        
+        self.overlayView.isHidden = false
         self.faceOvalLayer.setOvalBounds(ovalBounds, cutoutBounds: cutoutBounds, angle: angle, distance: distance, strokeColour: isHighlighted ? highlightedColour : neutralColour)
     }
     

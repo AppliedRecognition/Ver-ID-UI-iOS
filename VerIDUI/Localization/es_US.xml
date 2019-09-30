@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings language="es" region="US">
+    <string>
+        <original>Align your face with the oval</original>
+        <translation>Alinee su cara con el óvalo</translation>
+    </string>
+    <string>
+        <original>Authentication failed</original>
+        <translation>La autenticación ha fallado</translation>
+    </string>
+    <string>
+        <original>Avoid standing in a light that throws sharp shadows like in sharp sunlight or directly under a lamp.</original>
+        <translation>No se coloque en zonas con luz que generen sombras nítidas, como a la luz del sol o directamente debajo de una lámpara.</translation>
+    </string>
+    <string>
+        <original>Avoid standing in front of busy backgrounds.</original>
+        <translation>No se coloque frente a fondos concurridos.</translation>
+    </string>
+    <string>
+        <original>Camera access denied</original>
+        <translation>Acceso a la cámara denegado</translation>
+    </string>
+    <string>
+        <original>Cancel</original>
+        <translation>Cancelar</translation>
+    </string>
+    <string>
+        <original>Done</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>Failed</original>
+        <translation>Error</translation>
+    </string>
+    <string>
+        <original>Great, hold it</original>
+        <translation>Bien, espere</translation>
+    </string>
+    <string>
+        <original>Great. Session succeeded.</original>
+        <translation>Fantástico. Sesión correcta.</translation>
+    </string>
+    <string>
+        <original>Great. You are now registered.</original>
+        <translation>Fantástico. Se ha registrado.</translation>
+    </string>
+    <string>
+        <original>Great. You authenticated using your face.</original>
+        <translation>Fantástico. Se ha autenticado usando la cara.</translation>
+    </string>
+    <string>
+        <original>Hold it</original>
+        <translation>Espere</translation>
+    </string>
+    <string>
+        <original>If you can, take off your glasses.</original>
+        <translation>Quítese las gafas si puede</translation>
+    </string>
+    <string>
+        <original>OK</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>Please go to settings and enable camera in the settings for %@.</original>
+        <translation>Vaya a ajustes y habilite la cámara en la configuración para %@.</translation>
+    </string>
+    <string>
+        <original>Please turn slowly</original>
+        <translation>Gire lentamente</translation>
+    </string>
+    <string>
+        <original>Please wait</original>
+        <translation>Por favor espere</translation>
+    </string>
+    <string>
+        <original>Preparing face detection</original>
+        <translation>Preparando la detección facial</translation>
+    </string>
+    <string>
+        <original>Registration failed</original>
+        <translation>Error de registro</translation>
+    </string>
+    <string>
+        <original>Resume session</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>Session failed</original>
+        <translation>Error de sesión</translation>
+    </string>
+    <string>
+        <original>Show tips</original>
+        <translation>Consejos</translation>
+    </string>
+    <string>
+        <original>Slowly turn to follow the arrow</original>
+        <translation>Gire lentamente para seguir la dirección de la flecha</translation>
+    </string>
+    <string>
+        <original>Success</original>
+        <translation>Correcto</translation>
+    </string>
+    <string>
+        <original>Tip %d of %d</original>
+        <translation>Consejo %d de %d</translation>
+    </string>
+    <string>
+        <original>Try again</original>
+        <translation>Vuelva a intentarlo</translation>
+    </string>
+    <string>
+        <original>Turn your head in the direction of the arrow</original>
+        <translation>Gire la cara lentamente para seguir la dirección de la flecha</translation>
+    </string>
+    <string>
+        <original>Unable to resume</original>
+        <translation></translation>
+    </string>
+    <string>
+        <original>You may have turned too far. Only turn in the requested direction until the oval turns green.</original>
+        <translation>Puede que haya girado demasiado. Gire solo en la dirección solicitada hasta que el óvalo se ponga verde.</translation>
+    </string>
+</strings>

@@ -44,17 +44,23 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
 class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
     
     public let settings: VerIDSessionSettings
+    public let translatedStrings: TranslatedStrings
     
-    public init(settings: VerIDSessionSettings) {
+    public init(settings: VerIDSessionSettings, translatedStrings: TranslatedStrings) {
         self.settings = settings
+        self.translatedStrings = translatedStrings
     }
     
     func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
+        let viewController: VerIDViewController
         if self.settings is RegistrationSessionSettings {
-            return VerIDRegistrationViewController()
+            viewController = VerIDRegistrationViewController()
         } else {
-            return VerIDViewController(nibName: nil)
+            viewController = VerIDViewController(nibName: nil)
         }
+        viewController.translatedStrings = self.translatedStrings
+        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: self.translatedStrings["Resume session"], style: .plain, target: nil, action: nil)
+        return viewController
     }
     
     func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol {
@@ -64,6 +70,7 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         guard let resultViewController = storyboard.instantiateViewController(withIdentifier: storyboardId) as? ResultViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
+        resultViewController.translatedStrings = self.translatedStrings
         resultViewController.result = result
         resultViewController.settings = self.settings
         return resultViewController
@@ -74,6 +81,7 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         guard let tipsController = UIStoryboard(name: "Tips", bundle: bundle).instantiateInitialViewController() as? TipsViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
+        tipsController.translatedStrings = self.translatedStrings
         return tipsController
     }
     
@@ -81,11 +89,11 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         let bundle = Bundle(for: type(of: self))
         let message: String
         if faceDetectionResult.status == .faceTurnedTooFar {
-            message = NSLocalizedString("You may have turned too far. Only turn in the requested direction until the oval turns green.", tableName: nil, bundle: bundle, value: "You may have turned too far. Only turn in the requested direction until the oval turns green.", comment: "Shown in a dialog as an explanation of why the face session is failing")
+            message = self.translatedStrings["You may have turned too far. Only turn in the requested direction until the oval turns green."]
         } else if faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost {
-            message = NSLocalizedString("Turn your head in the direction of the arrow", tableName: nil, bundle: bundle, value: "Turn your head in the direction of the arrow", comment: "Shown in a dialog as an instruction")
+            message = self.translatedStrings["Turn your head in the direction of the arrow"]
         } else if faceDetectionResult.status == .movedTooFast {
-            message = NSLocalizedString("Please turn slowly", comment: "Shown in a dialog as an explanation why the face session is failing")
+            message = self.translatedStrings["Please turn slowly"]
         } else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
@@ -114,7 +122,9 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         }
         let videoName = String(format: "%@_%d", videoFileName, densityInt)
         let url = bundle.url(forResource: videoName, withExtension: "mp4")
-        return FaceDetectionAlertController(message: message, videoURL: url)
+        let controller = FaceDetectionAlertController(message: message, videoURL: url)
+        controller.translatedStrings = self.translatedStrings
+        return controller
     }
     
 }

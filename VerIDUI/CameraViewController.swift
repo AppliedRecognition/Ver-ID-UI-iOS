@@ -12,6 +12,9 @@ import AVFoundation
 /// View controller that displays a camera preview
 @objc open class CameraViewController: UIViewController {
     
+    /// Translated strings
+    public var translatedStrings: TranslatedStrings?
+    
     let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
     private let captureSession = AVCaptureSession()
     private var cameraInput: AVCaptureDeviceInput!
@@ -350,9 +353,9 @@ import AVFoundation
                     guard let `self` = self else {
                         return
                     }
-                    let message = NSLocalizedString("Unable to resume", tableName: nil, bundle: Bundle(for: type(of: self)), value: "Unable to resume", comment: "Alert message when unable to resume the session running")
+                    let message = self.translatedStrings?["Unable to resume"]
                     let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: NSLocalizedString("OK", tableName: nil, bundle: Bundle(for: type(of: self)), value: "OK", comment: "Label on a button used to dismiss an alert dialog"), style: .cancel, handler: nil)
+                    let cancelAction = UIAlertAction(title: self.translatedStrings?["OK"], style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     self.present(alertController, animated: true, completion: nil)
                 }

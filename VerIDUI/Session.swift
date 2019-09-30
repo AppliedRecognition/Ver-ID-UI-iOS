@@ -75,16 +75,27 @@ import os
     /// - Parameters:
     ///   - environment: Ver-ID environment used by factory classes
     ///   - settings: Session settings
-    @objc public init(environment: VerID, settings: VerIDSessionSettings) {
+    ///   - translatedStrings: Translated strings for the session
+    /// - Since: 1.8.0
+    @objc public init(environment: VerID, settings: VerIDSessionSettings, translatedStrings: TranslatedStrings) {
         self.environment = environment
         self.settings = settings
         self.faceDetectionFactory = VerIDFaceDetectionServiceFactory(environment: environment)
         self.resultEvaluationFactory = VerIDResultEvaluationServiceFactory(environment: environment)
         self.imageWriterFactory = VerIDImageWriterServiceFactory()
-        self.sessionViewControllersFactory = VerIDSessionViewControllersFactory(settings: settings)
+        self.sessionViewControllersFactory = VerIDSessionViewControllersFactory(settings: settings, translatedStrings: translatedStrings)
         if settings.videoURL != nil {
             self.videoWriterFactory = VerIDVideoWriterServiceFactory()
         }
+    }
+    
+    /// Session constructor
+    ///
+    /// - Parameters:
+    ///   - environment: Ver-ID environment used by factory classes
+    ///   - settings: Session settings
+    @objc public convenience init(environment: VerID, settings: VerIDSessionSettings) {
+        self.init(environment: environment, settings: settings, translatedStrings: TranslatedStrings())
     }
     
     // MARK: - Public methods
@@ -317,8 +328,6 @@ import os
                 rotation = 0
             case .up, .upMirrored:
                 rotation = 180
-            @unknown default:
-                rotation = 0
             }
             let writeVideoSignpost = imageAcquisitionSignposting.createSignpost(name: "Write video buffer")
             imageAcquisitionSignposting.logStart(signpost: writeVideoSignpost)
@@ -362,14 +371,16 @@ import os
             self.viewController?.drawFaceFromResult(faceDetectionResult, sessionResult: result, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
         }
         if result.error != nil && self.retryCount < self.settings.maxRetryCount && (faceDetectionResult.status == .faceTurnedTooFar || faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost || faceDetectionResult.status == .movedTooFast) {
+            self.operationQueue.cancelAllOperations()
             DispatchQueue.main.async {
                 do {
-                    self.operationQueue.cancelAllOperations()
+                    self.viewController?.clearOverlays()
                     let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
                     alert.delegate = self
                     alert.modalPresentationStyle = .overFullScreen
                     self.viewController?.present(alert, animated: true, completion: nil)
                 } catch {
+                    self.finishWithResult(VerIDSessionResult(error: error))
                 }
             }
         }

@@ -127,6 +127,7 @@ class VerIDRegistrationViewController: VerIDViewController {
     }
     
     override func clearOverlays() {
+        super.clearOverlays()
         guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
             return
         }
@@ -185,6 +186,8 @@ class VerIDRegistrationViewController: VerIDViewController {
             imageName = "head_thumbnail_left"
         case .leftUp:
             imageName = "head_thumbnail_left_up"
+        @unknown default:
+            imageName = "head_thumbnail_straight"
         }
         let bundle = Bundle(for: type(of: self))
         return UIImage(named: imageName, in: bundle, compatibleWith: nil)

@@ -30,15 +30,17 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var messageLabelBackgroundView: UIView!
     @IBOutlet var videoView: UIView!
-    @IBOutlet var cancelButton: UIButton!
-    @IBOutlet var tipsButton: UIButton!
-    @IBOutlet var retryButton: UIButton!
+    @IBOutlet var cancelButton: UIBarButtonItem!
+    @IBOutlet var tipsButton: UIBarButtonItem!
+    @IBOutlet var retryButton: UIBarButtonItem!
+    @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var stackView: UIStackView!
     
     let message: String?
     let videoURL: URL?
     var delegate: FaceDetectionAlertControllerDelegate?
     var looper: Any?
+    var translatedStrings: TranslatedStrings?
     
     public init(message: String?, videoURL: URL?) {
         self.message = message
@@ -52,6 +54,11 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let translatedStrings = self.translatedStrings {
+            self.cancelButton.title = translatedStrings["Cancel"]
+            self.tipsButton.title = translatedStrings["Show tips"]
+            self.retryButton.title = translatedStrings["Try again"]
+        }
         if self.message != nil {
             self.messageLabel.text = self.message!
         } else {
@@ -91,12 +98,9 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
             roundedTopCornersLayer.path = UIBezierPath(roundedRect: self.videoView.bounds, byRoundingCorners: [.topLeft,.topRight], cornerRadii: cornerRadii).cgPath
             self.videoView.layer.mask = roundedTopCornersLayer
         }
-        let roundedBottomLeftCornerLayer = CAShapeLayer()
-        roundedBottomLeftCornerLayer.path = UIBezierPath(roundedRect: self.cancelButton.bounds, byRoundingCorners: .bottomLeft, cornerRadii: cornerRadii).cgPath
-        self.cancelButton.layer.mask = roundedBottomLeftCornerLayer
-        let roundedBottomRightCornerLayer = CAShapeLayer()
-        roundedBottomRightCornerLayer.path = UIBezierPath(roundedRect: self.retryButton.bounds, byRoundingCorners: .bottomRight, cornerRadii: cornerRadii).cgPath
-        self.retryButton.layer.mask = roundedBottomRightCornerLayer
+        let roundedBottomCornerLayer = CAShapeLayer()
+        roundedBottomCornerLayer.path = UIBezierPath(roundedRect: self.toolbar.bounds, byRoundingCorners: [.bottomLeft,.bottomRight], cornerRadii: cornerRadii).cgPath
+        self.toolbar.layer.mask = roundedBottomCornerLayer
     }
     
     override func viewWillDisappear(_ animated: Bool) {

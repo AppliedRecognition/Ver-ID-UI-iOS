@@ -7,7 +7,7 @@ Minimum iOS version is 9.0.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
-- [Xcode 10.2](https://itunes.apple.com/us/app/xcode/id497799835) or newer
+- [Xcode 11.0](https://itunes.apple.com/us/app/xcode/id497799835) or newer
 - [Git](https://git-scm.com)
 - [Git LFS](https://git-lfs.github.com)
 - [CocoaPods](https://cocoapods.org)
@@ -43,7 +43,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	~~~ruby
 	project 'MyProject.xcodeproj'
 	workspace 'MyProject.xcworkspace'
-	platform :ios, '10.0'
+	platform :ios, '9.0'
 	target 'MyApp' do
 		use_frameworks!
 		pod 'Ver-ID-UI'

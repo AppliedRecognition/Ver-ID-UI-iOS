@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IKg-96-7AY">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -68,7 +68,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JG-vJ-IOq">
-                                        <rect key="frame" x="120" y="48" width="93.333333333333314" height="24"/>
+                                        <rect key="frame" x="120" y="48" width="230" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -84,9 +84,10 @@
                                         </connections>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="2JG-vJ-IOq" firstAttribute="leading" secondItem="Suk-S5-xE1" secondAttribute="trailing" constant="16" id="07p-Sc-RGW"/>
+                                    <constraint firstItem="6Fd-s6-Lef" firstAttribute="leading" secondItem="2JG-vJ-IOq" secondAttribute="trailing" constant="8" id="1g8-QJ-eRH"/>
                                     <constraint firstItem="2JG-vJ-IOq" firstAttribute="centerY" secondItem="YXh-NC-MhT" secondAttribute="centerY" id="A13-sw-qeb"/>
                                     <constraint firstItem="6Fd-s6-Lef" firstAttribute="centerY" secondItem="YXh-NC-MhT" secondAttribute="centerY" id="Fm3-jG-5jG"/>
                                     <constraint firstAttribute="height" constant="120" id="HqR-6t-kV8"/>

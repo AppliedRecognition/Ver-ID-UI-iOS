@@ -109,20 +109,41 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
     /// Authenticate the registered user
     ///
     /// - Parameter sender: Sender of the action
-    @IBAction func authenticate(_ sender: Any) {
+    @IBAction func authenticate(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Select language", message: nil, preferredStyle: .actionSheet)
+        alert.popoverPresentationController?.sourceView = sender
+        alert.addAction(UIAlertAction(title: "English", style: .default, handler: { _ in
+            self.startAuthenticationSession(language: "en")
+        }))
+        alert.addAction(UIAlertAction(title: "French", style: .default, handler: { _ in
+            self.startAuthenticationSession(language: "fr")
+        }))
+        alert.addAction(UIAlertAction(title: "Spanish", style: .default, handler: { _ in
+            self.startAuthenticationSession(language: "es")
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func startAuthenticationSession(language: String) {
         guard let environment = self.environment else {
             return
         }
+        let translatedStrings: TranslatedStrings
+        if language == "fr", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "fr_CA", withExtension: "xml") {
+            translatedStrings = try! TranslatedStrings(url: url)
+        } else if language == "es", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "es_US", withExtension: "xml") {
+            translatedStrings = try! TranslatedStrings(url: url)
+        } else {
+            translatedStrings = TranslatedStrings(useCurrentLocale: false)
+        }
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId)
         settings.showResult = true
-//        if let videoURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("video.mov") {
-//            settings.videoURL = videoURL
-//        }
         let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
-        let session = VerIDSession(environment: environment, settings: settings)
+        let session = VerIDSession(environment: environment, settings: settings, translatedStrings: translatedStrings)
         session.delegate = self
         session.start()
     }

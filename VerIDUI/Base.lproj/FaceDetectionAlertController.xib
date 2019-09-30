@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,12 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FaceDetectionAlertController" customModule="VerIDUI" customModuleProvider="target">
             <connections>
-                <outlet property="cancelButton" destination="JVk-dZ-h9d" id="HAw-Ze-qSe"/>
+                <outlet property="cancelButton" destination="TVJ-Gt-VpN" id="anm-iA-8mS"/>
                 <outlet property="messageLabel" destination="RYx-on-9dD" id="PLc-Oq-2pr"/>
                 <outlet property="messageLabelBackgroundView" destination="QHp-41-sZN" id="uuh-hZ-CAb"/>
-                <outlet property="retryButton" destination="nQ5-Br-KTU" id="AF5-bq-bKT"/>
+                <outlet property="retryButton" destination="YH7-TF-YzX" id="zOJ-8y-FcI"/>
                 <outlet property="stackView" destination="k6M-h1-dAS" id="aKj-gf-0ts"/>
-                <outlet property="tipsButton" destination="tm6-fc-ZSJ" id="tDL-E0-kSO"/>
+                <outlet property="tipsButton" destination="VQ4-Oy-iCz" id="STc-Ur-NBY"/>
+                <outlet property="toolbar" destination="23T-Je-fpt" id="DkM-YC-eSf"/>
                 <outlet property="videoView" destination="Igf-yG-vAR" id="heK-SG-F5H"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Rlm-dc-obT"/>
             </connections>
@@ -26,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="k6M-h1-dAS">
-                    <rect key="frame" x="27.5" y="128" width="320" height="411"/>
+                    <rect key="frame" x="27.5" y="126.5" width="320" height="414"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QHp-41-sZN">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
@@ -54,41 +55,27 @@
                                 <constraint firstAttribute="height" constant="240" id="d9q-45-b0S"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jzs-jk-Euh">
-                            <rect key="frame" x="0.0" y="370" width="320" height="41"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVk-dZ-h9d">
-                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="41"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                    <state key="normal" title="Cancel"/>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23T-Je-fpt">
+                            <rect key="frame" x="0.0" y="370" width="320" height="44"/>
+                            <items>
+                                <barButtonItem systemItem="cancel" id="TVJ-Gt-VpN">
                                     <connections>
-                                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="1PW-9V-pNn"/>
+                                        <action selector="cancel:" destination="-1" id="ycG-1N-7Ea"/>
                                     </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tm6-fc-ZSJ">
-                                    <rect key="frame" x="106.5" y="0.0" width="107" height="41"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                    <state key="normal" title="Show tips"/>
+                                </barButtonItem>
+                                <barButtonItem systemItem="flexibleSpace" id="hDI-gS-6sI"/>
+                                <barButtonItem title="Show tips" id="VQ4-Oy-iCz">
                                     <connections>
-                                        <action selector="showTips:" destination="-1" eventType="touchUpInside" id="JoE-qQ-ABJ"/>
+                                        <action selector="showTips:" destination="-1" id="8Vt-J1-b2d"/>
                                     </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQ5-Br-KTU">
-                                    <rect key="frame" x="213.5" y="0.0" width="106.5" height="41"/>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                                    <state key="normal" title="Try again"/>
+                                </barButtonItem>
+                                <barButtonItem title="Try again" id="YH7-TF-YzX">
                                     <connections>
-                                        <action selector="retry:" destination="-1" eventType="touchUpInside" id="N6q-hT-Tvg"/>
+                                        <action selector="retry:" destination="-1" id="QOB-6V-712"/>
                                     </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </stackView>

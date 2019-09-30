@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Od7-8O-kDd">
-    <device id="retina4_0" orientation="portrait" appearance="dark"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -21,20 +21,20 @@
         <!--Tip 1 of 3-->
         <scene sceneID="ehs-Mu-AYU">
             <objects>
-                <viewController storyboardIdentifier="tip1" id="Ie4-QJ-k4j" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tip1" id="Ie4-QJ-k4j" customClass="TipPageViewController" customModule="VerIDUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="okv-et-oJg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip_sharp_shadows" translatesAutoresizingMaskIntoConstraints="NO" id="jZi-T3-qZm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
-                                <color key="backgroundColor" red="0.94899803400000005" green="0.94876343009999997" blue="0.96863216159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strikethrough" translatesAutoresizingMaskIntoConstraints="NO" id="kF4-i4-3mh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strikethrough" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kF4-i4-3mh">
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Avoid standing in a light that throws sharp shadows like in sharp sunlight or directly under a lamp." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8NW-Sv-4Sx">
-                                <rect key="frame" x="16" y="292" width="288" height="256"/>
+                                <rect key="frame" x="16" y="314" width="288" height="234"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -83,8 +83,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tip 1 of 3" id="VuJ-Zx-hiJ">
                         <barButtonItem key="backBarButtonItem" title="Tip 1" id="jCc-rf-xPk"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="hdv-et-nrL"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textView" destination="8NW-Sv-4Sx" id="LM6-EK-PVF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XY8-2V-ks9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,24 +96,24 @@
         <!--Tip 2 of 3-->
         <scene sceneID="Zsn-hb-1p4">
             <objects>
-                <viewController storyboardIdentifier="tip2" id="snJ-Qu-yDu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tip2" id="snJ-Qu-yDu" customClass="TipPageViewController" customModule="VerIDUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Og-6T-5pq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_with_glasses" translatesAutoresizingMaskIntoConstraints="NO" id="HnW-J5-hCX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
-                                <color key="backgroundColor" red="0.94899803400000005" green="0.94876343009999997" blue="0.96863216159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strikethrough" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fq6-zm-wGE">
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="If you can, take off your glasses." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="20I-rV-WbV">
-                                <rect key="frame" x="16" y="292" width="288" height="256"/>
+                                <rect key="frame" x="16" y="314" width="288" height="234"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strikethrough" translatesAutoresizingMaskIntoConstraints="NO" id="fq6-zm-wGE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -155,8 +158,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tip 2 of 3" id="gCA-SE-pb5">
                         <barButtonItem key="backBarButtonItem" title="Tip 2" id="Je9-EC-2VG"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="QJX-At-EV2"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textView" destination="20I-rV-WbV" id="nzT-XX-bUr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftc-xw-baN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,20 +171,20 @@
         <!--Tip 3 of 3-->
         <scene sceneID="LQi-Iu-xcs">
             <objects>
-                <viewController storyboardIdentifier="tip3" id="B0P-jQ-MUy" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tip3" id="B0P-jQ-MUy" customClass="TipPageViewController" customModule="VerIDUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="No0-ib-LVW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="busy_background" translatesAutoresizingMaskIntoConstraints="NO" id="o2T-Vb-5y4">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
-                                <color key="backgroundColor" red="0.94899803400000005" green="0.94876343009999997" blue="0.96863216159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strikethrough" translatesAutoresizingMaskIntoConstraints="NO" id="IQK-Po-6UU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strikethrough" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IQK-Po-6UU">
+                                <rect key="frame" x="0.0" y="44" width="320" height="262"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Avoid standing in front of busy backgrounds." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iv3-s4-hpT">
-                                <rect key="frame" x="16" y="292" width="288" height="256"/>
+                                <rect key="frame" x="16" y="314" width="288" height="234"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -227,15 +233,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tip 3 of 3" id="Gd6-hc-v3R">
                         <barButtonItem key="backBarButtonItem" title="Tip 3" id="PzD-sM-CyD"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="yvi-Nn-vOT">
-                            <connections>
-                                <segue destination="2uD-me-aFj" kind="unwind" unwindAction="unwindFromTipsWithSegue:" id="D4W-kt-BDh"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textView" destination="Iv3-s4-hpT" id="Um6-9P-YxM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HwE-Gc-M73" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="2uD-me-aFj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2908" y="-914"/>
         </scene>

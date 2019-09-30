@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -11,9 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerIDRegistrationViewController" customModule="VerIDUI" customModuleProvider="target">
             <connections>
+                <outlet property="cancelButton" destination="Tkr-iJ-3Yz" id="yEH-Md-Iwx"/>
                 <outlet property="detectedFaceStackView" destination="Z5c-YQ-ARF" id="xA7-iy-5i0"/>
                 <outlet property="directionLabel" destination="pFK-rq-7cB" id="wf1-jf-j3p"/>
-                <outlet property="directionLabelYConstraint" destination="8AK-uk-67L" id="OaH-6w-805"/>
+                <outlet property="directionLabelYConstraint" destination="AK0-U8-cz9" id="FOe-yf-ttd"/>
                 <outlet property="noCameraLabel" destination="cKt-nZ-iLk" id="6YH-jL-Pq2"/>
                 <outlet property="overlayView" destination="vbV-fj-w3F" id="KTe-NL-nbp"/>
                 <outlet property="view" destination="Ocl-Sv-K49" id="9s4-rP-ZAS"/>
@@ -28,13 +29,24 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI" customModuleProvider="target">
-                    <rect key="frame" x="81.5" y="270" width="212" height="24"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-9Z-Hyo">
+                    <rect key="frame" x="16" y="0.0" width="343" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI" customModuleProvider="target">
+                            <rect key="frame" x="65.5" y="270" width="212" height="24"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pFK-rq-7cB" firstAttribute="top" secondItem="sRN-9Z-Hyo" secondAttribute="top" constant="270" id="AK0-U8-cz9"/>
+                        <constraint firstItem="pFK-rq-7cB" firstAttribute="width" relation="lessThanOrEqual" secondItem="sRN-9Z-Hyo" secondAttribute="width" id="WJY-jx-2Au"/>
+                        <constraint firstItem="pFK-rq-7cB" firstAttribute="centerX" secondItem="sRN-9Z-Hyo" secondAttribute="centerX" id="boE-0f-u4q"/>
+                    </constraints>
+                </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera access denied" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKt-nZ-iLk">
                     <rect key="frame" x="16" y="321.5" width="343" height="24"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
@@ -63,10 +75,11 @@
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Tkr-iJ-3Yz" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="0k8-lM-R46"/>
+                <constraint firstItem="sRN-9Z-Hyo" firstAttribute="bottom" secondItem="mT4-EL-2C3" secondAttribute="bottom" id="152-u7-uYo"/>
+                <constraint firstItem="sRN-9Z-Hyo" firstAttribute="leading" secondItem="Ocl-Sv-K49" secondAttribute="leadingMargin" id="24Q-1J-o4T"/>
                 <constraint firstItem="Tkr-iJ-3Yz" firstAttribute="top" secondItem="Z5c-YQ-ARF" secondAttribute="bottom" constant="16" id="6eU-AD-2Ip"/>
-                <constraint firstItem="pFK-rq-7cB" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="7hp-ld-h2L"/>
-                <constraint firstItem="pFK-rq-7cB" firstAttribute="top" secondItem="Ocl-Sv-K49" secondAttribute="top" constant="270" id="8AK-uk-67L"/>
                 <constraint firstItem="vbV-fj-w3F" firstAttribute="trailing" secondItem="mT4-EL-2C3" secondAttribute="trailing" id="F5e-kN-6tm"/>
+                <constraint firstItem="sRN-9Z-Hyo" firstAttribute="top" secondItem="mT4-EL-2C3" secondAttribute="top" id="Hbg-tY-jUH"/>
                 <constraint firstItem="Z5c-YQ-ARF" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="IzB-hc-LVh"/>
                 <constraint firstItem="vbV-fj-w3F" firstAttribute="bottom" secondItem="mT4-EL-2C3" secondAttribute="bottom" id="UvL-hL-Ojs"/>
                 <constraint firstItem="mT4-EL-2C3" firstAttribute="bottom" secondItem="Tkr-iJ-3Yz" secondAttribute="bottom" constant="32" id="WRt-kV-hCj"/>
@@ -75,10 +88,10 @@
                 <constraint firstItem="vbV-fj-w3F" firstAttribute="leading" secondItem="mT4-EL-2C3" secondAttribute="leading" id="eCj-Ur-JS5"/>
                 <constraint firstItem="vbV-fj-w3F" firstAttribute="top" secondItem="Ocl-Sv-K49" secondAttribute="top" id="l9j-or-4z7"/>
                 <constraint firstItem="cKt-nZ-iLk" firstAttribute="trailing" secondItem="Ocl-Sv-K49" secondAttribute="trailingMargin" id="lVs-eh-vrC"/>
-                <constraint firstItem="pFK-rq-7cB" firstAttribute="width" relation="lessThanOrEqual" secondItem="Ocl-Sv-K49" secondAttribute="width" id="uKj-M1-nwn"/>
+                <constraint firstItem="sRN-9Z-Hyo" firstAttribute="trailing" secondItem="Ocl-Sv-K49" secondAttribute="trailingMargin" id="z2e-Wv-IPY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="mT4-EL-2C3"/>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="52.623688155922046"/>
         </view>
     </objects>
 </document>
