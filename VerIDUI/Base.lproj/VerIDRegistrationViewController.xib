@@ -33,7 +33,7 @@
                     <rect key="frame" x="16" y="0.0" width="343" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI" customModuleProvider="target">
-                            <rect key="frame" x="65.5" y="270" width="212" height="24"/>
+                            <rect key="frame" x="65.5" y="32" width="212" height="24"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,7 +42,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="pFK-rq-7cB" firstAttribute="top" secondItem="sRN-9Z-Hyo" secondAttribute="top" constant="270" id="AK0-U8-cz9"/>
+                        <constraint firstItem="pFK-rq-7cB" firstAttribute="top" secondItem="sRN-9Z-Hyo" secondAttribute="top" constant="32" id="AK0-U8-cz9"/>
                         <constraint firstItem="pFK-rq-7cB" firstAttribute="width" relation="lessThanOrEqual" secondItem="sRN-9Z-Hyo" secondAttribute="width" id="WJY-jx-2Au"/>
                         <constraint firstItem="pFK-rq-7cB" firstAttribute="centerX" secondItem="sRN-9Z-Hyo" secondAttribute="centerX" id="boE-0f-u4q"/>
                     </constraints>

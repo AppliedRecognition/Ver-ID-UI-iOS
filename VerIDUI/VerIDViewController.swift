@@ -152,8 +152,10 @@ import VerIDCore
     override open func configureOutputs() {
         super.configureOutputs()
         self.videoDataOutput?.alwaysDiscardsLateVideoFrames = true
-        if let pixelFormats = self.videoDataOutput?.availableVideoPixelFormatTypes, pixelFormats.contains(kCVPixelFormatType_32BGRA) {
-            self.videoDataOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:kCVPixelFormatType_32BGRA]
+        let pixelFormat: OSType = kCVPixelFormatType_32BGRA
+//        let pixelFormat: OSType = kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
+        if let pixelFormats = self.videoDataOutput?.availableVideoPixelFormatTypes, pixelFormats.contains(pixelFormat) {
+            self.videoDataOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:pixelFormat]
         }
         self.videoDataOutput?.setSampleBufferDelegate(self, queue: self.captureSessionQueue)
     }
@@ -298,7 +300,7 @@ import VerIDCore
         self.directionLabel.isHidden = text == nil
         self.cancelButton.isHidden = false
         
-        self.directionLabelYConstraint.constant = max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0)
+        self.directionLabelYConstraint.constant = min(self.view.bounds.height - self.directionLabel.frame.height, max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0))
         
         let angle: CGFloat?
         let distance: CGFloat?

@@ -13,7 +13,7 @@ import AVFoundation
 import os
 
 /// Ver-ID session
-@objc open class VerIDSession: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate {
+@objc open class VerIDSession: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
     
     @objc public enum SessionError: Int, Error {
         case failedToStart
@@ -67,6 +67,7 @@ import os
     private let imageAcquisitionSignposting = Signposting(category: "Image acquisition")
     
     private var imageQueue: DispatchQueue?
+    private var alertController: UIViewController?
     
     // MARK: - Constructor
 
@@ -150,6 +151,7 @@ import os
                 root = presented
             }
             self.navigationController = UINavigationController(rootViewController: viewController)
+            self.navigationController?.presentationController?.delegate = self
             root.present(self.navigationController!, animated: true)
         } else {
             self.navigationController!.viewControllers = [viewController]
@@ -182,6 +184,10 @@ import os
     ///
     /// - Parameter callback: Callback to be issued when views are closed
     @objc private func closeViews(callback: @escaping () -> Void) {
+        if let alert = self.alertController {
+            alert.dismiss(animated: false, completion: nil)
+            self.alertController = nil
+        }
         if let viewDelegate = self.viewDelegate {
             viewDelegate.closeViews(callback: callback)
             return
@@ -378,6 +384,7 @@ import os
                     let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
                     alert.delegate = self
                     alert.modalPresentationStyle = .overFullScreen
+                    self.alertController = alert
                     self.viewController?.present(alert, animated: true, completion: nil)
                 } catch {
                     self.finishWithResult(VerIDSessionResult(error: error))
@@ -400,6 +407,7 @@ import os
     ///   - controller: Alert controller that's being dismissed
     ///   - action: Action the user selected to dismiss the alert controller
     public func faceDetectionAlertController(_ controller: FaceDetectionAlertControllerProtocol, didCloseDialogWithAction action: FaceDetectionAlertControllerAction) {
+        self.alertController = nil
         self.viewController?.dismiss(animated: true) {
             switch action {
             case .showTips:
@@ -447,6 +455,12 @@ import os
     ///   - result: Session result
     public func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: VerIDSessionResult) {
         self.finishWithResult(result)
+    }
+    
+    // MARK: - UIAdaptivePresentationControllerDelegate
+    
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        self.cancel()
     }
 }
 
