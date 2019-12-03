@@ -9,8 +9,10 @@
 import UIKit
 import VerIDCore
 import VerIDUI
+import RxVerID
+import RxSwift
 
-class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanViewControllerDelegate {
+class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
     
     // MARK: - Interface builder views
 
@@ -18,8 +20,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
     @IBOutlet weak var importButton: UIButton!
     
     // MARK: -
-    
-    var environment: VerID?
     
     /// Settings to use for user registration
     var registrationSettings: RegistrationSessionSettings {
@@ -32,6 +32,8 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
         settings.numberOfResultsToCollect = numberOfFacesToRegister
         return settings
     }
+    
+    let disposeBag = DisposeBag()
     
     // MARK: - Override from UIViewController
     
@@ -76,19 +78,18 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
 //        alert.popoverPresentationController?.sourceRect = (sender as? UIView)?.frame
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Unregister", style: .destructive, handler: { _ in
-            guard let environment = self.environment else {
-                return
-            }
-            environment.userManagement.deleteUsers([VerIDUser.defaultUserId]) { error in
-                guard let storyboard = self.storyboard else {
-                    return
-                }
-                guard let introViewController = storyboard.instantiateViewController(withIdentifier: "intro") as? IntroViewController else {
-                    return
-                }
-                introViewController.environment = self.environment
-                self.navigationController?.setViewControllers([introViewController], animated: false)
-            }
+            rxVerID.deleteUser(VerIDUser.defaultUserId)
+                .subscribe(onCompleted: {
+                    guard let storyboard = self.storyboard else {
+                        return
+                    }
+                    guard let introViewController = storyboard.instantiateViewController(withIdentifier: "intro") as? IntroViewController else {
+                        return
+                    }
+                    self.navigationController?.setViewControllers([introViewController], animated: false)
+                }, onError: { error in
+                    
+                }).disposed(by: self.disposeBag)
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -98,12 +99,27 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
     /// Add more faces if the user is already registered
     /// - Parameter sender: Sender of the action
     @IBAction func register(_ sender: Any) {
-        guard let environment = self.environment else {
-            return
-        }
-        let session = VerIDSession(environment: environment, settings: self.registrationSettings)
-        session.delegate = self
-        session.start()
+        rxVerID.session(settings: self.registrationSettings)
+            .flatMap({ result in
+                rxVerID.croppedFaceImagesFromSessionResult(result, bearing: .straight)
+                    .first()
+                    .map({ image in
+                        if let data = image?.jpegData(compressionQuality: 0.9), let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
+                            try data.write(to: to)
+                        }
+                    })
+                    .asMaybe()
+            })
+            .subscribe(onSuccess: {
+                self.updateUserDisplay()
+            }, onError: nil, onCompleted: nil)
+            .disposed(by: self.disposeBag)
+//        guard let environment = self.environment else {
+//            return
+//        }
+//        let session = VerIDSession(environment: environment, settings: self.registrationSettings)
+//        session.delegate = self
+//        session.start()
     }
     
     /// Authenticate the registered user
@@ -126,9 +142,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
     }
     
     private func startAuthenticationSession(language: String) {
-        guard let environment = self.environment else {
-            return
-        }
         let translatedStrings: TranslatedStrings
         if language == "fr", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "fr_CA", withExtension: "xml") {
             translatedStrings = try! TranslatedStrings(url: url)
@@ -143,9 +156,12 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
-        let session = VerIDSession(environment: environment, settings: settings, translatedStrings: translatedStrings)
-        session.delegate = self
-        session.start()
+        rxVerID.session(settings: settings, translatedStrings: translatedStrings)
+            .subscribe()
+            .disposed(by: self.disposeBag)
+//        let session = VerIDSession(environment: environment, settings: settings, translatedStrings: translatedStrings)
+//        session.delegate = self
+//        session.start()
     }
     
     // MARK: - Registration export
@@ -163,34 +179,38 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
         alert.addAction(UIAlertAction(title: "Generate code", style: .default) { _ in
             let alert = UIAlertController(title: "Exporting registration", message: nil, preferredStyle: .alert)
             self.present(alert, animated: true) {
-                guard let environment = self.environment else {
-                    return
-                }
-                guard let faces = try? environment.userManagement.facesOfUser(VerIDUser.defaultUserId), !faces.isEmpty else {
-                    return
-                }
-                var data = RegistrationData()
-                data.faceTemplates = faces
-                if let url = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
-                    data.profilePicture = image.cgImage
-                }
-                (UIApplication.shared.delegate as? AppDelegate)?.registrationUploading?.uploadRegistration(data) { url in
-                    DispatchQueue.global().async {
-                        guard url != nil, let urlData = "\(url!)".data(using: .utf8) else {
-                            self.showExportFailed()
-                            return
+                rxVerID.facesOfUser(VerIDUser.defaultUserId)
+                    .toArray()
+                    .map({ faces in
+                        var data = RegistrationData()
+                        data.faceTemplates = faces
+                        if let url = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
+                            data.profilePicture = image.cgImage
                         }
-                        guard let qrCodeImage = self.generateQRCode(data: urlData) else {
-                            self.showExportFailed()
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            self.dismiss(animated: true) {
-                                self.performSegue(withIdentifier: "export", sender: qrCodeImage)
+                        return data
+                    })
+                    .subscribe(onSuccess: { data in
+                        (UIApplication.shared.delegate as? AppDelegate)?.registrationUploading?.uploadRegistration(data) { url in
+                            DispatchQueue.global().async {
+                                guard url != nil, let urlData = "\(url!)".data(using: .utf8) else {
+                                    self.showExportFailed()
+                                    return
+                                }
+                                guard let qrCodeImage = self.generateQRCode(data: urlData) else {
+                                    self.showExportFailed()
+                                    return
+                                }
+                                DispatchQueue.main.async {
+                                    self.dismiss(animated: true) {
+                                        self.performSegue(withIdentifier: "export", sender: qrCodeImage)
+                                    }
+                                }
                             }
                         }
-                    }
-                }
+                    }, onError: { _ in
+                        self.showExportFailed()
+                    })
+                    .disposed(by: self.disposeBag)
             }
         })
         self.present(alert, animated: true, completion: nil)
@@ -268,27 +288,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
         }
     }
     
-    // MARK: - Session delegate
-    
-    
-    /// Called when a Ver-ID session finishes
-    ///
-    /// Inspect the session result to find out more about the outcome of the session and to get the collected images
-    /// - Parameters:
-    ///   - session: The session that finished
-    ///   - result: The session result
-    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
-        if session.settings is RegistrationSessionSettings, result.error == nil, let from = result.imageURLs(withBearing: .straight).first, let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
-            try? FileManager.default.removeItem(at: to)
-            try? FileManager.default.copyItem(at: from, to: to)
-        }
-        self.updateUserDisplay()
-    }
-    
-    func sessionWasCanceled(_ session: VerIDSession) {
-        
-    }
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -301,7 +300,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, QRCodeScanView
             scanViewController.delegate = self
         } else if let importViewController = segue.destination as? RegistrationImportViewController, let registrationData = sender as? RegistrationData, let image = registrationData.profilePicture {
             importViewController.faceTemplates = registrationData.faceTemplates
-            importViewController.environment = self.environment
             importViewController.image = UIImage(cgImage: image)
         }
     }

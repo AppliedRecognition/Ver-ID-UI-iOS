@@ -122,14 +122,13 @@ import VerIDCore
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        self.currentImageOrientation = imageOrientation
         coordinator.animateAlongsideTransition(in: self.view, animation: nil) { [weak self] context in
-            guard self != nil else {
+            guard let `self` = self else {
                 return
             }
             if !context.isCancelled {
-                // TODO: Set detected face view to
-                // self.cameraPreviewView.frame.size
+                self.currentImageOrientation = self.imageOrientation
+                self.faceOvalLayer.frame = self.overlayView.layer.bounds
             }
         }
     }

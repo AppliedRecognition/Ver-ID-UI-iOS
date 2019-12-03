@@ -8,6 +8,8 @@
 
 import UIKit
 import VerIDCore
+import RxSwift
+import RxVerID
 
 class RegistrationImportViewController: UIViewController {
     
@@ -15,7 +17,7 @@ class RegistrationImportViewController: UIViewController {
     
     var image: UIImage?
     var faceTemplates: [Recognizable]?
-    var environment: VerID?
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,29 +28,29 @@ class RegistrationImportViewController: UIViewController {
         guard let faceTemplates = self.faceTemplates, !faceTemplates.isEmpty else {
             return
         }
-        guard let environment = self.environment else {
-            return
-        }
-        do {
-            if try environment.userManagement.users().contains(VerIDUser.defaultUserId) {
-                let alert = UIAlertController(title: "Overwrite your existing registration?", message: nil, preferredStyle: .actionSheet)
-                alert.popoverPresentationController?.barButtonItem = sender
-                alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive, handler: { _ in
-                    environment.userManagement.deleteUsers([VerIDUser.defaultUserId]) { error in
+        rxVerID.facesOfUser(VerIDUser.defaultUserId)
+            .first()
+            .subscribe(onSuccess: { face in
+                if face != nil {
+                    let alert = UIAlertController(title: "Overwrite your existing registration?", message: nil, preferredStyle: .actionSheet)
+                    alert.popoverPresentationController?.barButtonItem = sender
+                    alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive, handler: { _ in
+                        rxVerID.deleteUser(VerIDUser.defaultUserId)
+                            .subscribe(onCompleted: {
+                                self.addFaceTemplates(faceTemplates)
+                            }, onError: nil)
+                            .disposed(by: self.disposeBag)
+                    }))
+                    alert.addAction(UIAlertAction(title: "Amend", style: .default, handler: { _ in
                         self.addFaceTemplates(faceTemplates)
-                    }
-                }))
-                alert.addAction(UIAlertAction(title: "Amend", style: .default, handler: { _ in
+                    }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
                     self.addFaceTemplates(faceTemplates)
-                }))
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                self.addFaceTemplates(faceTemplates)
-            }
-        } catch {
-            
-        }
+                }
+            }, onError: nil)
+            .disposed(by: self.disposeBag)
     }
     
     private func importFailed() {
@@ -60,24 +62,20 @@ class RegistrationImportViewController: UIViewController {
     }
     
     private func addFaceTemplates(_ faceTemplates: [Recognizable]) {
-        guard let environment = self.environment else {
-            return
-        }
-        environment.userManagement.assignFaces(faceTemplates, toUser: VerIDUser.defaultUserId) { error in
-            if error != nil {
+        rxVerID.assignFaces(faceTemplates, toUser: VerIDUser.defaultUserId)
+            .subscribe(onCompleted: {
+                if let profilePictureURL = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL, let imageData = self.image?.jpegData(compressionQuality: 1.0) {
+                    try? imageData.write(to: profilePictureURL)
+                }
+                let alert = UIAlertController(title: "Registration imported", message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                    self.performSegue(withIdentifier: "cancel", sender: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }, onError: { error in
                 self.importFailed()
-                return
-            }
-            if let profilePictureURL = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL, let imageData = self.image?.jpegData(compressionQuality: 1.0) {
-                try? imageData.write(to: profilePictureURL)
-            }
-            let alert = UIAlertController(title: "Registration imported", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
-                self.performSegue(withIdentifier: "cancel", sender: nil)
-            }))
-            self.present(alert, animated: true, completion: nil)
-            
-        }
+            })
+            .disposed(by: self.disposeBag)
     }
 
     /*

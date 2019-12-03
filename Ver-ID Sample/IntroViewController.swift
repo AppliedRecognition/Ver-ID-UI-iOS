@@ -7,10 +7,11 @@
 //
 
 import UIKit
-import VerIDUI
 import VerIDCore
+import RxVerID
+import RxSwift
 
-class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, VerIDSessionDelegate, QRCodeScanViewControllerDelegate {
+class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, QRCodeScanViewControllerDelegate {
     
     lazy var introViewControllers: [UIViewController] = {
         guard let storyboard = self.storyboard else {
@@ -24,9 +25,8 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         return controllers
     }()
     
-    var environment: VerID?
-    
     var showRegisterButton = true
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,6 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             codeScanViewController.delegate = self
         } else if let importViewController = segue.destination as? RegistrationImportViewController, let registrationData = sender as? RegistrationData, let image = registrationData.profilePicture {
             importViewController.image = UIImage(cgImage: image)
-            importViewController.environment = self.environment
             importViewController.faceTemplates = registrationData.faceTemplates
         }
     }
@@ -85,9 +84,6 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     }
     
     @IBAction func register(_ sender: Any) {
-        guard let environment = self.environment else {
-            return
-        }
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
         let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
@@ -95,25 +91,46 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
         settings.numberOfResultsToCollect = numberOfFacesToRegister
-        let session = VerIDSession(environment: environment, settings: settings)
-        session.delegate = self
-        session.start()
+        
+        rxVerID.session(settings: settings)
+            .asObservable()
+            .flatMap({ result in
+                rxVerID.croppedFaceImagesFromSessionResult(result, bearing: .straight).first()
+            })
+            .asSingle()
+            .flatMapCompletable({ image in
+                if let data = image?.jpegData(compressionQuality: 0.9), let url = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
+                    try data.write(to: url)
+                }
+                return Completable.empty()
+            })
+            .subscribe(onCompleted: {
+                guard let storyboard = self.storyboard else {
+                    return
+                }
+                guard let viewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
+                    return
+                }
+                self.navigationController?.setViewControllers([viewController], animated: false)
+            }, onError: nil)
+            .disposed(by: self.disposeBag)
     }
     
     @IBAction func importCancelled(_ segue: UIStoryboardSegue) {
         if let codeScanViewController = segue.source as? QRCodeScanViewController {
             codeScanViewController.delegate = nil
         }
-        do {
-            if segue.source is RegistrationImportViewController, let storyboard = self.storyboard, let environment = self.environment, try environment.userManagement.users().contains(VerIDUser.defaultUserId) {
-                guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
-                    return
-                }
-                mainViewController.environment = self.environment
-                self.navigationController?.setViewControllers([mainViewController], animated: false)
-            }
-        } catch {
-            
+        if segue.source is RegistrationImportViewController, let storyboard = self.storyboard {
+            rxVerID.facesOfUser(VerIDUser.defaultUserId)
+                .first()
+                .asMaybe()
+                .subscribe(onSuccess: { _ in
+                    guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
+                        return
+                    }
+                    self.navigationController?.setViewControllers([mainViewController], animated: false)
+                }, onError: nil, onCompleted: nil)
+                .disposed(by: self.disposeBag)
         }
     }
 
@@ -137,23 +154,5 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
-    }
-
-    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
-        if let storyboard = self.storyboard, result.error == nil {
-            if let from = result.imageURLs(withBearing: .straight).first, let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
-                try? FileManager.default.removeItem(at: to)
-                try? FileManager.default.copyItem(at: from, to: to)
-            }
-            guard let viewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
-                return
-            }
-            viewController.environment = self.environment
-            self.navigationController?.setViewControllers([viewController], animated: false)
-        }
-    }
-    
-    func sessionWasCanceled(_ session: VerIDSession) {
-        
     }
 }
