@@ -114,12 +114,6 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
                 self.updateUserDisplay()
             }, onError: nil, onCompleted: nil)
             .disposed(by: self.disposeBag)
-//        guard let environment = self.environment else {
-//            return
-//        }
-//        let session = VerIDSession(environment: environment, settings: self.registrationSettings)
-//        session.delegate = self
-//        session.start()
     }
     
     /// Authenticate the registered user
@@ -159,9 +153,6 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
         rxVerID.session(settings: settings, translatedStrings: translatedStrings)
             .subscribe()
             .disposed(by: self.disposeBag)
-//        let session = VerIDSession(environment: environment, settings: settings, translatedStrings: translatedStrings)
-//        session.delegate = self
-//        session.start()
     }
     
     // MARK: - Registration export
