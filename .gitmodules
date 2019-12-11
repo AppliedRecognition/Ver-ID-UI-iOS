@@ -1,0 +1,3 @@
+[submodule "RxVerID"]
+	path = RxVerID
+	url = https://jakubdolejs@github.com/AppliedRecognition/Rx-Ver-ID-Apple.git
