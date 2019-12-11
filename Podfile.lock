@@ -1,16 +1,30 @@
 PODS:
-  - Ver-ID-Core (1.8.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - Ver-ID-Core (1.9.4)
 
 DEPENDENCIES:
-  - Ver-ID-Core (~> 1.8)
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+  - Ver-ID-Core (~> 1.9)
 
 SPEC REPOS:
   trunk:
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - Ver-ID-Core
 
 SPEC CHECKSUMS:
-  Ver-ID-Core: 5a864416a0cdc2a71a7cc377ce96dfc1976b7a75
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  Ver-ID-Core: 446839f0350728596907350d3a772b53f77c8b13
 
-PODFILE CHECKSUM: 79290c43cfef962a9d7d9a62bd01e349c948ae38
+PODFILE CHECKSUM: 51e132242412a75e509b73f766e8e8e658757a7a
 
-COCOAPODS: 1.8.1
+COCOAPODS: 1.8.4

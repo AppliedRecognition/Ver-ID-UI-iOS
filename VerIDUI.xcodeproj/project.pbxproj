@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B3E41AD23A02EE2000DC659 /* RxVerID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3E41AB23A02EE2000DC659 /* RxVerID.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B3E41B023A02EE2000DC659 /* RxVerID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */; };
+		3B3E41B123A02EE2000DC659 /* RxVerID.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B3E41B523A02EE8000DC659 /* RxVerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E419D23A02E7C000DC659 /* RxVerID.swift */; };
+		3B3E41B623A02EE8000DC659 /* RxVerID+Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */; };
 		3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */; };
 		3B564B22234276EE008B3FCD /* TipPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B20234276ED008B3FCD /* TipPageViewController.swift */; };
 		3B564B34234277FB008B3FCD /* fr_CA.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B564B31234277FB008B3FCD /* fr_CA.xml */; };
@@ -46,6 +51,7 @@
 		3B6AA00C23427C13000CED49 /* left_down_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FFA23427C13000CED49 /* left_down_3.mp4 */; };
 		3B6AA00D23427C13000CED49 /* right_up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FFB23427C13000CED49 /* right_up_2.mp4 */; };
 		3B6AA00E23427C13000CED49 /* up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FFC23427C13000CED49 /* up_2.mp4 */; };
+		3B6C698C23A0227B0082AFF5 /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */; };
 		3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */; };
 		3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044E221425BE00B3B312 /* MainViewController.swift */; };
 		3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
@@ -70,11 +76,19 @@
 		3BE9F3D7220AFB72002C11BE /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3CD220AFB70002C11BE /* Tips.storyboard */; };
 		3BE9F3D8220AFB72002C11BE /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F3CF220AFB71002C11BE /* Result.storyboard */; };
 		3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */; };
+		3F2FE477834C44A1F8013F77 /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */; };
 		811F176AD28B5B05645D890C /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */; };
-		91CA8B1530BD46D94800F50D /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BFAD913361090A4FC769B9A /* Pods_Ver_ID_Sample.framework */; };
+		DB99535373ABE4FCFB61C32C /* Pods_RxVerID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3B3E41AE23A02EE2000DC659 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B3E41A823A02EE2000DC659;
+			remoteInfo = RxVerID;
+		};
 		3BE9F377220AF165002C11BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
@@ -92,6 +106,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
+				3B3E41B123A02EE2000DC659 /* RxVerID.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,11 +114,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0BD552F8392D39C73F0B251C /* Pods-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
-		0BFAD913361090A4FC769B9A /* Pods_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B3E419D23A02E7C000DC659 /* RxVerID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxVerID.swift; sourceTree = "<group>"; };
+		3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxVerID+Session.swift"; sourceTree = "<group>"; };
+		3B3E41A923A02EE2000DC659 /* RxVerID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxVerID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3E41AB23A02EE2000DC659 /* RxVerID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxVerID.h; sourceTree = "<group>"; };
+		3B3E41AC23A02EE2000DC659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatedStrings.swift; sourceTree = "<group>"; };
 		3B564B20234276ED008B3FCD /* TipPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipPageViewController.swift; sourceTree = "<group>"; };
 		3B564B31234277FB008B3FCD /* fr_CA.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fr_CA.xml; path = Localization/fr_CA.xml; sourceTree = "<group>"; };
@@ -142,7 +161,8 @@
 		3B6A9FFA23427C13000CED49 /* left_down_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_down_3.mp4; sourceTree = "<group>"; };
 		3B6A9FFB23427C13000CED49 /* right_up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_up_2.mp4; sourceTree = "<group>"; };
 		3B6A9FFC23427C13000CED49 /* up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_2.mp4; sourceTree = "<group>"; };
-		3B6AA00F234291FF000CED49 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
+		3B6AA00F234291FF000CED49 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAppDelegate.swift; path = "Ver-ID Sample/BaseAppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
 		3BB2044E221425BE00B3B312 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BB2044F221425BE00B3B312 /* VerIDUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUser.swift; sourceTree = "<group>"; };
@@ -168,9 +188,13 @@
 		3BE9F3D0220AFB71002C11BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Result.storyboard; sourceTree = "<group>"; };
 		3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewControllersFactory.swift; sourceTree = "<group>"; };
 		499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
+		7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxVerID.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxVerID/Pods-RxVerID.release.xcconfig"; sourceTree = "<group>"; };
+		96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxVerID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
-		CF6F05DAD06B0C752A98ABFF /* Pods-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
 		D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAFC399C6685F9BB09C702C4 /* Pods-RxVerID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxVerID.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxVerID/Pods-RxVerID.debug.xcconfig"; sourceTree = "<group>"; };
+		FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,12 +206,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3B3E41A623A02EE2000DC659 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB99535373ABE4FCFB61C32C /* Pods_RxVerID.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BE9F362220AF125002C11BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91CA8B1530BD46D94800F50D /* Pods_Ver_ID_Sample.framework in Frameworks */,
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
+				3B3E41B023A02EE2000DC659 /* RxVerID.framework in Frameworks */,
+				3F2FE477834C44A1F8013F77 /* Pods_Ver_ID_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +230,10 @@
 		3B326B0C22089C88005DAE1E = {
 			isa = PBXGroup;
 			children = (
+				3B3E419C23A02E7C000DC659 /* RxVerID */,
 				3B326B1822089C88005DAE1E /* VerIDUI */,
 				3BE9F366220AF125002C11BE /* Ver-ID Sample */,
+				3B3E41AA23A02EE2000DC659 /* RxVerID */,
 				3B326B1722089C88005DAE1E /* Products */,
 				94170ABA6C56107F2BFDEB39 /* Pods */,
 				8C808952AB38275225E61B6D /* Frameworks */,
@@ -210,6 +245,7 @@
 			children = (
 				3B326B1622089C88005DAE1E /* VerIDUI.framework */,
 				3BE9F365220AF125002C11BE /* Ver-ID Sample.app */,
+				3B3E41A923A02EE2000DC659 /* RxVerID.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,6 +281,25 @@
 				3B56E812220B675D00004F94 /* Video */,
 			);
 			path = VerIDUI;
+			sourceTree = "<group>";
+		};
+		3B3E419C23A02E7C000DC659 /* RxVerID */ = {
+			isa = PBXGroup;
+			children = (
+				3B3E419D23A02E7C000DC659 /* RxVerID.swift */,
+				3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */,
+			);
+			name = RxVerID;
+			path = RxVerID/RxVerID;
+			sourceTree = "<group>";
+		};
+		3B3E41AA23A02EE2000DC659 /* RxVerID */ = {
+			isa = PBXGroup;
+			children = (
+				3B3E41AB23A02EE2000DC659 /* RxVerID.h */,
+				3B3E41AC23A02EE2000DC659 /* Info.plist */,
+			);
+			path = RxVerID;
 			sourceTree = "<group>";
 		};
 		3B564B30234277E9008B3FCD /* Localization */ = {
@@ -289,6 +344,7 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */,
 				3BB204662214263600B3B312 /* AppDelegate.swift */,
 				3BB20459221425BF00B3B312 /* ErrorViewController.swift */,
 				3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */,
@@ -312,7 +368,8 @@
 			isa = PBXGroup;
 			children = (
 				D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */,
-				0BFAD913361090A4FC769B9A /* Pods_Ver_ID_Sample.framework */,
+				96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */,
+				A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -322,8 +379,10 @@
 			children = (
 				499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */,
 				A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */,
-				0BD552F8392D39C73F0B251C /* Pods-Ver-ID Sample.debug.xcconfig */,
-				CF6F05DAD06B0C752A98ABFF /* Pods-Ver-ID Sample.release.xcconfig */,
+				DAFC399C6685F9BB09C702C4 /* Pods-RxVerID.debug.xcconfig */,
+				7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */,
+				0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */,
+				FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -336,6 +395,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B3E41A423A02EE2000DC659 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B3E41AD23A02EE2000DC659 /* RxVerID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,21 +428,41 @@
 			productReference = 3B326B1622089C88005DAE1E /* VerIDUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		3B3E41A823A02EE2000DC659 /* RxVerID */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B3E41B223A02EE2000DC659 /* Build configuration list for PBXNativeTarget "RxVerID" */;
+			buildPhases = (
+				F79132001E824BA68CC2582B /* [CP] Check Pods Manifest.lock */,
+				3B3E41A423A02EE2000DC659 /* Headers */,
+				3B3E41A523A02EE2000DC659 /* Sources */,
+				3B3E41A623A02EE2000DC659 /* Frameworks */,
+				3B3E41A723A02EE2000DC659 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RxVerID;
+			productName = RxVerID;
+			productReference = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		3BE9F364220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BE9F374220AF128002C11BE /* Build configuration list for PBXNativeTarget "Ver-ID Sample" */;
 			buildPhases = (
-				3B342180FDC05A9CF7F66F2D /* [CP] Check Pods Manifest.lock */,
+				5DF17749C21B4F51F2CDA98C /* [CP] Check Pods Manifest.lock */,
 				3BE9F361220AF125002C11BE /* Sources */,
 				3BE9F362220AF125002C11BE /* Frameworks */,
 				3BE9F363220AF125002C11BE /* Resources */,
-				7B029016142EE52C1EE6634D /* [CP] Embed Pods Frameworks */,
 				3BE9F37D220AF8DD002C11BE /* Embed Frameworks */,
+				E6D41C197F6DDCE774626280 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				3BE9F378220AF165002C11BE /* PBXTargetDependency */,
+				3B3E41AF23A02EE2000DC659 /* PBXTargetDependency */,
 			);
 			name = "Ver-ID Sample";
 			productName = "Ver-ID Sample";
@@ -395,6 +482,9 @@
 					3B326B1522089C88005DAE1E = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+					};
+					3B3E41A823A02EE2000DC659 = {
+						CreatedOnToolsVersion = 11.2.1;
 					};
 					3BE9F364220AF125002C11BE = {
 						CreatedOnToolsVersion = 10.1;
@@ -417,6 +507,7 @@
 			targets = (
 				3B326B1522089C88005DAE1E /* VerIDUI */,
 				3BE9F364220AF125002C11BE /* Ver-ID Sample */,
+				3B3E41A823A02EE2000DC659 /* RxVerID */,
 			);
 		};
 /* End PBXProject section */
@@ -460,6 +551,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3B3E41A723A02EE2000DC659 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BE9F363220AF125002C11BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,7 +571,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3B342180FDC05A9CF7F66F2D /* [CP] Check Pods Manifest.lock */ = {
+		5DF17749C21B4F51F2CDA98C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ver-ID Sample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -484,14 +604,14 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Ver-ID Sample-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-VerIDUI-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7B029016142EE52C1EE6634D /* [CP] Embed Pods Frameworks */ = {
+		E6D41C197F6DDCE774626280 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -508,18 +628,22 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */ = {
+		F79132001E824BA68CC2582B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VerIDUI-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RxVerID-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -551,6 +675,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3B3E41A523A02EE2000DC659 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B3E41B523A02EE8000DC659 /* RxVerID.swift in Sources */,
+				3B3E41B623A02EE8000DC659 /* RxVerID+Session.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BE9F361220AF125002C11BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -566,12 +699,18 @@
 				3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */,
 				3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */,
 				3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */,
+				3B6C698C23A0227B0082AFF5 /* BaseAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3B3E41AF23A02EE2000DC659 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B3E41A823A02EE2000DC659 /* RxVerID */;
+			targetProxy = 3B3E41AE23A02EE2000DC659 /* PBXContainerItemProxy */;
+		};
 		3BE9F378220AF165002C11BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3B326B1522089C88005DAE1E /* VerIDUI */;
@@ -692,7 +831,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.9.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -752,7 +892,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.9.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -779,13 +920,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.verid.ui;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -809,14 +948,62 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.verid.ui;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3B3E41B323A02EE2000DC659 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DAFC399C6685F9BB09C702C4 /* Pods-RxVerID.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RxVerID/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.RxVerID;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B3E41B423A02EE2000DC659 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RxVerID/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.RxVerID;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -826,18 +1013,17 @@
 		};
 		3BE9F375220AF128002C11BE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BD552F8392D39C73F0B251C /* Pods-Ver-ID Sample.debug.xcconfig */;
+			baseConfigurationReference = 0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				INFOPLIST_FILE = "Ver-ID Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -848,18 +1034,17 @@
 		};
 		3BE9F376220AF128002C11BE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF6F05DAD06B0C752A98ABFF /* Pods-Ver-ID Sample.release.xcconfig */;
+			baseConfigurationReference = FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
 				INFOPLIST_FILE = "Ver-ID Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -885,6 +1070,15 @@
 			buildConfigurations = (
 				3B326B1F22089C88005DAE1E /* Debug */,
 				3B326B2022089C88005DAE1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B3E41B223A02EE2000DC659 /* Build configuration list for PBXNativeTarget "RxVerID" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B3E41B323A02EE2000DC659 /* Debug */,
+				3B3E41B423A02EE2000DC659 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
