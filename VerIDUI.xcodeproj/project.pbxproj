@@ -128,7 +128,7 @@
 		3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceDetectionAlertController.xib; sourceTree = "<group>"; };
 		3B3FF91B23A10BA200156A59 /* Result.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
 		3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDRegistrationViewController.xib; sourceTree = "<group>"; };
-		3B3FF92223A10C9100156A59 /* Ver-ID-UI.podspec */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID-UI.podspec"; sourceTree = SOURCE_ROOT; };
+		3B3FF92223A10C9100156A59 /* Ver-ID-UI.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Ver-ID-UI.podspec"; sourceTree = SOURCE_ROOT; };
 		3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatedStrings.swift; sourceTree = "<group>"; };
 		3B564B20234276ED008B3FCD /* TipPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipPageViewController.swift; sourceTree = "<group>"; };
 		3B564B31234277FB008B3FCD /* fr_CA.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fr_CA.xml; path = Localization/fr_CA.xml; sourceTree = "<group>"; };
@@ -794,7 +794,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.9.4;
+				MARKETING_VERSION = 1.9.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -855,7 +855,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.9.4;
+				MARKETING_VERSION = 1.9.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
