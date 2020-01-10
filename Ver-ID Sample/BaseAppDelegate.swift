@@ -12,13 +12,13 @@ import RxVerID
 import RxSwift
 
 let rxVerID: RxVerID = RxVerID()
+var profilePictureURL: URL?
 
 class BaseAppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Instance variables
 
     var window: UIWindow?
-    var profilePictureURL: URL?
     var userDefaultsContext: Int = 0
     var faceExtractQualityThreshold: Float?
     let faceExtractionQualityThresholdKeyPath = "faceExtractQualityThreshold"
@@ -28,7 +28,7 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Application delegate methods
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        self.profilePictureURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("profilePicture").appendingPathExtension("jpg")
+        profilePictureURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("profilePicture").appendingPathExtension("jpg")
         let defaultSettings = DetRecLibSettings(modelsURL: nil)
         self.faceExtractQualityThreshold = defaultSettings.faceExtractQualityThreshold
         let livenessDetectionSettings = LivenessDetectionSessionSettings()
@@ -87,6 +87,8 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate {
             })
             .andThen(rxVerID.facesOfUser(VerIDUser.defaultUserId))
             .first()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { face in
                 let initialViewController: UIViewController
                 if face != nil {

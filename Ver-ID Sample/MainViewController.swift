@@ -57,7 +57,7 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
     
     /// Find out whether the user registered their face. If the user is registered display their profile photo and enable the Authenticate button.
     func updateUserDisplay() {
-        guard let url = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL, let image = UIImage(contentsOfFile: url.path) else {
+        guard let url = profilePictureURL, let image = UIImage(contentsOfFile: url.path) else {
             return
         }
         self.imageView.layer.cornerRadius = self.imageView.bounds.width / 2
@@ -79,6 +79,7 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Unregister", style: .destructive, handler: { _ in
             rxVerID.deleteUser(VerIDUser.defaultUserId)
+                .observeOn(MainScheduler.instance)
                 .subscribe(onCompleted: {
                     guard let storyboard = self.storyboard else {
                         return
@@ -104,12 +105,14 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
                 rxVerID.croppedFaceImagesFromSessionResult(result, bearing: .straight)
                     .first()
                     .map({ image in
-                        if let data = image?.jpegData(compressionQuality: 0.9), let to = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
+                        if let data = image?.jpegData(compressionQuality: 0.9), let to = profilePictureURL {
                             try data.write(to: to)
                         }
                     })
                     .asMaybe()
             })
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: {
                 self.updateUserDisplay()
             }, onError: nil, onCompleted: nil)
@@ -151,6 +154,7 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
         rxVerID.session(settings: settings, translatedStrings: translatedStrings)
+            .observeOn(MainScheduler.instance)
             .subscribe()
             .disposed(by: self.disposeBag)
     }
@@ -175,11 +179,13 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate {
                     .map({ faces in
                         var data = RegistrationData()
                         data.faceTemplates = faces
-                        if let url = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
+                        if let url = profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
                             data.profilePicture = image.cgImage
                         }
                         return data
                     })
+                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                    .observeOn(MainScheduler.instance)
                     .subscribe(onSuccess: { data in
                         (UIApplication.shared.delegate as? AppDelegate)?.registrationUploading?.uploadRegistration(data) { url in
                             DispatchQueue.global().async {

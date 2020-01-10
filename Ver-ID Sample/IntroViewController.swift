@@ -99,11 +99,13 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             })
             .asSingle()
             .flatMapCompletable({ image in
-                if let data = image?.jpegData(compressionQuality: 0.9), let url = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL {
+                if let data = image?.jpegData(compressionQuality: 0.9), let url = profilePictureURL {
                     try data.write(to: url)
                 }
                 return Completable.empty()
             })
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: {
                 guard let storyboard = self.storyboard else {
                     return
@@ -124,6 +126,8 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             rxVerID.facesOfUser(VerIDUser.defaultUserId)
                 .first()
                 .asMaybe()
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+                .observeOn(MainScheduler.instance)
                 .subscribe(onSuccess: { _ in
                     guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
                         return

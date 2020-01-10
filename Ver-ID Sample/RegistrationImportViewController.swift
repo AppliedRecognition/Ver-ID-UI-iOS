@@ -30,12 +30,15 @@ class RegistrationImportViewController: UIViewController {
         }
         rxVerID.facesOfUser(VerIDUser.defaultUserId)
             .first()
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { face in
                 if face != nil {
                     let alert = UIAlertController(title: "Overwrite your existing registration?", message: nil, preferredStyle: .actionSheet)
                     alert.popoverPresentationController?.barButtonItem = sender
                     alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive, handler: { _ in
                         rxVerID.deleteUser(VerIDUser.defaultUserId)
+                            .observeOn(MainScheduler.instance)
                             .subscribe(onCompleted: {
                                 self.addFaceTemplates(faceTemplates)
                             }, onError: nil)
@@ -63,8 +66,9 @@ class RegistrationImportViewController: UIViewController {
     
     private func addFaceTemplates(_ faceTemplates: [Recognizable]) {
         rxVerID.assignFaces(faceTemplates, toUser: VerIDUser.defaultUserId)
+            .observeOn(MainScheduler.instance)
             .subscribe(onCompleted: {
-                if let profilePictureURL = (UIApplication.shared.delegate as? AppDelegate)?.profilePictureURL, let imageData = self.image?.jpegData(compressionQuality: 1.0) {
+                if let profilePictureURL = profilePictureURL, let imageData = self.image?.jpegData(compressionQuality: 1.0) {
                     try? imageData.write(to: profilePictureURL)
                 }
                 let alert = UIAlertController(title: "Registration imported", message: nil, preferredStyle: .alert)
