@@ -28,13 +28,26 @@ To build this project and to run the sample app you will need a Apple Mac comput
 
 ## Adding Ver-ID to your own project
 
-1. [Request an API secret](https://dev.ver-id.com/admin/register) for your app. We will need your app's bundle ID.
-1. Add the following entry in your app's **Info.plist** substituting `[API secret]` for the API secret obtained in step 1:
+1. [Register your app](https://dev.ver-id.com/licensing/). You will need your app's bundle identifier.
+2. Registering your app will generate an evaluation licence for your app. The licence is valid for 30 days. If you need a production licence please [contact Applied Recognition](mailto:sales@appliedrec.com).
+2. When you finish the registration you'll receive a file called **Ver-ID identity.p12** and a password. Copy the password to a secure location and add the **Ver-ID identity.p12** file in your app:    
+    - Open your project in Xcode.
+    - From the top menu select **File/Add files to “[your project name]”...** or press **⌥⌘A** and browse to select the downloaded **Ver-ID identity.p12** file.
+    - Reveal the options by clicking the **Options** button on the bottom left of the dialog.
+    - Tick **Copy items if needed** under **Destination**.
+    - Under **Added to targets** select your app target.
+8. Ver-ID will need the password you received at registration.    
+    - You can either specify the password when you create an instance of `VerIDFactory`:
 
-	~~~xml
-	<key>com.appliedrec.verid.apiSecret</key>
-	<string>[API secret]</string>
-	~~~
+        ~~~swift
+        let veridFactory = VerIDFactory(veridPassword: "your password goes here")
+        ~~~
+    - Or you can add the password in your app's **Info.plist**:
+
+        ~~~xml
+        <key>com.appliedrec.verid.password</key>
+        <string>your password goes here</string>
+        ~~~
 1. ~~Your app's asset bundle must include [VerIDModels](https://github.com/AppliedRecognition/Ver-ID-Models/tree/b125fd172f4e24953c5b232f49f323ceb6a69b70). Clone the folder using Git instead of downloading the Zip archive. Your system must have [Git LFS](https://git-lfs.github.com) installed prior to cloning the folder.~~
 1. ~~Open your project in Xcode. In the top menu go to **File / Add Files to "Your project name"...** or press **⌥⌘A**. Select the cloned **VerIDModels** folder and tick the toggle **Create folder references for any added folders**. Press **Add**.~~<br/><br/>**As of version 1.2.2 VerIDModels are packaged in the VerIDCore.framework on which the VerIDUI.framework depends. If you've been including the VerIDModels folder with your app you can now delete it from your project.**
 1. If your project is using [CocoaPods](https://cocoapods.org) for dependency management, open the project's **Podfile**. Otherwise make sure CocoaPods is installed and in your project's folder create a file named **Podfile** (without an extension).
@@ -43,7 +56,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	~~~ruby
 	project 'MyProject.xcodeproj'
 	workspace 'MyProject.xcworkspace'
-	platform :ios, '9.0'
+	platform :ios, '11.0'
 	target 'MyApp' do
 		use_frameworks!
 		pod 'Ver-ID-UI'

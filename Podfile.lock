@@ -1,30 +1,38 @@
 PODS:
+  - OpenCV2 (4.2.0)
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.0.1):
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
-  - Ver-ID-Core (1.9.4)
+  - Ver-ID-Core (1.10.0):
+    - OpenCV2 (~> 4.1)
+    - ZIPFoundation (~> 0.9)
+  - ZIPFoundation (0.9.10)
 
 DEPENDENCIES:
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
-  - Ver-ID-Core (~> 1.9)
+  - Ver-ID-Core (~> 1.10)
 
 SPEC REPOS:
   trunk:
+    - OpenCV2
     - RxCocoa
     - RxRelay
     - RxSwift
     - Ver-ID-Core
+    - ZIPFoundation
 
 SPEC CHECKSUMS:
+  OpenCV2: 59479948515bac1bbe0e1f3c618fe5f013d695b2
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
-  Ver-ID-Core: 446839f0350728596907350d3a772b53f77c8b13
+  Ver-ID-Core: eccf91e9fb7500d5d5f81cca486c769c0da3bc54
+  ZIPFoundation: 249fa8890597086cd536bb2df5c9804d84e122b0
 
-PODFILE CHECKSUM: 51e132242412a75e509b73f766e8e8e658757a7a
+PODFILE CHECKSUM: 9779795d8c751f14fe2b3fc81e742f8536c6d72e
 
 COCOAPODS: 1.8.4

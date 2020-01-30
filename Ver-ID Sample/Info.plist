@@ -43,7 +43,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>com.appliedrec.verid.apiSecret</key>
-	<string>$(VERID_API_SECRET)</string>
+	<key>com.appliedrec.verid.password</key>
+	<string>$(VERID_PASSWORD)</string>
 </dict>
 </plist>

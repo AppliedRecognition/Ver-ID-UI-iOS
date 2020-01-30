@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3B3E41AD23A02EE2000DC659 /* RxVerID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3E41AB23A02EE2000DC659 /* RxVerID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B3E41B023A02EE2000DC659 /* RxVerID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */; };
 		3B3E41B123A02EE2000DC659 /* RxVerID.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B3E41B523A02EE8000DC659 /* RxVerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E419D23A02E7C000DC659 /* RxVerID.swift */; };
 		3B3E41B623A02EE8000DC659 /* RxVerID+Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */; };
+		3B3EB7CC23E37B9600CCB042 /* RxVerID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3EB7CB23E37B9600CCB042 /* RxVerID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B3FF91D23A10BA200156A59 /* VerIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91823A10BA200156A59 /* VerIDViewController.xib */; };
 		3B3FF91E23A10BA200156A59 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91923A10BA200156A59 /* Tips.storyboard */; };
 		3B3FF91F23A10BA200156A59 /* FaceDetectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */; };
@@ -121,8 +121,8 @@
 		3B3E419D23A02E7C000DC659 /* RxVerID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxVerID.swift; sourceTree = "<group>"; };
 		3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxVerID+Session.swift"; sourceTree = "<group>"; };
 		3B3E41A923A02EE2000DC659 /* RxVerID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxVerID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B3E41AB23A02EE2000DC659 /* RxVerID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxVerID.h; sourceTree = "<group>"; };
 		3B3E41AC23A02EE2000DC659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B3EB7CB23E37B9600CCB042 /* RxVerID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RxVerID.h; path = RxVerID/RxVerID.h; sourceTree = "<group>"; };
 		3B3FF91823A10BA200156A59 /* VerIDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDViewController.xib; sourceTree = "<group>"; };
 		3B3FF91923A10BA200156A59 /* Tips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tips.storyboard; sourceTree = "<group>"; };
 		3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceDetectionAlertController.xib; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 		3B3E41AA23A02EE2000DC659 /* RxVerID */ = {
 			isa = PBXGroup;
 			children = (
-				3B3E41AB23A02EE2000DC659 /* RxVerID.h */,
+				3B3EB7CB23E37B9600CCB042 /* RxVerID.h */,
 				3B3E41AC23A02EE2000DC659 /* Info.plist */,
 			);
 			path = RxVerID;
@@ -404,7 +404,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B3E41AD23A02EE2000DC659 /* RxVerID.h in Headers */,
+				3B3EB7CC23E37B9600CCB042 /* RxVerID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,7 +794,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.9.6;
+				MARKETING_VERSION = 1.10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -855,7 +855,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.9.6;
+				MARKETING_VERSION = 1.10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -933,7 +933,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RxVerID/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxVerID/RxVerID/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -958,7 +958,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = RxVerID/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxVerID/RxVerID/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -990,7 +990,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERID_API_SECRET = 8b9e453482dd12942c372c3e0c5688a83e70edc5ae916cd065d49621fe619f67;
+				VERID_PASSWORD = "260b2fa5-996c-46fd-baa0-c841431314ee";
 			};
 			name = Debug;
 		};
@@ -1011,7 +1011,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERID_API_SECRET = 8b9e453482dd12942c372c3e0c5688a83e70edc5ae916cd065d49621fe619f67;
+				VERID_PASSWORD = "260b2fa5-996c-46fd-baa0-c841431314ee";
 			};
 			name = Release;
 		};
