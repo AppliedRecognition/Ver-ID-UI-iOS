@@ -6,7 +6,7 @@ PODS:
   - RxRelay (5.0.1):
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
-  - Ver-ID-Core (1.10.3):
+  - Ver-ID-Core (1.10.4):
     - OpenCV2 (~> 4.1)
     - ZIPFoundation (~> 0.9)
   - ZIPFoundation (0.9.10)
@@ -30,7 +30,7 @@ SPEC CHECKSUMS:
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
-  Ver-ID-Core: f9269ac909f3578ab5e97212829ea75d065d2da3
+  Ver-ID-Core: e624f3655d7e39a2870ad17e9dd2f9cc8b12e64b
   ZIPFoundation: 249fa8890597086cd536bb2df5c9804d84e122b0
 
 PODFILE CHECKSUM: 9779795d8c751f14fe2b3fc81e742f8536c6d72e
