@@ -3,7 +3,7 @@
 # Ver-ID UI for iOS
 
 ## Prerequisites
-Minimum iOS version is 9.0.
+Minimum iOS version is 11.0.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
