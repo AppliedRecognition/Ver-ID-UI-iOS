@@ -44,6 +44,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>com.appliedrec.verid.password</key>
-	<string>$(VERID_PASSWORD)</string>
+	<string>a85967ee-fbef-4901-9e9e-6b147506eff5</string>
 </dict>
 </plist>
