@@ -99,7 +99,7 @@
 <h1 id='ver-id-ui-for-ios' class='heading'>Ver-ID UI for iOS</h1>
 <h2 id='prerequisites' class='heading'>Prerequisites</h2>
 
-<p>Minimum iOS version is 9.0.</p>
+<p>Minimum iOS version is 11.0.</p>
 
 <p>To build this project and to run the sample app you will need a Apple Mac computer with these applications:</p>
 
@@ -124,18 +124,42 @@ pod <span class="nb">install
 <h2 id='adding-ver-id-to-your-own-project' class='heading'>Adding Ver-ID to your own project</h2>
 
 <ol>
-<li><a href="https://dev.ver-id.com/admin/register">Request an API secret</a> for your app. We will need your app&rsquo;s bundle ID.</li>
-<li><p>Add the following entry in your app&rsquo;s <strong>Info.plist</strong> substituting <code>[API secret]</code> for the API secret obtained in step 1:</p>
-<pre class="highlight xml"><code><span class="nt">&lt;key&gt;</span>com.appliedrec.verid.apiSecret<span class="nt">&lt;/key&gt;</span>
-<span class="nt">&lt;string&gt;</span>[API secret]<span class="nt">&lt;/string&gt;</span>
+<li><a href="https://dev.ver-id.com/licensing/">Register your app</a>. You will need your app&rsquo;s bundle identifier.</li>
+<li>Registering your app will generate an evaluation licence for your app. The licence is valid for 30 days. If you need a production licence please <a href="mailto:sales@appliedrec.com">contact Applied Recognition</a>.</li>
+<li>When you finish the registration you&rsquo;ll receive a file called <strong>Ver-ID identity.p12</strong> and a password. Copy the password to a secure location and add the <strong>Ver-ID identity.p12</strong> file in your app:<br>
+
+<ul>
+<li>Open your project in Xcode.</li>
+<li>From the top menu select <strong>File/Add files to “[your project name]”&hellip;</strong> or press <strong>⌥⌘A</strong> and browse to select the downloaded <strong>Ver-ID identity.p12</strong> file.</li>
+<li>Reveal the options by clicking the <strong>Options</strong> button on the bottom left of the dialog.</li>
+<li>Tick <strong>Copy items if needed</strong> under <strong>Destination</strong>.</li>
+<li>Under <strong>Added to targets</strong> select your app target.</li>
+</ul></li>
+<li><p>Ver-ID will need the password you received at registration to construct an instance of <code>VerIDSDKIdentity</code>.    </p>
+
+<ul>
+<li><p>You can either specify the password when you create an instance of <code>VerIDFactory</code>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">identity</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">VerIDSDKIdentity</span><span class="p">(</span><span class="nv">password</span><span class="p">:</span> <span class="s">"your password goes here"</span><span class="p">)</span>
+</code></pre></li>
+<li><p>Or you can add the password in your app&rsquo;s <strong>Info.plist</strong>:</p>
+<pre class="highlight xml"><code><span class="nt">&lt;key&gt;</span>com.appliedrec.verid.password<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;string&gt;</span>your password goes here<span class="nt">&lt;/string&gt;</span>
+</code></pre>
+
+<p>and construct the identity without the password parameter:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">identity</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">VerIDSDKIdentity</span><span class="p">()</span>        
+</code></pre></li>
+</ul></li>
+<li><p>Pass the instance of <code>VerIDSDKIdentity</code> to the <code>VerIDFactory</code> constructor:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">veridFactory</span> <span class="o">=</span> <span class="kt">VerIDFactory</span><span class="p">(</span><span class="nv">identity</span><span class="p">:</span> <span class="n">identity</span><span class="p">)</span>
 </code></pre></li>
 <li><p><del>Your app&rsquo;s asset bundle must include <a href="https://github.com/AppliedRecognition/Ver-ID-Models/tree/b125fd172f4e24953c5b232f49f323ceb6a69b70">VerIDModels</a>. Clone the folder using Git instead of downloading the Zip archive. Your system must have <a href="https://git-lfs.github.com">Git LFS</a> installed prior to cloning the folder.</del></p></li>
-<li><p><del>Open your project in Xcode. In the top menu go to <strong>File / Add Files to <q>Your project name</q>&hellip;</strong> or press <strong>⌥⌘A</strong>. Select the cloned <strong>VerIDModels</strong> folder and tick the toggle <strong>Create folder references for any added folders</strong>. Press <strong>Add</strong>.</del><br/><br/><strong>As of version 1.2.2 VerIDModels are packaged in the VerIDCore.framework on which the VerIDUI.framework depends. If you&rsquo;ve been including the VerIDModels folder with your app you can now delete it from your project.</strong></p></li>
+<li><p><del>Open your project in Xcode. In the top menu go to <strong>File / Add Files to &ldquo;Your project name&rdquo;&hellip;</strong> or press <strong>⌥⌘A</strong>. Select the cloned <strong>VerIDModels</strong> folder and tick the toggle <strong>Create folder references for any added folders</strong>. Press <strong>Add</strong>.</del><br/><br/><strong>As of version 1.2.2 VerIDModels are packaged in the VerIDCore.framework on which the VerIDUI.framework depends. If you&rsquo;ve been including the VerIDModels folder with your app you can now delete it from your project.</strong></p></li>
 <li><p>If your project is using <a href="https://cocoapods.org">CocoaPods</a> for dependency management, open the project&rsquo;s <strong>Podfile</strong>. Otherwise make sure CocoaPods is installed and in your project&rsquo;s folder create a file named <strong>Podfile</strong> (without an extension).</p></li>
 <li><p>Let&rsquo;s assume your project is called <strong>MyProject</strong> and it has an app target called <strong>MyApp</strong>. Open the <strong>Podfile</strong> in a text editor and enter the following:</p>
 <pre class="highlight ruby"><code><span class="n">project</span> <span class="s1">'MyProject.xcodeproj'</span>
 <span class="n">workspace</span> <span class="s1">'MyProject.xcworkspace'</span>
-<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'9.0'</span>
+<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'10.3'</span>
 <span class="n">target</span> <span class="s1">'MyApp'</span> <span class="k">do</span>
     <span class="n">use_frameworks!</span>
     <span class="n">pod</span> <span class="s1">'Ver-ID-UI'</span>
@@ -162,8 +186,12 @@ pod <span class="nb">install
 <span class="kd">class</span> <span class="kt">MyViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">VerIDFactoryDelegate</span><span class="p">,</span> <span class="kt">VerIDSessionDelegate</span> <span class="p">{</span>
 
     <span class="kd">func</span> <span class="nf">runLivenessDetection</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">guard</span> <span class="k">let</span> <span class="nv">identity</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="kt">VerIDSDKIdentity</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Failed to create SDK identity</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
         <span class="c1">// You may want to display an activity indicator as the instance creation may take up to a few seconds</span>
-        <span class="k">let</span> <span class="nv">factory</span> <span class="o">=</span> <span class="kt">VerIDFactory</span><span class="p">()</span>
+        <span class="k">let</span> <span class="nv">factory</span> <span class="o">=</span> <span class="kt">VerIDFactory</span><span class="p">(</span><span class="nv">identity</span><span class="p">:</span> <span class="n">identity</span><span class="p">)</span>
         <span class="c1">// Set your class as the factory's delegate</span>
         <span class="c1">// The delegate methods will be called when the session is created or if the creation fails</span>
         <span class="n">factory</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
@@ -212,8 +240,8 @@ pod <span class="nb">install
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-09-30)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2020-02-26)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
