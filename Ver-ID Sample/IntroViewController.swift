@@ -8,10 +8,9 @@
 
 import UIKit
 import VerIDCore
-import RxVerID
-import RxSwift
+import VerIDUI
 
-class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, QRCodeScanViewControllerDelegate {
+class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, QRCodeScanViewControllerDelegate, VerIDSessionDelegate {
     
     lazy var introViewControllers: [UIViewController] = {
         guard let storyboard = self.storyboard else {
@@ -26,7 +25,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     }()
     
     var showRegisterButton = true
-    let disposeBag = DisposeBag()
+//    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +83,9 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     }
     
     @IBAction func register(_ sender: Any) {
+        guard let `verid` = verid else {
+            return
+        }
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
         let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
@@ -91,31 +93,34 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
         settings.numberOfResultsToCollect = numberOfFacesToRegister
+        let session = VerIDSession(environment: verid, settings: settings)
+        session.delegate = self
+        session.start()
         
-        rxVerID.session(settings: settings)
-            .asObservable()
-            .flatMap({ result in
-                rxVerID.croppedFaceImagesFromSessionResult(result, bearing: .straight).first()
-            })
-            .asSingle()
-            .flatMapCompletable({ image in
-                if let data = image?.jpegData(compressionQuality: 0.9), let url = profilePictureURL {
-                    try data.write(to: url)
-                }
-                return Completable.empty()
-            })
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: {
-                guard let storyboard = self.storyboard else {
-                    return
-                }
-                guard let viewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
-                    return
-                }
-                self.navigationController?.setViewControllers([viewController], animated: false)
-            }, onError: nil)
-            .disposed(by: self.disposeBag)
+//        rxVerID.session(settings: settings)
+//            .asObservable()
+//            .flatMap({ result in
+//                rxVerID.croppedFaceImagesFromSessionResult(result, bearing: .straight).first()
+//            })
+//            .asSingle()
+//            .flatMapCompletable({ image in
+//                if let data = image?.jpegData(compressionQuality: 0.9), let url = profilePictureURL {
+//                    try data.write(to: url)
+//                }
+//                return Completable.empty()
+//            })
+//            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onCompleted: {
+//                guard let storyboard = self.storyboard else {
+//                    return
+//                }
+//                guard let viewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
+//                    return
+//                }
+//                self.navigationController?.setViewControllers([viewController], animated: false)
+//            }, onError: nil)
+//            .disposed(by: self.disposeBag)
     }
     
     @IBAction func importCancelled(_ segue: UIStoryboardSegue) {
@@ -123,18 +128,22 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             codeScanViewController.delegate = nil
         }
         if segue.source is RegistrationImportViewController, let storyboard = self.storyboard {
-            rxVerID.facesOfUser(VerIDUser.defaultUserId)
-                .first()
-                .asMaybe()
-                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-                .observeOn(MainScheduler.instance)
-                .subscribe(onSuccess: { _ in
-                    guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
-                        return
-                    }
-                    self.navigationController?.setViewControllers([mainViewController], animated: false)
-                }, onError: nil, onCompleted: nil)
-                .disposed(by: self.disposeBag)
+            guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
+                return
+            }
+            self.navigationController?.setViewControllers([mainViewController], animated: false)
+//            rxVerID.facesOfUser(VerIDUser.defaultUserId)
+//                .first()
+//                .asMaybe()
+//                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+//                .observeOn(MainScheduler.instance)
+//                .subscribe(onSuccess: { _ in
+//                    guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
+//                        return
+//                    }
+//                    self.navigationController?.setViewControllers([mainViewController], animated: false)
+//                }, onError: nil, onCompleted: nil)
+//                .disposed(by: self.disposeBag)
         }
     }
 
@@ -159,4 +168,21 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
+    
+    // MARK: - Ver-ID Session Delegate
+    
+    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
+        guard let storyboard = self.storyboard else {
+            return
+        }
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
+            return
+        }
+        self.navigationController?.setViewControllers([viewController], animated: false)
+    }
+    
+    func sessionWasCanceled(_ session: VerIDSession) {
+        
+    }
+    
 }

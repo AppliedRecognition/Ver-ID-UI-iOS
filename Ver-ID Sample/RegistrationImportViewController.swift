@@ -8,8 +8,6 @@
 
 import UIKit
 import VerIDCore
-import RxSwift
-import RxVerID
 
 class RegistrationImportViewController: UIViewController {
     
@@ -17,7 +15,7 @@ class RegistrationImportViewController: UIViewController {
     
     var image: UIImage?
     var faceTemplates: [Recognizable]?
-    let disposeBag = DisposeBag()
+//    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,32 +26,59 @@ class RegistrationImportViewController: UIViewController {
         guard let faceTemplates = self.faceTemplates, !faceTemplates.isEmpty else {
             return
         }
-        rxVerID.facesOfUser(VerIDUser.defaultUserId)
-            .first()
-            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { face in
-                if face != nil {
-                    let alert = UIAlertController(title: "Overwrite your existing registration?", message: nil, preferredStyle: .actionSheet)
-                    alert.popoverPresentationController?.barButtonItem = sender
-                    alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive, handler: { _ in
-                        rxVerID.deleteUser(VerIDUser.defaultUserId)
-                            .observeOn(MainScheduler.instance)
-                            .subscribe(onCompleted: {
-                                self.addFaceTemplates(faceTemplates)
-                            }, onError: nil)
-                            .disposed(by: self.disposeBag)
-                    }))
-                    alert.addAction(UIAlertAction(title: "Amend", style: .default, handler: { _ in
+        guard let `verid` = verid else {
+            return
+        }
+        if let faces = try? verid.userManagement.facesOfUser(VerIDUser.defaultUserId), !faces.isEmpty {
+            let alert = UIAlertController(title: "Overwrite your existing registration?", message: nil, preferredStyle: .actionSheet)
+            alert.popoverPresentationController?.barButtonItem = sender
+            alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive, handler: { _ in
+                verid.userManagement.deleteUsers([VerIDUser.defaultUserId]) { error in
+                    if error == nil {
                         self.addFaceTemplates(faceTemplates)
-                    }))
-                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    self.addFaceTemplates(faceTemplates)
+                    }
                 }
-            }, onError: nil)
-            .disposed(by: self.disposeBag)
+//                rxVerID.deleteUser(VerIDUser.defaultUserId)
+//                    .observeOn(MainScheduler.instance)
+//                    .subscribe(onCompleted: {
+//                        self.addFaceTemplates(faceTemplates)
+//                    }, onError: nil)
+//                    .disposed(by: self.disposeBag)
+            }))
+            alert.addAction(UIAlertAction(title: "Amend", style: .default, handler: { _ in
+                self.addFaceTemplates(faceTemplates)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.addFaceTemplates(faceTemplates)
+        }
+//        rxVerID.facesOfUser(VerIDUser.defaultUserId)
+//            .first()
+//            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onSuccess: { face in
+//                if face != nil {
+//                    let alert = UIAlertController(title: "Overwrite your existing registration?", message: nil, preferredStyle: .actionSheet)
+//                    alert.popoverPresentationController?.barButtonItem = sender
+//                    alert.addAction(UIAlertAction(title: "Overwrite", style: .destructive, handler: { _ in
+//                        rxVerID.deleteUser(VerIDUser.defaultUserId)
+//                            .observeOn(MainScheduler.instance)
+//                            .subscribe(onCompleted: {
+//                                self.addFaceTemplates(faceTemplates)
+//                            }, onError: nil)
+//                            .disposed(by: self.disposeBag)
+//                    }))
+//                    alert.addAction(UIAlertAction(title: "Amend", style: .default, handler: { _ in
+//                        self.addFaceTemplates(faceTemplates)
+//                    }))
+//                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//                    self.present(alert, animated: true, completion: nil)
+//                } else {
+//                    self.addFaceTemplates(faceTemplates)
+//                }
+//            }, onError: nil)
+//            .disposed(by: self.disposeBag)
     }
     
     private func importFailed() {
@@ -65,21 +90,38 @@ class RegistrationImportViewController: UIViewController {
     }
     
     private func addFaceTemplates(_ faceTemplates: [Recognizable]) {
-        rxVerID.assignFaces(faceTemplates, toUser: VerIDUser.defaultUserId)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: {
-                if let profilePictureURL = profilePictureURL, let imageData = self.image?.jpegData(compressionQuality: 1.0) {
-                    try? imageData.write(to: profilePictureURL)
-                }
-                let alert = UIAlertController(title: "Registration imported", message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
-                    self.performSegue(withIdentifier: "cancel", sender: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }, onError: { error in
+        guard let `verid` = verid else {
+            return
+        }
+        verid.userManagement.assignFaces(faceTemplates, toUser: VerIDUser.defaultUserId) { error in
+            guard error == nil else {
                 self.importFailed()
-            })
-            .disposed(by: self.disposeBag)
+                return
+            }
+            if let profilePictureURL = profilePictureURL, let imageData = self.image?.jpegData(compressionQuality: 1.0) {
+                try? imageData.write(to: profilePictureURL)
+            }
+            let alert = UIAlertController(title: "Registration imported", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+                self.performSegue(withIdentifier: "cancel", sender: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+//        rxVerID.assignFaces(faceTemplates, toUser: VerIDUser.defaultUserId)
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onCompleted: {
+//                if let profilePictureURL = profilePictureURL, let imageData = self.image?.jpegData(compressionQuality: 1.0) {
+//                    try? imageData.write(to: profilePictureURL)
+//                }
+//                let alert = UIAlertController(title: "Registration imported", message: nil, preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+//                    self.performSegue(withIdentifier: "cancel", sender: nil)
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            }, onError: { error in
+//                self.importFailed()
+//            })
+//            .disposed(by: self.disposeBag)
     }
 
     /*

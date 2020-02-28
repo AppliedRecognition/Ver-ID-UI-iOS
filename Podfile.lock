@@ -1,42 +1,31 @@
 PODS:
   - OpenCV2 (4.2.0)
-  - RxCocoa (5.0.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.1)
-  - Ver-ID-Core (1.11.0):
+  - Ver-ID-Core-Beta (1.11.1):
     - OpenCV2 (~> 4.1)
-    - Ver-ID-SDK-Identity (~> 1.0)
+    - Ver-ID-SDK-Identity (~> 3.0)
     - ZIPFoundation (~> 0.9)
-  - Ver-ID-SDK-Identity (1.0.0)
+  - Ver-ID-SDK-Identity (3.0.0)
   - ZIPFoundation (0.9.10)
 
 DEPENDENCIES:
-  - RxCocoa (~> 5)
-  - RxSwift (~> 5)
-  - Ver-ID-Core (~> 1.11)
+  - Ver-ID-Core-Beta (from `/Users/jakub/Applied-Recognition/Ver-ID-Apple/Ver-ID-Core-Beta.podspec`)
 
 SPEC REPOS:
   trunk:
     - OpenCV2
-    - RxCocoa
-    - RxRelay
-    - RxSwift
-    - Ver-ID-Core
     - Ver-ID-SDK-Identity
     - ZIPFoundation
 
+EXTERNAL SOURCES:
+  Ver-ID-Core-Beta:
+    :podspec: "/Users/jakub/Applied-Recognition/Ver-ID-Apple/Ver-ID-Core-Beta.podspec"
+
 SPEC CHECKSUMS:
   OpenCV2: 59479948515bac1bbe0e1f3c618fe5f013d695b2
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
-  Ver-ID-Core: 04d2bf361956f3ff3ee71cb994b77bb8efb0c22c
-  Ver-ID-SDK-Identity: 08bc73a717db8b26e0097f3027a9aca3d48191a2
+  Ver-ID-Core-Beta: 090000fa478a682fda1195b986bc1adcabacbcc9
+  Ver-ID-SDK-Identity: 07e2cebe86e8ce00c95ceca4faeaafdf0191ea50
   ZIPFoundation: 249fa8890597086cd536bb2df5c9804d84e122b0
 
-PODFILE CHECKSUM: eceef7fad280413d8ea091e976f4f27085e27308
+PODFILE CHECKSUM: a8248c71ff89d14abce91edc28a0fbc326a06cdd
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.0
