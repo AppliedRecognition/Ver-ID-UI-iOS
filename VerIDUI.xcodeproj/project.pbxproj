@@ -8,11 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3B3E41B023A02EE2000DC659 /* RxVerID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */; };
-		3B3E41B123A02EE2000DC659 /* RxVerID.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B3E41B523A02EE8000DC659 /* RxVerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E419D23A02E7C000DC659 /* RxVerID.swift */; };
-		3B3E41B623A02EE8000DC659 /* RxVerID+Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */; };
-		3B3EB7CC23E37B9600CCB042 /* RxVerID.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3EB7CB23E37B9600CCB042 /* RxVerID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B3FF91D23A10BA200156A59 /* VerIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91823A10BA200156A59 /* VerIDViewController.xib */; };
 		3B3FF91E23A10BA200156A59 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91923A10BA200156A59 /* Tips.storyboard */; };
 		3B3FF91F23A10BA200156A59 /* FaceDetectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */; };
@@ -59,6 +54,8 @@
 		3B6C698C23A0227B0082AFF5 /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */; };
 		3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */; };
 		3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */; };
+		3B9849B12408535C00DF2B5F /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */; };
+		3B9849B42408588900DF2B5F /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */; };
 		3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044E221425BE00B3B312 /* MainViewController.swift */; };
 		3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
 		3BB2045D221425BF00B3B312 /* ExportCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */; };
@@ -77,19 +74,9 @@
 		3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
 		3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */; };
-		3F2FE477834C44A1F8013F77 /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */; };
-		811F176AD28B5B05645D890C /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */; };
-		DB99535373ABE4FCFB61C32C /* Pods_RxVerID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3B3E41AE23A02EE2000DC659 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3B3E41A823A02EE2000DC659;
-			remoteInfo = RxVerID;
-		};
 		3BE9F377220AF165002C11BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
@@ -107,7 +94,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
-				3B3E41B123A02EE2000DC659 /* RxVerID.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,11 +105,6 @@
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B3E419D23A02E7C000DC659 /* RxVerID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxVerID.swift; sourceTree = "<group>"; };
-		3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxVerID+Session.swift"; sourceTree = "<group>"; };
-		3B3E41A923A02EE2000DC659 /* RxVerID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxVerID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B3E41AC23A02EE2000DC659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B3EB7CB23E37B9600CCB042 /* RxVerID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RxVerID.h; path = RxVerID/RxVerID.h; sourceTree = "<group>"; };
 		3B3FF91823A10BA200156A59 /* VerIDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDViewController.xib; sourceTree = "<group>"; };
 		3B3FF91923A10BA200156A59 /* Tips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tips.storyboard; sourceTree = "<group>"; };
 		3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceDetectionAlertController.xib; sourceTree = "<group>"; };
@@ -172,6 +153,9 @@
 		3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAppDelegate.swift; path = "Ver-ID Sample/BaseAppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
 		3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID identity.p12"; sourceTree = "<group>"; };
+		3B9849AE2408494100DF2B5F /* Rx-Ver-ID.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Rx-Ver-ID.podspec"; path = "VerIDUI/Rx-Ver-ID.podspec"; sourceTree = SOURCE_ROOT; };
+		3B9849AF2408534C00DF2B5F /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB2044E221425BE00B3B312 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BB2044F221425BE00B3B312 /* VerIDUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUser.swift; sourceTree = "<group>"; };
 		3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportCodeViewController.swift; sourceTree = "<group>"; };
@@ -205,15 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				811F176AD28B5B05645D890C /* Pods_VerIDUI.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3B3E41A623A02EE2000DC659 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB99535373ABE4FCFB61C32C /* Pods_RxVerID.framework in Frameworks */,
+				3B9849B12408535C00DF2B5F /* Pods_VerIDUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,8 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
-				3B3E41B023A02EE2000DC659 /* RxVerID.framework in Frameworks */,
-				3F2FE477834C44A1F8013F77 /* Pods_Ver_ID_Sample.framework in Frameworks */,
+				3B9849B42408588900DF2B5F /* Pods_Ver_ID_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,10 +208,8 @@
 		3B326B0C22089C88005DAE1E = {
 			isa = PBXGroup;
 			children = (
-				3B3E419C23A02E7C000DC659 /* RxVerID */,
 				3B326B1822089C88005DAE1E /* VerIDUI */,
 				3BE9F366220AF125002C11BE /* Ver-ID Sample */,
-				3B3E41AA23A02EE2000DC659 /* RxVerID */,
 				3B326B1722089C88005DAE1E /* Products */,
 				94170ABA6C56107F2BFDEB39 /* Pods */,
 				8C808952AB38275225E61B6D /* Frameworks */,
@@ -248,7 +221,6 @@
 			children = (
 				3B326B1622089C88005DAE1E /* VerIDUI.framework */,
 				3BE9F365220AF125002C11BE /* Ver-ID Sample.app */,
-				3B3E41A923A02EE2000DC659 /* RxVerID.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,25 +257,6 @@
 				3B56E812220B675D00004F94 /* Video */,
 			);
 			path = VerIDUI;
-			sourceTree = "<group>";
-		};
-		3B3E419C23A02E7C000DC659 /* RxVerID */ = {
-			isa = PBXGroup;
-			children = (
-				3B3E419D23A02E7C000DC659 /* RxVerID.swift */,
-				3B3E419E23A02E7C000DC659 /* RxVerID+Session.swift */,
-			);
-			name = RxVerID;
-			path = RxVerID/RxVerID;
-			sourceTree = "<group>";
-		};
-		3B3E41AA23A02EE2000DC659 /* RxVerID */ = {
-			isa = PBXGroup;
-			children = (
-				3B3EB7CB23E37B9600CCB042 /* RxVerID.h */,
-				3B3E41AC23A02EE2000DC659 /* Info.plist */,
-			);
-			path = RxVerID;
 			sourceTree = "<group>";
 		};
 		3B564B30234277E9008B3FCD /* Localization */ = {
@@ -348,6 +301,7 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B9849AE2408494100DF2B5F /* Rx-Ver-ID.podspec */,
 				3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */,
 				3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */,
 				3BB204662214263600B3B312 /* AppDelegate.swift */,
@@ -372,6 +326,8 @@
 		8C808952AB38275225E61B6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */,
+				3B9849AF2408534C00DF2B5F /* Pods_VerIDUI.framework */,
 				D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */,
 				96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */,
 				A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */,
@@ -403,14 +359,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3B3E41A423A02EE2000DC659 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3B3EB7CC23E37B9600CCB042 /* RxVerID.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -433,25 +381,6 @@
 			productReference = 3B326B1622089C88005DAE1E /* VerIDUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		3B3E41A823A02EE2000DC659 /* RxVerID */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3B3E41B223A02EE2000DC659 /* Build configuration list for PBXNativeTarget "RxVerID" */;
-			buildPhases = (
-				F79132001E824BA68CC2582B /* [CP] Check Pods Manifest.lock */,
-				3B3E41A423A02EE2000DC659 /* Headers */,
-				3B3E41A523A02EE2000DC659 /* Sources */,
-				3B3E41A623A02EE2000DC659 /* Frameworks */,
-				3B3E41A723A02EE2000DC659 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = RxVerID;
-			productName = RxVerID;
-			productReference = 3B3E41A923A02EE2000DC659 /* RxVerID.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		3BE9F364220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BE9F374220AF128002C11BE /* Build configuration list for PBXNativeTarget "Ver-ID Sample" */;
@@ -467,7 +396,6 @@
 			);
 			dependencies = (
 				3BE9F378220AF165002C11BE /* PBXTargetDependency */,
-				3B3E41AF23A02EE2000DC659 /* PBXTargetDependency */,
 			);
 			name = "Ver-ID Sample";
 			productName = "Ver-ID Sample";
@@ -487,9 +415,6 @@
 					3B326B1522089C88005DAE1E = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
-					};
-					3B3E41A823A02EE2000DC659 = {
-						CreatedOnToolsVersion = 11.2.1;
 					};
 					3BE9F364220AF125002C11BE = {
 						CreatedOnToolsVersion = 10.1;
@@ -512,7 +437,6 @@
 			targets = (
 				3B326B1522089C88005DAE1E /* VerIDUI */,
 				3BE9F364220AF125002C11BE /* Ver-ID Sample */,
-				3B3E41A823A02EE2000DC659 /* RxVerID */,
 			);
 		};
 /* End PBXProject section */
@@ -553,13 +477,6 @@
 				3B6AA00023427C13000CED49 /* up_to_centre_2.mp4 in Resources */,
 				3B6AA00B23427C13000CED49 /* down_2.mp4 in Resources */,
 				3B6AA00923427C13000CED49 /* left_down_2.mp4 in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3B3E41A723A02EE2000DC659 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,28 +551,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F79132001E824BA68CC2582B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RxVerID-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -681,15 +576,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3B3E41A523A02EE2000DC659 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3B3E41B523A02EE8000DC659 /* RxVerID.swift in Sources */,
-				3B3E41B623A02EE8000DC659 /* RxVerID+Session.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3BE9F361220AF125002C11BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,11 +598,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3B3E41AF23A02EE2000DC659 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3B3E41A823A02EE2000DC659 /* RxVerID */;
-			targetProxy = 3B3E41AE23A02EE2000DC659 /* PBXContainerItemProxy */;
-		};
 		3BE9F378220AF165002C11BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3B326B1522089C88005DAE1E /* VerIDUI */;
@@ -797,7 +678,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MARKETING_VERSION = 1.11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -858,7 +739,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MARKETING_VERSION = 1.11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -927,56 +808,6 @@
 			};
 			name = Release;
 		};
-		3B3E41B323A02EE2000DC659 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAFC399C6685F9BB09C702C4 /* Pods-RxVerID.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/RxVerID/RxVerID/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.RxVerID;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		3B3E41B423A02EE2000DC659 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/RxVerID/RxVerID/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.RxVerID;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		3BE9F375220AF128002C11BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */;
@@ -1036,15 +867,6 @@
 			buildConfigurations = (
 				3B326B1F22089C88005DAE1E /* Debug */,
 				3B326B2022089C88005DAE1E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3B3E41B223A02EE2000DC659 /* Build configuration list for PBXNativeTarget "RxVerID" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3B3E41B323A02EE2000DC659 /* Debug */,
-				3B3E41B423A02EE2000DC659 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
