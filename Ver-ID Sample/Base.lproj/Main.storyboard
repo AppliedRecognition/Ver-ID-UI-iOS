@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IKg-96-7AY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IKg-96-7AY">
     <device id="retina5_5" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -50,7 +50,7 @@
             </objects>
             <point key="canvasLocation" x="281" y="152"/>
         </scene>
-        <!--Person SDK Sample-->
+        <!--Ver-ID Sample-->
         <scene sceneID="Jim-Lo-dzK">
             <objects>
                 <viewController storyboardIdentifier="start" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="lDi-Y0-Nst" customClass="MainViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
@@ -101,10 +101,10 @@
                                 <rect key="frame" x="0.0" y="164" width="414" height="572"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OXh-Ly-TQn">
-                                        <rect key="frame" x="121" y="210" width="172" height="152"/>
+                                        <rect key="frame" x="114" y="207.66666666666669" width="186" height="157"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWt-SU-8ff">
-                                                <rect key="frame" x="0.0" y="0.0" width="172" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="186" height="53"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                                 <state key="normal" title="Authenticate"/>
                                                 <connections>
@@ -112,7 +112,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-As-QjX">
-                                                <rect key="frame" x="0.0" y="64" width="172" height="36"/>
+                                                <rect key="frame" x="0.0" y="69" width="186" height="36"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <state key="normal" title="Register more faces"/>
                                                 <connections>
@@ -120,7 +120,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4V4-ef-yln">
-                                                <rect key="frame" x="0.0" y="116" width="172" height="36"/>
+                                                <rect key="frame" x="0.0" y="121" width="186" height="36"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                 <state key="normal" title="Import more faces"/>
                                                 <connections>
@@ -148,7 +148,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="13k-zH-WEH"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Person SDK Sample" id="cL7-3s-FVL">
+                    <navigationItem key="navigationItem" title="Ver-ID Sample" id="cL7-3s-FVL">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="eaw-ZL-ABz">
                             <connections>
                                 <action selector="shareRegistration:" destination="lDi-Y0-Nst" id="tnP-UC-x8r"/>
@@ -288,11 +288,11 @@
             </objects>
             <point key="canvasLocation" x="1358" y="1015"/>
         </scene>
-        <!--Person SDK Sample-->
+        <!--Ver-ID Sample-->
         <scene sceneID="yPT-kA-pmE">
             <objects>
                 <pageViewController storyboardIdentifier="intro" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Amz-0s-0Ly" customClass="IntroViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Person SDK Sample" id="rcE-a5-WeR">
+                    <navigationItem key="navigationItem" title="Ver-ID Sample" id="rcE-a5-WeR">
                         <barButtonItem key="leftBarButtonItem" title="Import" id="ivt-Zt-EBE">
                             <connections>
                                 <segue destination="VvO-ed-ijz" kind="show" id="1Ok-O1-p5T"/>
@@ -326,16 +326,16 @@
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DPn-V6-KOy">
-                                <rect key="frame" x="20" y="384" width="374" height="86.333333333333314"/>
+                                <rect key="frame" x="20" y="384" width="374" height="91"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ver-ID Person SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bho-H7-m1S">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ver-ID SDK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bho-H7-m1S">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40.666666666666664"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app demonstrates how Ver-ID performs two common user authentication tasks." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6f-o8-cLK">
-                                        <rect key="frame" x="0.0" y="44" width="374" height="42.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="48.666666666666686" width="374" height="42.333333333333343"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -397,16 +397,16 @@
                                 <color key="backgroundColor" red="0.94899803400039673" green="0.94876343011856079" blue="0.96863216161727905" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hfM-vY-3hb">
-                                <rect key="frame" x="20" y="384" width="374" height="94.333333333333314"/>
+                                <rect key="frame" x="20" y="384" width="374" height="99"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Registration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P02-2B-qBl">
-                                        <rect key="frame" x="0.0" y="0.0" width="180.33333333333334" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="204" height="40.666666666666664"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The app collects images of your face and stores them as templates." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npg-vO-3GA">
-                                        <rect key="frame" x="0.0" y="52" width="370.66666666666669" height="42.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="56.666666666666686" width="370.66666666666669" height="42.333333333333343"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -468,16 +468,16 @@
                                 <color key="backgroundColor" red="0.94899803400039673" green="0.94876343011856079" blue="0.96863216161727905" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Rp7-ds-F1c">
-                                <rect key="frame" x="20" y="384" width="374" height="116.33333333333331"/>
+                                <rect key="frame" x="20" y="384" width="374" height="121"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Authentication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZR7-l6-MfH">
-                                        <rect key="frame" x="0.0" y="0.0" width="218.33333333333334" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="247" height="40.666666666666664"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The app captures images of you and verifies them against the templates collected at registration." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3B-2I-swV">
-                                        <rect key="frame" x="0.0" y="51.999999999999993" width="342.66666666666669" height="64.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="56.666666666666679" width="342.66666666666669" height="64.333333333333314"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -649,7 +649,7 @@
         <image name="remove" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qYA-Az-1oB"/>
-        <segue reference="CEe-GC-lM0"/>
+        <segue reference="WLM-oK-k2E"/>
+        <segue reference="1Ok-O1-p5T"/>
     </inferredMetricsTieBreakers>
 </document>
