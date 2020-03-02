@@ -1,5 +1,9 @@
 # Change log
 
+### 1.11.1
+- Fixed bitcode embedding issues.
+- Removed RxVerID dependency for simplicity.
+
 ### 1.11.0
 - Added a new method to pass Ver-ID SDK identity to *VerIDFactory*.
 

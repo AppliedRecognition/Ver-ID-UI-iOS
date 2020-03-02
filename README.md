@@ -16,7 +16,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
 1. Open **Terminal** and enter the following commands:
 
 	~~~shell
-	git clone --recurse-submodules https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git
+	git clone https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git
 	cd Ver-ID-UI-iOS
 	pod install
 	open VerIDUI.xcworkspace
