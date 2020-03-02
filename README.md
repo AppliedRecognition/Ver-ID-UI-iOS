@@ -9,7 +9,6 @@ To build this project and to run the sample app you will need a Apple Mac comput
 
 - [Xcode 11.0](https://itunes.apple.com/us/app/xcode/id497799835) or newer
 - [Git](https://git-scm.com)
-- [Git LFS](https://git-lfs.github.com)
 - [CocoaPods](https://cocoapods.org)
 
 ## Installation
@@ -40,7 +39,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
     - You can either specify the password when you create an instance of `VerIDFactory`:
 
         ~~~swift
-        let identity = try VerIDSDKIdentity(password: "your password goes here")
+        let identity = try VerIDIdentity(password: "your password goes here")
         ~~~
     - Or you can add the password in your app's **Info.plist**:
 
@@ -52,9 +51,9 @@ To build this project and to run the sample app you will need a Apple Mac comput
         and construct the identity without the password parameter:
         
         ~~~swift
-        let identity = try VerIDSDKIdentity()        
+        let identity = try VerIDIdentity()        
         ~~~
-1. Pass the instance of `VerIDSDKIdentity` to the `VerIDFactory` constructor:
+1. Pass the instance of `VerIDIdentity` to the `VerIDFactory` constructor:
 
     ~~~swift
     let veridFactory = VerIDFactory(identity: identity)
