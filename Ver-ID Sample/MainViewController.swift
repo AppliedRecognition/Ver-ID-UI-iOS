@@ -55,7 +55,7 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
     
     /// Find out whether the user registered their face. If the user is registered display their profile photo and enable the Authenticate button.
     func updateUserDisplay() {
-        guard let url = profilePictureURL, let image = UIImage(contentsOfFile: url.path) else {
+        guard let url = Globals.profilePictureURL, let image = UIImage(contentsOfFile: url.path) else {
             return
         }
         self.imageView.layer.cornerRadius = self.imageView.bounds.width / 2
@@ -73,10 +73,9 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         assert(sender.view != nil)
         let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.popoverPresentationController?.sourceView = sender.view
-//        alert.popoverPresentationController?.sourceRect = (sender as? UIView)?.frame
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Unregister", style: .destructive, handler: { _ in
-            guard let `verid` = verid else {
+            guard let verid = Globals.verid else {
                 return
             }
             verid.userManagement.deleteUsers([VerIDUser.defaultUserId]) { error in
@@ -88,19 +87,6 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
                 }
                 self.navigationController?.setViewControllers([introViewController], animated: false)
             }
-//            rxVerID.deleteUser(VerIDUser.defaultUserId)
-//                .observeOn(MainScheduler.instance)
-//                .subscribe(onCompleted: {
-//                    guard let storyboard = self.storyboard else {
-//                        return
-//                    }
-//                    guard let introViewController = storyboard.instantiateViewController(withIdentifier: "intro") as? IntroViewController else {
-//                        return
-//                    }
-//                    self.navigationController?.setViewControllers([introViewController], animated: false)
-//                }, onError: { error in
-//
-//                }).disposed(by: self.disposeBag)
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -110,29 +96,12 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
     /// Add more faces if the user is already registered
     /// - Parameter sender: Sender of the action
     @IBAction func register(_ sender: Any) {
-        guard let `verid` = verid else {
+        guard let verid = Globals.verid else {
             return
         }
         let session = VerIDSession(environment: verid, settings: self.registrationSettings)
         session.delegate = self
         session.start()
-//        rxVerID.session(settings: self.registrationSettings)
-//            .flatMap({ result in
-//                rxVerID.croppedFaceImagesFromSessionResult(result, bearing: .straight)
-//                    .first()
-//                    .map({ image in
-//                        if let data = image?.jpegData(compressionQuality: 0.9), let to = profilePictureURL {
-//                            try data.write(to: to)
-//                        }
-//                    })
-//                    .asMaybe()
-//            })
-//            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onSuccess: {
-//                self.updateUserDisplay()
-//            }, onError: nil, onCompleted: nil)
-//            .disposed(by: self.disposeBag)
     }
     
     /// Authenticate the registered user
@@ -169,21 +138,18 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
-        guard let `verid` = verid else {
+        guard let verid = Globals.verid else {
             return
         }
         let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings)
         session.start()
-//        rxVerID.session(settings: settings, translatedStrings: translatedStrings)
-//            .observeOn(MainScheduler.instance)
-//            .subscribe()
-//            .disposed(by: self.disposeBag)
     }
     
     // MARK: - Ver-ID Session Delegate
     
     func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
-        
+        Globals.updateProfilePictureFromSessionResult(result)
+        self.updateUserDisplay()
     }
     
     func sessionWasCanceled(_ session: VerIDSession) {
@@ -206,12 +172,15 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         alert.addAction(UIAlertAction(title: "Generate code", style: .default) { _ in
             let alert = UIAlertController(title: "Exporting registration", message: nil, preferredStyle: .alert)
             self.present(alert, animated: true) {
-                guard let faces = try? verid?.userManagement.facesOfUser(VerIDUser.defaultUserId) else {
+                guard let verid = Globals.verid else {
+                    return
+                }
+                guard let faces = try? verid.userManagement.facesOfUser(VerIDUser.defaultUserId) else {
                     return
                 }
                 var data = RegistrationData()
                 data.faceTemplates = faces
-                if let url = profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
+                if let url = Globals.profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
                     data.profilePicture = image.cgImage
                 }
                 (UIApplication.shared.delegate as? AppDelegate)?.registrationUploading?.uploadRegistration(data) { url in
@@ -231,40 +200,6 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
                         }
                     }
                 }
-//                rxVerID.facesOfUser(VerIDUser.defaultUserId)
-//                    .toArray()
-//                    .map({ faces in
-//                        var data = RegistrationData()
-//                        data.faceTemplates = faces
-//                        if let url = profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
-//                            data.profilePicture = image.cgImage
-//                        }
-//                        return data
-//                    })
-//                    .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-//                    .observeOn(MainScheduler.instance)
-//                    .subscribe(onSuccess: { data in
-//                        (UIApplication.shared.delegate as? AppDelegate)?.registrationUploading?.uploadRegistration(data) { url in
-//                            DispatchQueue.global().async {
-//                                guard url != nil, let urlData = "\(url!)".data(using: .utf8) else {
-//                                    self.showExportFailed()
-//                                    return
-//                                }
-//                                guard let qrCodeImage = self.generateQRCode(data: urlData) else {
-//                                    self.showExportFailed()
-//                                    return
-//                                }
-//                                DispatchQueue.main.async {
-//                                    self.dismiss(animated: true) {
-//                                        self.performSegue(withIdentifier: "export", sender: qrCodeImage)
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }, onError: { _ in
-//                        self.showExportFailed()
-//                    })
-//                    .disposed(by: self.disposeBag)
             }
         })
         self.present(alert, animated: true, completion: nil)

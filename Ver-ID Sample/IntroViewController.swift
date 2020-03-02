@@ -83,7 +83,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     }
     
     @IBAction func register(_ sender: Any) {
-        guard let `verid` = verid else {
+        guard let verid = Globals.verid else {
             return
         }
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
@@ -132,18 +132,6 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
                 return
             }
             self.navigationController?.setViewControllers([mainViewController], animated: false)
-//            rxVerID.facesOfUser(VerIDUser.defaultUserId)
-//                .first()
-//                .asMaybe()
-//                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-//                .observeOn(MainScheduler.instance)
-//                .subscribe(onSuccess: { _ in
-//                    guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
-//                        return
-//                    }
-//                    self.navigationController?.setViewControllers([mainViewController], animated: false)
-//                }, onError: nil, onCompleted: nil)
-//                .disposed(by: self.disposeBag)
         }
     }
 
@@ -172,6 +160,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     // MARK: - Ver-ID Session Delegate
     
     func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
+        Globals.updateProfilePictureFromSessionResult(result)
         guard let storyboard = self.storyboard else {
             return
         }

@@ -9,9 +9,6 @@
 import UIKit
 import VerIDCore
 
-var profilePictureURL: URL?
-var verid: VerID?
-
 class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate {
 
     // MARK: - Instance variables
@@ -26,7 +23,7 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate 
     // MARK: - Application delegate methods
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        profilePictureURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("profilePicture").appendingPathExtension("jpg")
+        Globals.profilePictureURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("profilePicture").appendingPathExtension("jpg")
         let defaultSettings = DetRecLibSettings(modelsURL: nil)
         self.faceExtractQualityThreshold = defaultSettings.faceExtractQualityThreshold
         let livenessDetectionSettings = LivenessDetectionSessionSettings()
@@ -80,36 +77,6 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate 
         let userManagementFactory = VerIDUserManagementFactory(disableEncryption: !UserDefaults.standard.bool(forKey: self.faceTemplateEncryptionKeyPath))
         veridFactory.userManagementFactory = userManagementFactory
         veridFactory.createVerID()
-//        rxVerID.verid
-//            .flatMapCompletable({ verid in
-//                verid.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.float(forKey: "authenticationThreshold"))
-//                return Completable.empty()
-//            })
-//            .andThen(rxVerID.facesOfUser(VerIDUser.defaultUserId))
-//            .first()
-//            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onSuccess: { face in
-//                let initialViewController: UIViewController
-//                if face != nil {
-//                    if let controller = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController {
-//                        // Instantiate the main view controller.
-//                        initialViewController = controller
-//                    } else {
-//                        self.displayError()
-//                        return
-//                    }
-//                } else if let controller = storyboard.instantiateViewController(withIdentifier: "intro") as? IntroViewController {
-//                    initialViewController = controller
-//                } else {
-//                    self.displayError()
-//                    return
-//                }
-//                // Replace the root in the navigation view controller.
-//                navigationController.setViewControllers([initialViewController], animated: false)
-//            }, onError: { _ in
-//                self.displayError()
-//            }).disposed(by: self.disposeBag)
     }
 
     func displayError() {
@@ -124,12 +91,12 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate 
     
     func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
         instance.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.float(forKey: "authenticationThreshold"))
-        verid = instance
+        Globals.verid = instance
         guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
             return
         }
         let initialViewController: UIViewController
-        if let faces = try? instance.userManagement.facesOfUser(VerIDUser.defaultUserId), faces.isEmpty {
+        if let faces = try? instance.userManagement.facesOfUser(VerIDUser.defaultUserId), !faces.isEmpty {
             if let controller = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController {
                 // Instantiate the main view controller.
                 initialViewController = controller

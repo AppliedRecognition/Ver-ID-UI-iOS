@@ -53,6 +53,7 @@
 		3B6AA00E23427C13000CED49 /* up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FFC23427C13000CED49 /* up_2.mp4 */; };
 		3B6C698C23A0227B0082AFF5 /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */; };
 		3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */; };
+		3B8C109F240D87900087ACA5 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
 		3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */; };
 		3B9849B12408535C00DF2B5F /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */; };
 		3B9849B42408588900DF2B5F /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */; };
@@ -152,6 +153,7 @@
 		3B6AA00F234291FF000CED49 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAppDelegate.swift; path = "Ver-ID Sample/BaseAppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
+		3B8C109E240D87900087ACA5 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID identity.p12"; sourceTree = "<group>"; };
 		3B9849AE2408494100DF2B5F /* Rx-Ver-ID.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Rx-Ver-ID.podspec"; path = "VerIDUI/Rx-Ver-ID.podspec"; sourceTree = SOURCE_ROOT; };
 		3B9849AF2408534C00DF2B5F /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +303,7 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B8C109E240D87900087ACA5 /* Globals.swift */,
 				3B9849AE2408494100DF2B5F /* Rx-Ver-ID.podspec */,
 				3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */,
 				3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */,
@@ -586,6 +589,7 @@
 				3BB2045D221425BF00B3B312 /* ExportCodeViewController.swift in Sources */,
 				3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */,
 				3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */,
+				3B8C109F240D87900087ACA5 /* Globals.swift in Sources */,
 				3BB20460221425BF00B3B312 /* QRCodeScanViewController.swift in Sources */,
 				3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */,
 				3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */,
@@ -661,7 +665,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -728,7 +731,6 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

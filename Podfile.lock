@@ -1,6 +1,6 @@
 PODS:
   - OpenCV2 (4.2.0)
-  - Ver-ID-Core-Beta (1.11.1):
+  - Ver-ID-Core (1.11.1):
     - OpenCV2 (~> 4.1)
     - Ver-ID-SDK-Identity (~> 3.0)
     - ZIPFoundation (~> 0.9)
@@ -8,24 +8,21 @@ PODS:
   - ZIPFoundation (0.9.10)
 
 DEPENDENCIES:
-  - Ver-ID-Core-Beta (from `/Users/jakub/Applied-Recognition/Ver-ID-Apple/Ver-ID-Core-Beta.podspec`)
+  - Ver-ID-Core (= 1.11.1)
 
 SPEC REPOS:
   trunk:
     - OpenCV2
+    - Ver-ID-Core
     - Ver-ID-SDK-Identity
     - ZIPFoundation
 
-EXTERNAL SOURCES:
-  Ver-ID-Core-Beta:
-    :podspec: "/Users/jakub/Applied-Recognition/Ver-ID-Apple/Ver-ID-Core-Beta.podspec"
-
 SPEC CHECKSUMS:
   OpenCV2: 59479948515bac1bbe0e1f3c618fe5f013d695b2
-  Ver-ID-Core-Beta: 090000fa478a682fda1195b986bc1adcabacbcc9
+  Ver-ID-Core: d303a2270b335495bab3d18c24895d8f3c6ba892
   Ver-ID-SDK-Identity: 07e2cebe86e8ce00c95ceca4faeaafdf0191ea50
   ZIPFoundation: 249fa8890597086cd536bb2df5c9804d84e122b0
 
-PODFILE CHECKSUM: a8248c71ff89d14abce91edc28a0fbc326a06cdd
+PODFILE CHECKSUM: 05087b8daeee30280a0195650be7e5813c237440
 
 COCOAPODS: 1.9.0
