@@ -191,7 +191,6 @@ import AVFoundation
     }
     
     var videoRotation: CGFloat {
-        var rotation: CGFloat = 0
         videoRotationLock.wait()
         defer {
             videoRotationLock.signal()

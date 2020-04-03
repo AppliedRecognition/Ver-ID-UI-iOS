@@ -11,10 +11,9 @@ DEPENDENCIES:
   - Ver-ID-Core (= 1.11.2)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Ver-ID-Core
   trunk:
     - OpenCV2
+    - Ver-ID-Core
     - Ver-ID-SDK-Identity
     - ZIPFoundation
 
