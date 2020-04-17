@@ -10,10 +10,10 @@ target 'VerIDUI' do
   use_frameworks!
 
   # Pods for VerIDUI
-  pod 'Ver-ID-Core', '1.11.2'
+  pod 'Ver-ID-Core', '1.12.0'
 end
 
 target 'Ver-ID Sample' do
   use_frameworks!
-  pod 'Ver-ID-Core', '1.11.2'
+  pod 'Ver-ID-Core', '1.12.0'
 end
