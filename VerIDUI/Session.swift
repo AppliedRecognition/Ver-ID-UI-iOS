@@ -41,7 +41,9 @@ import os
     /// Session settings
     @objc public let settings: VerIDSessionSettings
     
-    let environment: VerID
+    /// Instance of VerID associated with the session
+    /// - Since: 1.12.0
+    @objc public let environment: VerID
     
     private var viewController: (UIViewController & VerIDViewControllerProtocol)?
     
