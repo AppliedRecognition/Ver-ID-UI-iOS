@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
     s.source       = { :git => "https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git", :tag => "v#{s.version}" }
     s.source_files = "VerIDUI/*.swift"
     s.resources    = "VerIDUI/Video/*.mp4", "VerIDUI/Localization/*.xml", "VerIDUI/*.xcassets", "VerIDUI/**.{storyboard,xib}"
-    s.dependency "Ver-ID-Core", "#{s.version}"
+    s.dependency "Ver-ID-Core", ">= #{s.version}", "< 2.0"
 end
