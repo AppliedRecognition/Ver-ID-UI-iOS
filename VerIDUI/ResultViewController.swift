@@ -30,13 +30,14 @@ import VerIDCore
     @objc func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: VerIDSessionResult)
 }
 
-class ResultViewController: UIViewController, ResultViewControllerProtocol {
+class ResultViewController: UIViewController, ResultViewControllerProtocol, SpeechDelegatable {
     
     var result: VerIDSessionResult?
     var settings: VerIDSessionSettings?
     public var delegate: ResultViewControllerDelegate?    
     var translatedStrings: TranslatedStrings?
     @IBOutlet weak var textView: UITextView!
+    var speechDelegate: SpeechDelegate?
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -115,12 +116,22 @@ class SuccessViewController: ResultViewController {
                 self.checkmarkView.isHidden = false
             }
         }
+        let text: String?
         if settings is RegistrationSessionSettings {
-            self.textView.text = self.translatedStrings?["Great. You are now registered."]
+            text = self.translatedStrings?["Great. You are now registered."]
         } else if settings is AuthenticationSessionSettings {
-            self.textView.text = self.translatedStrings?["Great. You authenticated using your face."]
+            text = self.translatedStrings?["Great. You authenticated using your face."]
         } else {
-            self.textView.text = self.translatedStrings?["Great. Session succeeded."]
+            text = self.translatedStrings?["Great. Session succeeded."]
+        }
+        if let txt = text {
+            self.textView.text = txt
+            if var language = self.translatedStrings?.resolvedLanguage {
+                if let region = self.translatedStrings?.resolvedRegion {
+                    language.append("-\(region)")
+                }
+                self.speechDelegate?.speak(txt, language: language)
+            }
         }
     }
     
@@ -140,12 +151,22 @@ class FailureViewController: ResultViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         self.title = self.translatedStrings?["Failed"]
+        let text: String?
         if settings is RegistrationSessionSettings {
-            self.textView.text = self.translatedStrings?["Registration failed"]
+            text = self.translatedStrings?["Registration failed"]
         } else if settings is AuthenticationSessionSettings {
-            self.textView.text = self.translatedStrings?["Authentication failed"]
+            text = self.translatedStrings?["Authentication failed"]
         } else {
-            self.textView.text = self.translatedStrings?["Session failed"]
+            text = self.translatedStrings?["Session failed"]
+        }
+        if let txt = text {
+            self.textView.text = txt
+            if var language = self.translatedStrings?.resolvedLanguage {
+                if let region = self.translatedStrings?.resolvedRegion {
+                    language.append("-\(region)")
+                }
+                self.speechDelegate?.speak(txt, language: language)
+            }
         }
     }
     

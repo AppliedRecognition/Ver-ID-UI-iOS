@@ -13,7 +13,7 @@ import AVFoundation
 import os
 
 /// Ver-ID session
-@objc open class VerIDSession: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate {
+@objc open class VerIDSession: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SpeechDelegate {
     
     @objc public enum SessionError: Int, Error {
         case failedToStart
@@ -70,6 +70,9 @@ import os
     
     private var imageQueue: DispatchQueue?
     private var alertController: UIViewController?
+    
+    private lazy var speechSynthesizer = AVSpeechSynthesizer()
+    private var lastSpokenText: String?
     
     // MARK: - Constructor
 
@@ -140,6 +143,9 @@ import os
     ///
     /// - Parameter viewController: Ver-ID view controller
     @objc private func presentVerIDViewController(_ viewController: UIViewController & VerIDViewControllerProtocol) {
+        if var speechDelegatable = viewController as? SpeechDelegatable {
+            speechDelegatable.speechDelegate = self
+        }
         if let viewDelegate = self.viewDelegate {
             viewDelegate.presentVerIDViewController(viewController)
             return
@@ -164,6 +170,9 @@ import os
     ///
     /// - Parameter viewController: Result view controller
     @objc private func presentResultViewController(_ viewController: UIViewController & ResultViewControllerProtocol) {
+        if var speechDelegatable = viewController as? SpeechDelegatable {
+            speechDelegatable.speechDelegate = self
+        }
         if let viewDelegate = self.viewDelegate {
             viewDelegate.presentResultViewController(viewController)
             return
@@ -175,6 +184,9 @@ import os
     ///
     /// - Parameter viewController: Tips view controller
     @objc private func presentTipsViewController(_ viewController: UIViewController & TipsViewControllerProtocol) {
+        if var speechDelegatable = viewController as? SpeechDelegatable {
+            speechDelegatable.speechDelegate = self
+        }
         if let viewDelegate = self.viewDelegate {
             viewDelegate.presentTipsViewController(viewController)
             return
@@ -198,6 +210,7 @@ import os
             callback()
             return
         }
+        self.speechSynthesizer.stopSpeaking(at: .word)
         self.navigationController = nil
         navController.dismiss(animated: true) {
             callback()
@@ -387,6 +400,9 @@ import os
                     alert.delegate = self
                     alert.modalPresentationStyle = .overFullScreen
                     self.alertController = alert
+                    if var speechDelegatable = alert as? SpeechDelegatable {
+                        speechDelegatable.speechDelegate = self
+                    }
                     self.viewController?.present(alert, animated: true, completion: nil)
                 } catch {
                     self.finishWithResult(VerIDSessionResult(error: error))
@@ -464,6 +480,23 @@ import os
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         self.cancel()
     }
+    
+    // MARK: - Speech delegate
+    
+    public func speak(_ text: String, language: String) {
+        guard self.settings.speakPrompts else {
+            return
+        }
+        if let lastSpoken = self.lastSpokenText, lastSpoken == text {
+            return
+        }
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: language)
+        self.speechSynthesizer.stopSpeaking(at: .word)
+        self.speechSynthesizer.speak(utterance)
+        self.lastSpokenText = text
+    }
+    
 }
 
 /// Session delegate protocol

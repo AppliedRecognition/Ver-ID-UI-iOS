@@ -30,7 +30,7 @@ import VerIDCore
 }
 
 /// Ver-ID SDK's default implementation of the `VerIDViewControllerProtocol`
-@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol, AVCaptureVideoDataOutputSampleBufferDelegate {
+@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol, AVCaptureVideoDataOutputSampleBufferDelegate, SpeechDelegatable {
     
     /// The view that holds the camera feed.
     @IBOutlet var noCameraLabel: UILabel!
@@ -54,11 +54,12 @@ import VerIDCore
     
     // MARK: -
     
-    private let synth: AVSpeechSynthesizer
     private var lastSpokenText: String?
     
     /// The Ver-ID view controller delegate
     public var delegate: VerIDViewControllerDelegate?
+    
+    weak var speechDelegate: SpeechDelegate?
     
     var focusPointOfInterest: CGPoint? {
         didSet {
@@ -82,7 +83,6 @@ import VerIDCore
     
     public init(nibName: String? = nil) {
         let nib = nibName ?? "VerIDViewController"
-        self.synth = AVSpeechSynthesizer()
         super.init(nibName: nib, bundle: Bundle(for: type(of: self)))
         self.videoDataOutput = AVCaptureVideoDataOutput()
     }
@@ -173,15 +173,21 @@ import VerIDCore
     }
     
     private func speakText(_ text: String?) {
-        if self.delegate?.settings.speakPrompts == true, let toSay = text, self.lastSpokenText == nil || self.lastSpokenText! != toSay, var language = self.translatedStrings?.resolvedLanguage {
-            self.lastSpokenText = toSay
-            let utterance = AVSpeechUtterance(string: toSay)
+        if let speechDelegate = self.speechDelegate, let toSay = text, var language = self.translatedStrings?.resolvedLanguage {
             if let region = self.translatedStrings?.resolvedRegion {
                 language.append("-\(region)")
             }
-            utterance.voice = AVSpeechSynthesisVoice(language: language)
-            self.synth.speak(utterance)
+            speechDelegate.speak(toSay, language: language)
         }
+//        if self.delegate?.settings.speakPrompts == true, let toSay = text, self.lastSpokenText == nil || self.lastSpokenText! != toSay, var language = self.translatedStrings?.resolvedLanguage {
+//            self.lastSpokenText = toSay
+//            let utterance = AVSpeechUtterance(string: toSay)
+//            if let region = self.translatedStrings?.resolvedRegion {
+//                language.append("-\(region)")
+//            }
+//            utterance.voice = AVSpeechSynthesisVoice(language: language)
+//            self.synth.speak(utterance)
+//        }
     }
     
     open override var captureDevice: AVCaptureDevice! {

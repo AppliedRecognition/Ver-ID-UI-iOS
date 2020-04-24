@@ -28,6 +28,7 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
         settings.numberOfResultsToCollect = numberOfFacesToRegister
+        settings.speakPrompts = UserDefaults.standard.bool(forKey: "speakPrompts")
         return settings
     }
     
@@ -124,13 +125,13 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
     }
     
     private func startAuthenticationSession(language: String) {
-        let translatedStrings: TranslatedStrings
+        let translatedStrings: TranslatedStrings?
         if language == "fr", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "fr_CA", withExtension: "xml") {
-            translatedStrings = try! TranslatedStrings(url: url)
+            translatedStrings = try? TranslatedStrings(url: url)
         } else if language == "es", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "es_US", withExtension: "xml") {
-            translatedStrings = try! TranslatedStrings(url: url)
+            translatedStrings = try? TranslatedStrings(url: url)
         } else {
-            translatedStrings = TranslatedStrings(useCurrentLocale: false)
+            translatedStrings = nil
         }
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId)
         settings.showResult = true
@@ -141,7 +142,9 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         guard let verid = Globals.verid else {
             return
         }
-        let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings)
+        settings.numberOfResultsToCollect = 1 + UserDefaults.standard.integer(forKey: "livenessDetectionPoses")
+        settings.speakPrompts = UserDefaults.standard.bool(forKey: "speakPrompts")
+        let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
         session.start()
     }
     

@@ -93,6 +93,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         settings.yawThreshold = CGFloat(yawThreshold)
         settings.pitchThreshold = CGFloat(pitchThreshold)
         settings.numberOfResultsToCollect = numberOfFacesToRegister
+        settings.speakPrompts = UserDefaults.standard.bool(forKey: "speakPrompts")
         let session = VerIDSession(environment: verid, settings: settings)
         session.delegate = self
         session.start()

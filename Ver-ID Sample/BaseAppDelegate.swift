@@ -34,7 +34,8 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate 
             "authenticationThreshold": NSNumber(value: 3.5),
             faceExtractionQualityThresholdKeyPath: NSNumber(value: faceExtractQualityThreshold!),
             "numberOfFacesToRegister": NSNumber(value: 1),
-            faceTemplateEncryptionKeyPath: true
+            faceTemplateEncryptionKeyPath: true,
+            "speakPrompts": false
             ])
         UserDefaults.standard.addObserver(self, forKeyPath: faceExtractionQualityThresholdKeyPath, options: .new, context: &userDefaultsContext)
         UserDefaults.standard.addObserver(self, forKeyPath: faceTemplateEncryptionKeyPath, options: .new, context: &userDefaultsContext)

@@ -9,9 +9,10 @@
 import UIKit
 
 /// View controller that shows tips
-class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, TipsViewControllerProtocol {
+class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, TipsViewControllerProtocol, SpeechDelegatable {
     
     var translatedStrings: TranslatedStrings?
+    var speechDelegate: SpeechDelegate?
     
     // MARK: - Tips view controller protocol
     
@@ -65,6 +66,12 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, 
             return
         }
         self.navigationItem.title = page.title
+        if let speechDelegate = self.speechDelegate, let text = page.text, var language = self.translatedStrings?.resolvedLanguage {
+            if let region = self.translatedStrings?.resolvedRegion {
+                language.append("-\(region)")
+            }
+            speechDelegate.speak(text, language: language)
+        }
     }
     
     // MARK: - Page view controller data source

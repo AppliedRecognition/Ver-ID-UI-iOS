@@ -25,7 +25,7 @@ import AVFoundation
     @objc var delegate: FaceDetectionAlertControllerDelegate? { get set }
 }
 
-class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControllerProtocol {
+class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControllerProtocol, SpeechDelegatable {
     
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var messageLabelBackgroundView: UIView!
@@ -41,6 +41,7 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     var delegate: FaceDetectionAlertControllerDelegate?
     var looper: Any?
     var translatedStrings: TranslatedStrings?
+    var speechDelegate: SpeechDelegate?
     
     public init(message: String?, videoURL: URL?) {
         self.message = message
@@ -101,6 +102,13 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
         let roundedBottomCornerLayer = CAShapeLayer()
         roundedBottomCornerLayer.path = UIBezierPath(roundedRect: self.toolbar.bounds, byRoundingCorners: [.bottomLeft,.bottomRight], cornerRadii: cornerRadii).cgPath
         self.toolbar.layer.mask = roundedBottomCornerLayer
+        
+        if let speechDelegate = self.speechDelegate, let message = self.message, var language = self.translatedStrings?.resolvedLanguage {
+            if let region = self.translatedStrings?.resolvedRegion {
+                language.append("-\(region)")
+            }
+            speechDelegate.speak(message, language: language)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
