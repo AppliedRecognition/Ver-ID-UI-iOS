@@ -57,16 +57,28 @@
 		3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */; };
 		3B9849B12408535C00DF2B5F /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */; };
 		3B9849B42408588900DF2B5F /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */; };
+		3B9BFCC5246DE64A00C4B2D1 /* SessionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB5246DE64900C4B2D1 /* SessionResultViewController.swift */; };
+		3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */; };
+		3B9BFCC7246DE64A00C4B2D1 /* SessionSettingsShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB7246DE64900C4B2D1 /* SessionSettingsShareItem.swift */; };
+		3B9BFCC8246DE64A00C4B2D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB8246DE64900C4B2D1 /* SettingsViewController.swift */; };
+		3B9BFCC9246DE64A00C4B2D1 /* S3UploadActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB9246DE64900C4B2D1 /* S3UploadActivity.swift */; };
+		3B9BFCCA246DE64A00C4B2D1 /* SecuritySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBA246DE64900C4B2D1 /* SecuritySettingsViewController.swift */; };
+		3B9BFCCB246DE64A00C4B2D1 /* SessionItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBB246DE64900C4B2D1 /* SessionItemProvider.swift */; };
+		3B9BFCCC246DE64A00C4B2D1 /* ValueSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBC246DE64900C4B2D1 /* ValueSelectionViewController.swift */; };
+		3B9BFCCD246DE64A00C4B2D1 /* VerIDFactory+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBD246DE64900C4B2D1 /* VerIDFactory+Sample.swift */; };
+		3B9BFCCE246DE64A00C4B2D1 /* RegistrationImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */; };
+		3B9BFCCF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift */; };
+		3B9BFCD0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift */; };
+		3B9BFCD1246DE64A00C4B2D1 /* UserDefaults+VerID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC1246DE64A00C4B2D1 /* UserDefaults+VerID.swift */; };
+		3B9BFCD2246DE64A00C4B2D1 /* SessionShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC2246DE64A00C4B2D1 /* SessionShareItem.swift */; };
+		3B9BFCD3246DE64A00C4B2D1 /* VerIDSessionSettings+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC3246DE64A00C4B2D1 /* VerIDSessionSettings+Sample.swift */; };
+		3B9BFCD4246DE64A00C4B2D1 /* SettingsPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC4246DE64A00C4B2D1 /* SettingsPresets.swift */; };
 		3BACF2BE245384C0000FA3A7 /* SpeechDelegatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF2BC245384C0000FA3A7 /* SpeechDelegatable.swift */; };
 		3BACF2BF245384C0000FA3A7 /* SpeechDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */; };
 		3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044E221425BE00B3B312 /* MainViewController.swift */; };
 		3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
-		3BB2045D221425BF00B3B312 /* ExportCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */; };
 		3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20452221425BE00B3B312 /* RegistrationData.swift */; };
-		3BB2045F221425BF00B3B312 /* RegistrationDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20453221425BF00B3B312 /* RegistrationDownloading.swift */; };
-		3BB20460221425BF00B3B312 /* QRCodeScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20454221425BF00B3B312 /* QRCodeScanViewController.swift */; };
 		3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20456221425BF00B3B312 /* IntroViewController.swift */; };
-		3BB20463221425BF00B3B312 /* RegistrationUploading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20457221425BF00B3B312 /* RegistrationUploading.swift */; };
 		3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */; };
 		3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20459221425BF00B3B312 /* ErrorViewController.swift */; };
 		3BB204672214263600B3B312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB204662214263600B3B312 /* AppDelegate.swift */; };
@@ -156,19 +168,30 @@
 		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
 		3B8C109E240D87900087ACA5 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID identity.p12"; sourceTree = "<group>"; };
-		3B9849AE2408494100DF2B5F /* Rx-Ver-ID.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Rx-Ver-ID.podspec"; path = "VerIDUI/Rx-Ver-ID.podspec"; sourceTree = SOURCE_ROOT; };
 		3B9849AF2408534C00DF2B5F /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B9BFCB5246DE64900C4B2D1 /* SessionResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionResultViewController.swift; sourceTree = "<group>"; };
+		3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationProvider.swift; sourceTree = "<group>"; };
+		3B9BFCB7246DE64900C4B2D1 /* SessionSettingsShareItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSettingsShareItem.swift; sourceTree = "<group>"; };
+		3B9BFCB8246DE64900C4B2D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3B9BFCB9246DE64900C4B2D1 /* S3UploadActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3UploadActivity.swift; sourceTree = "<group>"; };
+		3B9BFCBA246DE64900C4B2D1 /* SecuritySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsViewController.swift; sourceTree = "<group>"; };
+		3B9BFCBB246DE64900C4B2D1 /* SessionItemProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionItemProvider.swift; sourceTree = "<group>"; };
+		3B9BFCBC246DE64900C4B2D1 /* ValueSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueSelectionViewController.swift; sourceTree = "<group>"; };
+		3B9BFCBD246DE64900C4B2D1 /* VerIDFactory+Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VerIDFactory+Sample.swift"; sourceTree = "<group>"; };
+		3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationImport.swift; sourceTree = "<group>"; };
+		3B9BFCBF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceSizeSettingsViewController.swift; sourceTree = "<group>"; };
+		3B9BFCC0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceDetectionSettingsViewController.swift; sourceTree = "<group>"; };
+		3B9BFCC1246DE64A00C4B2D1 /* UserDefaults+VerID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+VerID.swift"; sourceTree = "<group>"; };
+		3B9BFCC2246DE64A00C4B2D1 /* SessionShareItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionShareItem.swift; sourceTree = "<group>"; };
+		3B9BFCC3246DE64A00C4B2D1 /* VerIDSessionSettings+Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VerIDSessionSettings+Sample.swift"; sourceTree = "<group>"; };
+		3B9BFCC4246DE64A00C4B2D1 /* SettingsPresets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPresets.swift; sourceTree = "<group>"; };
 		3BACF2BC245384C0000FA3A7 /* SpeechDelegatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechDelegatable.swift; sourceTree = "<group>"; };
 		3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechDelegate.swift; sourceTree = "<group>"; };
 		3BB2044E221425BE00B3B312 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BB2044F221425BE00B3B312 /* VerIDUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUser.swift; sourceTree = "<group>"; };
-		3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportCodeViewController.swift; sourceTree = "<group>"; };
 		3BB20452221425BE00B3B312 /* RegistrationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
-		3BB20453221425BF00B3B312 /* RegistrationDownloading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationDownloading.swift; sourceTree = "<group>"; };
-		3BB20454221425BF00B3B312 /* QRCodeScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanViewController.swift; sourceTree = "<group>"; };
 		3BB20456221425BF00B3B312 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
-		3BB20457221425BF00B3B312 /* RegistrationUploading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationUploading.swift; sourceTree = "<group>"; };
 		3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationImportViewController.swift; sourceTree = "<group>"; };
 		3BB20459221425BF00B3B312 /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		3BB204662214263600B3B312 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -304,28 +327,63 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
+		3B9BFCD5246DE6B100C4B2D1 /* Session Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				3B9BFCB9246DE64900C4B2D1 /* S3UploadActivity.swift */,
+				3B9BFCBB246DE64900C4B2D1 /* SessionItemProvider.swift */,
+				3B9BFCB7246DE64900C4B2D1 /* SessionSettingsShareItem.swift */,
+				3B9BFCC2246DE64A00C4B2D1 /* SessionShareItem.swift */,
+			);
+			name = "Session Sharing";
+			sourceTree = "<group>";
+		};
+		3B9BFCD6246DE6E500C4B2D1 /* Registration Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				3BB20452221425BE00B3B312 /* RegistrationData.swift */,
+				3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */,
+				3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */,
+				3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */,
+			);
+			name = "Registration Sharing";
+			sourceTree = "<group>";
+		};
+		3B9BFCD7246DE6FF00C4B2D1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3B9BFCC0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift */,
+				3B9BFCBF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift */,
+				3B9BFCBA246DE64900C4B2D1 /* SecuritySettingsViewController.swift */,
+				3B9BFCC4246DE64A00C4B2D1 /* SettingsPresets.swift */,
+				3B9BFCB8246DE64900C4B2D1 /* SettingsViewController.swift */,
+				3B9BFCC1246DE64A00C4B2D1 /* UserDefaults+VerID.swift */,
+				3B9BFCBC246DE64900C4B2D1 /* ValueSelectionViewController.swift */,
+				3B9BFCC3246DE64A00C4B2D1 /* VerIDSessionSettings+Sample.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
-				3B8C109E240D87900087ACA5 /* Globals.swift */,
-				3B9849AE2408494100DF2B5F /* Rx-Ver-ID.podspec */,
-				3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */,
-				3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */,
+				3B9BFCD7246DE6FF00C4B2D1 /* Settings */,
+				3B9BFCD6246DE6E500C4B2D1 /* Registration Sharing */,
+				3B9BFCD5246DE6B100C4B2D1 /* Session Sharing */,
 				3BB204662214263600B3B312 /* AppDelegate.swift */,
+				3BE9F36E220AF128002C11BE /* Assets.xcassets */,
+				3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */,
 				3BB20459221425BF00B3B312 /* ErrorViewController.swift */,
-				3BB20451221425BE00B3B312 /* ExportCodeViewController.swift */,
+				3B8C109E240D87900087ACA5 /* Globals.swift */,
+				3BE9F373220AF128002C11BE /* Info.plist */,
 				3BB20456221425BF00B3B312 /* IntroViewController.swift */,
 				3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */,
 				3BB2046D221428B900B3B312 /* Main.storyboard */,
 				3BB2044E221425BE00B3B312 /* MainViewController.swift */,
-				3BB20454221425BF00B3B312 /* QRCodeScanViewController.swift */,
-				3BB20452221425BE00B3B312 /* RegistrationData.swift */,
-				3BB20453221425BF00B3B312 /* RegistrationDownloading.swift */,
-				3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */,
-				3BB20457221425BF00B3B312 /* RegistrationUploading.swift */,
+				3B9BFCB5246DE64900C4B2D1 /* SessionResultViewController.swift */,
+				3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */,
+				3B9BFCBD246DE64900C4B2D1 /* VerIDFactory+Sample.swift */,
 				3BB2044F221425BE00B3B312 /* VerIDUser.swift */,
-				3BE9F36E220AF128002C11BE /* Assets.xcassets */,
-				3BE9F373220AF128002C11BE /* Info.plist */,
 			);
 			path = "Ver-ID Sample";
 			sourceTree = "<group>";
@@ -589,19 +647,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B9BFCD3246DE64A00C4B2D1 /* VerIDSessionSettings+Sample.swift in Sources */,
+				3B9BFCD0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift in Sources */,
+				3B9BFCD1246DE64A00C4B2D1 /* UserDefaults+VerID.swift in Sources */,
 				3BB204672214263600B3B312 /* AppDelegate.swift in Sources */,
-				3BB2045F221425BF00B3B312 /* RegistrationDownloading.swift in Sources */,
-				3BB20463221425BF00B3B312 /* RegistrationUploading.swift in Sources */,
-				3BB2045D221425BF00B3B312 /* ExportCodeViewController.swift in Sources */,
+				3B9BFCCF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift in Sources */,
+				3B9BFCCD246DE64A00C4B2D1 /* VerIDFactory+Sample.swift in Sources */,
 				3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */,
+				3B9BFCCB246DE64A00C4B2D1 /* SessionItemProvider.swift in Sources */,
 				3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */,
 				3B8C109F240D87900087ACA5 /* Globals.swift in Sources */,
-				3BB20460221425BF00B3B312 /* QRCodeScanViewController.swift in Sources */,
+				3B9BFCCA246DE64A00C4B2D1 /* SecuritySettingsViewController.swift in Sources */,
 				3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */,
+				3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */,
 				3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */,
+				3B9BFCCE246DE64A00C4B2D1 /* RegistrationImport.swift in Sources */,
 				3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */,
+				3B9BFCC7246DE64A00C4B2D1 /* SessionSettingsShareItem.swift in Sources */,
+				3B9BFCC9246DE64A00C4B2D1 /* S3UploadActivity.swift in Sources */,
+				3B9BFCD4246DE64A00C4B2D1 /* SettingsPresets.swift in Sources */,
 				3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */,
+				3B9BFCC8246DE64A00C4B2D1 /* SettingsViewController.swift in Sources */,
+				3B9BFCC5246DE64A00C4B2D1 /* SessionResultViewController.swift in Sources */,
+				3B9BFCD2246DE64A00C4B2D1 /* SessionShareItem.swift in Sources */,
 				3B6C698C23A0227B0082AFF5 /* BaseAppDelegate.swift in Sources */,
+				3B9BFCCC246DE64A00C4B2D1 /* ValueSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

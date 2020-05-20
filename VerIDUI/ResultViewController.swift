@@ -30,7 +30,7 @@ import VerIDCore
     @objc func resultViewController(_ viewController: ResultViewControllerProtocol, didFinishWithResult result: VerIDSessionResult)
 }
 
-class ResultViewController: UIViewController, ResultViewControllerProtocol, SpeechDelegatable {
+@objc public class ResultViewController: UIViewController, ResultViewControllerProtocol, SpeechDelegatable {
     
     var result: VerIDSessionResult?
     var settings: VerIDSessionSettings?
@@ -57,7 +57,7 @@ class ResultViewController: UIViewController, ResultViewControllerProtocol, Spee
     }
 }
 
-class SuccessViewController: ResultViewController {
+@objc public class SuccessViewController: ResultViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var checkmarkView: UIImageView!
@@ -142,7 +142,7 @@ class SuccessViewController: ResultViewController {
     }
 }
 
-class FailureViewController: ResultViewController {
+@objc public class FailureViewController: ResultViewController {
     
     var looper: Any?
     

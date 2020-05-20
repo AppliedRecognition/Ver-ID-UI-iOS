@@ -9,8 +9,9 @@
 import UIKit
 import VerIDCore
 import VerIDUI
+import MobileCoreServices
 
-class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, VerIDSessionDelegate {
+class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate {
     
     // MARK: - Interface builder views
 
@@ -21,14 +22,8 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
     
     /// Settings to use for user registration
     var registrationSettings: RegistrationSessionSettings {
-        let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, showResult: true)
-        let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
-        let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
-        let numberOfFacesToRegister = UserDefaults.standard.integer(forKey: "numberOfFacesToRegister")
-        settings.yawThreshold = CGFloat(yawThreshold)
-        settings.pitchThreshold = CGFloat(pitchThreshold)
-        settings.numberOfResultsToCollect = numberOfFacesToRegister
-        settings.speakPrompts = UserDefaults.standard.bool(forKey: "speakPrompts")
+        let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
+        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
         return settings
     }
     
@@ -39,17 +34,6 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUserDisplay()
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        if appDelegate.registrationUploading == nil {
-            // Remove the export button if the app delegate can't handle face template exporting
-            self.navigationItem.leftBarButtonItem = nil
-        }
-        if appDelegate.registrationDownloading == nil {
-            // Hide the import button if the app delegate can't handle face template importing
-            self.importButton.isHidden = true
-        }
     }
     
     // MARK: -
@@ -101,6 +85,12 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
             return
         }
         let session = VerIDSession(environment: verid, settings: self.registrationSettings)
+        if Globals.isTesting {
+            session.imageProviderFactory = TestImageProviderServiceFactory()
+            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
+            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: self.registrationSettings)
+        }
         session.delegate = self
         session.start()
     }
@@ -133,26 +123,46 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         } else {
             translatedStrings = nil
         }
-        let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId)
-        settings.showResult = true
-        let yawThreshold = UserDefaults.standard.float(forKey: "yawThreshold")
-        let pitchThreshold = UserDefaults.standard.float(forKey: "pitchThreshold")
-        settings.yawThreshold = CGFloat(yawThreshold)
-        settings.pitchThreshold = CGFloat(pitchThreshold)
         guard let verid = Globals.verid else {
             return
         }
-        settings.numberOfResultsToCollect = 1 + UserDefaults.standard.integer(forKey: "livenessDetectionPoses")
-        settings.speakPrompts = UserDefaults.standard.bool(forKey: "speakPrompts")
+        let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
+        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
         let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
+        if Globals.isTesting {
+            session.imageProviderFactory = TestImageProviderServiceFactory()
+            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
+            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
+        }
+        session.delegate = self
         session.start()
     }
     
     // MARK: - Ver-ID Session Delegate
     
     func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
-        Globals.updateProfilePictureFromSessionResult(result)
-        self.updateUserDisplay()
+        if session.settings is RegistrationSessionSettings && result.error == nil {
+            Globals.updateProfilePictureFromSessionResult(result)
+            Globals.deleteImagesInSessionResult(result)
+            self.updateUserDisplay()
+            let alert = UIAlertController(title: "Registration successful", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+        } else {
+            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "result") as? SessionResultViewController else {
+                return
+            }
+            viewController.sessionResult = result
+            viewController.sessionTime = Date()
+            viewController.sessionSettings = session.settings
+            if result.error != nil {
+                viewController.title = "Session Failed"
+            } else {
+                viewController.title = "Success"
+            }
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
     
     func sessionWasCanceled(_ session: VerIDSession) {
@@ -169,43 +179,18 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
     ///
     /// - Parameter sender: Bar button item that triggered the function
     @IBAction func shareRegistration(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Share registration", message: "The app will generate a code. Scan the code with this app on another device to import your registration.", preferredStyle: .actionSheet)
-        alert.popoverPresentationController?.barButtonItem = sender
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Generate code", style: .default) { _ in
-            let alert = UIAlertController(title: "Exporting registration", message: nil, preferredStyle: .alert)
-            self.present(alert, animated: true) {
-                guard let verid = Globals.verid else {
-                    return
-                }
-                guard let faces = try? verid.userManagement.facesOfUser(VerIDUser.defaultUserId) else {
-                    return
-                }
-                var data = RegistrationData()
-                data.faceTemplates = faces
-                if let url = Globals.profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
-                    data.profilePicture = image.cgImage
-                }
-                (UIApplication.shared.delegate as? AppDelegate)?.registrationUploading?.uploadRegistration(data) { url in
-                    DispatchQueue.global().async {
-                        guard url != nil, let urlData = "\(url!)".data(using: .utf8) else {
-                            self.showExportFailed()
-                            return
-                        }
-                        guard let qrCodeImage = self.generateQRCode(data: urlData) else {
-                            self.showExportFailed()
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            self.dismiss(animated: true) {
-                                self.performSegue(withIdentifier: "export", sender: qrCodeImage)
-                            }
-                        }
-                    }
-                }
-            }
-        })
-        self.present(alert, animated: true, completion: nil)
+        guard let verid = Globals.verid, let profilePictureURL = Globals.profilePictureURL else {
+            return
+        }
+        guard let shareItem = try? RegistrationProvider(verid: verid, profilePictureURL: profilePictureURL) else {
+            return
+        }
+        let activityController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
+        activityController.popoverPresentationController?.barButtonItem = sender
+        activityController.completionWithItemsHandler = { activityType, completed, items, error in
+            shareItem.cleanup()
+        }
+        self.present(activityController, animated: true)
     }
     
     /// Display an error if the face template export fails
@@ -219,33 +204,49 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         }
     }
     
-    /// Generate a QR code to facilitate sharing of registered face templates with other devices running this app
-    ///
-    /// - Parameter data: The data to encode in the QR code
-    /// - Returns: QR code image
-    func generateQRCode(data: Data) -> UIImage? {
-        guard let filter = CIFilter(name: "CIQRCodeGenerator") else {
-            return nil
-        }
-        filter.setValue(data, forKey: "inputMessage")
-        let transform = CGAffineTransform(scaleX: 8, y: 8)
-        guard let ciImage = filter.outputImage?.transformed(by: transform) else {
-            return nil
-        }
-        return UIImage(ciImage: ciImage)
-    }
-    
-    /// Unwind segue when the template export is done
-    ///
-    /// - Parameter segue: Unwind segue
-    @IBAction func exportDone(_ segue: UIStoryboardSegue) {
-        
-    }
-    
     // MARK: - Registration import
     
-    @IBAction func importCancelled(_ segue: UIStoryboardSegue) {
+    @IBAction func importRegistration(_ button: UIButton) {
+        let picker = UIDocumentPickerViewController(documentTypes: [Globals.registrationUTType], in: .import)
+        if #available(iOS 11, *) {
+            picker.allowsMultipleSelection = false
+        }
+        picker.popoverPresentationController?.sourceView = button
+        picker.delegate = self
+        self.present(picker, animated: true) {
+            if Globals.isTesting, let url = Bundle.main.url(forResource: "Test registration", withExtension: "verid") {
+                self.dismiss(animated: false) {
+                    self.documentPicker(picker, didPickDocumentAt: url)
+                }
+            }
+        }
+    }
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        guard let importViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "registrationImport") as? RegistrationImportViewController else {
+            return
+        }
+        importViewController.url = url
+        importViewController.delegate = self
+        self.navigationController?.pushViewController(importViewController, animated: true)
+    }
+    
+    func registrationImportViewController(_ registrationImportViewController: RegistrationImportViewController, didImportRegistrationFromURL url: URL) {
         self.updateUserDisplay()
+        let title = "Registration imported"
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)            
+        })
+        self.present(alert, animated: true)
+    }
+    
+    func registrationImportViewController(_ registrationImportViewController: RegistrationImportViewController, didFailToImportRegistration error: Error) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func didCancelImportInRegistrationImportViewController(_ registrationImportViewController: RegistrationImportViewController) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     /// Display an error when a face template import fails
@@ -255,44 +256,17 @@ class MainViewController: UIViewController, QRCodeScanViewControllerDelegate, Ve
         self.present(alert, animated: true, completion: nil)
     }
     
-    /// QR code scan view controller method
-    ///
-    /// - Parameters:
-    ///   - viewController: The view controller that scanned the QR code
-    ///   - value: The string encoded in the QR code
-    func qrCodeScanViewController(_ viewController: QRCodeScanViewController, didScanQRCode value: String) {
-        self.dismiss(animated: true, completion: nil)
-        guard let url = URL(string: value) else {
-            self.showImportError()
-            return
-        }
-        let alert = UIAlertController(title: "Downloading", message: nil, preferredStyle: .alert)
-        self.present(alert, animated: true) {
-            (UIApplication.shared.delegate as? AppDelegate)?.registrationDownloading?.downloadRegistration(url) { registrationData in
-                self.dismiss(animated: true) {
-                    if registrationData != nil {
-                        self.performSegue(withIdentifier: "import", sender: registrationData)
-                    } else {
-                        self.showImportError()
-                    }
-                }
-            }
-        }
-    }
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let introViewController = segue.destination as? IntroViewController {
             // Hide the register button on the intro slides
             introViewController.showRegisterButton = false
-        } else if segue.identifier == "export", let viewController = segue.destination as? ExportCodeViewController, let qrCodeImage = sender as? UIImage {
-            viewController.qrCodeImage = qrCodeImage
-        } else if let scanViewController = segue.destination as? QRCodeScanViewController {
-            scanViewController.delegate = self
-        } else if let importViewController = segue.destination as? RegistrationImportViewController, let registrationData = sender as? RegistrationData, let image = registrationData.profilePicture {
-            importViewController.faceTemplates = registrationData.faceTemplates
-            importViewController.image = UIImage(cgImage: image)
         }
     }
+}
+
+extension MainViewController: UIDocumentInteractionControllerDelegate {
+    
+    
 }

@@ -32,6 +32,8 @@ import os
     /// Factory that creates view controllers used in the session
     @objc public var sessionViewControllersFactory: SessionViewControllersFactory
     
+    @objc public var imageProviderFactory: ImageProviderServiceFactory?
+    
     /// Session delegate
     @objc public weak var delegate: VerIDSessionDelegate?
     
@@ -232,7 +234,8 @@ import os
             self.showResult(VerIDSessionResult(error: error))
             return
         }
-        let op = SessionOperation(environment: self.environment, imageProvider: self, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
+        let imageProvider: ImageProviderService = self.imageProviderFactory?.makeImageProviderService() ?? self
+        let op = SessionOperation(environment: self.environment, imageProvider: imageProvider, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
         op.delegate = self
         let finishOp = BlockOperation()
         finishOp.addExecutionBlock { [weak finishOp, weak self] in

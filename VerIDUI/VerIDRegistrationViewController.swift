@@ -10,7 +10,7 @@ import UIKit
 import VerIDCore
 
 /// Subclass of `VerIDViewController` that displays faces collected during the session
-class VerIDRegistrationViewController: VerIDViewController {
+@objc open class VerIDRegistrationViewController: VerIDViewController {
 
     @IBOutlet var detectedFaceStackView: UIStackView!
     
@@ -22,7 +22,7 @@ class VerIDRegistrationViewController: VerIDViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
             return
@@ -48,7 +48,7 @@ class VerIDRegistrationViewController: VerIDViewController {
         }
     }
     
-    override func loadResultImage(_ url: URL, forFace face: Face) {
+    open override func loadResultImage(_ url: URL, forFace face: Face) {
         guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
             return
         }
@@ -126,7 +126,7 @@ class VerIDRegistrationViewController: VerIDViewController {
         }
     }
     
-    override func clearOverlays() {
+    public override func clearOverlays() {
         super.clearOverlays()
         guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
             return

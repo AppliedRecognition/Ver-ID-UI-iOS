@@ -9,7 +9,7 @@
 import UIKit
 
 /// Layer that's drawn on the camera preview to outline the detected face
-class FaceOvalLayer: CALayer {
+public class FaceOvalLayer: CALayer {
     
     private(set) var ovalBounds: CGRect = CGRect.zero
     private(set) var cutoutBounds: CGRect?
@@ -29,7 +29,7 @@ class FaceOvalLayer: CALayer {
         super.init(layer: layer)
     }
     
-    init(strokeColor: UIColor, backgroundColor: UIColor) {
+    public init(strokeColor: UIColor, backgroundColor: UIColor) {
         self.strokeColor = strokeColor
         self.backgroundColour = backgroundColor
         super.init()
@@ -39,7 +39,7 @@ class FaceOvalLayer: CALayer {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setOvalBounds(_ ovalBounds: CGRect, cutoutBounds: CGRect?, angle: CGFloat?, distance: CGFloat?, strokeColour: UIColor? = nil) {
+    public func setOvalBounds(_ ovalBounds: CGRect, cutoutBounds: CGRect?, angle: CGFloat?, distance: CGFloat?, strokeColour: UIColor? = nil) {
         self.ovalBounds = ovalBounds
         self.cutoutBounds = cutoutBounds
         if strokeColour != nil {
@@ -50,7 +50,7 @@ class FaceOvalLayer: CALayer {
         self.setNeedsDisplay()
     }
     
-    override func draw(in ctx: CGContext) {
+    public override func draw(in ctx: CGContext) {
         while let sub = self.sublayers?.first {
             sub.removeFromSuperlayer()
         }

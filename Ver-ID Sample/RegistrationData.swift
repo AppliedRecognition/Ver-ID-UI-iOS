@@ -9,8 +9,38 @@
 import UIKit
 import VerIDCore
 
-struct RegistrationData {
+struct RegistrationData: Codable {
     
-    var faceTemplates: [Recognizable] = []
-    var profilePicture: CGImage?
+    enum CodingKeys: String, CodingKey {
+        case faces, profilePicture
+    }
+    
+    enum FaceCodingKeys: String, CodingKey {
+        case version, data
+    }
+    
+    let faces: [Recognizable]
+    let profilePicture: Data
+    
+    init(faces: [Recognizable], profilePicture: Data) {
+        self.faces = faces
+        self.profilePicture = profilePicture
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.faces = try container.decode([RecognitionFace].self, forKey: .faces)
+        self.profilePicture = try container.decode(Data.self, forKey: .profilePicture)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        let faces: [RecognitionFace] = self.faces.map({
+            let face = RecognitionFace(recognitionData: $0.recognitionData)
+            face.version = $0.version
+            return face
+        })
+        try container.encode(faces, forKey: .faces)
+        try container.encode(self.profilePicture, forKey: .profilePicture)
+    }
 }

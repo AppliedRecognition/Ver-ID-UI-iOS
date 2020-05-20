@@ -9,14 +9,14 @@
 import UIKit
 
 /// View controller that shows tips
-class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, TipsViewControllerProtocol, SpeechDelegatable {
+@objc public class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, TipsViewControllerProtocol, SpeechDelegatable {
     
     var translatedStrings: TranslatedStrings?
     var speechDelegate: SpeechDelegate?
     
     // MARK: - Tips view controller protocol
     
-    var tipsViewControllerDelegate: TipsViewControllerDelegate?
+    public var tipsViewControllerDelegate: TipsViewControllerDelegate?
     
     // MARK: -
     
@@ -31,7 +31,7 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, 
         ]
     }()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
@@ -50,7 +50,7 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, 
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if self.isMovingFromParent {
             self.tipsViewControllerDelegate?.didDismissTipsInViewController(self)
@@ -76,31 +76,31 @@ class TipsViewController: UIPageViewController, UIPageViewControllerDataSource, 
     
     // MARK: - Page view controller data source
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = self.tipControllers.firstIndex(of: viewController as! TipPageViewController), index + 1 < self.tipControllers.count else {
             return nil
         }
         return self.tipControllers[index + 1]
     }
     
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = self.tipControllers.firstIndex(of: viewController as! TipPageViewController), index > 0 else {
             return nil
         }
         return self.tipControllers[index - 1]
     }
     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+    public func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return self.tipControllers.count
     }
     
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+    public func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
     
     // MARK: - Page view controller delegate
     
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             self.updateNavBar()
         }

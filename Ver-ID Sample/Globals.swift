@@ -23,4 +23,27 @@ struct Globals {
             UIGraphicsEndImageContext()
         }
     }
+    
+    static func deleteImagesInSessionResult(_ sessionResult: VerIDSessionResult) {
+        if let videoURL = sessionResult.videoURL {
+            try? FileManager.default.removeItem(at: videoURL)
+        }
+        sessionResult.imageURLs.forEach {
+            try? FileManager.default.removeItem(at: $0)
+        }
+    }
+    
+    static var isTesting: Bool {
+        #if DEBUG
+            return CommandLine.arguments.contains("--test")
+        #else
+            return false
+        #endif
+    }
+    
+    static var shouldFailAuthentication: Bool {
+        return isTesting && CommandLine.arguments.contains("--fail-authentication")
+    }
+    
+    static let registrationUTType = "com.appliedrec.verid.Registration"
 }

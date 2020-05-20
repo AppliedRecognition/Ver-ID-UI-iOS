@@ -41,17 +41,17 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     case failedToCreateInstance
 }
 
-class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
+@objc open class VerIDSessionViewControllersFactory: NSObject, SessionViewControllersFactory {
     
-    public let settings: VerIDSessionSettings
-    public let translatedStrings: TranslatedStrings
+    @objc public let settings: VerIDSessionSettings
+    @objc public let translatedStrings: TranslatedStrings
     
-    public init(settings: VerIDSessionSettings, translatedStrings: TranslatedStrings) {
+    @objc public init(settings: VerIDSessionSettings, translatedStrings: TranslatedStrings) {
         self.settings = settings
         self.translatedStrings = translatedStrings
     }
     
-    func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
+    @objc open func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
         let viewController: VerIDViewController
         if self.settings is RegistrationSessionSettings {
             viewController = VerIDRegistrationViewController()
@@ -63,7 +63,7 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         return viewController
     }
     
-    func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol {
+    @objc open func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol {
         let bundle = Bundle(for: type(of: self))
         let storyboard = UIStoryboard(name: "Result", bundle: bundle)
         let storyboardId = result.error != nil ? "failure" : "success"
@@ -76,7 +76,7 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         return resultViewController
     }
     
-    func makeTipsViewController() throws -> UIViewController & TipsViewControllerProtocol {
+    @objc open func makeTipsViewController() throws -> UIViewController & TipsViewControllerProtocol {
         let bundle = Bundle(for: type(of: self))
         guard let tipsController = UIStoryboard(name: "Tips", bundle: bundle).instantiateInitialViewController() as? TipsViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
@@ -85,7 +85,7 @@ class VerIDSessionViewControllersFactory: SessionViewControllersFactory {
         return tipsController
     }
     
-    func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
+    @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
         let bundle = Bundle(for: type(of: self))
         let message: String
         if faceDetectionResult.status == .faceTurnedTooFar {

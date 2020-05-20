@@ -9,74 +9,63 @@
 import UIKit
 import VerIDCore
 
-class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate {
+class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate, RegistrationImportDelegate {
 
     // MARK: - Instance variables
 
     var window: UIWindow?
-    var userDefaultsContext: Int = 0
-    var faceExtractQualityThreshold: Float?
-    let faceExtractionQualityThresholdKeyPath = "faceExtractQualityThreshold"
-    let faceTemplateEncryptionKeyPath = "faceTemplateEncryption"
-//    let disposeBag: DisposeBag = DisposeBag()
 
     // MARK: - Application delegate methods
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         Globals.profilePictureURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("profilePicture").appendingPathExtension("jpg")
-        let defaultSettings = DetRecLibSettings(modelsURL: nil)
-        self.faceExtractQualityThreshold = defaultSettings.faceExtractQualityThreshold
-        let livenessDetectionSettings = LivenessDetectionSessionSettings()
-        UserDefaults.standard.register(defaults: [
-            "livenessDetectionPoses": NSNumber(value: 1),
-            "yawThreshold": livenessDetectionSettings.yawThreshold as NSNumber,
-            "pitchThreshold": livenessDetectionSettings.pitchThreshold as NSNumber,
-            "authenticationThreshold": NSNumber(value: 3.5),
-            faceExtractionQualityThresholdKeyPath: NSNumber(value: faceExtractQualityThreshold!),
-            "numberOfFacesToRegister": NSNumber(value: 1),
-            faceTemplateEncryptionKeyPath: true,
-            "speakPrompts": false
-            ])
-        UserDefaults.standard.addObserver(self, forKeyPath: faceExtractionQualityThresholdKeyPath, options: .new, context: &userDefaultsContext)
-        UserDefaults.standard.addObserver(self, forKeyPath: faceTemplateEncryptionKeyPath, options: .new, context: &userDefaultsContext)
+        UserDefaults.standard.registerVerIDDefaults()
+        if launchOptions?.keys.contains(.url) == .some(true) {
+            return true
+        }
         self.reload()
         return true
     }
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &self.userDefaultsContext, let defaults = object as? UserDefaults {
-            if keyPath == self.faceExtractionQualityThresholdKeyPath {
-                let updatedValue = defaults.float(forKey: self.faceExtractionQualityThresholdKeyPath)/10
-                if self.faceExtractQualityThreshold == nil || self.faceExtractQualityThreshold! != updatedValue {
-                    self.faceExtractQualityThreshold = updatedValue
-                    DispatchQueue.main.async {
-                        self.reload()
-                    }
-                }
-            } else if keyPath == self.faceTemplateEncryptionKeyPath {
-                DispatchQueue.main.async {
-                    self.reload()
-                }
-            }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard url.pathExtension == "verid" else {
+            return false
         }
+        guard let importViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "registrationImport") as? RegistrationImportViewController else {
+            return false
+        }
+        importViewController.url = url
+        importViewController.delegate = self
+        (self.window?.rootViewController as? UINavigationController)?.viewControllers = [importViewController]
+        return true
     }
+    
+    // MARK: - Registration import delegate
+    
+    func registrationImportViewController(_ registrationImportViewController: RegistrationImportViewController, didImportRegistrationFromURL url: URL) {
+        self.reload()
+    }
+    
+    func registrationImportViewController(_ registrationImportViewController: RegistrationImportViewController, didFailToImportRegistration error: Error) {
+        self.reload()
+    }
+    
+    func didCancelImportInRegistrationImportViewController(_ registrationImportViewController: RegistrationImportViewController) {
+        self.reload()
+    }
+    
+    // MARK: -
 
     func reload() {
         guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
             return
         }
+        Globals.verid = nil
         navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
         // Load Ver-ID
-        // API secret is read from the app's Info.plist
-        let detRecLibSettings = DetRecLibSettings(modelsURL: nil)
-        detRecLibSettings.faceExtractQualityThreshold = self.faceExtractQualityThreshold ?? UserDefaults.standard.float(forKey: self.faceExtractionQualityThresholdKeyPath)
-        let detRecLibFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil, settings: detRecLibSettings)
-        let veridFactory = VerIDFactory()
+        // Ver-ID API password is read from the app's Info.plist
+        let veridFactory = VerIDFactory(userDefaults: UserDefaults.standard)
         veridFactory.delegate = self
-        veridFactory.faceDetectionFactory = detRecLibFactory
-        veridFactory.faceRecognitionFactory = detRecLibFactory
-        let userManagementFactory = VerIDUserManagementFactory(disableEncryption: !UserDefaults.standard.bool(forKey: self.faceTemplateEncryptionKeyPath))
-        veridFactory.userManagementFactory = userManagementFactory
         veridFactory.createVerID()
     }
 
@@ -91,13 +80,27 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate 
     // MARK: - Ver-ID Factory Delegate
     
     func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        instance.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.float(forKey: "authenticationThreshold"))
+        instance.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.authenticationThreshold)
         Globals.verid = instance
+        if Globals.isTesting {
+            if let users = try? instance.userManagement.users() {
+                if !users.isEmpty {
+                    instance.userManagement.deleteUsers(users) { _ in
+                        self.loadInitialViewController()
+                    }
+                    return
+                }
+            }
+        }
+        self.loadInitialViewController()
+    }
+    
+    private func loadInitialViewController() {
         guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
             return
         }
         let initialViewController: UIViewController
-        if let faces = try? instance.userManagement.facesOfUser(VerIDUser.defaultUserId), !faces.isEmpty {
+        if let faces = try? Globals.verid?.userManagement.facesOfUser(VerIDUser.defaultUserId), !faces.isEmpty {
             if let controller = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController {
                 // Instantiate the main view controller.
                 initialViewController = controller

@@ -10,17 +10,5 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: BaseAppDelegate {
-    
-    // MARK: - Registration upload/download
-    
-    /// Implement RegistrationUploading if you want your app to handle exporting face registrations
-    var registrationUploading: RegistrationUploading? {
-        return nil
-    }
-    
-    /// Implement RegistrationDownloading if you want your app to handle importing face registrations
-    var registrationDownloading: RegistrationDownloading? {
-        return nil
-    }
 }
 

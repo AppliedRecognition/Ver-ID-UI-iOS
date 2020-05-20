@@ -8,12 +8,12 @@
 
 import UIKit
 
-class TipPageViewController: UIViewController {
+@objc public class TipPageViewController: UIViewController {
     
     @IBOutlet var textView: UITextView!
     var text: String?
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.textView.text = text
     }
