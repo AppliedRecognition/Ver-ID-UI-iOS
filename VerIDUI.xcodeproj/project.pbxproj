@@ -13,6 +13,29 @@
 		3B3FF91F23A10BA200156A59 /* FaceDetectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */; };
 		3B3FF92023A10BA200156A59 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91B23A10BA200156A59 /* Result.storyboard */; };
 		3B3FF92123A10BA200156A59 /* VerIDRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */; };
+		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
+		3B45BAA9247D8A3C00273FAF /* TestFaceDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA4247D8A3C00273FAF /* TestFaceDetectionService.swift */; };
+		3B45BAAB247D8A3C00273FAF /* TestResultEvaluationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA6247D8A3C00273FAF /* TestResultEvaluationService.swift */; };
+		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
+		3B45BAB4247D8BEB00273FAF /* VerIDSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */; };
+		3B45BABB247D8C9500273FAF /* SettingsPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC4246DE64A00C4B2D1 /* SettingsPresets.swift */; };
+		3B45BABC247D911E00273FAF /* Test registration.verid in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BAA5247D8A3C00273FAF /* Test registration.verid */; };
+		3B45BABD247D914F00273FAF /* Test registration.verid in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BAA5247D8A3C00273FAF /* Test registration.verid */; };
+		3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B45BAC3247D94B100273FAF /* QuickLookThumbnailing.framework */; };
+		3B45BAC7247D94B100273FAF /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAC6247D94B100273FAF /* ThumbnailProvider.swift */; };
+		3B45BACB247D94B100273FAF /* Thumbnails.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B45BAC2247D94B100273FAF /* Thumbnails.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3B45BAD6247D94C000273FAF /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B45BAD5247D94C000273FAF /* QuickLook.framework */; };
+		3B45BAD9247D94C000273FAF /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAD8247D94C000273FAF /* PreviewViewController.swift */; };
+		3B45BADC247D94C000273FAF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BADA247D94C000273FAF /* MainInterface.storyboard */; };
+		3B45BAE0247D94C000273FAF /* Preview.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B45BAD4247D94C000273FAF /* Preview.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3B45BAE4247D974500273FAF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
+		3B45BAE5247D975400273FAF /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20452221425BE00B3B312 /* RegistrationData.swift */; };
+		3B45BAE6247D975400273FAF /* RegistrationImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */; };
+		3B45BAE7247D975D00273FAF /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
+		3B45BAE8247D976C00273FAF /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20452221425BE00B3B312 /* RegistrationData.swift */; };
+		3B45BAE9247D976F00273FAF /* RegistrationImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */; };
+		3B45BAEA247D977400273FAF /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
+		3B45BAEB247D978300273FAF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
 		3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */; };
 		3B564B22234276EE008B3FCD /* TipPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B20234276ED008B3FCD /* TipPageViewController.swift */; };
 		3B564B34234277FB008B3FCD /* fr_CA.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B564B31234277FB008B3FCD /* fr_CA.xml */; };
@@ -89,9 +112,32 @@
 		3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
 		3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */; };
+		6D94A672D9F79AC9B61D3C4D /* Pods_Thumbnails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 538CD8536354259B0992E1D0 /* Pods_Thumbnails.framework */; };
+		D81D64542CEDA7A045EB2413 /* Pods_Preview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E22BB1D672D04EAF6969A2FB /* Pods_Preview.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3B45BAB6247D8BEB00273FAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3BE9F364220AF125002C11BE;
+			remoteInfo = "Ver-ID Sample";
+		};
+		3B45BAC9247D94B100273FAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B45BAC1247D94B100273FAF;
+			remoteInfo = Thumbnails;
+		};
+		3B45BADE247D94C000273FAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B45BAD3247D94C000273FAF;
+			remoteInfo = Preview;
+		};
 		3BE9F377220AF165002C11BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
@@ -102,6 +148,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3B45BACF247D94B100273FAF /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3B45BACB247D94B100273FAF /* Thumbnails.appex in Embed App Extensions */,
+				3B45BAE0247D94C000273FAF /* Preview.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BE9F37D220AF8DD002C11BE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,6 +184,23 @@
 		3B3FF91B23A10BA200156A59 /* Result.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
 		3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDRegistrationViewController.xib; sourceTree = "<group>"; };
 		3B3FF92223A10C9100156A59 /* Ver-ID-UI.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Ver-ID-UI.podspec"; sourceTree = SOURCE_ROOT; };
+		3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionViewController.swift; sourceTree = "<group>"; };
+		3B45BAA4247D8A3C00273FAF /* TestFaceDetectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFaceDetectionService.swift; sourceTree = "<group>"; };
+		3B45BAA5247D8A3C00273FAF /* Test registration.verid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Test registration.verid"; sourceTree = "<group>"; };
+		3B45BAA6247D8A3C00273FAF /* TestResultEvaluationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResultEvaluationService.swift; sourceTree = "<group>"; };
+		3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageProvider.swift; sourceTree = "<group>"; };
+		3B45BAB1247D8BEB00273FAF /* VerIDSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerIDSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDSampleUITests.swift; sourceTree = "<group>"; };
+		3B45BAB5247D8BEB00273FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B45BAC2247D94B100273FAF /* Thumbnails.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Thumbnails.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B45BAC3247D94B100273FAF /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
+		3B45BAC6247D94B100273FAF /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
+		3B45BAC8247D94B100273FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B45BAD4247D94C000273FAF /* Preview.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Preview.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B45BAD5247D94C000273FAF /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		3B45BAD8247D94C000273FAF /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		3B45BADB247D94C000273FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		3B45BADD247D94C000273FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatedStrings.swift; sourceTree = "<group>"; };
 		3B564B20234276ED008B3FCD /* TipPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipPageViewController.swift; sourceTree = "<group>"; };
 		3B564B31234277FB008B3FCD /* fr_CA.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fr_CA.xml; path = Localization/fr_CA.xml; sourceTree = "<group>"; };
@@ -203,13 +278,19 @@
 		3BE9F373220AF128002C11BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewControllersFactory.swift; sourceTree = "<group>"; };
 		499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
+		538CD8536354259B0992E1D0 /* Pods_Thumbnails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thumbnails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74EE93FED5B1D0217FC10741 /* Pods-Preview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.release.xcconfig"; path = "Pods/Target Support Files/Pods-Preview/Pods-Preview.release.xcconfig"; sourceTree = "<group>"; };
 		7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxVerID.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxVerID/Pods-RxVerID.release.xcconfig"; sourceTree = "<group>"; };
 		96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxVerID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A12E62F1521321CCF055461A /* Pods-Preview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preview/Pods-Preview.debug.xcconfig"; sourceTree = "<group>"; };
 		A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
 		D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFC399C6685F9BB09C702C4 /* Pods-RxVerID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxVerID.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxVerID/Pods-RxVerID.debug.xcconfig"; sourceTree = "<group>"; };
+		DE961D9A656EC0C03D808ABA /* Pods-Thumbnails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thumbnails/Pods-Thumbnails.debug.xcconfig"; sourceTree = "<group>"; };
+		E22BB1D672D04EAF6969A2FB /* Pods_Preview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Preview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
+		FF05CED69BE557C9C9498F8D /* Pods-Thumbnails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thumbnails/Pods-Thumbnails.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +299,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B9849B12408535C00DF2B5F /* Pods_VerIDUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B45BAAE247D8BEB00273FAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B45BABF247D94B100273FAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */,
+				6D94A672D9F79AC9B61D3C4D /* Pods_Thumbnails.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B45BAD1247D94C000273FAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B45BAD6247D94C000273FAF /* QuickLook.framework in Frameworks */,
+				D81D64542CEDA7A045EB2413 /* Pods_Preview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +344,9 @@
 			children = (
 				3B326B1822089C88005DAE1E /* VerIDUI */,
 				3BE9F366220AF125002C11BE /* Ver-ID Sample */,
+				3B45BAB2247D8BEB00273FAF /* VerIDSampleUITests */,
+				3B45BAC5247D94B100273FAF /* Thumbnails */,
+				3B45BAD7247D94C000273FAF /* Preview */,
 				3B326B1722089C88005DAE1E /* Products */,
 				94170ABA6C56107F2BFDEB39 /* Pods */,
 				8C808952AB38275225E61B6D /* Frameworks */,
@@ -249,6 +358,9 @@
 			children = (
 				3B326B1622089C88005DAE1E /* VerIDUI.framework */,
 				3BE9F365220AF125002C11BE /* Ver-ID Sample.app */,
+				3B45BAB1247D8BEB00273FAF /* VerIDSampleUITests.xctest */,
+				3B45BAC2247D94B100273FAF /* Thumbnails.appex */,
+				3B45BAD4247D94C000273FAF /* Preview.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,6 +398,46 @@
 				3B56E812220B675D00004F94 /* Video */,
 			);
 			path = VerIDUI;
+			sourceTree = "<group>";
+		};
+		3B45BAA2247D8A3C00273FAF /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */,
+				3B45BAA4247D8A3C00273FAF /* TestFaceDetectionService.swift */,
+				3B45BAA5247D8A3C00273FAF /* Test registration.verid */,
+				3B45BAA6247D8A3C00273FAF /* TestResultEvaluationService.swift */,
+				3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */,
+			);
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		3B45BAB2247D8BEB00273FAF /* VerIDSampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */,
+				3B45BAB5247D8BEB00273FAF /* Info.plist */,
+			);
+			path = VerIDSampleUITests;
+			sourceTree = "<group>";
+		};
+		3B45BAC5247D94B100273FAF /* Thumbnails */ = {
+			isa = PBXGroup;
+			children = (
+				3B45BAC6247D94B100273FAF /* ThumbnailProvider.swift */,
+				3B45BAC8247D94B100273FAF /* Info.plist */,
+			);
+			path = Thumbnails;
+			sourceTree = "<group>";
+		};
+		3B45BAD7247D94C000273FAF /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				3B45BAD8247D94C000273FAF /* PreviewViewController.swift */,
+				3B45BADA247D94C000273FAF /* MainInterface.storyboard */,
+				3B45BADD247D94C000273FAF /* Info.plist */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		3B564B30234277E9008B3FCD /* Localization */ = {
@@ -367,6 +519,7 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B45BAA2247D8A3C00273FAF /* Testing */,
 				3B9BFCD7246DE6FF00C4B2D1 /* Settings */,
 				3B9BFCD6246DE6E500C4B2D1 /* Registration Sharing */,
 				3B9BFCD5246DE6B100C4B2D1 /* Session Sharing */,
@@ -396,6 +549,10 @@
 				D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */,
 				96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */,
 				A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */,
+				3B45BAC3247D94B100273FAF /* QuickLookThumbnailing.framework */,
+				3B45BAD5247D94C000273FAF /* QuickLook.framework */,
+				E22BB1D672D04EAF6969A2FB /* Pods_Preview.framework */,
+				538CD8536354259B0992E1D0 /* Pods_Thumbnails.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -409,6 +566,10 @@
 				7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */,
 				0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */,
 				FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */,
+				A12E62F1521321CCF055461A /* Pods-Preview.debug.xcconfig */,
+				74EE93FED5B1D0217FC10741 /* Pods-Preview.release.xcconfig */,
+				DE961D9A656EC0C03D808ABA /* Pods-Thumbnails.debug.xcconfig */,
+				FF05CED69BE557C9C9498F8D /* Pods-Thumbnails.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -446,6 +607,60 @@
 			productReference = 3B326B1622089C88005DAE1E /* VerIDUI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		3B45BAB0247D8BEB00273FAF /* VerIDSampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B45BAB8247D8BEB00273FAF /* Build configuration list for PBXNativeTarget "VerIDSampleUITests" */;
+			buildPhases = (
+				3B45BAAD247D8BEB00273FAF /* Sources */,
+				3B45BAAE247D8BEB00273FAF /* Frameworks */,
+				3B45BAAF247D8BEB00273FAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B45BAB7247D8BEB00273FAF /* PBXTargetDependency */,
+			);
+			name = VerIDSampleUITests;
+			productName = VerIDSampleUITests;
+			productReference = 3B45BAB1247D8BEB00273FAF /* VerIDSampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		3B45BAC1247D94B100273FAF /* Thumbnails */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B45BACC247D94B100273FAF /* Build configuration list for PBXNativeTarget "Thumbnails" */;
+			buildPhases = (
+				5C1CB8D87480BEB8CDDFBAB3 /* [CP] Check Pods Manifest.lock */,
+				3B45BABE247D94B100273FAF /* Sources */,
+				3B45BABF247D94B100273FAF /* Frameworks */,
+				3B45BAC0247D94B100273FAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Thumbnails;
+			productName = Thumbnails;
+			productReference = 3B45BAC2247D94B100273FAF /* Thumbnails.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		3B45BAD3247D94C000273FAF /* Preview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B45BAE1247D94C000273FAF /* Build configuration list for PBXNativeTarget "Preview" */;
+			buildPhases = (
+				0CACA6CFB81760A4F4CC5370 /* [CP] Check Pods Manifest.lock */,
+				3B45BAD0247D94C000273FAF /* Sources */,
+				3B45BAD1247D94C000273FAF /* Frameworks */,
+				3B45BAD2247D94C000273FAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Preview;
+			productName = Preview;
+			productReference = 3B45BAD4247D94C000273FAF /* Preview.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		3BE9F364220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BE9F374220AF128002C11BE /* Build configuration list for PBXNativeTarget "Ver-ID Sample" */;
@@ -456,11 +671,14 @@
 				3BE9F363220AF125002C11BE /* Resources */,
 				3BE9F37D220AF8DD002C11BE /* Embed Frameworks */,
 				E6D41C197F6DDCE774626280 /* [CP] Embed Pods Frameworks */,
+				3B45BACF247D94B100273FAF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				3BE9F378220AF165002C11BE /* PBXTargetDependency */,
+				3B45BACA247D94B100273FAF /* PBXTargetDependency */,
+				3B45BADF247D94C000273FAF /* PBXTargetDependency */,
 			);
 			name = "Ver-ID Sample";
 			productName = "Ver-ID Sample";
@@ -473,13 +691,23 @@
 		3B326B0D22089C88005DAE1E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Applied Recognition";
 				TargetAttributes = {
 					3B326B1522089C88005DAE1E = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+					};
+					3B45BAB0247D8BEB00273FAF = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 3BE9F364220AF125002C11BE;
+					};
+					3B45BAC1247D94B100273FAF = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					3B45BAD3247D94C000273FAF = {
+						CreatedOnToolsVersion = 11.5;
 					};
 					3BE9F364220AF125002C11BE = {
 						CreatedOnToolsVersion = 10.1;
@@ -502,6 +730,9 @@
 			targets = (
 				3B326B1522089C88005DAE1E /* VerIDUI */,
 				3BE9F364220AF125002C11BE /* Ver-ID Sample */,
+				3B45BAB0247D8BEB00273FAF /* VerIDSampleUITests */,
+				3B45BAC1247D94B100273FAF /* Thumbnails */,
+				3B45BAD3247D94C000273FAF /* Preview */,
 			);
 		};
 /* End PBXProject section */
@@ -545,11 +776,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3B45BAAF247D8BEB00273FAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B45BABC247D911E00273FAF /* Test registration.verid in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B45BAC0247D94B100273FAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B45BAD2247D94C000273FAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B45BADC247D94C000273FAF /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BE9F363220AF125002C11BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */,
+				3B45BABD247D914F00273FAF /* Test registration.verid in Resources */,
 				3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */,
 				3BB2046B221428B900B3B312 /* Main.storyboard in Resources */,
 				3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */,
@@ -559,6 +814,50 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0CACA6CFB81760A4F4CC5370 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Preview-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C1CB8D87480BEB8CDDFBAB3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Thumbnails-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5DF17749C21B4F51F2CDA98C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -643,13 +942,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3B45BAAD247D8BEB00273FAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B45BAB4247D8BEB00273FAF /* VerIDSampleUITests.swift in Sources */,
+				3B45BABB247D8C9500273FAF /* SettingsPresets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B45BABE247D94B100273FAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B45BAE7247D975D00273FAF /* VerIDUser.swift in Sources */,
+				3B45BAE5247D975400273FAF /* RegistrationData.swift in Sources */,
+				3B45BAE6247D975400273FAF /* RegistrationImport.swift in Sources */,
+				3B45BAE4247D974500273FAF /* Globals.swift in Sources */,
+				3B45BAC7247D94B100273FAF /* ThumbnailProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B45BAD0247D94C000273FAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B45BAE9247D976F00273FAF /* RegistrationImport.swift in Sources */,
+				3B45BAE8247D976C00273FAF /* RegistrationData.swift in Sources */,
+				3B45BAD9247D94C000273FAF /* PreviewViewController.swift in Sources */,
+				3B45BAEB247D978300273FAF /* Globals.swift in Sources */,
+				3B45BAEA247D977400273FAF /* VerIDUser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3BE9F361220AF125002C11BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3B9BFCD3246DE64A00C4B2D1 /* VerIDSessionSettings+Sample.swift in Sources */,
+				3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */,
 				3B9BFCD0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift in Sources */,
 				3B9BFCD1246DE64A00C4B2D1 /* UserDefaults+VerID.swift in Sources */,
+				3B45BAAB247D8A3C00273FAF /* TestResultEvaluationService.swift in Sources */,
 				3BB204672214263600B3B312 /* AppDelegate.swift in Sources */,
 				3B9BFCCF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift in Sources */,
 				3B9BFCCD246DE64A00C4B2D1 /* VerIDFactory+Sample.swift in Sources */,
@@ -665,6 +999,8 @@
 				3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */,
 				3B9BFCC7246DE64A00C4B2D1 /* SessionSettingsShareItem.swift in Sources */,
 				3B9BFCC9246DE64A00C4B2D1 /* S3UploadActivity.swift in Sources */,
+				3B45BAA9247D8A3C00273FAF /* TestFaceDetectionService.swift in Sources */,
+				3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */,
 				3B9BFCD4246DE64A00C4B2D1 /* SettingsPresets.swift in Sources */,
 				3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */,
 				3B9BFCC8246DE64A00C4B2D1 /* SettingsViewController.swift in Sources */,
@@ -678,6 +1014,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3B45BAB7247D8BEB00273FAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3BE9F364220AF125002C11BE /* Ver-ID Sample */;
+			targetProxy = 3B45BAB6247D8BEB00273FAF /* PBXContainerItemProxy */;
+		};
+		3B45BACA247D94B100273FAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B45BAC1247D94B100273FAF /* Thumbnails */;
+			targetProxy = 3B45BAC9247D94B100273FAF /* PBXContainerItemProxy */;
+		};
+		3B45BADF247D94C000273FAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B45BAD3247D94C000273FAF /* Preview */;
+			targetProxy = 3B45BADE247D94C000273FAF /* PBXContainerItemProxy */;
+		};
 		3BE9F378220AF165002C11BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3B326B1522089C88005DAE1E /* VerIDUI */;
@@ -686,6 +1037,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3B45BADA247D94C000273FAF /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B45BADB247D94C000273FAF /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -739,6 +1098,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1012003;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -757,7 +1117,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MARKETING_VERSION = 1.12.1;
+				MARKETING_VERSION = 1.12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -804,6 +1164,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1012003;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -816,7 +1177,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MARKETING_VERSION = 1.12.1;
+				MARKETING_VERSION = 1.12.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -882,10 +1243,133 @@
 			};
 			name = Release;
 		};
+		3B45BAB9247D8BEB00273FAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = VerIDSampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Ver-ID Sample";
+			};
+			name = Debug;
+		};
+		3B45BABA247D8BEB00273FAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = VerIDSampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Ver-ID Sample";
+			};
+			name = Release;
+		};
+		3B45BACD247D94B100273FAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE961D9A656EC0C03D808ABA /* Pods-Thumbnails.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = Thumbnails/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Thumbnails";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B45BACE247D94B100273FAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF05CED69BE557C9C9498F8D /* Pods-Thumbnails.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = Thumbnails/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Thumbnails";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3B45BAE2247D94C000273FAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A12E62F1521321CCF055461A /* Pods-Preview.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = Preview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Preview";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B45BAE3247D94C000273FAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74EE93FED5B1D0217FC10741 /* Pods-Preview.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = Preview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Preview";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3BE9F375220AF128002C11BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -907,6 +1391,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -941,6 +1426,33 @@
 			buildConfigurations = (
 				3B326B1F22089C88005DAE1E /* Debug */,
 				3B326B2022089C88005DAE1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B45BAB8247D8BEB00273FAF /* Build configuration list for PBXNativeTarget "VerIDSampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B45BAB9247D8BEB00273FAF /* Debug */,
+				3B45BABA247D8BEB00273FAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B45BACC247D94B100273FAF /* Build configuration list for PBXNativeTarget "Thumbnails" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B45BACD247D94B100273FAF /* Debug */,
+				3B45BACE247D94B100273FAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B45BAE1247D94C000273FAF /* Build configuration list for PBXNativeTarget "Preview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B45BAE2247D94C000273FAF /* Debug */,
+				3B45BAE3247D94C000273FAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
