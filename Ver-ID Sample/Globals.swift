@@ -41,6 +41,10 @@ struct Globals {
         #endif
     }
     
+    static var shouldCancelAuthentication: Bool {
+        return isTesting && CommandLine.arguments.contains("--cancel-authentication")
+    }
+    
     static var shouldFailAuthentication: Bool {
         return isTesting && CommandLine.arguments.contains("--fail-authentication")
     }

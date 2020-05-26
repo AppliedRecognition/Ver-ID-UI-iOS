@@ -129,7 +129,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
         settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
         let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
-        if Globals.isTesting {
+        if Globals.isTesting && !Globals.shouldCancelAuthentication {
             session.imageProviderFactory = TestImageProviderServiceFactory()
             session.faceDetectionFactory = TestFaceDetectionServiceFactory()
             session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
