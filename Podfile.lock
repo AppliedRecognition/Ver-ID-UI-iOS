@@ -1,6 +1,6 @@
 PODS:
   - OpenCV2 (4.3.0)
-  - Ver-ID-Core (1.12.3):
+  - Ver-ID-Core (1.12.4):
     - OpenCV2 (~> 4.1)
     - Ver-ID-SDK-Identity (~> 3.0)
     - ZIPFoundation (~> 0.9)
@@ -8,7 +8,7 @@ PODS:
   - ZIPFoundation (0.9.11)
 
 DEPENDENCIES:
-  - Ver-ID-Core (< 2.0, >= 1.12.3)
+  - Ver-ID-Core (< 2.0, >= 1.12.4)
 
 SPEC REPOS:
   trunk:
@@ -19,10 +19,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
-  Ver-ID-Core: dad78711e59088ddc576be11d64b08205406bd7b
+  Ver-ID-Core: 1c8aad498d9ae3d60b2978f73d65711750add4e0
   Ver-ID-SDK-Identity: b89e0645c17d2bce24b93454ef9d31bcf196e872
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: ae4a528c631104390e792e8551bac7d68ee72a51
+PODFILE CHECKSUM: 906ed4b0f3204261f7190d0f3f7ea9f49f51be69
 
 COCOAPODS: 1.9.2
