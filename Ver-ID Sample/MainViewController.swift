@@ -23,7 +23,10 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     /// Settings to use for user registration
     var registrationSettings: RegistrationSessionSettings {
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        if UserDefaults.standard.enableVideoRecording {
+            settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        }
+        settings.isSessionDiagnosticsEnabled = true
         return settings
     }
     
@@ -127,7 +130,10 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
             return
         }
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        if UserDefaults.standard.enableVideoRecording {
+            settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        }
+        settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
         if Globals.isTesting && !Globals.shouldCancelAuthentication {
             session.imageProviderFactory = TestImageProviderServiceFactory()

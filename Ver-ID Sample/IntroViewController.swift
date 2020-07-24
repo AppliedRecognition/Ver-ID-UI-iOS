@@ -123,7 +123,10 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             return
         }
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        if UserDefaults.standard.enableVideoRecording {
+            settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        }
+        settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting {
             session.imageProviderFactory = TestImageProviderServiceFactory()

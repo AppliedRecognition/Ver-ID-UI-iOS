@@ -15,21 +15,19 @@ import QuickLook
 
 class SessionItemProvider: UIActivityItemProvider {
     
-    let sessionTime: Date
     let settings: VerIDSessionSettings
     let result: VerIDSessionResult
     let environment: EnvironmentSettings
     private let url: URL
     
-    init(sessionTime: Date, settings: VerIDSessionSettings, result: VerIDSessionResult, environment: EnvironmentSettings) throws {
-        self.sessionTime = sessionTime
+    init(settings: VerIDSessionSettings, result: VerIDSessionResult, environment: EnvironmentSettings) throws {
         self.settings = settings
         self.result = result
         self.environment = environment
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
-        let name = dateFormatter.string(from: sessionTime)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH-mm-ss"
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        let name = dateFormatter.string(from: result.startTime)
         self.url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Ver-ID session \(name).zip")
         guard let archive = Archive(url: self.url, accessMode: .create) else {
             throw NSError(domain: kVerIDErrorDomain, code: 205, userInfo: [NSLocalizedDescriptionKey:"Unable to create archive"])
@@ -41,9 +39,8 @@ class SessionItemProvider: UIActivityItemProvider {
             })
         }
         var i = 1
-        for imageURL in result.attachments.compactMap({ $0.imageURL }) {
-            let imageData = try Data(contentsOf: imageURL)
-            try archive.addEntry(with: "image\(i).\(imageURL.pathExtension)", type: .file, uncompressedSize: UInt32(imageData.count), provider: { position, size in
+        for imageData in result.faceCaptures.compactMap({ $0.image.jpegData(compressionQuality: 0.8) }) {
+            try archive.addEntry(with: "image\(i).jpg", type: .file, uncompressedSize: UInt32(imageData.count), provider: { position, size in
                 imageData[position..<position+size]
             })
             i += 1

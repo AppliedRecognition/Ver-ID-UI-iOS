@@ -13,14 +13,17 @@ struct EnvironmentSettings: Encodable {
     let confidenceThreshold: Float
     let faceTemplateExtractionThreshold: Float
     let authenticationThreshold: Float
+    let deviceModel: String
+    let os: String
+    let applicationId: String
+    let applicationVersion: String
     let veridVersion: String
-    let os: String = "iOS"
 }
 
 struct SessionResultShare: Encodable {
     
     enum CodingKeys: String, CodingKey {
-        case faces, error, succeeded
+        case faces = "face_captures", error, succeeded, diagnostics, startTime = "start_time", duration = "duration_seconds"
     }
     
     enum FaceCodingKeys: String, CodingKey {
@@ -32,7 +35,7 @@ struct SessionResultShare: Encodable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         var facesContainer = container.nestedUnkeyedContainer(forKey: .faces)
-        try sessionResult.attachments.forEach({ attachment in
+        try sessionResult.faceCaptures.forEach({ attachment in
             var faceContainer = facesContainer.nestedContainer(keyedBy: FaceCodingKeys.self)
             try faceContainer.encode(attachment.face, forKey: .face)
             try faceContainer.encode(attachment.bearing, forKey: .bearing)
@@ -43,5 +46,8 @@ struct SessionResultShare: Encodable {
         } else {
             try container.encode(true, forKey: .succeeded)
         }
+        try container.encode(sessionResult.startTime.timeIntervalSince1970, forKey: .startTime)
+        try container.encodeIfPresent(sessionResult.duration, forKey: .duration)
+        try container.encodeIfPresent(sessionResult.sessionDiagnostics, forKey: .diagnostics)
     }
 }

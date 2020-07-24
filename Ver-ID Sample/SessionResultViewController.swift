@@ -62,7 +62,7 @@ class SessionResultViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.environmentSettings = EnvironmentSettings(confidenceThreshold: UserDefaults.standard.confidenceThreshold, faceTemplateExtractionThreshold: UserDefaults.standard.faceTemplateExtractionThreshold, authenticationThreshold: Globals.verid?.faceRecognition.authenticationScoreThreshold.floatValue ?? UserDefaults.standard.authenticationThreshold, veridVersion: Bundle(for: VerID.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown")
+        self.environmentSettings = EnvironmentSettings(confidenceThreshold: UserDefaults.standard.confidenceThreshold, faceTemplateExtractionThreshold: UserDefaults.standard.faceTemplateExtractionThreshold, authenticationThreshold: Globals.verid?.faceRecognition.authenticationScoreThreshold.floatValue ?? UserDefaults.standard.authenticationThreshold, veridVersion: Bundle(for: VerID.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown", applicationVersion: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown")
         self.navigationItem.title = self.title
     }
     
@@ -73,6 +73,15 @@ class SessionResultViewController: UITableViewController {
             guard let `self` = self, let `op` = op else {
                 return
             }
+            let timeFormatter = DateComponentsFormatter()
+            timeFormatter.allowedUnits = [.second,.minute]
+            timeFormatter.allowsFractionalUnits = false
+            timeFormatter.unitsStyle = .short
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .medium
+                        
             var sections = [(String,[CellData])]()
             if let videoURL = self.sessionResult?.videoURL {
                 sections.append(("Video",[VideoCellData(url: videoURL)]))
@@ -99,13 +108,17 @@ class SessionResultViewController: UITableViewController {
                 if let error = result.error {
                     resultData.append(ValueCellData(title: "Error", value: "\(error)"))
                 }
+                resultData.append(ValueCellData(title: "Started", value: dateFormatter.string(from: result.startTime)))
+                if let duration = result.duration, let durationFormatted = timeFormatter.string(from: duration) {
+                    resultData.append(ValueCellData(title: "Session duration", value: durationFormatted))
+                    if let diagnostics = result.sessionDiagnostics {
+                        let facesPerSecond = String(format: "%.01f faces/second", Float(diagnostics.imageInfo.count)/Float(duration))
+                        resultData.append(ValueCellData(title: "Face detection rate", value: facesPerSecond))
+                    }
+                }
                 sections.append(("Session Result",resultData))
             }
             if let settings = self.sessionSettings {
-                let timeFormatter = DateComponentsFormatter()
-                timeFormatter.allowedUnits = [.second,.minute]
-                timeFormatter.allowsFractionalUnits = false
-                timeFormatter.unitsStyle = .short
                 var settingsArray: [ValueCellData] = []
                 if let expiry = timeFormatter.string(from: settings.expiryTime) {
                     settingsArray.append(ValueCellData(title: "Expiry time", value: expiry))

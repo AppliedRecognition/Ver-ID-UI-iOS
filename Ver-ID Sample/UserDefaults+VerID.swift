@@ -75,6 +75,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "useBackCamera")
         }
     }
+    var enableVideoRecording: Bool {
+        get {
+            self.bool(forKey: "enableVideoRecording")
+        }
+        set {
+            self.set(newValue, forKey: "enableVideoRecording")
+        }
+    }
     var speakPrompts: Bool {
         get {
             self.bool(forKey: "speakPrompts")
@@ -118,6 +126,7 @@ extension UserDefaults {
             "pitchThreshold": securitySettingsPreset.pitchThreshold,
             "authenticationThreshold": securitySettingsPreset.authThreshold,
             "useBackCamera": false,
+            "enableVideoRecording": true,
             "speakPrompts": false,
             "encryptFaceTemplates": true,
             "registrationFaceCount": registrationSettings.numberOfResultsToCollect,
