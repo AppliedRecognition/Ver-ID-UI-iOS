@@ -9,6 +9,7 @@
 import UIKit
 import VerIDCore
 import VerIDUI
+import AVFoundation
 import MobileCoreServices
 
 class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate {
@@ -23,9 +24,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     /// Settings to use for user registration
     var registrationSettings: RegistrationSessionSettings {
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        if UserDefaults.standard.enableVideoRecording {
-            settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
-        }
         settings.isSessionDiagnosticsEnabled = true
         return settings
     }
@@ -89,9 +87,8 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         }
         let session = VerIDSession(environment: verid, settings: self.registrationSettings)
         if Globals.isTesting {
-            session.imageProviderFactory = TestImageProviderServiceFactory()
-            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
-            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.faceDetectionResultCreatorFactory = TestFaceDetectionResultCreatorFactory(settings: self.registrationSettings)
+            session.faceCaptureCreatorFactory = TestFaceCaptureCreatorFactory(settings: self.registrationSettings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: self.registrationSettings)
         }
         session.delegate = self
@@ -130,15 +127,11 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
             return
         }
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        if UserDefaults.standard.enableVideoRecording {
-            settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
-        }
         settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
         if Globals.isTesting && !Globals.shouldCancelAuthentication {
-            session.imageProviderFactory = TestImageProviderServiceFactory()
-            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
-            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.faceDetectionResultCreatorFactory = TestFaceDetectionResultCreatorFactory(settings: settings)
+            session.faceCaptureCreatorFactory = TestFaceCaptureCreatorFactory(settings: settings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
         }
         session.delegate = self
@@ -147,7 +140,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     
     // MARK: - Ver-ID Session Delegate
     
-    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
+    func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
         if session.settings is RegistrationSessionSettings && result.error == nil {
             Globals.updateProfilePictureFromSessionResult(result)
             Globals.deleteImagesInSessionResult(result)
@@ -171,8 +164,16 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         }
     }
     
-    func sessionWasCanceled(_ session: VerIDSession) {
-        
+    func shouldRecordVideoOfSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.enableVideoRecording
+    }
+    
+    func shouldSpeakPromptsInSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.speakPrompts
+    }
+    
+    func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
+        UserDefaults.standard.useBackCamera ? .back : .front
     }
     
     

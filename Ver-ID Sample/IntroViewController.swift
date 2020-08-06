@@ -9,6 +9,7 @@
 import UIKit
 import VerIDCore
 import VerIDUI
+import AVFoundation
 import MobileCoreServices
 
 class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate {
@@ -123,15 +124,11 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             return
         }
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        if UserDefaults.standard.enableVideoRecording {
-            settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
-        }
         settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting {
-            session.imageProviderFactory = TestImageProviderServiceFactory()
-            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
-            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.faceDetectionResultCreatorFactory = TestFaceDetectionResultCreatorFactory(settings: settings)
+            session.faceCaptureCreatorFactory = TestFaceCaptureCreatorFactory(settings: settings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
         }
         session.delegate = self
@@ -162,7 +159,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
     
     // MARK: - Ver-ID Session Delegate
     
-    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
+    func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
         Globals.updateProfilePictureFromSessionResult(result)
         if result.error == nil {
             Globals.deleteImagesInSessionResult(result)
@@ -188,7 +185,16 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         self.navigationController?.setViewControllers(viewControllers, animated: false)
     }
     
-    func sessionWasCanceled(_ session: VerIDSession) {
-        
+    func shouldRecordVideoOfSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.enableVideoRecording
     }
+    
+    func shouldSpeakPromptsInSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.speakPrompts
+    }
+    
+    func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
+        UserDefaults.standard.useBackCamera ? .back : .front
+    }
+    
 }

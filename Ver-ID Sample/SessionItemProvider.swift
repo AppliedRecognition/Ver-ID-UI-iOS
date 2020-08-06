@@ -77,7 +77,7 @@ class SessionItemProvider: UIActivityItemProvider {
     }
     
     override func activityViewController(_ activityViewController: UIActivityViewController, thumbnailImageForActivityType activityType: UIActivity.ActivityType?, suggestedSize size: CGSize) -> UIImage? {
-        guard let imageURL = self.result.imageURLs(withBearing: .straight).first, let imageData = try? Data(contentsOf: imageURL), let image = UIImage(data: imageData) else {
+        guard let image = self.result.faceCaptures.first(where: {$0.bearing == .straight})?.image else {
             return nil
         }
         UIGraphicsBeginImageContext(size)

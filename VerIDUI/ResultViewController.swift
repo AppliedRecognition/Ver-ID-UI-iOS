@@ -69,29 +69,9 @@ import VerIDCore
         }
         self.navigationItem.title = self.translatedStrings?["Success"]
         DispatchQueue.global().async {
-            let facesWithImage = result.attachments.filter({ $0.imageURL != nil })
-            if facesWithImage.isEmpty {
+            guard var croppedImage: UIImage = result.faceCaptures.first(where: { $0.bearing == .straight })?.faceImage else {
                 self.showDefaultImage()
                 return
-            }
-            let detectedFace = facesWithImage.filter({ $0.bearing == .straight }).first ?? facesWithImage.first!
-            let face = detectedFace.face
-            guard let image = UIImage(contentsOfFile: detectedFace.imageURL!.path) else {
-                self.showDefaultImage()
-                return
-            }
-            let centre = CGPoint(x: face.leftEye.x + (face.rightEye.x - face.leftEye.x) / 2, y: face.leftEye.y + (face.rightEye.y - face.leftEye.y) / 2)
-            let xDist = min(image.size.width - centre.x, centre.x)
-            let yDist = min(image.size.height - centre.y, centre.y)
-            let cropRect = CGRect(x: centre.x-xDist, y: centre.y-yDist, width: xDist*2, height: yDist*2)
-            var croppedImage: UIImage = image
-            if !cropRect.isEmpty {
-                UIGraphicsBeginImageContext(cropRect.size)
-                defer {
-                    UIGraphicsEndImageContext()
-                }
-                image.draw(at: CGPoint(x: 0-cropRect.minX, y: 0-cropRect.minY))
-                croppedImage = UIGraphicsGetImageFromCurrentImageContext() ?? image
             }
             do {
                 croppedImage = try ImageUtil.grayscaleImage(from: croppedImage)
@@ -106,7 +86,7 @@ import VerIDCore
                     cropFilter.setValue(output, forKey: kCIInputImageKey)
                     cropFilter.setValue(CIVector(cgRect: ciImage.extent), forKey: "inputRectangle")
                     if let cropped = cropFilter.outputImage {
-                        croppedImage = UIImage(ciImage: cropped, scale: 1, orientation: image.imageOrientation)
+                        croppedImage = UIImage(ciImage: cropped, scale: 1, orientation: croppedImage.imageOrientation)
                     }
                 }
             }

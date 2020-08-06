@@ -9,10 +9,20 @@
 import UIKit
 import VerIDUI
 import VerIDCore
+import AVFoundation
+import RxSwift
 
-class TestSessionViewController: UIViewController, VerIDViewControllerProtocol {
+class TestSessionViewController: UIViewController, VerIDViewControllerProtocol, ImagePublisher {
+    
+    var imagePublisher: PublishSubject<(VerIDImage, FaceBounds)> = PublishSubject()
     
     var delegate: VerIDViewControllerDelegate?
+    
+    var sessionSettings: VerIDSessionSettings?
+    
+    var cameraPosition: AVCaptureDevice.Position = .front
+    
+    lazy var queue = DispatchQueue(label: "Test session view controller", qos: .default, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +31,22 @@ class TestSessionViewController: UIViewController, VerIDViewControllerProtocol {
         } else {
             self.view.backgroundColor = UIColor.white
         }
-    }
-    
-    func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
-        
-    }
-    
-    func loadResultImage(_ url: URL, forFace face: Face) {
-        
-    }
-    
-    func clearOverlays() {
-        
+        self.queue.async {
+            while !self.imagePublisher.isDisposed {
+                guard let faceExtents = self.sessionSettings?.expectedFaceExtents else {
+                    return
+                }
+                let size = CGSize(width: 750, height: 1000)
+                let image = VerIDImage(grayscalePixels: [UInt8](repeating: 0, count: Int(size.width*size.height)), size: size)
+                DispatchQueue.main.async {
+                    let viewSize = self.view.bounds.size
+                    self.queue.async {
+                        self.imagePublisher.onNext((image,FaceBounds(viewSize: viewSize, faceExtents: faceExtents)))
+                    }
+                }
+                sleep(1)
+            }
+        }
     }
     
 }
@@ -57,8 +71,8 @@ class TestSessionViewControllersFactory: SessionViewControllersFactory {
         try self.defaultFactory.makeTipsViewController()
     }
     
-    func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
-        try self.defaultFactory.makeFaceDetectionAlertController(settings: settings, faceDetectionResult: faceDetectionResult)
+    func makeFaceDetectionAlertController(settings: VerIDSessionSettings, error: Error) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
+        try self.defaultFactory.makeFaceDetectionAlertController(settings: settings, error: error)
     }
     
     

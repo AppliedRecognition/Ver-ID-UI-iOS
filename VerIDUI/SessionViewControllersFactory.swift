@@ -34,7 +34,7 @@ import VerIDCore
     ///   - faceDetectionResult: The face detection result that lead to the session failure
     /// - Returns: View controller that conforms to the `FaceDetectionAlertControllerProtocol` protocol
     /// - Throws: Error if the creation fails
-    @objc func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol
+    @objc func makeFaceDetectionAlertController(settings: VerIDSessionSettings, error: Error) throws -> UIViewController & FaceDetectionAlertControllerProtocol
 }
 
 public enum VerIDSessionViewControllersFactoryError: Int, Error {
@@ -51,7 +51,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
         self.translatedStrings = translatedStrings
     }
     
-    @objc open func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
+    open func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
         let viewController: VerIDViewController
         if self.settings is RegistrationSessionSettings {
             viewController = VerIDRegistrationViewController()
@@ -85,22 +85,30 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
         return tipsController
     }
     
-    @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
+    @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, error: Error) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
         let bundle = Bundle(for: type(of: self))
         let message: String
-        if faceDetectionResult.status == .faceTurnedTooFar {
+        guard let err = error as? FaceDetectionError else {
+            throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
+        }
+        let requestedBearing: Bearing
+        switch err {
+        case .faceTurnedTooFar(let bearing):
             message = self.translatedStrings["You may have turned too far. Only turn in the requested direction until the oval turns green."]
-        } else if faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost {
+            requestedBearing = bearing
+        case .faceTurnedOpposite(let bearing), .faceLost(let bearing):
             message = self.translatedStrings["Turn your head in the direction of the arrow"]
-        } else if faceDetectionResult.status == .movedTooFast {
+            requestedBearing = bearing
+        case .faceTurnedTooFast(let bearing):
             message = self.translatedStrings["Please turn slowly"]
-        } else {
+            requestedBearing = bearing
+        default:
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
         let density = UIScreen.main.scale
         let densityInt = density > 2 ? 3 : 2
         let videoFileName: String
-        switch faceDetectionResult.requestedBearing {
+        switch requestedBearing {
         case .left:
             videoFileName = "left"
         case .right:

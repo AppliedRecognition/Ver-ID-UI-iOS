@@ -1,5 +1,5 @@
 //
-//  Session.swift
+//  VerIDSession.swift
 //  VerIDUI
 //
 //  Created by Jakub Dolejs on 04/02/2019.
@@ -13,7 +13,7 @@ import AVFoundation
 import os
 
 /// Ver-ID session
-@objc open class VerIDSession: NSObject, ImageProviderService, VerIDViewControllerDelegate, SessionOperationDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SpeechDelegate {
+@objc open class VerIDSession: NSObject, VerIDViewControllerDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SpeechDelegate, VerIDCore.SessionDelegate {
     
     @objc public enum SessionError: Int, Error {
         case failedToStart
@@ -21,18 +21,14 @@ import os
     
     // MARK: - Public properties
     
-    /// Factory that creates face detection service
-    @objc public var faceDetectionFactory: FaceDetectionServiceFactory
-    /// Factory that creates result evaluation service
-    @objc public var resultEvaluationFactory: ResultEvaluationServiceFactory
-    /// Factory that creates image writer service
-    @objc public var imageWriterFactory: ImageWriterServiceFactory
     /// Factory that creates video writer service
-    @objc public var videoWriterFactory: VideoWriterServiceFactory?
+    @objc public var videoWriterFactory: VideoWriterServiceFactory
     /// Factory that creates view controllers used in the session
     @objc public var sessionViewControllersFactory: SessionViewControllersFactory
     
-    @objc public var imageProviderFactory: ImageProviderServiceFactory?
+    public var faceDetectionResultCreatorFactory: FaceDetectionResultCreatorFactory
+    
+    public var faceCaptureCreatorFactory: FaceCaptureCreatorFactory
     
     /// Session delegate
     @objc public weak var delegate: VerIDSessionDelegate?
@@ -51,14 +47,7 @@ import os
     
     // MARK: - Private properties
     
-    private lazy var operationQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.qualityOfService = .userInitiated
-        queue.maxConcurrentOperationCount = 1
-        return queue
-    }()
     private var videoWriterService: VideoWriterService?
-    private var faceDetection: FaceDetectionService?
     private var retryCount = 0
     private var startTime: Double = 0
     private var startDispatchTime: DispatchTime = .now()
@@ -70,11 +59,13 @@ import os
     
     private let imageAcquisitionSignposting = Signposting(category: "Image acquisition")
     
-    private var imageQueue: DispatchQueue?
     private var alertController: UIViewController?
     
     private lazy var speechSynthesizer = AVSpeechSynthesizer()
     private var lastSpokenText: String?
+    
+    private var session: VerIDCore.Session?
+    private let sessionPrompts: SessionPrompts
     
     // MARK: - Constructor
 
@@ -88,13 +79,11 @@ import os
     @objc public init(environment: VerID, settings: VerIDSessionSettings, translatedStrings: TranslatedStrings) {
         self.environment = environment
         self.settings = settings
-        self.faceDetectionFactory = VerIDFaceDetectionServiceFactory(environment: environment)
-        self.resultEvaluationFactory = VerIDResultEvaluationServiceFactory(environment: environment)
-        self.imageWriterFactory = VerIDImageWriterServiceFactory()
+        self.sessionPrompts = SessionPrompts(translatedStrings: translatedStrings)
         self.sessionViewControllersFactory = VerIDSessionViewControllersFactory(settings: settings, translatedStrings: translatedStrings)
-        if settings.videoURL != nil {
-            self.videoWriterFactory = VerIDVideoWriterServiceFactory()
-        }
+        self.faceDetectionResultCreatorFactory = VerIDFaceDetectionResultCreatorFactory(verID: environment, settings: settings)
+        self.faceCaptureCreatorFactory = VerIDFaceCaptureCreatorFactory(verID: environment, settings: settings)
+        self.videoWriterFactory = VerIDVideoWriterServiceFactory()
     }
     
     /// Session constructor
@@ -111,30 +100,42 @@ import os
     /// Start the session
     @objc public func start() {
         DispatchQueue.main.async {
-            if let videoURL = self.settings.videoURL, let videoWriterFactory = self.videoWriterFactory {
-                if FileManager.default.isDeletableFile(atPath: videoURL.path) {
-                    try? FileManager.default.removeItem(at: videoURL)
-                }
-                self.videoWriterService = try? videoWriterFactory.makeVideoWriterService(url: videoURL)
+            if self.delegate?.shouldRecordVideoOfSession?(self) == .some(true) {
+                let videoURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("mov")
+                self.videoWriterService = try? self.videoWriterFactory.makeVideoWriterService(url: videoURL)
+            } else {
+                self.videoWriterService = nil
             }
             do {
-                self.viewController = try self.sessionViewControllersFactory.makeVerIDViewController()
+                let viewController = try self.sessionViewControllersFactory.makeVerIDViewController()
+                viewController.delegate = self
+                viewController.sessionSettings = self.settings
+                viewController.cameraPosition = self.delegate?.cameraPositionForSession?(self) ?? .front
+                self.presentVerIDViewController(viewController)
+                self.viewController = viewController
+                if let imagePublisher = (viewController as? ImagePublisher)?.imagePublisher {
+                    self.session = VerIDCore.Session(verID: self.environment, settings: self.settings, imageObservable: imagePublisher)
+                    self.session?.videoWriterService = self.videoWriterService
+                    self.session?.faceDetectionCreatorFactory = self.faceDetectionResultCreatorFactory
+                    self.session?.faceCaptureCreatorFactory = self.faceCaptureCreatorFactory
+                    self.session?.delegate = self
+                    self.session?.start()
+                }
             } catch {
                 self.finishWithResult(VerIDSessionResult(error: error))
                 return
             }
-            self.viewController?.delegate = self
-            self.startOperations()
         }
     }
     
     /// Cancel the session
     @objc public func cancel() {
-        self.operationQueue.cancelAllOperations()
+        self.session?.cancel()
+        self.session = nil
         self.viewController = nil
         DispatchQueue.main.async {
             self.closeViews {
-                self.delegate?.sessionWasCanceled(self)
+                self.delegate?.didCancelSession?(self)
             }
         }
     }
@@ -154,7 +155,7 @@ import os
         }
         if self.navigationController == nil {
             guard var root = UIApplication.shared.keyWindow?.rootViewController else {
-                self.delegate?.session(self, didFinishWithResult: VerIDSessionResult(error: SessionError.failedToStart))
+                self.delegate?.didFinishSession(self, withResult: VerIDSessionResult(error: SessionError.failedToStart))
                 return
             }
             while let presented = root.presentedViewController {
@@ -219,47 +220,60 @@ import os
         }
     }
     
+    // MARK: - Session delegate
+    
+    public func session(_ session: VerIDCore.Session, didFinishWithResult result: VerIDSessionResult) {
+        self.showResult(result)
+    }
+    
+    public func session(_ session: VerIDCore.Session, didProduceFaceDetectionResult result: FaceDetectionResult) {
+        let prompt: String? = self.sessionPrompts.promptForFaceDetectionResult(result)
+        if self.delegate?.shouldSpeakPromptsInSession?(self) == .some(true), let toSay = prompt {
+            var language = self.sessionPrompts.translatedStrings.resolvedLanguage
+            if let region = self.sessionPrompts.translatedStrings.resolvedRegion {
+                language.append("-\(region)")
+            }
+            self.speak(toSay, language: language)
+        }
+        self.viewController?.addFaceDetectionResult?(result, prompt: prompt)
+    }
+    
+    public func session(_ session: VerIDCore.Session, didProduceFaceCapture faceCapture: FaceCapture) {
+        self.viewController?.addFaceCapture?(faceCapture)
+    }
+    
     // MARK: - Private methods
     
-    private func startOperations() {
-        self.presentVerIDViewController(self.viewController!)
-        self.imageQueue = DispatchQueue(label: "com.appliedrec.image", qos: .userInitiated, attributes: [], autoreleaseFrequency: .inherit, target: nil)
-        self.viewController?.clearOverlays()
-        self.startTime = CACurrentMediaTime()
-        self.startDispatchTime = .now()
-        self.faceDetection = nil
-        do {
-            self.faceDetection = try self.faceDetectionFactory.makeFaceDetectionService(settings: self.settings)
-        } catch {
-            self.showResult(VerIDSessionResult(error: error))
+    private func restartSession() {
+        self.retryCount += 1
+        guard let session = self.session, let viewController = self.viewController else {
             return
         }
-        let imageProvider: ImageProviderService = self.imageProviderFactory?.makeImageProviderService() ?? self
-        let op = SessionOperation(environment: self.environment, imageProvider: imageProvider, faceDetection: self.faceDetection!, resultEvaluation: self.resultEvaluationFactory.makeResultEvaluationService(settings: self.settings), imageWriter: try? self.imageWriterFactory.makeImageWriterService())
-        op.delegate = self
-        let finishOp = BlockOperation()
-        finishOp.addExecutionBlock { [weak finishOp, weak self] in
-            if finishOp != nil && finishOp!.isCancelled {
-                return
-            }
-            self?.imageQueue = nil
-            if let videoWriter = self?.videoWriterService {
-                videoWriter.finish() { url in
-                    op.result.videoURL = url
-                    self?.showResult(op.result)
-                }
-            } else {
-                self?.showResult(op.result)
-            }
-        }
-        finishOp.addDependency(op)
-        self.operationQueue.addOperations([op, finishOp], waitUntilFinished: false)
+        self.presentVerIDViewController(viewController)
+        session.start()
     }
     
     private func showResult(_ result: VerIDSessionResult) {
-        self.operationQueue.cancelAllOperations()
-        if self.settings.showResult {
+        if let err = result.error as? FaceDetectionError, self.retryCount <= self.settings.maxRetryCount {
             DispatchQueue.main.async {
+                do {
+                    self.viewController?.clearOverlays?()
+                    let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
+                    controller.delegate = self
+                    controller.modalPresentationStyle = .overFullScreen
+                    if var speechDelegatable = controller as? SpeechDelegatable {
+                        speechDelegatable.speechDelegate = self
+                    }
+                    self.alertController = controller
+                    self.viewController?.present(controller, animated: true)
+                } catch {
+                    self.session = nil
+                    self.finishWithResult(result)
+                }
+            }
+        } else if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
+            DispatchQueue.main.async {
+                self.session = nil
                 do {
                     let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
                     resultViewController.delegate = self
@@ -269,38 +283,18 @@ import os
                 }
             }
         } else {
+            self.session = nil
             self.finishWithResult(result)
         }
     }
     
     private func finishWithResult(_ result: VerIDSessionResult) {
-        self.operationQueue.cancelAllOperations()
         self.viewController = nil
         DispatchQueue.main.async {
             self.closeViews {
-                self.delegate?.session(self, didFinishWithResult: result)
+                self.delegate?.didFinishSession(self, withResult: result)
             }
         }
-    }
-    
-    // MARK: - Image provider
-    
-    /// Dequeue an image from the Ver-ID view controller
-    ///
-    /// - Returns: Image to be used for face detection
-    /// - Throws: Error if the view controller is nil or if the session expired
-    public func dequeueImage() throws -> VerIDImage {
-        if imageLock.wait(timeout: self.startDispatchTime+self.settings.expiryTime) == .timedOut {
-            // Session expired
-            throw VerIDError.sessionTimeout
-        }
-        guard let img = self.image else {
-            throw NSError(domain: "com.appliedrec.verid", code: 1, userInfo: nil)
-        }
-        self.imageQueue?.async {
-            self.image = nil
-        }
-        return img
     }
     
     // MARK: - Ver-ID view controller delegate
@@ -321,63 +315,6 @@ import os
         self.finishWithResult(VerIDSessionResult(error: error))
     }
     
-    /// View controller captured a sample buffer from the camera
-    ///
-    /// - Parameters:
-    ///   - viewController: View controller that captured the sample buffer
-    ///   - sampleBuffer: Sample buffer received from the camera
-    ///   - orientation: Image orientation of the data in the sample buffer
-    public func viewController(_ viewController: VerIDViewControllerProtocol, didCaptureSampleBuffer sampleBuffer: CMSampleBuffer, withOrientation orientation: CGImagePropertyOrientation) {
-        var buffer: CMSampleBuffer?
-        var isBufferCopied: Bool = false
-        func copyBuffer() -> Bool {
-            let copyBufferSignpost = self.imageAcquisitionSignposting.createSignpost(name: "Copy image buffer")
-            self.imageAcquisitionSignposting.logStart(signpost: copyBufferSignpost)
-            let status = CMSampleBufferCreateCopy(allocator: kCFAllocatorDefault, sampleBuffer: sampleBuffer, sampleBufferOut: &buffer)
-            self.imageAcquisitionSignposting.logEnd(signpost: copyBufferSignpost)
-            return status == 0
-        }
-        if let videoWriter = self.videoWriterService {
-            isBufferCopied = copyBuffer()
-            if !isBufferCopied {
-                return
-            }
-            let rotation: CGFloat
-            switch orientation {
-            case .right, .rightMirrored:
-                rotation = 90
-            case .left, .leftMirrored:
-                rotation = 270
-            case .down, .downMirrored:
-                rotation = 0
-            case .up, .upMirrored:
-                rotation = 180
-            }
-            let writeVideoSignpost = imageAcquisitionSignposting.createSignpost(name: "Write video buffer")
-            imageAcquisitionSignposting.logStart(signpost: writeVideoSignpost)
-            let rotationRadians: CGFloat
-            if #available(iOS 10.0, *) {
-                rotationRadians = CGFloat(Measurement(value: Double(rotation), unit: UnitAngle.degrees).converted(to: .radians).value)
-            } else {
-                rotationRadians = rotation * CGFloat.pi / 180
-            }
-            videoWriter.writeSampleBuffer(buffer!, rotation: rotationRadians)
-            imageAcquisitionSignposting.logEnd(signpost: writeVideoSignpost)
-        }
-        if !isBufferCopied {
-            if !copyBuffer() {
-                return
-            }
-        }
-        self.imageQueue?.async {
-            if self.image != nil {
-                return
-            }
-            self.image = VerIDImage(sampleBuffer: buffer!, orientation: orientation)
-            self.imageLock.signal()
-        }
-    }
-    
     // MARK: - Session operation delegate
     
     /// Session operation evaluated the face detection result and produced a session result
@@ -387,37 +324,40 @@ import os
     ///   - faceDetectionResult: Face detection result used to generate the session result
     /// - Note: This method is called as the session progresses. The final session result is be obtained at the end of the session operation. You can use this method, for example, to prevent the session from finishing in some circumstances.
     public func operationDidOutputSessionResult(_ result: VerIDSessionResult, fromFaceDetectionResult faceDetectionResult: FaceDetectionResult) {
-        guard let defaultFaceBounds = self.faceDetection?.faceAlignmentDetection.defaultFaceBounds(in: faceDetectionResult.imageSize) else {
-            return
-        }
-        let offsetAngleFromBearing: EulerAngle? = faceDetectionResult.status == .faceMisaligned ? self.faceDetection?.angleBearingEvaluation.offsetFromAngle(faceDetectionResult.faceAngle ?? EulerAngle(yaw: 0, pitch: 0, roll: 0), toBearing: faceDetectionResult.requestedBearing) : nil
-        DispatchQueue.main.async {
-            self.viewController?.drawFaceFromResult(faceDetectionResult, sessionResult: result, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
-        }
-        if result.error != nil && self.retryCount < self.settings.maxRetryCount && (faceDetectionResult.status == .faceTurnedTooFar || faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost || faceDetectionResult.status == .movedTooFast) {
-            self.operationQueue.cancelAllOperations()
-            DispatchQueue.main.async {
-                do {
-                    self.viewController?.clearOverlays()
-                    let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
-                    alert.delegate = self
-                    alert.modalPresentationStyle = .overFullScreen
-                    self.alertController = alert
-                    if var speechDelegatable = alert as? SpeechDelegatable {
-                        speechDelegatable.speechDelegate = self
-                    }
-                    self.viewController?.present(alert, animated: true, completion: nil)
-                } catch {
-                    self.finishWithResult(VerIDSessionResult(error: error))
-                }
-            }
-        }
-    }
-    
-    public func operationDidFinishWritingImage(_ url: URL, forFace face: Face) {
-        DispatchQueue.main.async {
-            self.viewController?.loadResultImage(url, forFace: face)
-        }
+//        guard let imageSize = faceDetectionResult.image.size else {
+//            return
+//        }
+//        let w: CGFloat, h: CGFloat
+//        if imageSize.width > imageSize.height {
+//            h = imageSize.height * 0.85
+//            w = h * 0.8
+//        } else {
+//            w = imageSize.width * 0.65
+//            h = w * 1.25
+//        }
+//        let defaultFaceBounds: CGRect = .init(x: imageSize.width / 2 - w / 2, y: imageSize.height / 2 - h / 2, width: w, height: h)
+//        let offsetAngleFromBearing: EulerAngle? = faceDetectionResult.status == .faceMisaligned ? self.faceDetection?.angleBearingEvaluation.offsetFromAngle(faceDetectionResult.faceAngle ?? EulerAngle(yaw: 0, pitch: 0, roll: 0), toBearing: faceDetectionResult.requestedBearing) : nil
+//        DispatchQueue.main.async {
+//            self.viewController?.drawFaceFromResult(faceDetectionResult, sessionResult: result, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
+//        }
+//        if result.error != nil && self.retryCount < self.settings.maxRetryCount && (faceDetectionResult.status == .faceTurnedTooFar || faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost || faceDetectionResult.status == .movedTooFast) {
+//            self.operationQueue.cancelAllOperations()
+//            DispatchQueue.main.async {
+//                do {
+//                    self.viewController?.clearOverlays()
+//                    let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
+//                    alert.delegate = self
+//                    alert.modalPresentationStyle = .overFullScreen
+//                    self.alertController = alert
+//                    if var speechDelegatable = alert as? SpeechDelegatable {
+//                        speechDelegatable.speechDelegate = self
+//                    }
+//                    self.viewController?.present(alert, animated: true, completion: nil)
+//                } catch {
+//                    self.finishWithResult(VerIDSessionResult(error: error))
+//                }
+//            }
+//        }
     }
     
     // MARK: - Face detection alert controller delegate
@@ -441,8 +381,7 @@ import os
                     self.finishWithResult(result)
                 }
             case .retry:
-                self.retryCount += 1
-                self.startOperations()
+                self.restartSession()
             case .cancel:
                 self.cancel()
             }
@@ -455,8 +394,7 @@ import os
     ///
     /// - Parameter viewController: Tips view controller that's being dismissed
     public func didDismissTipsInViewController(_ viewController: TipsViewControllerProtocol) {
-        self.retryCount += 1
-        self.startOperations()
+        self.restartSession()
     }
     
     // MARK: - Result view controller delegate
@@ -487,7 +425,7 @@ import os
     // MARK: - Speech delegate
     
     public func speak(_ text: String, language: String) {
-        guard self.settings.speakPrompts else {
+        guard self.delegate?.shouldSpeakPromptsInSession?(self) == .some(true) else {
             return
         }
         if let lastSpoken = self.lastSpokenText, lastSpoken == text {
@@ -509,13 +447,17 @@ import os
     /// - Parameters:
     ///   - session: Session that finished
     ///   - result: Session result
-    @objc func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult)
+    @objc func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult)
     /// Called when the session was canceled
     ///
     /// - Parameter session: Session that was canceled
-    @objc func sessionWasCanceled(_ session: VerIDSession)
+    @objc optional func didCancelSession(_ session: VerIDSession)
+    
+    @objc optional func shouldDisplayResult(_ result: VerIDSessionResult, ofSession session: VerIDSession) -> Bool
+    
+    @objc optional func shouldSpeakPromptsInSession(_ session: VerIDSession) -> Bool
+    
+    @objc optional func shouldRecordVideoOfSession(_ session: VerIDSession) -> Bool
+    
+    @objc optional func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position
 }
-
-@available(*, deprecated, renamed: "VerIDSession") public typealias Session = VerIDSession
-
-@available(*, deprecated, renamed: "VerIDSessionDelegate") public typealias SessionDelegate = VerIDSessionDelegate

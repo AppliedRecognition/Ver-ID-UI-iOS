@@ -12,25 +12,27 @@ import CoreMedia
 import ImageIO
 import Accelerate
 import VerIDCore
+import RxCocoa
+import RxSwift
 
 /// Ver-ID view controller protocol – displays the Ver-ID session progress
 @objc public protocol VerIDViewControllerProtocol: class {
     /// View controller delegate
     @objc var delegate: VerIDViewControllerDelegate? { get set }
-    /// Draw a representation of a face detection result collected during Ver-ID session
-    ///
-    /// - Parameters:
-    ///   - faceDetectionResult: Face detection result to relay to the user
-    ///   - sessionResult: Current result of the session
-    ///   - defaultFaceBounds: Face bounds to display if the result does not contain a face
-    ///   - offsetAngleFromBearing: Difference between the angle of the requested bearing and the angle of the detected face – use this to show the user where to move
-    @objc func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?)
-    @objc func loadResultImage(_ url: URL, forFace face: Face)
-    @objc func clearOverlays()
+    @objc var sessionSettings: VerIDSessionSettings? { get set }
+    @objc var cameraPosition: AVCaptureDevice.Position { get set }
+    @objc optional func addFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult, prompt: String?)
+    @objc optional func addFaceCapture(_ faceCapture: FaceCapture)
+    @objc optional func clearOverlays()
+}
+
+public protocol ImagePublisher {
+    
+    var imagePublisher: PublishSubject<(VerIDImage,FaceBounds)> { get }
 }
 
 /// Ver-ID SDK's default implementation of the `VerIDViewControllerProtocol`
-@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol, AVCaptureVideoDataOutputSampleBufferDelegate, SpeechDelegatable {
+@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol, AVCaptureVideoDataOutputSampleBufferDelegate, SpeechDelegatable, ImagePublisher {
     
     /// The view that holds the camera feed.
     @IBOutlet var noCameraLabel: UILabel!
@@ -59,6 +61,10 @@ import VerIDCore
     /// The Ver-ID view controller delegate
     public var delegate: VerIDViewControllerDelegate?
     
+    public var sessionSettings: VerIDSessionSettings?
+    
+    public var cameraPosition: AVCaptureDevice.Position = .front
+    
     weak var speechDelegate: SpeechDelegate?
     
     var focusPointOfInterest: CGPoint? {
@@ -80,6 +86,24 @@ import VerIDCore
         }
     }
     var currentImageOrientation: CGImagePropertyOrientation = .right
+    var _viewSize: CGSize = .zero
+    var viewSize: CGSize {
+        get {
+            let size: CGSize
+            self.viewSizeLock.lock()
+            size = _viewSize
+            self.viewSizeLock.unlock()
+            return size
+        }
+        set {
+            self.viewSizeLock.lock()
+            self._viewSize = newValue
+            self.viewSizeLock.unlock()
+        }
+    }
+    let viewSizeLock: NSLock = .init()
+    
+    public let imagePublisher = PublishSubject<(VerIDImage,FaceBounds)>()
     
     public init(nibName: String? = nil) {
         let nib = nibName ?? "VerIDViewController"
@@ -112,6 +136,7 @@ import VerIDCore
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.viewSize = self.overlayView.bounds.size
         directionLabel.text = self.translatedStrings?["Preparing face detection"]
         directionLabel.isHidden = directionLabel.text == nil
         directionLabel.backgroundColor = UIColor.white
@@ -129,6 +154,7 @@ import VerIDCore
             if !context.isCancelled {
                 self.currentImageOrientation = self.imageOrientation
                 self.faceOvalLayer.frame = self.overlayView.layer.bounds
+                self.viewSize = self.overlayView.bounds.size
             }
         }
     }
@@ -172,110 +198,83 @@ import VerIDCore
         self.delegate?.viewControllerDidCancel(self)
     }
     
-    private func speakText(_ text: String?) {
-        if let speechDelegate = self.speechDelegate, let toSay = text, var language = self.translatedStrings?.resolvedLanguage {
-            if let region = self.translatedStrings?.resolvedRegion {
-                language.append("-\(region)")
-            }
-            speechDelegate.speak(toSay, language: language)
-        }
-//        if self.delegate?.settings.speakPrompts == true, let toSay = text, self.lastSpokenText == nil || self.lastSpokenText! != toSay, var language = self.translatedStrings?.resolvedLanguage {
-//            self.lastSpokenText = toSay
-//            let utterance = AVSpeechUtterance(string: toSay)
-//            if let region = self.translatedStrings?.resolvedRegion {
-//                language.append("-\(region)")
-//            }
-//            utterance.voice = AVSpeechSynthesisVoice(language: language)
-//            self.synth.speak(utterance)
-//        }
-    }
-    
     open override var captureDevice: AVCaptureDevice! {
-        guard let delegate = self.delegate else {
-            return super.captureDevice
-        }
-        let camPosition: AVCaptureDevice.Position = delegate.settings.useFrontCamera ? .front : .back
-        if #available(iOS 10.0, *) {
-            return AVCaptureDevice.default(AVCaptureDevice.DeviceType.builtInWideAngleCamera, for: AVMediaType.video, position: camPosition)
-        } else {
-            let devices = AVCaptureDevice.devices(for: .video)
-            for device in devices {
-                if device.position == camPosition {
-                    return device
-                }
-            }
-            return nil
-        }
+        return AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: self.cameraPosition)
     }
     
     // MARK: - Drawing face guide oval and arrows
     
-    /// Draw a face from the face detection result on top of the camera view
-    ///
-    /// - Parameters:
-    ///   - faceDetectionResult: Face detection result
-    ///   - sessionResult: Interim session result
-    ///   - defaultFaceBounds: Face bounds that will be displayed if no face is detected or before it's inside the oval
-    ///   - offsetAngleFromBearing: Angle to use to draw the arrow showing the user where to move
-    open func drawFaceFromResult(_ faceDetectionResult: FaceDetectionResult, sessionResult: VerIDSessionResult, defaultFaceBounds: CGRect, offsetAngleFromBearing: EulerAngle?) {
-        let labelText: String?
-        let isHighlighted: Bool
-        let ovalBounds: CGRect
-        let cutoutBounds: CGRect?
-        let faceAngle: EulerAngle?
-        let showArrow: Bool
-        let spokenText: String?
-        if let settings = self.delegate?.settings, sessionResult.attachments.count >= settings.numberOfResultsToCollect {
-            labelText = self.translatedStrings?["Please wait"]
-            isHighlighted = true
-            ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
-            cutoutBounds = nil
-            faceAngle = nil
-            showArrow = false
-            spokenText = nil
-        } else {
+    public func addFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult, prompt: String?) {
+        OperationQueue.main.addOperation {
+            guard self.isViewLoaded else {
+                return
+            }
+            self.overlayView.isHidden = false
+            self.cancelButton.isHidden = false
+            self.directionLabel.text = prompt
+            self.directionLabel.isHidden = prompt == nil || prompt!.isEmpty
+            self.directionLabel.textColor = self.textColourFromFaceDetectionStatus(faceDetectionResult.status)
+            self.directionLabel.backgroundColor = self.ovalColourFromFaceDetectionStatus(faceDetectionResult.status)
+            guard let imageSize = faceDetectionResult.image.size else {
+                return
+            }
+            let defaultFaceBounds = faceDetectionResult.defaultFaceBounds.translatedToImageSize(imageSize)
+            var ovalBounds: CGRect
+            var cutoutBounds: CGRect?
             switch faceDetectionResult.status {
             case .faceFixed, .faceAligned:
-                labelText = self.translatedStrings?["Great, hold it"]
-                isHighlighted = true
                 ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
-                cutoutBounds = nil
-                faceAngle = nil
-                showArrow = false
-                spokenText = self.translatedStrings?["Hold it"]
+                cutoutBounds = faceDetectionResult.faceBounds
             case .faceMisaligned:
-                labelText = self.translatedStrings?["Slowly turn to follow the arrow"]
-                isHighlighted = false
                 ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
-                cutoutBounds = nil
-                faceAngle = faceDetectionResult.faceAngle
-                showArrow = true
-                spokenText = self.translatedStrings?["Slowly turn to follow the arrow"]
+                cutoutBounds = faceDetectionResult.faceBounds
             case .faceTurnedTooFar:
-                labelText = nil
-                isHighlighted = false
                 ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
-                cutoutBounds = nil
-                faceAngle = nil
-                showArrow = false
-                spokenText = nil
+                cutoutBounds = ovalBounds
             default:
-                labelText = self.translatedStrings?["Align your face with the oval"]
-                isHighlighted = false
                 ovalBounds = defaultFaceBounds
-                cutoutBounds = faceDetectionResult.faceBounds.isNull ? nil : faceDetectionResult.faceBounds
-                faceAngle = nil
-                showArrow = false
-                spokenText = self.translatedStrings?["Align your face with the oval"]
+                cutoutBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
             }
+            let scale = max(self.overlayView.bounds.width / imageSize.width, self.overlayView.bounds.height / imageSize.height)
+            let transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(CGAffineTransform(translationX: self.overlayView.bounds.width / 2 - imageSize.width * scale / 2, y: self.overlayView.bounds.height / 2 - imageSize.height * scale / 2))
+            ovalBounds = ovalBounds.applying(transform)
+            cutoutBounds = cutoutBounds?.applying(transform)
+            
+            self.directionLabelYConstraint.constant = min(self.view.bounds.height - self.directionLabel.frame.height, max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0))
+            
+            let angle: CGFloat?
+            let distance: CGFloat?
+            if let offsetAngle = faceDetectionResult.offsetAngleFromBearing {
+                angle = atan2(CGFloat(0.0-offsetAngle.pitch), CGFloat(offsetAngle.yaw))
+                distance = hypot(offsetAngle.yaw, 0-offsetAngle.pitch) * 2;
+            } else {
+                angle = nil
+                distance = nil
+            }
+            let landmarks: [CGPoint] = []//faceDetectionResult.faceLandmarks.map({ $0.applying(transform) })
+            self.faceOvalLayer.setOvalBounds(ovalBounds, cutoutBounds: cutoutBounds, backgroundColour: self.backgroundColour, strokeColour: self.ovalColourFromFaceDetectionStatus(faceDetectionResult.status), faceLandmarks: landmarks, angle: angle, distance: distance)
         }
-        let transform = self.imageScaleTransformAtImageSize(faceDetectionResult.imageSize)
-        self.drawCameraOverlay(bearing: faceDetectionResult.requestedBearing, text: labelText, isHighlighted: isHighlighted, ovalBounds: ovalBounds.applying(transform), cutoutBounds: cutoutBounds?.applying(transform), faceAngle: faceAngle, showArrow: showArrow, offsetAngleFromBearing: offsetAngleFromBearing)
-        self.speakText(spokenText)
     }
     
-    open func loadResultImage(_ url: URL, forFace face: Face) {
-        
+    public func addFaceCapture(_ faceCapture: FaceCapture) {
+    }
+    
+    open func textColourFromFaceDetectionStatus(_ faceDetectionStatus: FaceDetectionStatus) -> UIColor {
+        switch faceDetectionStatus {
+        case .faceFixed, .faceAligned:
+            return UIColor.white
+        default:
+            return UIColor.black
+        }
+    }
+    
+    open func ovalColourFromFaceDetectionStatus(_ faceDetectionStatus: FaceDetectionStatus) -> UIColor {
+        switch faceDetectionStatus {
+        case .faceFixed, .faceAligned:
+            return UIColor(red: 0.21176470588235294, green: 0.6862745098039216, blue: 0.0, alpha: 1.0)
+        default:
+            return UIColor.white
+        }
     }
     
     public func clearOverlays() {
@@ -293,32 +292,12 @@ import VerIDCore
     ///   - sampleBuffer: image sample buffer
     ///   - connection: capture connection
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        self.delegate?.viewController(self, didCaptureSampleBuffer: sampleBuffer, withOrientation: self.currentImageOrientation)
+        let image = VerIDImage(sampleBuffer: sampleBuffer, orientation: self.currentImageOrientation)
+        image.isMirrored = self.cameraPosition == .front
+        self.imagePublisher.onNext((image,FaceBounds(viewSize: self.viewSize, faceExtents: self.sessionSettings?.expectedFaceExtents ?? FaceExtents.defaultExtents)))
     }
     
     // MARK: -
-    
-    private func drawCameraOverlay(bearing: Bearing, text: String?, isHighlighted: Bool, ovalBounds: CGRect, cutoutBounds: CGRect?, faceAngle: EulerAngle?, showArrow: Bool, offsetAngleFromBearing: EulerAngle?) {
-        self.directionLabel.textColor = isHighlighted ? highlightedTextColour : neutralTextColour
-        self.directionLabel.text = text
-        self.directionLabel.backgroundColor = isHighlighted ? highlightedColour : neutralColour
-        self.directionLabel.isHidden = text == nil
-        self.cancelButton.isHidden = false
-        
-        self.directionLabelYConstraint.constant = min(self.view.bounds.height - self.directionLabel.frame.height, max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0))
-        
-        let angle: CGFloat?
-        let distance: CGFloat?
-        if showArrow, let offsetAngle = offsetAngleFromBearing {
-            angle = atan2(CGFloat(0.0-offsetAngle.pitch), CGFloat(offsetAngle.yaw))
-            distance = hypot(offsetAngle.yaw, 0-offsetAngle.pitch) * 2;
-        } else {
-            angle = nil
-            distance = nil
-        }
-        self.overlayView.isHidden = false
-        self.faceOvalLayer.setOvalBounds(ovalBounds, cutoutBounds: cutoutBounds, angle: angle, distance: distance, strokeColour: isHighlighted ? highlightedColour : neutralColour)
-    }
     
     private var faceOvalLayer: FaceOvalLayer {
         if let subs = self.overlayView.layer.sublayers, let faceLayer = subs.compactMap({ $0 as? FaceOvalLayer }).first {
@@ -331,19 +310,5 @@ import VerIDCore
             detectedFaceLayer.frame = self.overlayView.layer.bounds
             return detectedFaceLayer
         }
-    }
-    
-    /// Affine transform to be used when scaling detected faces to fit the display
-    ///
-    /// - Parameter size: Size of the image where the face was detected
-    /// - Returns: Affine transform to be used when scaling detected faces to fit the display
-    private func imageScaleTransformAtImageSize(_ size: CGSize) -> CGAffineTransform {
-        let rect = AVMakeRect(aspectRatio: self.overlayView.bounds.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
-        let scale = self.overlayView.bounds.width / rect.width
-        var scaleTransform: CGAffineTransform = CGAffineTransform(translationX: 0-rect.minX, y: 0-rect.minY).concatenating(CGAffineTransform(scaleX: scale, y: scale))
-        if self.captureDevice.position == .front {
-            scaleTransform = scaleTransform.concatenating(CGAffineTransform(scaleX: -1, y: 1)).concatenating(CGAffineTransform(translationX: self.overlayView.bounds.width, y: 0))
-        }
-        return scaleTransform
     }
 }

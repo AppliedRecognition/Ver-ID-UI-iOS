@@ -10,6 +10,7 @@ import UIKit
 import VerIDCore
 import AVFoundation
 import ZIPFoundation
+import DeviceKit
 
 class SessionResultViewController: UITableViewController {
     
@@ -62,7 +63,16 @@ class SessionResultViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.environmentSettings = EnvironmentSettings(confidenceThreshold: UserDefaults.standard.confidenceThreshold, faceTemplateExtractionThreshold: UserDefaults.standard.faceTemplateExtractionThreshold, authenticationThreshold: Globals.verid?.faceRecognition.authenticationScoreThreshold.floatValue ?? UserDefaults.standard.authenticationThreshold, veridVersion: Bundle(for: VerID.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown", applicationVersion: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown")
+        self.environmentSettings = EnvironmentSettings(
+            confidenceThreshold: -0.5,
+            faceTemplateExtractionThreshold: 8.0,
+            authenticationThreshold: Globals.verid?.faceRecognition.authenticationScoreThreshold.floatValue ?? 4.0,
+            deviceModel: "\(Device.current)",
+            os: UIDevice.current.systemName+" "+UIDevice.current.systemVersion,
+            applicationId: Bundle.main.bundleIdentifier ?? "unknown",
+            applicationVersion: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown",
+            veridVersion: Bundle(for: VerID.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "unknown"
+        )
         self.navigationItem.title = self.title
     }
     
@@ -87,20 +97,7 @@ class SessionResultViewController: UITableViewController {
                 sections.append(("Video",[VideoCellData(url: videoURL)]))
             }
             if let result = self.sessionResult {
-                let images: [UIImage] = result.attachments.compactMap({ attachment in
-                    guard let imageURL = attachment.imageURL, let imageData = try? Data(contentsOf: imageURL), let image = UIImage(data: imageData) else {
-                        return nil
-                    }
-                    UIGraphicsBeginImageContext(attachment.face.bounds.size)
-                    defer {
-                        UIGraphicsEndImageContext()
-                    }
-                    image.draw(at: CGPoint(x: 0-attachment.face.bounds.minX, y: 0-attachment.face.bounds.minY))
-                    guard let faceImage = UIGraphicsGetImageFromCurrentImageContext() else {
-                        return nil
-                    }
-                    return faceImage
-                })
+                let images: [UIImage] = result.faceCaptures.map({ $0.faceImage })
                 if !images.isEmpty {
                     sections.append(("Faces",[FacesCellData(images: images)]))
                 }
@@ -120,21 +117,21 @@ class SessionResultViewController: UITableViewController {
             }
             if let settings = self.sessionSettings {
                 var settingsArray: [ValueCellData] = []
-                if let expiry = timeFormatter.string(from: settings.expiryTime) {
+                if let expiry = timeFormatter.string(from: settings.maxDuration) {
                     settingsArray.append(ValueCellData(title: "Expiry time", value: expiry))
                 }
-                settingsArray.append(ValueCellData(title: "Number of results to collect", value: "\(settings.numberOfResultsToCollect)"))
-                settingsArray.append(ValueCellData(title: "Using back camera", value: settings.useFrontCamera ? "No" : "Yes"))
+                settingsArray.append(ValueCellData(title: "Number of results to collect", value: "\(settings.faceCaptureCount)"))
+//                settingsArray.append(ValueCellData(title: "Using back camera", value: settings.useFrontCamera ? "No" : "Yes"))
                 settingsArray.append(ValueCellData(title: "Maximum retry count", value: "\(settings.maxRetryCount)"))
                 settingsArray.append(ValueCellData(title: "Yaw threshold", value: String(format: "%.01f", settings.yawThreshold)))
                 settingsArray.append(ValueCellData(title: "Pitch threshold", value: String(format: "%.01f", settings.pitchThreshold)))
-                settingsArray.append(ValueCellData(title: "Speak prompts", value: settings.speakPrompts ? "Yes" : "No"))
-                settingsArray.append(ValueCellData(title: "Required initial face width", value: String(format: "%.0f %%", settings.faceBoundsFraction.width * 100)))
-                settingsArray.append(ValueCellData(title: "Required initial face height", value: String(format: "%.0f %%", settings.faceBoundsFraction.height * 100)))
+//                settingsArray.append(ValueCellData(title: "Speak prompts", value: settings.speakPrompts ? "Yes" : "No"))
+                settingsArray.append(ValueCellData(title: "Required initial face width", value: String(format: "%.0f %%", settings.expectedFaceExtents.proportionOfViewWidth * 100)))
+                settingsArray.append(ValueCellData(title: "Required initial face height", value: String(format: "%.0f %%", settings.expectedFaceExtents.proportionOfViewHeight * 100)))
                 if let pause = timeFormatter.string(from: settings.pauseDuration) {
                     settingsArray.append(ValueCellData(title: "Pause duration", value: pause))
                 }
-                settingsArray.append(ValueCellData(title: "Face buffer size", value: "\(settings.faceBufferSize)"))
+                settingsArray.append(ValueCellData(title: "Face buffer size", value: "\(settings.faceCaptureFaceCount)"))
                 sections.append(("Session Settings", settingsArray))
             }
             if let environment = self.environmentSettings {
@@ -269,9 +266,11 @@ class SessionResultViewController: UITableViewController {
             })
         }
         var i = 1
-        for imageURL in result.attachments.compactMap({ $0.imageURL }) {
-            let imageData = try Data(contentsOf: imageURL)
-            try archive.addEntry(with: "image\(i).\(imageURL.pathExtension)", type: .file, uncompressedSize: UInt32(imageData.count), provider: { position, size in
+        for faceCapture in result.faceCaptures {
+            guard let imageData = faceCapture.image.jpegData(compressionQuality: 0.8) else {
+                continue
+            }
+            try archive.addEntry(with: "image\(i).jpg", type: .file, uncompressedSize: UInt32(imageData.count), provider: { position, size in
                 imageData[position..<position+size]
             })
             i += 1
@@ -300,7 +299,7 @@ class SessionResultViewController: UITableViewController {
                 guard let settings = self.sessionSettings, let result = self.sessionResult, let environment = self.environmentSettings else {
                     return
                 }
-                let shareItem = try SessionItemProvider(sessionTime: self.sessionTime, settings: settings, result: result, environment: environment)
+                let shareItem = try SessionItemProvider(settings: settings, result: result, environment: environment)
                 DispatchQueue.main.async {
                     if !self.isViewLoaded {
                         return

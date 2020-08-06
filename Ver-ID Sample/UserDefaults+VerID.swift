@@ -129,11 +129,11 @@ extension UserDefaults {
             "enableVideoRecording": true,
             "speakPrompts": false,
             "encryptFaceTemplates": true,
-            "registrationFaceCount": registrationSettings.numberOfResultsToCollect,
+            "registrationFaceCount": registrationSettings.faceCaptureCount,
             "confidenceThreshold": faceDetectionSettingsPreset.confidenceThreshold,
             "faceTemplateExtractionThreshold": faceDetectionSettingsPreset.templateExtractionThreshold,
-            "faceWidthFraction": registrationSettings.faceBoundsFraction.width,
-            "faceHeightFraction": registrationSettings.faceBoundsFraction.height
+            "faceWidthFraction": registrationSettings.expectedFaceExtents.proportionOfViewWidth,
+            "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight
         ])
     }
 }

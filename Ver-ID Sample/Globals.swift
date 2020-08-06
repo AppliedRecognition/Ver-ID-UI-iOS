@@ -14,22 +14,16 @@ struct Globals {
     static var verid: VerID?
     
     static func updateProfilePictureFromSessionResult(_ result: VerIDSessionResult) {
-        if result.error == nil, let profilePictureURL = Globals.profilePictureURL, let attachment = result.attachments.first(where: { $0.imageURL != nil && $0.bearing == .straight }), let imageURL = attachment.imageURL, let imageData = try? Data(contentsOf: imageURL), let image = UIImage(data: imageData) {
-            UIGraphicsBeginImageContext(attachment.face.bounds.size)
-            image.draw(at: CGPoint(x: 0-attachment.face.bounds.minX, y: 0-attachment.face.bounds.minY))
-            if let croppedImageData = UIGraphicsGetImageFromCurrentImageContext()?.jpegData(compressionQuality: 1.0) {
+        if result.error == nil, let profilePictureURL = Globals.profilePictureURL, let faceImage = result.faceCaptures.first(where: { $0.bearing == .straight })?.faceImage {
+            if let croppedImageData = faceImage.jpegData(compressionQuality: 1.0) {
                 try? croppedImageData.write(to: profilePictureURL)
             }
-            UIGraphicsEndImageContext()
         }
     }
     
     static func deleteImagesInSessionResult(_ sessionResult: VerIDSessionResult) {
         if let videoURL = sessionResult.videoURL {
             try? FileManager.default.removeItem(at: videoURL)
-        }
-        sessionResult.imageURLs.forEach {
-            try? FileManager.default.removeItem(at: $0)
         }
     }
     
