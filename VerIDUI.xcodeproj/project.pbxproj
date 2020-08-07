@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FA6E03B8CE756AAD96C6E3F /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A40FF58303B877371E55A4 /* Pods_Ver_ID_Sample.framework */; };
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B3FF91D23A10BA200156A59 /* VerIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91823A10BA200156A59 /* VerIDViewController.xib */; };
 		3B3FF91E23A10BA200156A59 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91923A10BA200156A59 /* Tips.storyboard */; };
@@ -14,8 +15,6 @@
 		3B3FF92023A10BA200156A59 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91B23A10BA200156A59 /* Result.storyboard */; };
 		3B3FF92123A10BA200156A59 /* VerIDRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */; };
 		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
-		3B45BAA9247D8A3C00273FAF /* TestFaceDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA4247D8A3C00273FAF /* TestFaceDetectionService.swift */; };
-		3B45BAAB247D8A3C00273FAF /* TestResultEvaluationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA6247D8A3C00273FAF /* TestResultEvaluationService.swift */; };
 		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
 		3B45BAB4247D8BEB00273FAF /* VerIDSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */; };
 		3B45BABB247D8C9500273FAF /* SettingsPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC4246DE64A00C4B2D1 /* SettingsPresets.swift */; };
@@ -54,7 +53,6 @@
 		3B6A70E62208BD8400B137C4 /* PaddedRoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */; };
 		3B6A70E72208BD8400B137C4 /* FaceOvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */; };
 		3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */; };
-		3B6A70EB2208C29300B137C4 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EA2208C29300B137C4 /* Session.swift */; };
 		3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */; };
 		3B6A9FFD23427C13000CED49 /* right_down_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FEB23427C12000CED49 /* right_down_2.mp4 */; };
 		3B6A9FFE23427C13000CED49 /* left_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FEC23427C12000CED49 /* left_2.mp4 */; };
@@ -78,8 +76,6 @@
 		3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */; };
 		3B8C109F240D87900087ACA5 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
 		3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */; };
-		3B9849B12408535C00DF2B5F /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */; };
-		3B9849B42408588900DF2B5F /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */; };
 		3B9BFCC5246DE64A00C4B2D1 /* SessionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB5246DE64900C4B2D1 /* SessionResultViewController.swift */; };
 		3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */; };
 		3B9BFCC7246DE64A00C4B2D1 /* SessionSettingsShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB7246DE64900C4B2D1 /* SessionSettingsShareItem.swift */; };
@@ -112,8 +108,13 @@
 		3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
 		3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */; };
-		6D94A672D9F79AC9B61D3C4D /* Pods_Thumbnails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 538CD8536354259B0992E1D0 /* Pods_Thumbnails.framework */; };
-		D81D64542CEDA7A045EB2413 /* Pods_Preview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E22BB1D672D04EAF6969A2FB /* Pods_Preview.framework */; };
+		3BEDC48B24DD86B100CFB42B /* VerIDSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDC48924DD86B000CFB42B /* VerIDSession.swift */; };
+		3BEDC48C24DD86B100CFB42B /* SessionPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDC48A24DD86B100CFB42B /* SessionPrompts.swift */; };
+		3BEDC4B124DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDC4AF24DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift */; };
+		3BEDC4B224DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDC4B024DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift */; };
+		45062389B29CBBA2DBE510C5 /* Pods_Preview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F02AF959CBDB7BAE6B9D34 /* Pods_Preview.framework */; };
+		8CD81E8FEE1FEF8E6A036FB8 /* Pods_Thumbnails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 316F4ECF4243B31822DC382A /* Pods_Thumbnails.framework */; };
+		FC23D438B48B70F3C5157D2D /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C15201DC0E80E69561EF328 /* Pods_VerIDUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,7 +175,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
+		0C15201DC0E80E69561EF328 /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		203C601148774DC66B315F94 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
+		316F4ECF4243B31822DC382A /* Pods_Thumbnails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thumbnails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -185,9 +188,7 @@
 		3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDRegistrationViewController.xib; sourceTree = "<group>"; };
 		3B3FF92223A10C9100156A59 /* Ver-ID-UI.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Ver-ID-UI.podspec"; sourceTree = SOURCE_ROOT; };
 		3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionViewController.swift; sourceTree = "<group>"; };
-		3B45BAA4247D8A3C00273FAF /* TestFaceDetectionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFaceDetectionService.swift; sourceTree = "<group>"; };
 		3B45BAA5247D8A3C00273FAF /* Test registration.verid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Test registration.verid"; sourceTree = "<group>"; };
-		3B45BAA6247D8A3C00273FAF /* TestResultEvaluationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResultEvaluationService.swift; sourceTree = "<group>"; };
 		3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageProvider.swift; sourceTree = "<group>"; };
 		3B45BAB1247D8BEB00273FAF /* VerIDSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerIDSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDSampleUITests.swift; sourceTree = "<group>"; };
@@ -219,7 +220,6 @@
 		3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedRoundedLabel.swift; sourceTree = "<group>"; };
 		3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOvalLayer.swift; sourceTree = "<group>"; };
 		3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
-		3B6A70EA2208C29300B137C4 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDViewControllerDelegate.swift; sourceTree = "<group>"; };
 		3B6A9FEB23427C12000CED49 /* right_down_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_down_2.mp4; sourceTree = "<group>"; };
 		3B6A9FEC23427C12000CED49 /* left_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_2.mp4; sourceTree = "<group>"; };
@@ -243,8 +243,6 @@
 		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
 		3B8C109E240D87900087ACA5 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID identity.p12"; sourceTree = "<group>"; };
-		3B9849AF2408534C00DF2B5F /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B9BFCB5246DE64900C4B2D1 /* SessionResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionResultViewController.swift; sourceTree = "<group>"; };
 		3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationProvider.swift; sourceTree = "<group>"; };
 		3B9BFCB7246DE64900C4B2D1 /* SessionSettingsShareItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionSettingsShareItem.swift; sourceTree = "<group>"; };
@@ -277,20 +275,19 @@
 		3BE9F36E220AF128002C11BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BE9F373220AF128002C11BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewControllersFactory.swift; sourceTree = "<group>"; };
-		499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
-		538CD8536354259B0992E1D0 /* Pods_Thumbnails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thumbnails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74EE93FED5B1D0217FC10741 /* Pods-Preview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.release.xcconfig"; path = "Pods/Target Support Files/Pods-Preview/Pods-Preview.release.xcconfig"; sourceTree = "<group>"; };
-		7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxVerID.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxVerID/Pods-RxVerID.release.xcconfig"; sourceTree = "<group>"; };
-		96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxVerID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A12E62F1521321CCF055461A /* Pods-Preview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Preview/Pods-Preview.debug.xcconfig"; sourceTree = "<group>"; };
-		A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-VerIDUI/Pods-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
-		D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAFC399C6685F9BB09C702C4 /* Pods-RxVerID.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxVerID.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxVerID/Pods-RxVerID.debug.xcconfig"; sourceTree = "<group>"; };
-		DE961D9A656EC0C03D808ABA /* Pods-Thumbnails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Thumbnails/Pods-Thumbnails.debug.xcconfig"; sourceTree = "<group>"; };
-		E22BB1D672D04EAF6969A2FB /* Pods_Preview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Preview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
-		FF05CED69BE557C9C9498F8D /* Pods-Thumbnails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.release.xcconfig"; path = "Pods/Target Support Files/Pods-Thumbnails/Pods-Thumbnails.release.xcconfig"; sourceTree = "<group>"; };
+		3BEDC48924DD86B000CFB42B /* VerIDSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSession.swift; sourceTree = "<group>"; };
+		3BEDC48A24DD86B100CFB42B /* SessionPrompts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPrompts.swift; sourceTree = "<group>"; };
+		3BEDC4AF24DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFaceCaptureCreatorFactory.swift; sourceTree = "<group>"; };
+		3BEDC4B024DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFaceDetectionResultCreatorFactory.swift; sourceTree = "<group>"; };
+		50B484074754E67408491265 /* Pods-Thumbnails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.debug.xcconfig"; path = "Target Support Files/Pods-Thumbnails/Pods-Thumbnails.debug.xcconfig"; sourceTree = "<group>"; };
+		556949956D7FA65073216246 /* Pods-Thumbnails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.release.xcconfig"; path = "Target Support Files/Pods-Thumbnails/Pods-Thumbnails.release.xcconfig"; sourceTree = "<group>"; };
+		94F02AF959CBDB7BAE6B9D34 /* Pods_Preview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Preview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA149784347B4CF4AEAA4E13 /* Pods-Preview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.debug.xcconfig"; path = "Target Support Files/Pods-Preview/Pods-Preview.debug.xcconfig"; sourceTree = "<group>"; };
+		D8C86EFF170D1A1C464DE795 /* Pods-Preview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.release.xcconfig"; path = "Target Support Files/Pods-Preview/Pods-Preview.release.xcconfig"; sourceTree = "<group>"; };
+		E0872BCD58B8FF83B0658360 /* Pods-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.debug.xcconfig"; path = "Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
+		E0C517705D4A9DC2FB801957 /* Pods-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.release.xcconfig"; path = "Target Support Files/Pods-VerIDUI/Pods-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
+		E3A40FF58303B877371E55A4 /* Pods_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E46C49EA3913A53D66A4316C /* Pods-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.release.xcconfig"; path = "Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,7 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B9849B12408535C00DF2B5F /* Pods_VerIDUI.framework in Frameworks */,
+				FC23D438B48B70F3C5157D2D /* Pods_VerIDUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */,
-				6D94A672D9F79AC9B61D3C4D /* Pods_Thumbnails.framework in Frameworks */,
+				8CD81E8FEE1FEF8E6A036FB8 /* Pods_Thumbnails.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAD6247D94C000273FAF /* QuickLook.framework in Frameworks */,
-				D81D64542CEDA7A045EB2413 /* Pods_Preview.framework in Frameworks */,
+				45062389B29CBBA2DBE510C5 /* Pods_Preview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
-				3B9849B42408588900DF2B5F /* Pods_Ver_ID_Sample.framework in Frameworks */,
+				2FA6E03B8CE756AAD96C6E3F /* Pods_Ver_ID_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,8 +345,8 @@
 				3B45BAC5247D94B100273FAF /* Thumbnails */,
 				3B45BAD7247D94C000273FAF /* Preview */,
 				3B326B1722089C88005DAE1E /* Products */,
-				94170ABA6C56107F2BFDEB39 /* Pods */,
 				8C808952AB38275225E61B6D /* Frameworks */,
+				EA3973539495911E220A79F3 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -368,6 +365,8 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3BEDC48A24DD86B100CFB42B /* SessionPrompts.swift */,
+				3BEDC48924DD86B000CFB42B /* VerIDSession.swift */,
 				3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */,
 				3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */,
 				3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */,
@@ -379,7 +378,6 @@
 				3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */,
 				3B3FF91B23A10BA200156A59 /* Result.storyboard */,
 				3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */,
-				3B6A70EA2208C29300B137C4 /* Session.swift */,
 				3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */,
 				3BACF2BC245384C0000FA3A7 /* SpeechDelegatable.swift */,
 				3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */,
@@ -403,10 +401,10 @@
 		3B45BAA2247D8A3C00273FAF /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				3BEDC4AF24DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift */,
+				3BEDC4B024DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift */,
 				3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */,
-				3B45BAA4247D8A3C00273FAF /* TestFaceDetectionService.swift */,
 				3B45BAA5247D8A3C00273FAF /* Test registration.verid */,
-				3B45BAA6247D8A3C00273FAF /* TestResultEvaluationService.swift */,
 				3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */,
 			);
 			path = Testing;
@@ -544,34 +542,29 @@
 		8C808952AB38275225E61B6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3B9849B02408535C00DF2B5F /* Pods_VerIDUI.framework */,
-				3B9849AF2408534C00DF2B5F /* Pods_VerIDUI.framework */,
-				D7389D23F4B809AD5ED755C9 /* Pods_VerIDUI.framework */,
-				96B14E144AE3E099363E49BB /* Pods_RxVerID.framework */,
-				A346AB21A2374F6B782D2223 /* Pods_Ver_ID_Sample.framework */,
 				3B45BAC3247D94B100273FAF /* QuickLookThumbnailing.framework */,
 				3B45BAD5247D94C000273FAF /* QuickLook.framework */,
-				E22BB1D672D04EAF6969A2FB /* Pods_Preview.framework */,
-				538CD8536354259B0992E1D0 /* Pods_Thumbnails.framework */,
+				94F02AF959CBDB7BAE6B9D34 /* Pods_Preview.framework */,
+				316F4ECF4243B31822DC382A /* Pods_Thumbnails.framework */,
+				0C15201DC0E80E69561EF328 /* Pods_VerIDUI.framework */,
+				E3A40FF58303B877371E55A4 /* Pods_Ver_ID_Sample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		94170ABA6C56107F2BFDEB39 /* Pods */ = {
+		EA3973539495911E220A79F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */,
-				A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */,
-				DAFC399C6685F9BB09C702C4 /* Pods-RxVerID.debug.xcconfig */,
-				7CA955C3194E17CEC1D970F2 /* Pods-RxVerID.release.xcconfig */,
-				0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */,
-				FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */,
-				A12E62F1521321CCF055461A /* Pods-Preview.debug.xcconfig */,
-				74EE93FED5B1D0217FC10741 /* Pods-Preview.release.xcconfig */,
-				DE961D9A656EC0C03D808ABA /* Pods-Thumbnails.debug.xcconfig */,
-				FF05CED69BE557C9C9498F8D /* Pods-Thumbnails.release.xcconfig */,
+				AA149784347B4CF4AEAA4E13 /* Pods-Preview.debug.xcconfig */,
+				D8C86EFF170D1A1C464DE795 /* Pods-Preview.release.xcconfig */,
+				50B484074754E67408491265 /* Pods-Thumbnails.debug.xcconfig */,
+				556949956D7FA65073216246 /* Pods-Thumbnails.release.xcconfig */,
+				E0872BCD58B8FF83B0658360 /* Pods-Ver-ID Sample.debug.xcconfig */,
+				E46C49EA3913A53D66A4316C /* Pods-Ver-ID Sample.release.xcconfig */,
+				203C601148774DC66B315F94 /* Pods-VerIDUI.debug.xcconfig */,
+				E0C517705D4A9DC2FB801957 /* Pods-VerIDUI.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,7 +585,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B326B1E22089C88005DAE1E /* Build configuration list for PBXNativeTarget "VerIDUI" */;
 			buildPhases = (
-				DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */,
+				ACEF100B33AF58C7AD236867 /* [CP] Check Pods Manifest.lock */,
 				3B326B1122089C88005DAE1E /* Headers */,
 				3B326B1222089C88005DAE1E /* Sources */,
 				3B326B1322089C88005DAE1E /* Frameworks */,
@@ -629,7 +622,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B45BACC247D94B100273FAF /* Build configuration list for PBXNativeTarget "Thumbnails" */;
 			buildPhases = (
-				5C1CB8D87480BEB8CDDFBAB3 /* [CP] Check Pods Manifest.lock */,
+				A04287239D48FBC507803509 /* [CP] Check Pods Manifest.lock */,
 				3B45BABE247D94B100273FAF /* Sources */,
 				3B45BABF247D94B100273FAF /* Frameworks */,
 				3B45BAC0247D94B100273FAF /* Resources */,
@@ -647,7 +640,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B45BAE1247D94C000273FAF /* Build configuration list for PBXNativeTarget "Preview" */;
 			buildPhases = (
-				0CACA6CFB81760A4F4CC5370 /* [CP] Check Pods Manifest.lock */,
+				68773215C5D56A402DEEEEC6 /* [CP] Check Pods Manifest.lock */,
 				3B45BAD0247D94C000273FAF /* Sources */,
 				3B45BAD1247D94C000273FAF /* Frameworks */,
 				3B45BAD2247D94C000273FAF /* Resources */,
@@ -665,13 +658,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3BE9F374220AF128002C11BE /* Build configuration list for PBXNativeTarget "Ver-ID Sample" */;
 			buildPhases = (
-				5DF17749C21B4F51F2CDA98C /* [CP] Check Pods Manifest.lock */,
+				31F863FB9DF17CDD4D29435B /* [CP] Check Pods Manifest.lock */,
 				3BE9F361220AF125002C11BE /* Sources */,
 				3BE9F362220AF125002C11BE /* Frameworks */,
 				3BE9F363220AF125002C11BE /* Resources */,
 				3BE9F37D220AF8DD002C11BE /* Embed Frameworks */,
-				E6D41C197F6DDCE774626280 /* [CP] Embed Pods Frameworks */,
 				3B45BACF247D94B100273FAF /* Embed App Extensions */,
+				8D2D6F876EA9BC1B00A107D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -814,51 +807,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0CACA6CFB81760A4F4CC5370 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Preview-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5C1CB8D87480BEB8CDDFBAB3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Thumbnails-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5DF17749C21B4F51F2CDA98C /* [CP] Check Pods Manifest.lock */ = {
+		31F863FB9DF17CDD4D29435B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -880,25 +829,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFBE92CAC3F3BBFCDB1F1A9D /* [CP] Check Pods Manifest.lock */ = {
+		68773215C5D56A402DEEEEC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VerIDUI-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Preview-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E6D41C197F6DDCE774626280 /* [CP] Embed Pods Frameworks */ = {
+		8D2D6F876EA9BC1B00A107D5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -915,6 +868,50 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A04287239D48FBC507803509 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Thumbnails-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACEF100B33AF58C7AD236867 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VerIDUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -929,14 +926,15 @@
 				3BACF2BE245384C0000FA3A7 /* SpeechDelegatable.swift in Sources */,
 				3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */,
 				3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */,
+				3BEDC48B24DD86B100CFB42B /* VerIDSession.swift in Sources */,
 				3BACF2BF245384C0000FA3A7 /* SpeechDelegate.swift in Sources */,
 				3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */,
 				3BC55B6C2236E37E00BCDD9D /* CameraViewController.swift in Sources */,
 				3B6A70E02208BC3C00B137C4 /* FaceDetectionAlertController.swift in Sources */,
 				3B6A70E62208BD8400B137C4 /* PaddedRoundedLabel.swift in Sources */,
-				3B6A70EB2208C29300B137C4 /* Session.swift in Sources */,
 				3B6A70DC2208BC3C00B137C4 /* VerIDViewController.swift in Sources */,
 				3B6A70DF2208BC3C00B137C4 /* VerIDRegistrationViewController.swift in Sources */,
+				3BEDC48C24DD86B100CFB42B /* SessionPrompts.swift in Sources */,
 				3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */,
 				3B6A70DB2208BC3C00B137C4 /* ResultViewController.swift in Sources */,
 			);
@@ -983,7 +981,6 @@
 				3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */,
 				3B9BFCD0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift in Sources */,
 				3B9BFCD1246DE64A00C4B2D1 /* UserDefaults+VerID.swift in Sources */,
-				3B45BAAB247D8A3C00273FAF /* TestResultEvaluationService.swift in Sources */,
 				3BB204672214263600B3B312 /* AppDelegate.swift in Sources */,
 				3B9BFCCF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift in Sources */,
 				3B9BFCCD246DE64A00C4B2D1 /* VerIDFactory+Sample.swift in Sources */,
@@ -991,15 +988,16 @@
 				3B9BFCCB246DE64A00C4B2D1 /* SessionItemProvider.swift in Sources */,
 				3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */,
 				3B8C109F240D87900087ACA5 /* Globals.swift in Sources */,
+				3BEDC4B224DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift in Sources */,
 				3B9BFCCA246DE64A00C4B2D1 /* SecuritySettingsViewController.swift in Sources */,
 				3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */,
 				3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */,
 				3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */,
 				3B9BFCCE246DE64A00C4B2D1 /* RegistrationImport.swift in Sources */,
 				3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */,
+				3BEDC4B124DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift in Sources */,
 				3B9BFCC7246DE64A00C4B2D1 /* SessionSettingsShareItem.swift in Sources */,
 				3B9BFCC9246DE64A00C4B2D1 /* S3UploadActivity.swift in Sources */,
-				3B45BAA9247D8A3C00273FAF /* TestFaceDetectionService.swift in Sources */,
 				3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */,
 				3B9BFCD4246DE64A00C4B2D1 /* SettingsPresets.swift in Sources */,
 				3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */,
@@ -1098,7 +1096,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1012004;
+				CURRENT_PROJECT_VERSION = 2000000;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1117,7 +1115,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MARKETING_VERSION = 1.12.4;
+				MARKETING_VERSION = "2.0.0-beta.01";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1164,7 +1162,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1012004;
+				CURRENT_PROJECT_VERSION = 2000000;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1177,7 +1175,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MARKETING_VERSION = 1.12.4;
+				MARKETING_VERSION = "2.0.0-beta.01";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1192,7 +1190,7 @@
 		};
 		3B326B1F22089C88005DAE1E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 499677290B5756B6FB4FE338 /* Pods-VerIDUI.debug.xcconfig */;
+			baseConfigurationReference = 203C601148774DC66B315F94 /* Pods-VerIDUI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1208,7 +1206,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.verid.ui;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.verid.ui2;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1219,7 +1217,7 @@
 		};
 		3B326B2022089C88005DAE1E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A391F7B4BFBD41A615FF8CA6 /* Pods-VerIDUI.release.xcconfig */;
+			baseConfigurationReference = E0C517705D4A9DC2FB801957 /* Pods-VerIDUI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1235,7 +1233,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.verid.ui;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.verid.ui2;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1283,7 +1281,7 @@
 		};
 		3B45BACD247D94B100273FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE961D9A656EC0C03D808ABA /* Pods-Thumbnails.debug.xcconfig */;
+			baseConfigurationReference = 50B484074754E67408491265 /* Pods-Thumbnails.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1304,7 +1302,7 @@
 		};
 		3B45BACE247D94B100273FAF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF05CED69BE557C9C9498F8D /* Pods-Thumbnails.release.xcconfig */;
+			baseConfigurationReference = 556949956D7FA65073216246 /* Pods-Thumbnails.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1325,7 +1323,7 @@
 		};
 		3B45BAE2247D94C000273FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A12E62F1521321CCF055461A /* Pods-Preview.debug.xcconfig */;
+			baseConfigurationReference = AA149784347B4CF4AEAA4E13 /* Pods-Preview.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1346,7 +1344,7 @@
 		};
 		3B45BAE3247D94C000273FAF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74EE93FED5B1D0217FC10741 /* Pods-Preview.release.xcconfig */;
+			baseConfigurationReference = D8C86EFF170D1A1C464DE795 /* Pods-Preview.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1367,9 +1365,8 @@
 		};
 		3BE9F375220AF128002C11BE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BE6176FC74ECC936EE2200F /* Pods-Ver-ID Sample.debug.xcconfig */;
+			baseConfigurationReference = E0872BCD58B8FF83B0658360 /* Pods-Ver-ID Sample.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1389,9 +1386,8 @@
 		};
 		3BE9F376220AF128002C11BE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF034C2E441D2D92F9DE909F /* Pods-Ver-ID Sample.release.xcconfig */;
+			baseConfigurationReference = E46C49EA3913A53D66A4316C /* Pods-Ver-ID Sample.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;

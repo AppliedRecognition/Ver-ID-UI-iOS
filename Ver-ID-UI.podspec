@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = "Ver-ID-UI"
     s.module_name  = "VerIDUI"
-    s.version      = "1.12.4"
+    s.version      = "2.0.0-beta.01"
     s.summary      = "Face detection and recognition"
     s.homepage     = "https://github.com/AppliedRecognition"
     s.license      = { :type => "COMMERCIAL", :file => "LICENCE.txt" }
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
     s.source       = { :git => "https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git", :tag => "v#{s.version}" }
     s.source_files = "VerIDUI/*.swift"
     s.resources    = "VerIDUI/Video/*.mp4", "VerIDUI/Localization/*.xml", "VerIDUI/*.xcassets", "VerIDUI/**.{storyboard,xib}"
-    s.dependency "Ver-ID-Core", ">= #{s.version}", "< 2.0"
+    s.dependency "Ver-ID-Core", ">= #{s.version}", "< 3.0"
 end
