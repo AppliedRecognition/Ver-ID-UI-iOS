@@ -87,8 +87,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         }
         let session = VerIDSession(environment: verid, settings: self.registrationSettings)
         if Globals.isTesting {
-            session.faceDetectionResultCreatorFactory = TestFaceDetectionResultCreatorFactory(settings: self.registrationSettings)
-            session.faceCaptureCreatorFactory = TestFaceCaptureCreatorFactory(settings: self.registrationSettings)
+            session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: self.registrationSettings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: self.registrationSettings)
         }
         session.delegate = self
@@ -130,8 +129,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
         if Globals.isTesting && !Globals.shouldCancelAuthentication {
-            session.faceDetectionResultCreatorFactory = TestFaceDetectionResultCreatorFactory(settings: settings)
-            session.faceCaptureCreatorFactory = TestFaceCaptureCreatorFactory(settings: settings)
+            session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: settings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
         }
         session.delegate = self

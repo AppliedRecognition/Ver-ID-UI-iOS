@@ -127,8 +127,7 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting {
-            session.faceDetectionResultCreatorFactory = TestFaceDetectionResultCreatorFactory(settings: settings)
-            session.faceCaptureCreatorFactory = TestFaceCaptureCreatorFactory(settings: settings)
+            session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: settings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
         }
         session.delegate = self

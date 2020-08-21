@@ -26,10 +26,6 @@ import os
     /// Factory that creates view controllers used in the session
     @objc public var sessionViewControllersFactory: SessionViewControllersFactory
     
-    public var faceDetectionResultCreatorFactory: FaceDetectionResultCreatorFactory
-    
-    public var faceCaptureCreatorFactory: FaceCaptureCreatorFactory
-    
     /// Session delegate
     @objc public weak var delegate: VerIDSessionDelegate?
     
@@ -42,6 +38,8 @@ import os
     /// Instance of VerID associated with the session
     /// - Since: 1.12.0
     @objc public let environment: VerID
+    
+    public var sessionFunctions: SessionFunctions
     
     private var viewController: (UIViewController & VerIDViewControllerProtocol)?
     
@@ -81,9 +79,8 @@ import os
         self.settings = settings
         self.sessionPrompts = SessionPrompts(translatedStrings: translatedStrings)
         self.sessionViewControllersFactory = VerIDSessionViewControllersFactory(settings: settings, translatedStrings: translatedStrings)
-        self.faceDetectionResultCreatorFactory = VerIDFaceDetectionResultCreatorFactory(verID: environment, settings: settings)
-        self.faceCaptureCreatorFactory = VerIDFaceCaptureCreatorFactory(verID: environment, settings: settings)
         self.videoWriterFactory = VerIDVideoWriterServiceFactory()
+        self.sessionFunctions = SessionFunctions(verID: environment, sessionSettings: settings)
     }
     
     /// Session constructor
@@ -116,8 +113,7 @@ import os
                 if let imagePublisher = (viewController as? ImagePublisher)?.imagePublisher {
                     self.session = VerIDCore.Session(verID: self.environment, settings: self.settings, imageObservable: imagePublisher)
                     self.session?.videoWriterService = self.videoWriterService
-                    self.session?.faceDetectionCreatorFactory = self.faceDetectionResultCreatorFactory
-                    self.session?.faceCaptureCreatorFactory = self.faceCaptureCreatorFactory
+                    self.session?.sessionFunctions = self.sessionFunctions
                     self.session?.delegate = self
                     self.session?.start()
                 }
