@@ -15,4 +15,6 @@ Pod::Spec.new do |s|
     s.source_files = "VerIDUI/*.swift"
     s.resources    = "VerIDUI/Video/*.mp4", "VerIDUI/Localization/*.xml", "VerIDUI/*.xcassets", "VerIDUI/**.{storyboard,xib}"
     s.dependency "Ver-ID-Core", ">= #{s.version}", "< 3.0"
+    s.dependency "RxSwift", "~> 5"
+    s.dependency "RxCocoa", "~> 5"
 end
