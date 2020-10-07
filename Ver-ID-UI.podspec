@@ -10,6 +10,8 @@ Pod::Spec.new do |s|
     s.swift_version = "5"
     s.documentation_url = "https://appliedrecognition.github.io/Ver-ID-UI-iOS"
     s.source       = { :git => "https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git", :tag => "v#{s.version}" }
+    s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     s.source_files = "VerIDUI/*.swift"
     s.resources    = "VerIDUI/Video/*.mp4", "VerIDUI/Localization/*.xml", "VerIDUI/*.xcassets", "VerIDUI/**.{storyboard,xib}"
     s.dependency "Ver-ID-Core", ">= #{s.version}", "< 3.0"

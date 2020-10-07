@@ -16,6 +16,7 @@ target 'VerIDUI' do
           config.build_settings['ENABLE_BITCODE'] = 'YES'
           config.build_settings['BUILD_LIBRARIES_FOR_DISTRIBUTION'] = 'YES'
           config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+          config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = "arm64"
           if config.name == 'Release'
             config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
             config.build_settings['OTHER_CFLAGS'] = '-faligned-allocation -fembed-bitcode'
