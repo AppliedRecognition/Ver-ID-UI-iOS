@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FaceDetectionAlertController" customModule="VerIDUI" customModuleProvider="target">
             <connections>
                 <outlet property="cancelButton" destination="TVJ-Gt-VpN" id="evL-yo-Fzi"/>
+                <outlet property="imagesView" destination="6pn-m6-zbJ" id="s4H-ii-zRm"/>
+                <outlet property="mainImageView" destination="6Xf-Oc-JBc" id="Xds-3g-Wyy"/>
                 <outlet property="messageLabel" destination="RYx-on-9dD" id="PLc-Oq-2pr"/>
                 <outlet property="messageLabelBackgroundView" destination="QHp-41-sZN" id="uuh-hZ-CAb"/>
                 <outlet property="retryButton" destination="YH7-TF-YzX" id="zOJ-8y-FcI"/>
                 <outlet property="stackView" destination="k6M-h1-dAS" id="aKj-gf-0ts"/>
+                <outlet property="strikeThroughImageView" destination="0kC-CH-dAn" id="GVW-u0-lYk"/>
                 <outlet property="tipsButton" destination="VQ4-Oy-iCz" id="STc-Ur-NBY"/>
                 <outlet property="toolbar" destination="23T-Je-fpt" id="DkM-YC-eSf"/>
                 <outlet property="videoView" destination="Igf-yG-vAR" id="heK-SG-F5H"/>
@@ -39,7 +43,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="RYx-on-9dD" firstAttribute="trailing" secondItem="QHp-41-sZN" secondAttribute="trailingMargin" id="M5I-BU-aq6"/>
                                 <constraint firstItem="RYx-on-9dD" firstAttribute="leading" secondItem="QHp-41-sZN" secondAttribute="leadingMargin" id="PtB-Ni-9bM"/>
@@ -49,10 +53,39 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-yG-vAR">
                             <rect key="frame" x="0.0" y="129" width="320" height="240"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pn-m6-zbJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip_sharp_shadows" translatesAutoresizingMaskIntoConstraints="NO" id="6Xf-Oc-JBc">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="strikethrough" translatesAutoresizingMaskIntoConstraints="NO" id="0kC-CH-dAn">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="0kC-CH-dAn" secondAttribute="trailing" id="91R-l4-iA9"/>
+                                        <constraint firstItem="6Xf-Oc-JBc" firstAttribute="top" secondItem="6pn-m6-zbJ" secondAttribute="top" id="Hb6-gk-ide"/>
+                                        <constraint firstItem="6Xf-Oc-JBc" firstAttribute="leading" secondItem="6pn-m6-zbJ" secondAttribute="leading" id="XZx-L3-N9V"/>
+                                        <constraint firstItem="0kC-CH-dAn" firstAttribute="leading" secondItem="6pn-m6-zbJ" secondAttribute="leading" id="jeQ-DN-859"/>
+                                        <constraint firstAttribute="bottom" secondItem="0kC-CH-dAn" secondAttribute="bottom" id="mvM-RH-u01"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Xf-Oc-JBc" secondAttribute="bottom" id="nTJ-lX-bha"/>
+                                        <constraint firstAttribute="trailing" secondItem="6Xf-Oc-JBc" secondAttribute="trailing" id="scQ-tv-ZcJ"/>
+                                        <constraint firstItem="0kC-CH-dAn" firstAttribute="top" secondItem="6pn-m6-zbJ" secondAttribute="top" id="yDF-st-TTn"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="320" id="Beu-Lv-OCh"/>
+                                <constraint firstItem="6pn-m6-zbJ" firstAttribute="top" secondItem="Igf-yG-vAR" secondAttribute="top" id="EE0-Us-TtA"/>
+                                <constraint firstAttribute="trailing" secondItem="6pn-m6-zbJ" secondAttribute="trailing" id="Vud-I1-uH2"/>
                                 <constraint firstAttribute="height" constant="240" id="d9q-45-b0S"/>
+                                <constraint firstAttribute="bottom" secondItem="6pn-m6-zbJ" secondAttribute="bottom" id="ekG-iH-hg6"/>
+                                <constraint firstItem="6pn-m6-zbJ" firstAttribute="leading" secondItem="Igf-yG-vAR" secondAttribute="leading" id="rIK-Ey-KAQ"/>
                             </constraints>
                         </view>
                         <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23T-Je-fpt">
@@ -77,16 +110,26 @@
                             </items>
                         </toolbar>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2970355308" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="k6M-h1-dAS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Kdd-Y5-1Gr"/>
                 <constraint firstItem="k6M-h1-dAS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="T1N-YQ-8QL"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33" y="53"/>
         </view>
     </objects>
+    <resources>
+        <image name="strikethrough" width="360" height="295"/>
+        <image name="tip_sharp_shadows" width="129" height="295"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

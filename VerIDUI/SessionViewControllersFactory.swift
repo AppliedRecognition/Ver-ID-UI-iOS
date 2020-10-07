@@ -102,31 +102,46 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
         case .faceTurnedTooFast(let bearing):
             message = self.translatedStrings["Please turn slowly"]
             requestedBearing = bearing
+        case .faceIsCovered:
+            message = self.translatedStrings["Please remove face coverings"]
+            requestedBearing = .straight
+        case .inadequateLighting:
+            message = self.translatedStrings["Please avoid light that throws sharp shadows"]
+            guard let image = UIImage(named: "tip_sharp_shadows", in: bundle, compatibleWith: nil) else {
+                throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
+            }
+            let controller = FaceDetectionAlertController(message: message, image: image, showStrikeThrough: true)
+            controller.translatedStrings = self.translatedStrings
+            return controller
         default:
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
         let density = UIScreen.main.scale
         let densityInt = density > 2 ? 3 : 2
         let videoFileName: String
-        switch requestedBearing {
-        case .left:
-            videoFileName = "left"
-        case .right:
-            videoFileName = "right"
-        case .down:
-            videoFileName = "down"
-        case .up:
-            videoFileName = "up"
-        case .rightUp:
-            videoFileName = "right_up"
-        case .rightDown:
-            videoFileName = "right_down"
-        case .leftDown:
-            videoFileName = "left_down"
-        case .leftUp:
-            videoFileName = "left_up"
-        default:
-            videoFileName = "up_to_centre"
+        if case FaceDetectionError.faceIsCovered = err {
+            videoFileName = "face_mask_off"
+        } else {
+            switch requestedBearing {
+            case .left:
+                videoFileName = "left"
+            case .right:
+                videoFileName = "right"
+            case .down:
+                videoFileName = "down"
+            case .up:
+                videoFileName = "up"
+            case .rightUp:
+                videoFileName = "right_up"
+            case .rightDown:
+                videoFileName = "right_down"
+            case .leftDown:
+                videoFileName = "left_down"
+            case .leftUp:
+                videoFileName = "left_up"
+            default:
+                videoFileName = "up_to_centre"
+            }
         }
         let videoName = String(format: "%@_%d", videoFileName, densityInt)
         let url = bundle.url(forResource: videoName, withExtension: "mp4")

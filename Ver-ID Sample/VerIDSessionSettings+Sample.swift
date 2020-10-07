@@ -16,6 +16,7 @@ extension RegistrationSessionSettings {
         yawThreshold = CGFloat(userDefaults.yawThreshold)
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
         faceCaptureCount = userDefaults.registrationFaceCount
+        maxFaceImageContrast = userDefaults.maxFaceImageContrast
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
     }
 }
@@ -27,6 +28,7 @@ extension AuthenticationSessionSettings {
         yawThreshold = CGFloat(userDefaults.yawThreshold)
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
         faceCaptureCount = userDefaults.poseCount
+        maxFaceImageContrast = userDefaults.maxFaceImageContrast
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
     }
 }

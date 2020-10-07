@@ -12,7 +12,7 @@ import VerIDUI
 import AVFoundation
 import MobileCoreServices
 
-class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate {
+class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate, SessionDiagnosticsViewControllerDelegate {
     
     // MARK: - Interface builder views
 
@@ -139,6 +139,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     // MARK: - Ver-ID Session Delegate
     
     func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
+        self.uploadedToS3 = false
         if session.settings is RegistrationSessionSettings && result.error == nil {
             Globals.updateProfilePictureFromSessionResult(result)
             Globals.deleteImagesInSessionResult(result)
@@ -147,17 +148,13 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
         } else {
-            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "result") as? SessionResultViewController else {
-                return
-            }
-            viewController.sessionResult = result
-            viewController.sessionTime = Date()
-            viewController.sessionSettings = session.settings
+            let viewController = SessionDiagnosticsViewController.create(sessionResultPackage: SessionResultPackage(verID: session.environment, settings: session.settings, result: result))
             if result.error != nil {
                 viewController.title = "Session Failed"
             } else {
                 viewController.title = "Success"
             }
+            viewController.delegate = self
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
@@ -174,6 +171,24 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         UserDefaults.standard.useBackCamera ? .back : .front
     }
     
+    // MARK: - Session diagnostics view controller delegate
+    
+    private var uploadedToS3 = false
+    
+    var applicationActivities: [UIActivity]? {
+        if !uploadedToS3, let activity = try? S3UploadActivity(bucket: "ver-id") {
+            return [activity]
+        }
+        return nil
+    }
+    
+    var activityCompletionHandler: UIActivityViewController.CompletionWithItemsHandler? {
+        { activityType, completed, items, error in
+            if activityType == .some(.s3Upload) {
+                self.uploadedToS3 = completed
+            }
+        }
+    }
     
     // MARK: - Registration export
     

@@ -219,6 +219,7 @@ import os
     // MARK: - Session delegate
     
     public func session(_ session: VerIDCore.Session, didFinishWithResult result: VerIDSessionResult) {
+        session.delegate = nil
         self.showResult(result)
     }
     
@@ -246,6 +247,7 @@ import os
             return
         }
         self.presentVerIDViewController(viewController)
+        session.delegate = self
         session.start()
     }
     
@@ -309,51 +311,6 @@ import os
     ///   - error: Description of the failure
     public func viewController(_ viewController: VerIDViewControllerProtocol, didFailWithError error: Error) {
         self.finishWithResult(VerIDSessionResult(error: error))
-    }
-    
-    // MARK: - Session operation delegate
-    
-    /// Session operation evaluated the face detection result and produced a session result
-    ///
-    /// - Parameters:
-    ///   - result: Session result
-    ///   - faceDetectionResult: Face detection result used to generate the session result
-    /// - Note: This method is called as the session progresses. The final session result is be obtained at the end of the session operation. You can use this method, for example, to prevent the session from finishing in some circumstances.
-    public func operationDidOutputSessionResult(_ result: VerIDSessionResult, fromFaceDetectionResult faceDetectionResult: FaceDetectionResult) {
-//        guard let imageSize = faceDetectionResult.image.size else {
-//            return
-//        }
-//        let w: CGFloat, h: CGFloat
-//        if imageSize.width > imageSize.height {
-//            h = imageSize.height * 0.85
-//            w = h * 0.8
-//        } else {
-//            w = imageSize.width * 0.65
-//            h = w * 1.25
-//        }
-//        let defaultFaceBounds: CGRect = .init(x: imageSize.width / 2 - w / 2, y: imageSize.height / 2 - h / 2, width: w, height: h)
-//        let offsetAngleFromBearing: EulerAngle? = faceDetectionResult.status == .faceMisaligned ? self.faceDetection?.angleBearingEvaluation.offsetFromAngle(faceDetectionResult.faceAngle ?? EulerAngle(yaw: 0, pitch: 0, roll: 0), toBearing: faceDetectionResult.requestedBearing) : nil
-//        DispatchQueue.main.async {
-//            self.viewController?.drawFaceFromResult(faceDetectionResult, sessionResult: result, defaultFaceBounds: defaultFaceBounds, offsetAngleFromBearing: offsetAngleFromBearing)
-//        }
-//        if result.error != nil && self.retryCount < self.settings.maxRetryCount && (faceDetectionResult.status == .faceTurnedTooFar || faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost || faceDetectionResult.status == .movedTooFast) {
-//            self.operationQueue.cancelAllOperations()
-//            DispatchQueue.main.async {
-//                do {
-//                    self.viewController?.clearOverlays()
-//                    let alert = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, faceDetectionResult: faceDetectionResult)
-//                    alert.delegate = self
-//                    alert.modalPresentationStyle = .overFullScreen
-//                    self.alertController = alert
-//                    if var speechDelegatable = alert as? SpeechDelegatable {
-//                        speechDelegatable.speechDelegate = self
-//                    }
-//                    self.viewController?.present(alert, animated: true, completion: nil)
-//                } catch {
-//                    self.finishWithResult(VerIDSessionResult(error: error))
-//                }
-//            }
-//        }
     }
     
     // MARK: - Face detection alert controller delegate
