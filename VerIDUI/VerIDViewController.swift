@@ -179,9 +179,9 @@ public protocol ImagePublisher {
         self.videoDataOutput?.alwaysDiscardsLateVideoFrames = true
         let pixelFormat: OSType = kCVPixelFormatType_32BGRA
 //        let pixelFormat: OSType = kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
-        if let pixelFormats = self.videoDataOutput?.availableVideoPixelFormatTypes, pixelFormats.contains(pixelFormat) {
+//        if let pixelFormats = self.videoDataOutput?.availableVideoPixelFormatTypes, pixelFormats.contains(pixelFormat) {
             self.videoDataOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:pixelFormat]
-        }
+//        }
         self.videoDataOutput?.setSampleBufferDelegate(self, queue: self.captureSessionQueue)
     }
     
