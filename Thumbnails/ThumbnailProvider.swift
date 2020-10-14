@@ -12,6 +12,7 @@ import ZIPFoundation
 import AVFoundation
 import QuickLookThumbnailing
 
+@available(iOS 11.0, *)
 class ThumbnailProvider: QLThumbnailProvider {
     
     override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
