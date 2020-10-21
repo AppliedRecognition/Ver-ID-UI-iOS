@@ -115,14 +115,6 @@ extension UserDefaults {
             self.set(newValue, forKey: "faceHeightFraction")
         }
     }
-    var maxFaceImageContrast: Double {
-        get {
-            self.double(forKey: "maxFaceImageContrast")
-        }
-        set {
-            self.set(newValue, forKey: "maxFaceImageContrast")
-        }
-    }
     
     func registerVerIDDefaults() {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
@@ -141,8 +133,7 @@ extension UserDefaults {
             "confidenceThreshold": faceDetectionSettingsPreset.confidenceThreshold,
             "faceTemplateExtractionThreshold": faceDetectionSettingsPreset.templateExtractionThreshold,
             "faceWidthFraction": registrationSettings.expectedFaceExtents.proportionOfViewWidth,
-            "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
-            "maxFaceImageContrast": registrationSettings.maxFaceImageContrast
+            "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight
         ])
     }
 }

@@ -39,6 +39,10 @@ import os
     /// - Since: 1.12.0
     @objc public let environment: VerID
     
+    /// Unique identifier for the session
+    /// - Since: 2.0.0
+    @objc public lazy var identifier: String = UUID().uuidString
+    
     public var sessionFunctions: SessionFunctions
     
     private var viewController: (UIViewController & VerIDViewControllerProtocol)?
@@ -252,7 +256,7 @@ import os
     }
     
     private func showResult(_ result: VerIDSessionResult) {
-        if let err = result.error as? FaceDetectionError, self.retryCount <= self.settings.maxRetryCount {
+        if let err = result.error as? FaceDetectionError, self.retryCount < self.settings.maxRetryCount {
             DispatchQueue.main.async {
                 do {
                     self.viewController?.clearOverlays?()

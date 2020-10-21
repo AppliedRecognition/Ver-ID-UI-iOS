@@ -21,14 +21,12 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     @IBOutlet var versionCell: UITableViewCell!
     @IBOutlet var faceWidthFractionCell: UITableViewCell!
     @IBOutlet var faceHeightFractionCell: UITableViewCell!
-    @IBOutlet var maxImageContrastCell: UITableViewCell!
     
     enum Section: Int, CaseIterable {
         case about, security, faceDetection, registration, accessibility, camera
     }
     
     let registrationFaceCounts: [Int] = [1,3]
-    let maxImageContrasts: [Double] = [25, 30, 35, 40, 45, 50, 55, 60]
     var isDirty: Bool = false
     var faceWidthFractionObservation: NSKeyValueObservation?
     var faceHeightFractionObservation: NSKeyValueObservation?
@@ -85,9 +83,9 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             return 0
         }
         switch sectionEnum {
-        case .about, .registration, .camera, .faceDetection:
+        case .registration, .camera:
             return 2
-        case .security:
+        case .about, .security:
             return 3
         default:
             return 1
@@ -150,7 +148,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         speakPromptsCell.accessoryType = speakPrompts ? .checkmark : .none
         let encryptTemplates = UserDefaults.standard.encryptFaceTemplates
         templateEncryptionCell.accessoryType = encryptTemplates ? .checkmark : .none
-        maxImageContrastCell.detailTextLabel?.text = String(format: "%.0f", UserDefaults.standard.maxFaceImageContrast)
     }
     
     // MARK: - Security profile
@@ -169,11 +166,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     
     func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValue value: String, atIndex index: Int) {
         self.navigationController?.popViewController(animated: true)
-        if valueSelectionViewController.title == "Max Image Contrast" {
-            UserDefaults.standard.maxFaceImageContrast = self.maxImageContrasts[index]
-        } else {
-            UserDefaults.standard.registrationFaceCount = self.registrationFaceCounts[index]
-        }
+        UserDefaults.standard.registrationFaceCount = self.registrationFaceCounts[index]
         self.loadFromDefaults()
     }
 
@@ -193,14 +186,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
                     destination.selectedIndex = 0
                 } else {
                     destination.selectedIndex = 1
-                }
-            } else if segue.identifier == "maxImageContrast" {
-                destination.values = self.maxImageContrasts.map { String(format: "%.0f", $0) }
-                destination.title = "Max Image Contrast"
-                if let index = self.maxImageContrasts.firstIndex(of: UserDefaults.standard.maxFaceImageContrast) {
-                    destination.selectedIndex = index
-                } else {
-                    destination.selectedIndex = 5
                 }
             }
         } else if let destination = segue.destination as? IntroViewController {
