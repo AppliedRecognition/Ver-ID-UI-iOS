@@ -18,7 +18,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var importButton: UIButton!
-    @IBOutlet weak var identifyButton: UIButton!
     
     // MARK: -
     
@@ -36,7 +35,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUserDisplay()
-        self.prefetchFaces()
     }
     
     // MARK: -
@@ -49,35 +47,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         self.imageView.layer.cornerRadius = self.imageView.bounds.width / 2
         self.imageView.layer.masksToBounds = true
         self.imageView.image = image
-    }
-    
-    private var faces: [Recognizable] = []
-    
-    private lazy var facesQueue: OperationQueue = {
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        return queue
-    }()
-    
-    private func prefetchFaces() {
-        guard let verid = Globals.verid else {
-            return
-        }
-        let op = BlockOperation {
-            do {
-                self.faces = try verid.userManagement.faces()
-            } catch {
-            }
-        }
-        op.completionBlock = {
-            guard !op.isCancelled else {
-                return
-            }
-            OperationQueue.main.addOperation {
-                self.identifyButton.isEnabled = !self.faces.isEmpty
-            }
-        }
-        self.facesQueue.addOperation(op)
     }
     
     // MARK: - Button actions
@@ -129,50 +98,13 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     ///
     /// - Parameter sender: Sender of the action
     @IBAction func authenticate(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Select language", message: nil, preferredStyle: .actionSheet)
-        alert.popoverPresentationController?.sourceView = sender
-        alert.addAction(UIAlertAction(title: "English", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "en")
-        }))
-        alert.addAction(UIAlertAction(title: "French", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "fr")
-        }))
-        alert.addAction(UIAlertAction(title: "Spanish", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "es")
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    var identificationSessionIdentifier: String?
-    
-    @IBAction func identifyUser(_ sender: UIButton) {
-        guard let verid = Globals.verid else {
-            return
-        }
-        let settings = LivenessDetectionSessionSettings()
-        let session = VerIDSession(environment: verid, settings: settings)
-        session.delegate = self
-        self.identificationSessionIdentifier = session.identifier
-        session.start()
-    }
-    
-    private func startAuthenticationSession(language: String) {
-        let translatedStrings: TranslatedStrings?
-        if language == "fr", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "fr_CA", withExtension: "xml") {
-            translatedStrings = try? TranslatedStrings(url: url)
-        } else if language == "es", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "es_US", withExtension: "xml") {
-            translatedStrings = try? TranslatedStrings(url: url)
-        } else {
-            translatedStrings = nil
-        }
         guard let verid = Globals.verid else {
             return
         }
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
         settings.isSessionDiagnosticsEnabled = true
         settings.maxRetryCount = 0
-        let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
+        let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting && !Globals.shouldCancelAuthentication {
             session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: settings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
@@ -185,40 +117,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     
     func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
         self.uploadedToS3 = false
-        if session.identifier == self.identificationSessionIdentifier {
-            guard result.error == nil else {
-                return
-            }
-            guard let verid = Globals.verid else {
-                return
-            }
-            guard let face = result.faces(withBearing: .straight).first else {
-                return
-            }
-            self.facesQueue.addOperation {
-                guard !self.faces.isEmpty else {
-                    return
-                }
-                let message: String
-                do {
-                    let identification = UserIdentification(verid: verid)
-                    if let bestFace = identification.findFacesSimilarTo(face, in: self.faces).first?.face {
-                        let user = try verid.userManagement.userInFace(bestFace)
-                        message = String(format: "You've been identified as %@", user)
-                    } else {
-                        message = "We were unable to identify you as one of the registered users"
-                    }
-                } catch {
-                    message = "Identification failed"
-                }
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alert, animated: true)
-                }
-            }
-            return
-        }
         if session.settings is RegistrationSessionSettings && result.error == nil {
             Globals.updateProfilePictureFromSessionResult(result)
             Globals.deleteImagesInSessionResult(result)

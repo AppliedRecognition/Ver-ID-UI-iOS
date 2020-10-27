@@ -83,9 +83,9 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             return 0
         }
         switch sectionEnum {
-        case .registration, .camera:
+        case .registration, .about, .camera:
             return 2
-        case .about, .security:
+        case .security:
             return 3
         default:
             return 1

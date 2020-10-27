@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2FA6E03B8CE756AAD96C6E3F /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A40FF58303B877371E55A4 /* Pods_Ver_ID_Sample.framework */; };
+		3B03D6722548A0BC0098292B /* IdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6702548A0BC0098292B /* IdentificationViewController.swift */; };
+		3B03D6732548A0BC0098292B /* IdentificationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */; };
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B3FF91D23A10BA200156A59 /* VerIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91823A10BA200156A59 /* VerIDViewController.xib */; };
 		3B3FF91E23A10BA200156A59 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91923A10BA200156A59 /* Tips.storyboard */; };
@@ -178,6 +180,8 @@
 		0C15201DC0E80E69561EF328 /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		203C601148774DC66B315F94 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
 		316F4ECF4243B31822DC382A /* Pods_Thumbnails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thumbnails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B03D6702548A0BC0098292B /* IdentificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationViewController.swift; sourceTree = "<group>"; };
+		3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationResultViewController.swift; sourceTree = "<group>"; };
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -522,6 +526,8 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */,
+				3B03D6702548A0BC0098292B /* IdentificationViewController.swift */,
 				3B45BAA2247D8A3C00273FAF /* Testing */,
 				3B9BFCD7246DE6FF00C4B2D1 /* Settings */,
 				3B9BFCD6246DE6E500C4B2D1 /* Registration Sharing */,
@@ -991,6 +997,7 @@
 				3B9BFCD0246DE64A00C4B2D1 /* FaceDetectionSettingsViewController.swift in Sources */,
 				3B9BFCD1246DE64A00C4B2D1 /* UserDefaults+VerID.swift in Sources */,
 				3BB204672214263600B3B312 /* AppDelegate.swift in Sources */,
+				3B03D6732548A0BC0098292B /* IdentificationResultViewController.swift in Sources */,
 				3B9BFCCF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift in Sources */,
 				3B9BFCCD246DE64A00C4B2D1 /* VerIDFactory+Sample.swift in Sources */,
 				3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */,
@@ -1010,6 +1017,7 @@
 				3B9BFCC8246DE64A00C4B2D1 /* SettingsViewController.swift in Sources */,
 				3B6C698C23A0227B0082AFF5 /* BaseAppDelegate.swift in Sources */,
 				3B9BFCCC246DE64A00C4B2D1 /* ValueSelectionViewController.swift in Sources */,
+				3B03D6722548A0BC0098292B /* IdentificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1119,7 +1127,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "2.0.0-beta.02";
+				MARKETING_VERSION = "2.0.0-beta.04";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1179,7 +1187,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "2.0.0-beta.02";
+				MARKETING_VERSION = "2.0.0-beta.04";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1205,6 +1213,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1232,6 +1241,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

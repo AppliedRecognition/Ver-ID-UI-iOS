@@ -50,13 +50,13 @@ class TestSessionFunctions: SessionFunctions {
     override var faceDetectionResultCreator: (SpoofingDetection) throws -> FaceDetectionResult {
         { spoofingDetection in
             guard let faceTracking = spoofingDetection.faceAlignment?.facePresence?.sessionFaceTracking else {
-                throw VerIDError.unknownError
+                preconditionFailure("spoofingDetection.faceAlignment?.facePresence?.sessionFaceTracking is nil")
             }
             guard let image = faceTracking.image else {
-                throw VerIDError.unknownError
+                preconditionFailure("faceTracking.image is nil")
             }
             guard let bounds = faceTracking.defaultFaceBounds else {
-                throw VerIDError.unknownError
+                preconditionFailure("faceTracking.defaultFaceBounds is nil")
             }
             let result = FaceDetectionResult(image: image, requestedBearing: faceTracking.requestedBearing, defaultFaceBounds: bounds)
             result.status = .faceAligned

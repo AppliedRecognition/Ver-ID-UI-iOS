@@ -5,7 +5,7 @@ platform :ios, '10.3'
 use_frameworks!
 
 def veridcore
-  pod 'Ver-ID-Core', '2.0.0-beta.02'
+  pod 'Ver-ID-Core', '2.0.0-beta.04'
 end
 
 target 'VerIDUI' do
@@ -34,7 +34,7 @@ target 'VerIDUI' do
 end
 
 target 'Ver-ID Sample' do
-  pod 'DeviceKit', '~> 2.0'
+  pod 'DeviceKit', '~> 4.1'
 end
 
 target 'Thumbnails' do

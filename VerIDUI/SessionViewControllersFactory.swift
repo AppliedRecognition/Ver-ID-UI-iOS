@@ -88,38 +88,27 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, error: Error) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
         let bundle = Bundle(for: type(of: self))
         let message: String
-        guard let err = error as? FaceDetectionError else {
-            throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
-        }
         let requestedBearing: Bearing
-        switch err {
-        case .faceTurnedTooFar(let bearing):
+        do {
+            throw error
+        } catch FacePresenceError.faceMovedTooFar(requestedBearing: let bearing) {
+            requestedBearing = bearing
             message = self.translatedStrings["You may have turned too far. Only turn in the requested direction until the oval turns green."]
+        } catch AntiSpoofingError.movedOpposite(requestedBearing: let bearing) {
             requestedBearing = bearing
-        case .faceTurnedOpposite(let bearing), .faceLost(let bearing):
             message = self.translatedStrings["Turn your head in the direction of the arrow"]
+        } catch AntiSpoofingError.movedTooFast(requestedBearing: let bearing) {
             requestedBearing = bearing
-        case .faceTurnedTooFast(let bearing):
             message = self.translatedStrings["Please turn slowly"]
-            requestedBearing = bearing
-        case .faceIsCovered:
-            message = self.translatedStrings["Please remove face coverings"]
+        } catch VerIDSessionError.faceIsCovered {
             requestedBearing = .straight
-        case .inadequateLighting:
-            message = self.translatedStrings["Please avoid light that throws sharp shadows"]
-            guard let image = UIImage(named: "tip_sharp_shadows", in: bundle, compatibleWith: nil) else {
-                throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
-            }
-            let controller = FaceDetectionAlertController(message: message, image: image, showStrikeThrough: true)
-            controller.translatedStrings = self.translatedStrings
-            return controller
-        default:
-            throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
+            message = self.translatedStrings["Please remove face coverings"]
         }
+        
         let density = UIScreen.main.scale
         let densityInt = density > 2 ? 3 : 2
         let videoFileName: String
-        if case FaceDetectionError.faceIsCovered = err {
+        if case VerIDSessionError.faceIsCovered = error {
             videoFileName = "face_mask_off"
         } else {
             switch requestedBearing {
