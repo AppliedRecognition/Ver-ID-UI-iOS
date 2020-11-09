@@ -67,16 +67,13 @@ class TestSessionFunctions: SessionFunctions {
     
     override var faceCaptureCreator: (FaceDetectionResult) throws -> FaceCapture {
         { faceDetectionResult in
-            if Globals.shouldFailAuthentication && self.sessionSettings is AuthenticationSessionSettings {
-                throw NSError(domain: kVerIDErrorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey:"Test failure"])
-            }
             guard faceDetectionResult.status == .faceAligned, let face = faceDetectionResult.face else {
-                throw VerIDError.unexpectedFaceDetectionResultStatus
+                preconditionFailure("Face not aligned or missing")
             }
             guard let imageSize = faceDetectionResult.image.size else {
-                throw VerIDError.undefinedImageSize
+                preconditionFailure("Image does not have size")
             }
-            let recognizableFace = RecognizableFace(face: face, recognitionData: Data())
+            let recognizableFace = RecognizableFace(face: face, recognitionData: Data(count: 176))
             UIGraphicsBeginImageContext(imageSize)
             defer {
                 UIGraphicsEndImageContext()
@@ -88,9 +85,24 @@ class TestSessionFunctions: SessionFunctions {
                 shapeLayer.draw(in: context)
             }
             guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
-                throw VerIDError.imageCreationFailure
+                preconditionFailure("Failed to create test image")
             }
             return FaceCapture(face: recognizableFace, bearing: faceDetectionResult.requestedBearing, image: image)
+        }
+    }
+    
+    override var faceCaptureAccumulator: (inout VerIDSessionResult, FaceCapture) throws -> Void {
+        { result, capture in
+            result.faceCaptures.append(capture)
+        }
+    }
+    
+    override var sessionResultProcessor: (VerIDSessionResult) throws -> VerIDSessionResult {
+        { result in
+            if Globals.shouldFailAuthentication && self.sessionSettings is AuthenticationSessionSettings {
+                throw NSError(domain: kVerIDErrorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey:"Test failure"])
+            }
+            return result
         }
     }
 }
