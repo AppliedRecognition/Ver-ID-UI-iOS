@@ -262,18 +262,18 @@ public protocol ImagePublisher {
     open func textColourFromFaceDetectionStatus(_ faceDetectionStatus: FaceDetectionStatus) -> UIColor {
         switch faceDetectionStatus {
         case .faceFixed, .faceAligned:
-            return UIColor.white
+            return self.highlightedTextColour
         default:
-            return UIColor.black
+            return self.neutralTextColour
         }
     }
     
     open func ovalColourFromFaceDetectionStatus(_ faceDetectionStatus: FaceDetectionStatus) -> UIColor {
         switch faceDetectionStatus {
         case .faceFixed, .faceAligned:
-            return UIColor(red: 0.21176470588235294, green: 0.6862745098039216, blue: 0.0, alpha: 1.0)
+            return self.highlightedColour
         default:
-            return UIColor.white
+            return self.neutralColour
         }
     }
     
