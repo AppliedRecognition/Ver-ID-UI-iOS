@@ -17,6 +17,7 @@ extension RegistrationSessionSettings {
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
         faceCaptureCount = userDefaults.registrationFaceCount
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
+        isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
     }
 }
 
@@ -28,5 +29,6 @@ extension AuthenticationSessionSettings {
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
         faceCaptureCount = userDefaults.poseCount
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
+        isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
     }
 }

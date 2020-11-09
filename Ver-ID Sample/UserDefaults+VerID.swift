@@ -115,6 +115,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "faceHeightFraction")
         }
     }
+    @objc dynamic var enableFaceCoveringDetection: Bool {
+        get {
+            self.bool(forKey: "enableFaceCoveringDetection")
+        }
+        set {
+            self.set(newValue, forKey: "enableFaceCoveringDetection")
+        }
+    }
     
     func registerVerIDDefaults() {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
@@ -126,14 +134,15 @@ extension UserDefaults {
             "pitchThreshold": securitySettingsPreset.pitchThreshold,
             "authenticationThreshold": securitySettingsPreset.authThreshold,
             "useBackCamera": false,
-            "enableVideoRecording": true,
+            "enableVideoRecording": false,
             "speakPrompts": false,
             "encryptFaceTemplates": true,
             "registrationFaceCount": registrationSettings.faceCaptureCount,
             "confidenceThreshold": faceDetectionSettingsPreset.confidenceThreshold,
             "faceTemplateExtractionThreshold": faceDetectionSettingsPreset.templateExtractionThreshold,
             "faceWidthFraction": registrationSettings.expectedFaceExtents.proportionOfViewWidth,
-            "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight
+            "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
+            "enableFaceCoveringDetection": true
         ])
     }
 }

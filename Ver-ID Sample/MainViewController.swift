@@ -103,7 +103,6 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         }
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
         settings.isSessionDiagnosticsEnabled = true
-        settings.maxRetryCount = 0
         let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting && !Globals.shouldCancelAuthentication {
             session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: settings)

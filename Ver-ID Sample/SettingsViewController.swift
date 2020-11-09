@@ -21,6 +21,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     @IBOutlet var versionCell: UITableViewCell!
     @IBOutlet var faceWidthFractionCell: UITableViewCell!
     @IBOutlet var faceHeightFractionCell: UITableViewCell!
+    @IBOutlet var faceCoveringDetectionCell: UITableViewCell!
     
     enum Section: Int, CaseIterable {
         case about, security, faceDetection, registration, accessibility, camera
@@ -83,7 +84,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             return 0
         }
         switch sectionEnum {
-        case .registration, .about, .camera:
+        case .registration, .about, .camera, .faceDetection:
             return 2
         case .security:
             return 3
@@ -103,6 +104,8 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             UserDefaults.standard.encryptFaceTemplates = !UserDefaults.standard.encryptFaceTemplates
         } else if indexPath.section == Section.accessibility.rawValue && indexPath.row == 0 {
             UserDefaults.standard.speakPrompts = !UserDefaults.standard.speakPrompts
+        } else if indexPath.section == Section.faceDetection.rawValue && indexPath.row == 1 {
+            UserDefaults.standard.enableFaceCoveringDetection = !UserDefaults.standard.enableFaceCoveringDetection
         } else {
             return
         }
@@ -148,6 +151,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         speakPromptsCell.accessoryType = speakPrompts ? .checkmark : .none
         let encryptTemplates = UserDefaults.standard.encryptFaceTemplates
         templateEncryptionCell.accessoryType = encryptTemplates ? .checkmark : .none
+        faceCoveringDetectionCell.accessoryType = UserDefaults.standard.enableFaceCoveringDetection ? .checkmark : .none
     }
     
     // MARK: - Security profile
