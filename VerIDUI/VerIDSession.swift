@@ -256,24 +256,34 @@ import os
     }
     
     private func showResult(_ result: VerIDSessionResult) {
-        if let err = result.error as? FaceDetectionError, self.retryCount < self.settings.maxRetryCount {
-            DispatchQueue.main.async {
-                do {
-                    self.viewController?.clearOverlays?()
-                    let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
-                    controller.delegate = self
-                    controller.modalPresentationStyle = .overFullScreen
-                    if var speechDelegatable = controller as? SpeechDelegatable {
-                        speechDelegatable.speechDelegate = self
+        if let err = result.error, self.retryCount < self.settings.maxRetryCount {
+            func showDialog() {
+                DispatchQueue.main.async {
+                    do {
+                        self.viewController?.clearOverlays?()
+                        let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
+                        controller.delegate = self
+                        controller.modalPresentationStyle = .overFullScreen
+                        if var speechDelegatable = controller as? SpeechDelegatable {
+                            speechDelegatable.speechDelegate = self
+                        }
+                        self.alertController = controller
+                        self.viewController?.present(controller, animated: true)
+                    } catch {
+                        self.session = nil
+                        self.finishWithResult(result)
                     }
-                    self.alertController = controller
-                    self.viewController?.present(controller, animated: true)
-                } catch {
-                    self.session = nil
-                    self.finishWithResult(result)
                 }
             }
-        } else if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
+            if case VerIDSessionError.faceIsCovered = err {
+                showDialog()
+                return
+            } else if err is AntiSpoofingError || err is FacePresenceError {
+                showDialog()
+                return
+            }
+        }
+        if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
             DispatchQueue.main.async {
                 self.session = nil
                 do {
