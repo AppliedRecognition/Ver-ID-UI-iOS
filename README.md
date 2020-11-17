@@ -3,11 +3,11 @@
 # Ver-ID UI for iOS
 
 ## Prerequisites
-Minimum iOS version is 11.0.
+Minimum iOS version is 10.3.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
-- [Xcode 11.0](https://itunes.apple.com/us/app/xcode/id497799835) or newer
+- [Xcode](https://itunes.apple.com/us/app/xcode/id497799835)
 - [Git](https://git-scm.com)
 - [CocoaPods](https://cocoapods.org)
 
@@ -62,15 +62,30 @@ To build this project and to run the sample app you will need a Apple Mac comput
 1. If your project is using [CocoaPods](https://cocoapods.org) for dependency management, open the project's **Podfile**. Otherwise make sure CocoaPods is installed and in your project's folder create a file named **Podfile** (without an extension).
 1. Let's assume your project is called **MyProject** and it has an app target called **MyApp**. Open the **Podfile** in a text editor and enter the following:
 
-	~~~ruby
-	project 'MyProject.xcodeproj'
-	workspace 'MyProject.xcworkspace'
-	platform :ios, '11.0'
-	target 'MyApp' do
-		use_frameworks!
-		pod 'Ver-ID-UI'
-	end
-	~~~
+    ~~~ruby
+    project 'MyProject.xcodeproj'
+    workspace 'MyProject.xcworkspace'
+    platform :ios, '10.3'
+    target 'MyApp' do
+        use_frameworks!
+        pod 'Ver-ID-UI'
+    
+        # The following script sets the BUILD_LIBRARY_FOR_DISTRIBUTION build setting
+        # to YES and removes the setting from the pod dependencies. Without it the
+        # project will compile but it will fail to run. 
+        post_install do |installer|
+            installer.pods_project.build_configurations.each do |config|
+                config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+            end
+            installer.pods_project.targets.each do |target|
+                target.build_configurations.each do |config|
+                    config.build_settings.delete 'BUILD_LIBRARY_FOR_DISTRIBUTION'
+                end
+            end
+        end
+    end
+    ~~~
+    #### Please ensure that you include the `post_install` script. Your app will crash without it.
 1. Save the Podfile. Open **Terminal** and navigate to your project's folder. Then enter:
 
 	~~~shell

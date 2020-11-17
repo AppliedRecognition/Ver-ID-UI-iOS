@@ -1,7 +1,7 @@
 project 'VerIDUI.xcodeproj'
 workspace 'VerIDUI.xcworkspace'
 
-platform :ios, '11.0'
+platform :ios, '10.3'
 use_frameworks!
 
 def veridcore
