@@ -113,7 +113,6 @@ import AVFoundation
                 settingsArray.append(ValueCellData(title: "Maximum duration", value: expiry))
             }
             settingsArray.append(ValueCellData(title: "Face capture count", value: "\(self.sessionResultPackage.settings.faceCaptureCount)"))
-            settingsArray.append(ValueCellData(title: "Maximum retry count", value: "\(self.sessionResultPackage.settings.maxRetryCount)"))
             settingsArray.append(ValueCellData(title: "Yaw threshold", value: String(format: "%.01f", self.sessionResultPackage.settings.yawThreshold)))
             settingsArray.append(ValueCellData(title: "Pitch threshold", value: String(format: "%.01f", self.sessionResultPackage.settings.pitchThreshold)))
             settingsArray.append(ValueCellData(title: "Required initial face width", value: String(format: "%.0f %%", self.sessionResultPackage.settings.expectedFaceExtents.proportionOfViewWidth * 100)))

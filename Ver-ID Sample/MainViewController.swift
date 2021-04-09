@@ -14,6 +14,9 @@ import MobileCoreServices
 
 class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate, SessionDiagnosticsViewControllerDelegate {
     
+    let maxRetryCount = 3
+    var sessionRunCount = 0
+    
     // MARK: - Interface builder views
 
     @IBOutlet weak var imageView: UIImageView!
@@ -85,6 +88,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         guard let verid = Globals.verid else {
             return
         }
+        sessionRunCount = 0
         let session = VerIDSession(environment: verid, settings: self.registrationSettings)
         if Globals.isTesting {
             session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: self.registrationSettings)
@@ -101,6 +105,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         guard let verid = Globals.verid else {
             return
         }
+        sessionRunCount = 0
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
         settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings)
@@ -145,6 +150,15 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     
     func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
         UserDefaults.standard.useBackCamera ? .back : .front
+    }
+    
+    func shouldDisplayResult(_ result: VerIDSessionResult, ofSession session: VerIDSession) -> Bool {
+        return false
+    }
+    
+    func shouldRetrySession(_ session: VerIDSession, afterFailure error: Error) -> Bool {
+        sessionRunCount += 1
+        return sessionRunCount < maxRetryCount
     }
     
     // MARK: - Session diagnostics view controller delegate
