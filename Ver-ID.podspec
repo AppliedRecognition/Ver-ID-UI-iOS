@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     s.platform = :ios, "10.3"
     s.swift_version = "5"
     s.documentation_url = "https://appliedrecognition.github.io/Ver-ID-Core-Apple"
-    s.source = { :git => "https://github.com/jakubdolejs/Ver-ID-UI-iOS.git", :commit => "3416804d3cb9d3ac7a7ae3d9d395914312aeee0f" }
+    s.source = { :git => "https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git", :commit => "0aed1eabfd5fbe5539a22216d8ad29b07ad31228" }
     s.default_subspecs = 'Core', 'UI'
     s.static_framework = true
     s.subspec 'UI' do |ss|
