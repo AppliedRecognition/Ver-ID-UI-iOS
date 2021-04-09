@@ -10,6 +10,7 @@ import UIKit
 import VerIDCore
 import CoreMedia
 import AVFoundation
+import RxSwift
 import os
 
 /// Ver-ID session
@@ -50,7 +51,6 @@ import os
     // MARK: - Private properties
     
     private var videoWriterService: VideoWriterService?
-    private var retryCount = 0
     private var startTime: Double = 0
     private var startDispatchTime: DispatchTime = .now()
     
@@ -114,13 +114,12 @@ import os
                 viewController.cameraPosition = self.delegate?.cameraPositionForSession?(self) ?? .front
                 self.presentVerIDViewController(viewController)
                 self.viewController = viewController
-                if let imagePublisher = (viewController as? ImagePublisher)?.imagePublisher {
-                    self.session = VerIDCore.Session(verID: self.environment, settings: self.settings, imageObservable: imagePublisher)
-                    self.session?.videoWriterService = self.videoWriterService
-                    self.session?.sessionFunctions = self.sessionFunctions
-                    self.session?.delegate = self
-                    self.session?.start()
-                }
+                let imagePublisher = try self.imageObservable(for: viewController)
+                self.session = VerIDCore.Session(verID: self.environment, settings: self.settings, imageObservable: imagePublisher)
+                self.session?.videoWriterService = self.videoWriterService
+                self.session?.sessionFunctions = self.sessionFunctions
+                self.session?.delegate = self
+                self.session?.start()
             } catch {
                 self.finishWithResult(VerIDSessionResult(error: error))
                 return
@@ -138,6 +137,15 @@ import os
                 self.delegate?.didCancelSession?(self)
             }
         }
+    }
+    
+    // MARK: - Override to provide a custom image observable
+    
+    public func imageObservable(for viewController: UIViewController & VerIDViewControllerProtocol) throws -> Observable<(VerIDImage, FaceBounds)> {
+        if let publisher = (viewController as? ImagePublisher)?.imagePublisher {
+            return publisher
+        }
+        throw VerIDSessionError.imageObservableUnavailable
     }
     
     // MARK: - Methods to overwrite to implement custom user interface
@@ -223,8 +231,44 @@ import os
     // MARK: - Session delegate
     
     public func session(_ session: VerIDCore.Session, didFinishWithResult result: VerIDSessionResult) {
-        session.delegate = nil
-        self.showResult(result)
+        DispatchQueue.main.async {
+            session.delegate = nil
+            if let err = result.error, self.delegate?.shouldRetrySession?(self, afterFailure: err) == .some(true) {
+                func showErrorController() {
+                    do {
+                        let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
+                        controller.delegate = self
+                        controller.modalPresentationStyle = .overFullScreen
+                        if var speechDelegatable = controller as? SpeechDelegatable {
+                            speechDelegatable.speechDelegate = self
+                        }
+                        self.alertController = controller
+                        self.viewController?.present(controller, animated: true)
+                    } catch {
+                        self.session = nil
+                        self.finishWithResult(result)
+                    }
+                }
+                if case VerIDSessionError.faceIsCovered = err {
+                    showErrorController()
+                    return
+                } else if err is AntiSpoofingError || err is FacePresenceError {
+                    showErrorController()
+                    return
+                }
+            }
+            self.session = nil
+            if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
+                do {
+                    let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
+                    resultViewController.delegate = self
+                    self.presentResultViewController(resultViewController)
+                    return
+                } catch {
+                }
+            }
+            self.finishWithResult(result)
+        }
     }
     
     public func session(_ session: VerIDCore.Session, didProduceFaceDetectionResult result: FaceDetectionResult) {
@@ -246,58 +290,12 @@ import os
     // MARK: - Private methods
     
     private func restartSession() {
-        self.retryCount += 1
         guard let session = self.session, let viewController = self.viewController else {
             return
         }
         self.presentVerIDViewController(viewController)
         session.delegate = self
         session.start()
-    }
-    
-    private func showResult(_ result: VerIDSessionResult) {
-        if let err = result.error, self.retryCount < self.settings.maxRetryCount {
-            func showDialog() {
-                DispatchQueue.main.async {
-                    do {
-                        self.viewController?.clearOverlays?()
-                        let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
-                        controller.delegate = self
-                        controller.modalPresentationStyle = .overFullScreen
-                        if var speechDelegatable = controller as? SpeechDelegatable {
-                            speechDelegatable.speechDelegate = self
-                        }
-                        self.alertController = controller
-                        self.viewController?.present(controller, animated: true)
-                    } catch {
-                        self.session = nil
-                        self.finishWithResult(result)
-                    }
-                }
-            }
-            if case VerIDSessionError.faceIsCovered = err {
-                showDialog()
-                return
-            } else if err is AntiSpoofingError || err is FacePresenceError {
-                showDialog()
-                return
-            }
-        }
-        if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
-            DispatchQueue.main.async {
-                self.session = nil
-                do {
-                    let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
-                    resultViewController.delegate = self
-                    self.presentResultViewController(resultViewController)
-                } catch {
-                    self.finishWithResult(VerIDSessionResult(error: error))
-                }
-            }
-        } else {
-            self.session = nil
-            self.finishWithResult(result)
-        }
     }
     
     private func finishWithResult(_ result: VerIDSessionResult) {
@@ -405,26 +403,4 @@ import os
         self.lastSpokenText = text
     }
     
-}
-
-/// Session delegate protocol
-@objc public protocol VerIDSessionDelegate: class {
-    /// Called when the session successfully finishes
-    ///
-    /// - Parameters:
-    ///   - session: Session that finished
-    ///   - result: Session result
-    @objc func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult)
-    /// Called when the session was canceled
-    ///
-    /// - Parameter session: Session that was canceled
-    @objc optional func didCancelSession(_ session: VerIDSession)
-    
-    @objc optional func shouldDisplayResult(_ result: VerIDSessionResult, ofSession session: VerIDSession) -> Bool
-    
-    @objc optional func shouldSpeakPromptsInSession(_ session: VerIDSession) -> Bool
-    
-    @objc optional func shouldRecordVideoOfSession(_ session: VerIDSession) -> Bool
-    
-    @objc optional func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position
 }
