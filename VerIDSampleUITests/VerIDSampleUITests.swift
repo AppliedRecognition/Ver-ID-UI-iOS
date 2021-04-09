@@ -87,7 +87,12 @@ class VerIDSampleUITests: XCTestCase {
         
         app.buttons["Copy"].tap()
         
-        XCTAssertTrue(UIPasteboard.general.items.contains(where: { $0.keys.contains("com.appliedrec.verid.registration") }))
+        // Should really be observing changeCount on the pasteboard but it doesn't seem to work in a test
+        sleep(2)
+        
+        let regKey: String? = UIPasteboard.general.items.first?.keys.first
+        XCTAssertNotNil(regKey)
+        XCTAssertEqual(regKey, "com.appliedrec.verid.registration")
     }
     
     func testAuthenticate() {
