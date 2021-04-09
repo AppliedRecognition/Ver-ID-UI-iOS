@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name         = "Ver-ID-UI"
     s.module_name  = "VerIDUI"
-    s.version      = "2.0.0-beta.04"
+    s.version      = "2.0.0"
     s.summary      = "Face detection and recognition"
     s.homepage     = "https://github.com/AppliedRecognition/Ver-ID-UI-iOS/tree/v#{s.version}"
     s.license      = { :type => "COMMERCIAL", :file => "LICENCE.txt" }

@@ -36,28 +36,22 @@ To build this project and to run the sample app you will need a Apple Mac comput
     - Tick **Copy items if needed** under **Destination**.
     - Under **Added to targets** select your app target.
 8. Ver-ID will need the password you received at registration to construct an instance of `VerIDSDKIdentity`.    
-    - You can either specify the password when you create an instance of `VerIDFactory`:
-
-        ~~~swift
-        let identity = try VerIDIdentity(password: "your password goes here")
-        ~~~
-    - Or you can add the password in your app's **Info.plist**:
+    - You can either add the password in your app's **Info.plist**:
 
         ~~~xml
         <key>com.appliedrec.verid.password</key>
         <string>your password goes here</string>
         ~~~
-        
-        and construct the identity without the password parameter:
-        
-        ~~~swift
-        let identity = try VerIDIdentity()        
-        ~~~
-1. Pass the instance of `VerIDIdentity` to the `VerIDFactory` constructor:
+    - Or you can specify the password when you create an instance of `VerIDFactory`:
 
-    ~~~swift
-    let veridFactory = VerIDFactory(identity: identity)
-    ~~~
+        ~~~swift
+        let identity = try VerIDIdentity(password: "your password goes here")
+        ~~~
+        and pass the instance of `VerIDIdentity` to the `VerIDFactory` constructor:
+    
+        ~~~swift
+        let veridFactory = VerIDFactory(identity: identity)
+        ~~~
         
 1. If your project is using [CocoaPods](https://cocoapods.org) for dependency management, open the project's **Podfile**. Otherwise make sure CocoaPods is installed and in your project's folder create a file named **Podfile** (without an extension).
 1. Let's assume your project is called **MyProject** and it has an app target called **MyApp**. Open the **Podfile** in a text editor and enter the following:
@@ -93,6 +87,60 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	~~~
 1. You can now open **MyProject.xcworkspace** in **Xcode** and Ver-ID will be available to use in your app **MyApp**.
 
+## Library initialization
+### Using a callback (new in 2.0.0)
+This is the simplest way to obtain an instance of `VerID`
+
+```swift
+VerIDFactory().createVerID { result in
+    switch result {
+    case .success(let verID):
+        // VerID created
+        break
+    case .failure(let error):
+        // VerID creation failed
+        break
+    }
+}
+```
+### Using a delegate
+This method has been part of the Ver-ID SDK since version 1.
+
+```swift
+class MyClass: NSObject, VerIDFactoryDelegate {
+
+    func loadVerID() {
+        let veridFactory = VerIDFactory()
+        veridFactory.delegate = self
+        veridFactory.createVerID()
+    }
+    
+    // MARK: - Ver-ID factory delegate methods
+    
+    func veridFactory(_ factory: VerIDFactory, didCreateVerID verID: VerID) {
+        // VerID created
+    }
+    
+    func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
+        // VerID creation failed
+    }
+}
+```
+### Synchronous
+If your application is doing other work on a background queue you may wish to load the library synchronously.
+
+**Caution:** Never call this method on the main queue. Calling it on the main queue will leave your application unresponsive until the method returns.
+
+```swift
+DispatchQueue.global().async {
+    do {
+        let verID = try VerIDFactory().createVerIDSync()
+        // VerID created
+    } catch {
+        // VerID creation failed
+    }
+}
+```
 ## Running Ver-ID sessions
 1. Before running a Ver-ID UI session you will need to import the `VerIDCore` framework and create an instance of `VerID`.
 1. Have your class implement the `VerIDFactoryDelegate` protocol. You will receive a callback when the `VerID` instance is created or when the creation fails.
@@ -106,38 +154,29 @@ import UIKit
 import VerIDCore
 import VerIDUI
 
-class MyViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDelegate {
+class MyViewController: UIViewController, VerIDSessionDelegate {
     
     func runLivenessDetection() {
-        guard let identity = try? VerIDSDKIdentity() else {
-            // Failed to create SDK identity
-            return
-        }
         // You may want to display an activity indicator as the instance creation may take up to a few seconds
-        let factory = VerIDFactory(identity: identity)
-        // Set your class as the factory's delegate
-        // The delegate methods will be called when the session is created or if the creation fails
-        factory.delegate = self
         // Create an instance of Ver-ID
-        factory.createVerID()
-    }
-    
-    // MARK: - Ver-ID factory delegate
-    
-    func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        // Ver-ID instance was created
-        // Create liveness detection settings
-        let settings = LivenessDetectionSessionSettings()
-        // Create a Ver-ID UI session
-        let session = VerIDSession(environment: instance, settings: settings)
-        // Set your class as a delegate of the session to receive the session outcome
-        session.delegate = self
-        // Start the session
-        session.start()
-    }
-    
-    func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
-        NSLog("Failed to create Ver-ID instance: %@", error.localizedDescription)
+        VerIDFactory().createVerID { result in
+            switch result {
+            case .success(let verID):
+                // Ver-ID instance was created
+                // Create liveness detection settings
+                let settings = LivenessDetectionSessionSettings()
+                // Create a Ver-ID UI session
+                let session = VerIDSession(environment: verID, settings: settings)
+                // Set your class as a delegate of the session to receive the session outcome
+                session.delegate = self
+                // Start the session
+                session.start()
+                break
+            case .failure(let error):
+                NSLog("Failed to create Ver-ID instance: %@", error.localizedDescription)
+                break
+            }
+        }
     }
     
     // MARK: - Session delegate
@@ -170,6 +209,15 @@ class MyViewController: UIViewController, VerIDFactoryDelegate, VerIDSessionDele
     func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
         // Return `AVCaptureDevice.Position.back` to use the back camera instead of the front (selfie) camera
         return .back
+    }
+    
+    var runCount = 0
+    
+    func shouldRetrySession(_ session: VerIDSession, afterFailure error: Error) -> Bool {
+        // Return `true` to allow the user to retry the session on failure
+        // For example, you can keep track of how many times the user tried and fail the session on Xth attempt
+        runCount += 1
+        return runCount < 3
     }
 }
 ~~~
