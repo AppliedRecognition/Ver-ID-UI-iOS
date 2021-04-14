@@ -62,7 +62,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
     platform :ios, '10.3'
     target 'MyApp' do
         use_frameworks!
-        pod 'Ver-ID-UI'
+        pod 'Ver-ID'
     
         # The following script sets the BUILD_LIBRARY_FOR_DISTRIBUTION build setting
         # to YES and removes the setting from the pod dependencies. Without it the
@@ -86,6 +86,12 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	pod install
 	~~~
 1. You can now open **MyProject.xcworkspace** in **Xcode** and Ver-ID will be available to use in your app **MyApp**.
+1. Before starting Ver-ID sessions ensure that your app has camera permission declared in its Info.plist file:
+
+    ~~~xml
+    <key>NSCameraUsageDescription</key>
+    <string>Your reason for requesting camera permission</string>
+    ~~~
 
 ## Library initialization
 ### Using a callback (new in 2.0.0)
