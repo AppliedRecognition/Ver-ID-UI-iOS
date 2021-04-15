@@ -3,19 +3,63 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1044893D7B2454521A33798A /* Pods_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8010504456487BDF31E1584A /* Pods_Ver_ID_Sample.framework */; };
+		030F4FA7FA540FED9FD26BB5 /* Pods_Ver_ID_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC855245F2FCA614F11631A /* Pods_Ver_ID_VerIDUI.framework */; };
+		06BA7125C6401569436F1222 /* Pods_Ver_ID_Thumbnails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D37F216BA62C0206D12019C /* Pods_Ver_ID_Thumbnails.framework */; };
 		3B03D6722548A0BC0098292B /* IdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6702548A0BC0098292B /* IdentificationViewController.swift */; };
 		3B03D6732548A0BC0098292B /* IdentificationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */; };
+		3B2E36792628BEF50055FE28 /* VerIDUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */; };
+		3B2E36812628BF2F0055FE28 /* VerIDSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */; };
+		3B2E36822628BF2F0055FE28 /* ResourceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E36802628BF2F0055FE28 /* ResourceHelper.swift */; };
+		3B2E36892628BF5A0055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
+		3B2E36C32628BFAF0055FE28 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E369B2628BFAE0055FE28 /* Media.xcassets */; };
+		3B2E36C42628BFAF0055FE28 /* liveness_detection_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E369D2628BFAE0055FE28 /* liveness_detection_3.mp4 */; };
+		3B2E36C52628BFAF0055FE28 /* liveness_detection_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E369E2628BFAE0055FE28 /* liveness_detection_2.mp4 */; };
+		3B2E36C62628BFAF0055FE28 /* face_mask_off_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E369F2628BFAE0055FE28 /* face_mask_off_2.mp4 */; };
+		3B2E36C72628BFAF0055FE28 /* face_mask_off_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A02628BFAE0055FE28 /* face_mask_off_3.mp4 */; };
+		3B2E36C82628BFAF0055FE28 /* face_mask_off_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A12628BFAE0055FE28 /* face_mask_off_1.mp4 */; };
+		3B2E36C92628BFAF0055FE28 /* right_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A22628BFAE0055FE28 /* right_3.mp4 */; };
+		3B2E36CA2628BFAF0055FE28 /* left_down_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A32628BFAE0055FE28 /* left_down_2.mp4 */; };
+		3B2E36CB2628BFAF0055FE28 /* left_up_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A42628BFAE0055FE28 /* left_up_3.mp4 */; };
+		3B2E36CC2628BFAF0055FE28 /* left_up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A52628BFAE0055FE28 /* left_up_2.mp4 */; };
+		3B2E36CD2628BFAF0055FE28 /* left_down_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A62628BFAE0055FE28 /* left_down_3.mp4 */; };
+		3B2E36CE2628BFAF0055FE28 /* right_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A72628BFAE0055FE28 /* right_2.mp4 */; };
+		3B2E36CF2628BFAF0055FE28 /* down_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A82628BFAE0055FE28 /* down_3.mp4 */; };
+		3B2E36D02628BFAF0055FE28 /* right_up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36A92628BFAE0055FE28 /* right_up_2.mp4 */; };
+		3B2E36D12628BFAF0055FE28 /* right_up_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36AA2628BFAE0055FE28 /* right_up_3.mp4 */; };
+		3B2E36D22628BFAF0055FE28 /* down_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36AB2628BFAE0055FE28 /* down_2.mp4 */; };
+		3B2E36D32628BFAF0055FE28 /* registration_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36AC2628BFAE0055FE28 /* registration_3.mp4 */; };
+		3B2E36D42628BFAF0055FE28 /* registration_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36AD2628BFAE0055FE28 /* registration_2.mp4 */; };
+		3B2E36D52628BFAF0055FE28 /* left_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36AE2628BFAE0055FE28 /* left_2.mp4 */; };
+		3B2E36D62628BFAF0055FE28 /* left_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36AF2628BFAE0055FE28 /* left_3.mp4 */; };
+		3B2E36D72628BFAF0055FE28 /* up_to_centre_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B02628BFAE0055FE28 /* up_to_centre_3.mp4 */; };
+		3B2E36D82628BFAF0055FE28 /* right_down_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B12628BFAE0055FE28 /* right_down_2.mp4 */; };
+		3B2E36D92628BFAF0055FE28 /* right_down_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B22628BFAE0055FE28 /* right_down_3.mp4 */; };
+		3B2E36DA2628BFAF0055FE28 /* up_to_centre_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B32628BFAE0055FE28 /* up_to_centre_2.mp4 */; };
+		3B2E36DB2628BFAF0055FE28 /* up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B42628BFAE0055FE28 /* up_2.mp4 */; };
+		3B2E36DC2628BFAF0055FE28 /* up_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B52628BFAE0055FE28 /* up_3.mp4 */; };
+		3B2E36DD2628BFAF0055FE28 /* FaceDetectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B62628BFAE0055FE28 /* FaceDetectionAlertController.xib */; };
+		3B2E36DE2628BFAF0055FE28 /* SessionDiagnostics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B72628BFAE0055FE28 /* SessionDiagnostics.storyboard */; };
+		3B2E36DF2628BFAF0055FE28 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B82628BFAE0055FE28 /* Result.storyboard */; };
+		3B2E36E02628BFAF0055FE28 /* VerIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36B92628BFAE0055FE28 /* VerIDViewController.xib */; };
+		3B2E36E12628BFAF0055FE28 /* VerIDRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36BA2628BFAE0055FE28 /* VerIDRegistrationViewController.xib */; };
+		3B2E36E22628BFAF0055FE28 /* vi.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36BC2628BFAF0055FE28 /* vi.xml */; };
+		3B2E36E32628BFAF0055FE28 /* es_US.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36BD2628BFAF0055FE28 /* es_US.xml */; };
+		3B2E36E42628BFAF0055FE28 /* fr_CA.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36BE2628BFAF0055FE28 /* fr_CA.xml */; };
+		3B2E36E52628BFAF0055FE28 /* translations.py in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36BF2628BFAF0055FE28 /* translations.py */; };
+		3B2E36E62628BFAF0055FE28 /* translation_xml.py in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C02628BFAF0055FE28 /* translation_xml.py */; };
+		3B2E36E72628BFAF0055FE28 /* test_translation.py in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C12628BFAF0055FE28 /* test_translation.py */; };
+		3B2E36E82628BFAF0055FE28 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C22628BFAF0055FE28 /* Tips.storyboard */; };
+		3B2E37322628C5E40055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
+		3B2E37332628C5E40055FE28 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B2E37392628C6030055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
+		3B2E373A2628C6030055FE28 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B2E373C2628C60A0055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
+		3B2E373D2628C60A0055FE28 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3B3FF91D23A10BA200156A59 /* VerIDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91823A10BA200156A59 /* VerIDViewController.xib */; };
-		3B3FF91E23A10BA200156A59 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91923A10BA200156A59 /* Tips.storyboard */; };
-		3B3FF91F23A10BA200156A59 /* FaceDetectionAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */; };
-		3B3FF92023A10BA200156A59 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91B23A10BA200156A59 /* Result.storyboard */; };
-		3B3FF92123A10BA200156A59 /* VerIDRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */; };
 		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
 		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
 		3B45BAB4247D8BEB00273FAF /* VerIDSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */; };
@@ -39,14 +83,6 @@
 		3B45BAEB247D978300273FAF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
 		3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */; };
 		3B564B22234276EE008B3FCD /* TipPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B20234276ED008B3FCD /* TipPageViewController.swift */; };
-		3B564B34234277FB008B3FCD /* fr_CA.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B564B31234277FB008B3FCD /* fr_CA.xml */; };
-		3B564B35234277FB008B3FCD /* es_US.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B564B32234277FB008B3FCD /* es_US.xml */; };
-		3B564B36234277FB008B3FCD /* vi.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3B564B33234277FB008B3FCD /* vi.xml */; };
-		3B56E809220B668700004F94 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E808220B668700004F94 /* Media.xcassets */; };
-		3B56E80E220B674E00004F94 /* liveness_detection_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80A220B674D00004F94 /* liveness_detection_2.mp4 */; };
-		3B56E80F220B674E00004F94 /* liveness_detection_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80B220B674D00004F94 /* liveness_detection_3.mp4 */; };
-		3B56E810220B674E00004F94 /* registration_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80C220B674D00004F94 /* registration_2.mp4 */; };
-		3B56E811220B674E00004F94 /* registration_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B56E80D220B674E00004F94 /* registration_3.mp4 */; };
 		3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */; };
 		3B6A70DB2208BC3C00B137C4 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */; };
 		3B6A70DC2208BC3C00B137C4 /* VerIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */; };
@@ -56,24 +92,6 @@
 		3B6A70E72208BD8400B137C4 /* FaceOvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */; };
 		3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */; };
 		3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */; };
-		3B6A9FFD23427C13000CED49 /* right_down_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FEB23427C12000CED49 /* right_down_2.mp4 */; };
-		3B6A9FFE23427C13000CED49 /* left_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FEC23427C12000CED49 /* left_2.mp4 */; };
-		3B6A9FFF23427C13000CED49 /* right_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FED23427C12000CED49 /* right_2.mp4 */; };
-		3B6AA00023427C13000CED49 /* up_to_centre_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FEE23427C12000CED49 /* up_to_centre_2.mp4 */; };
-		3B6AA00123427C13000CED49 /* up_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FEF23427C12000CED49 /* up_3.mp4 */; };
-		3B6AA00223427C13000CED49 /* right_up_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF023427C12000CED49 /* right_up_3.mp4 */; };
-		3B6AA00323427C13000CED49 /* up_to_centre_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF123427C12000CED49 /* up_to_centre_3.mp4 */; };
-		3B6AA00423427C13000CED49 /* left_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF223427C12000CED49 /* left_3.mp4 */; };
-		3B6AA00523427C13000CED49 /* left_up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF323427C12000CED49 /* left_up_2.mp4 */; };
-		3B6AA00623427C13000CED49 /* down_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF423427C12000CED49 /* down_3.mp4 */; };
-		3B6AA00723427C13000CED49 /* left_up_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF523427C12000CED49 /* left_up_3.mp4 */; };
-		3B6AA00823427C13000CED49 /* right_down_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF623427C12000CED49 /* right_down_3.mp4 */; };
-		3B6AA00923427C13000CED49 /* left_down_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF723427C12000CED49 /* left_down_2.mp4 */; };
-		3B6AA00A23427C13000CED49 /* right_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF823427C12000CED49 /* right_3.mp4 */; };
-		3B6AA00B23427C13000CED49 /* down_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FF923427C12000CED49 /* down_2.mp4 */; };
-		3B6AA00C23427C13000CED49 /* left_down_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FFA23427C13000CED49 /* left_down_3.mp4 */; };
-		3B6AA00D23427C13000CED49 /* right_up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FFB23427C13000CED49 /* right_up_2.mp4 */; };
-		3B6AA00E23427C13000CED49 /* up_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B6A9FFC23427C13000CED49 /* up_2.mp4 */; };
 		3B6C698C23A0227B0082AFF5 /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */; };
 		3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */; };
 		3B8C109F240D87900087ACA5 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
@@ -101,11 +119,7 @@
 		3BB204672214263600B3B312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB204662214263600B3B312 /* AppDelegate.swift */; };
 		3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046A221428AE00B3B312 /* LaunchScreen.storyboard */; };
 		3BB2046B221428B900B3B312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046D221428B900B3B312 /* Main.storyboard */; };
-		3BB55B84252DCB5D00D153A3 /* SessionDiagnostics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB55B82252DCB5D00D153A3 /* SessionDiagnostics.storyboard */; };
 		3BB55B85252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB55B83252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift */; };
-		3BB55B8D252DCB7000D153A3 /* face_mask_off_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3BB55B8A252DCB7000D153A3 /* face_mask_off_1.mp4 */; };
-		3BB55B8E252DCB7000D153A3 /* face_mask_off_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3BB55B8B252DCB7000D153A3 /* face_mask_off_2.mp4 */; };
-		3BB55B8F252DCB7000D153A3 /* face_mask_off_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3BB55B8C252DCB7000D153A3 /* face_mask_off_3.mp4 */; };
 		3BB55BA1252DCC9600D153A3 /* TestSessionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB55BA0252DCC9600D153A3 /* TestSessionFunctions.swift */; };
 		3BC55B6C2236E37E00BCDD9D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */; };
 		3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36E220AF128002C11BE /* Assets.xcassets */; };
@@ -114,12 +128,18 @@
 		3BE9F3F8220AFD50002C11BE /* SessionViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */; };
 		3BEDC48B24DD86B100CFB42B /* VerIDSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDC48924DD86B000CFB42B /* VerIDSession.swift */; };
 		3BEDC48C24DD86B100CFB42B /* SessionPrompts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEDC48A24DD86B100CFB42B /* SessionPrompts.swift */; };
-		99251E2933AEC4FA717CA0DD /* Pods_VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE39309B363A26B87958515 /* Pods_VerIDUI.framework */; };
-		EA5FAE21B7E7B0E0063F73A7 /* Pods_Thumbnails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3221765F2450AC07166541 /* Pods_Thumbnails.framework */; };
-		EBD87BEC3E5375606D731F0E /* Pods_Preview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFADD83619E7B7AD6089626E /* Pods_Preview.framework */; };
+		D16EEE8549A2B60EE75001A9 /* Pods_Ver_ID_Ver_ID_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8177BC304CB00135B5B2B836 /* Pods_Ver_ID_Ver_ID_Sample.framework */; };
+		F359EFE895481CF9EFD3D25C /* Pods_Ver_ID_Preview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5075C27FB022EBC77484DAA /* Pods_Ver_ID_Preview.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3B2E36772628BEDF0055FE28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B2E36572628BE6C0055FE28;
+			remoteInfo = VerIDResources;
+		};
 		3B45BAB6247D8BEB00273FAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
@@ -151,6 +171,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		3B2E373B2628C6030055FE28 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3B2E373A2628C6030055FE28 /* VerIDCore.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B2E373E2628C60A0055FE28 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3B2E373D2628C60A0055FE28 /* VerIDCore.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B45BACF247D94B100273FAF /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -170,6 +212,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
+				3B2E37332628C5E40055FE28 /* VerIDCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,20 +220,58 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2FE39309B363A26B87958515 /* Pods_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		140C68B9DA502CE9FB2A02F5 /* Pods-Ver-ID-Preview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-Preview.debug.xcconfig"; path = "Target Support Files/Pods-Ver-ID-Preview/Pods-Ver-ID-Preview.debug.xcconfig"; sourceTree = "<group>"; };
+		2BC855245F2FCA614F11631A /* Pods_Ver_ID_VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		386A7940A287B275075065D6 /* Pods-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.debug.xcconfig"; path = "Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		3B03D6702548A0BC0098292B /* IdentificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationViewController.swift; sourceTree = "<group>"; };
 		3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationResultViewController.swift; sourceTree = "<group>"; };
 		3B09E2DB25647A3D00ED224D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerIDUIResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B2E365A2628BE6C0055FE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionDelegate.swift; sourceTree = "<group>"; };
+		3B2E36802628BF2F0055FE28 /* ResourceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceHelper.swift; sourceTree = "<group>"; };
+		3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDCore.xcframework; path = Frameworks/bitcode/VerIDCore.xcframework; sourceTree = SOURCE_ROOT; };
+		3B2E369B2628BFAE0055FE28 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3B2E369D2628BFAE0055FE28 /* liveness_detection_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_3.mp4; sourceTree = "<group>"; };
+		3B2E369E2628BFAE0055FE28 /* liveness_detection_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_2.mp4; sourceTree = "<group>"; };
+		3B2E369F2628BFAE0055FE28 /* face_mask_off_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_mask_off_2.mp4; sourceTree = "<group>"; };
+		3B2E36A02628BFAE0055FE28 /* face_mask_off_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_mask_off_3.mp4; sourceTree = "<group>"; };
+		3B2E36A12628BFAE0055FE28 /* face_mask_off_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_mask_off_1.mp4; sourceTree = "<group>"; };
+		3B2E36A22628BFAE0055FE28 /* right_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_3.mp4; sourceTree = "<group>"; };
+		3B2E36A32628BFAE0055FE28 /* left_down_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_down_2.mp4; sourceTree = "<group>"; };
+		3B2E36A42628BFAE0055FE28 /* left_up_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_up_3.mp4; sourceTree = "<group>"; };
+		3B2E36A52628BFAE0055FE28 /* left_up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_up_2.mp4; sourceTree = "<group>"; };
+		3B2E36A62628BFAE0055FE28 /* left_down_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_down_3.mp4; sourceTree = "<group>"; };
+		3B2E36A72628BFAE0055FE28 /* right_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_2.mp4; sourceTree = "<group>"; };
+		3B2E36A82628BFAE0055FE28 /* down_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = down_3.mp4; sourceTree = "<group>"; };
+		3B2E36A92628BFAE0055FE28 /* right_up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_up_2.mp4; sourceTree = "<group>"; };
+		3B2E36AA2628BFAE0055FE28 /* right_up_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_up_3.mp4; sourceTree = "<group>"; };
+		3B2E36AB2628BFAE0055FE28 /* down_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = down_2.mp4; sourceTree = "<group>"; };
+		3B2E36AC2628BFAE0055FE28 /* registration_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = registration_3.mp4; sourceTree = "<group>"; };
+		3B2E36AD2628BFAE0055FE28 /* registration_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = registration_2.mp4; sourceTree = "<group>"; };
+		3B2E36AE2628BFAE0055FE28 /* left_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_2.mp4; sourceTree = "<group>"; };
+		3B2E36AF2628BFAE0055FE28 /* left_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_3.mp4; sourceTree = "<group>"; };
+		3B2E36B02628BFAE0055FE28 /* up_to_centre_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_to_centre_3.mp4; sourceTree = "<group>"; };
+		3B2E36B12628BFAE0055FE28 /* right_down_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_down_2.mp4; sourceTree = "<group>"; };
+		3B2E36B22628BFAE0055FE28 /* right_down_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_down_3.mp4; sourceTree = "<group>"; };
+		3B2E36B32628BFAE0055FE28 /* up_to_centre_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_to_centre_2.mp4; sourceTree = "<group>"; };
+		3B2E36B42628BFAE0055FE28 /* up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_2.mp4; sourceTree = "<group>"; };
+		3B2E36B52628BFAE0055FE28 /* up_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_3.mp4; sourceTree = "<group>"; };
+		3B2E36B62628BFAE0055FE28 /* FaceDetectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceDetectionAlertController.xib; sourceTree = "<group>"; };
+		3B2E36B72628BFAE0055FE28 /* SessionDiagnostics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionDiagnostics.storyboard; sourceTree = "<group>"; };
+		3B2E36B82628BFAE0055FE28 /* Result.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
+		3B2E36B92628BFAE0055FE28 /* VerIDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDViewController.xib; sourceTree = "<group>"; };
+		3B2E36BA2628BFAE0055FE28 /* VerIDRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDRegistrationViewController.xib; sourceTree = "<group>"; };
+		3B2E36BC2628BFAF0055FE28 /* vi.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = vi.xml; sourceTree = "<group>"; };
+		3B2E36BD2628BFAF0055FE28 /* es_US.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = es_US.xml; sourceTree = "<group>"; };
+		3B2E36BE2628BFAF0055FE28 /* fr_CA.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fr_CA.xml; sourceTree = "<group>"; };
+		3B2E36BF2628BFAF0055FE28 /* translations.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = translations.py; sourceTree = "<group>"; };
+		3B2E36C02628BFAF0055FE28 /* translation_xml.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = translation_xml.py; sourceTree = "<group>"; };
+		3B2E36C12628BFAF0055FE28 /* test_translation.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = test_translation.py; sourceTree = "<group>"; };
+		3B2E36C22628BFAF0055FE28 /* Tips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tips.storyboard; sourceTree = "<group>"; };
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B3FF91823A10BA200156A59 /* VerIDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDViewController.xib; sourceTree = "<group>"; };
-		3B3FF91923A10BA200156A59 /* Tips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tips.storyboard; sourceTree = "<group>"; };
-		3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceDetectionAlertController.xib; sourceTree = "<group>"; };
-		3B3FF91B23A10BA200156A59 /* Result.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
-		3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerIDRegistrationViewController.xib; sourceTree = "<group>"; };
-		3B3FF92223A10C9100156A59 /* Ver-ID-UI.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Ver-ID-UI.podspec"; sourceTree = SOURCE_ROOT; };
 		3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionViewController.swift; sourceTree = "<group>"; };
 		3B45BAA5247D8A3C00273FAF /* Test registration.verid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Test registration.verid"; sourceTree = "<group>"; };
 		3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageProvider.swift; sourceTree = "<group>"; };
@@ -208,14 +289,6 @@
 		3B45BADD247D94C000273FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatedStrings.swift; sourceTree = "<group>"; };
 		3B564B20234276ED008B3FCD /* TipPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipPageViewController.swift; sourceTree = "<group>"; };
-		3B564B31234277FB008B3FCD /* fr_CA.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = fr_CA.xml; path = Localization/fr_CA.xml; sourceTree = "<group>"; };
-		3B564B32234277FB008B3FCD /* es_US.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = es_US.xml; path = Localization/es_US.xml; sourceTree = "<group>"; };
-		3B564B33234277FB008B3FCD /* vi.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vi.xml; path = Localization/vi.xml; sourceTree = "<group>"; };
-		3B56E808220B668700004F94 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		3B56E80A220B674D00004F94 /* liveness_detection_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_2.mp4; sourceTree = "<group>"; };
-		3B56E80B220B674D00004F94 /* liveness_detection_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_3.mp4; sourceTree = "<group>"; };
-		3B56E80C220B674D00004F94 /* registration_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = registration_2.mp4; sourceTree = "<group>"; };
-		3B56E80D220B674E00004F94 /* registration_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = registration_3.mp4; sourceTree = "<group>"; };
 		3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 		3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDViewController.swift; sourceTree = "<group>"; };
@@ -225,24 +298,6 @@
 		3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOvalLayer.swift; sourceTree = "<group>"; };
 		3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDViewControllerDelegate.swift; sourceTree = "<group>"; };
-		3B6A9FEB23427C12000CED49 /* right_down_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_down_2.mp4; sourceTree = "<group>"; };
-		3B6A9FEC23427C12000CED49 /* left_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_2.mp4; sourceTree = "<group>"; };
-		3B6A9FED23427C12000CED49 /* right_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_2.mp4; sourceTree = "<group>"; };
-		3B6A9FEE23427C12000CED49 /* up_to_centre_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_to_centre_2.mp4; sourceTree = "<group>"; };
-		3B6A9FEF23427C12000CED49 /* up_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF023427C12000CED49 /* right_up_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_up_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF123427C12000CED49 /* up_to_centre_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_to_centre_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF223427C12000CED49 /* left_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF323427C12000CED49 /* left_up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_up_2.mp4; sourceTree = "<group>"; };
-		3B6A9FF423427C12000CED49 /* down_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = down_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF523427C12000CED49 /* left_up_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_up_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF623427C12000CED49 /* right_down_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_down_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF723427C12000CED49 /* left_down_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_down_2.mp4; sourceTree = "<group>"; };
-		3B6A9FF823427C12000CED49 /* right_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_3.mp4; sourceTree = "<group>"; };
-		3B6A9FF923427C12000CED49 /* down_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = down_2.mp4; sourceTree = "<group>"; };
-		3B6A9FFA23427C13000CED49 /* left_down_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = left_down_3.mp4; sourceTree = "<group>"; };
-		3B6A9FFB23427C13000CED49 /* right_up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = right_up_2.mp4; sourceTree = "<group>"; };
-		3B6A9FFC23427C13000CED49 /* up_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = up_2.mp4; sourceTree = "<group>"; };
 		3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAppDelegate.swift; path = "Ver-ID Sample/BaseAppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
 		3B8C109E240D87900087ACA5 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -270,11 +325,7 @@
 		3BB204662214263600B3B312 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BB20469221428AE00B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BB2046C221428B900B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3BB55B82252DCB5D00D153A3 /* SessionDiagnostics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SessionDiagnostics.storyboard; sourceTree = "<group>"; };
 		3BB55B83252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDiagnosticsViewController.swift; sourceTree = "<group>"; };
-		3BB55B8A252DCB7000D153A3 /* face_mask_off_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_mask_off_1.mp4; sourceTree = "<group>"; };
-		3BB55B8B252DCB7000D153A3 /* face_mask_off_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_mask_off_2.mp4; sourceTree = "<group>"; };
-		3BB55B8C252DCB7000D153A3 /* face_mask_off_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_mask_off_3.mp4; sourceTree = "<group>"; };
 		3BB55BA0252DCC9600D153A3 /* TestSessionFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionFunctions.swift; sourceTree = "<group>"; };
 		3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		3BE9F365220AF125002C11BE /* Ver-ID Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,16 +336,19 @@
 		3BEDC48A24DD86B100CFB42B /* SessionPrompts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionPrompts.swift; sourceTree = "<group>"; };
 		3BEDC4AF24DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFaceCaptureCreatorFactory.swift; sourceTree = "<group>"; };
 		3BEDC4B024DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFaceDetectionResultCreatorFactory.swift; sourceTree = "<group>"; };
-		417FBB438BDDD2B29A446A76 /* Pods-Thumbnails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.release.xcconfig"; path = "Target Support Files/Pods-Thumbnails/Pods-Thumbnails.release.xcconfig"; sourceTree = "<group>"; };
+		3D37F216BA62C0206D12019C /* Pods_Ver_ID_Thumbnails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Thumbnails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		477ABDFBD1BF31BBF7D58B42 /* Pods-Ver-ID-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-VerIDUI.debug.xcconfig"; path = "Target Support Files/Pods-Ver-ID-VerIDUI/Pods-Ver-ID-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
+		49C3A80679EAEEE694517572 /* Pods-Ver-ID-Thumbnails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-Thumbnails.debug.xcconfig"; path = "Target Support Files/Pods-Ver-ID-Thumbnails/Pods-Ver-ID-Thumbnails.debug.xcconfig"; sourceTree = "<group>"; };
 		547EC6601015DA9FBC780B1A /* Pods-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.release.xcconfig"; path = "Target Support Files/Pods-VerIDUI/Pods-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
-		7FDDA51782730521C9300C41 /* Pods-Preview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.debug.xcconfig"; path = "Target Support Files/Pods-Preview/Pods-Preview.debug.xcconfig"; sourceTree = "<group>"; };
-		8010504456487BDF31E1584A /* Pods_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1342BDB5C8B2C9D56DCA4E6 /* Pods-Preview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Preview.release.xcconfig"; path = "Target Support Files/Pods-Preview/Pods-Preview.release.xcconfig"; sourceTree = "<group>"; };
-		AD3B0DB889B8556B349D0F52 /* Pods-Thumbnails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Thumbnails.debug.xcconfig"; path = "Target Support Files/Pods-Thumbnails/Pods-Thumbnails.debug.xcconfig"; sourceTree = "<group>"; };
+		68D697A10773B5BF9A83FC86 /* Pods-Ver-ID-VerIDUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-VerIDUI.release.xcconfig"; path = "Target Support Files/Pods-Ver-ID-VerIDUI/Pods-Ver-ID-VerIDUI.release.xcconfig"; sourceTree = "<group>"; };
+		8177BC304CB00135B5B2B836 /* Pods_Ver_ID_Ver_ID_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Ver_ID_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5075C27FB022EBC77484DAA /* Pods_Ver_ID_Preview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ver_ID_Preview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B99A59AB75EB8D1AC24C01D0 /* Pods-VerIDUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VerIDUI.debug.xcconfig"; path = "Target Support Files/Pods-VerIDUI/Pods-VerIDUI.debug.xcconfig"; sourceTree = "<group>"; };
-		CD3221765F2450AC07166541 /* Pods_Thumbnails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Thumbnails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDA55568F46D9E7C9A35A6C /* Pods-Ver-ID-Thumbnails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-Thumbnails.release.xcconfig"; path = "Target Support Files/Pods-Ver-ID-Thumbnails/Pods-Ver-ID-Thumbnails.release.xcconfig"; sourceTree = "<group>"; };
+		D249B86259F65926DA4EC712 /* Pods-Ver-ID-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-Ver-ID Sample.debug.xcconfig"; path = "Target Support Files/Pods-Ver-ID-Ver-ID Sample/Pods-Ver-ID-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		DFC3B54ABADA9E9362DCAE44 /* Pods-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID Sample.release.xcconfig"; path = "Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
-		FFADD83619E7B7AD6089626E /* Pods_Preview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Preview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE726038EE87ADFF2B5DA7A0 /* Pods-Ver-ID-Preview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-Preview.release.xcconfig"; path = "Target Support Files/Pods-Ver-ID-Preview/Pods-Ver-ID-Preview.release.xcconfig"; sourceTree = "<group>"; };
+		F3ACD733FF577A2E12F1DD2D /* Pods-Ver-ID-Ver-ID Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-Ver-ID Sample.release.xcconfig"; path = "Target Support Files/Pods-Ver-ID-Ver-ID Sample/Pods-Ver-ID-Ver-ID Sample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,7 +356,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99251E2933AEC4FA717CA0DD /* Pods_VerIDUI.framework in Frameworks */,
+				3B2E36892628BF5A0055FE28 /* VerIDCore.xcframework in Frameworks */,
+				030F4FA7FA540FED9FD26BB5 /* Pods_Ver_ID_VerIDUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +373,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */,
-				EA5FAE21B7E7B0E0063F73A7 /* Pods_Thumbnails.framework in Frameworks */,
+				06BA7125C6401569436F1222 /* Pods_Ver_ID_Thumbnails.framework in Frameworks */,
+				3B2E37392628C6030055FE28 /* VerIDCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +383,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAD6247D94C000273FAF /* QuickLook.framework in Frameworks */,
-				EBD87BEC3E5375606D731F0E /* Pods_Preview.framework in Frameworks */,
+				F359EFE895481CF9EFD3D25C /* Pods_Ver_ID_Preview.framework in Frameworks */,
+				3B2E373C2628C60A0055FE28 /* VerIDCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,13 +393,90 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
-				1044893D7B2454521A33798A /* Pods_Ver_ID_Sample.framework in Frameworks */,
+				D16EEE8549A2B60EE75001A9 /* Pods_Ver_ID_Ver_ID_Sample.framework in Frameworks */,
+				3B2E37322628C5E40055FE28 /* VerIDCore.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4D2DD709B31C0A0B04504E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B2E36592628BE6C0055FE28 /* VerIDResources */ = {
+			isa = PBXGroup;
+			children = (
+				3B2E365A2628BE6C0055FE28 /* Info.plist */,
+			);
+			path = VerIDResources;
+			sourceTree = "<group>";
+		};
+		3B2E369A2628BFAE0055FE28 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3B2E369B2628BFAE0055FE28 /* Media.xcassets */,
+				3B2E369C2628BFAE0055FE28 /* Video */,
+				3B2E36B62628BFAE0055FE28 /* FaceDetectionAlertController.xib */,
+				3B2E36B72628BFAE0055FE28 /* SessionDiagnostics.storyboard */,
+				3B2E36B82628BFAE0055FE28 /* Result.storyboard */,
+				3B2E36B92628BFAE0055FE28 /* VerIDViewController.xib */,
+				3B2E36BA2628BFAE0055FE28 /* VerIDRegistrationViewController.xib */,
+				3B2E36BB2628BFAE0055FE28 /* Localization */,
+				3B2E36C22628BFAF0055FE28 /* Tips.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3B2E369C2628BFAE0055FE28 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				3B2E369D2628BFAE0055FE28 /* liveness_detection_3.mp4 */,
+				3B2E369E2628BFAE0055FE28 /* liveness_detection_2.mp4 */,
+				3B2E369F2628BFAE0055FE28 /* face_mask_off_2.mp4 */,
+				3B2E36A02628BFAE0055FE28 /* face_mask_off_3.mp4 */,
+				3B2E36A12628BFAE0055FE28 /* face_mask_off_1.mp4 */,
+				3B2E36A22628BFAE0055FE28 /* right_3.mp4 */,
+				3B2E36A32628BFAE0055FE28 /* left_down_2.mp4 */,
+				3B2E36A42628BFAE0055FE28 /* left_up_3.mp4 */,
+				3B2E36A52628BFAE0055FE28 /* left_up_2.mp4 */,
+				3B2E36A62628BFAE0055FE28 /* left_down_3.mp4 */,
+				3B2E36A72628BFAE0055FE28 /* right_2.mp4 */,
+				3B2E36A82628BFAE0055FE28 /* down_3.mp4 */,
+				3B2E36A92628BFAE0055FE28 /* right_up_2.mp4 */,
+				3B2E36AA2628BFAE0055FE28 /* right_up_3.mp4 */,
+				3B2E36AB2628BFAE0055FE28 /* down_2.mp4 */,
+				3B2E36AC2628BFAE0055FE28 /* registration_3.mp4 */,
+				3B2E36AD2628BFAE0055FE28 /* registration_2.mp4 */,
+				3B2E36AE2628BFAE0055FE28 /* left_2.mp4 */,
+				3B2E36AF2628BFAE0055FE28 /* left_3.mp4 */,
+				3B2E36B02628BFAE0055FE28 /* up_to_centre_3.mp4 */,
+				3B2E36B12628BFAE0055FE28 /* right_down_2.mp4 */,
+				3B2E36B22628BFAE0055FE28 /* right_down_3.mp4 */,
+				3B2E36B32628BFAE0055FE28 /* up_to_centre_2.mp4 */,
+				3B2E36B42628BFAE0055FE28 /* up_2.mp4 */,
+				3B2E36B52628BFAE0055FE28 /* up_3.mp4 */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		3B2E36BB2628BFAE0055FE28 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				3B2E36BC2628BFAF0055FE28 /* vi.xml */,
+				3B2E36BD2628BFAF0055FE28 /* es_US.xml */,
+				3B2E36BE2628BFAF0055FE28 /* fr_CA.xml */,
+				3B2E36BF2628BFAF0055FE28 /* translations.py */,
+				3B2E36C02628BFAF0055FE28 /* translation_xml.py */,
+				3B2E36C12628BFAF0055FE28 /* test_translation.py */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		3B326B0C22089C88005DAE1E = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +485,7 @@
 				3B45BAB2247D8BEB00273FAF /* VerIDSampleUITests */,
 				3B45BAC5247D94B100273FAF /* Thumbnails */,
 				3B45BAD7247D94C000273FAF /* Preview */,
+				3B2E36592628BE6C0055FE28 /* VerIDResources */,
 				3B326B1722089C88005DAE1E /* Products */,
 				8C808952AB38275225E61B6D /* Frameworks */,
 				EA3973539495911E220A79F3 /* Pods */,
@@ -365,6 +500,7 @@
 				3B45BAB1247D8BEB00273FAF /* VerIDSampleUITests.xctest */,
 				3B45BAC2247D94B100273FAF /* Thumbnails.appex */,
 				3B45BAD4247D94C000273FAF /* Preview.appex */,
+				3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -372,38 +508,32 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3B2E369A2628BFAE0055FE28 /* Resources */,
+				3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */,
+				3B2E36802628BF2F0055FE28 /* ResourceHelper.swift */,
+				3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */,
 				3B09E2DB25647A3D00ED224D /* README.md */,
-				3BB55B82252DCB5D00D153A3 /* SessionDiagnostics.storyboard */,
 				3BB55B83252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift */,
 				3BEDC48A24DD86B100CFB42B /* SessionPrompts.swift */,
 				3BEDC48924DD86B000CFB42B /* VerIDSession.swift */,
 				3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */,
 				3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */,
 				3B6A70D92208BC3C00B137C4 /* FaceDetectionAlertController.swift */,
-				3B3FF91A23A10BA200156A59 /* FaceDetectionAlertController.xib */,
 				3B6A70E32208BD8400B137C4 /* FaceOvalLayer.swift */,
 				3B326B1A22089C88005DAE1E /* Info.plist */,
-				3B564B30234277E9008B3FCD /* Localization */,
-				3B56E808220B668700004F94 /* Media.xcassets */,
 				3B6A70E22208BD8300B137C4 /* PaddedRoundedLabel.swift */,
-				3B3FF91B23A10BA200156A59 /* Result.storyboard */,
 				3B6A70D42208BC3B00B137C4 /* ResultViewController.swift */,
 				3BE9F3F7220AFD50002C11BE /* SessionViewControllersFactory.swift */,
 				3BACF2BC245384C0000FA3A7 /* SpeechDelegatable.swift */,
 				3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */,
 				3B564B20234276ED008B3FCD /* TipPageViewController.swift */,
-				3B3FF91923A10BA200156A59 /* Tips.storyboard */,
 				3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */,
 				3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */,
-				3B3FF92223A10C9100156A59 /* Ver-ID-UI.podspec */,
 				3B6A70D82208BC3C00B137C4 /* VerIDRegistrationViewController.swift */,
-				3B3FF91C23A10BA200156A59 /* VerIDRegistrationViewController.xib */,
 				3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */,
 				3B326B1922089C88005DAE1E /* VerIDUI.h */,
 				3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */,
-				3B3FF91823A10BA200156A59 /* VerIDViewController.xib */,
 				3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */,
-				3B56E812220B675D00004F94 /* Video */,
 			);
 			path = VerIDUI;
 			sourceTree = "<group>";
@@ -447,48 +577,6 @@
 				3B45BADD247D94C000273FAF /* Info.plist */,
 			);
 			path = Preview;
-			sourceTree = "<group>";
-		};
-		3B564B30234277E9008B3FCD /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				3B564B32234277FB008B3FCD /* es_US.xml */,
-				3B564B31234277FB008B3FCD /* fr_CA.xml */,
-				3B564B33234277FB008B3FCD /* vi.xml */,
-			);
-			name = Localization;
-			sourceTree = "<group>";
-		};
-		3B56E812220B675D00004F94 /* Video */ = {
-			isa = PBXGroup;
-			children = (
-				3BB55B8A252DCB7000D153A3 /* face_mask_off_1.mp4 */,
-				3BB55B8B252DCB7000D153A3 /* face_mask_off_2.mp4 */,
-				3BB55B8C252DCB7000D153A3 /* face_mask_off_3.mp4 */,
-				3B6A9FF923427C12000CED49 /* down_2.mp4 */,
-				3B6A9FF423427C12000CED49 /* down_3.mp4 */,
-				3B6A9FEC23427C12000CED49 /* left_2.mp4 */,
-				3B6A9FF223427C12000CED49 /* left_3.mp4 */,
-				3B6A9FF723427C12000CED49 /* left_down_2.mp4 */,
-				3B6A9FFA23427C13000CED49 /* left_down_3.mp4 */,
-				3B6A9FF323427C12000CED49 /* left_up_2.mp4 */,
-				3B6A9FF523427C12000CED49 /* left_up_3.mp4 */,
-				3B6A9FED23427C12000CED49 /* right_2.mp4 */,
-				3B6A9FF823427C12000CED49 /* right_3.mp4 */,
-				3B6A9FEB23427C12000CED49 /* right_down_2.mp4 */,
-				3B6A9FF623427C12000CED49 /* right_down_3.mp4 */,
-				3B6A9FFB23427C13000CED49 /* right_up_2.mp4 */,
-				3B6A9FF023427C12000CED49 /* right_up_3.mp4 */,
-				3B6A9FFC23427C13000CED49 /* up_2.mp4 */,
-				3B6A9FEF23427C12000CED49 /* up_3.mp4 */,
-				3B6A9FEE23427C12000CED49 /* up_to_centre_2.mp4 */,
-				3B6A9FF123427C12000CED49 /* up_to_centre_3.mp4 */,
-				3B56E80A220B674D00004F94 /* liveness_detection_2.mp4 */,
-				3B56E80B220B674D00004F94 /* liveness_detection_3.mp4 */,
-				3B56E80C220B674D00004F94 /* registration_2.mp4 */,
-				3B56E80D220B674E00004F94 /* registration_3.mp4 */,
-			);
-			path = Video;
 			sourceTree = "<group>";
 		};
 		3B9BFCD5246DE6B100C4B2D1 /* Session Sharing */ = {
@@ -556,10 +644,10 @@
 			children = (
 				3B45BAC3247D94B100273FAF /* QuickLookThumbnailing.framework */,
 				3B45BAD5247D94C000273FAF /* QuickLook.framework */,
-				FFADD83619E7B7AD6089626E /* Pods_Preview.framework */,
-				CD3221765F2450AC07166541 /* Pods_Thumbnails.framework */,
-				8010504456487BDF31E1584A /* Pods_Ver_ID_Sample.framework */,
-				2FE39309B363A26B87958515 /* Pods_VerIDUI.framework */,
+				B5075C27FB022EBC77484DAA /* Pods_Ver_ID_Preview.framework */,
+				3D37F216BA62C0206D12019C /* Pods_Ver_ID_Thumbnails.framework */,
+				8177BC304CB00135B5B2B836 /* Pods_Ver_ID_Ver_ID_Sample.framework */,
+				2BC855245F2FCA614F11631A /* Pods_Ver_ID_VerIDUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -567,14 +655,18 @@
 		EA3973539495911E220A79F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7FDDA51782730521C9300C41 /* Pods-Preview.debug.xcconfig */,
-				A1342BDB5C8B2C9D56DCA4E6 /* Pods-Preview.release.xcconfig */,
-				AD3B0DB889B8556B349D0F52 /* Pods-Thumbnails.debug.xcconfig */,
-				417FBB438BDDD2B29A446A76 /* Pods-Thumbnails.release.xcconfig */,
 				386A7940A287B275075065D6 /* Pods-Ver-ID Sample.debug.xcconfig */,
 				DFC3B54ABADA9E9362DCAE44 /* Pods-Ver-ID Sample.release.xcconfig */,
 				B99A59AB75EB8D1AC24C01D0 /* Pods-VerIDUI.debug.xcconfig */,
 				547EC6601015DA9FBC780B1A /* Pods-VerIDUI.release.xcconfig */,
+				140C68B9DA502CE9FB2A02F5 /* Pods-Ver-ID-Preview.debug.xcconfig */,
+				EE726038EE87ADFF2B5DA7A0 /* Pods-Ver-ID-Preview.release.xcconfig */,
+				49C3A80679EAEEE694517572 /* Pods-Ver-ID-Thumbnails.debug.xcconfig */,
+				CEDA55568F46D9E7C9A35A6C /* Pods-Ver-ID-Thumbnails.release.xcconfig */,
+				D249B86259F65926DA4EC712 /* Pods-Ver-ID-Ver-ID Sample.debug.xcconfig */,
+				F3ACD733FF577A2E12F1DD2D /* Pods-Ver-ID-Ver-ID Sample.release.xcconfig */,
+				477ABDFBD1BF31BBF7D58B42 /* Pods-Ver-ID-VerIDUI.debug.xcconfig */,
+				68D697A10773B5BF9A83FC86 /* Pods-Ver-ID-VerIDUI.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -593,6 +685,22 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3B2E36572628BE6C0055FE28 /* VerIDUIResources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B2E365B2628BE6C0055FE28 /* Build configuration list for PBXNativeTarget "VerIDUIResources" */;
+			buildPhases = (
+				3B2E36562628BE6C0055FE28 /* Resources */,
+				F4D2DD709B31C0A0B04504E8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VerIDUIResources;
+			productName = VerIDResources;
+			productReference = 3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		3B326B1522089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B326B1E22089C88005DAE1E /* Build configuration list for PBXNativeTarget "VerIDUI" */;
@@ -606,6 +714,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3B2E36782628BEDF0055FE28 /* PBXTargetDependency */,
 			);
 			name = VerIDUI;
 			productName = VerIDUI;
@@ -634,10 +743,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B45BACC247D94B100273FAF /* Build configuration list for PBXNativeTarget "Thumbnails" */;
 			buildPhases = (
-				725AF82A357E18719380B9F3 /* [CP] Check Pods Manifest.lock */,
+				1FBC4615EBE07C973A3DBB22 /* [CP] Check Pods Manifest.lock */,
 				3B45BABE247D94B100273FAF /* Sources */,
 				3B45BABF247D94B100273FAF /* Frameworks */,
 				3B45BAC0247D94B100273FAF /* Resources */,
+				3B2E373B2628C6030055FE28 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -652,10 +762,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B45BAE1247D94C000273FAF /* Build configuration list for PBXNativeTarget "Preview" */;
 			buildPhases = (
-				1E736DE0E9DFE5FCC429D61C /* [CP] Check Pods Manifest.lock */,
+				439191DE99E3DA2F2E8E53F6 /* [CP] Check Pods Manifest.lock */,
 				3B45BAD0247D94C000273FAF /* Sources */,
 				3B45BAD1247D94C000273FAF /* Frameworks */,
 				3B45BAD2247D94C000273FAF /* Resources */,
+				3B2E373E2628C60A0055FE28 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -700,6 +811,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Applied Recognition";
 				TargetAttributes = {
+					3B2E36572628BE6C0055FE28 = {
+						CreatedOnToolsVersion = 12.4;
+					};
 					3B326B1522089C88005DAE1E = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
@@ -738,50 +852,62 @@
 				3B45BAB0247D8BEB00273FAF /* VerIDSampleUITests */,
 				3B45BAC1247D94B100273FAF /* Thumbnails */,
 				3B45BAD3247D94C000273FAF /* Preview */,
+				3B2E36572628BE6C0055FE28 /* VerIDUIResources */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3B2E36562628BE6C0055FE28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B2E36CD2628BFAF0055FE28 /* left_down_3.mp4 in Resources */,
+				3B2E36E02628BFAF0055FE28 /* VerIDViewController.xib in Resources */,
+				3B2E36D72628BFAF0055FE28 /* up_to_centre_3.mp4 in Resources */,
+				3B2E36E52628BFAF0055FE28 /* translations.py in Resources */,
+				3B2E36D92628BFAF0055FE28 /* right_down_3.mp4 in Resources */,
+				3B2E36E22628BFAF0055FE28 /* vi.xml in Resources */,
+				3B2E36D32628BFAF0055FE28 /* registration_3.mp4 in Resources */,
+				3B2E36DE2628BFAF0055FE28 /* SessionDiagnostics.storyboard in Resources */,
+				3B2E36C82628BFAF0055FE28 /* face_mask_off_1.mp4 in Resources */,
+				3B2E36E72628BFAF0055FE28 /* test_translation.py in Resources */,
+				3B2E36D22628BFAF0055FE28 /* down_2.mp4 in Resources */,
+				3B2E36E42628BFAF0055FE28 /* fr_CA.xml in Resources */,
+				3B2E36E12628BFAF0055FE28 /* VerIDRegistrationViewController.xib in Resources */,
+				3B2E36D12628BFAF0055FE28 /* right_up_3.mp4 in Resources */,
+				3B2E36CA2628BFAF0055FE28 /* left_down_2.mp4 in Resources */,
+				3B2E36D62628BFAF0055FE28 /* left_3.mp4 in Resources */,
+				3B2E36C52628BFAF0055FE28 /* liveness_detection_2.mp4 in Resources */,
+				3B2E36E32628BFAF0055FE28 /* es_US.xml in Resources */,
+				3B2E36E82628BFAF0055FE28 /* Tips.storyboard in Resources */,
+				3B2E36C42628BFAF0055FE28 /* liveness_detection_3.mp4 in Resources */,
+				3B2E36C32628BFAF0055FE28 /* Media.xcassets in Resources */,
+				3B2E36C72628BFAF0055FE28 /* face_mask_off_3.mp4 in Resources */,
+				3B2E36C62628BFAF0055FE28 /* face_mask_off_2.mp4 in Resources */,
+				3B2E36D82628BFAF0055FE28 /* right_down_2.mp4 in Resources */,
+				3B2E36CB2628BFAF0055FE28 /* left_up_3.mp4 in Resources */,
+				3B2E36CE2628BFAF0055FE28 /* right_2.mp4 in Resources */,
+				3B2E36DA2628BFAF0055FE28 /* up_to_centre_2.mp4 in Resources */,
+				3B2E36DB2628BFAF0055FE28 /* up_2.mp4 in Resources */,
+				3B2E36D42628BFAF0055FE28 /* registration_2.mp4 in Resources */,
+				3B2E36DC2628BFAF0055FE28 /* up_3.mp4 in Resources */,
+				3B2E36CC2628BFAF0055FE28 /* left_up_2.mp4 in Resources */,
+				3B2E36CF2628BFAF0055FE28 /* down_3.mp4 in Resources */,
+				3B2E36DD2628BFAF0055FE28 /* FaceDetectionAlertController.xib in Resources */,
+				3B2E36D02628BFAF0055FE28 /* right_up_2.mp4 in Resources */,
+				3B2E36E62628BFAF0055FE28 /* translation_xml.py in Resources */,
+				3B2E36C92628BFAF0055FE28 /* right_3.mp4 in Resources */,
+				3B2E36DF2628BFAF0055FE28 /* Result.storyboard in Resources */,
+				3B2E36D52628BFAF0055FE28 /* left_2.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B326B1422089C88005DAE1E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B6AA00523427C13000CED49 /* left_up_2.mp4 in Resources */,
-				3B6AA00623427C13000CED49 /* down_3.mp4 in Resources */,
-				3B564B36234277FB008B3FCD /* vi.xml in Resources */,
-				3B56E809220B668700004F94 /* Media.xcassets in Resources */,
-				3B56E810220B674E00004F94 /* registration_2.mp4 in Resources */,
-				3B3FF91F23A10BA200156A59 /* FaceDetectionAlertController.xib in Resources */,
-				3B6AA00323427C13000CED49 /* up_to_centre_3.mp4 in Resources */,
-				3B3FF91E23A10BA200156A59 /* Tips.storyboard in Resources */,
-				3B3FF92123A10BA200156A59 /* VerIDRegistrationViewController.xib in Resources */,
-				3B6AA00A23427C13000CED49 /* right_3.mp4 in Resources */,
-				3B6AA00C23427C13000CED49 /* left_down_3.mp4 in Resources */,
-				3B564B34234277FB008B3FCD /* fr_CA.xml in Resources */,
-				3B6AA00D23427C13000CED49 /* right_up_2.mp4 in Resources */,
-				3B56E80F220B674E00004F94 /* liveness_detection_3.mp4 in Resources */,
-				3B6A9FFF23427C13000CED49 /* right_2.mp4 in Resources */,
-				3B6AA00723427C13000CED49 /* left_up_3.mp4 in Resources */,
-				3BB55B84252DCB5D00D153A3 /* SessionDiagnostics.storyboard in Resources */,
-				3B56E811220B674E00004F94 /* registration_3.mp4 in Resources */,
-				3BB55B8F252DCB7000D153A3 /* face_mask_off_3.mp4 in Resources */,
-				3BB55B8D252DCB7000D153A3 /* face_mask_off_1.mp4 in Resources */,
-				3B6AA00423427C13000CED49 /* left_3.mp4 in Resources */,
-				3B6AA00223427C13000CED49 /* right_up_3.mp4 in Resources */,
-				3B3FF91D23A10BA200156A59 /* VerIDViewController.xib in Resources */,
-				3B6A9FFE23427C13000CED49 /* left_2.mp4 in Resources */,
-				3B6A9FFD23427C13000CED49 /* right_down_2.mp4 in Resources */,
-				3B6AA00E23427C13000CED49 /* up_2.mp4 in Resources */,
-				3B6AA00823427C13000CED49 /* right_down_3.mp4 in Resources */,
-				3B56E80E220B674E00004F94 /* liveness_detection_2.mp4 in Resources */,
-				3B564B35234277FB008B3FCD /* es_US.xml in Resources */,
-				3B3FF92023A10BA200156A59 /* Result.storyboard in Resources */,
-				3B6AA00123427C13000CED49 /* up_3.mp4 in Resources */,
-				3B6AA00023427C13000CED49 /* up_to_centre_2.mp4 in Resources */,
-				3BB55B8E252DCB7000D153A3 /* face_mask_off_2.mp4 in Resources */,
-				3B6AA00B23427C13000CED49 /* down_2.mp4 in Resources */,
-				3B6AA00923427C13000CED49 /* left_down_2.mp4 in Resources */,
+				3B2E36792628BEF50055FE28 /* VerIDUIResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,7 +949,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E736DE0E9DFE5FCC429D61C /* [CP] Check Pods Manifest.lock */ = {
+		1FBC4615EBE07C973A3DBB22 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -838,14 +964,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Preview-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Ver-ID-Thumbnails-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		725AF82A357E18719380B9F3 /* [CP] Check Pods Manifest.lock */ = {
+		439191DE99E3DA2F2E8E53F6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -860,7 +986,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Thumbnails-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Ver-ID-Preview-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -882,7 +1008,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VerIDUI-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Ver-ID-VerIDUI-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -895,15 +1021,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID-Ver-ID Sample/Pods-Ver-ID-Ver-ID Sample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Ver-ID-Ver-ID Sample/Pods-Ver-ID-Ver-ID Sample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID Sample/Pods-Ver-ID Sample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Ver-ID-Ver-ID Sample/Pods-Ver-ID-Ver-ID Sample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D10713389E2E30B990809E49 /* [CP] Check Pods Manifest.lock */ = {
@@ -921,7 +1047,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Ver-ID Sample-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Ver-ID-Ver-ID Sample-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -949,7 +1075,9 @@
 				3B6A70E02208BC3C00B137C4 /* FaceDetectionAlertController.swift in Sources */,
 				3BB55B85252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift in Sources */,
 				3B6A70E62208BD8400B137C4 /* PaddedRoundedLabel.swift in Sources */,
+				3B2E36812628BF2F0055FE28 /* VerIDSessionDelegate.swift in Sources */,
 				3B6A70DC2208BC3C00B137C4 /* VerIDViewController.swift in Sources */,
+				3B2E36822628BF2F0055FE28 /* ResourceHelper.swift in Sources */,
 				3B6A70DF2208BC3C00B137C4 /* VerIDRegistrationViewController.swift in Sources */,
 				3BEDC48C24DD86B100CFB42B /* SessionPrompts.swift in Sources */,
 				3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */,
@@ -1026,6 +1154,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3B2E36782628BEDF0055FE28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B2E36572628BE6C0055FE28 /* VerIDUIResources */;
+			targetProxy = 3B2E36772628BEDF0055FE28 /* PBXContainerItemProxy */;
+		};
 		3B45BAB7247D8BEB00273FAF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3BE9F364220AF125002C11BE /* Ver-ID Sample */;
@@ -1076,10 +1209,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3B2E365C2628BE6C0055FE28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = VerIDResources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDResources;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		3B2E365D2628BE6C0055FE28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = VerIDResources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDResources;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		3B326B1C22089C88005DAE1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1110,7 +1280,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2000000;
+				CURRENT_PROJECT_VERSION = 2000001;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1128,8 +1298,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "2.0.0-beta.04";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MARKETING_VERSION = 2.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1146,6 +1316,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1176,7 +1347,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2000000;
+				CURRENT_PROJECT_VERSION = 2000001;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1188,8 +1359,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "2.0.0-beta.04";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MARKETING_VERSION = 2.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1204,7 +1375,7 @@
 		};
 		3B326B1F22089C88005DAE1E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B99A59AB75EB8D1AC24C01D0 /* Pods-VerIDUI.debug.xcconfig */;
+			baseConfigurationReference = 477ABDFBD1BF31BBF7D58B42 /* Pods-Ver-ID-VerIDUI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1215,7 +1386,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1232,7 +1402,7 @@
 		};
 		3B326B2022089C88005DAE1E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 547EC6601015DA9FBC780B1A /* Pods-VerIDUI.release.xcconfig */;
+			baseConfigurationReference = 68D697A10773B5BF9A83FC86 /* Pods-Ver-ID-VerIDUI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1243,7 +1413,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VerIDUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1297,7 +1466,7 @@
 		};
 		3B45BACD247D94B100273FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD3B0DB889B8556B349D0F52 /* Pods-Thumbnails.debug.xcconfig */;
+			baseConfigurationReference = 49C3A80679EAEEE694517572 /* Pods-Ver-ID-Thumbnails.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1317,7 +1486,7 @@
 		};
 		3B45BACE247D94B100273FAF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 417FBB438BDDD2B29A446A76 /* Pods-Thumbnails.release.xcconfig */;
+			baseConfigurationReference = CEDA55568F46D9E7C9A35A6C /* Pods-Ver-ID-Thumbnails.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1337,7 +1506,7 @@
 		};
 		3B45BAE2247D94C000273FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FDDA51782730521C9300C41 /* Pods-Preview.debug.xcconfig */;
+			baseConfigurationReference = 140C68B9DA502CE9FB2A02F5 /* Pods-Ver-ID-Preview.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1357,7 +1526,7 @@
 		};
 		3B45BAE3247D94C000273FAF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1342BDB5C8B2C9D56DCA4E6 /* Pods-Preview.release.xcconfig */;
+			baseConfigurationReference = EE726038EE87ADFF2B5DA7A0 /* Pods-Ver-ID-Preview.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3DPTJHF24M;
@@ -1377,7 +1546,7 @@
 		};
 		3BE9F375220AF128002C11BE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 386A7940A287B275075065D6 /* Pods-Ver-ID Sample.debug.xcconfig */;
+			baseConfigurationReference = D249B86259F65926DA4EC712 /* Pods-Ver-ID-Ver-ID Sample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1397,7 +1566,7 @@
 		};
 		3BE9F376220AF128002C11BE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFC3B54ABADA9E9362DCAE44 /* Pods-Ver-ID Sample.release.xcconfig */;
+			baseConfigurationReference = F3ACD733FF577A2E12F1DD2D /* Pods-Ver-ID-Ver-ID Sample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1418,6 +1587,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B2E365B2628BE6C0055FE28 /* Build configuration list for PBXNativeTarget "VerIDUIResources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B2E365C2628BE6C0055FE28 /* Debug */,
+				3B2E365D2628BE6C0055FE28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3B326B1022089C88005DAE1E /* Build configuration list for PBXProject "VerIDUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

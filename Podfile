@@ -4,21 +4,20 @@ workspace 'VerIDUI.xcworkspace'
 platform :ios, '10.3'
 use_frameworks!
 
-def veridcore
-  pod 'Ver-ID-Core', '2.0.0-beta.04'
-end
-
-target 'VerIDUI' do
-  veridcore
+abstract_target 'Ver-ID' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
+  pod 'ZIPFoundation', '~> 0.9'
+  pod 'DeviceKit', '~> 4.1'
+  pod 'Ver-ID-SDK-Identity', '~> 3.0'
+  
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|
       config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
       config.build_settings['ENABLE_BITCODE'] = 'YES'
       if config.name == 'Release'
         config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
-      else
+        else
         config.build_settings['BITCODE_GENERATION_MODE'] = 'marker'
       end
     end
@@ -30,23 +29,16 @@ target 'VerIDUI' do
         if config.name == 'Release'
           config.build_settings['OTHER_CFLAGS'] = '$(inherited) -faligned-allocation -fembed-bitcode'
           config.build_settings['OTHER_LDFLAGS'] = '$(inherited) -faligned-allocation -fembed-bitcode'
-        else
+          else
           config.build_settings['OTHER_CFLAGS'] = '$(inherited) -faligned-allocation -fembed-bitcode-marker'
           config.build_settings['OTHER_LDFLAGS'] = '$(inherited) -faligned-allocation -fembed-bitcode-marker'
         end
       end
     end
   end
-end
-
-target 'Ver-ID Sample' do
-  pod 'DeviceKit', '~> 4.1'
-end
-
-target 'Thumbnails' do
-  veridcore
-end
-
-target 'Preview' do
-  veridcore
+  
+  target 'VerIDUI'
+  target 'Ver-ID Sample'
+  target 'Preview'
+  target 'Thumbnails'
 end

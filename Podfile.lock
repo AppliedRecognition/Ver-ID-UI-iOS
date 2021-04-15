@@ -1,19 +1,11 @@
 PODS:
   - DeviceKit (4.2.1)
-  - OpenCV2 (4.3.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
-  - Ver-ID-Core (2.0.0-beta.04):
-    - DeviceKit (~> 4.1)
-    - OpenCV2 (~> 4.1)
-    - RxCocoa (~> 5)
-    - RxSwift (~> 5)
-    - Ver-ID-SDK-Identity (~> 3.0)
-    - ZIPFoundation (~> 0.9)
   - Ver-ID-SDK-Identity (3.0.1)
   - ZIPFoundation (0.9.11)
 
@@ -21,29 +13,26 @@ DEPENDENCIES:
   - DeviceKit (~> 4.1)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
-  - Ver-ID-Core (= 2.0.0-beta.04)
+  - Ver-ID-SDK-Identity (~> 3.0)
+  - ZIPFoundation (~> 0.9)
 
 SPEC REPOS:
   trunk:
     - DeviceKit
-    - OpenCV2
     - RxCocoa
     - RxRelay
     - RxSwift
-    - Ver-ID-Core
     - Ver-ID-SDK-Identity
     - ZIPFoundation
 
 SPEC CHECKSUMS:
   DeviceKit: cadb5ff25d45fe186778bf2d0fd2ea4750542189
-  OpenCV2: ffe82e5cb5d16dc3fc01a5f4127b9a5b3cfc7d1b
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  Ver-ID-Core: 926fb50e8b11e48494f29865097cd9b381a5179f
   Ver-ID-SDK-Identity: b89e0645c17d2bce24b93454ef9d31bcf196e872
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: bbfc3fc95dd911a6ad573dc69a8138d6e4f9ac6b
+PODFILE CHECKSUM: 7cbaca73f1ce87622a2ef2ac6497f2584f7eacfe
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
