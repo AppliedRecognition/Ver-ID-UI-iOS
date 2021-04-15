@@ -117,7 +117,7 @@ import VerIDCore
     
     private func showDefaultImage() {
         DispatchQueue.main.async {
-            self.imageView.image = UIImage(named: "liveness_detection001", in: Bundle(for: type(of: self)), compatibleWith: nil)
+            self.imageView.image = UIImage(named: "liveness_detection001", in: ResourceHelper.bundle, compatibleWith: nil)
         }
     }
 }
@@ -152,12 +152,11 @@ import VerIDCore
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let bundle = Bundle(for: type(of: self))
         let density = UIScreen.main.scale
         let densityInt = density > 2 ? 3 : 2
         let videoFileName = settings is RegistrationSessionSettings ? "registration" : "liveness_detection"
         let videoName = String(format: "%@_%d", videoFileName, densityInt)
-        guard let url = bundle.url(forResource: videoName, withExtension: "mp4") else {
+        guard let url = ResourceHelper.bundle.url(forResource: videoName, withExtension: "mp4") else {
             return
         }
         if #available(iOS 10, *) {

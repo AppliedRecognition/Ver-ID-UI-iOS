@@ -64,8 +64,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
-        let storyboard = UIStoryboard(name: "Result", bundle: bundle)
+        let storyboard = UIStoryboard(name: "Result", bundle: ResourceHelper.bundle)
         let storyboardId = result.error != nil ? "failure" : "success"
         guard let resultViewController = storyboard.instantiateViewController(withIdentifier: storyboardId) as? ResultViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
@@ -77,8 +76,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeTipsViewController() throws -> UIViewController & TipsViewControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
-        guard let tipsController = UIStoryboard(name: "Tips", bundle: bundle).instantiateInitialViewController() as? TipsViewController else {
+        guard let tipsController = UIStoryboard(name: "Tips", bundle: ResourceHelper.bundle).instantiateInitialViewController() as? TipsViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
         tipsController.translatedStrings = self.translatedStrings
@@ -86,7 +84,6 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, error: Error) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
         let message: String
         let requestedBearing: Bearing
         do {
@@ -133,7 +130,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
             }
         }
         let videoName = String(format: "%@_%d", videoFileName, densityInt)
-        let url = bundle.url(forResource: videoName, withExtension: "mp4")
+        let url = ResourceHelper.bundle.url(forResource: videoName, withExtension: "mp4")
         let controller = FaceDetectionAlertController(message: message, videoURL: url)
         controller.translatedStrings = self.translatedStrings
         return controller

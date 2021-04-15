@@ -61,7 +61,7 @@ import AVFoundation
     /// - Parameter sessionResultPackage: The session result package to display
     /// - Returns: View controller instance
     @objc public static func create(sessionResultPackage: SessionResultPackage) -> SessionDiagnosticsViewController {
-        let viewController = UIStoryboard(name: "SessionDiagnostics", bundle: Bundle(for: SessionDiagnosticsViewController.self)).instantiateInitialViewController() as! SessionDiagnosticsViewController
+        let viewController = UIStoryboard(name: "SessionDiagnostics", bundle: ResourceHelper.bundle).instantiateInitialViewController() as! SessionDiagnosticsViewController
         viewController.sessionResultPackage = sessionResultPackage
         return viewController
     }

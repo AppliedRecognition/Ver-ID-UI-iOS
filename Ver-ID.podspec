@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.static_framework = true
     s.subspec 'UI' do |ss|
         ss.source_files = "VerIDUI/*.swift"
-        ss.resources = "VerIDUI/Video/*.mp4", "VerIDUI/Localization/*.xml", "VerIDUI/*.xcassets", "VerIDUI/**.{storyboard,xib}"
+        ss.resource_bundles = { "VerIDUIResources" => ["VerIDUI/Resources/Video/*.mp4", "VerIDUI/Resources/Localization/*.xml", "VerIDUI/Resources/*.xcassets", "VerIDUI/Resources/**.{storyboard,xib}"] }
         ss.dependency "Ver-ID/Core"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
     end
     s.subspec 'UI-no-bitcode' do |ss|
         ss.source_files = "VerIDUI/*.swift"
-        ss.resources = "VerIDUI/Video/*.mp4", "VerIDUI/Localization/*.xml", "VerIDUI/*.xcassets", "VerIDUI/**.{storyboard,xib}"
+        ss.resource_bundles = { "VerIDUIResources" => ["VerIDUI/Resources/Video/*.mp4", "VerIDUI/Resources/Localization/*.xml", "VerIDUI/Resources/*.xcassets", "VerIDUI/Resources/**.{storyboard,xib}"] }
         ss.dependency "Ver-ID/Core-no-bitcode"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'

@@ -125,7 +125,6 @@ import VerIDCore
         @unknown default:
             imageName = "head_thumbnail_straight"
         }
-        let bundle = Bundle(for: type(of: self))
-        return UIImage(named: imageName, in: bundle, compatibleWith: nil)
+        return UIImage(named: imageName, in: ResourceHelper.bundle, compatibleWith: nil)
     }
 }

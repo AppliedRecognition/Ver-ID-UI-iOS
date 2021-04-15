@@ -107,7 +107,7 @@ public protocol ImagePublisher {
     
     public init(nibName: String? = nil) {
         let nib = nibName ?? "VerIDViewController"
-        super.init(nibName: nib, bundle: Bundle(for: type(of: self)))
+        super.init(nibName: nib, bundle: ResourceHelper.bundle)
         self.videoDataOutput = AVCaptureVideoDataOutput()
     }
     

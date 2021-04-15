@@ -53,7 +53,7 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
         self.videoURL = videoURL
         self.image = nil
         self.showStrikeThrough = false
-        super.init(nibName: "FaceDetectionAlertController", bundle: Bundle(for: type(of: self)))
+        super.init(nibName: "FaceDetectionAlertController", bundle: ResourceHelper.bundle)
     }
     
     public init(message: String?, image: UIImage, showStrikeThrough: Bool = false) {
@@ -61,7 +61,7 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
         self.videoURL = nil
         self.image = image
         self.showStrikeThrough = showStrikeThrough
-        super.init(nibName: "FaceDetectionAlertController", bundle: Bundle(for: type(of: self)))
+        super.init(nibName: "FaceDetectionAlertController", bundle: ResourceHelper.bundle)
     }
     
     required init?(coder aDecoder: NSCoder) {
