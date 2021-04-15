@@ -1,4 +1,4 @@
-![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID-UI.svg)
+![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID)
 
 # Ver-ID UI for iOS
 
