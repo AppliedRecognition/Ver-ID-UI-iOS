@@ -8,12 +8,10 @@
 
 import Foundation
 
-public class ResourceHelper {
+class ResourceHelper {
     
-    public static let bundle: Bundle = {
-        guard let frameworkBundle = Bundle(identifier: "com.appliedrec.verid.ui2") else {
-            preconditionFailure()
-        }
+    static let bundle: Bundle = {
+        let frameworkBundle = Bundle(for: ResourceHelper.self)
         guard let veriduiBundleURL = frameworkBundle.url(forResource: "VerIDUIResources", withExtension: "bundle") else {
             preconditionFailure()
         }
