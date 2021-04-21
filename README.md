@@ -1,14 +1,15 @@
 ![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID-UI.svg)
 
-# Ver-ID UI for iOS
+# Ver-ID SDK for iOS
 
 ## Prerequisites
-Minimum iOS version is 11.0.
+Minimum iOS version is 10.3.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
 - [Xcode 11.0](https://itunes.apple.com/us/app/xcode/id497799835) or newer
 - [Git](https://git-scm.com)
+- [Git LFS](https://git-lfs.github.com)
 - [CocoaPods](https://cocoapods.org)
 
 ## Installation
