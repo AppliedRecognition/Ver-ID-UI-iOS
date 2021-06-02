@@ -9,9 +9,10 @@
 import UIKit
 import VerIDCore
 import VerIDUI
+import AVFoundation
 import MobileCoreServices
 
-class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate {
+class IntroViewController: UIPageViewController, UIPageViewControllerDataSource, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate, SessionDiagnosticsViewControllerDelegate {
     
     lazy var introViewControllers: [UIViewController] = {
         guard let storyboard = self.storyboard else {
@@ -87,27 +88,6 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         importViewController.url = url
         importViewController.delegate = self
         self.navigationController?.pushViewController(importViewController, animated: true)
-//        RegistrationImport.importFromURL(url, verid: verid) { error in
-//            if error == nil {
-//                guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "start") as? MainViewController else {
-//                    return
-//                }
-//                self.navigationController?.viewControllers = [mainViewController]
-//            } else {
-//                let alert = UIAlertController(title: "Registration import failed", message: error?.localizedDescription, preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .default))
-//                self.present(alert, animated: true)
-//            }
-//        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let codeScanViewController = segue.destination as? QRCodeScanViewController {
-//            codeScanViewController.delegate = self
-//        } else if let importViewController = segue.destination as? RegistrationImportViewController, let registrationData = sender as? RegistrationData, let image = registrationData.profilePicture {
-//            importViewController.image = UIImage(cgImage: image)
-//            importViewController.faceTemplates = registrationData.faceTemplates
-//        }
     }
     
     // MARK: -
@@ -123,12 +103,10 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
             return
         }
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        settings.isSessionDiagnosticsEnabled = true
         let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting {
-            session.imageProviderFactory = TestImageProviderServiceFactory()
-            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
-            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: settings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
         }
         session.delegate = self
@@ -157,35 +135,56 @@ class IntroViewController: UIPageViewController, UIPageViewControllerDataSource,
         return 0
     }
     
+    // MARK: - Session diagnostics view controller delegate
+    
+    private var uploadedToS3 = false
+    
+    var applicationActivities: [UIActivity]? {
+        if !uploadedToS3, let activity = try? S3UploadActivity(bucket: "ver-id") {
+            return [activity]
+        }
+        return nil
+    }
+    
+    var activityCompletionHandler: UIActivityViewController.CompletionWithItemsHandler? {
+        { activityType, completed, items, error in
+            if activityType == .some(.s3Upload) {
+                self.uploadedToS3 = completed
+            }
+        }
+    }
+    
     // MARK: - Ver-ID Session Delegate
     
-    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
+    func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
+        self.uploadedToS3 = false
         Globals.updateProfilePictureFromSessionResult(result)
         if result.error == nil {
             Globals.deleteImagesInSessionResult(result)
         }
-        guard let storyboard = self.storyboard else {
-            return
-        }
-        var viewControllers: [UIViewController] = []
-        guard let mainViewController = storyboard.instantiateViewController(withIdentifier: "start") as? MainViewController else {
-            return
-        }
-        viewControllers.append(mainViewController)
         if result.error != nil {
-            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "result") as? SessionResultViewController else {
+            let viewController = SessionDiagnosticsViewController.create(sessionResultPackage: SessionResultPackage(verID: session.environment, settings: session.settings, result: result))
+            viewController.delegate = self
+            viewController.title = "Registration Failed"
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            guard let mainViewController = self.storyboard?.instantiateViewController(withIdentifier: "start") as? MainViewController else {
                 return
             }
-            viewController.sessionResult = result
-            viewController.sessionTime = Date()
-            viewController.sessionSettings = session.settings
-            viewController.title = "Registration Failed"
-            viewControllers.append(viewController)
+            self.navigationController?.setViewControllers([mainViewController], animated: true)
         }
-        self.navigationController?.setViewControllers(viewControllers, animated: false)
     }
     
-    func sessionWasCanceled(_ session: VerIDSession) {
-        
+    func shouldRecordVideoOfSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.enableVideoRecording
     }
+    
+    func shouldSpeakPromptsInSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.speakPrompts
+    }
+    
+    func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
+        UserDefaults.standard.useBackCamera ? .back : .front
+    }
+    
 }

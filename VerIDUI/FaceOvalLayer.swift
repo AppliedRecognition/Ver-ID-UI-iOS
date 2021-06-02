@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VerIDCore
 
 /// Layer that's drawn on the camera preview to outline the detected face
 public class FaceOvalLayer: CALayer {
@@ -17,6 +18,12 @@ public class FaceOvalLayer: CALayer {
     private(set) var backgroundColour: UIColor
     private(set) var angle: CGFloat?
     private(set) var distance: CGFloat?
+    
+    public var faceLandmarks: [CGPoint] = [] {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
     
     override init(layer: Any) {
         if let ovalLayer = layer as? FaceOvalLayer {
@@ -39,12 +46,21 @@ public class FaceOvalLayer: CALayer {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public func setOvalBounds(_ ovalBounds: CGRect, cutoutBounds: CGRect?, backgroundColour: UIColor, strokeColour: UIColor, faceLandmarks: [CGPoint], angle: CGFloat?, distance: CGFloat?) {
+        self.ovalBounds = ovalBounds
+        self.cutoutBounds = cutoutBounds
+        self.backgroundColour = backgroundColour
+        self.strokeColor = strokeColour
+        self.faceLandmarks = faceLandmarks
+        self.angle = angle
+        self.distance = distance
+        self.setNeedsDisplay()
+    }
+    
     public func setOvalBounds(_ ovalBounds: CGRect, cutoutBounds: CGRect?, angle: CGFloat?, distance: CGFloat?, strokeColour: UIColor? = nil) {
         self.ovalBounds = ovalBounds
         self.cutoutBounds = cutoutBounds
-        if strokeColour != nil {
-            self.strokeColor = strokeColour!
-        }
+        self.strokeColor = strokeColour ?? self.strokeColor
         self.angle = angle
         self.distance = distance
         self.setNeedsDisplay()
@@ -76,6 +92,17 @@ public class FaceOvalLayer: CALayer {
         self.addSublayer(shapeLayer)
         if let angle = self.angle, let distance = self.distance {
             self.drawArrow(in: self.ovalBounds, angle: angle, distance: distance * 1.7)
+        }
+        if !self.faceLandmarks.isEmpty {
+            let landmarkRadius: CGFloat = 2
+            self.faceLandmarks.forEach({ landmark in
+                let path = UIBezierPath(ovalIn: CGRect(x: landmark.x - landmarkRadius, y: landmark.y - landmarkRadius, width: landmarkRadius * 2, height: landmarkRadius * 2))
+                let shapeLayer = CAShapeLayer()
+                shapeLayer.fillColor = UIColor.cyan.cgColor
+                shapeLayer.strokeColor = nil
+                shapeLayer.path = path.cgPath
+                self.addSublayer(shapeLayer)
+            })
         }
     }
     

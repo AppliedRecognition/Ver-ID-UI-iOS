@@ -325,7 +325,7 @@ import AVFoundation
         guard self.videoDataOutput != nil else {
             return
         }
-        assert(self.videoDataOutput!.availableVideoPixelFormatTypes.contains(pixelFormatType))
+//        assert(self.videoDataOutput!.availableVideoPixelFormatTypes.contains(pixelFormatType))
         self.videoDataOutput!.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as String): pixelFormatType]
     }
     

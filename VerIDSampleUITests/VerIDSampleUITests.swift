@@ -83,18 +83,21 @@ class VerIDSampleUITests: XCTestCase {
         self.testImportRegistration()
         app.navigationBars["Ver-ID Sample"].buttons["Share"].tap()
         
-        XCTAssertTrue(app.cells["Copy"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["Copy"].waitForExistence(timeout: 5))
         
-        app.cells["Copy"].tap()
+        app.buttons["Copy"].tap()
         
-        XCTAssertTrue(UIPasteboard.general.items.contains(where: { $0.keys.contains("com.appliedrec.verid.registration") }))
+        // Should really be observing changeCount on the pasteboard but it doesn't seem to work in a test
+        sleep(2)
+        
+        let regKey: String? = UIPasteboard.general.items.first?.keys.first
+        XCTAssertNotNil(regKey)
+        XCTAssertEqual(regKey, "com.appliedrec.verid.registration")
     }
     
     func testAuthenticate() {
         self.testImportRegistration()
         app.buttons["Authenticate"].tap()
-        
-        app.sheets.firstMatch.buttons["English"].tap()
         
         XCTAssertTrue(app.navigationBars["Success"].waitForExistence(timeout: 30))
     }
@@ -104,8 +107,6 @@ class VerIDSampleUITests: XCTestCase {
         self.testImportRegistration()
         app.buttons["Authenticate"].tap()
         
-        app.sheets.firstMatch.buttons["English"].tap()
-        
         XCTAssertTrue(app.navigationBars["Session Failed"].waitForExistence(timeout: 30))
     }
     
@@ -113,8 +114,6 @@ class VerIDSampleUITests: XCTestCase {
         app.launchArguments.append("--cancel-authentication")
         self.testImportRegistration()
         app.buttons["Authenticate"].tap()
-        
-        app.sheets.firstMatch.buttons["English"].tap()
         
         app.swipeDown()
         

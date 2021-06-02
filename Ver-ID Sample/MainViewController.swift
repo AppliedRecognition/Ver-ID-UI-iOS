@@ -9,9 +9,13 @@
 import UIKit
 import VerIDCore
 import VerIDUI
+import AVFoundation
 import MobileCoreServices
 
-class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate {
+class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPickerDelegate, RegistrationImportDelegate, SessionDiagnosticsViewControllerDelegate {
+    
+    let maxRetryCount = 3
+    var sessionRunCount = 0
     
     // MARK: - Interface builder views
 
@@ -23,7 +27,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     /// Settings to use for user registration
     var registrationSettings: RegistrationSessionSettings {
         let settings = RegistrationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
+        settings.isSessionDiagnosticsEnabled = true
         return settings
     }
     
@@ -84,11 +88,10 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         guard let verid = Globals.verid else {
             return
         }
+        sessionRunCount = 0
         let session = VerIDSession(environment: verid, settings: self.registrationSettings)
         if Globals.isTesting {
-            session.imageProviderFactory = TestImageProviderServiceFactory()
-            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
-            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: self.registrationSettings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: self.registrationSettings)
         }
         session.delegate = self
@@ -99,40 +102,15 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     ///
     /// - Parameter sender: Sender of the action
     @IBAction func authenticate(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Select language", message: nil, preferredStyle: .actionSheet)
-        alert.popoverPresentationController?.sourceView = sender
-        alert.addAction(UIAlertAction(title: "English", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "en")
-        }))
-        alert.addAction(UIAlertAction(title: "French", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "fr")
-        }))
-        alert.addAction(UIAlertAction(title: "Spanish", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "es")
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func startAuthenticationSession(language: String) {
-        let translatedStrings: TranslatedStrings?
-        if language == "fr", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "fr_CA", withExtension: "xml") {
-            translatedStrings = try? TranslatedStrings(url: url)
-        } else if language == "es", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "es_US", withExtension: "xml") {
-            translatedStrings = try? TranslatedStrings(url: url)
-        } else {
-            translatedStrings = nil
-        }
         guard let verid = Globals.verid else {
             return
         }
+        sessionRunCount = 0
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
-        settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
-        let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
+        settings.isSessionDiagnosticsEnabled = true
+        let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting && !Globals.shouldCancelAuthentication {
-            session.imageProviderFactory = TestImageProviderServiceFactory()
-            session.faceDetectionFactory = TestFaceDetectionServiceFactory()
-            session.resultEvaluationFactory = TestResultEvaluationServiceFactory()
+            session.sessionFunctions = TestSessionFunctions(verID: verid, sessionSettings: settings)
             session.sessionViewControllersFactory = TestSessionViewControllersFactory(settings: settings)
         }
         session.delegate = self
@@ -141,7 +119,8 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     
     // MARK: - Ver-ID Session Delegate
     
-    func session(_ session: VerIDSession, didFinishWithResult result: VerIDSessionResult) {
+    func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
+        self.uploadedToS3 = false
         if session.settings is RegistrationSessionSettings && result.error == nil {
             Globals.updateProfilePictureFromSessionResult(result)
             Globals.deleteImagesInSessionResult(result)
@@ -150,25 +129,56 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
         } else {
-            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "result") as? SessionResultViewController else {
-                return
-            }
-            viewController.sessionResult = result
-            viewController.sessionTime = Date()
-            viewController.sessionSettings = session.settings
+            let viewController = SessionDiagnosticsViewController.create(sessionResultPackage: SessionResultPackage(verID: session.environment, settings: session.settings, result: result))
             if result.error != nil {
                 viewController.title = "Session Failed"
             } else {
                 viewController.title = "Success"
             }
+            viewController.delegate = self
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
-    func sessionWasCanceled(_ session: VerIDSession) {
-        
+    func shouldRecordVideoOfSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.enableVideoRecording
     }
     
+    func shouldSpeakPromptsInSession(_ session: VerIDSession) -> Bool {
+        UserDefaults.standard.speakPrompts
+    }
+    
+    func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
+        UserDefaults.standard.useBackCamera ? .back : .front
+    }
+    
+    func shouldDisplayResult(_ result: VerIDSessionResult, ofSession session: VerIDSession) -> Bool {
+        return false
+    }
+    
+    func shouldRetrySession(_ session: VerIDSession, afterFailure error: Error) -> Bool {
+        sessionRunCount += 1
+        return sessionRunCount < maxRetryCount
+    }
+    
+    // MARK: - Session diagnostics view controller delegate
+    
+    private var uploadedToS3 = false
+    
+    var applicationActivities: [UIActivity]? {
+        if !uploadedToS3, let activity = try? S3UploadActivity(bucket: "ver-id") {
+            return [activity]
+        }
+        return nil
+    }
+    
+    var activityCompletionHandler: UIActivityViewController.CompletionWithItemsHandler? {
+        { activityType, completed, items, error in
+            if activityType == .some(.s3Upload) {
+                self.uploadedToS3 = completed
+            }
+        }
+    }
     
     // MARK: - Registration export
     

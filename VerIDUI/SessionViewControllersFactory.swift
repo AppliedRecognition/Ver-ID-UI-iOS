@@ -34,7 +34,7 @@ import VerIDCore
     ///   - faceDetectionResult: The face detection result that lead to the session failure
     /// - Returns: View controller that conforms to the `FaceDetectionAlertControllerProtocol` protocol
     /// - Throws: Error if the creation fails
-    @objc func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol
+    @objc func makeFaceDetectionAlertController(settings: VerIDSessionSettings, error: Error) throws -> UIViewController & FaceDetectionAlertControllerProtocol
 }
 
 public enum VerIDSessionViewControllersFactoryError: Int, Error {
@@ -51,7 +51,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
         self.translatedStrings = translatedStrings
     }
     
-    @objc open func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
+    open func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
         let viewController: VerIDViewController
         if self.settings is RegistrationSessionSettings {
             viewController = VerIDRegistrationViewController()
@@ -64,8 +64,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
-        let storyboard = UIStoryboard(name: "Result", bundle: bundle)
+        let storyboard = UIStoryboard(name: "Result", bundle: ResourceHelper.bundle)
         let storyboardId = result.error != nil ? "failure" : "success"
         guard let resultViewController = storyboard.instantiateViewController(withIdentifier: storyboardId) as? ResultViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
@@ -77,51 +76,61 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeTipsViewController() throws -> UIViewController & TipsViewControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
-        guard let tipsController = UIStoryboard(name: "Tips", bundle: bundle).instantiateInitialViewController() as? TipsViewController else {
+        guard let tipsController = UIStoryboard(name: "Tips", bundle: ResourceHelper.bundle).instantiateInitialViewController() as? TipsViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
         tipsController.translatedStrings = self.translatedStrings
         return tipsController
     }
     
-    @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
+    @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, error: Error) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
         let message: String
-        if faceDetectionResult.status == .faceTurnedTooFar {
+        let requestedBearing: Bearing
+        do {
+            throw error
+        } catch FacePresenceError.faceMovedTooFar(requestedBearing: let bearing) {
+            requestedBearing = bearing
             message = self.translatedStrings["You may have turned too far. Only turn in the requested direction until the oval turns green."]
-        } else if faceDetectionResult.status == .faceTurnedOpposite || faceDetectionResult.status == .faceLost {
+        } catch AntiSpoofingError.movedOpposite(requestedBearing: let bearing) {
+            requestedBearing = bearing
             message = self.translatedStrings["Turn your head in the direction of the arrow"]
-        } else if faceDetectionResult.status == .movedTooFast {
+        } catch AntiSpoofingError.movedTooFast(requestedBearing: let bearing) {
+            requestedBearing = bearing
             message = self.translatedStrings["Please turn slowly"]
-        } else {
-            throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
+        } catch VerIDSessionError.faceIsCovered {
+            requestedBearing = .straight
+            message = self.translatedStrings["Please remove face coverings"]
         }
+        
         let density = UIScreen.main.scale
         let densityInt = density > 2 ? 3 : 2
         let videoFileName: String
-        switch faceDetectionResult.requestedBearing {
-        case .left:
-            videoFileName = "left"
-        case .right:
-            videoFileName = "right"
-        case .down:
-            videoFileName = "down"
-        case .up:
-            videoFileName = "up"
-        case .rightUp:
-            videoFileName = "right_up"
-        case .rightDown:
-            videoFileName = "right_down"
-        case .leftDown:
-            videoFileName = "left_down"
-        case .leftUp:
-            videoFileName = "left_up"
-        default:
-            videoFileName = "up_to_centre"
+        if case VerIDSessionError.faceIsCovered = error {
+            videoFileName = "face_mask_off"
+        } else {
+            switch requestedBearing {
+            case .left:
+                videoFileName = "left"
+            case .right:
+                videoFileName = "right"
+            case .down:
+                videoFileName = "down"
+            case .up:
+                videoFileName = "up"
+            case .rightUp:
+                videoFileName = "right_up"
+            case .rightDown:
+                videoFileName = "right_down"
+            case .leftDown:
+                videoFileName = "left_down"
+            case .leftUp:
+                videoFileName = "left_up"
+            default:
+                videoFileName = "up_to_centre"
+            }
         }
         let videoName = String(format: "%@_%d", videoFileName, densityInt)
-        let url = bundle.url(forResource: videoName, withExtension: "mp4")
+        let url = ResourceHelper.bundle.url(forResource: videoName, withExtension: "mp4")
         let controller = FaceDetectionAlertController(message: message, videoURL: url)
         controller.translatedStrings = self.translatedStrings
         return controller

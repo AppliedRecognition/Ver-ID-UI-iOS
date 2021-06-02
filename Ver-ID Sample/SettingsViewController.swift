@@ -17,9 +17,11 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     @IBOutlet var templateEncryptionCell: UITableViewCell!
     @IBOutlet var speakPromptsCell: UITableViewCell!
     @IBOutlet var backCameraCell: UITableViewCell!
+    @IBOutlet var recordSessionVideoCell: UITableViewCell!
     @IBOutlet var versionCell: UITableViewCell!
     @IBOutlet var faceWidthFractionCell: UITableViewCell!
     @IBOutlet var faceHeightFractionCell: UITableViewCell!
+    @IBOutlet var faceCoveringDetectionCell: UITableViewCell!
     
     enum Section: Int, CaseIterable {
         case about, security, faceDetection, registration, accessibility, camera
@@ -82,7 +84,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             return 0
         }
         switch sectionEnum {
-        case .about, .registration:
+        case .registration, .about, .camera, .faceDetection:
             return 2
         case .security:
             return 3
@@ -92,12 +94,18 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == Section.camera.rawValue && indexPath.row == 0 {
-            UserDefaults.standard.useBackCamera = !UserDefaults.standard.useBackCamera
+        if indexPath.section == Section.camera.rawValue {
+            if indexPath.row == 0 {
+                UserDefaults.standard.useBackCamera = !UserDefaults.standard.useBackCamera
+            } else if indexPath.row == 1 {
+                UserDefaults.standard.enableVideoRecording = !UserDefaults.standard.enableVideoRecording
+            }
         } else if indexPath.section == Section.registration.rawValue && indexPath.row == 1 {
             UserDefaults.standard.encryptFaceTemplates = !UserDefaults.standard.encryptFaceTemplates
         } else if indexPath.section == Section.accessibility.rawValue && indexPath.row == 0 {
             UserDefaults.standard.speakPrompts = !UserDefaults.standard.speakPrompts
+        } else if indexPath.section == Section.faceDetection.rawValue && indexPath.row == 1 {
+            UserDefaults.standard.enableFaceCoveringDetection = !UserDefaults.standard.enableFaceCoveringDetection
         } else {
             return
         }
@@ -137,10 +145,13 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         self.registrationFaceCountCell.detailTextLabel?.text = registrationPoseCount > 1 ? String(format: "%d faces", registrationPoseCount) : "1 face"
         let useBackCamera = UserDefaults.standard.useBackCamera
         backCameraCell.accessoryType = useBackCamera ? .checkmark : .none
+        let recordSessionVideo = UserDefaults.standard.enableVideoRecording
+        recordSessionVideoCell.accessoryType = recordSessionVideo ? .checkmark : .none
         let speakPrompts = UserDefaults.standard.speakPrompts
         speakPromptsCell.accessoryType = speakPrompts ? .checkmark : .none
         let encryptTemplates = UserDefaults.standard.encryptFaceTemplates
         templateEncryptionCell.accessoryType = encryptTemplates ? .checkmark : .none
+        faceCoveringDetectionCell.accessoryType = UserDefaults.standard.enableFaceCoveringDetection ? .checkmark : .none
     }
     
     // MARK: - Security profile

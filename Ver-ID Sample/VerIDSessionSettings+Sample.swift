@@ -15,10 +15,9 @@ extension RegistrationSessionSettings {
         self.init(userId: userId)
         yawThreshold = CGFloat(userDefaults.yawThreshold)
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
-        speakPrompts = userDefaults.speakPrompts
-        useFrontCamera = !userDefaults.useBackCamera
-        numberOfResultsToCollect = userDefaults.registrationFaceCount
-        faceBoundsFraction = CGSize(width: CGFloat(userDefaults.faceWidthFraction), height: CGFloat(userDefaults.faceHeightFraction))
+        faceCaptureCount = userDefaults.registrationFaceCount
+        expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
+        isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
     }
 }
 
@@ -28,9 +27,8 @@ extension AuthenticationSessionSettings {
         self.init(userId: userId)
         yawThreshold = CGFloat(userDefaults.yawThreshold)
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
-        speakPrompts = userDefaults.speakPrompts
-        useFrontCamera = !userDefaults.useBackCamera
-        numberOfResultsToCollect = userDefaults.poseCount
-        faceBoundsFraction = CGSize(width: CGFloat(userDefaults.faceWidthFraction), height: CGFloat(userDefaults.faceHeightFraction))
+        faceCaptureCount = userDefaults.poseCount
+        expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
+        isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
     }
 }

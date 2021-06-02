@@ -30,6 +30,9 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var messageLabelBackgroundView: UIView!
     @IBOutlet var videoView: UIView!
+    @IBOutlet var imagesView: UIView!
+    @IBOutlet var mainImageView: UIImageView!
+    @IBOutlet var strikeThroughImageView: UIImageView!
     @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var tipsButton: UIBarButtonItem!
     @IBOutlet var retryButton: UIBarButtonItem!
@@ -38,6 +41,8 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     
     let message: String?
     let videoURL: URL?
+    let image: UIImage?
+    let showStrikeThrough: Bool
     var delegate: FaceDetectionAlertControllerDelegate?
     var looper: Any?
     var translatedStrings: TranslatedStrings?
@@ -46,7 +51,17 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     public init(message: String?, videoURL: URL?) {
         self.message = message
         self.videoURL = videoURL
-        super.init(nibName: "FaceDetectionAlertController", bundle: Bundle(for: type(of: self)))
+        self.image = nil
+        self.showStrikeThrough = false
+        super.init(nibName: "FaceDetectionAlertController", bundle: ResourceHelper.bundle)
+    }
+    
+    public init(message: String?, image: UIImage, showStrikeThrough: Bool = false) {
+        self.message = message
+        self.videoURL = nil
+        self.image = image
+        self.showStrikeThrough = showStrikeThrough
+        super.init(nibName: "FaceDetectionAlertController", bundle: ResourceHelper.bundle)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,8 +80,16 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
         } else {
             self.stackView.removeArrangedSubview(self.messageLabelBackgroundView)
         }
-        if self.videoURL == nil {
+        if self.videoURL == nil && self.image == nil {
             self.stackView.removeArrangedSubview(self.videoView)
+        }
+        if self.videoURL != nil {
+            self.imagesView.removeFromSuperview()
+        } else if let image = self.image {
+            self.mainImageView.image = image
+            if !self.showStrikeThrough {
+                self.strikeThroughImageView.removeFromSuperview()
+            }
         }
     }
     

@@ -75,6 +75,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "useBackCamera")
         }
     }
+    var enableVideoRecording: Bool {
+        get {
+            self.bool(forKey: "enableVideoRecording")
+        }
+        set {
+            self.set(newValue, forKey: "enableVideoRecording")
+        }
+    }
     var speakPrompts: Bool {
         get {
             self.bool(forKey: "speakPrompts")
@@ -107,6 +115,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "faceHeightFraction")
         }
     }
+    @objc dynamic var enableFaceCoveringDetection: Bool {
+        get {
+            self.bool(forKey: "enableFaceCoveringDetection")
+        }
+        set {
+            self.set(newValue, forKey: "enableFaceCoveringDetection")
+        }
+    }
     
     func registerVerIDDefaults() {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
@@ -118,13 +134,15 @@ extension UserDefaults {
             "pitchThreshold": securitySettingsPreset.pitchThreshold,
             "authenticationThreshold": securitySettingsPreset.authThreshold,
             "useBackCamera": false,
+            "enableVideoRecording": false,
             "speakPrompts": false,
             "encryptFaceTemplates": true,
-            "registrationFaceCount": registrationSettings.numberOfResultsToCollect,
+            "registrationFaceCount": registrationSettings.faceCaptureCount,
             "confidenceThreshold": faceDetectionSettingsPreset.confidenceThreshold,
             "faceTemplateExtractionThreshold": faceDetectionSettingsPreset.templateExtractionThreshold,
-            "faceWidthFraction": registrationSettings.faceBoundsFraction.width,
-            "faceHeightFraction": registrationSettings.faceBoundsFraction.height
+            "faceWidthFraction": registrationSettings.expectedFaceExtents.proportionOfViewWidth,
+            "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
+            "enableFaceCoveringDetection": true
         ])
     }
 }

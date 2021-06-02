@@ -8,8 +8,9 @@
 
 import UIKit
 import VerIDCore
+import VerIDSDKIdentity
 
-class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate, RegistrationImportDelegate {
+class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDelegate {
 
     // MARK: - Instance variables
 
@@ -63,10 +64,21 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate,
         Globals.verid = nil
         navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
         // Load Ver-ID
-        // Ver-ID API password is read from the app's Info.plist
-        let veridFactory = VerIDFactory(userDefaults: UserDefaults.standard)
-        veridFactory.delegate = self
-        veridFactory.createVerID()
+        VerIDFactory(userDefaults: UserDefaults.standard).createVerID { result in
+            guard case .success(let verid) = result else {
+                self.displayError()
+                return
+            }
+            throw FaceDetectionError.faceNotFound
+            Globals.verid = verid
+            if Globals.isTesting, let users = try? verid.userManagement.users(), !users.isEmpty {
+                verid.userManagement.deleteUsers(users) { _ in
+                    self.loadInitialViewController()
+                }
+                return
+            }
+            self.loadInitialViewController()
+        }
     }
 
     func displayError() {
@@ -75,24 +87,6 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate,
         }
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "error")
         navigationController.setViewControllers([initialViewController], animated: false)
-    }
-    
-    // MARK: - Ver-ID Factory Delegate
-    
-    func veridFactory(_ factory: VerIDFactory, didCreateVerID instance: VerID) {
-        instance.faceRecognition.authenticationScoreThreshold = NSNumber(value: UserDefaults.standard.authenticationThreshold)
-        Globals.verid = instance
-        if Globals.isTesting {
-            if let users = try? instance.userManagement.users() {
-                if !users.isEmpty {
-                    instance.userManagement.deleteUsers(users) { _ in
-                        self.loadInitialViewController()
-                    }
-                    return
-                }
-            }
-        }
-        self.loadInitialViewController()
     }
     
     private func loadInitialViewController() {
@@ -116,9 +110,5 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, VerIDFactoryDelegate,
         }
         // Replace the root in the navigation view controller.
         navigationController.setViewControllers([initialViewController], animated: false)
-    }
-    
-    func veridFactory(_ factory: VerIDFactory, didFailWithError error: Error) {
-        self.displayError()
     }
 }
