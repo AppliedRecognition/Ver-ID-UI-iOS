@@ -65,18 +65,19 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
         navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
         // Load Ver-ID
         VerIDFactory(userDefaults: UserDefaults.standard).createVerID { result in
-            if case .success(let verid) = result {
-                Globals.verid = verid
-                if Globals.isTesting, let users = try? verid.userManagement.users(), !users.isEmpty {
-                    verid.userManagement.deleteUsers(users) { _ in
-                        self.loadInitialViewController()
-                    }
-                    return
-                }
-                self.loadInitialViewController()
-            } else {
+            guard case .success(let verid) = result else {
                 self.displayError()
+                return
             }
+            throw FaceDetectionError.faceNotFound
+            Globals.verid = verid
+            if Globals.isTesting, let users = try? verid.userManagement.users(), !users.isEmpty {
+                verid.userManagement.deleteUsers(users) { _ in
+                    self.loadInitialViewController()
+                }
+                return
+            }
+            self.loadInitialViewController()
         }
     }
 
