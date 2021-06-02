@@ -85,11 +85,19 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
             do {
                 // Only report every hundredth of progress to avoid overwhelming the UI thread
                 let reportingIndex = Int(roundf(Float(facesToGenerate) / 100))
-                let defaultUserFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
+                var defaultUserFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
+                let version: VerIDFaceTemplateVersion
+                if defaultUserFaces.contains(where: { $0.version == RecognitionFace.Version.v20Unencrypted.rawValue }) {
+                    version = .V20
+                    defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.v20Unencrypted.rawValue })
+                } else {
+                    version = .V16
+                    defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.unencrypted.rawValue })
+                }
                 let faces = UnsafeMutablePointer<Recognizable>.allocate(capacity: facesToGenerate + defaultUserFaces.count)
                 DispatchQueue.concurrentPerform(iterations: facesToGenerate) { i in
                     do {
-                        let template = try faceRec.generateRandomFaceTemplate()
+                        let template = try faceRec.generateRandomFaceTemplate(version: version)
                         faces[i] = template
                         if i % reportingIndex == 0 {
                             DispatchQueue.main.async {
