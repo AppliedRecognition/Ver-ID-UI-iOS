@@ -22,6 +22,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     @IBOutlet var faceWidthFractionCell: UITableViewCell!
     @IBOutlet var faceHeightFractionCell: UITableViewCell!
     @IBOutlet var faceCoveringDetectionCell: UITableViewCell!
+    @IBOutlet var v20MigrationCell: UITableViewCell!
     
     enum Section: Int, CaseIterable {
         case about, security, faceDetection, registration, accessibility, camera
@@ -35,6 +36,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     var faceTemplateExtractionThresholdObservation: NSKeyValueObservation?
     var faceTemplateEncryptionObservation: NSKeyValueObservation?
     var authenticationThresholdObservation: NSKeyValueObservation?
+    var v20MigrationObservation: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         self.authenticationThresholdObservation = UserDefaults.standard.observe(\.authenticationThreshold, options: [.new]) { userDefaults, _ in
             Globals.verid?.faceRecognition.authenticationScoreThreshold = NSNumber(value: userDefaults.authenticationThreshold)
         }
+        self.v20MigrationObservation = UserDefaults.standard.observe(\.enableV20FaceTemplateMigration, options: [.new], changeHandler: self.defaultsChangeHandler)
     }
     
     func defaultsChangeHandler<T>(_ defaults: UserDefaults,_ change: NSKeyValueObservedChange<T>) {
@@ -67,6 +70,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             self.faceTemplateExtractionThresholdObservation = nil
             self.faceTemplateEncryptionObservation = nil
             self.authenticationThresholdObservation = nil
+            self.v20MigrationObservation = nil
             if self.isDirty {
                 (UIApplication.shared.delegate as? AppDelegate)?.reload()
             }
@@ -84,9 +88,9 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             return 0
         }
         switch sectionEnum {
-        case .registration, .about, .camera, .faceDetection:
+        case .about, .camera, .faceDetection:
             return 2
-        case .security:
+        case .registration, .security:
             return 3
         default:
             return 1
@@ -106,6 +110,8 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             UserDefaults.standard.speakPrompts = !UserDefaults.standard.speakPrompts
         } else if indexPath.section == Section.faceDetection.rawValue && indexPath.row == 1 {
             UserDefaults.standard.enableFaceCoveringDetection = !UserDefaults.standard.enableFaceCoveringDetection
+        } else if indexPath.section == Section.registration.rawValue && indexPath.row == 2 {
+            UserDefaults.standard.enableV20FaceTemplateMigration = !UserDefaults.standard.enableV20FaceTemplateMigration
         } else {
             return
         }
@@ -152,6 +158,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         let encryptTemplates = UserDefaults.standard.encryptFaceTemplates
         templateEncryptionCell.accessoryType = encryptTemplates ? .checkmark : .none
         faceCoveringDetectionCell.accessoryType = UserDefaults.standard.enableFaceCoveringDetection ? .checkmark : .none
+        v20MigrationCell.accessoryType = UserDefaults.standard.enableV20FaceTemplateMigration ? .checkmark : .none
     }
     
     // MARK: - Security profile

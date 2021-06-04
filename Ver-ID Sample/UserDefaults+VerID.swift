@@ -123,6 +123,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "enableFaceCoveringDetection")
         }
     }
+    @objc dynamic var enableV20FaceTemplateMigration: Bool {
+        get {
+            self.bool(forKey: "enableV20FaceTemplateMigration")
+        }
+        set {
+            self.set(newValue, forKey: "enableV20FaceTemplateMigration")
+        }
+    }
     
     func registerVerIDDefaults() {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
@@ -142,7 +150,8 @@ extension UserDefaults {
             "faceTemplateExtractionThreshold": faceDetectionSettingsPreset.templateExtractionThreshold,
             "faceWidthFraction": registrationSettings.expectedFaceExtents.proportionOfViewWidth,
             "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
-            "enableFaceCoveringDetection": true
+            "enableFaceCoveringDetection": false,
+            "enableV20FaceTemplateMigration": false
         ])
     }
 }

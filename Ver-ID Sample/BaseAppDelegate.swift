@@ -69,7 +69,6 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
                 self.displayError()
                 return
             }
-            throw FaceDetectionError.faceNotFound
             Globals.verid = verid
             if Globals.isTesting, let users = try? verid.userManagement.users(), !users.isEmpty {
                 verid.userManagement.deleteUsers(users) { _ in

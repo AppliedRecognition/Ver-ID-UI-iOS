@@ -87,7 +87,8 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
                 let reportingIndex = Int(roundf(Float(facesToGenerate) / 100))
                 var defaultUserFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
                 let version: VerIDFaceTemplateVersion
-                if defaultUserFaces.contains(where: { $0.version == RecognitionFace.Version.v20Unencrypted.rawValue }) {
+                let defaultVersion = (verid.faceRecognition as? VerIDFaceRecognition)?.defaultFaceTemplateVersion ?? .V16
+                if defaultVersion == .V20 && defaultUserFaces.contains(where: { $0.version == RecognitionFace.Version.v20Unencrypted.rawValue }) {
                     version = .V20
                     defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.v20Unencrypted.rawValue })
                 } else {

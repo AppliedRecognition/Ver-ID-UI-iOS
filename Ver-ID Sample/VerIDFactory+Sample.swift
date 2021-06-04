@@ -16,8 +16,9 @@ extension VerIDFactory {
         let detRecFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil)
         detRecFactory.settings.confidenceThreshold = userDefaults.confidenceThreshold
         detRecFactory.settings.faceExtractQualityThreshold = userDefaults.faceTemplateExtractionThreshold
+        detRecFactory.defaultFaceTemplateVersion = userDefaults.enableV20FaceTemplateMigration ? .V20 : .V16
         self.faceDetectionFactory = detRecFactory
         self.faceRecognitionFactory = detRecFactory
-        self.userManagementFactory = VerIDUserManagementFactory(disableEncryption: !userDefaults.encryptFaceTemplates || Globals.isTesting)
+        self.userManagementFactory = VerIDUserManagementFactory(disableEncryption: !userDefaults.encryptFaceTemplates || Globals.isTesting, isAutomaticFaceTemplateMigrationEnabled: userDefaults.enableV20FaceTemplateMigration)
     }
 }
