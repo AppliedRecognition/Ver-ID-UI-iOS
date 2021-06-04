@@ -27,5 +27,6 @@ FOUNDATION_EXPORT const unsigned char VerIDCoreVersionString[];
 #import "Errors.h"
 #import "TrackingSession.h"
 #import "VerIDImageQualityDetection.h"
+#import "VerIDFaceTemplateVersion.h"
 
 #endif

@@ -13,8 +13,10 @@
 #import "TrackingSession.h"
 #import "VerIDRecognizable.h"
 #import "VerIDImageFormat.h"
+#import "VerIDFaceTemplateVersion.h"
 
 @class VerIDFace;
+@class VerIDRecognizableFace;
 @class VerIDEulerAngle;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -94,13 +96,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param error Error pointer to failure
  @return Face suitable for face recognition
  */
-- (nullable NSData *) extractTemplateFromFace:(VerIDFace *)face
+- (nullable VerIDRecognizableFace *) extractTemplateFromFace:(VerIDFace *)face
                                 inImageBuffer:(unsigned char *)imageBuffer
                                         width:(int)width
                                        height:(int)height
                                   bytesPerRow:(unsigned int)bytesPerRow
                                   imageFormat:(VerIDImageFormat)imageFormat
                               exifOrientation:(int)exifOrientation
+                              templateVersion:(VerIDFaceTemplateVersion)templateVersion
                                         error:(NSError **)error;
 
 - (float) extractFaceMaskAttributeFromFace:(VerIDFace *)face
@@ -152,11 +155,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSArray<NSNumber *> *) rawTemplateFromTemplateData:(NSData *)templateData
                                                          error:(NSError **)error;
 
-- (nullable NSData *) generateFaceTemplate:(NSError **)error;
+- (nullable NSData *) generateFaceTemplateWithVersion:(VerIDFaceTemplateVersion)version
+                                                error:(NSError **)error;
 
 - (nullable NSData *) generateFaceTemplateWithScore:(NSNumber *)score
                                         againstFace:(id<VerIDRecognizable>)face
                                               error:(NSError **)error;
+
+- (nullable NSNumber *) getFaceTemplateVersionFromTemplateData:(NSData *)templateData
+                                                         error:(NSError **)error;
 
 @end
 
