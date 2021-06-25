@@ -103,48 +103,89 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2L5-AZ-rGK">
                                 <rect key="frame" x="0.0" y="164" width="320" height="404"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OXh-Ly-TQn">
-                                        <rect key="frame" x="75.5" y="101.5" width="169" height="201"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dB-jK-JMC">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="404"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWt-SU-8ff">
-                                                <rect key="frame" x="0.0" y="0.0" width="169" height="48"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                <state key="normal" title="Authenticate"/>
-                                                <connections>
-                                                    <action selector="authenticate:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="3SX-Kq-UnX"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-As-QjX">
-                                                <rect key="frame" x="0.0" y="64" width="169" height="35"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                <state key="normal" title="Register more faces"/>
-                                                <connections>
-                                                    <action selector="register:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="cAx-Bd-PCk"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4V4-ef-yln">
-                                                <rect key="frame" x="0.0" y="115" width="169" height="35"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                <state key="normal" title="Import more faces"/>
-                                                <connections>
-                                                    <action selector="importRegistration:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="lCY-Sm-Te2"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-Uk-oKe">
-                                                <rect key="frame" x="0.0" y="166" width="169" height="35"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                <state key="normal" title="Identification demo"/>
-                                                <connections>
-                                                    <segue destination="JfR-Cn-OK2" kind="show" id="YkE-de-odF"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OXh-Ly-TQn">
+                                                <rect key="frame" x="0.0" y="64" width="320" height="252"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWt-SU-8ff">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                        <state key="normal" title="Authenticate"/>
+                                                        <connections>
+                                                            <action selector="authenticate:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="3SX-Kq-UnX"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qb8-As-QjX">
+                                                        <rect key="frame" x="0.0" y="64" width="320" height="35"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                        <state key="normal" title="Register more faces"/>
+                                                        <connections>
+                                                            <action selector="register:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="cAx-Bd-PCk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4V4-ef-yln">
+                                                        <rect key="frame" x="0.0" y="115" width="320" height="35"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                        <state key="normal" title="Import more faces"/>
+                                                        <connections>
+                                                            <action selector="importRegistration:" destination="lDi-Y0-Nst" eventType="touchUpInside" id="lCY-Sm-Te2"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Yz-gw-uF8">
+                                                        <rect key="frame" x="0.0" y="166" width="320" height="35"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                        <state key="normal" title="Kiosk demo"/>
+                                                        <connections>
+                                                            <segue destination="YpR-ui-w1e" kind="show" id="PVT-5L-2S8"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiP-Uk-oKe">
+                                                        <rect key="frame" x="0.0" y="217" width="320" height="35"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                        <state key="normal" title="Identification demo"/>
+                                                        <connections>
+                                                            <segue destination="JfR-Cn-OK2" kind="show" id="YkE-de-odF"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
-                                    </stackView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="OXh-Ly-TQn" secondAttribute="trailing" id="2TT-cp-jss"/>
+                                            <constraint firstItem="OXh-Ly-TQn" firstAttribute="top" secondItem="3dB-jK-JMC" secondAttribute="top" constant="16" id="9W4-nm-Pb1"/>
+                                            <constraint firstItem="OXh-Ly-TQn" firstAttribute="top" secondItem="vWW-hz-rgI" secondAttribute="top" constant="64" id="VOv-ox-Zk6"/>
+                                            <constraint firstItem="OXh-Ly-TQn" firstAttribute="centerX" secondItem="3dB-jK-JMC" secondAttribute="centerX" id="a63-YP-fjW"/>
+                                            <constraint firstAttribute="bottom" secondItem="OXh-Ly-TQn" secondAttribute="bottom" constant="82" id="eqd-Bi-Zb3"/>
+                                            <constraint firstItem="OXh-Ly-TQn" firstAttribute="leading" secondItem="3dB-jK-JMC" secondAttribute="leading" id="jvj-ci-QKm"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="J9R-Ht-Vl4"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="vWW-hz-rgI"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="9W4-nm-Pb1"/>
+                                                <exclude reference="VOv-ox-Zk6"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="9W4-nm-Pb1"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular">
+                                            <mask key="constraints">
+                                                <include reference="VOv-ox-Zk6"/>
+                                            </mask>
+                                        </variation>
+                                    </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="OXh-Ly-TQn" firstAttribute="centerY" secondItem="2L5-AZ-rGK" secondAttribute="centerY" id="Jzl-Jh-A8n"/>
-                                    <constraint firstItem="OXh-Ly-TQn" firstAttribute="centerX" secondItem="2L5-AZ-rGK" secondAttribute="centerX" id="mMa-ZW-9cy"/>
+                                    <constraint firstItem="3dB-jK-JMC" firstAttribute="leading" secondItem="2L5-AZ-rGK" secondAttribute="leading" id="Ptt-6f-0ee"/>
+                                    <constraint firstAttribute="trailing" secondItem="3dB-jK-JMC" secondAttribute="trailing" id="cOz-wH-Wwk"/>
+                                    <constraint firstAttribute="bottom" secondItem="3dB-jK-JMC" secondAttribute="bottom" id="jVd-10-BrJ"/>
+                                    <constraint firstItem="3dB-jK-JMC" firstAttribute="top" secondItem="2L5-AZ-rGK" secondAttribute="top" id="sfK-Nc-zZW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -185,7 +226,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1065" y="151"/>
+            <point key="canvasLocation" x="1065" y="150"/>
         </scene>
         <!--Identification Demo-->
         <scene sceneID="XAJ-Q7-Whd">
@@ -203,18 +244,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faces to generate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M67-9y-zDB">
-                                <rect key="frame" x="16" y="67" width="190" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faces to generate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M67-9y-zDB">
+                                <rect key="frame" x="16" y="65" width="190" height="23"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bBR-p9-QON">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBR-p9-QON">
                                 <rect key="frame" x="0.0" y="111" width="320" height="457"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <string key="text">The app will generate the selected number of faces. It will then try to identify you, the registered user, among the generated and registered faces. This demonstrates the behaviour of Ver-ID under stress. Enter the number of faces you'd like to generate.</string>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EPK-lc-3mU">
@@ -712,6 +753,102 @@
             </objects>
             <point key="canvasLocation" x="2308" y="1014"/>
         </scene>
+        <!--Kiosk Demo-->
+        <scene sceneID="xMa-bC-fZX">
+            <objects>
+                <viewController id="2za-Sb-ujy" customClass="ContinuousLivenessViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GmA-Md-jIb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhm-aq-lfL">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please step in front of the camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gE-pb-oZE">
+                                        <rect key="frame" x="8" y="251.5" width="304" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5F8-DT-BZc">
+                                        <rect key="frame" x="105" y="199.5" width="110" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="2gE-pb-oZE" firstAttribute="leading" secondItem="bhm-aq-lfL" secondAttribute="leadingMargin" id="8JM-7F-oGd"/>
+                                    <constraint firstItem="2gE-pb-oZE" firstAttribute="top" secondItem="5F8-DT-BZc" secondAttribute="bottom" constant="16" id="GKb-8G-9fs"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="2gE-pb-oZE" secondAttribute="trailing" id="bgd-sA-HSx"/>
+                                    <constraint firstItem="2gE-pb-oZE" firstAttribute="centerY" secondItem="bhm-aq-lfL" secondAttribute="centerY" id="m9R-c0-IDl"/>
+                                    <constraint firstItem="5F8-DT-BZc" firstAttribute="centerX" secondItem="bhm-aq-lfL" secondAttribute="centerX" id="qtN-36-q5v"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WEr-Si-KFk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bhm-aq-lfL" firstAttribute="top" secondItem="WEr-Si-KFk" secondAttribute="top" id="XJl-Qn-LiX"/>
+                            <constraint firstItem="bhm-aq-lfL" firstAttribute="trailing" secondItem="WEr-Si-KFk" secondAttribute="trailing" id="fho-nC-VSz"/>
+                            <constraint firstItem="bhm-aq-lfL" firstAttribute="leading" secondItem="WEr-Si-KFk" secondAttribute="leading" id="gLN-vx-p09"/>
+                            <constraint firstItem="bhm-aq-lfL" firstAttribute="bottom" secondItem="WEr-Si-KFk" secondAttribute="bottom" id="gMT-Xl-p9g"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Kiosk Demo" id="Dsa-jx-eaS"/>
+                    <connections>
+                        <outlet property="cameraOverlay" destination="bhm-aq-lfL" id="VDb-EC-zXe"/>
+                        <outlet property="instructionLabel" destination="2gE-pb-oZE" id="UjV-vh-1Xt"/>
+                        <outlet property="successLabel" destination="5F8-DT-BZc" id="31V-A3-KX4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S03-M7-N7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3737" y="1012"/>
+        </scene>
+        <!--Kiosk Demo-->
+        <scene sceneID="acP-e4-Gr2">
+            <objects>
+                <viewController id="YpR-ui-w1e" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uop-Yv-P5t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q4V-Lj-VtY">
+                                <rect key="frame" x="16" y="60" width="288" height="508"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="fuO-eV-3xV"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="a4q-bl-WqD"/>
+                                <string key="text">This demo shows how Ver-ID can be used to identify users in a kiosk setup. When the app detects a face in front of the camera it starts a Ver-ID session. Once the session finishes the user is asked to step away from the camera and the process starts again with the next person in the queue.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gbD-8S-G8q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="q4V-Lj-VtY" firstAttribute="top" secondItem="gbD-8S-G8q" secondAttribute="top" constant="16" id="374-ru-29e"/>
+                            <constraint firstItem="gbD-8S-G8q" firstAttribute="trailing" secondItem="q4V-Lj-VtY" secondAttribute="trailing" constant="16" id="IZG-uV-gI8"/>
+                            <constraint firstItem="q4V-Lj-VtY" firstAttribute="bottom" secondItem="gbD-8S-G8q" secondAttribute="bottom" id="JFM-X2-4Lx"/>
+                            <constraint firstItem="q4V-Lj-VtY" firstAttribute="leading" secondItem="gbD-8S-G8q" secondAttribute="leading" constant="16" id="S8b-Mt-Qbg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Kiosk Demo" id="SsV-qv-N7w">
+                        <barButtonItem key="backBarButtonItem" title="Demo Intro" id="v22-RF-RKe"/>
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="fxE-aQ-yog">
+                            <connections>
+                                <segue destination="2za-Sb-ujy" kind="show" id="5Os-xG-QtW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rck-RX-NgM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3037.5999999999999" y="1011.544227886057"/>
+        </scene>
         <!--Face Height-->
         <scene sceneID="MGs-2v-Q1x">
             <objects>
@@ -1047,11 +1184,11 @@
                                         <rect key="frame" x="0.0" y="684.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3VP-5i-nHz" id="JPo-Jw-Kpc">
-                                            <rect key="frame" x="0.0" y="0.0" width="283.5" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="346.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Speak prompts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ufl-S0-Lvz">
-                                                    <rect key="frame" x="16" y="0.0" width="259.5" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="323.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1068,11 +1205,11 @@
                                         <rect key="frame" x="0.0" y="778" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="diM-gp-sDN" id="9Hw-Vv-B2u">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Use back camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pbQ-Xq-PMl">
-                                                    <rect key="frame" x="15" y="0.0" width="297" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="352" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1085,11 +1222,11 @@
                                         <rect key="frame" x="0.0" y="821.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IgN-xm-aPk" id="Ox0-Ck-zHz">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Record session video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T7O-QS-M0a">
-                                                    <rect key="frame" x="15" y="0.0" width="297" height="43.5"/>
+                                                    <rect key="frame" x="15" y="0.0" width="352" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1406,7 +1543,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" prompt="Face Detection Profile" id="7F7-Re-sPp">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="3eW-p6-ath">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="3eW-p6-ath">
                             <rect key="frame" x="8" y="40" width="304" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>

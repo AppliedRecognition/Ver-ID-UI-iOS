@@ -65,10 +65,10 @@ import AVFoundation
         }
     }
     
-    var videoDataOutput: AVCaptureVideoDataOutput?
-    var metadataOutput: AVCaptureMetadataOutput?
+    open var videoDataOutput: AVCaptureVideoDataOutput?
+    open var metadataOutput: AVCaptureMetadataOutput?
     
-    var avCaptureVideoOrientation: AVCaptureVideoOrientation {
+    public var avCaptureVideoOrientation: AVCaptureVideoOrientation {
         switch UIApplication.shared.statusBarOrientation {
         case .portraitUpsideDown:
             return .portraitUpsideDown
