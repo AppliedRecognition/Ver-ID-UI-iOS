@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SpeechDelegate: class {
+protocol SpeechDelegate: AnyObject {
     
     func speak(_ text: String, language: String)
 }

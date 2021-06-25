@@ -11,7 +11,7 @@ import AVFoundation
 import VerIDCore
 
 /// Session delegate protocol
-@objc public protocol VerIDSessionDelegate: class {
+@objc public protocol VerIDSessionDelegate: AnyObject {
     /// Called when the session successfully finishes
     ///
     /// - Parameters:

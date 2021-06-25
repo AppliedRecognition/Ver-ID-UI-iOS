@@ -186,6 +186,6 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
 
 }
 
-protocol SecuritySettingsDelegate: class {
+protocol SecuritySettingsDelegate: AnyObject {
     func securitySettingsViewController(_ securitySettingsViewController: SecuritySettingsViewController, didSetProfile profile: String)
 }

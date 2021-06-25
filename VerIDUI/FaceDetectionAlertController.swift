@@ -20,7 +20,7 @@ import AVFoundation
 }
 
 /// Protocol for alert controller that is displayed when a session fails and the user is allowed to retry
-@objc public protocol FaceDetectionAlertControllerProtocol: class {
+@objc public protocol FaceDetectionAlertControllerProtocol: AnyObject {
     /// Controller delegate
     @objc var delegate: FaceDetectionAlertControllerDelegate? { get set }
 }
@@ -156,7 +156,7 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
 }
 
 /// Protocol for delegates of alert controller that is displayed when a session fails and the user is allowed to retry
-@objc public protocol FaceDetectionAlertControllerDelegate: class {
+@objc public protocol FaceDetectionAlertControllerDelegate: AnyObject {
     /// Called when the user closes the alert dialog
     ///
     /// - Parameters:

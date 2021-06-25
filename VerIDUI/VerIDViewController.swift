@@ -16,7 +16,7 @@ import RxCocoa
 import RxSwift
 
 /// Ver-ID view controller protocol – displays the Ver-ID session progress
-@objc public protocol VerIDViewControllerProtocol: class {
+@objc public protocol VerIDViewControllerProtocol: AnyObject {
     /// View controller delegate
     @objc var delegate: VerIDViewControllerDelegate? { get set }
     @objc var sessionSettings: VerIDSessionSettings? { get set }

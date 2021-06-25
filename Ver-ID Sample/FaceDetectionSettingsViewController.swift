@@ -153,6 +153,6 @@ class FaceDetectionSettingsViewController: UITableViewController, ValueSelection
 }
 
 
-protocol FaceDetectionSettingsDelegate: class {
+protocol FaceDetectionSettingsDelegate: AnyObject {
     func faceDetectionSettingsViewController(_ faceDetectionSettingsViewController: FaceDetectionSettingsViewController, didSetProfile profile: String)
 }

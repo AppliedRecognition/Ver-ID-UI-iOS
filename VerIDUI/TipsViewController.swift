@@ -108,7 +108,7 @@ import UIKit
 }
 
 /// Tips view controller delegate
-@objc public protocol TipsViewControllerDelegate: class {
+@objc public protocol TipsViewControllerDelegate: AnyObject {
     /// Called when the user the tips view controller
     ///
     /// - Parameter viewController: View controller that was dismissed
@@ -116,7 +116,7 @@ import UIKit
 }
 
 /// Tips view controller protocol
-@objc public protocol TipsViewControllerProtocol: class {
+@objc public protocol TipsViewControllerProtocol: AnyObject {
     /// Tips view controller delegate
     @objc var tipsViewControllerDelegate: TipsViewControllerDelegate? { get set }
 }

@@ -93,7 +93,7 @@ class RegistrationImportViewController: UIViewController {
     }
 }
 
-protocol RegistrationImportDelegate: class {
+protocol RegistrationImportDelegate: AnyObject {
     func registrationImportViewController(_ registrationImportViewController: RegistrationImportViewController, didImportRegistrationFromURL url: URL)
     func registrationImportViewController(_ registrationImportViewController: RegistrationImportViewController, didFailToImportRegistration error: Error)
     func didCancelImportInRegistrationImportViewController(_ registrationImportViewController: RegistrationImportViewController)

@@ -280,7 +280,7 @@ import AVFoundation
     
 }
 
-public protocol SessionDiagnosticsViewControllerDelegate: class {
+public protocol SessionDiagnosticsViewControllerDelegate: AnyObject {
     
     var applicationActivities: [UIActivity]? { get }
     

@@ -11,13 +11,13 @@ import AVKit
 import VerIDCore
 
 /// Protocol for view controller that shows the results of Ver-ID sessions
-@objc public protocol ResultViewControllerProtocol: class {
+@objc public protocol ResultViewControllerProtocol: AnyObject {
     /// Result view controller delegate
     @objc var delegate: ResultViewControllerDelegate? { get set }
 }
 
 /// Result view controller delegate
-@objc public protocol ResultViewControllerDelegate: class {
+@objc public protocol ResultViewControllerDelegate: AnyObject {
     /// Called when the user cancels the session after reviewing the result
     ///
     /// - Parameter viewController: View controller from which the session was canceled

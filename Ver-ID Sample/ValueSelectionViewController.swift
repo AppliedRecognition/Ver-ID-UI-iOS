@@ -96,6 +96,6 @@ class ValueSelectionViewController: UITableViewController {
 
 }
 
-protocol ValueSelectionDelegate: class {
+protocol ValueSelectionDelegate: AnyObject {
     func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValue value: String, atIndex index: Int)
 }

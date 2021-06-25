@@ -11,7 +11,7 @@ import CoreMedia
 import VerIDCore
 
 /// Ver-ID view controller delegate protocol
-@objc public protocol VerIDViewControllerDelegate: class {
+@objc public protocol VerIDViewControllerDelegate: AnyObject {
     
     /// Called when the user cancels the session, e.g., by tapping the cancel button
     ///
