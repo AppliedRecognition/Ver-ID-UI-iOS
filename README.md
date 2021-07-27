@@ -20,10 +20,13 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	git clone https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git
 	cd Ver-ID-UI-iOS
 	pod install
+	git lfs install
+	git lfs pull
 	open VerIDUI.xcworkspace
 	~~~
 
 1. The **VerIDUI.xcworkspace** should now be open in **Xcode**.
+1. Change the Team setitng in the Signing & Capabilities tab for all the targets.
 1. You can now build and run the **Ver-ID Sample** target on your iOS device.
 
 ## Adding Ver-ID to your own project
