@@ -26,7 +26,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	~~~
 
 1. The **VerIDUI.xcworkspace** should now be open in **Xcode**.
-1. Change the Team setitng in the Signing & Capabilities tab for all the targets.
+1. Change the **Team** setting in the **Signing & Capabilities** tab for all the targets.
 1. You can now build and run the **Ver-ID Sample** target on your iOS device.
 
 ## Adding Ver-ID to your own project
