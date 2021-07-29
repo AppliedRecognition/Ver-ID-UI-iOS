@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ID Card Face Detection-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="IDCardFaceDetectionViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssp-nc-RsJ">
+                                <rect key="frame" x="16" y="104" width="382" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="YfP-RE-utO"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Phx-qm-Hnd"/>
+                                <mutableString key="text">This demo uses Ver-ID to detect a face on an ID card. Along with the detected face Ver-ID returns an authenticity score. The score indicates how confident Ver-ID is of the face image being genuine, e.g., not tampered with or pasted from another document.  The authenticity score machine-learning model is trained on Canadian driver's licences. Other ID cards may return unexpected authenticity scores.</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ssp-nc-RsJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="6Ga-b0-Z9Y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ssp-nc-RsJ" secondAttribute="trailing" constant="16" id="HKc-ra-vIC"/>
+                            <constraint firstItem="ssp-nc-RsJ" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="16" id="U3B-r8-DJG"/>
+                            <constraint firstItem="ssp-nc-RsJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="dad-zq-LRn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ID Card Face Detection" id="g0a-5W-fco">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="cjK-wK-h2S"/>
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="8Kc-M6-tng">
+                            <connections>
+                                <action selector="selectImage:" destination="Y6W-OH-hqX" id="COV-mH-0N3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <segue destination="GEp-K5-hjH" kind="show" identifier="result" id="rKj-vV-jca"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="121.875"/>
+        </scene>
+        <!--ID Card Face Detection Result-->
+        <scene sceneID="9ot-KR-spk">
+            <objects>
+                <viewController id="GEp-K5-hjH" customClass="IDCardViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gbt-Nh-bCr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="aWv-d9-k1I">
+                                <rect key="frame" x="107" y="214" width="200" height="468"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4kf-58-vtw">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4kf-58-vtw" secondAttribute="height" multiplier="4:5" id="PND-6r-EgP"/>
+                                            <constraint firstAttribute="width" constant="200" id="PSI-wu-TJv"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haE-Yz-Plp">
+                                        <rect key="frame" x="70.5" y="282" width="59" height="30"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MMo-2w-NfU">
+                                        <rect key="frame" x="0.0" y="344" width="200" height="124"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MMo-2w-NfU" secondAttribute="height" multiplier="34:21" id="8T3-Kx-AyF"/>
+                                            <constraint firstAttribute="width" constant="200" id="xen-aM-cdM"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UAC-AW-lPv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aWv-d9-k1I" firstAttribute="centerX" secondItem="Gbt-Nh-bCr" secondAttribute="centerX" id="WXf-dI-0ar"/>
+                            <constraint firstItem="aWv-d9-k1I" firstAttribute="centerY" secondItem="Gbt-Nh-bCr" secondAttribute="centerY" id="zxE-ih-a5P"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ID Card Face Detection Result" id="s4R-aE-AZI"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="cardImageView" destination="MMo-2w-NfU" id="Fyo-6d-gLo"/>
+                        <outlet property="faceImageView" destination="4kf-58-vtw" id="Wb1-fH-OpF"/>
+                        <outlet property="scoreLabel" destination="haE-Yz-Plp" id="Ewh-DV-Ulr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASa-Eh-sg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965" y="122"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

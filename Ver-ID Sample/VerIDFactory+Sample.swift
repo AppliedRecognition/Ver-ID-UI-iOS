@@ -17,6 +17,9 @@ extension VerIDFactory {
         detRecFactory.settings.confidenceThreshold = userDefaults.confidenceThreshold
         detRecFactory.settings.faceExtractQualityThreshold = userDefaults.faceTemplateExtractionThreshold
         detRecFactory.defaultFaceTemplateVersion = userDefaults.enableV20FaceTemplateMigration ? .V20 : .V16
+        if let licenceModelPath = Bundle.main.path(forResource: "license01-20210720ay-vh2ukei%2200-q08", ofType: "nv", inDirectory: "Resources") {
+            detRecFactory.additionalFaceClassifiers.append(Classifier(name: "license01", filename: licenceModelPath))
+        }
         self.faceDetectionFactory = detRecFactory
         self.faceRecognitionFactory = detRecFactory
         self.userManagementFactory = VerIDUserManagementFactory(disableEncryption: !userDefaults.encryptFaceTemplates || Globals.isTesting, isAutomaticFaceTemplateMigrationEnabled: userDefaults.enableV20FaceTemplateMigration)
