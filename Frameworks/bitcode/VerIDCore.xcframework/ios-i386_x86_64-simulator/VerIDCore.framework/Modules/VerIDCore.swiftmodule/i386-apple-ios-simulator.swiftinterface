@@ -188,6 +188,14 @@ extension ObservableType {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc(VerIDClassifier) public class Classifier : ObjectiveC.NSObject {
+  @objc final public let name: Swift.String
+  @objc final public let filename: Swift.String?
+  @objc public static let faceCovering: VerIDCore.Classifier
+  @objc public init(name: Swift.String, filename: Swift.String? = nil)
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc(VerIDRecognizableFace) public class RecognizableFace : VerIDCore.Face, VerIDCore.Recognizable {
   @objc public var recognitionData: Foundation.Data
   @objc public var version: Swift.Int32
@@ -360,7 +368,6 @@ public class FunctionCallReport : VerIDCore.Transaction {
       get
     }
   }
-  public static func versionsFromTemplateVersion(_ templateVersion: VerIDCore.VerIDFaceTemplateVersion) -> [Swift.Int32]
   @objc public var recognitionData: Foundation.Data
   @objc public var version: Swift.Int32
   @objc public init(recognitionData: Foundation.Data)
@@ -583,16 +590,17 @@ public enum VerIDImageWriterServiceError : Swift.Error {
     get
   }
 }
-@objc public class VerIDFaceDetectionRecognitionFactory : ObjectiveC.NSObject, VerIDCore.FaceDetectionFactory, VerIDCore.FaceRecognitionFactory {
+@_inheritsConvenienceInitializers @objc public class VerIDFaceDetectionRecognitionFactory : ObjectiveC.NSObject, VerIDCore.FaceDetectionFactory, VerIDCore.FaceRecognitionFactory {
   final public let apiSecret: Swift.String?
   final public let settings: VerIDCore.DetRecLibSettings
   @objc public var faceDetectionImageProcessors: [VerIDCore.ImageProcessorService]
   @objc public var faceRecognitionImageProcessors: [VerIDCore.ImageProcessorService]
   @objc public var defaultFaceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion
+  @objc public var additionalFaceClassifiers: [VerIDCore.Classifier]
   @objc public init(apiSecret: Swift.String?, settings: VerIDCore.DetRecLibSettings? = nil)
+  @objc override convenience dynamic public init()
   @objc public func createFaceDetection() throws -> VerIDCore.FaceDetection
   @objc public func createFaceRecognition() throws -> VerIDCore.FaceRecognition
-  @objc override dynamic public init()
   @objc deinit
 }
 @objc public enum VerIDFaceDetectionRecognitionFactoryError : Swift.Int, Swift.Error {
@@ -644,6 +652,8 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   case unexpectedFaceDetectionResultStatus
   case faceMissing
   case unsupportedFaceTemplateVersion
+  case userMissingRequiredFaceTemplates
+  case faceTemplateVersionMismatch
   public var errorDescription: Swift.String? {
     get
   }
@@ -672,6 +682,8 @@ public enum FaceDetectionError : Swift.Error {
 }
 @objc public enum FaceRecognitionError : Swift.Int, Swift.Error {
   case templateExtractionFailed
+  case multipleSubjectFaceVersions
+  case multipleChallengeFaceVersions
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public static var _nsErrorDomain: Swift.String {
@@ -779,6 +791,11 @@ public enum VerIDSessionError : Foundation.CustomNSError {
     get
   }
   public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+extension Recognizable {
+  public var faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion {
     get
   }
 }
@@ -1003,7 +1020,7 @@ public typealias Face = VerIDCore.VerIDFace
   @objc final public let verid: VerIDCore.VerID
   @objc public init(verid: VerIDCore.VerID)
   @objc public func identifyUsersInFace(_ face: VerIDCore.Recognizable) throws -> [Swift.String : Swift.Float]
-  @objc public func findFacesSimilarTo(_ face: VerIDCore.Recognizable, in faces: [VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) -> [VerIDCore.FaceWithScore]
+  @objc public func findFacesSimilarTo(_ face: VerIDCore.Recognizable, in faces: [VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) throws -> [VerIDCore.FaceWithScore]
   public func findFacesSimilarTo(_ face: VerIDCore.Recognizable, in faces: [VerIDCore.Recognizable], threshold: Swift.Float? = nil, progress: Foundation.Progress? = nil, completion: @escaping (Swift.Result<[VerIDCore.FaceWithScore], Swift.Error>) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
@@ -1063,6 +1080,11 @@ public struct EnvironmentSettings : Swift.Encodable {
   @objc public var imageProcessors: [VerIDCore.ImageProcessorService]
   @objc public func detectFacesInImage(_ image: VerIDCore.VerIDImage, limit: Swift.Int32, options: Swift.UInt) throws -> [VerIDCore.Face]
   @objc public func startFaceTracking() -> VerIDCore.FaceTracking
+  @objc public func extractAttributeFromFace(_ face: VerIDCore.Face, image: VerIDCore.VerIDImage, using classifier: Swift.String) throws -> Foundation.NSNumber
+  @objc public var faceAttributeClassifiers: [Swift.String] {
+    @objc get
+    @objc set
+  }
   @objc override dynamic public init()
   @objc deinit
 }

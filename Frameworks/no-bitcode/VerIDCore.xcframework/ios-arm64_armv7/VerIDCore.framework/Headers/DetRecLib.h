@@ -18,6 +18,7 @@
 @class VerIDFace;
 @class VerIDRecognizableFace;
 @class VerIDEulerAngle;
+@class VerIDClassifier;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -115,6 +116,16 @@ NS_ASSUME_NONNULL_BEGIN
                            exifOrientation:(int)exifOrientation
                                      error:(NSError **)error;
 
+- (float) extractFaceAttributeFromFace:(VerIDFace *)face
+                         inImageBuffer:(unsigned char *)imageBuffer
+                                 width:(int)width
+                                height:(int)height
+                           bytesPerRow:(unsigned int)bytesPerRow
+                           imageFormat:(VerIDImageFormat)imageFormat
+                       exifOrientation:(int)exifOrientation
+                       usingClassifier:(NSString *)classifier
+                                 error:(NSError **)error;
+
 /**
  Compare subject's faces to other faces
 
@@ -164,6 +175,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSNumber *) getFaceTemplateVersionFromTemplateData:(NSData *)templateData
                                                          error:(NSError **)error;
+
+- (void) loadClassifier:(VerIDClassifier *)classifier;
+
+- (NSArray<NSString *> *)classifiers;
 
 @end
 

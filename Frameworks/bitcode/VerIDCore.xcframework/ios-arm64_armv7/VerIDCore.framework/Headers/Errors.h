@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, VerIDErrorCode) {
     VerIDErrorCodeUnsupportedImageFormat,
     VerIDErrorCodeFaceAttributeExtractionFailed,
     VerIDErrorCodeFaceTemplateGenerationFailed,
+    VerIDErrorCodeInvalidClassifier
 };
 
 #define kVerIDErrorDomain @"com.appliedrec.verid"

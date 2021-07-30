@@ -345,6 +345,39 @@ typedef SWIFT_ENUM_NAMED(NSInteger, VerIDBearing, "Bearing", open) {
   VerIDBearingLeftUp = 8,
 };
 
+
+/// Face attribute classifier
+/// since:
+/// 2.2.0
+SWIFT_CLASS_NAMED("Classifier")
+@interface VerIDClassifier : NSObject
+/// Classifier name
+/// since:
+/// 2.2.0
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// Classifier file name
+/// note:
+/// If <code>nil</code>the application will attempt to load the model file prefixed with the classifier name from the VerIDModels folder
+/// since:
+/// 2.2.0
+@property (nonatomic, readonly, copy) NSString * _Nullable filename;
+/// Face covering detection classifier
+/// note:
+/// This classifier is supplied with the Ver-ID SDK by default. You don’t need to load it at library initialization.
+/// since:
+/// 2.2.0
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) VerIDClassifier * _Nonnull faceCovering;)
++ (VerIDClassifier * _Nonnull)faceCovering SWIFT_WARN_UNUSED_RESULT;
+/// Classifier constructor
+/// \param name Classifier name
+///
+/// \param filename Classifier file name or <code>nil</code> to let the application load the model file prefixed with the classifier name from the VerIDModels folder
+///
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name filename:(NSString * _Nullable)filename OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 typedef SWIFT_ENUM(NSInteger, DatabaseError, open) {
   DatabaseErrorFailedToOpenDatabase = 0,
   DatabaseErrorFailedToPrepareStatement = 1,
@@ -557,6 +590,8 @@ SWIFT_PROTOCOL_NAMED("FaceRecognition")
 
 typedef SWIFT_ENUM(NSInteger, FaceRecognitionError, open) {
   FaceRecognitionErrorTemplateExtractionFailed = 0,
+  FaceRecognitionErrorMultipleSubjectFaceVersions = 1,
+  FaceRecognitionErrorMultipleChallengeFaceVersions = 2,
 };
 static NSString * _Nonnull const FaceRecognitionErrorDomain = @"VerIDCore.FaceRecognitionError";
 
@@ -1009,7 +1044,7 @@ SWIFT_CLASS_NAMED("UserIdentification")
 /// returns:
 /// Dictionary with IDs of identified users and the score of the match
 - (NSDictionary<NSString *, NSNumber *> * _Nullable)identifyUsersInFace:(id <VerIDRecognizable> _Nonnull)face error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
-- (NSArray<FaceWithScore *> * _Nonnull)findFacesSimilarTo:(id <VerIDRecognizable> _Nonnull)face in:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces threshold:(NSNumber * _Nullable)threshold SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<FaceWithScore *> * _Nullable)findFacesSimilarTo:(id <VerIDRecognizable> _Nonnull)face in:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces threshold:(NSNumber * _Nullable)threshold error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1113,6 +1148,8 @@ typedef SWIFT_ENUM(NSInteger, VerIDError, open) {
   VerIDErrorUnexpectedFaceDetectionResultStatus = 13,
   VerIDErrorFaceMissing = 14,
   VerIDErrorUnsupportedFaceTemplateVersion = 15,
+  VerIDErrorUserMissingRequiredFaceTemplates = 16,
+  VerIDErrorFaceTemplateVersionMismatch = 17,
 };
 static NSString * _Nonnull const VerIDErrorDomain = @"VerIDCore.VerIDError";
 
@@ -1153,6 +1190,28 @@ SWIFT_CLASS("_TtC9VerIDCore18VerIDFaceDetection")
 /// returns:
 /// Face tracking session
 - (id <VerIDFaceTracking> _Nonnull)startFaceTracking SWIFT_WARN_UNUSED_RESULT;
+/// Extract an attribute from face
+/// note:
+/// The SDK comes with face covering classifier. To specify this classifier set the classifier argument to <code>Classifier.faceCovering.name</code>. Other classifiers must be added to the <code>VerIDFaceDetectionRecognitionFactory</code> before creating <code>VerID</code> using <code>VerIDFactory</code>.
+/// since:
+/// 2.2.0
+/// \param face Face from which to extract the attribute
+///
+/// \param image Image in which the face was detected
+///
+/// \param classifier Classifier to use for extracting the attribute (see note below)
+///
+///
+/// throws:
+/// Exception if the extraction fails
+///
+/// returns:
+/// NSNumber containing a score float with value between from 0–1
+- (NSNumber * _Nullable)extractAttributeFromFace:(VerIDFace * _Nonnull)face image:(VerIDImage * _Nonnull)image using:(NSString * _Nonnull)classifier error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// Return an array of available face attribute classifiers
+/// since:
+/// 2.2.0
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull faceAttributeClassifiers;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1174,12 +1233,20 @@ SWIFT_CLASS("_TtC9VerIDCore36VerIDFaceDetectionRecognitionFactory")
 /// since:
 /// 2.1.0
 @property (nonatomic) VerIDFaceTemplateVersion defaultFaceTemplateVersion;
+/// Additional face attribute classifiers to load at library initialization
+/// since:
+/// 2.2.0
+@property (nonatomic, copy) NSArray<VerIDClassifier *> * _Nonnull additionalFaceClassifiers;
 /// Constructor
 /// \param apiSecret Ver-ID API secret or <code>nil</code> to use secret specified in the app’s Info.plist
 ///
 /// \param settings Detection/recognition library settings or <code>nil</code> to use default
 ///
 - (nonnull instancetype)initWithApiSecret:(NSString * _Nullable)apiSecret settings:(DetRecLibSettings * _Nullable)settings OBJC_DESIGNATED_INITIALIZER;
+/// Constructor
+/// since:
+/// 2.2.0
+- (nonnull instancetype)init;
 /// Create an instance of <code>VerIDFaceDetection</code>
 ///
 /// throws:
@@ -1196,8 +1263,6 @@ SWIFT_CLASS("_TtC9VerIDCore36VerIDFaceDetectionRecognitionFactory")
 /// returns:
 /// Face recognition instance
 - (id <VerIDFaceRecognition> _Nullable)createFaceRecognitionAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 /// Face detection and recognition factory errors
@@ -2075,6 +2140,39 @@ typedef SWIFT_ENUM_NAMED(NSInteger, VerIDBearing, "Bearing", open) {
   VerIDBearingLeftUp = 8,
 };
 
+
+/// Face attribute classifier
+/// since:
+/// 2.2.0
+SWIFT_CLASS_NAMED("Classifier")
+@interface VerIDClassifier : NSObject
+/// Classifier name
+/// since:
+/// 2.2.0
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// Classifier file name
+/// note:
+/// If <code>nil</code>the application will attempt to load the model file prefixed with the classifier name from the VerIDModels folder
+/// since:
+/// 2.2.0
+@property (nonatomic, readonly, copy) NSString * _Nullable filename;
+/// Face covering detection classifier
+/// note:
+/// This classifier is supplied with the Ver-ID SDK by default. You don’t need to load it at library initialization.
+/// since:
+/// 2.2.0
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) VerIDClassifier * _Nonnull faceCovering;)
++ (VerIDClassifier * _Nonnull)faceCovering SWIFT_WARN_UNUSED_RESULT;
+/// Classifier constructor
+/// \param name Classifier name
+///
+/// \param filename Classifier file name or <code>nil</code> to let the application load the model file prefixed with the classifier name from the VerIDModels folder
+///
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name filename:(NSString * _Nullable)filename OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 typedef SWIFT_ENUM(NSInteger, DatabaseError, open) {
   DatabaseErrorFailedToOpenDatabase = 0,
   DatabaseErrorFailedToPrepareStatement = 1,
@@ -2287,6 +2385,8 @@ SWIFT_PROTOCOL_NAMED("FaceRecognition")
 
 typedef SWIFT_ENUM(NSInteger, FaceRecognitionError, open) {
   FaceRecognitionErrorTemplateExtractionFailed = 0,
+  FaceRecognitionErrorMultipleSubjectFaceVersions = 1,
+  FaceRecognitionErrorMultipleChallengeFaceVersions = 2,
 };
 static NSString * _Nonnull const FaceRecognitionErrorDomain = @"VerIDCore.FaceRecognitionError";
 
@@ -2739,7 +2839,7 @@ SWIFT_CLASS_NAMED("UserIdentification")
 /// returns:
 /// Dictionary with IDs of identified users and the score of the match
 - (NSDictionary<NSString *, NSNumber *> * _Nullable)identifyUsersInFace:(id <VerIDRecognizable> _Nonnull)face error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
-- (NSArray<FaceWithScore *> * _Nonnull)findFacesSimilarTo:(id <VerIDRecognizable> _Nonnull)face in:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces threshold:(NSNumber * _Nullable)threshold SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<FaceWithScore *> * _Nullable)findFacesSimilarTo:(id <VerIDRecognizable> _Nonnull)face in:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces threshold:(NSNumber * _Nullable)threshold error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2843,6 +2943,8 @@ typedef SWIFT_ENUM(NSInteger, VerIDError, open) {
   VerIDErrorUnexpectedFaceDetectionResultStatus = 13,
   VerIDErrorFaceMissing = 14,
   VerIDErrorUnsupportedFaceTemplateVersion = 15,
+  VerIDErrorUserMissingRequiredFaceTemplates = 16,
+  VerIDErrorFaceTemplateVersionMismatch = 17,
 };
 static NSString * _Nonnull const VerIDErrorDomain = @"VerIDCore.VerIDError";
 
@@ -2883,6 +2985,28 @@ SWIFT_CLASS("_TtC9VerIDCore18VerIDFaceDetection")
 /// returns:
 /// Face tracking session
 - (id <VerIDFaceTracking> _Nonnull)startFaceTracking SWIFT_WARN_UNUSED_RESULT;
+/// Extract an attribute from face
+/// note:
+/// The SDK comes with face covering classifier. To specify this classifier set the classifier argument to <code>Classifier.faceCovering.name</code>. Other classifiers must be added to the <code>VerIDFaceDetectionRecognitionFactory</code> before creating <code>VerID</code> using <code>VerIDFactory</code>.
+/// since:
+/// 2.2.0
+/// \param face Face from which to extract the attribute
+///
+/// \param image Image in which the face was detected
+///
+/// \param classifier Classifier to use for extracting the attribute (see note below)
+///
+///
+/// throws:
+/// Exception if the extraction fails
+///
+/// returns:
+/// NSNumber containing a score float with value between from 0–1
+- (NSNumber * _Nullable)extractAttributeFromFace:(VerIDFace * _Nonnull)face image:(VerIDImage * _Nonnull)image using:(NSString * _Nonnull)classifier error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// Return an array of available face attribute classifiers
+/// since:
+/// 2.2.0
+@property (nonatomic, copy) NSArray<NSString *> * _Nonnull faceAttributeClassifiers;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2904,12 +3028,20 @@ SWIFT_CLASS("_TtC9VerIDCore36VerIDFaceDetectionRecognitionFactory")
 /// since:
 /// 2.1.0
 @property (nonatomic) VerIDFaceTemplateVersion defaultFaceTemplateVersion;
+/// Additional face attribute classifiers to load at library initialization
+/// since:
+/// 2.2.0
+@property (nonatomic, copy) NSArray<VerIDClassifier *> * _Nonnull additionalFaceClassifiers;
 /// Constructor
 /// \param apiSecret Ver-ID API secret or <code>nil</code> to use secret specified in the app’s Info.plist
 ///
 /// \param settings Detection/recognition library settings or <code>nil</code> to use default
 ///
 - (nonnull instancetype)initWithApiSecret:(NSString * _Nullable)apiSecret settings:(DetRecLibSettings * _Nullable)settings OBJC_DESIGNATED_INITIALIZER;
+/// Constructor
+/// since:
+/// 2.2.0
+- (nonnull instancetype)init;
 /// Create an instance of <code>VerIDFaceDetection</code>
 ///
 /// throws:
@@ -2926,8 +3058,6 @@ SWIFT_CLASS("_TtC9VerIDCore36VerIDFaceDetectionRecognitionFactory")
 /// returns:
 /// Face recognition instance
 - (id <VerIDFaceRecognition> _Nullable)createFaceRecognitionAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 /// Face detection and recognition factory errors

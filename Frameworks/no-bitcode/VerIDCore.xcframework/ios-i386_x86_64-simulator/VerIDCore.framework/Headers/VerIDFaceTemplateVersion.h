@@ -11,7 +11,8 @@
 
 typedef NS_ENUM(NSInteger, VerIDFaceTemplateVersion) {
     VerIDFaceTemplateVersionV16 = 16,
-    VerIDFaceTemplateVersionV20 = 20
+    VerIDFaceTemplateVersionV20 = 20,
+    VerIDFaceTemplateVersionOther = -1
 };
 
 #endif /* VerIDFaceTemplateVersion_h */
