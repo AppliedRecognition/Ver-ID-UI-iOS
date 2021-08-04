@@ -12,6 +12,8 @@ Pod::Spec.new do |s|
     s.source = { :git => "https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git", :tag => "v#{s.version}" }
     s.default_subspecs = 'Core', 'UI'
     s.static_framework = true
+    s.cocoapods_version = ">= 1.10"
+    s.script_phase = { :name => "Check Ver-ID fully downloaded", :script => 'filesize=$(wc -c <"${PODS_XCFRAMEWORKS_BUILD_DIR}/VerIDCore/VerIDCore.framework/VerIDCore"); if [ $filesize -lt 1000000 ]; then echo "error: Ver-ID framework files not fully downloaded. Please install Git LFS, clear the Ver-ID pod cache using pod cache clean Ver-ID and run pod install."; exit 1; else echo "Ver-ID installed successfully"; fi', :execution_position => :before_compile }
     s.subspec 'UI' do |ss|
         ss.source_files = "VerIDUI/*.swift"
         ss.resource_bundles = { "VerIDUIResources" => ["VerIDUI/Resources/Video/*.mp4", "VerIDUI/Resources/Localization/*.xml", "VerIDUI/Resources/*.xcassets", "VerIDUI/Resources/**.{storyboard,xib}"] }
