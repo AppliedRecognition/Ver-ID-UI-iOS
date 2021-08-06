@@ -1020,6 +1020,7 @@ SWIFT_CLASS("_TtC9VerIDCore17SpoofingDetection")
 @end
 
 
+
 /// Identify users in an image
 /// since:
 /// 1.9.0
@@ -2813,6 +2814,7 @@ SWIFT_CLASS("_TtC9VerIDCore17SpoofingDetection")
 @interface SpoofingDetection : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
 
 
 /// Identify users in an image

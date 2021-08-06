@@ -8,7 +8,6 @@ import CoreAudio
 import CoreData
 import CoreGraphics
 import CoreMedia
-import DeviceKit
 import Foundation
 import MobileCoreServices
 import RxSwift
@@ -152,6 +151,11 @@ public class SessionDiagnostics : Swift.Codable {
   public func versionOfFaceTemplate(_ faceTemplate: VerIDCore.Recognizable) throws -> VerIDCore.VerIDFaceTemplateVersion
   @objc override dynamic public init()
   @objc deinit
+}
+extension UIDevice {
+  public var modelName: Swift.String {
+    get
+  }
 }
 @objc public class Session : ObjectiveC.NSObject {
   final public let verID: VerIDCore.VerID
