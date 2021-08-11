@@ -8,7 +8,7 @@ abstract_target 'Ver-ID' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'ZIPFoundation', '~> 0.9'
-  pod 'DeviceKit', '~> 4.1'
+  pod 'DeviceKit', '~> 4.4'
   pod 'Ver-ID-SDK-Identity', '~> 3.0'
   
   post_install do |installer|
