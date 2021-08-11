@@ -107,7 +107,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="404"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OXh-Ly-TQn">
-                                                <rect key="frame" x="0.0" y="64" width="320" height="303"/>
+                                                <rect key="frame" x="0.0" y="64" width="320" height="252"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWt-SU-8ff">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
@@ -147,14 +147,6 @@
                                                         <state key="normal" title="Identification demo"/>
                                                         <connections>
                                                             <segue destination="JfR-Cn-OK2" kind="show" id="YkE-de-odF"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCB-a0-hJM">
-                                                        <rect key="frame" x="0.0" y="268" width="320" height="35"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                        <state key="normal" title="ID card face detection demo"/>
-                                                        <connections>
-                                                            <segue destination="flc-4e-pN4" kind="show" identifier="idCardFaceDetection" id="f0Q-Ml-lbD"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -690,16 +682,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFG-YS-jAQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4097" y="152"/>
-        </scene>
-        <!--IDCardFaceDetection-->
-        <scene sceneID="HB9-Eo-dRc">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="IDCardFaceDetection" storyboardName="IDCardFaceDetection" id="flc-4e-pN4" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="DMj-Gq-rxt"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="paf-bJ-Wc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1786" y="665"/>
         </scene>
         <!--Registration Import-->
         <scene sceneID="puY-Ye-TCV">
