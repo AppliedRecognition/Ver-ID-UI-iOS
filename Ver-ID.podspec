@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
         ss.dependency "Ver-ID/Core"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
+        ss.dependency 'DeviceKit', '~> 4.4'
         ss.pod_target_xcconfig = {
             "ENABLE_BITCODE" => "YES"
         }
@@ -30,6 +31,7 @@ Pod::Spec.new do |s|
         ss.dependency "Ver-ID-SDK-Identity", "~> 3.0"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
+        ss.dependency 'DeviceKit', '~> 4.4'
         ss.vendored_framework = "Frameworks/bitcode/VerIDCore.xcframework"
     end
     s.subspec 'UI-no-bitcode' do |ss|
@@ -38,6 +40,7 @@ Pod::Spec.new do |s|
         ss.dependency "Ver-ID/Core-no-bitcode"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
+        ss.dependency 'DeviceKit', '~> 4.4'
         ss.pod_target_xcconfig = {
             "ENABLE_BITCODE" => "NO"
         }
@@ -48,6 +51,7 @@ Pod::Spec.new do |s|
         ss.dependency "Ver-ID-SDK-Identity", "~> 3.0"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
+        ss.dependency 'DeviceKit', '~> 4.4'
         ss.vendored_framework = "Frameworks/no-bitcode/VerIDCore.xcframework"
     end
 end
