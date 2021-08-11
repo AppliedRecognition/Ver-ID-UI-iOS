@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Other Enumerations  Reference</title>
+    <title>Other Classes  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Section/Other Enumerations" class="dashAnchor"></a>
-    <a title="Other Enumerations  Reference"></a>
+    <a name="//apple_ref/swift/Section/Other Classes" class="dashAnchor"></a>
+    <a title="Other Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">VerIDUI 2.2.1 Docs</a></p>
@@ -29,7 +29,7 @@
       <p id="breadcrumbs">
         <a href="index.html">VerIDUI Reference</a>
         <img id="carat" src="img/carat.png" />
-        Other Enumerations  Reference
+        Other Classes  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -120,8 +120,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Other Enumerations</h1>
-            <p>The following enumerations are available globally.</p>
+            <h1>Other Classes</h1>
+            <p>The following classes are available globally.</p>
 
           </section>
           <section class="section task-group-section">
@@ -130,9 +130,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@E@FaceDetectionAlertControllerAction"></a>
-                    <a name="//apple_ref/swift/Enum/FaceDetectionAlertControllerAction" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@E@FaceDetectionAlertControllerAction">FaceDetectionAlertControllerAction</a>
+                    <a name="/c:@M@VerIDUI@objc(cs)FaceOvalLayer"></a>
+                    <a name="//apple_ref/swift/Class/FaceOvalLayer" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)FaceOvalLayer">FaceOvalLayer</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -140,16 +140,105 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Action selected by the user to recover from the failure</p>
+                        <p>Layer that&rsquo;s drawn on the camera preview to outline the detected face</p>
 
-                        <a href="Enums/FaceDetectionAlertControllerAction.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">FaceOvalLayer</span> <span class="p">:</span> <span class="kt">CALayer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@VerIDUI@objc(cs)SessionDiagnosticsViewController"></a>
+                    <a name="//apple_ref/swift/Class/SessionDiagnosticsViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)SessionDiagnosticsViewController">SessionDiagnosticsViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View controller that displays the result of a session and facilitates sharing of session result packages</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    2.0.0
+
+</div>
+
+                        <a href="Classes/SessionDiagnosticsViewController.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">FaceDetectionAlertControllerAction</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">SessionDiagnosticsViewController</span> <span class="p">:</span> <span class="kt">UITableViewController</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@VerIDUI@objc(cs)TipsViewController"></a>
+                    <a name="//apple_ref/swift/Class/TipsViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)TipsViewController">TipsViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>View controller that shows tips</p>
+
+                        <a href="Classes/TipsViewController.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">TipsViewController</span> <span class="p">:</span> <span class="kt">UIPageViewController</span><span class="p">,</span> <span class="kt">UIPageViewControllerDataSource</span><span class="p">,</span> <span class="kt">UIPageViewControllerDelegate</span><span class="p">,</span> <span class="kt"><a href="Protocols/TipsViewControllerProtocol.html">TipsViewControllerProtocol</a></span><span class="p">,</span> <span class="kt">SpeechDelegatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@VerIDUI@objc(cs)VerIDRegistrationViewController"></a>
+                    <a name="//apple_ref/swift/Class/VerIDRegistrationViewController" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDRegistrationViewController">VerIDRegistrationViewController</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subclass of <code><a href="Classes/VerIDViewController.html">VerIDViewController</a></code> that displays faces collected during the session</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">VerIDRegistrationViewController</span> <span class="p">:</span> <span class="kt"><a href="Classes/VerIDViewController.html">VerIDViewController</a></span></code></pre>
 
                         </div>
                       </div>

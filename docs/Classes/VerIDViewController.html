@@ -8,13 +8,21 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Class/VerIDViewController" class="dashAnchor"></a>
     <a title="VerIDViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">VerIDUI Docs</a></p>
+        <p><a href="../index.html">VerIDUI 2.2.1 Docs</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -83,6 +91,23 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)FaceOvalLayer">FaceOvalLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SessionDiagnosticsViewController.html">SessionDiagnosticsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TipsViewController.html">TipsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)VerIDRegistrationViewController">VerIDRegistrationViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -98,8 +123,9 @@
             <h1>VerIDViewController</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">open</span> <span class="kd">class</span> <span class="kt">VerIDViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/CameraViewController.html">CameraViewController</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/VerIDViewControllerProtocol.html">VerIDViewControllerProtocol</a></span><span class="p">,</span> <span class="kt">AVCaptureVideoDataOutputSampleBufferDelegate</span></code></pre>
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">VerIDViewController</span> <span class="p">:</span> <span class="kt"><a href="../Classes/CameraViewController.html">CameraViewController</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/VerIDViewControllerProtocol.html">VerIDViewControllerProtocol</a></span><span class="p">,</span> <span class="kt">AVCaptureVideoDataOutputSampleBufferDelegate</span><span class="p">,</span> <span class="kt">SpeechDelegatable</span><span class="p">,</span> <span class="kt">ImagePublisher</span></code></pre>
 
                 </div>
               </div>
@@ -314,101 +340,6 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Drawing%20face%20guide%20oval%20and%20arrows"></a>
-                <a name="//apple_ref/swift/Section/Drawing face guide oval and arrows" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Drawing%20face%20guide%20oval%20and%20arrows"></a>
-                  <h3 class="section-name"><p>Drawing face guide oval and arrows</p>
-</h3>
-                </div>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7VerIDUI0A16IDViewControllerC18drawFaceFromResultyyXe_XeSo6CGRectVXetcACF"></a>
-                    <a name="//apple_ref/swift/Method/drawFaceFromResult(_:sessionResult:defaultFaceBounds:offsetAngleFromBearing:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7VerIDUI0A16IDViewControllerC18drawFaceFromResultyyXe_XeSo6CGRectVXetcACF">drawFaceFromResult(_:sessionResult:defaultFaceBounds:offsetAngleFromBearing:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Draw a face from the face detection result on top of the camera view</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">drawFaceFromResult</span><span class="p">(</span><span class="n">_</span> <span class="nv">faceDetectionResult</span><span class="p">:</span> <span class="kt">FaceDetectionResult</span><span class="p">,</span> <span class="nv">sessionResult</span><span class="p">:</span> <span class="kt">VerIDSessionResult</span><span class="p">,</span> <span class="n">defaultFaceBounds</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">,</span> <span class="nv">offsetAngleFromBearing</span><span class="p">:</span> <span class="kt">EulerAngle</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>faceDetectionResult</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Face detection result</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>sessionResult</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Interim session result</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>defaultFaceBounds</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Face bounds that will be displayed if no face is detected or before it&rsquo;s inside the oval</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>offsetAngleFromBearing</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Angle to use to draw the arrow showing the user where to move</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
                 <a name="/Sample%20Capture"></a>
                 <a name="//apple_ref/swift/Section/Sample Capture" class="dashAnchor"></a>
                 <div class="section-name-container">
@@ -423,7 +354,7 @@
                     <code>
                     <a name="/c:@M@VerIDUI@objc(cs)VerIDViewController(im)captureOutput:didOutputSampleBuffer:fromConnection:"></a>
                     <a name="//apple_ref/swift/Method/captureOutput(_:didOutput:from:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDViewController(im)captureOutput:didOutputSampleBuffer:fromConnection:">captureOutput(_:didOutput:from:)</a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDViewController(im)captureOutput:didOutputSampleBuffer:fromConnection:">captureOutput(_:<wbr>didOutput:<wbr>from:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -493,8 +424,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2020-02-26)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2021-08-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

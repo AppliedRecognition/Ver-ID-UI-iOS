@@ -8,13 +8,21 @@
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Protocol/VerIDSessionDelegate" class="dashAnchor"></a>
     <a title="VerIDSessionDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">VerIDUI Docs</a></p>
+        <p><a href="../index.html">VerIDUI 2.2.1 Docs</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -83,6 +91,23 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Other%20Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)FaceOvalLayer">FaceOvalLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SessionDiagnosticsViewController.html">SessionDiagnosticsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TipsViewController.html">TipsViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)VerIDRegistrationViewController">VerIDRegistrationViewController</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Other%20Enums.html">Other Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -98,8 +123,9 @@
             <h1>VerIDSessionDelegate</h1>
               <div class="declaration">
                 <div class="language">
+                  
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">VerIDSessionDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">VerIDSessionDelegate</span></code></pre>
 
                 </div>
               </div>
@@ -112,9 +138,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:7VerIDUI0A17IDSessionDelegateP7sessionyyAA0aC0C_XetcxAaBRzlF"></a>
-                    <a name="//apple_ref/swift/Method/session(_:didFinishWithResult:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7VerIDUI0A17IDSessionDelegateP7sessionyyAA0aC0C_XetcxAaBRzlF">session(_:didFinishWithResult:)</a>
+                    <a name="/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate(im)didFinishSession:withResult:"></a>
+                    <a name="//apple_ref/swift/Method/didFinishSession(_:withResult:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate(im)didFinishSession:withResult:">didFinishSession(_:<wbr>withResult:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -130,7 +156,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Classes/VerIDSession.html">VerIDSession</a></span><span class="p">,</span> <span class="n">didFinishWithResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">VerIDSessionResult</span><span class="p">)</span></code></pre>
+<span class="kd">func</span> <span class="nf">didFinishSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Classes/VerIDSession.html">VerIDSession</a></span><span class="p">,</span> <span class="n">withResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">VerIDSessionResult</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -171,9 +197,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate(im)sessionWasCanceled:"></a>
-                    <a name="//apple_ref/swift/Method/sessionWasCanceled(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate(im)sessionWasCanceled:">sessionWasCanceled(_:)</a>
+                    <a name="/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate(im)didCancelSession:"></a>
+                    <a name="//apple_ref/swift/Method/didCancelSession(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@VerIDUI@objc(pl)VerIDSessionDelegate(im)didCancelSession:">didCancelSession(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -189,7 +215,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">func</span> <span class="nf">sessionWasCanceled</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Classes/VerIDSession.html">VerIDSession</a></span><span class="p">)</span></code></pre>
+<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">didCancelSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt"><a href="../Classes/VerIDSession.html">VerIDSession</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -220,8 +246,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2020-02-26)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2021 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2021-08-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
