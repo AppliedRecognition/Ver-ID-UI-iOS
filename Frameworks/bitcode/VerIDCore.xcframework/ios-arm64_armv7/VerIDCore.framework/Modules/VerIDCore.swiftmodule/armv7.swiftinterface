@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
 // swift-module-flags: -target armv7-apple-ios10.3 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDCore
 import AVFoundation
 import Accelerate
@@ -8,6 +8,7 @@ import CoreAudio
 import CoreData
 import CoreGraphics
 import CoreMedia
+import DeviceKit
 import Foundation
 import MobileCoreServices
 import RxSwift
@@ -86,8 +87,8 @@ import os.signpost
   @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
   override public func encode(to encoder: Swift.Encoder) throws
-  @objc override public init(maxDuration: Foundation.TimeInterval = super, faceCaptureCount: Swift.Int = super)
   @objc deinit
+  @objc override public init(maxDuration: Foundation.TimeInterval = super, faceCaptureCount: Swift.Int = super)
 }
 @objc(VerIDAuthenticationSessionSettings) public class AuthenticationSessionSettings : VerIDCore.LivenessDetectionSessionSettings {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
@@ -95,8 +96,8 @@ import os.signpost
   @objc public init(userId: Swift.String)
   required public init(from decoder: Swift.Decoder) throws
   override public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc(VerIDRegistrationSessionSettings) public class RegistrationSessionSettings : VerIDCore.VerIDSessionSettings {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
@@ -106,9 +107,9 @@ import os.signpost
   @objc public init(userId: Swift.String, showResult: Swift.Bool = false)
   required public init(from decoder: Swift.Decoder) throws
   override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
   @objc override dynamic public init()
   @objc override public init(maxDuration: Foundation.TimeInterval = super, faceCaptureCount: Swift.Int = super)
-  @objc deinit
 }
 @available(*, deprecated, renamed: "VerIDSessionSettings")
 public typealias SessionSettings = VerIDCore.VerIDSessionSettings
@@ -149,13 +150,8 @@ public class SessionDiagnostics : Swift.Codable {
   @objc public func generateRandomFaceTemplate(version: VerIDCore.VerIDFaceTemplateVersion) throws -> VerIDCore.Recognizable
   @objc public func generateRandomFaceTemplateWithScore(_ score: Foundation.NSNumber, againstFace face: VerIDCore.Recognizable) throws -> VerIDCore.Recognizable
   public func versionOfFaceTemplate(_ faceTemplate: VerIDCore.Recognizable) throws -> VerIDCore.VerIDFaceTemplateVersion
-  @objc override dynamic public init()
   @objc deinit
-}
-extension UIDevice {
-  public var modelName: Swift.String {
-    get
-  }
+  @objc override dynamic public init()
 }
 @objc public class Session : ObjectiveC.NSObject {
   final public let verID: VerIDCore.VerID
@@ -168,8 +164,8 @@ extension UIDevice {
   public init(verID: VerIDCore.VerID, settings: VerIDCore.VerIDSessionSettings, imageObservable: RxSwift.Observable<(VerIDCore.VerIDImage, VerIDCore.FaceBounds)>)
   public func start()
   public func cancel()
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc public protocol SessionDelegate {
   @objc func session(_ session: VerIDCore.Session, didFinishWithResult result: VerIDCore.VerIDSessionResult)
@@ -189,16 +185,16 @@ extension ObservableType {
   public init(data: [Swift.UInt8], format: VerIDCore.VerIDImageFormat, orientation: ImageIO.CGImagePropertyOrientation, size: CoreGraphics.CGSize, bytesPerRow: Swift.UInt)
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc(VerIDClassifier) public class Classifier : ObjectiveC.NSObject {
   @objc final public let name: Swift.String
   @objc final public let filename: Swift.String?
   @objc public static let faceCovering: VerIDCore.Classifier
   @objc public init(name: Swift.String, filename: Swift.String? = nil)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc(VerIDRecognizableFace) public class RecognizableFace : VerIDCore.Face, VerIDCore.Recognizable {
   @objc public var recognitionData: Foundation.Data
@@ -206,8 +202,8 @@ extension ObservableType {
   @objc public init(face: VerIDCore.Face, recognitionData: Foundation.Data, version: Swift.Int32 = 1)
   required public init(from decoder: Swift.Decoder) throws
   override public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @objc public class VerIDUserManagementFactory : ObjectiveC.NSObject, VerIDCore.UserManagementFactory {
   @objc final public let disableEncryption: Swift.Bool
@@ -260,22 +256,22 @@ extension ObservableType {
   public static func argbBufferFromCGImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
   @objc public static func sharpnessOfImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) -> Swift.Double
   @objc public static func brightnessContrastAndSharpnessOfImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> VerIDCore.ImageQualityParams
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public enum ImageUtilError : Swift.Error {
   case cgImageConversionError, vImageBufferInitializationError, grayscaleConversionError, cgImageFromBufferError, pixelBufferInitializationError, pixelBufferAddressError, imageMatrixMultiplyError, getAddressOfPlaneError, unsupportedPixelFormat, imageRotationError, invalidVerIDImage, channelPermutationError, yuvConversionError, rgbConversionError, imageAdjustmentError
   public static func == (a: VerIDCore.ImageUtilError, b: VerIDCore.ImageUtilError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @objc @_hasMissingDesignatedInitializers public class FaceAlignmentDetection : ObjectiveC.NSObject {
   public enum Status : Swift.Int {
     case found, fixed, aligned, misaligned
-    public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
     public var rawValue: Swift.Int {
       get
     }
@@ -307,13 +303,13 @@ public class Transaction : Swift.Codable {
   public var stringValue: Swift.String {
     get
   }
-  public init?(rawValue: Swift.Int)
-  public typealias AllCases = [VerIDCore.FaceDetectionStatus]
   public typealias RawValue = Swift.Int
-  public static var allCases: [VerIDCore.FaceDetectionStatus] {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public typealias AllCases = [VerIDCore.FaceDetectionStatus]
+  public static var allCases: [VerIDCore.FaceDetectionStatus] {
     get
   }
 }
@@ -330,8 +326,8 @@ public class Transaction : Swift.Codable {
   public init(image: VerIDCore.VerIDImage, requestedBearing: VerIDCore.Bearing, defaultFaceBounds: VerIDCore.FaceBounds)
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public class Signposting {
   public init(category: Swift.String)
@@ -350,8 +346,8 @@ public class Signpost {
 public class FunctionCallReport : VerIDCore.Transaction {
   public enum Function : Swift.String, Swift.Codable {
     case detectFaces, compareFaces
-    public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
     public var rawValue: Swift.String {
       get
     }
@@ -360,14 +356,14 @@ public class FunctionCallReport : VerIDCore.Transaction {
   public init(function: VerIDCore.FunctionCallReport.Function, time: Foundation.Date = Date(), error: Swift.String? = nil)
   required public init(from decoder: Swift.Decoder) throws
   override public func encode(to encoder: Swift.Encoder) throws
-  override public init(time: Foundation.Date, error: Swift.String? = super)
   @objc deinit
+  override public init(time: Foundation.Date, error: Swift.String? = super)
 }
 @objc(VerIDRecognitionFace) public class RecognitionFace : ObjectiveC.NSObject, VerIDCore.Recognizable, Swift.Codable {
   public enum Version : Swift.Int32 {
     case unencrypted, encrypted, v20Unencrypted, v20Encrypted
-    public init?(rawValue: Swift.Int32)
     public typealias RawValue = Swift.Int32
+    public init?(rawValue: Swift.Int32)
     public var rawValue: Swift.Int32 {
       get
     }
@@ -399,8 +395,8 @@ public class Smoothing<T> {
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class CGFloatSmoothing : VerIDCore.Smoothing<CoreGraphics.CGFloat> {
-  override public init(bufferSize: Swift.Int)
   @objc deinit
+  override public init(bufferSize: Swift.Int)
 }
 @_inheritsConvenienceInitializers public class CGRectSmoothing : VerIDCore.Smoothing<CoreGraphics.CGRect> {
   override public init(bufferSize: Swift.Int)
@@ -417,8 +413,8 @@ public class Smoothing<T> {
 @objc @_hasMissingDesignatedInitializers public class FacePresenceDetection : ObjectiveC.NSObject {
   public enum Status : Swift.Int {
     case notFound, found, lost, turnedTooFar
-    public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
     public var rawValue: Swift.Int {
       get
     }
@@ -446,7 +442,7 @@ public class Smoothing<T> {
   public func createVerID(completion: ((Swift.Result<VerIDCore.VerID, Swift.Error>) -> Swift.Void)?)
   @objc deinit
 }
-@objc public protocol ImageProviderService {
+@objc public protocol ImageProviderService : AnyObject {
   @objc func dequeueImage() throws -> VerIDCore.VerIDImage
 }
 @objc public protocol ImageProviderServiceFactory {
@@ -457,7 +453,7 @@ public class Smoothing<T> {
   public func decryptFaceTemplate(_ faceTemplate: VerIDCore.Recognizable) throws -> VerIDCore.Recognizable
   @objc deinit
 }
-@objc public protocol VideoWriterService {
+@objc public protocol VideoWriterService : AnyObject {
   @objc func writeSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, rotation: CoreGraphics.CGFloat)
   @objc func finish(completionBlock: @escaping (Foundation.URL?) -> Swift.Void)
 }
@@ -474,8 +470,8 @@ public class Smoothing<T> {
 @_hasMissingDesignatedInitializers @objc public class VerIDVideoWriterService : ObjectiveC.NSObject, VerIDCore.VideoWriterService {
   @objc public func writeSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, rotation: CoreGraphics.CGFloat)
   @objc public func finish(completionBlock: @escaping (Foundation.URL?) -> Swift.Void)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(VerIDSessionResult) public class VerIDSessionResult : ObjectiveC.NSObject, Swift.Codable {
   public var startTime: Foundation.Date {
@@ -531,7 +527,7 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
   }
   public init(wrappedValue: T)
 }
-@objc public protocol VerIDFactoryDelegate {
+@objc public protocol VerIDFactoryDelegate : AnyObject {
   @objc optional func veridFactory(_ factory: VerIDCore.VerIDFactory, didCreateVerID verID: VerIDCore.VerID)
   @objc func veridFactory(_ factory: VerIDCore.VerIDFactory, didFailWithError error: Swift.Error)
 }
@@ -549,7 +545,7 @@ public enum FacePresenceError : Foundation.CustomNSError {
   }
 }
 @available(*, unavailable, message: "Removed in 2.0.0")
-@objc public protocol ImageWriterService {
+@objc public protocol ImageWriterService : AnyObject {
   @objc func writeImage(_ image: VerIDCore.VerIDImage, completion: ((Swift.Error?) -> Swift.Void)?) -> Foundation.URL?
 }
 @available(*, unavailable, message: "Removed in 2.0.0")
@@ -563,8 +559,8 @@ public enum VerIDImageWriterServiceError : Swift.Error {
 @_hasMissingDesignatedInitializers @available(*, unavailable, message: "Removed in 2.0.0")
 @objc public class VerIDImageWriterService : ObjectiveC.NSObject, VerIDCore.ImageWriterService {
   @objc public func writeImage(_ image: VerIDCore.VerIDImage, completion: ((Swift.Error?) -> Swift.Void)?) -> Foundation.URL?
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @available(*, unavailable, message: "Removed in 2.0.0")
 @objc public class VerIDImageWriterServiceFactory : ObjectiveC.NSObject, VerIDCore.ImageWriterServiceFactory {
@@ -583,13 +579,13 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   @objc open func angle(_ angle: VerIDCore.EulerAngle, matchesBearing bearing: VerIDCore.Bearing) -> Swift.Bool
   @objc open func offsetFromAngle(_ from: VerIDCore.EulerAngle, toBearing bearing: VerIDCore.Bearing) -> VerIDCore.EulerAngle
   open func angle(_ angle: VerIDCore.EulerAngle, isBetweenBearing fromBearing: VerIDCore.Bearing, and toBearing: VerIDCore.Bearing) -> Swift.Bool
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc public enum Axis : Swift.Int {
   case pitch, yaw
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -612,12 +608,12 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   case failedToInitializeResourceLoader
   case failedToInitializeFaceDetectionRecognition
   case missingImageProcessors
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -644,8 +640,8 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   @objc convenience public init?(url: Foundation.URL)
   public init(grayscalePixels: [Swift.UInt8], size: CoreGraphics.CGSize)
   @objc public init?(uiImage: UIKit.UIImage)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc public enum VerIDError : Swift.Int, Foundation.LocalizedError {
   case invalidAPISecret, invalidAPIKey, sdkAuthorizationTimeout, sdkAuthorizationRequestError, sdkAuthorizationResponseParseError, sdkAuthenticationRequestEncodingError, sdkAuthenticationRequestError, sdkAuthenticationResponseParseError, sdkAuthenticationTimeout
@@ -661,12 +657,12 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   public var errorDescription: Swift.String? {
     get
   }
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -679,32 +675,32 @@ public enum HttpStatusError : Foundation.LocalizedError {
 public enum FaceDetectionError : Swift.Error {
   case faceNotFound, internalError
   public static func == (a: VerIDCore.FaceDetectionError, b: VerIDCore.FaceDetectionError) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @objc public enum FaceRecognitionError : Swift.Int, Swift.Error {
   case templateExtractionFailed
   case multipleSubjectFaceVersions
   case multipleChallengeFaceVersions
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
 @objc public enum ImageProcessingError : Swift.Int, Swift.Error {
   case grayscaleConversionError, imageProcessorTaskError
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -714,12 +710,12 @@ public enum InvalidParameterError : Foundation.LocalizedError {
 }
 @objc public enum DatabaseError : Swift.Int, Swift.Error {
   case failedToOpenDatabase, failedToPrepareStatement, failedToBindText
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -728,12 +724,12 @@ public enum InvalidParameterError : Foundation.LocalizedError {
   public var errorDescription: Swift.String? {
     get
   }
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
-  public static var _nsErrorDomain: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public static var _nsErrorDomain: Swift.String {
     get
   }
 }
@@ -900,8 +896,8 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   case none
   case regular
   case strict
-  public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
@@ -948,8 +944,8 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
     @objc get
   }
   @objc override public func adjustImageBuffer(_ buffer: [Swift.UInt8], size: CoreGraphics.CGSize) throws -> [Swift.UInt8]
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_inheritsConvenienceInitializers @objc public class PassThroughImageProcessorService : VerIDCore.VerIDImageProcessorService {
   @objc override public func prepareImageForFaceDetection(_ image: VerIDCore.VerIDImage, recalculate: Swift.Bool) throws
@@ -983,10 +979,10 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
 @objc public class FaceBounds : ObjectiveC.NSObject, Swift.Codable {
   @objc public init(viewSize: CoreGraphics.CGSize, faceExtents: VerIDCore.FaceExtents)
   @objc public func translatedToImageSize(_ imageSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
-  @objc override dynamic public init()
   @objc deinit
-  public func encode(to encoder: Swift.Encoder) throws
+  @objc override dynamic public init()
   required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 @_inheritsConvenienceInitializers public class AngleSmoothing : VerIDCore.Smoothing<VerIDCore.EulerAngle> {
   override public init(bufferSize: Swift.Int)
@@ -1026,15 +1022,15 @@ public typealias Face = VerIDCore.VerIDFace
   @objc public func identifyUsersInFace(_ face: VerIDCore.Recognizable) throws -> [Swift.String : Swift.Float]
   @objc public func findFacesSimilarTo(_ face: VerIDCore.Recognizable, in faces: [VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) throws -> [VerIDCore.FaceWithScore]
   public func findFacesSimilarTo(_ face: VerIDCore.Recognizable, in faces: [VerIDCore.Recognizable], threshold: Swift.Float? = nil, progress: Foundation.Progress? = nil, completion: @escaping (Swift.Result<[VerIDCore.FaceWithScore], Swift.Error>) -> Swift.Void)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @_hasMissingDesignatedInitializers @objc public class FaceWithScore : ObjectiveC.NSObject, Swift.Comparable {
   public static func < (lhs: VerIDCore.FaceWithScore, rhs: VerIDCore.FaceWithScore) -> Swift.Bool
   @objc final public let face: VerIDCore.Recognizable
   @objc final public let score: Swift.Float
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc public class SessionResultPackage : ObjectiveC.NSObject {
   final public let verID: VerIDCore.VerID
@@ -1047,8 +1043,8 @@ public typealias Face = VerIDCore.VerIDFace
   }
   @objc public func createArchive() throws -> Foundation.URL
   @objc public func createItemActivityProvider(archiveURL: Foundation.URL) -> VerIDCore.SessionItemActivityProvider
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 @objc @_hasMissingDesignatedInitializers public class SessionItemActivityProvider : UIKit.UIActivityItemProvider {
   @objc override dynamic public var item: Any {
@@ -1057,8 +1053,8 @@ public typealias Face = VerIDCore.VerIDFace
   @objc override dynamic public func activityViewController(_ activityViewController: UIKit.UIActivityViewController, dataTypeIdentifierForActivityType activityType: UIKit.UIActivity.ActivityType?) -> Swift.String
   @objc override dynamic public func activityViewController(_ activityViewController: UIKit.UIActivityViewController, subjectForActivityType activityType: UIKit.UIActivity.ActivityType?) -> Swift.String
   @objc override dynamic public func activityViewController(_ activityViewController: UIKit.UIActivityViewController, thumbnailImageForActivityType activityType: UIKit.UIActivity.ActivityType?, suggestedSize size: CoreGraphics.CGSize) -> UIKit.UIImage?
-  @objc override dynamic public init(placeholderItem: Any)
   @objc deinit
+  @objc override dynamic public init(placeholderItem: Any)
 }
 public struct EnvironmentSettings : Swift.Encodable {
   public let confidenceThreshold: Swift.Float?
@@ -1094,14 +1090,14 @@ public struct EnvironmentSettings : Swift.Encodable {
 }
 @_hasMissingDesignatedInitializers @objc public class VerIDFaceTracking : ObjectiveC.NSObject, VerIDCore.FaceTracking {
   @objc public func trackFaceInImage(_ image: VerIDCore.VerIDImage) throws -> VerIDCore.Face
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public class SessionReport : VerIDCore.Transaction {
   public enum SessionPurpose : Swift.String, Swift.Codable {
     case livenessDetection, registration, authentication
-    public init?(rawValue: Swift.String)
     public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
     public var rawValue: Swift.String {
       get
     }
@@ -1110,15 +1106,15 @@ public class SessionReport : VerIDCore.Transaction {
     public let numberOfResultsToCollect: Swift.Int
     public let expiryTime: Foundation.TimeInterval
     public let useFrontCamera: Swift.Bool
-    public func encode(to encoder: Swift.Encoder) throws
     public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: Swift.Encoder) throws
   }
   public init(purpose: VerIDCore.SessionReport.SessionPurpose, duration: Foundation.TimeInterval, settings: VerIDCore.SessionReport.SessionSettings, time: Foundation.Date, error: Swift.String? = nil)
   public init(sessionSettings: VerIDCore.VerIDSessionSettings, result: VerIDCore.VerIDSessionResult, duration: Foundation.TimeInterval, time: Foundation.Date)
   required public init(from decoder: Swift.Decoder) throws
   override public func encode(to encoder: Swift.Encoder) throws
-  override public init(time: Foundation.Date, error: Swift.String? = super)
   @objc deinit
+  override public init(time: Foundation.Date, error: Swift.String? = super)
 }
 @available(*, unavailable, renamed: "FaceCapture")
 public typealias DetectedFace = VerIDCore.FaceCapture
@@ -1143,8 +1139,8 @@ public typealias VerIDDetectedFace = VerIDCore.FaceCapture
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 extension FaceCapture {
   public struct DiagnosticInfo : Swift.Codable {
@@ -1179,13 +1175,13 @@ extension FaceCapture {
   }
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
-  public init?(rawValue: Swift.Int)
-  public typealias AllCases = [VerIDCore.Bearing]
   public typealias RawValue = Swift.Int
-  public static var allCases: [VerIDCore.Bearing] {
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
     get
   }
-  public var rawValue: Swift.Int {
+  public typealias AllCases = [VerIDCore.Bearing]
+  public static var allCases: [VerIDCore.Bearing] {
     get
   }
 }
