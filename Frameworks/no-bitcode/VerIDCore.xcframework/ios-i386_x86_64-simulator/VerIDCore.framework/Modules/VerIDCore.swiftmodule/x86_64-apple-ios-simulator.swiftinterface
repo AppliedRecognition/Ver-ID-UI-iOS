@@ -654,6 +654,7 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   case unsupportedFaceTemplateVersion
   case userMissingRequiredFaceTemplates
   case faceTemplateVersionMismatch
+  case refusingToRunOnMainThread
   public var errorDescription: Swift.String? {
     get
   }
@@ -1020,6 +1021,7 @@ public typealias Face = VerIDCore.VerIDFace
   @objc final public let verid: VerIDCore.VerID
   @objc public init(verid: VerIDCore.VerID)
   @objc public func identifyUsersInFace(_ face: VerIDCore.Recognizable) throws -> [Swift.String : Swift.Float]
+  public func identifyUsersInFace(_ face: VerIDCore.Recognizable, progress: Foundation.Progress? = nil, completion: @escaping (Swift.Result<[Swift.String : Swift.Float], Swift.Error>) -> Swift.Void)
   @objc public func findFacesSimilarTo(_ face: VerIDCore.Recognizable, in faces: [VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) throws -> [VerIDCore.FaceWithScore]
   public func findFacesSimilarTo(_ face: VerIDCore.Recognizable, in faces: [VerIDCore.Recognizable], threshold: Swift.Float? = nil, progress: Foundation.Progress? = nil, completion: @escaping (Swift.Result<[VerIDCore.FaceWithScore], Swift.Error>) -> Swift.Void)
   @objc deinit

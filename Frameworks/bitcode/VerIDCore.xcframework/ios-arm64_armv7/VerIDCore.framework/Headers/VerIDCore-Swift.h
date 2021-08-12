@@ -621,9 +621,18 @@ SWIFT_PROTOCOL_NAMED("FaceTracking")
 @end
 
 
+/// Face and score pair used returned by functions that find faces similar to a challenge face
+/// since:
+/// 2.0.0
 SWIFT_CLASS("_TtC9VerIDCore13FaceWithScore")
 @interface FaceWithScore : NSObject
+/// Face
+/// since:
+/// 2.0.0
 @property (nonatomic, readonly, strong) id <VerIDRecognizable> _Nonnull face;
+/// Score
+/// since:
+/// 2.0.0
 @property (nonatomic, readonly) float score;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -1035,12 +1044,28 @@ SWIFT_CLASS_NAMED("UserIdentification")
 /// Identify users in a face
 /// since:
 /// 1.9.0
+/// note:
+/// The method must be run on a background thread to prevent your application’s UI from locking up. If you want to dispatch the call on the main (UI) thread consider using the asynchronous alternative <code>identifyUsersInFace(_:progress:completion:)</code>
 /// \param face Face in which to identify users
 ///
 ///
 /// returns:
 /// Dictionary with IDs of identified users and the score of the match
 - (NSDictionary<NSString *, NSNumber *> * _Nullable)identifyUsersInFace:(id <VerIDRecognizable> _Nonnull)face error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// Find faces that are similar to a challenge face
+/// since:
+/// 2.0.0
+/// note:
+/// The method must be run on a background thread to prevent your application’s UI from locking up. If you want to dispatch the call on the main (UI) thread consider using the asynchronous alternative <code>findFacesSimilarTo(_:in:threshold:progress:completion:)</code>
+/// \param face Challenge face
+///
+/// \param faces Faces among which to look to find matches
+///
+/// \param threshold Similarity score threshold
+///
+///
+/// returns:
+/// Array of matching faces and their scores
 - (NSArray<FaceWithScore *> * _Nullable)findFacesSimilarTo:(id <VerIDRecognizable> _Nonnull)face in:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces threshold:(NSNumber * _Nullable)threshold error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -1147,6 +1172,7 @@ typedef SWIFT_ENUM(NSInteger, VerIDError, open) {
   VerIDErrorUnsupportedFaceTemplateVersion = 15,
   VerIDErrorUserMissingRequiredFaceTemplates = 16,
   VerIDErrorFaceTemplateVersionMismatch = 17,
+  VerIDErrorRefusingToRunOnMainThread = 18,
 };
 static NSString * _Nonnull const VerIDErrorDomain = @"VerIDCore.VerIDError";
 
@@ -2413,9 +2439,18 @@ SWIFT_PROTOCOL_NAMED("FaceTracking")
 @end
 
 
+/// Face and score pair used returned by functions that find faces similar to a challenge face
+/// since:
+/// 2.0.0
 SWIFT_CLASS("_TtC9VerIDCore13FaceWithScore")
 @interface FaceWithScore : NSObject
+/// Face
+/// since:
+/// 2.0.0
 @property (nonatomic, readonly, strong) id <VerIDRecognizable> _Nonnull face;
+/// Score
+/// since:
+/// 2.0.0
 @property (nonatomic, readonly) float score;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -2827,12 +2862,28 @@ SWIFT_CLASS_NAMED("UserIdentification")
 /// Identify users in a face
 /// since:
 /// 1.9.0
+/// note:
+/// The method must be run on a background thread to prevent your application’s UI from locking up. If you want to dispatch the call on the main (UI) thread consider using the asynchronous alternative <code>identifyUsersInFace(_:progress:completion:)</code>
 /// \param face Face in which to identify users
 ///
 ///
 /// returns:
 /// Dictionary with IDs of identified users and the score of the match
 - (NSDictionary<NSString *, NSNumber *> * _Nullable)identifyUsersInFace:(id <VerIDRecognizable> _Nonnull)face error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// Find faces that are similar to a challenge face
+/// since:
+/// 2.0.0
+/// note:
+/// The method must be run on a background thread to prevent your application’s UI from locking up. If you want to dispatch the call on the main (UI) thread consider using the asynchronous alternative <code>findFacesSimilarTo(_:in:threshold:progress:completion:)</code>
+/// \param face Challenge face
+///
+/// \param faces Faces among which to look to find matches
+///
+/// \param threshold Similarity score threshold
+///
+///
+/// returns:
+/// Array of matching faces and their scores
 - (NSArray<FaceWithScore *> * _Nullable)findFacesSimilarTo:(id <VerIDRecognizable> _Nonnull)face in:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces threshold:(NSNumber * _Nullable)threshold error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -2939,6 +2990,7 @@ typedef SWIFT_ENUM(NSInteger, VerIDError, open) {
   VerIDErrorUnsupportedFaceTemplateVersion = 15,
   VerIDErrorUserMissingRequiredFaceTemplates = 16,
   VerIDErrorFaceTemplateVersionMismatch = 17,
+  VerIDErrorRefusingToRunOnMainThread = 18,
 };
 static NSString * _Nonnull const VerIDErrorDomain = @"VerIDCore.VerIDError";
 
