@@ -233,5 +233,5 @@ class MyViewController: UIViewController, VerIDSessionDelegate {
 ~~~
 
 ## API Reference Documentation
-- [Ver-ID Core](https://appliedrecognition.github.io/Ver-ID-Core-Apple)
+- [Ver-ID Core](https://appliedrecognition.github.io/Ver-ID-Apple)
 - [Ver-ID UI](https://appliedrecognition.github.io/Ver-ID-UI-iOS)
