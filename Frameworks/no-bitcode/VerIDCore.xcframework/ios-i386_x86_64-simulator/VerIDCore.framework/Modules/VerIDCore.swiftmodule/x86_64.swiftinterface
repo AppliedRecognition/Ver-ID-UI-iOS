@@ -229,6 +229,7 @@ extension ObservableType {
   @objc func faces(faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) throws -> [VerIDCore.Recognizable]
   @objc func facesOfUser(_ userId: Swift.String, faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) throws -> [VerIDCore.Recognizable]
   @objc func countFacesWithVersion(_ version: VerIDCore.VerIDFaceTemplateVersion) throws -> Foundation.NSNumber
+  @objc optional func addUsersWithFaces(_ userFaces: [Swift.String : [VerIDCore.Recognizable]], completion: Self.ErrorCallback?)
 }
 @objc(VerIDUserManagementFactory) public protocol UserManagementFactory {
   @objc func createUserManagement() throws -> VerIDCore.UserManagement
@@ -372,6 +373,7 @@ public class FunctionCallReport : VerIDCore.Transaction {
   @objc public var version: Swift.Int32
   @objc public init(recognitionData: Foundation.Data)
   public init(recognitionData: Foundation.Data, version: VerIDCore.RecognitionFace.Version)
+  @objc public init(recognitionData: Foundation.Data, faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) throws
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   @objc override dynamic public init()
@@ -685,6 +687,7 @@ public enum FaceDetectionError : Swift.Error {
   case templateExtractionFailed
   case multipleSubjectFaceVersions
   case multipleChallengeFaceVersions
+  case unsupportedFaceTemplateVersion
   public typealias RawValue = Swift.Int
   public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
@@ -857,6 +860,7 @@ public class VerIDUserManagement : ObjectiveC.NSObject, VerIDCore.UserManagement
   final public let isEncryptionDisabled: Swift.Bool
   final public let isAutomaticFaceTemplateMigrationEnabled: Swift.Bool
   @objc public func assignFaces(_ faces: [VerIDCore.Recognizable], toUser userId: Swift.String, completion: VerIDCore.VerIDUserManagement.ErrorCallback? = nil)
+  @objc public func addUsersWithFaces(_ userFaces: [Swift.String : [VerIDCore.Recognizable]], completion: VerIDCore.VerIDUserManagement.ErrorCallback?)
   @objc public func deleteFaces(_ faces: [VerIDCore.Recognizable], completion: ((Swift.Error?) -> Swift.Void)? = nil)
   @objc public func users() throws -> [Swift.String]
   @objc public func facesOfUser(_ userId: Swift.String) throws -> [VerIDCore.Recognizable]

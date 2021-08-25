@@ -590,6 +590,7 @@ typedef SWIFT_ENUM(NSInteger, FaceRecognitionError, open) {
   FaceRecognitionErrorTemplateExtractionFailed = 0,
   FaceRecognitionErrorMultipleSubjectFaceVersions = 1,
   FaceRecognitionErrorMultipleChallengeFaceVersions = 2,
+  FaceRecognitionErrorUnsupportedFaceTemplateVersion = 3,
 };
 static NSString * _Nonnull const FaceRecognitionErrorDomain = @"VerIDCore.FaceRecognitionError";
 
@@ -894,6 +895,7 @@ SWIFT_CLASS_NAMED("RecognitionFace")
 @property (nonatomic, copy) NSData * _Nonnull recognitionData;
 @property (nonatomic) int32_t version;
 - (nonnull instancetype)initWithRecognitionData:(NSData * _Nonnull)recognitionData OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithRecognitionData:(NSData * _Nonnull)recognitionData faceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion error:(NSError * _Nullable * _Nullable)error OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1123,6 +1125,8 @@ SWIFT_PROTOCOL_NAMED("UserManagement2")
 - (NSArray<id <VerIDRecognizable>> * _Nullable)facesWithFaceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<id <VerIDRecognizable>> * _Nullable)facesOfUser:(NSString * _Nonnull)userId faceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (NSNumber * _Nullable)countFacesWithVersion:(VerIDFaceTemplateVersion)version error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+@optional
+- (void)addUsersWithFaces:(NSDictionary<NSString *, NSArray<id <VerIDRecognizable>> *> * _Nonnull)userFaces completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 @end
 
 
@@ -1606,6 +1610,7 @@ SWIFT_CLASS("_TtC9VerIDCore19VerIDUserManagement") SWIFT_AVAILABILITY(ios,introd
 /// \param completion Callback to invoke on completion
 ///
 - (void)assignFaces:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces toUser:(NSString * _Nonnull)userId completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)addUsersWithFaces:(NSDictionary<NSString *, NSArray<id <VerIDRecognizable>> *> * _Nonnull)userFaces completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 /// Delete faces
 /// \param faces Faces to delete
 ///
@@ -2408,6 +2413,7 @@ typedef SWIFT_ENUM(NSInteger, FaceRecognitionError, open) {
   FaceRecognitionErrorTemplateExtractionFailed = 0,
   FaceRecognitionErrorMultipleSubjectFaceVersions = 1,
   FaceRecognitionErrorMultipleChallengeFaceVersions = 2,
+  FaceRecognitionErrorUnsupportedFaceTemplateVersion = 3,
 };
 static NSString * _Nonnull const FaceRecognitionErrorDomain = @"VerIDCore.FaceRecognitionError";
 
@@ -2712,6 +2718,7 @@ SWIFT_CLASS_NAMED("RecognitionFace")
 @property (nonatomic, copy) NSData * _Nonnull recognitionData;
 @property (nonatomic) int32_t version;
 - (nonnull instancetype)initWithRecognitionData:(NSData * _Nonnull)recognitionData OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithRecognitionData:(NSData * _Nonnull)recognitionData faceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion error:(NSError * _Nullable * _Nullable)error OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -2941,6 +2948,8 @@ SWIFT_PROTOCOL_NAMED("UserManagement2")
 - (NSArray<id <VerIDRecognizable>> * _Nullable)facesWithFaceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<id <VerIDRecognizable>> * _Nullable)facesOfUser:(NSString * _Nonnull)userId faceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (NSNumber * _Nullable)countFacesWithVersion:(VerIDFaceTemplateVersion)version error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+@optional
+- (void)addUsersWithFaces:(NSDictionary<NSString *, NSArray<id <VerIDRecognizable>> *> * _Nonnull)userFaces completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 @end
 
 
@@ -3424,6 +3433,7 @@ SWIFT_CLASS("_TtC9VerIDCore19VerIDUserManagement") SWIFT_AVAILABILITY(ios,introd
 /// \param completion Callback to invoke on completion
 ///
 - (void)assignFaces:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces toUser:(NSString * _Nonnull)userId completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+- (void)addUsersWithFaces:(NSDictionary<NSString *, NSArray<id <VerIDRecognizable>> *> * _Nonnull)userFaces completion:(void (^ _Nullable)(NSError * _Nullable))completion;
 /// Delete faces
 /// \param faces Faces to delete
 ///

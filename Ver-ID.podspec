@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name = "Ver-ID"
     s.module_name = "VerIDUI"
-    s.version = "2.3.0"
+    s.version = "2.3.1"
     s.summary = "Face detection and recognition"
     s.homepage = "https://github.com/AppliedRecognition"
     s.license = { :type => "COMMERCIAL", :file => "LICENCE.txt" }
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     s.subspec 'Core' do |ss|
         ss.dependency "OpenCV2", "~> 4.1"
         ss.dependency "ZIPFoundation", "~> 0.9"
-        ss.dependency "Ver-ID-SDK-Identity", "~> 3.0"
+        ss.dependency "Ver-ID-SDK-Identity", ">= 3.0.2", "< 4.0"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
         ss.dependency 'DeviceKit', '~> 4.4'
@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
     s.subspec 'Core-no-bitcode' do |ss|
         ss.dependency "OpenCV2", "~> 4.1"
         ss.dependency "ZIPFoundation", "~> 0.9"
-        ss.dependency "Ver-ID-SDK-Identity", "~> 3.0"
+        ss.dependency "Ver-ID-SDK-Identity", ">= 3.0.2", "< 4.0"
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
         ss.dependency 'DeviceKit', '~> 4.4'
