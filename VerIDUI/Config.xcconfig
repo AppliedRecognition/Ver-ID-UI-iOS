@@ -1,0 +1,13 @@
+//
+//  Config.xcconfig
+//  VerIDUI
+//
+//  Created by Jakub Dolejs on 27/08/2021.
+//  Copyright © 2021 Applied Recognition. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+MARKETING_VERSION = 2.3.2
+CURRENT_PROJECT_VERSION = 2003002

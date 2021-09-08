@@ -400,7 +400,7 @@ import AVFoundation
         }
     }
     
-    @objc private func sessionRuntimeError(notification: NSNotification) {
+    @objc func sessionRuntimeError(notification: NSNotification) {
         guard let errorValue = notification.userInfo?[AVCaptureSessionErrorKey] as? NSError else {
             return
         }
@@ -429,7 +429,7 @@ import AVFoundation
         }
     }
     
-    @objc private func sessionWasInterrupted(notification: NSNotification) {
+    @objc func sessionWasInterrupted(notification: NSNotification) {
         /*
          In some scenarios we want to enable the user to resume the session running.
          For example, if music playback is initiated via control center while
@@ -444,7 +444,7 @@ import AVFoundation
         self.captureSessionInterrupted()
     }
     
-    @objc private func sessionInterruptionEnded(notification: NSNotification) {
+    @objc func sessionInterruptionEnded(notification: NSNotification) {
         print("Capture session interruption ended")
         self.cameraBecameAvailable()
     }

@@ -59,7 +59,7 @@ public protocol ImagePublisher {
     private var lastSpokenText: String?
     
     /// The Ver-ID view controller delegate
-    public var delegate: VerIDViewControllerDelegate?
+    public weak var delegate: VerIDViewControllerDelegate?
     
     public var sessionSettings: VerIDSessionSettings?
     
@@ -310,5 +310,43 @@ public protocol ImagePublisher {
             detectedFaceLayer.frame = self.overlayView.layer.bounds
             return detectedFaceLayer
         }
+    }
+    
+    // MARK: - AV capture session errors
+    
+    override func sessionRuntimeError(notification: NSNotification) {
+        self.stopCamera()
+        let error: Error
+        if let errorValue = notification.userInfo?[AVCaptureSessionErrorKey] as? NSError {
+            error = AVError(_nsError: errorValue)
+        } else {
+            error = VerIDUISessionError.captureSessionRuntimeError
+        }
+        self.delegate?.viewController(self, didFailWithError: error)
+    }
+    
+    override func sessionWasInterrupted(notification: NSNotification) {
+        self.stopCamera()
+        let error: VerIDUISessionError
+        if let userInfoValue = notification.userInfo?[AVCaptureSessionInterruptionReasonKey] as AnyObject?, let reasonIntegerValue = userInfoValue.integerValue, let reason = AVCaptureSession.InterruptionReason(rawValue: reasonIntegerValue) {
+            switch reason {
+            case .videoDeviceInUseByAnotherClient, .audioDeviceInUseByAnotherClient:
+                error = .cameraInUseByAnotherClient
+            case .videoDeviceNotAvailableDueToSystemPressure:
+                error = .cameraNotAvailableDueToSystemPressure
+            case .videoDeviceNotAvailableInBackground:
+                error = .cameraNotAvailableInBackground
+            case .videoDeviceNotAvailableWithMultipleForegroundApps:
+                error = .cameraNotAvailableWithMultipleForegroundApps
+            default:
+                error = .captureSessionInterrupted
+            }
+        } else {
+            error = .captureSessionInterrupted
+        }
+        self.delegate?.viewController(self, didFailWithError: error)
+    }
+    
+    override func sessionInterruptionEnded(notification: NSNotification) {
     }
 }
