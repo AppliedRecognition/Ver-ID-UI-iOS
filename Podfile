@@ -1,7 +1,7 @@
 project 'VerIDUI.xcodeproj'
 workspace 'VerIDUI.xcworkspace'
 
-platform :ios, '10.3'
+platform :ios, '11'
 use_frameworks!
 
 abstract_target 'Ver-ID' do

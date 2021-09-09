@@ -3,7 +3,7 @@
 # Ver-ID SDK for iOS
 
 ## Prerequisites
-Minimum iOS version is 10.3.
+Minimum iOS version is 11.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
