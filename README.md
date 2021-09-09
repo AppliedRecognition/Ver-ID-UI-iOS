@@ -63,7 +63,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
     ~~~ruby
     project 'MyProject.xcodeproj'
     workspace 'MyProject.xcworkspace'
-    platform :ios, '10.3'
+    platform :ios, '11'
     target 'MyApp' do
         use_frameworks!
         pod 'Ver-ID'
