@@ -137,9 +137,6 @@ class FaceDetectionTests: VerIDBaseTest {
             CGPoint(x: 482.000000, y: 915.000000),
             CGPoint(x: 455.000000, y: 914.000000)
         ]
-        face.landmarks.forEach({
-            NSLog("CGPoint(x: %f, y: %f),", $0.x, $0.y)
-        })
         for i in 0..<landmarks.count {
             XCTAssertEqual(landmarks[i].x, face.landmarks[i].x, accuracy: delta)
             XCTAssertEqual(landmarks[i].y, face.landmarks[i].y, accuracy: delta)
