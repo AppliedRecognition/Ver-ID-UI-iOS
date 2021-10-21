@@ -1,0 +1,35 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: LFS install
+      shell: bash
+      run: git lfs install --skip-smudge
+    - uses: actions/checkout@v2
+      with:
+        lfs: false
+    - name: LFS pull
+      shell: bash
+      run: |
+        git lfs pull
+        git lfs install --force
+    - name: Install pods
+      shell: bash
+      run: pod install
+    - name: Build for testing
+      run: xcodebuild build-for-testing -workspace VerIDUI.xcworkspace -scheme VerIDUI -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" | xcpretty
+    - name: Run tests
+      run: xcodebuild test -workspace VerIDUI.xcworkspace -scheme VerIDUI -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone 11" | xcpretty
+    - name: Build sample app for testing
+      run: xcodebuild build-for-testing -workspace VerIDUI.xcworkspace -scheme "Ver-ID Sample" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11" | xcpretty
+    - name: Run sample app tests
+      run: xcodebuild test -workspace VerIDUI.xcworkspace -scheme "Ver-ID Sample" -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone 11" | xcpretty
