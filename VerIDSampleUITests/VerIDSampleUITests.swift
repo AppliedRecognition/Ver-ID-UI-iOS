@@ -45,10 +45,10 @@ class VerIDSampleUITests: XCTestCase {
     func testImportRegistration() {
         app.launch()
         
+        XCTAssertTrue(app.navigationBars["Ver-ID Sample"].buttons["Import"].waitForExistence(timeout: 5))
         app.navigationBars["Ver-ID Sample"].buttons["Import"].tap()
         
         XCTAssertTrue(app.navigationBars["Registration Import"].buttons["Register"].waitForExistence(timeout: 2))
-        XCTAssertFalse(app.switches.matching(identifier: "overwriteSwitch").firstMatch.exists)
         app.navigationBars["Registration Import"].buttons["Register"].tap()
         
         XCTAssertTrue(app.navigationBars["Ver-ID Sample"].buttons["Share"].waitForExistence(timeout: 2))

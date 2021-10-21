@@ -11,6 +11,15 @@
 		06BA7125C6401569436F1222 /* Pods_Ver_ID_Thumbnails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D37F216BA62C0206D12019C /* Pods_Ver_ID_Thumbnails.framework */; };
 		3B03D6722548A0BC0098292B /* IdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6702548A0BC0098292B /* IdentificationViewController.swift */; };
 		3B03D6732548A0BC0098292B /* IdentificationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */; };
+		3B0E6F23272098EC0061A3A3 /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
+		3B0E6F2F272099670061A3A3 /* UserManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F29272099660061A3A3 /* UserManagementTests.swift */; };
+		3B0E6F30272099670061A3A3 /* VerIDBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F2A272099660061A3A3 /* VerIDBaseTest.swift */; };
+		3B0E6F32272099670061A3A3 /* FaceDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F2C272099660061A3A3 /* FaceDetectionTests.swift */; };
+		3B0E6F33272099670061A3A3 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F2D272099660061A3A3 /* SessionTests.swift */; };
+		3B0E6F34272099670061A3A3 /* FaceRecognitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F2E272099660061A3A3 /* FaceRecognitionTests.swift */; };
+		3B0E6F372720A0240061A3A3 /* FaceTemplateUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 3B0E6F362720A0240061A3A3 /* FaceTemplateUtility */; };
+		3B0E6F42272199970061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E6F41272199970061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv */; };
+		3B0E6F442721A6CE0061A3A3 /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F432721A6CE0061A3A3 /* DownloadOperation.swift */; };
 		3B2E36792628BEF50055FE28 /* VerIDUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */; };
 		3B2E36812628BF2F0055FE28 /* VerIDSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */; };
 		3B2E36822628BF2F0055FE28 /* ResourceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E36802628BF2F0055FE28 /* ResourceHelper.swift */; };
@@ -134,6 +143,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3B0E6F24272098EC0061A3A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B326B1522089C88005DAE1E;
+			remoteInfo = VerIDUI;
+		};
 		3B2E36772628BEDF0055FE28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B326B0D22089C88005DAE1E /* Project object */;
@@ -227,6 +243,14 @@
 		3B03D6702548A0BC0098292B /* IdentificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationViewController.swift; sourceTree = "<group>"; };
 		3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationResultViewController.swift; sourceTree = "<group>"; };
 		3B09E2DB25647A3D00ED224D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		3B0E6F1F272098EC0061A3A3 /* VerIDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerIDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B0E6F29272099660061A3A3 /* UserManagementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementTests.swift; sourceTree = "<group>"; };
+		3B0E6F2A272099660061A3A3 /* VerIDBaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDBaseTest.swift; sourceTree = "<group>"; };
+		3B0E6F2C272099660061A3A3 /* FaceDetectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceDetectionTests.swift; sourceTree = "<group>"; };
+		3B0E6F2D272099660061A3A3 /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
+		3B0E6F2E272099660061A3A3 /* FaceRecognitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceRecognitionTests.swift; sourceTree = "<group>"; };
+		3B0E6F41272199970061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "license01-20210720ay-vh2ukei%2200-q08.nv"; sourceTree = "<group>"; };
+		3B0E6F432721A6CE0061A3A3 /* DownloadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOperation.swift; sourceTree = "<group>"; };
 		3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerIDUIResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B2E365A2628BE6C0055FE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionDelegate.swift; sourceTree = "<group>"; };
@@ -355,12 +379,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B0E6F1C272098EC0061A3A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B0E6F23272098EC0061A3A3 /* VerIDUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B326B1322089C88005DAE1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3B2E36892628BF5A0055FE28 /* VerIDCore.xcframework in Frameworks */,
 				030F4FA7FA540FED9FD26BB5 /* Pods_Ver_ID_VerIDUI.framework in Frameworks */,
+				3B0E6F372720A0240061A3A3 /* FaceTemplateUtility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +444,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B0E6F20272098EC0061A3A3 /* VerIDUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3B0E6F41272199970061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv */,
+				3B0E6F2C272099660061A3A3 /* FaceDetectionTests.swift */,
+				3B0E6F2E272099660061A3A3 /* FaceRecognitionTests.swift */,
+				3B0E6F2D272099660061A3A3 /* SessionTests.swift */,
+				3B0E6F29272099660061A3A3 /* UserManagementTests.swift */,
+				3B0E6F2A272099660061A3A3 /* VerIDBaseTest.swift */,
+				3B0E6F432721A6CE0061A3A3 /* DownloadOperation.swift */,
+			);
+			path = VerIDUITests;
+			sourceTree = "<group>";
+		};
 		3B2E36592628BE6C0055FE28 /* VerIDResources */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +536,7 @@
 				3B45BAC5247D94B100273FAF /* Thumbnails */,
 				3B45BAD7247D94C000273FAF /* Preview */,
 				3B2E36592628BE6C0055FE28 /* VerIDResources */,
+				3B0E6F20272098EC0061A3A3 /* VerIDUITests */,
 				3B326B1722089C88005DAE1E /* Products */,
 				8C808952AB38275225E61B6D /* Frameworks */,
 				EA3973539495911E220A79F3 /* Pods */,
@@ -504,6 +552,7 @@
 				3B45BAC2247D94B100273FAF /* Thumbnails.appex */,
 				3B45BAD4247D94C000273FAF /* Preview.appex */,
 				3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */,
+				3B0E6F1F272098EC0061A3A3 /* VerIDUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -690,6 +739,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3B0E6F1E272098EC0061A3A3 /* VerIDUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B0E6F28272098EC0061A3A3 /* Build configuration list for PBXNativeTarget "VerIDUITests" */;
+			buildPhases = (
+				3B0E6F1B272098EC0061A3A3 /* Sources */,
+				3B0E6F1C272098EC0061A3A3 /* Frameworks */,
+				3B0E6F1D272098EC0061A3A3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B0E6F25272098EC0061A3A3 /* PBXTargetDependency */,
+			);
+			name = VerIDUITests;
+			productName = VerIDUITests;
+			productReference = 3B0E6F1F272098EC0061A3A3 /* VerIDUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3B2E36572628BE6C0055FE28 /* VerIDUIResources */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B2E365B2628BE6C0055FE28 /* Build configuration list for PBXNativeTarget "VerIDUIResources" */;
@@ -722,6 +789,9 @@
 				3B2E36782628BEDF0055FE28 /* PBXTargetDependency */,
 			);
 			name = VerIDUI;
+			packageProductDependencies = (
+				3B0E6F362720A0240061A3A3 /* FaceTemplateUtility */,
+			);
 			productName = VerIDUI;
 			productReference = 3B326B1622089C88005DAE1E /* VerIDUI.framework */;
 			productType = "com.apple.product-type.framework";
@@ -812,10 +882,13 @@
 		3B326B0D22089C88005DAE1E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Applied Recognition";
 				TargetAttributes = {
+					3B0E6F1E272098EC0061A3A3 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					3B2E36572628BE6C0055FE28 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -848,6 +921,9 @@
 				Base,
 			);
 			mainGroup = 3B326B0C22089C88005DAE1E;
+			packageReferences = (
+				3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */,
+			);
 			productRefGroup = 3B326B1722089C88005DAE1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -858,11 +934,20 @@
 				3B45BAC1247D94B100273FAF /* Thumbnails */,
 				3B45BAD3247D94C000273FAF /* Preview */,
 				3B2E36572628BE6C0055FE28 /* VerIDUIResources */,
+				3B0E6F1E272098EC0061A3A3 /* VerIDUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3B0E6F1D272098EC0061A3A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B0E6F42272199970061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B2E36562628BE6C0055FE28 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1062,6 +1147,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3B0E6F1B272098EC0061A3A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B0E6F33272099670061A3A3 /* SessionTests.swift in Sources */,
+				3B0E6F34272099670061A3A3 /* FaceRecognitionTests.swift in Sources */,
+				3B0E6F30272099670061A3A3 /* VerIDBaseTest.swift in Sources */,
+				3B0E6F32272099670061A3A3 /* FaceDetectionTests.swift in Sources */,
+				3B0E6F2F272099670061A3A3 /* UserManagementTests.swift in Sources */,
+				3B0E6F442721A6CE0061A3A3 /* DownloadOperation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3B326B1222089C88005DAE1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1160,6 +1258,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3B0E6F25272098EC0061A3A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B326B1522089C88005DAE1E /* VerIDUI */;
+			targetProxy = 3B0E6F24272098EC0061A3A3 /* PBXContainerItemProxy */;
+		};
 		3B2E36782628BEDF0055FE28 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3B2E36572628BE6C0055FE28 /* VerIDUIResources */;
@@ -1215,6 +1318,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3B0E6F26272098EC0061A3A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B0E6F27272098EC0061A3A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		3B2E365C2628BE6C0055FE28 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1589,6 +1740,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3B0E6F28272098EC0061A3A3 /* Build configuration list for PBXNativeTarget "VerIDUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B0E6F26272098EC0061A3A3 /* Debug */,
+				3B0E6F27272098EC0061A3A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3B2E365B2628BE6C0055FE28 /* Build configuration list for PBXNativeTarget "VerIDUIResources" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1653,6 +1813,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppliedRecognition/Face-Template-Utility-Apple";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B0E6F362720A0240061A3A3 /* FaceTemplateUtility */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */;
+			productName = FaceTemplateUtility;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3B326B0D22089C88005DAE1E /* Project object */;
 }
