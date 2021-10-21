@@ -1,4 +1,4 @@
-![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID)
+[![Tests](https://github.com/AppliedRecognition/Ver-ID-UI-iOS/actions/workflows/main.yml/badge.svg)](https://github.com/AppliedRecognition/Ver-ID-UI-iOS/actions/workflows/main.yml) ![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID)
 
 # Ver-ID SDK for iOS
 
