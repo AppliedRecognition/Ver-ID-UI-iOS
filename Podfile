@@ -5,7 +5,11 @@ platform :ios, '11'
 use_frameworks!
 
 abstract_target 'Ver-ID' do
-  pod 'Ver-ID/Core', '2.3.2'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
+  pod 'ZIPFoundation', '~> 0.9'
+  pod 'DeviceKit', '~> 4.4'
+  pod 'Ver-ID-SDK-Identity', '>= 3.0.2', '< 4.0'
   
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|
