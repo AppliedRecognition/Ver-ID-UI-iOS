@@ -88,9 +88,9 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
                 var defaultUserFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
                 let version: VerIDFaceTemplateVersion
                 let defaultVersion = (verid.faceRecognition as? VerIDFaceRecognition)?.defaultFaceTemplateVersion ?? .V16
-                if defaultVersion == .V20 && defaultUserFaces.contains(where: { $0.version == RecognitionFace.Version.v20Unencrypted.rawValue }) {
-                    version = .V20
-                    defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.v20Unencrypted.rawValue })
+                if defaultVersion == .V20A && defaultUserFaces.contains(where: { $0.version == RecognitionFace.Version.v20aUnencrypted.rawValue }) {
+                    version = .V20A
+                    defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.v20aUnencrypted.rawValue })
                 } else {
                     version = .V16
                     defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.unencrypted.rawValue })

@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDCore
 import AVFoundation
 import Accelerate
@@ -351,7 +351,7 @@ public class FunctionCallReport : VerIDCore.Transaction {
 }
 @objc(VerIDRecognitionFace) public class RecognitionFace : ObjectiveC.NSObject, VerIDCore.Recognizable, Swift.Codable {
   public enum Version : Swift.Int32 {
-    case unencrypted, encrypted, v20Unencrypted, v20Encrypted
+    case unencrypted, encrypted, v20Unencrypted, v20Encrypted, v20aUnencrypted, v20aEncrypted
     public init?(rawValue: Swift.Int32)
     public typealias RawValue = Swift.Int32
     public var rawValue: Swift.Int32 {
@@ -424,6 +424,7 @@ public class Smoothing<T> {
     @objc set
   }
   @objc public var userManagementFactory: VerIDCore.UserManagementFactory
+  @objc public var shouldDeleteIncompatibleFaces: Swift.Bool
   @objc public init(userManagementFactory: VerIDCore.UserManagementFactory)
   @objc override convenience dynamic public init()
   @objc public func createVerID()
@@ -639,6 +640,7 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   case userMissingRequiredFaceTemplates
   case faceTemplateVersionMismatch
   case refusingToRunOnMainThread
+  case initializationTimeout
   public var errorDescription: Swift.String? {
     get
   }
@@ -854,6 +856,14 @@ public class VerIDUserManagement : ObjectiveC.NSObject, VerIDCore.UserManagement
   @objc public func facesOfUser(_ userId: Swift.String, faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) throws -> [VerIDCore.Recognizable]
   @objc public func countFacesWithVersion(_ version: VerIDCore.VerIDFaceTemplateVersion) throws -> Foundation.NSNumber
   @objc deinit
+}
+public enum VerIDUserManagementError : Swift.Int, Swift.Error {
+  case entityNotFound, propertyNotFound, failedToSetEncryptionFlag, containsIncompatibleFaces
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @available(iOS 10.3, *)
 public class Report : Swift.Codable {
@@ -1208,6 +1218,9 @@ extension VerIDCore.DatabaseError : Swift.RawRepresentable {}
 extension VerIDCore.SessionSharingError : Swift.Equatable {}
 extension VerIDCore.SessionSharingError : Swift.Hashable {}
 extension VerIDCore.SessionSharingError : Swift.RawRepresentable {}
+extension VerIDCore.VerIDUserManagementError : Swift.Equatable {}
+extension VerIDCore.VerIDUserManagementError : Swift.Hashable {}
+extension VerIDCore.VerIDUserManagementError : Swift.RawRepresentable {}
 extension VerIDCore.LivenessDetection : Swift.Equatable {}
 extension VerIDCore.LivenessDetection : Swift.Hashable {}
 extension VerIDCore.LivenessDetection : Swift.RawRepresentable {}

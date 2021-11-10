@@ -57,7 +57,7 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
     
     // MARK: -
 
-    func reload() {
+    func reload(deleteIncompatibleFaces: Bool = false) {
         guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
             return
         }
@@ -65,6 +65,24 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
         navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
         // Load Ver-ID
         VerIDFactory(userDefaults: UserDefaults.standard).createVerID { result in
+            switch result {
+            case .success(let verid):
+                Globals.verid = verid
+                if Globals.isTesting, let users = try? verid.userManagement.users(), !users.isEmpty {
+                    verid.userManagement.deleteUsers(users) { _ in
+                        self.loadInitialViewController()
+                    }
+                    return
+                }
+                self.loadInitialViewController()
+            case .failure(let error):
+                switch error {
+                case VerIDUserManagementError.containsIncompatibleFaces:
+                    self.displayIncompatibleFacesError()
+                default:
+                    self.displayError()
+                }
+            }
             guard case .success(let verid) = result else {
                 self.displayError()
                 return
@@ -108,6 +126,14 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
             return
         }
         // Replace the root in the navigation view controller.
+        navigationController.setViewControllers([initialViewController], animated: false)
+    }
+    
+    func displayIncompatibleFacesError() {
+        guard let navigationController = self.window?.rootViewController as? UINavigationController, let storyboard = navigationController.storyboard else {
+            return
+        }
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "incompatibleFaces")
         navigationController.setViewControllers([initialViewController], animated: false)
     }
 }
