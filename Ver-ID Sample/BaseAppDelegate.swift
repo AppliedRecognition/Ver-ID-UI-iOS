@@ -64,7 +64,9 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
         Globals.verid = nil
         navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
         // Load Ver-ID
-        VerIDFactory(userDefaults: UserDefaults.standard).createVerID { result in
+        let veridFactory = VerIDFactory(userDefaults: UserDefaults.standard)
+        veridFactory.shouldDeleteIncompatibleFaces = deleteIncompatibleFaces
+        veridFactory.createVerID { result in
             switch result {
             case .success(let verid):
                 Globals.verid = verid
