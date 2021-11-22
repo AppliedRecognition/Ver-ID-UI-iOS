@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		KJ5mNiydCtLWMcXwCuawgMSc3hY=
+		ekr9qnnBOLUXuF8gQw8wVp/HrIk=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,31 +50,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sniinN+THw5fSHC/lqDTZizx/Jk=
+		fPOVe98jgu/S4ZWCaJ72A6wZoNY=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		qgRSgYLLN8FAr+0BSnWh00EgyaY=
+		+Ok7X9xgN1O7YXlcNPGPJigMFPg=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		wpxH7qpTiykHSNsNQDxoOxdeDnU=
+		w+ivHNObx5CyjEQLzZseW5WNn0M=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		2BieKgjxQQRrscp8uXOSM7BSmmE=
+		2v1b5N7bvro5iNHIOAk/DXMDi38=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		qgRSgYLLN8FAr+0BSnWh00EgyaY=
+		+Ok7X9xgN1O7YXlcNPGPJigMFPg=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		wpxH7qpTiykHSNsNQDxoOxdeDnU=
+		w+ivHNObx5CyjEQLzZseW5WNn0M=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		2BieKgjxQQRrscp8uXOSM7BSmmE=
+		2v1b5N7bvro5iNHIOAk/DXMDi38=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -171,7 +171,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S6ld86dPkzrUrYsv+1jkQgUzsd0Cl3A2OmN/g/qxihk=
+			TVLztbpueigdaYyfJ5sGWN2P85qNFmVuFMkpxQpMmtU=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -220,42 +220,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			G4a7+679dYHaXDHJCzU8I3bX+BMjwr3q6T9nhMj8DII=
+			cL0YJgBxQQkjic8m3XcBP83Ss0URxVKe0PMP3e8DOvE=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0g6ZCIPiljjNzKf+Qf9ckh9EIOAwcDXtl+hDOszDoBY=
+			xdbDCkrTUw3ZXX1Nybsuq29yk8L/5tmRLee5vLNnDrs=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			t5TYjycamHyB/xUaWhQt9fdFB9q+FG4jmg8Mx03B2+M=
+			S5WgW1cFOfkuslDSBmmpf8Da6sUSyJs8ARATMgSb2EU=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G4a7+679dYHaXDHJCzU8I3bX+BMjwr3q6T9nhMj8DII=
+			cL0YJgBxQQkjic8m3XcBP83Ss0URxVKe0PMP3e8DOvE=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0g6ZCIPiljjNzKf+Qf9ckh9EIOAwcDXtl+hDOszDoBY=
+			xdbDCkrTUw3ZXX1Nybsuq29yk8L/5tmRLee5vLNnDrs=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			t5TYjycamHyB/xUaWhQt9fdFB9q+FG4jmg8Mx03B2+M=
+			S5WgW1cFOfkuslDSBmmpf8Da6sUSyJs8ARATMgSb2EU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
