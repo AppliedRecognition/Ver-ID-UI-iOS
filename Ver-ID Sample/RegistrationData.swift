@@ -35,10 +35,8 @@ struct RegistrationData: Codable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        let faces: [RecognitionFace] = self.faces.map({
-            let face = RecognitionFace(recognitionData: $0.recognitionData)
-            face.version = $0.version
-            return face
+        let faces: [RecognitionFace] = try self.faces.map({
+            return try RecognitionFace(recognitionData: $0.recognitionData, version: $0.version)
         })
         try container.encode(faces, forKey: .faces)
         try container.encode(self.profilePicture, forKey: .profilePicture)

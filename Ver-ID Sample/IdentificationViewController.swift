@@ -85,16 +85,20 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
             do {
                 // Only report every hundredth of progress to avoid overwhelming the UI thread
                 let reportingIndex = Int(roundf(Float(facesToGenerate) / 100))
-                var defaultUserFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
-                let version: VerIDFaceTemplateVersion
+                var version: VerIDFaceTemplateVersion = .other
                 let defaultVersion = (verid.faceRecognition as? VerIDFaceRecognition)?.defaultFaceTemplateVersion ?? .V16
-                if defaultVersion == .V20A && defaultUserFaces.contains(where: { $0.version == RecognitionFace.Version.v20aUnencrypted.rawValue }) {
-                    version = .V20A
-                    defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.v20aUnencrypted.rawValue })
+                var defaultUserFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
+                if defaultUserFaces.contains(where: { $0.faceTemplateVersion == defaultVersion }) {
+                    version = defaultVersion
                 } else {
-                    version = .V16
-                    defaultUserFaces = defaultUserFaces.filter({ $0.version == RecognitionFace.Version.unencrypted.rawValue })
+                    for v in VerIDFaceTemplateVersion.all.filter({ $0 != defaultVersion }).sorted(by: { $0.rawValue > $1.rawValue }) {
+                        if defaultUserFaces.contains(where: { $0.faceTemplateVersion == v }) {
+                            version = v
+                            break
+                        }
+                    }
                 }
+                defaultUserFaces = defaultUserFaces.filter({ $0.faceTemplateVersion == version })
                 let faces = UnsafeMutablePointer<Recognizable>.allocate(capacity: facesToGenerate + defaultUserFaces.count)
                 DispatchQueue.concurrentPerform(iterations: facesToGenerate) { i in
                     do {
