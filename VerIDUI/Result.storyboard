@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JH9-dS-ikX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="localizable" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JH9-dS-ikX">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Success-->
         <scene sceneID="X9d-IB-Hwt">
             <objects>
-                <viewController storyboardIdentifier="success" id="JH9-dS-ikX" customClass="SuccessViewController" customModule="VerIDUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="success" id="JH9-dS-ikX" customClass="SuccessViewController" customModule="VerIDUI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VtJ-gm-3lP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Yu-rx-iLg">
                                 <rect key="frame" x="0.0" y="44" width="320" height="262"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Great. Session succeeded." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Yu-yW-jNo">
                                 <rect key="frame" x="16" y="314" width="288" height="234"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -38,7 +39,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="7vy-qn-Lou"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3Yu-rx-iLg" firstAttribute="bottom" secondItem="7vy-qn-Lou" secondAttribute="bottom" id="0ER-09-JNl"/>
                             <constraint firstItem="7vy-qn-Lou" firstAttribute="bottom" secondItem="4Yu-yW-jNo" secondAttribute="bottom" constant="20" id="2FL-9r-dfj"/>
@@ -59,7 +61,6 @@
                             <constraint firstItem="3Yu-rx-iLg" firstAttribute="leading" secondItem="7vy-qn-Lou" secondAttribute="leading" id="opQ-rq-UBh"/>
                             <constraint firstItem="3Yu-rx-iLg" firstAttribute="height" secondItem="7vy-qn-Lou" secondAttribute="height" multiplier="0.5" id="sjK-e4-LeH"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7vy-qn-Lou"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0ER-09-JNl"/>
@@ -104,7 +105,7 @@
         <!--Ver-ID-->
         <scene sceneID="KoK-1E-oeS">
             <objects>
-                <viewController storyboardIdentifier="failure" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3sy-Zb-RZM" customClass="FailureViewController" customModule="VerIDUI" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="failure" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3sy-Zb-RZM" customClass="FailureViewController" customModule="VerIDUI" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YoV-YA-qcX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +125,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="RIP-Qe-sFQ" firstAttribute="centerY" secondItem="z7c-bw-IXn" secondAttribute="centerY" id="0w7-Uf-sXG"/>
                                             <constraint firstItem="RIP-Qe-sFQ" firstAttribute="centerX" secondItem="z7c-bw-IXn" secondAttribute="centerX" id="mFx-SG-NNM"/>
@@ -133,12 +134,12 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfP-1t-DgG">
                                         <rect key="frame" x="16" y="270" width="288" height="246"/>
                                         <string key="text">When prompted turn your face slowly to follow the direction of the arrow until the frame turns green and the arrow disappears. Then hold still until prompted to turn in a different direction.</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="z7c-bw-IXn" firstAttribute="height" secondItem="sIj-m0-auY" secondAttribute="height" multiplier="0.5" id="0lf-g7-G4E"/>
                                     <constraint firstItem="VfP-1t-DgG" firstAttribute="leading" secondItem="sIj-m0-auY" secondAttribute="leadingMargin" id="1HW-gI-nzr"/>
@@ -177,6 +178,7 @@
                                 </variation>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="bXr-CD-pbf"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="sIj-m0-auY" secondAttribute="bottom" id="1rp-Ug-mod"/>
@@ -185,7 +187,6 @@
                             <constraint firstItem="sIj-m0-auY" firstAttribute="top" secondItem="bXr-CD-pbf" secondAttribute="top" id="XfG-uw-d1r"/>
                             <constraint firstItem="sIj-m0-auY" firstAttribute="trailing" secondItem="bXr-CD-pbf" secondAttribute="trailing" id="mic-SM-zaP"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bXr-CD-pbf"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="454-Qb-cpP"/>
@@ -218,5 +219,17 @@
     </scenes>
     <resources>
         <image name="checkmark" width="112" height="104"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

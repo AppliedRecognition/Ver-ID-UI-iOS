@@ -99,36 +99,12 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     ///
     /// - Parameter sender: Sender of the action
     @IBAction func authenticate(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Select language", message: nil, preferredStyle: .actionSheet)
-        alert.popoverPresentationController?.sourceView = sender
-        alert.addAction(UIAlertAction(title: "English", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "en")
-        }))
-        alert.addAction(UIAlertAction(title: "French", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "fr")
-        }))
-        alert.addAction(UIAlertAction(title: "Spanish", style: .default, handler: { _ in
-            self.startAuthenticationSession(language: "es")
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    private func startAuthenticationSession(language: String) {
-        let translatedStrings: TranslatedStrings?
-        if language == "fr", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "fr_CA", withExtension: "xml") {
-            translatedStrings = try? TranslatedStrings(url: url)
-        } else if language == "es", let url = Bundle(identifier: "com.appliedrec.verid.ui")?.url(forResource: "es_US", withExtension: "xml") {
-            translatedStrings = try? TranslatedStrings(url: url)
-        } else {
-            translatedStrings = nil
-        }
         guard let verid = Globals.verid else {
             return
         }
         let settings = AuthenticationSessionSettings(userId: VerIDUser.defaultUserId, userDefaults: UserDefaults.standard)
         settings.videoURL = FileManager.default.temporaryDirectory.appendingPathComponent("video").appendingPathExtension("mov")
-        let session = VerIDSession(environment: verid, settings: settings, translatedStrings: translatedStrings ?? TranslatedStrings(useCurrentLocale: false))
+        let session = VerIDSession(environment: verid, settings: settings)
         if Globals.isTesting && !Globals.shouldCancelAuthentication {
             session.imageProviderFactory = TestImageProviderServiceFactory()
             session.faceDetectionFactory = TestFaceDetectionServiceFactory()

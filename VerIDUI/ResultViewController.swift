@@ -137,7 +137,7 @@ import VerIDCore
     
     private func showDefaultImage() {
         DispatchQueue.main.async {
-            self.imageView.image = UIImage(named: "liveness_detection001", in: Bundle(for: type(of: self)), compatibleWith: nil)
+            self.imageView.image = UIImage(named: "liveness_detection001", in: ResourceHelper.bundle, compatibleWith: nil)
         }
     }
 }
@@ -172,7 +172,7 @@ import VerIDCore
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let bundle = Bundle(for: type(of: self))
+        let bundle = ResourceHelper.bundle
         let density = UIScreen.main.scale
         let densityInt = density > 2 ? 3 : 2
         let videoFileName = settings is RegistrationSessionSettings ? "registration" : "liveness_detection"

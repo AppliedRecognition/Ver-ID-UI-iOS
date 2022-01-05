@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerIDViewController" customModule="VerIDUI" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerIDViewController" customModule="VerIDUI">
             <connections>
                 <outlet property="cancelButton" destination="Tkr-iJ-3Yz" id="NfI-6B-Rmd"/>
                 <outlet property="directionLabel" destination="pFK-rq-7cB" id="wf1-jf-j3p"/>
@@ -30,8 +30,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uq2-PC-JwM">
                     <rect key="frame" x="16" y="0.0" width="288" height="568"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI" customModuleProvider="target">
-                            <rect key="frame" x="38" y="32" width="212" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI">
+                            <rect key="frame" x="40.5" y="32" width="207.5" height="23"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,13 +46,13 @@
                     </constraints>
                 </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera access denied" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKt-nZ-iLk">
-                    <rect key="frame" x="16" y="272" width="288" height="24"/>
+                    <rect key="frame" x="16" y="272.5" width="288" height="23"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkr-iJ-3Yz">
-                    <rect key="frame" x="129.5" y="484" width="61" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkr-iJ-3Yz">
+                    <rect key="frame" x="130.5" y="485" width="59" height="35"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -63,6 +63,7 @@
                     </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="mT4-EL-2C3"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Tkr-iJ-3Yz" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="0k8-lM-R46"/>
@@ -79,7 +80,6 @@
                 <constraint firstItem="vbV-fj-w3F" firstAttribute="leading" secondItem="mT4-EL-2C3" secondAttribute="leading" id="mtC-IJ-E1r"/>
                 <constraint firstItem="uq2-PC-JwM" firstAttribute="bottom" secondItem="mT4-EL-2C3" secondAttribute="bottom" id="uRe-vQ-uLT"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="mT4-EL-2C3"/>
             <point key="canvasLocation" x="136.875" y="153.16901408450704"/>
         </view>
     </objects>

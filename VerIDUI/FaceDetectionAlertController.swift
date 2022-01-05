@@ -46,7 +46,7 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     public init(message: String?, videoURL: URL?) {
         self.message = message
         self.videoURL = videoURL
-        super.init(nibName: "FaceDetectionAlertController", bundle: Bundle(for: type(of: self)))
+        super.init(nibName: "FaceDetectionAlertController", bundle: ResourceHelper.bundle)
     }
     
     required init?(coder aDecoder: NSCoder) {

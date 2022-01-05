@@ -189,7 +189,7 @@ import VerIDCore
         @unknown default:
             imageName = "head_thumbnail_straight"
         }
-        let bundle = Bundle(for: type(of: self))
+        let bundle = ResourceHelper.bundle
         return UIImage(named: imageName, in: bundle, compatibleWith: nil)
     }
 }

@@ -86,7 +86,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeFaceDetectionAlertController(settings: VerIDSessionSettings, faceDetectionResult: FaceDetectionResult) throws -> UIViewController & FaceDetectionAlertControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
+        let bundle = ResourceHelper.bundle
         let message: String
         if faceDetectionResult.status == .faceTurnedTooFar {
             message = self.translatedStrings["You may have turned too far. Only turn in the requested direction until the oval turns green."]

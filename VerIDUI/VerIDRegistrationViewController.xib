@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerIDRegistrationViewController" customModule="VerIDUI" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerIDRegistrationViewController" customModule="VerIDUI">
             <connections>
                 <outlet property="cancelButton" destination="Tkr-iJ-3Yz" id="yEH-Md-Iwx"/>
                 <outlet property="detectedFaceStackView" destination="Z5c-YQ-ARF" id="xA7-iy-5i0"/>
@@ -32,8 +32,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-9Z-Hyo">
                     <rect key="frame" x="16" y="0.0" width="343" height="667"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI" customModuleProvider="target">
-                            <rect key="frame" x="65.5" y="32" width="212" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparing face detection" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFK-rq-7cB" customClass="PaddedRoundedLabel" customModule="VerIDUI">
+                            <rect key="frame" x="68" y="32" width="207.5" height="23"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,20 +48,20 @@
                     </constraints>
                 </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera access denied" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKt-nZ-iLk">
-                    <rect key="frame" x="16" y="321.5" width="343" height="24"/>
+                    <rect key="frame" x="16" y="323.5" width="343" height="20.5"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Z5c-YQ-ARF">
-                    <rect key="frame" x="157.5" y="519" width="60" height="64"/>
+                    <rect key="frame" x="157.5" y="522" width="60" height="64"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="5pp-ly-eJq"/>
                         <constraint firstAttribute="width" constant="60" placeholder="YES" id="7JB-7X-RTm"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkr-iJ-3Yz">
-                    <rect key="frame" x="157" y="599" width="61" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tkr-iJ-3Yz">
+                    <rect key="frame" x="161" y="602" width="53" height="33"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -72,6 +72,7 @@
                     </connections>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="mT4-EL-2C3"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Tkr-iJ-3Yz" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="0k8-lM-R46"/>
@@ -90,7 +91,6 @@
                 <constraint firstItem="cKt-nZ-iLk" firstAttribute="trailing" secondItem="Ocl-Sv-K49" secondAttribute="trailingMargin" id="lVs-eh-vrC"/>
                 <constraint firstItem="sRN-9Z-Hyo" firstAttribute="trailing" secondItem="Ocl-Sv-K49" secondAttribute="trailingMargin" id="z2e-Wv-IPY"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="mT4-EL-2C3"/>
             <point key="canvasLocation" x="32.799999999999997" y="52.623688155922046"/>
         </view>
     </objects>

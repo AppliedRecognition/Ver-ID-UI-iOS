@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FaceDetectionAlertController" customModule="VerIDUI" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FaceDetectionAlertController" customModule="VerIDUI">
             <connections>
                 <outlet property="cancelButton" destination="TVJ-Gt-VpN" id="evL-yo-Fzi"/>
                 <outlet property="messageLabel" destination="RYx-on-9dD" id="PLc-Oq-2pr"/>
@@ -39,7 +40,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="RYx-on-9dD" firstAttribute="trailing" secondItem="QHp-41-sZN" secondAttribute="trailingMargin" id="M5I-BU-aq6"/>
                                 <constraint firstItem="RYx-on-9dD" firstAttribute="leading" secondItem="QHp-41-sZN" secondAttribute="leadingMargin" id="PtB-Ni-9bM"/>
@@ -49,7 +50,7 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-yG-vAR">
                             <rect key="frame" x="0.0" y="129" width="320" height="240"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="320" id="Beu-Lv-OCh"/>
                                 <constraint firstAttribute="height" constant="240" id="d9q-45-b0S"/>
@@ -77,16 +78,24 @@
                             </items>
                         </toolbar>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2970355308" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="k6M-h1-dAS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Kdd-Y5-1Gr"/>
                 <constraint firstItem="k6M-h1-dAS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="T1N-YQ-8QL"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33" y="53"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

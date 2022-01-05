@@ -1,0 +1,12 @@
+//
+//  Release.xcconfig
+//  VerIDUI
+//
+//  Created by Jakub Dolejs on 05/01/2022.
+//  Copyright © 2022 Applied Recognition. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include "Version.xcconfig"
+#include "../Pods/Target Support Files/Pods-Ver-ID-VerIDUI/Pods-Ver-ID-VerIDUI.release.xcconfig"

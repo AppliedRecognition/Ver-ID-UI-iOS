@@ -1,9 +1,9 @@
-![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID-UI.svg)
+![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID.svg)
 
 # Ver-ID UI for iOS
 
 ## Prerequisites
-Minimum iOS version is 11.0.
+Minimum iOS version is 10.3.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
@@ -70,7 +70,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	platform :ios, '10.3'
 	target 'MyApp' do
 		use_frameworks!
-		pod 'Ver-ID-UI'
+		pod 'Ver-ID', '1.12.5'
 	end
 	~~~
 1. Save the Podfile. Open **Terminal** and navigate to your project's folder. Then enter:

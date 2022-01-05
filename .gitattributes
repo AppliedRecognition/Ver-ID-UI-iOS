@@ -1,0 +1,2 @@
+Frameworks/**/*.dat filter=lfs diff=lfs merge=lfs -text
+Frameworks/**/VerIDCore filter=lfs diff=lfs merge=lfs -text
