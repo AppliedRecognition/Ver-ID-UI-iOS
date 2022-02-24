@@ -23,7 +23,6 @@
 		3B2E36792628BEF50055FE28 /* VerIDUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */; };
 		3B2E36812628BF2F0055FE28 /* VerIDSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */; };
 		3B2E36822628BF2F0055FE28 /* ResourceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2E36802628BF2F0055FE28 /* ResourceHelper.swift */; };
-		3B2E36892628BF5A0055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
 		3B2E36C32628BFAF0055FE28 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E369B2628BFAE0055FE28 /* Media.xcassets */; };
 		3B2E36C42628BFAF0055FE28 /* liveness_detection_3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E369D2628BFAE0055FE28 /* liveness_detection_3.mp4 */; };
 		3B2E36C52628BFAF0055FE28 /* liveness_detection_2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E369E2628BFAE0055FE28 /* liveness_detection_2.mp4 */; };
@@ -62,12 +61,6 @@
 		3B2E36E62628BFAF0055FE28 /* translation_xml.py in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C02628BFAF0055FE28 /* translation_xml.py */; };
 		3B2E36E72628BFAF0055FE28 /* test_translation.py in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C12628BFAF0055FE28 /* test_translation.py */; };
 		3B2E36E82628BFAF0055FE28 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C22628BFAF0055FE28 /* Tips.storyboard */; };
-		3B2E37322628C5E40055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
-		3B2E37332628C5E40055FE28 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B2E37392628C6030055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
-		3B2E373A2628C6030055FE28 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B2E373C2628C60A0055FE28 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; };
-		3B2E373D2628C60A0055FE28 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B443BDB2733F24C002C6CAA /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3B443BDA2733F24C002C6CAA /* Documentation.docc */; };
 		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
@@ -91,6 +84,7 @@
 		3B45BAE9247D976F00273FAF /* RegistrationImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */; };
 		3B45BAEA247D977400273FAF /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
 		3B45BAEB247D978300273FAF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
+		3B51D30827C82A8E008A97FE /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
 		3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */; };
 		3B564B22234276EE008B3FCD /* TipPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B20234276ED008B3FCD /* TipPageViewController.swift */; };
 		3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */; };
@@ -198,7 +192,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B2E373A2628C6030055FE28 /* VerIDCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -209,7 +202,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B2E373D2628C60A0055FE28 /* VerIDCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,7 +225,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
-				3B2E37332628C5E40055FE28 /* VerIDCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,7 +253,6 @@
 		3B2E365A2628BE6C0055FE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionDelegate.swift; sourceTree = "<group>"; };
 		3B2E36802628BF2F0055FE28 /* ResourceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceHelper.swift; sourceTree = "<group>"; };
-		3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDCore.xcframework; path = Frameworks/bitcode/VerIDCore.xcframework; sourceTree = SOURCE_ROOT; };
 		3B2E369B2628BFAE0055FE28 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		3B2E369D2628BFAE0055FE28 /* liveness_detection_3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_3.mp4; sourceTree = "<group>"; };
 		3B2E369E2628BFAE0055FE28 /* liveness_detection_2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = liveness_detection_2.mp4; sourceTree = "<group>"; };
@@ -320,6 +310,8 @@
 		3B45BAD8247D94C000273FAF /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		3B45BADB247D94C000273FAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3B45BADD247D94C000273FAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B51D30627C815A2008A97FE /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
+		3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDCore.xcframework; path = Frameworks/VerIDCore/bitcode/VerIDCore.xcframework; sourceTree = SOURCE_ROOT; };
 		3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatedStrings.swift; sourceTree = "<group>"; };
 		3B564B20234276ED008B3FCD /* TipPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipPageViewController.swift; sourceTree = "<group>"; };
 		3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
@@ -332,7 +324,6 @@
 		3B6A70E42208BD8400B137C4 /* CameraPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
 		3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDViewControllerDelegate.swift; sourceTree = "<group>"; };
 		3B6C698B23A0227B0082AFF5 /* BaseAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseAppDelegate.swift; path = "Ver-ID Sample/BaseAppDelegate.swift"; sourceTree = SOURCE_ROOT; };
-		3B749B4526D9617E00AFC328 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		3B749B4626D9680A00AFC328 /* VerIDUISessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUISessionError.swift; sourceTree = "<group>"; };
 		3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDSessionViewDelegate.swift; sourceTree = "<group>"; };
 		3B8C109E240D87900087ACA5 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -398,9 +389,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B2E36892628BF5A0055FE28 /* VerIDCore.xcframework in Frameworks */,
 				3B0E6F372720A0240061A3A3 /* FaceTemplateUtility in Frameworks */,
 				6FA741F19BF3A00A6AF81A44 /* Pods_Ver_ID_VerIDUI.framework in Frameworks */,
+				3B51D30827C82A8E008A97FE /* VerIDCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +407,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */,
-				3B2E37392628C6030055FE28 /* VerIDCore.xcframework in Frameworks */,
 				D80C36361D251AE897C541C6 /* Pods_Ver_ID_Thumbnails.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAD6247D94C000273FAF /* QuickLook.framework in Frameworks */,
-				3B2E373C2628C60A0055FE28 /* VerIDCore.xcframework in Frameworks */,
 				5270C89D748E3DD6D44A14F9 /* Pods_Ver_ID_Preview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,7 +425,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
-				3B2E37322628C5E40055FE28 /* VerIDCore.xcframework in Frameworks */,
 				9A4B9BEA526F687E0B6D98AB /* Pods_Ver_ID_Ver_ID_Sample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,9 +556,10 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */,
+				3B51D30627C815A2008A97FE /* Version.xcconfig */,
 				3B749B4626D9680A00AFC328 /* VerIDUISessionError.swift */,
 				3B2E369A2628BFAE0055FE28 /* Resources */,
-				3B2E36882628BF5A0055FE28 /* VerIDCore.xcframework */,
 				3B2E36802628BF2F0055FE28 /* ResourceHelper.swift */,
 				3B2E367F2628BF2F0055FE28 /* VerIDSessionDelegate.swift */,
 				3B09E2DB25647A3D00ED224D /* README.md */,
@@ -595,7 +584,6 @@
 				3B326B1922089C88005DAE1E /* VerIDUI.h */,
 				3B6A70D52208BC3B00B137C4 /* VerIDViewController.swift */,
 				3B6A70EC2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift */,
-				3B749B4526D9617E00AFC328 /* Config.xcconfig */,
 			);
 			path = VerIDUI;
 			sourceTree = "<group>";
@@ -1457,7 +1445,7 @@
 		};
 		3B326B1C22089C88005DAE1E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B749B4526D9617E00AFC328 /* Config.xcconfig */;
+			baseConfigurationReference = 3B51D30627C815A2008A97FE /* Version.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -1522,7 +1510,7 @@
 		};
 		3B326B1D22089C88005DAE1E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B749B4526D9617E00AFC328 /* Config.xcconfig */;
+			baseConfigurationReference = 3B51D30627C815A2008A97FE /* Version.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
