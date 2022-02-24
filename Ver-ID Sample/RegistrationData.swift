@@ -36,7 +36,7 @@ struct RegistrationData: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         let faces: [RecognitionFace] = try self.faces.map({
-            return try RecognitionFace(recognitionData: $0.recognitionData, version: $0.version)
+            return try RecognitionFace(recognitionData: $0.recognitionData, faceTemplateVersion: $0.faceTemplateVersion)
         })
         try container.encode(faces, forKey: .faces)
         try container.encode(self.profilePicture, forKey: .profilePicture)
