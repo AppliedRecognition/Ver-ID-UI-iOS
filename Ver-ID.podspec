@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name = "Ver-ID"
     s.module_name = "VerIDUI"
-    s.version = "2.4.0e01"
+    s.version = "2.4.0"
     s.summary = "Face detection and recognition"
     s.homepage = "https://github.com/AppliedRecognition"
     s.license = { :type => "COMMERCIAL", :file => "LICENCE.txt" }
@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
     s.default_subspecs = 'Core', 'UI'
     s.static_framework = true
     s.cocoapods_version = ">= 1.10"
+    s.preserve_paths = 'VerIDUI/*.xcconfig'
     s.script_phase = { :name => "Check Ver-ID fully downloaded", :script => 'filesize=$(wc -c <"${PODS_XCFRAMEWORKS_BUILD_DIR}/VerIDCore/VerIDCore.framework/VerIDCore"); if [ $filesize -lt 1000000 ]; then echo "error: Ver-ID framework files not fully downloaded. Please install Git LFS, clear the Ver-ID pod cache using pod cache clean Ver-ID and run pod install."; exit 1; else echo "Ver-ID installed successfully"; fi', :execution_position => :before_compile }
     s.subspec 'UI' do |ss|
         ss.source_files = "VerIDUI/*.swift"
@@ -24,6 +25,7 @@ Pod::Spec.new do |s|
         ss.pod_target_xcconfig = {
             "ENABLE_BITCODE" => "YES"
         }
+        
     end
     s.subspec 'Core' do |ss|
         ss.dependency "OpenCV2", "~> 4.1"
@@ -32,7 +34,8 @@ Pod::Spec.new do |s|
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
         ss.dependency 'DeviceKit', '~> 4.4'
-        ss.vendored_framework = "Frameworks/bitcode/VerIDCore.xcframework"
+        ss.dependency 'ASN1Decoder', '~> 1.8'
+        ss.vendored_framework = "Frameworks/VerIDCore/bitcode/VerIDCore.xcframework"
     end
     s.subspec 'UI-no-bitcode' do |ss|
         ss.source_files = "VerIDUI/*.swift"
@@ -52,6 +55,7 @@ Pod::Spec.new do |s|
         ss.dependency 'RxSwift', '~> 5'
         ss.dependency 'RxCocoa', '~> 5'
         ss.dependency 'DeviceKit', '~> 4.4'
-        ss.vendored_framework = "Frameworks/no-bitcode/VerIDCore.xcframework"
+        ss.dependency 'ASN1Decoder', '~> 1.8'
+        ss.vendored_framework = "Frameworks/VerIDCore/no-bitcode/VerIDCore.xcframework"
     end
 end

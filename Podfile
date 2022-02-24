@@ -9,6 +9,7 @@ abstract_target 'Ver-ID' do
   pod 'RxCocoa', '~> 5'
   pod 'ZIPFoundation', '~> 0.9'
   pod 'DeviceKit', '~> 4.4'
+  pod 'ASN1Decoder', '~> 1.8'
   pod 'Ver-ID-SDK-Identity', '>= 3.0.2', '< 4.0'
   
   post_install do |installer|
