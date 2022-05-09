@@ -49,7 +49,6 @@ Pod::Spec.new do |s|
         }
     end
     s.subspec 'Core-no-bitcode' do |ss|
-        ss.dependency "OpenCV2", "~> 4.1"
         ss.dependency "ZIPFoundation", "~> 0.9"
         ss.dependency "Ver-ID-SDK-Identity", ">= 3.0.2", "< 4.0"
         ss.dependency 'RxSwift', '~> 5'
