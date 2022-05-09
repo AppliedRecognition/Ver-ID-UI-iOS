@@ -435,6 +435,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/jakub/Applied-Recognition/Ver-ID-Apple/VerIDUI/VerIDUI/VerIDUISessionError.swift",
+      "line": 11,
+      "symbol": "VerIDUISessionError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/jakub/Applied-Recognition/Ver-ID-Apple/VerIDUI/VerIDUI/VerIDViewController.swift",
       "line": 22,
       "symbol": "VerIDViewControllerProtocol.sessionSettings",
