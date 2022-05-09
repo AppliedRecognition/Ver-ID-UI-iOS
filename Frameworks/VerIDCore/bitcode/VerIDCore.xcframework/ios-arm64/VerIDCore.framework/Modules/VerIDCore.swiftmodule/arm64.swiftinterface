@@ -380,6 +380,26 @@ public class FunctionCallReport : VerIDCore.Transaction {
 @objc(VerIDFaceRecognitionFactory) public protocol FaceRecognitionFactory {
   @objc func createFaceRecognition() throws -> VerIDCore.FaceRecognition
 }
+public struct UserFaceComparison : Swift.Codable, Swift.Equatable {
+  public let user1: (Swift.String, Swift.Int)
+  public let user2: (Swift.String, Swift.Int)
+  public let score: Swift.Float
+  public init(user1: (Swift.String, Swift.Int), user2: (Swift.String, Swift.Int), score: Swift.Float)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public static func == (lhs: VerIDCore.UserFaceComparison, rhs: VerIDCore.UserFaceComparison) -> Swift.Bool
+}
+public class FaceTemplateDiagnostics {
+  final public let verID: VerIDCore.VerID
+  public init(verID: VerIDCore.VerID)
+  public func compareRegisteredFaceTemplates(hashUserNames: Swift.Bool = true, completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : [VerIDCore.UserFaceComparison]], Swift.Error>) -> Swift.Void)
+  public func compareFaceTemplates(_ templates: [VerIDCore.Recognizable], completion: @escaping (Swift.Result<[(VerIDCore.Recognizable, VerIDCore.Recognizable, Swift.Float)], Swift.Error>) -> Swift.Void)
+  public func findMostSimilarUsers(hashUserNames: Swift.Bool = true, completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison], Swift.Error>) -> Swift.Void)
+  public func findMostDifferentUsers(hashUserNames: Swift.Bool = true, completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison], Swift.Error>) -> Swift.Void)
+  public func findMostSimilarUsers(in comparisons: [VerIDCore.UserFaceComparison]) -> VerIDCore.UserFaceComparison?
+  public func findMostDifferentUsers(in comparisons: [VerIDCore.UserFaceComparison]) -> VerIDCore.UserFaceComparison?
+  @objc deinit
+}
 public class Smoothing<T> {
   public var capacity: Swift.Int {
     get
