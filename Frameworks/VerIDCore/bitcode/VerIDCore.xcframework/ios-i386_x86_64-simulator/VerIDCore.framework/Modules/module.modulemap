@@ -1,0 +1,11 @@
+framework module VerIDCore {
+  umbrella header "VerIDCore.h"
+
+  export *
+  module * { export * }
+}
+
+module VerIDCore.Swift {
+    header "VerIDCore-Swift.h"
+    requires objc
+}
