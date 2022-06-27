@@ -64,8 +64,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeResultViewController(result: VerIDSessionResult) throws -> UIViewController & ResultViewControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
-        let storyboard = UIStoryboard(name: "Result", bundle: bundle)
+        let storyboard = UIStoryboard(name: "Result", bundle: ResourceHelper.bundle)
         let storyboardId = result.error != nil ? "failure" : "success"
         guard let resultViewController = storyboard.instantiateViewController(withIdentifier: storyboardId) as? ResultViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
@@ -77,8 +76,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     @objc open func makeTipsViewController() throws -> UIViewController & TipsViewControllerProtocol {
-        let bundle = Bundle(for: type(of: self))
-        guard let tipsController = UIStoryboard(name: "Tips", bundle: bundle).instantiateInitialViewController() as? TipsViewController else {
+        guard let tipsController = UIStoryboard(name: "Tips", bundle: ResourceHelper.bundle).instantiateInitialViewController() as? TipsViewController else {
             throw VerIDSessionViewControllersFactoryError.failedToCreateInstance
         }
         tipsController.translatedStrings = self.translatedStrings
