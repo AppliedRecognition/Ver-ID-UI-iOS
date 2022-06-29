@@ -62,6 +62,10 @@
 		3B2E36E72628BFAF0055FE28 /* test_translation.py in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C12628BFAF0055FE28 /* test_translation.py */; };
 		3B2E36E82628BFAF0055FE28 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C22628BFAF0055FE28 /* Tips.storyboard */; };
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B34722D286C6CF900969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
+		3B347231286C6E4300969D79 /* FaceTemplateUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 3B347230286C6E4300969D79 /* FaceTemplateUtility */; };
+		3B347232286C708100969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
+		3B347233286C708100969D79 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B443BDB2733F24C002C6CAA /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3B443BDA2733F24C002C6CAA /* Documentation.docc */; };
 		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
 		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
@@ -84,7 +88,6 @@
 		3B45BAE9247D976F00273FAF /* RegistrationImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */; };
 		3B45BAEA247D977400273FAF /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
 		3B45BAEB247D978300273FAF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
-		3B51D30827C82A8E008A97FE /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
 		3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */; };
 		3B564B22234276EE008B3FCD /* TipPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B20234276ED008B3FCD /* TipPageViewController.swift */; };
 		3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */; };
@@ -225,6 +228,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
+				3B347233286C708100969D79 /* VerIDCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -391,7 +395,7 @@
 			files = (
 				3B0E6F372720A0240061A3A3 /* FaceTemplateUtility in Frameworks */,
 				6FA741F19BF3A00A6AF81A44 /* Pods_Ver_ID_VerIDUI.framework in Frameworks */,
-				3B51D30827C82A8E008A97FE /* VerIDCore.xcframework in Frameworks */,
+				3B34722D286C6CF900969D79 /* VerIDCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +430,8 @@
 			files = (
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
 				9A4B9BEA526F687E0B6D98AB /* Pods_Ver_ID_Ver_ID_Sample.framework in Frameworks */,
+				3B347231286C6E4300969D79 /* FaceTemplateUtility in Frameworks */,
+				3B347232286C708100969D79 /* VerIDCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +877,9 @@
 				3B45BADF247D94C000273FAF /* PBXTargetDependency */,
 			);
 			name = "Ver-ID Sample";
+			packageProductDependencies = (
+				3B347230286C6E4300969D79 /* FaceTemplateUtility */,
+			);
 			productName = "Ver-ID Sample";
 			productReference = 3BE9F365220AF125002C11BE /* Ver-ID Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -1868,6 +1877,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		3B0E6F362720A0240061A3A3 /* FaceTemplateUtility */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */;
+			productName = FaceTemplateUtility;
+		};
+		3B347230286C6E4300969D79 /* FaceTemplateUtility */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */;
 			productName = FaceTemplateUtility;

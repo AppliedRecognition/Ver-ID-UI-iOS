@@ -141,7 +141,7 @@ import os
     
     // MARK: - Override to provide a custom image observable
     
-    public func imageObservable(for viewController: UIViewController & VerIDViewControllerProtocol) throws -> Observable<(VerIDImage, FaceBounds)> {
+    public func imageObservable(for viewController: UIViewController & VerIDViewControllerProtocol) throws -> Observable<(Image, FaceBounds)> {
         if let publisher = (viewController as? ImagePublisher)?.imagePublisher {
             return publisher
         }

@@ -28,7 +28,7 @@ import RxSwift
 
 public protocol ImagePublisher {
     
-    var imagePublisher: PublishSubject<(VerIDImage,FaceBounds)> { get }
+    var imagePublisher: PublishSubject<(Image,FaceBounds)> { get }
 }
 
 /// Ver-ID SDK's default implementation of the `VerIDViewControllerProtocol`
@@ -103,7 +103,7 @@ public protocol ImagePublisher {
     }
     let viewSizeLock: NSLock = .init()
     
-    public let imagePublisher = PublishSubject<(VerIDImage,FaceBounds)>()
+    public let imagePublisher = PublishSubject<(Image,FaceBounds)>()
     
     public init(nibName: String? = nil) {
         let nib = nibName ?? "VerIDViewController"
@@ -126,7 +126,7 @@ public protocol ImagePublisher {
         self.directionLabel.backgroundColor = UIColor.white
         self.noCameraLabel.isHidden = true
         self.noCameraLabel.text = self.translatedStrings?["Camera access denied"]
-        self.currentImageOrientation = imageOrientation
+        self.updateImageOrientation()
         if let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String {
             self.noCameraLabel.text = self.translatedStrings?["Please go to settings and enable camera in the settings for %@.", appName]
         }
@@ -152,7 +152,7 @@ public protocol ImagePublisher {
                 return
             }
             if !context.isCancelled {
-                self.currentImageOrientation = self.imageOrientation
+                self.updateImageOrientation()
                 self.faceOvalLayer.frame = self.overlayView.layer.bounds
                 self.viewSize = self.overlayView.bounds.size
             }
@@ -191,6 +191,25 @@ public protocol ImagePublisher {
         self.noCameraLabel.text = reason
     }
     
+    private func updateImageOrientation() {
+        if self.cameraPosition == .back {
+            self.currentImageOrientation = self.imageOrientation
+        } else {
+            switch self.imageOrientation {
+            case .up:
+                self.currentImageOrientation = .upMirrored
+            case .down:
+                self.currentImageOrientation = .downMirrored
+            case .left:
+                self.currentImageOrientation = .leftMirrored
+            case .right:
+                self.currentImageOrientation = .rightMirrored
+            default:
+                self.currentImageOrientation = self.imageOrientation
+            }
+        }
+    }
+    
     // MARK: -
     
     @IBAction func cancel(_ sender: Any? = nil) {
@@ -215,9 +234,7 @@ public protocol ImagePublisher {
             self.directionLabel.isHidden = prompt == nil || prompt!.isEmpty
             self.directionLabel.textColor = self.textColourFromFaceDetectionStatus(faceDetectionResult.status)
             self.directionLabel.backgroundColor = self.ovalColourFromFaceDetectionStatus(faceDetectionResult.status)
-            guard let imageSize = faceDetectionResult.image.size else {
-                return
-            }
+            let imageSize = CGSize(width: faceDetectionResult.image.width, height: faceDetectionResult.image.height)
             let defaultFaceBounds = faceDetectionResult.defaultFaceBounds.translatedToImageSize(imageSize)
             var ovalBounds: CGRect
             var cutoutBounds: CGRect?
@@ -292,8 +309,10 @@ public protocol ImagePublisher {
     ///   - sampleBuffer: image sample buffer
     ///   - connection: capture connection
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        let image = VerIDImage(sampleBuffer: sampleBuffer, orientation: self.currentImageOrientation)
-        image.isMirrored = self.cameraPosition == .front
+        guard let image = try? VerIDImage(sampleBuffer: sampleBuffer, orientation: self.currentImageOrientation).provideVerIDImage() else {
+            return
+        }
+        image.isMirrored = cameraPosition == .front
         self.imagePublisher.onNext((image,FaceBounds(viewSize: self.viewSize, faceExtents: self.sessionSettings?.expectedFaceExtents ?? FaceExtents.defaultExtents)))
     }
     
