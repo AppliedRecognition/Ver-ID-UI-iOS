@@ -17,7 +17,6 @@ import AVFoundation
     
     let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
     private let captureSession = AVCaptureSession()
-    private var cameraInput: AVCaptureDeviceInput!
     private var setupResult: SessionSetupResult = .success
     private(set) var isSessionRunning = false
     private(set) internal var cameraPreviewView: CameraPreviewView!
@@ -28,24 +27,24 @@ import AVFoundation
     
     private var observeSession: Bool = false {
         didSet {
-            if oldValue != observeSession && observeSession {
-                self.captureSession.addObserver(self, forKeyPath: "running", options: .new, context: &self.sessionRunningObserveContext)
-                
-                NotificationCenter.default.addObserver(self, selector: #selector(sessionRuntimeError), name: Notification.Name("AVCaptureSessionRuntimeErrorNotification"), object: self.captureSession)
-                
-                /*
-                 A session can only run when the app is full screen. It will be interrupted
-                 in a multi-app layout, introduced in iOS 9, see also the documentation of
-                 AVCaptureSessionInterruptionReason. Add observers to handle these session
-                 interruptions and show a preview is paused message. See the documentation
-                 of AVCaptureSessionWasInterruptedNotification for other interruption reasons.
-                 */
-                NotificationCenter.default.addObserver(self, selector: #selector(sessionWasInterrupted), name: Notification.Name("AVCaptureSessionWasInterruptedNotification"), object: self.captureSession)
-                NotificationCenter.default.addObserver(self, selector: #selector(sessionInterruptionEnded), name: Notification.Name("AVCaptureSessionInterruptionEndedNotification"), object: self.captureSession)
-            } else if oldValue != observeSession {
-                NotificationCenter.default.removeObserver(self)
-                
-                self.captureSession.removeObserver(self, forKeyPath: "running", context: &sessionRunningObserveContext)
+            self.captureSessionQueue.async {
+                if oldValue != self.observeSession && self.observeSession {
+                    self.captureSession.addObserver(self, forKeyPath: "running", options: .new, context: &self.sessionRunningObserveContext)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionRuntimeError), name: Notification.Name("AVCaptureSessionRuntimeErrorNotification"), object: self.captureSession)
+                    
+                    /*
+                     A session can only run when the app is full screen. It will be interrupted
+                     in a multi-app layout, introduced in iOS 9, see also the documentation of
+                     AVCaptureSessionInterruptionReason. Add observers to handle these session
+                     interruptions and show a preview is paused message. See the documentation
+                     of AVCaptureSessionWasInterruptedNotification for other interruption reasons.
+                     */
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionWasInterrupted), name: Notification.Name("AVCaptureSessionWasInterruptedNotification"), object: self.captureSession)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionInterruptionEnded), name: Notification.Name("AVCaptureSessionInterruptionEndedNotification"), object: self.captureSession)
+                } else if oldValue != self.observeSession {
+                    NotificationCenter.default.removeObserver(self)
+                    self.captureSession.removeObserver(self, forKeyPath: "running", context: &self.sessionRunningObserveContext)
+                }
             }
         }
     }
@@ -212,7 +211,7 @@ import AVFoundation
         
         do {
             guard let camera = self.captureDevice else {
-                setupResult = .configurationFailed
+                self.setupResult = .configurationFailed
                 return
             }
             
@@ -224,7 +223,6 @@ import AVFoundation
                 return
             }
             self.captureSession.addInput(videoDeviceInput)
-            self.cameraInput = videoDeviceInput
             
             DispatchQueue.main.async {
                 self.cameraPreviewView.videoPreviewLayer.videoGravity = self.videoGravity
