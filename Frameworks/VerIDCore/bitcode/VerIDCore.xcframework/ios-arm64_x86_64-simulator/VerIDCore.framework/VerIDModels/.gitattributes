@@ -1,0 +1,5 @@
+*	-text
+*.dat filter=lfs diff=lfs merge=lfs -text
+*.xml filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+*.nv filter=lfs diff=lfs merge=lfs -text

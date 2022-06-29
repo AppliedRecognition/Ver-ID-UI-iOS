@@ -864,6 +864,7 @@ public class VerIDUserManagement : ObjectiveC.NSObject, VerIDCore.UserManagement
   final public let faceTemplateEncryption: VerIDCore.FaceTemplateEncryption
   final public let isEncryptionDisabled: Swift.Bool
   final public let isAutomaticFaceTemplateMigrationEnabled: Swift.Bool
+  public var callbackQueue: Dispatch.DispatchQueue
   @objc public func assignFaces(_ faces: [VerIDCore.Recognizable], toUser userId: Swift.String, completion: VerIDCore.VerIDUserManagement.ErrorCallback? = nil)
   @objc public func addUsersWithFaces(_ userFaces: [Swift.String : [VerIDCore.Recognizable]], completion: VerIDCore.VerIDUserManagement.ErrorCallback?)
   @objc public func deleteFaces(_ faces: [VerIDCore.Recognizable], completion: ((Swift.Error?) -> Swift.Void)? = nil)
