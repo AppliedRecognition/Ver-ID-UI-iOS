@@ -39,8 +39,14 @@ abstract_target 'Ver-ID' do
   end
   
   target 'VerIDUI'
-  target 'Ver-ID Sample'
-  target 'Preview'
-  target 'Thumbnails'
+  target 'Ver-ID Sample' do
+    pod 'SwiftProtobuf', '~> 1.19'
+  end
+  target 'Preview' do
+    pod 'SwiftProtobuf', '~> 1.19'
+  end
+  target 'Thumbnails' do
+    pod 'SwiftProtobuf', '~> 1.19'
+  end
   target 'VerIDUITests'
 end
