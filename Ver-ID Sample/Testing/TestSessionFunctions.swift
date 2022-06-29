@@ -11,13 +11,11 @@ import VerIDCore
 
 class TestSessionFunctions: SessionFunctions {
     
-    override var sessionFaceTrackingAccumulator: (inout SessionFaceTracking, (image: VerIDImage, defaultFaceBounds: FaceBounds)) throws -> Void {
+    override var sessionFaceTrackingAccumulator: (inout SessionFaceTracking, (image: Image, defaultFaceBounds: FaceBounds)) throws -> Void {
         { faceTracking, capture in
             faceTracking.image = capture.image
             faceTracking.defaultFaceBounds = capture.defaultFaceBounds
-            guard let imageSize = capture.image.size else {
-                throw VerIDError.undefinedImageSize
-            }
+            let imageSize = capture.image.size
             let face = Face()
             let faceWidth = min(imageSize.width, imageSize.height) / 2
             let faceHeight = faceWidth * 1.25
@@ -70,9 +68,7 @@ class TestSessionFunctions: SessionFunctions {
             guard faceDetectionResult.status == .faceAligned, let face = faceDetectionResult.face else {
                 preconditionFailure("Face not aligned or missing")
             }
-            guard let imageSize = faceDetectionResult.image.size else {
-                preconditionFailure("Image does not have size")
-            }
+            let imageSize = faceDetectionResult.image.size
             let recognizableFace = RecognizableFace(face: face, recognitionData: Data(count: 176))
             UIGraphicsBeginImageContext(imageSize)
             defer {
@@ -87,7 +83,7 @@ class TestSessionFunctions: SessionFunctions {
             guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
                 preconditionFailure("Failed to create test image")
             }
-            return FaceCapture(face: recognizableFace, bearing: faceDetectionResult.requestedBearing, image: image)
+            return try FaceCapture(face: recognizableFace, bearing: faceDetectionResult.requestedBearing, image: image)
         }
     }
     

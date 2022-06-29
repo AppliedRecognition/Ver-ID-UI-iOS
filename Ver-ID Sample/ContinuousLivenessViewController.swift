@@ -17,7 +17,7 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
     var currentImageOrientation: CGImagePropertyOrientation = .right
     var faceDetectionSubscription: Disposable?
     let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
-    let imagePublisher = PublishSubject<VerIDImage>()
+    let imagePublisher = PublishSubject<Image>()
     let disposeBag = DisposeBag()
     @IBOutlet var cameraOverlay: UIView!
     @IBOutlet var instructionLabel: UILabel!
@@ -102,7 +102,9 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if self.faceDetectionSubscription != nil {
-            let image = VerIDImage(sampleBuffer: sampleBuffer, orientation: self.currentImageOrientation)
+            guard let image = try? VerIDImage(sampleBuffer: sampleBuffer, orientation: self.currentImageOrientation).provideVerIDImage() else {
+                return
+            }
             image.isMirrored = true
             self.imagePublisher.onNext(image)
         }

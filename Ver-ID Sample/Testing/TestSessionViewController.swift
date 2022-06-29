@@ -14,7 +14,7 @@ import RxSwift
 
 class TestSessionViewController: UIViewController, VerIDViewControllerProtocol, ImagePublisher {
     
-    var imagePublisher: PublishSubject<(VerIDImage, FaceBounds)> = PublishSubject()
+    var imagePublisher: PublishSubject<(Image, FaceBounds)> = PublishSubject()
     
     var delegate: VerIDViewControllerDelegate?
     
@@ -41,7 +41,7 @@ class TestSessionViewController: UIViewController, VerIDViewControllerProtocol, 
                 DispatchQueue.main.async {
                     let viewSize = self.view.bounds.size
                     self.queue.async {
-                        self.imagePublisher.onNext((image,FaceBounds(viewSize: viewSize, faceExtents: faceExtents)))
+                        self.imagePublisher.onNext((Image(data: Data(), width: Int(size.width), height: Int(size.height), orientation: .up, bytesPerRow: Int(size.width)*3, format: VerIDImageFormatRGB),FaceBounds(viewSize: viewSize, faceExtents: faceExtents)))
                     }
                 }
                 sleep(1)
