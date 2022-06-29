@@ -1,0 +1,51 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDSerialization
+import CoreGraphics
+import Foundation
+import Swift
+import SwiftProtobuf
+import UIKit
+import VerIDCore
+@_exported import VerIDSerialization
+import _Concurrency
+extension VerIDCore.VerIDFace : VerIDSerialization.Serializable {
+  public func serialized() throws -> Foundation.Data
+}
+public enum SerializationError : Swift.Int, Swift.Error {
+  case imageDeserializationFailed, imageSerializationFailed, expectedAtLeastOneFace, imageCroppingFailed, deserializationUnavailableForType
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension VerIDCore.Image : VerIDSerialization.Serializable {
+  public func serialized() throws -> Foundation.Data
+}
+@_hasMissingDesignatedInitializers public class Deserializer {
+  public static func deserialize<T>(_ serialized: Foundation.Data) throws -> T where T : VerIDSerialization.Serializable
+  @objc deinit
+}
+public struct Registration : VerIDSerialization.Serializable {
+  public let faces: [VerIDCore.Recognizable]
+  public let image: UIKit.UIImage
+  public let systemInfo: VerIDCore.SystemInfo
+  public init(faces: [VerIDCore.Recognizable], image: UIKit.UIImage, systemInfo: VerIDCore.SystemInfo) throws
+  public func serialized() throws -> Foundation.Data
+}
+public protocol Serializable {
+  func serialized() throws -> Foundation.Data
+}
+public struct Capture : VerIDSerialization.Serializable {
+  public let date: Foundation.Date
+  public let image: VerIDCore.Image
+  public let faces: [VerIDCore.RecognizableFace]
+  public let uiImage: UIKit.UIImage
+  public let systemInfo: VerIDCore.SystemInfo
+  public init(date: Foundation.Date, image: VerIDCore.Image, faces: [VerIDCore.RecognizableFace], uiImage: UIKit.UIImage, systemInfo: VerIDCore.SystemInfo) throws
+  public func serialized() throws -> Foundation.Data
+}
+extension VerIDSerialization.SerializationError : Swift.Equatable {}
+extension VerIDSerialization.SerializationError : Swift.Hashable {}
+extension VerIDSerialization.SerializationError : Swift.RawRepresentable {}
