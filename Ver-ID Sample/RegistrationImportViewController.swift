@@ -20,10 +20,10 @@ class RegistrationImportViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let url = self.url, let regData = try? RegistrationImport.registrationData(from: url), let profilePic = UIImage(data: regData.profilePicture) else {
+        guard let url = self.url, let registration = try? RegistrationImport.registration(from: url) else {
             return
         }
-        self.imageView.image = profilePic
+        self.imageView.image = registration.image
         DispatchQueue.global().async {
             do {
                 let verid = try Globals.verid ?? VerIDFactory(userDefaults: UserDefaults.standard).createVerIDSync()

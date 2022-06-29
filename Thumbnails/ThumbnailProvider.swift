@@ -22,7 +22,7 @@ class ThumbnailProvider: QLThumbnailProvider {
         // First way: Draw the thumbnail into the current context, set up with UIKit's coordinate system.
         handler(QLThumbnailReply(contextSize: request.maximumSize, currentContextDrawing: { () -> Bool in
             do {
-                var imageData = Data()
+                let image: UIImage
                 if request.fileURL.pathExtension == "zip" {
                     guard let archive = Archive(url: request.fileURL, accessMode: .read) else {
                         return false
@@ -32,18 +32,20 @@ class ThumbnailProvider: QLThumbnailProvider {
                     }) else {
                         return false
                     }
+                    var imageData = Data()
                     _ = try archive.extract(imageEntry) { data in
                         imageData.append(data)
                     }
+                    guard let img = UIImage(data: imageData) else {
+                        return false
+                    }
+                    image = img
                     // Return true if the thumbnail was successfully drawn inside this block.
                     return true
                 } else if request.fileURL.pathExtension == "verid" {
-                    let registrationData = try RegistrationImport.registrationData(from: request.fileURL)
-                    imageData = registrationData.profilePicture
+                    let registrationData = try RegistrationImport.registration(from: request.fileURL)
+                    image = registrationData.image
                 } else {
-                    return false
-                }
-                guard let image = UIImage(data: imageData) else {
                     return false
                 }
                 let rect = AVMakeRect(aspectRatio: request.maximumSize, insideRect: CGRect(origin: .zero, size: image.size))

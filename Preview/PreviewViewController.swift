@@ -17,13 +17,10 @@ class PreviewViewController: UIViewController, QLPreviewingController {
     func preparePreviewOfFile(at url: URL, completionHandler handler: @escaping (Error?) -> Void) {
         DispatchQueue.global().async {
             do {
-                let regData = try RegistrationImport.registrationData(from: url)
-                guard let image = UIImage(data: regData.profilePicture) else {
-                    throw NSError(domain: kVerIDErrorDomain, code: 500, userInfo: [NSLocalizedDescriptionKey:"Failed to read image"])
-                }
+                let regData = try RegistrationImport.registration(from: url)
                 DispatchQueue.main.async {
                     if self.isViewLoaded {
-                        self.imageView.image = image
+                        self.imageView.image = regData.image
                     }
                     handler(nil)
                 }
