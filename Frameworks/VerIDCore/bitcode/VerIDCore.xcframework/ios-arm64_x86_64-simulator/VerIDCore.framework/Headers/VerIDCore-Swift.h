@@ -250,7 +250,68 @@ SWIFT_CLASS("_TtC9VerIDCore22AngleBearingEvaluation")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class VerIDFaceCapture;
 @class NSURL;
+@class VerIDRecognizableFace;
+
+/// Represents a result of face detection and authentication
+SWIFT_CLASS_NAMED("VerIDSessionResult")
+@interface VerIDSessionResult : NSObject
+/// Error produced by the session or <code>nil</code> if the session is successful
+@property (nonatomic) NSError * _Nullable error;
+/// Faces and URLs of images collected in the session
+@property (nonatomic, readonly, copy) NSArray<VerIDFaceCapture *> * _Nonnull attachments SWIFT_UNAVAILABLE_MSG("'attachments' has been renamed to 'faceCaptures'");
+@property (nonatomic, copy) NSArray<VerIDFaceCapture *> * _Nonnull faceCaptures;
+/// URL of a video of the session. Only collected if the corresponding session settings had <code>videoURL</code> set.
+@property (nonatomic, copy) NSURL * _Nullable videoURL;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Constructs a result with error
+/// \param error Error
+///
+- (nonnull instancetype)initWithError:(NSError * _Nonnull)error OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithAttachments:(NSArray<VerIDFaceCapture *> * _Nonnull)attachments OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE_MSG("'init' has been renamed to 'initWithFaceCaptures:'");
+- (nonnull instancetype)initWithFaceCaptures:(NSArray<VerIDFaceCapture *> * _Nonnull)faceCaptures OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
+/// Detected faces
+@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull faces;
+/// Detected faces that are suitable for face recognition
+@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull facesSuitableForRecognition SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'faces'");
+/// URLs of images collected in the session
+@property (nonatomic, readonly, copy) NSArray<NSURL *> * _Nonnull imageURLs SWIFT_UNAVAILABLE;
+/// Faces with given bearing
+/// \param bearing Requested face bearing
+///
+///
+/// returns:
+/// Array of faces
+- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT;
+/// Faces with given bearing that are suitable for face recognition
+/// \param bearing Requested face bearings
+///
+///
+/// returns:
+/// Array of faces suitable for face recognition
+- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesSuitableForRecognitionWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'facesWithBearing:'");
+/// URLs of images with the given face bearing
+/// \param bearing Requested face bearing
+///
+///
+/// returns:
+/// Array of image URLs
+- (NSArray<NSURL *> * _Nonnull)imageURLsWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE;
+@end
+
+@class NSNumber;
+
+SWIFT_CLASS_NAMED("AuthenticationSessionResult")
+@interface VerIDAuthenticationSessionResult : VerIDSessionResult
+@property (nonatomic, readonly, strong) NSNumber * _Nonnull comparisonScore;
+@property (nonatomic, readonly, strong) NSNumber * _Nonnull authenticationScoreThreshold;
+- (nonnull instancetype)initWithError:(NSError * _Nonnull)error SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFaceCaptures:(NSArray<VerIDFaceCapture *> * _Nonnull)faceCaptures SWIFT_UNAVAILABLE;
+@end
+
 @class VerIDFaceExtents;
 
 /// Settings common to registration, authentication and liveness detection sessions
@@ -436,7 +497,6 @@ SWIFT_CLASS("_TtC9VerIDCore10FaceBounds")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class VerIDRecognizableFace;
 @class UIImage;
 
 /// Represents a face detected in a Ver-ID session
@@ -584,7 +644,6 @@ SWIFT_CLASS("_TtC9VerIDCore21FacePresenceDetection")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSNumber;
 @protocol VerIDRecognizable;
 
 /// Face recognition protocol
@@ -1011,7 +1070,6 @@ SWIFT_CLASS("_TtC9VerIDCore7Session")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class VerIDSessionResult;
 
 /// Session delegate protocol
 SWIFT_PROTOCOL("_TtP9VerIDCore15SessionDelegate_")
@@ -1649,54 +1707,6 @@ SWIFT_CLASS("_TtC9VerIDCore30VerIDImageWriterServiceFactory") SWIFT_UNAVAILABLE_
 - (id <ImageWriterService> _Nullable)makeImageWriterServiceAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
-/// Represents a result of face detection and authentication
-SWIFT_CLASS_NAMED("VerIDSessionResult")
-@interface VerIDSessionResult : NSObject
-/// Error produced by the session or <code>nil</code> if the session is successful
-@property (nonatomic) NSError * _Nullable error;
-/// Faces and URLs of images collected in the session
-@property (nonatomic, readonly, copy) NSArray<VerIDFaceCapture *> * _Nonnull attachments SWIFT_UNAVAILABLE_MSG("'attachments' has been renamed to 'faceCaptures'");
-@property (nonatomic, copy) NSArray<VerIDFaceCapture *> * _Nonnull faceCaptures;
-/// URL of a video of the session. Only collected if the corresponding session settings had <code>videoURL</code> set.
-@property (nonatomic, copy) NSURL * _Nullable videoURL;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-/// Constructs a result with error
-/// \param error Error
-///
-- (nonnull instancetype)initWithError:(NSError * _Nonnull)error OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithAttachments:(NSArray<VerIDFaceCapture *> * _Nonnull)attachments OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE_MSG("'init' has been renamed to 'initWithFaceCaptures:'");
-- (nonnull instancetype)initWithFaceCaptures:(NSArray<VerIDFaceCapture *> * _Nonnull)faceCaptures OBJC_DESIGNATED_INITIALIZER;
-- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
-/// Detected faces
-@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull faces;
-/// Detected faces that are suitable for face recognition
-@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull facesSuitableForRecognition SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'faces'");
-/// URLs of images collected in the session
-@property (nonatomic, readonly, copy) NSArray<NSURL *> * _Nonnull imageURLs SWIFT_UNAVAILABLE;
-/// Faces with given bearing
-/// \param bearing Requested face bearing
-///
-///
-/// returns:
-/// Array of faces
-- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT;
-/// Faces with given bearing that are suitable for face recognition
-/// \param bearing Requested face bearings
-///
-///
-/// returns:
-/// Array of faces suitable for face recognition
-- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesSuitableForRecognitionWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'facesWithBearing:'");
-/// URLs of images with the given face bearing
-/// \param bearing Requested face bearing
-///
-///
-/// returns:
-/// Array of image URLs
-- (NSArray<NSURL *> * _Nonnull)imageURLsWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE;
-@end
 
 
 
@@ -2178,7 +2188,68 @@ SWIFT_CLASS("_TtC9VerIDCore22AngleBearingEvaluation")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class VerIDFaceCapture;
 @class NSURL;
+@class VerIDRecognizableFace;
+
+/// Represents a result of face detection and authentication
+SWIFT_CLASS_NAMED("VerIDSessionResult")
+@interface VerIDSessionResult : NSObject
+/// Error produced by the session or <code>nil</code> if the session is successful
+@property (nonatomic) NSError * _Nullable error;
+/// Faces and URLs of images collected in the session
+@property (nonatomic, readonly, copy) NSArray<VerIDFaceCapture *> * _Nonnull attachments SWIFT_UNAVAILABLE_MSG("'attachments' has been renamed to 'faceCaptures'");
+@property (nonatomic, copy) NSArray<VerIDFaceCapture *> * _Nonnull faceCaptures;
+/// URL of a video of the session. Only collected if the corresponding session settings had <code>videoURL</code> set.
+@property (nonatomic, copy) NSURL * _Nullable videoURL;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+/// Constructs a result with error
+/// \param error Error
+///
+- (nonnull instancetype)initWithError:(NSError * _Nonnull)error OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithAttachments:(NSArray<VerIDFaceCapture *> * _Nonnull)attachments OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE_MSG("'init' has been renamed to 'initWithFaceCaptures:'");
+- (nonnull instancetype)initWithFaceCaptures:(NSArray<VerIDFaceCapture *> * _Nonnull)faceCaptures OBJC_DESIGNATED_INITIALIZER;
+- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
+/// Detected faces
+@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull faces;
+/// Detected faces that are suitable for face recognition
+@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull facesSuitableForRecognition SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'faces'");
+/// URLs of images collected in the session
+@property (nonatomic, readonly, copy) NSArray<NSURL *> * _Nonnull imageURLs SWIFT_UNAVAILABLE;
+/// Faces with given bearing
+/// \param bearing Requested face bearing
+///
+///
+/// returns:
+/// Array of faces
+- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT;
+/// Faces with given bearing that are suitable for face recognition
+/// \param bearing Requested face bearings
+///
+///
+/// returns:
+/// Array of faces suitable for face recognition
+- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesSuitableForRecognitionWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'facesWithBearing:'");
+/// URLs of images with the given face bearing
+/// \param bearing Requested face bearing
+///
+///
+/// returns:
+/// Array of image URLs
+- (NSArray<NSURL *> * _Nonnull)imageURLsWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE;
+@end
+
+@class NSNumber;
+
+SWIFT_CLASS_NAMED("AuthenticationSessionResult")
+@interface VerIDAuthenticationSessionResult : VerIDSessionResult
+@property (nonatomic, readonly, strong) NSNumber * _Nonnull comparisonScore;
+@property (nonatomic, readonly, strong) NSNumber * _Nonnull authenticationScoreThreshold;
+- (nonnull instancetype)initWithError:(NSError * _Nonnull)error SWIFT_UNAVAILABLE;
+- (nonnull instancetype)initWithFaceCaptures:(NSArray<VerIDFaceCapture *> * _Nonnull)faceCaptures SWIFT_UNAVAILABLE;
+@end
+
 @class VerIDFaceExtents;
 
 /// Settings common to registration, authentication and liveness detection sessions
@@ -2364,7 +2435,6 @@ SWIFT_CLASS("_TtC9VerIDCore10FaceBounds")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class VerIDRecognizableFace;
 @class UIImage;
 
 /// Represents a face detected in a Ver-ID session
@@ -2512,7 +2582,6 @@ SWIFT_CLASS("_TtC9VerIDCore21FacePresenceDetection")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSNumber;
 @protocol VerIDRecognizable;
 
 /// Face recognition protocol
@@ -2939,7 +3008,6 @@ SWIFT_CLASS("_TtC9VerIDCore7Session")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class VerIDSessionResult;
 
 /// Session delegate protocol
 SWIFT_PROTOCOL("_TtP9VerIDCore15SessionDelegate_")
@@ -3577,54 +3645,6 @@ SWIFT_CLASS("_TtC9VerIDCore30VerIDImageWriterServiceFactory") SWIFT_UNAVAILABLE_
 - (id <ImageWriterService> _Nullable)makeImageWriterServiceAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
-/// Represents a result of face detection and authentication
-SWIFT_CLASS_NAMED("VerIDSessionResult")
-@interface VerIDSessionResult : NSObject
-/// Error produced by the session or <code>nil</code> if the session is successful
-@property (nonatomic) NSError * _Nullable error;
-/// Faces and URLs of images collected in the session
-@property (nonatomic, readonly, copy) NSArray<VerIDFaceCapture *> * _Nonnull attachments SWIFT_UNAVAILABLE_MSG("'attachments' has been renamed to 'faceCaptures'");
-@property (nonatomic, copy) NSArray<VerIDFaceCapture *> * _Nonnull faceCaptures;
-/// URL of a video of the session. Only collected if the corresponding session settings had <code>videoURL</code> set.
-@property (nonatomic, copy) NSURL * _Nullable videoURL;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-/// Constructs a result with error
-/// \param error Error
-///
-- (nonnull instancetype)initWithError:(NSError * _Nonnull)error OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithAttachments:(NSArray<VerIDFaceCapture *> * _Nonnull)attachments OBJC_DESIGNATED_INITIALIZER SWIFT_UNAVAILABLE_MSG("'init' has been renamed to 'initWithFaceCaptures:'");
-- (nonnull instancetype)initWithFaceCaptures:(NSArray<VerIDFaceCapture *> * _Nonnull)faceCaptures OBJC_DESIGNATED_INITIALIZER;
-- (BOOL)isEqual:(id _Nullable)object SWIFT_WARN_UNUSED_RESULT;
-/// Detected faces
-@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull faces;
-/// Detected faces that are suitable for face recognition
-@property (nonatomic, readonly, copy) NSArray<VerIDRecognizableFace *> * _Nonnull facesSuitableForRecognition SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'faces'");
-/// URLs of images collected in the session
-@property (nonatomic, readonly, copy) NSArray<NSURL *> * _Nonnull imageURLs SWIFT_UNAVAILABLE;
-/// Faces with given bearing
-/// \param bearing Requested face bearing
-///
-///
-/// returns:
-/// Array of faces
-- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT;
-/// Faces with given bearing that are suitable for face recognition
-/// \param bearing Requested face bearings
-///
-///
-/// returns:
-/// Array of faces suitable for face recognition
-- (NSArray<VerIDRecognizableFace *> * _Nonnull)facesSuitableForRecognitionWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE_MSG("'facesSuitableForRecognition' has been renamed to 'facesWithBearing:'");
-/// URLs of images with the given face bearing
-/// \param bearing Requested face bearing
-///
-///
-/// returns:
-/// Array of image URLs
-- (NSArray<NSURL *> * _Nonnull)imageURLsWithBearing:(enum VerIDBearing)bearing SWIFT_WARN_UNUSED_RESULT SWIFT_UNAVAILABLE;
-@end
 
 
 

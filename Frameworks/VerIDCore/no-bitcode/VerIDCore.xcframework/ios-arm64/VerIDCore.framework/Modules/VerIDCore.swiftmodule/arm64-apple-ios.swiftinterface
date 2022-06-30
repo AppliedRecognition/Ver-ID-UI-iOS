@@ -23,6 +23,20 @@ import ZIPFoundation
 import _Concurrency
 import os
 import os.signpost
+@_hasMissingDesignatedInitializers @objc(VerIDAuthenticationSessionResult) public class AuthenticationSessionResult : VerIDCore.VerIDSessionResult {
+  public var comparisonFaceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion? {
+    get
+  }
+  @objc public var comparisonScore: Foundation.NSNumber {
+    get
+  }
+  @objc public var authenticationScoreThreshold: Foundation.NSNumber {
+    get
+  }
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc(VerIDSessionSettings) public class VerIDSessionSettings : ObjectiveC.NSObject, Swift.Codable {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @available(*, unavailable, message: "Please use session delegate")
@@ -456,6 +470,7 @@ extension VerIDCore.VerIDFaceTemplateVersion {
   }
   public func serialNumber(encryptionEnabled: Swift.Bool) throws -> Swift.Int32
   public static func isEncryptionEnabledOnSerialNumber(_ serialNumber: Swift.Int32) -> Swift.Bool
+  public func stringValue() -> Swift.String
   public init(serialNumber: Swift.Int32) throws
 }
 extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
@@ -1189,6 +1204,7 @@ public typealias Face = VerIDCore.VerIDFace
 }
 public struct EnvironmentSettings : Swift.Encodable {
   public let confidenceThreshold: Swift.Float?
+  public let faceDetectorVersion: Swift.Int?
   public let faceTemplateExtractionThreshold: Swift.Float?
   public let authenticationThreshold: Swift.Float?
   public let deviceModel: Swift.String

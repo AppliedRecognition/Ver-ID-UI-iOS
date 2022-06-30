@@ -106,6 +106,13 @@ import AVFoundation
                     resultData.append(ValueCellData(title: "Face detection rate", value: facesPerSecond))
                 }
             }
+            if let authSessionResult = self.sessionResultPackage.result as? AuthenticationSessionResult {
+                resultData.append(ValueCellData(title: "Face comparison score", value: String(format: "%.02f", authSessionResult.comparisonScore.floatValue)))
+                resultData.append(ValueCellData(title: "Authentication score threshold", value: String(format: "%.02f", authSessionResult.authenticationScoreThreshold.floatValue)))
+                if let faceTemplateVersion = authSessionResult.comparisonFaceTemplateVersion {
+                    resultData.append(ValueCellData(title: "Face template version", value: faceTemplateVersion.stringValue()))
+                }
+            }
             sections.append(("Session Result",resultData))
             
             var settingsArray: [ValueCellData] = []
@@ -130,11 +137,11 @@ import AVFoundation
                 ValueCellData(title: "Device model", value: self.sessionResultPackage.environmentSettings.deviceModel),
                 ValueCellData(title: "Operating system", value: self.sessionResultPackage.environmentSettings.os)
             ]
-            if let authThreshold = self.sessionResultPackage.environmentSettings.authenticationThreshold {
-                environmentArray.append(ValueCellData(title: "Authentication threshold", value: String(format: "%.01f", authThreshold)))
-            }
             if let templateExtractionThreshold = self.sessionResultPackage.environmentSettings.faceTemplateExtractionThreshold {
                 environmentArray.append(ValueCellData(title: "Face template extraction threshold", value: String(format: "%.01f", templateExtractionThreshold)))
+            }
+            if let detectorVersion = self.sessionResultPackage.environmentSettings.faceDetectorVersion {
+                environmentArray.append(ValueCellData(title: "Face detector version", value: String(format: "%d", detectorVersion)))
             }
             if let confidenceThreshold = self.sessionResultPackage.environmentSettings.confidenceThreshold {
                 environmentArray.append(ValueCellData(title: "Confidence threshold", value: String(format: "%.01f", confidenceThreshold)))
