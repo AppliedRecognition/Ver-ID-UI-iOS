@@ -28,7 +28,7 @@ class RegistrationProvider: UIActivityItemProvider {
         let data = try registration.serialized()
 //        let registration = RegistrationData(faces: faces, profilePicture: imageData)
 //        let data = try JSONEncoder().encode(registration)
-        self.url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Ver-ID registration").appendingPathExtension("verid")
+        self.url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Ver-ID faces").appendingPathExtension("registration")
         try data.write(to: url, options: .atomicWrite)
         super.init(placeholderItem: self.url)
     }
@@ -46,7 +46,7 @@ class RegistrationProvider: UIActivityItemProvider {
     }
     
     override func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
-        return "Ver-ID registration.verid"
+        return "Ver-ID faces.registration"
     }
     
     override func activityViewController(_ activityViewController: UIActivityViewController, thumbnailImageForActivityType activityType: UIActivity.ActivityType?, suggestedSize size: CGSize) -> UIImage? {

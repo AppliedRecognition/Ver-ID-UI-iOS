@@ -62,9 +62,7 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
     }
     
     func runFaceDetection(until: @escaping (_ faceDetected: Bool) -> Bool, completion: @escaping () -> Void) {
-        if self.faceDetectionSubscription != nil {
-            self.faceDetectionSubscription?.dispose()
-        }
+        self.faceDetectionSubscription?.dispose()
         guard let verid = Globals.verid else {
             return
         }

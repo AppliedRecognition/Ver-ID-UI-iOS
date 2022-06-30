@@ -224,7 +224,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         picker.popoverPresentationController?.sourceView = button
         picker.delegate = self
         self.present(picker, animated: true) {
-            if Globals.isTesting, let url = Bundle.main.url(forResource: "Test registration", withExtension: "verid") {
+            if Globals.isTesting, let url = Bundle.main.url(forResource: "Test registration", withExtension: "registration") {
                 self.dismiss(animated: false) {
                     self.documentPicker(picker, didPickDocumentAt: url)
                 }
