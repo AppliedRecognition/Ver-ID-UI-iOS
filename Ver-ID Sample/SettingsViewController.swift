@@ -21,7 +21,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     @IBOutlet var faceWidthFractionCell: UITableViewCell!
     @IBOutlet var faceHeightFractionCell: UITableViewCell!
     @IBOutlet var faceCoveringDetectionCell: UITableViewCell!
-    @IBOutlet var v20MigrationCell: UITableViewCell!
     @IBOutlet var confidenceThresholdCell: UITableViewCell!
     @IBOutlet var detectorVersionCell: UITableViewCell!
     @IBOutlet var templateExtractionThresholdCell: UITableViewCell!
@@ -40,7 +39,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     var faceTemplateExtractionThresholdObservation: NSKeyValueObservation?
     var faceTemplateEncryptionObservation: NSKeyValueObservation?
     var authenticationThresholdObservation: NSKeyValueObservation?
-    var v20MigrationObservation: NSKeyValueObservation?
     var faceDetectorVersionObservation: NSKeyValueObservation?
 
     override func viewDidLoad() {
@@ -60,7 +58,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         self.authenticationThresholdObservation = UserDefaults.standard.observe(\.authenticationThreshold, options: [.new]) { userDefaults, _ in
             Globals.verid?.faceRecognition.authenticationScoreThreshold = NSNumber(value: userDefaults.authenticationThreshold)
         }
-        self.v20MigrationObservation = UserDefaults.standard.observe(\.enableV20FaceTemplateMigration, options: [.new], changeHandler: self.defaultsChangeHandler)
     }
     
     func defaultsChangeHandler<T>(_ defaults: UserDefaults,_ change: NSKeyValueObservedChange<T>) {
@@ -76,7 +73,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
             self.faceTemplateExtractionThresholdObservation = nil
             self.faceTemplateEncryptionObservation = nil
             self.authenticationThresholdObservation = nil
-            self.v20MigrationObservation = nil
             self.faceDetectorVersionObservation = nil
             if self.isDirty {
                 (UIApplication.shared.delegate as? AppDelegate)?.reload()
@@ -97,9 +93,9 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         switch sectionEnum {
         case .faceDetection:
             return 4
-        case .about, .camera:
+        case .about, .registration, .camera:
             return 2
-        case .registration, .security:
+        case .security:
             return 3
         default:
             return 1
@@ -119,8 +115,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
             UserDefaults.standard.speakPrompts = !UserDefaults.standard.speakPrompts
         } else if indexPath.section == Section.faceDetection.rawValue && indexPath.row == 1 {
             UserDefaults.standard.enableFaceCoveringDetection = !UserDefaults.standard.enableFaceCoveringDetection
-        } else if indexPath.section == Section.registration.rawValue && indexPath.row == 2 {
-            UserDefaults.standard.enableV20FaceTemplateMigration = !UserDefaults.standard.enableV20FaceTemplateMigration
         } else {
             return
         }
@@ -154,7 +148,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         let encryptTemplates = UserDefaults.standard.encryptFaceTemplates
         templateEncryptionCell.accessoryType = encryptTemplates ? .checkmark : .none
         faceCoveringDetectionCell.accessoryType = UserDefaults.standard.enableFaceCoveringDetection ? .checkmark : .none
-        v20MigrationCell.accessoryType = UserDefaults.standard.enableV20FaceTemplateMigration ? .checkmark : .none
         confidenceThresholdCell.detailTextLabel?.text = String(format: "%.02f", UserDefaults.standard.confidenceThreshold)
         detectorVersionCell.detailTextLabel?.text = String(format: "%d", UserDefaults.standard.faceDetectorVersion)
         templateExtractionThresholdCell.detailTextLabel?.text = String(format: "%.0f", UserDefaults.standard.faceTemplateExtractionThreshold)

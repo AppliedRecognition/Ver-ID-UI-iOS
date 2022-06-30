@@ -123,14 +123,6 @@ extension UserDefaults {
             self.set(newValue, forKey: "enableFaceCoveringDetection")
         }
     }
-    @objc dynamic var enableV20FaceTemplateMigration: Bool {
-        get {
-            self.bool(forKey: "enableV20FaceTemplateMigration")
-        }
-        set {
-            self.set(newValue, forKey: "enableV20FaceTemplateMigration")
-        }
-    }
     @objc dynamic var faceDetectorVersion: Int {
         get {
             self.integer(forKey: "faceDetectorVersion")
@@ -159,7 +151,6 @@ extension UserDefaults {
             "faceWidthFraction": registrationSettings.expectedFaceExtents.proportionOfViewWidth,
             "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
             "enableFaceCoveringDetection": false,
-            "enableV20FaceTemplateMigration": false,
             "faceDetectorVersion": detreclibSettings.detectorVersion
         ])
     }

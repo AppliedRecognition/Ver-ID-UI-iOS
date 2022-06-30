@@ -20,6 +20,6 @@ extension VerIDFactory {
         detRecFactory.defaultFaceTemplateVersion = .latest
         self.faceDetectionFactory = detRecFactory
         self.faceRecognitionFactory = detRecFactory
-        self.userManagementFactory = VerIDUserManagementFactory(disableEncryption: !userDefaults.encryptFaceTemplates || Globals.isTesting, isAutomaticFaceTemplateMigrationEnabled: userDefaults.enableV20FaceTemplateMigration)
+        self.userManagementFactory = VerIDUserManagementFactory(disableEncryption: !userDefaults.encryptFaceTemplates || Globals.isTesting, isAutomaticFaceTemplateMigrationEnabled: false)
     }
 }
