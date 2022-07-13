@@ -81,6 +81,8 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
         activityIndicator.startAnimating()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         let concurrentQueue = DispatchQueue(label: "Face generation", qos: .default, attributes: .concurrent)
+        let serialQueue = OperationQueue()
+        serialQueue.maxConcurrentOperationCount = 1
         concurrentQueue.async {
             do {
                 // Only report every hundredth of progress to avoid overwhelming the UI thread
@@ -99,11 +101,13 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
                     }
                 }
                 defaultUserFaces = defaultUserFaces.filter({ $0.faceTemplateVersion == version })
-                let faces = UnsafeMutablePointer<Recognizable>.allocate(capacity: facesToGenerate + defaultUserFaces.count)
+                self.faces = []
                 DispatchQueue.concurrentPerform(iterations: facesToGenerate) { i in
                     do {
                         let template = try faceRec.generateRandomFaceTemplate(version: version)
-                        faces[i] = template
+                        serialQueue.addOperation {
+                            self.faces.append(template)
+                        }
                         if i % reportingIndex == 0 {
                             DispatchQueue.main.async {
                                 self.progressBar.isHidden = false
@@ -113,12 +117,10 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
                     } catch {
                     }
                 }
-                for i in 0..<defaultUserFaces.count {
-                    faces[i+facesToGenerate] = defaultUserFaces[i]
-                }
+                serialQueue.waitUntilAllOperationsAreFinished()
+                self.faces.append(contentsOf: defaultUserFaces)
                 DispatchQueue.main.async {
                     self.progressBar.isHidden = true
-                    self.faces = Array(UnsafeBufferPointer(start: faces, count: facesToGenerate + defaultUserFaces.count))
                     self.registredUserFaces = defaultUserFaces
                     self.startSession()
                 }
