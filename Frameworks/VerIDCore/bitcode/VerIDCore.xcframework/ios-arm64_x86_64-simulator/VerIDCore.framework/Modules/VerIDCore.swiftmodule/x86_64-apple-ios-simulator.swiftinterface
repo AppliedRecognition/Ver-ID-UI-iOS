@@ -1276,6 +1276,7 @@ public typealias VerIDDetectedFace = VerIDCore.FaceCapture
     @objc get
     @objc set
   }
+  final public let verIDImage: VerIDCore.Image
   public var diagnosticInfo: VerIDCore.FaceCapture.DiagnosticInfo {
     get
   }
@@ -1283,6 +1284,7 @@ public typealias VerIDDetectedFace = VerIDCore.FaceCapture
   @objc public init(face: VerIDCore.RecognizableFace, bearing: VerIDCore.Bearing, imageURL: Foundation.URL? = nil)
   @objc convenience public init(face: VerIDCore.RecognizableFace, bearing: VerIDCore.Bearing, image: UIKit.UIImage) throws
   @objc public init(faces: [VerIDCore.RecognizableFace], bearing: VerIDCore.Bearing, image: UIKit.UIImage) throws
+  public init(faces: [VerIDCore.RecognizableFace], bearing: VerIDCore.Bearing, imageProvider: VerIDCore.ImageProvider) throws
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
