@@ -10,21 +10,25 @@ import UIKit
 import VerIDCore
 import MobileCoreServices
 import AVFoundation
+import VerIDSerialization
 
 class RegistrationProvider: UIActivityItemProvider {
     
-    let verid: VerID
     let profilePictureURL: URL
     let url: URL
     
     init(verid: VerID, profilePictureURL: URL) throws {
-        self.verid = verid
         self.profilePictureURL = profilePictureURL
-        let faces: [Recognizable] = try self.verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
+        let faces: [Recognizable] = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
         let imageData = try Data(contentsOf: self.profilePictureURL)
-        let registration = RegistrationData(faces: faces, profilePicture: imageData)
-        let data = try JSONEncoder().encode(registration)
-        self.url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Ver-ID registration").appendingPathExtension("verid")
+        guard let image = UIImage(data: imageData) else {
+            throw SerializationError.imageSerializationFailed
+        }
+        let registration = try Registration(faces: faces, image: image, systemInfo: SystemInfo(verID: verid))
+        let data = try registration.serialized()
+//        let registration = RegistrationData(faces: faces, profilePicture: imageData)
+//        let data = try JSONEncoder().encode(registration)
+        self.url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("Ver-ID faces").appendingPathExtension("registration")
         try data.write(to: url, options: .atomicWrite)
         super.init(placeholderItem: self.url)
     }
@@ -42,7 +46,7 @@ class RegistrationProvider: UIActivityItemProvider {
     }
     
     override func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
-        return "Ver-ID registration.verid"
+        return "Ver-ID faces.registration"
     }
     
     override func activityViewController(_ activityViewController: UIActivityViewController, thumbnailImageForActivityType activityType: UIActivity.ActivityType?, suggestedSize size: CGSize) -> UIImage? {

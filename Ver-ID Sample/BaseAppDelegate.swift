@@ -29,7 +29,7 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        guard url.pathExtension == "verid" else {
+        guard url.pathExtension == "registration" else {
             return false
         }
         guard let importViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "registrationImport") as? RegistrationImportViewController else {

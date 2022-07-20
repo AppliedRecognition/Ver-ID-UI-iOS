@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		b8vDUn0u2TxVWAUfV1Dlyimejj4=
+		U4r+8yr9S+POp+0VFo9pDEi51wc=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,19 +50,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		qs0btTsmODPDBlBE3OeHpJ2Nw38=
+		MaQJqzF3TZaHtqBF6hA2u6QSUus=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		EsJdIcbMeLiMOklhfTreHDWQ8JM=
+		owz1N3hjc0tX5cGZqRoLMK0qSEs=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		n53sK39VHH5mQ20pNo2tJBy2G/I=
+		1KbxpMSrctB01ykSbyH+VsjvJmQ=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		kNEXJja5Zdz4NYJFW4j/Tr8R7g0=
+		ZaJDV4AxNx75mUwgo24N+1XhdHw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,11 +70,11 @@
 		</data>
 		<key>Resources.plist</key>
 		<data>
-		f15kK0y7OLe0s5n+XCD2nT1tFwI=
+		LGeencgLa3WuJiBsN9ooitPm0VM=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
-		vlKby5Lb4OsBDjHK4Fub0wc60iU=
+		e2WkCL2bZoJT/6NF88AcPFCj980=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
 		<data>
@@ -120,6 +120,10 @@
 		<data>
 		t8GLA469R9qNdHz7aQIklCosSoo=
 		</data>
+		<key>VerIDModels/rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv</key>
+		<data>
+		aSwHpz0njROp/10m5ttMqGKYddI=
+		</data>
 		<key>VerIDModels/shape_predictor_5_face_landmarks.dat</key>
 		<data>
 		7e7kPG/ObkyFXMY2rWEC8FKxWUk=
@@ -163,7 +167,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SVcos8ahrST8JnNCMbP8W/3PV9wM+zV5kD+H1NTEooI=
+			M11q15DYXnwdaFUfhDR31Uui3V1r62agKXlME1H7/NQ=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -212,21 +216,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Wyk8QGQoJ+ByWVkcmR7+jb2hpHEcRUTi6HiuseIrpvI=
+			EVdGHSxgf8zVYpXMyig+R3Ngm2tk3bQ2z4pZR5EpDWM=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KL3Kz3ELz13lN3cj/ZFCu5k1AyR/5i05MGoDK+6gNhg=
+			88boRGAvWwPD55ffbRjOe7y/+rx95pwarXWrPIOFpp8=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6lbBts6d927pfG+4cT87/hEuSKUqejBaxGyGC0NNkN8=
+			1JYB4v5eyteVa23Lm7XqmDSagv0DNnrRoMUGovVKo3Q=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -240,14 +244,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tgot324Bj6ge0U8LovRd1bZvzZQQjbOGGBNhDWIA1kY=
+			rw8ZMANG0IPww7WgZzykBOyKJHjlUNiQl1ULjfyzN60=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SPFDzu+zF2kimnIUY9JFg/WgzDrhb2LkqW7ABO4RJG4=
+			dINYF8UtlEYr60oKwRPBHhkd3L5kZAw+GUPxWHETANg=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
@@ -325,6 +329,13 @@
 			<key>hash2</key>
 			<data>
 			vkZ7Gnb0gmk947D2of+R0JIxm+cVI9TUsGKPalP8uHo=
+			</data>
+		</dict>
+		<key>VerIDModels/rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sB+oVQ5qGl+ea23QsDWsUHGUKbyrYX2vq1x3bzpsRF0=
 			</data>
 		</dict>
 		<key>VerIDModels/shape_predictor_5_face_landmarks.dat</key>

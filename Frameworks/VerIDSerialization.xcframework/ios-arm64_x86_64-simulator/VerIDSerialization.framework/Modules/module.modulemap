@@ -1,0 +1,11 @@
+framework module VerIDSerialization {
+  umbrella header "VerIDSerialization.h"
+
+  export *
+  module * { export * }
+}
+
+module VerIDSerialization.Swift {
+    header "VerIDSerialization-Swift.h"
+    requires objc
+}

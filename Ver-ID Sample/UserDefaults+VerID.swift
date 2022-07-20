@@ -123,18 +123,18 @@ extension UserDefaults {
             self.set(newValue, forKey: "enableFaceCoveringDetection")
         }
     }
-    @objc dynamic var enableV20FaceTemplateMigration: Bool {
+    @objc dynamic var faceDetectorVersion: Int {
         get {
-            self.bool(forKey: "enableV20FaceTemplateMigration")
+            self.integer(forKey: "faceDetectorVersion")
         }
         set {
-            self.set(newValue, forKey: "enableV20FaceTemplateMigration")
+            self.set(newValue, forKey: "faceDetectorVersion")
         }
     }
     
     func registerVerIDDefaults() {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
-        let faceDetectionSettingsPreset: FaceDetectionSettingsPreset = .normal
+        let detreclibSettings = DetRecLibSettings(modelsURL: nil)
         let registrationSettings = RegistrationSessionSettings(userId: "")
         self.register(defaults: [
             "poseCount": securitySettingsPreset.poseCount,
@@ -146,12 +146,12 @@ extension UserDefaults {
             "speakPrompts": false,
             "encryptFaceTemplates": true,
             "registrationFaceCount": registrationSettings.faceCaptureCount,
-            "confidenceThreshold": faceDetectionSettingsPreset.confidenceThreshold,
-            "faceTemplateExtractionThreshold": faceDetectionSettingsPreset.templateExtractionThreshold,
+            "confidenceThreshold": detreclibSettings.confidenceThreshold,
+            "faceTemplateExtractionThreshold": detreclibSettings.faceExtractQualityThreshold,
             "faceWidthFraction": registrationSettings.expectedFaceExtents.proportionOfViewWidth,
             "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
             "enableFaceCoveringDetection": false,
-            "enableV20FaceTemplateMigration": false
+            "faceDetectorVersion": detreclibSettings.detectorVersion
         ])
     }
 }

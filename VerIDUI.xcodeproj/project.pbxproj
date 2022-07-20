@@ -62,13 +62,18 @@
 		3B2E36E72628BFAF0055FE28 /* test_translation.py in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C12628BFAF0055FE28 /* test_translation.py */; };
 		3B2E36E82628BFAF0055FE28 /* Tips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36C22628BFAF0055FE28 /* Tips.storyboard */; };
 		3B326B1B22089C88005DAE1E /* VerIDUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B326B1922089C88005DAE1E /* VerIDUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B34722D286C6CF900969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
+		3B347232286C708100969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
+		3B347233286C708100969D79 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B347246286D0F5700969D79 /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; };
+		3B347247286D0F5700969D79 /* VerIDSerialization.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B347248286D0F7F00969D79 /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; };
+		3B34724A286D0F8700969D79 /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; };
 		3B443BDB2733F24C002C6CAA /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3B443BDA2733F24C002C6CAA /* Documentation.docc */; };
 		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
 		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
 		3B45BAB4247D8BEB00273FAF /* VerIDSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */; };
 		3B45BABB247D8C9500273FAF /* SettingsPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC4246DE64A00C4B2D1 /* SettingsPresets.swift */; };
-		3B45BABC247D911E00273FAF /* Test registration.verid in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BAA5247D8A3C00273FAF /* Test registration.verid */; };
-		3B45BABD247D914F00273FAF /* Test registration.verid in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BAA5247D8A3C00273FAF /* Test registration.verid */; };
 		3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B45BAC3247D94B100273FAF /* QuickLookThumbnailing.framework */; };
 		3B45BAC7247D94B100273FAF /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAC6247D94B100273FAF /* ThumbnailProvider.swift */; };
 		3B45BACB247D94B100273FAF /* Thumbnails.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B45BAC2247D94B100273FAF /* Thumbnails.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -77,14 +82,11 @@
 		3B45BADC247D94C000273FAF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BADA247D94C000273FAF /* MainInterface.storyboard */; };
 		3B45BAE0247D94C000273FAF /* Preview.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B45BAD4247D94C000273FAF /* Preview.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3B45BAE4247D974500273FAF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
-		3B45BAE5247D975400273FAF /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20452221425BE00B3B312 /* RegistrationData.swift */; };
 		3B45BAE6247D975400273FAF /* RegistrationImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */; };
 		3B45BAE7247D975D00273FAF /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
-		3B45BAE8247D976C00273FAF /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20452221425BE00B3B312 /* RegistrationData.swift */; };
 		3B45BAE9247D976F00273FAF /* RegistrationImport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */; };
 		3B45BAEA247D977400273FAF /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
 		3B45BAEB247D978300273FAF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
-		3B51D30827C82A8E008A97FE /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
 		3B564B21234276EE008B3FCD /* TranslatedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B1F234276ED008B3FCD /* TranslatedStrings.swift */; };
 		3B564B22234276EE008B3FCD /* TipPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B564B20234276ED008B3FCD /* TipPageViewController.swift */; };
 		3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6A70D32208BC3B00B137C4 /* TipsViewController.swift */; };
@@ -117,7 +119,6 @@
 		3BACF2BF245384C0000FA3A7 /* SpeechDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */; };
 		3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044E221425BE00B3B312 /* MainViewController.swift */; };
 		3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
-		3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20452221425BE00B3B312 /* RegistrationData.swift */; };
 		3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20456221425BF00B3B312 /* IntroViewController.swift */; };
 		3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */; };
 		3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20459221425BF00B3B312 /* ErrorViewController.swift */; };
@@ -186,26 +187,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3B2E373B2628C6030055FE28 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3B2E373E2628C60A0055FE28 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3B45BACF247D94B100273FAF /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,7 +205,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3B347247286D0F5700969D79 /* VerIDSerialization.xcframework in Embed Frameworks */,
 				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
+				3B347233286C708100969D79 /* VerIDCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,9 +277,9 @@
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDSerialization.xcframework; path = Frameworks/VerIDSerialization.xcframework; sourceTree = SOURCE_ROOT; };
 		3B443BDA2733F24C002C6CAA /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionViewController.swift; sourceTree = "<group>"; };
-		3B45BAA5247D8A3C00273FAF /* Test registration.verid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Test registration.verid"; sourceTree = "<group>"; };
 		3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageProvider.swift; sourceTree = "<group>"; };
 		3B45BAB1247D8BEB00273FAF /* VerIDSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerIDSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDSampleUITests.swift; sourceTree = "<group>"; };
@@ -344,7 +327,6 @@
 		3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechDelegate.swift; sourceTree = "<group>"; };
 		3BB2044E221425BE00B3B312 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BB2044F221425BE00B3B312 /* VerIDUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUser.swift; sourceTree = "<group>"; };
-		3BB20452221425BE00B3B312 /* RegistrationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
 		3BB20456221425BF00B3B312 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationImportViewController.swift; sourceTree = "<group>"; };
 		3BB20459221425BF00B3B312 /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
@@ -391,7 +373,7 @@
 			files = (
 				3B0E6F372720A0240061A3A3 /* FaceTemplateUtility in Frameworks */,
 				6FA741F19BF3A00A6AF81A44 /* Pods_Ver_ID_VerIDUI.framework in Frameworks */,
-				3B51D30827C82A8E008A97FE /* VerIDCore.xcframework in Frameworks */,
+				3B34722D286C6CF900969D79 /* VerIDCore.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +388,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B347248286D0F7F00969D79 /* VerIDSerialization.xcframework in Frameworks */,
 				3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */,
 				D80C36361D251AE897C541C6 /* Pods_Ver_ID_Thumbnails.framework in Frameworks */,
 			);
@@ -415,6 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B34724A286D0F8700969D79 /* VerIDSerialization.xcframework in Frameworks */,
 				3B45BAD6247D94C000273FAF /* QuickLook.framework in Frameworks */,
 				5270C89D748E3DD6D44A14F9 /* Pods_Ver_ID_Preview.framework in Frameworks */,
 			);
@@ -426,6 +410,8 @@
 			files = (
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
 				9A4B9BEA526F687E0B6D98AB /* Pods_Ver_ID_Ver_ID_Sample.framework in Frameworks */,
+				3B347232286C708100969D79 /* VerIDCore.xcframework in Frameworks */,
+				3B347246286D0F5700969D79 /* VerIDSerialization.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,7 +581,6 @@
 				3BEDC4AF24DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift */,
 				3BEDC4B024DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift */,
 				3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */,
-				3B45BAA5247D8A3C00273FAF /* Test registration.verid */,
 				3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */,
 			);
 			path = Testing;
@@ -640,7 +625,6 @@
 		3B9BFCD6246DE6E500C4B2D1 /* Registration Sharing */ = {
 			isa = PBXGroup;
 			children = (
-				3BB20452221425BE00B3B312 /* RegistrationData.swift */,
 				3B9BFCBE246DE64900C4B2D1 /* RegistrationImport.swift */,
 				3BB20458221425BF00B3B312 /* RegistrationImportViewController.swift */,
 				3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */,
@@ -666,6 +650,7 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */,
 				3B0228FA273C36FB00D5630C /* ContinuousLivenessViewController.swift */,
 				3B0228FB273C36FB00D5630C /* IncompatibleFacesViewController.swift */,
 				3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */,
@@ -821,7 +806,6 @@
 				3B45BABE247D94B100273FAF /* Sources */,
 				3B45BABF247D94B100273FAF /* Frameworks */,
 				3B45BAC0247D94B100273FAF /* Resources */,
-				3B2E373B2628C6030055FE28 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -840,7 +824,6 @@
 				3B45BAD0247D94C000273FAF /* Sources */,
 				3B45BAD1247D94C000273FAF /* Frameworks */,
 				3B45BAD2247D94C000273FAF /* Resources */,
-				3B2E373E2628C60A0055FE28 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -871,6 +854,8 @@
 				3B45BADF247D94C000273FAF /* PBXTargetDependency */,
 			);
 			name = "Ver-ID Sample";
+			packageProductDependencies = (
+			);
 			productName = "Ver-ID Sample";
 			productReference = 3BE9F365220AF125002C11BE /* Ver-ID Sample.app */;
 			productType = "com.apple.product-type.application";
@@ -1004,7 +989,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B45BABC247D911E00273FAF /* Test registration.verid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,7 +1012,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */,
-				3B45BABD247D914F00273FAF /* Test registration.verid in Resources */,
 				3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */,
 				3BB2046B221428B900B3B312 /* Main.storyboard in Resources */,
 				3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */,
@@ -1242,7 +1225,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAE7247D975D00273FAF /* VerIDUser.swift in Sources */,
-				3B45BAE5247D975400273FAF /* RegistrationData.swift in Sources */,
 				3B45BAE6247D975400273FAF /* RegistrationImport.swift in Sources */,
 				3B45BAE4247D974500273FAF /* Globals.swift in Sources */,
 				3B45BAC7247D94B100273FAF /* ThumbnailProvider.swift in Sources */,
@@ -1254,7 +1236,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B45BAE9247D976F00273FAF /* RegistrationImport.swift in Sources */,
-				3B45BAE8247D976C00273FAF /* RegistrationData.swift in Sources */,
 				3B45BAD9247D94C000273FAF /* PreviewViewController.swift in Sources */,
 				3B45BAEB247D978300273FAF /* Globals.swift in Sources */,
 				3B45BAEA247D977400273FAF /* VerIDUser.swift in Sources */,
@@ -1280,7 +1261,6 @@
 				3B0228FD273C36FB00D5630C /* IncompatibleFacesViewController.swift in Sources */,
 				3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */,
 				3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */,
-				3BB2045E221425BF00B3B312 /* RegistrationData.swift in Sources */,
 				3B9BFCCE246DE64A00C4B2D1 /* RegistrationImport.swift in Sources */,
 				3B0228FC273C36FB00D5630C /* ContinuousLivenessViewController.swift in Sources */,
 				3BB55BA1252DCC9600D153A3 /* TestSessionFunctions.swift in Sources */,
@@ -1367,7 +1347,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1391,7 +1371,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1413,7 +1393,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = VerIDResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDResources;
@@ -1431,7 +1411,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = VerIDResources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDResources;
@@ -1624,7 +1604,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = VerIDSampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1643,7 +1623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = VerIDSampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1663,14 +1643,14 @@
 			baseConfigurationReference = 4878AFAC33AD133508C2FE0F /* Pods-Ver-ID-Thumbnails.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = Thumbnails/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Thumbnails";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSample.Thumbnails;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1683,14 +1663,14 @@
 			baseConfigurationReference = 4BC6B89B8FA7E2926895EA96 /* Pods-Ver-ID-Thumbnails.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = Thumbnails/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Thumbnails";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSample.Thumbnails;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1703,14 +1683,14 @@
 			baseConfigurationReference = E5A4D0EE14CD452AD645EAAB /* Pods-Ver-ID-Preview.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = Preview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Preview";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSample.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1723,14 +1703,14 @@
 			baseConfigurationReference = E260B9DB870DD39244BA1E94 /* Pods-Ver-ID-Preview.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = Preview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample.Preview";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSample.Preview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1744,13 +1724,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = "Ver-ID Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1764,13 +1744,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				DEVELOPMENT_TEAM = CSD8L9EK66;
 				INFOPLIST_FILE = "Ver-ID Sample/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appliedrec.Ver-ID-Sample";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.VerIDSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

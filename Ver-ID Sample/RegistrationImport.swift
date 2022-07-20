@@ -8,6 +8,8 @@
 
 import Foundation
 import VerIDCore
+import VerIDSerialization
+import SwiftProtobuf
 
 class RegistrationImport {
     
@@ -17,9 +19,9 @@ class RegistrationImport {
                 guard let profilePicURL = Globals.profilePictureURL else {
                     throw NSError(domain: kVerIDErrorDomain, code: 303, userInfo: [NSLocalizedDescriptionKey:"Missing profile picture"])
                 }
-                let registrationData = try RegistrationImport.registrationData(from: url)
-                try registrationData.profilePicture.write(to: profilePicURL, options: .atomicWrite)
-                verid.userManagement.assignFaces(registrationData.faces, toUser: VerIDUser.defaultUserId, completion: completion)
+                let registration = try RegistrationImport.registration(from: url)
+                try registration.image.pngData()?.write(to: profilePicURL, options: .atomic)
+                verid.userManagement.assignFaces(registration.faces, toUser: VerIDUser.defaultUserId, completion: completion)
             } catch {
                 DispatchQueue.main.async {
                     completion(error)
@@ -28,12 +30,12 @@ class RegistrationImport {
         }
     }
     
-    static func registrationData(from url: URL) throws -> RegistrationData {
+    static func registration(from url: URL) throws -> Registration {
         let data = try Data(contentsOf: url)
-        let registrationData = try JSONDecoder().decode(RegistrationData.self, from: data)
-        if registrationData.faces.isEmpty {
+        let registration: Registration = try Deserializer.deserialize(data)
+        if registration.faces.isEmpty {
             throw NSError(domain: kVerIDErrorDomain, code: 302, userInfo: [NSLocalizedDescriptionKey:"Registration has no faces"])
         }
-        return registrationData
+        return registration
     }
 }

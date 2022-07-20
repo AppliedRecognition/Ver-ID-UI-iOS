@@ -9,10 +9,9 @@
 import UIKit
 import VerIDCore
 
-class SettingsViewController: UITableViewController, SecuritySettingsDelegate, FaceDetectionSettingsDelegate, ValueSelectionDelegate {
+class SettingsViewController: UITableViewController, SecuritySettingsDelegate, ValueSelectionDelegate {
     
     @IBOutlet var securityProfileCell: UITableViewCell!
-    @IBOutlet var faceDetectionProfileCell: UITableViewCell!
     @IBOutlet var registrationFaceCountCell: UITableViewCell!
     @IBOutlet var templateEncryptionCell: UITableViewCell!
     @IBOutlet var speakPromptsCell: UITableViewCell!
@@ -22,13 +21,17 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     @IBOutlet var faceWidthFractionCell: UITableViewCell!
     @IBOutlet var faceHeightFractionCell: UITableViewCell!
     @IBOutlet var faceCoveringDetectionCell: UITableViewCell!
-    @IBOutlet var v20MigrationCell: UITableViewCell!
+    @IBOutlet var confidenceThresholdCell: UITableViewCell!
+    @IBOutlet var detectorVersionCell: UITableViewCell!
+    @IBOutlet var templateExtractionThresholdCell: UITableViewCell!
     
     enum Section: Int, CaseIterable {
         case about, security, faceDetection, registration, accessibility, camera
     }
     
     let registrationFaceCounts: [Int] = [1,3]
+    let faceDetectorVersions: [Int] = [3,6]
+    let confidenceThresholds: [Float] = [Float](stride(from:-0.5, through: 1, by: 0.25))
     var isDirty: Bool = false
     var faceWidthFractionObservation: NSKeyValueObservation?
     var faceHeightFractionObservation: NSKeyValueObservation?
@@ -36,7 +39,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
     var faceTemplateExtractionThresholdObservation: NSKeyValueObservation?
     var faceTemplateEncryptionObservation: NSKeyValueObservation?
     var authenticationThresholdObservation: NSKeyValueObservation?
-    var v20MigrationObservation: NSKeyValueObservation?
+    var faceDetectorVersionObservation: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +52,12 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             self.faceHeightFractionCell.detailTextLabel?.text = String(format: "%.0f%%", userDefaults.faceHeightFraction * 100)
         }
         self.confidenceThresholdObservation = UserDefaults.standard.observe(\.confidenceThreshold, options: [.new], changeHandler: self.defaultsChangeHandler)
+        self.faceDetectorVersionObservation = UserDefaults.standard.observe(\.faceDetectorVersion, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.faceTemplateExtractionThresholdObservation = UserDefaults.standard.observe(\.faceTemplateExtractionThreshold, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.faceTemplateEncryptionObservation = UserDefaults.standard.observe(\.encryptFaceTemplates, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.authenticationThresholdObservation = UserDefaults.standard.observe(\.authenticationThreshold, options: [.new]) { userDefaults, _ in
             Globals.verid?.faceRecognition.authenticationScoreThreshold = NSNumber(value: userDefaults.authenticationThreshold)
         }
-        self.v20MigrationObservation = UserDefaults.standard.observe(\.enableV20FaceTemplateMigration, options: [.new], changeHandler: self.defaultsChangeHandler)
     }
     
     func defaultsChangeHandler<T>(_ defaults: UserDefaults,_ change: NSKeyValueObservedChange<T>) {
@@ -70,7 +73,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             self.faceTemplateExtractionThresholdObservation = nil
             self.faceTemplateEncryptionObservation = nil
             self.authenticationThresholdObservation = nil
-            self.v20MigrationObservation = nil
+            self.faceDetectorVersionObservation = nil
             if self.isDirty {
                 (UIApplication.shared.delegate as? AppDelegate)?.reload()
             }
@@ -88,9 +91,11 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             return 0
         }
         switch sectionEnum {
-        case .about, .camera, .faceDetection:
+        case .faceDetection:
+            return 4
+        case .about, .registration, .camera:
             return 2
-        case .registration, .security:
+        case .security:
             return 3
         default:
             return 1
@@ -110,8 +115,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
             UserDefaults.standard.speakPrompts = !UserDefaults.standard.speakPrompts
         } else if indexPath.section == Section.faceDetection.rawValue && indexPath.row == 1 {
             UserDefaults.standard.enableFaceCoveringDetection = !UserDefaults.standard.enableFaceCoveringDetection
-        } else if indexPath.section == Section.registration.rawValue && indexPath.row == 2 {
-            UserDefaults.standard.enableV20FaceTemplateMigration = !UserDefaults.standard.enableV20FaceTemplateMigration
         } else {
             return
         }
@@ -123,8 +126,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         let yawThreshold: Float = UserDefaults.standard.yawThreshold
         let pitchThreshold: Float = UserDefaults.standard.pitchThreshold
         let authThreshold: Float = UserDefaults.standard.authenticationThreshold
-        let confidenceThreshold: Float = UserDefaults.standard.confidenceThreshold
-        let faceTemplateExtractionThreshold: Float = UserDefaults.standard.faceTemplateExtractionThreshold
         let registrationPoseCount: Int = UserDefaults.standard.registrationFaceCount
         let securityPreset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThreshold: authThreshold)
         switch securityPreset {
@@ -137,17 +138,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         default:
             self.securityProfileCell.detailTextLabel?.text = "Custom"
         }
-        let faceDetectionPreset = FaceDetectionSettingsPreset(confidenceThreshold: confidenceThreshold, templateExtractionThreshold: faceTemplateExtractionThreshold)
-        switch faceDetectionPreset {
-        case .permissive:
-            self.faceDetectionProfileCell.detailTextLabel?.text = "Permissive"
-        case .normal:
-            self.faceDetectionProfileCell.detailTextLabel?.text = "Normal"
-        case .restrictive:
-            self.faceDetectionProfileCell.detailTextLabel?.text = "Restrictive"
-        default:
-            self.faceDetectionProfileCell.detailTextLabel?.text = "Custom"
-        }
         self.registrationFaceCountCell.detailTextLabel?.text = registrationPoseCount > 1 ? String(format: "%d faces", registrationPoseCount) : "1 face"
         let useBackCamera = UserDefaults.standard.useBackCamera
         backCameraCell.accessoryType = useBackCamera ? .checkmark : .none
@@ -158,7 +148,9 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         let encryptTemplates = UserDefaults.standard.encryptFaceTemplates
         templateEncryptionCell.accessoryType = encryptTemplates ? .checkmark : .none
         faceCoveringDetectionCell.accessoryType = UserDefaults.standard.enableFaceCoveringDetection ? .checkmark : .none
-        v20MigrationCell.accessoryType = UserDefaults.standard.enableV20FaceTemplateMigration ? .checkmark : .none
+        confidenceThresholdCell.detailTextLabel?.text = String(format: "%.02f", UserDefaults.standard.confidenceThreshold)
+        detectorVersionCell.detailTextLabel?.text = String(format: "%d", UserDefaults.standard.faceDetectorVersion)
+        templateExtractionThresholdCell.detailTextLabel?.text = String(format: "%.0f", UserDefaults.standard.faceTemplateExtractionThreshold)
     }
     
     // MARK: - Security profile
@@ -167,17 +159,17 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
         self.securityProfileCell.detailTextLabel?.text = profile
     }
     
-    // MARK: - Face detection profile
-    
-    func faceDetectionSettingsViewController(_ faceDetectionSettingsViewController: FaceDetectionSettingsViewController, didSetProfile profile: String) {
-        self.faceDetectionProfileCell.detailTextLabel?.text = profile
-    }
-    
     // MARK: - Registration face count
     
     func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValue value: String, atIndex index: Int) {
         self.navigationController?.popViewController(animated: true)
-        UserDefaults.standard.registrationFaceCount = self.registrationFaceCounts[index]
+        if valueSelectionViewController.title == "Registration Face Count" {
+            UserDefaults.standard.registrationFaceCount = self.registrationFaceCounts[index]
+        } else if valueSelectionViewController.title == "Face Detector" {
+            UserDefaults.standard.faceDetectorVersion = self.faceDetectorVersions[index]
+        } else if valueSelectionViewController.title == "Face Det. Confidence Threshold" {
+            UserDefaults.standard.confidenceThreshold = self.confidenceThresholds[index]
+        }
         self.loadFromDefaults()
     }
 
@@ -185,8 +177,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SecuritySettingsViewController {
-            destination.delegate = self
-        } else if let destination = segue.destination as? FaceDetectionSettingsViewController {
             destination.delegate = self
         } else if let destination = segue.destination as? ValueSelectionViewController {
             destination.delegate = self
@@ -198,9 +188,17 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, F
                 } else {
                     destination.selectedIndex = 1
                 }
+            } else if segue.identifier == "faceDetectorVersion" {
+                destination.values = self.faceDetectorVersions.map({ String(format: "Version %d", $0) })
+                destination.title = "Face Detector"
+                destination.selectedIndex = self.faceDetectorVersions.firstIndex(where: { $0 == UserDefaults.standard.faceDetectorVersion }) ?? 0
+            } else if segue.identifier == "confidenceThreshold" {
+                destination.values = self.confidenceThresholds.map({ String(format: "%.02f", $0)})
+                destination.title = "Face Det. Confidence Threshold"
+                destination.selectedIndex = self.confidenceThresholds.firstIndex(where: { $0 == UserDefaults.standard.confidenceThreshold }) ?? 0
             }
         } else if let destination = segue.destination as? IntroViewController {
-            destination.showRegisterButton = false            
+            destination.showRegisterButton = false
         }
     }
 
