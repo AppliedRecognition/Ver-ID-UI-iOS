@@ -74,8 +74,6 @@
 		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
 		3B45BAB4247D8BEB00273FAF /* VerIDSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */; };
 		3B45BABB247D8C9500273FAF /* SettingsPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCC4246DE64A00C4B2D1 /* SettingsPresets.swift */; };
-		3B45BABC247D911E00273FAF /* Test registration.verid in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BAA5247D8A3C00273FAF /* Test registration.verid */; };
-		3B45BABD247D914F00273FAF /* Test registration.verid in Resources */ = {isa = PBXBuildFile; fileRef = 3B45BAA5247D8A3C00273FAF /* Test registration.verid */; };
 		3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B45BAC3247D94B100273FAF /* QuickLookThumbnailing.framework */; };
 		3B45BAC7247D94B100273FAF /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAC6247D94B100273FAF /* ThumbnailProvider.swift */; };
 		3B45BACB247D94B100273FAF /* Thumbnails.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3B45BAC2247D94B100273FAF /* Thumbnails.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -282,7 +280,6 @@
 		3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDSerialization.xcframework; path = Frameworks/VerIDSerialization.xcframework; sourceTree = SOURCE_ROOT; };
 		3B443BDA2733F24C002C6CAA /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionViewController.swift; sourceTree = "<group>"; };
-		3B45BAA5247D8A3C00273FAF /* Test registration.verid */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Test registration.verid"; sourceTree = "<group>"; };
 		3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageProvider.swift; sourceTree = "<group>"; };
 		3B45BAB1247D8BEB00273FAF /* VerIDSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VerIDSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B45BAB3247D8BEB00273FAF /* VerIDSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerIDSampleUITests.swift; sourceTree = "<group>"; };
@@ -584,7 +581,6 @@
 				3BEDC4AF24DD902F00CFB42B /* TestFaceCaptureCreatorFactory.swift */,
 				3BEDC4B024DD902F00CFB42B /* TestFaceDetectionResultCreatorFactory.swift */,
 				3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */,
-				3B45BAA5247D8A3C00273FAF /* Test registration.verid */,
 				3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */,
 			);
 			path = Testing;
@@ -993,7 +989,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B45BABC247D911E00273FAF /* Test registration.verid in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,7 +1012,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */,
-				3B45BABD247D914F00273FAF /* Test registration.verid in Resources */,
 				3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */,
 				3BB2046B221428B900B3B312 /* Main.storyboard in Resources */,
 				3BB20468221428AE00B3B312 /* LaunchScreen.storyboard in Resources */,
