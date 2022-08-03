@@ -228,7 +228,7 @@ SWIFT_CLASS("_TtC9VerIDCore22AngleBearingEvaluation")
 /// Whether the angle can be considered to be matching the given bearing
 /// \param angle Angle to evaluate against the bearing
 ///
-/// \param matchesBearing Bearing the angle should match
+/// \param bearing Bearing the angle should match
 ///
 ///
 /// returns:
@@ -351,9 +351,9 @@ SWIFT_CLASS_NAMED("VerIDSessionSettings")
 @property (nonatomic) BOOL isFaceCoveringDetectionEnabled;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 /// Constructor
-/// \param expiryTime Time the user has to complete the session
+/// \param maxDuration Time the user has to complete the session
 ///
-/// \param numberOfResultsToCollect Number of successful results the session must collect before it finishes
+/// \param faceCaptureCount Number of successful results the session must collect before it finishes
 ///
 - (nonnull instancetype)initWithMaxDuration:(NSTimeInterval)maxDuration faceCaptureCount:(NSInteger)faceCaptureCount OBJC_DESIGNATED_INITIALIZER;
 @end

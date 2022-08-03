@@ -13,7 +13,11 @@ extension VerIDCore.VerIDFace : VerIDSerialization.Serializable {
   public func serialized() throws -> Foundation.Data
 }
 public enum SerializationError : Swift.Int, Swift.Error {
-  case imageDeserializationFailed, imageSerializationFailed, expectedAtLeastOneFace, imageCroppingFailed, deserializationUnavailableForType
+  case imageDeserializationFailed
+  case imageSerializationFailed
+  case expectedAtLeastOneFace
+  case imageCroppingFailed
+  case deserializationUnavailableForType
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -21,6 +25,9 @@ public enum SerializationError : Swift.Int, Swift.Error {
   }
 }
 extension VerIDCore.Image : VerIDSerialization.Serializable {
+  public func serialized() throws -> Foundation.Data
+}
+extension VerIDCore.SystemInfo : VerIDSerialization.Serializable {
   public func serialized() throws -> Foundation.Data
 }
 @_hasMissingDesignatedInitializers public class Deserializer {
@@ -34,6 +41,12 @@ public struct Registration : VerIDSerialization.Serializable {
   public init(faces: [VerIDCore.Recognizable], image: UIKit.UIImage, systemInfo: VerIDCore.SystemInfo) throws
   public func serialized() throws -> Foundation.Data
 }
+public struct ImageMetadata : VerIDSerialization.Serializable {
+  public let date: Foundation.Date
+  public let deviceInfo: VerIDCore.DeviceInfo
+  public init(date: Foundation.Date, deviceInfo: VerIDCore.DeviceInfo)
+  public func serialized() throws -> Foundation.Data
+}
 public protocol Serializable {
   func serialized() throws -> Foundation.Data
 }
@@ -43,7 +56,8 @@ public struct Capture : VerIDSerialization.Serializable {
   public let faces: [VerIDCore.RecognizableFace]
   public let uiImage: UIKit.UIImage
   public let systemInfo: VerIDCore.SystemInfo
-  public init(date: Foundation.Date, image: VerIDCore.Image, faces: [VerIDCore.RecognizableFace], uiImage: UIKit.UIImage, systemInfo: VerIDCore.SystemInfo) throws
+  public let imageMetadata: VerIDSerialization.ImageMetadata?
+  public init(date: Foundation.Date, image: VerIDCore.Image, faces: [VerIDCore.RecognizableFace], uiImage: UIKit.UIImage, systemInfo: VerIDCore.SystemInfo, imageMetadata: VerIDSerialization.ImageMetadata? = nil) throws
   public func serialized() throws -> Foundation.Data
 }
 extension VerIDSerialization.SerializationError : Swift.Equatable {}

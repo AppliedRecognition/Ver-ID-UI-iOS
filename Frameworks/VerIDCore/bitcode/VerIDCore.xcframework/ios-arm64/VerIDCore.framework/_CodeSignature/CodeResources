@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		U4r+8yr9S+POp+0VFo9pDEi51wc=
+		d7a9vLpxNLkW7XadfF+XV0ajLDM=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MaQJqzF3TZaHtqBF6hA2u6QSUus=
+		gNibLMumcvDEEVnm/WyIviYP3rY=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		owz1N3hjc0tX5cGZqRoLMK0qSEs=
+		AdDZSMLQuso03AXgpLh6uW7XMv8=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		ZaJDV4AxNx75mUwgo24N+1XhdHw=
+		HAgPwtUmz7mwI79inBFkLMPKeVY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Resources.plist</key>
 		<data>
-		LGeencgLa3WuJiBsN9ooitPm0VM=
+		f15kK0y7OLe0s5n+XCD2nT1tFwI=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
@@ -120,10 +120,6 @@
 		<data>
 		t8GLA469R9qNdHz7aQIklCosSoo=
 		</data>
-		<key>VerIDModels/rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv</key>
-		<data>
-		aSwHpz0njROp/10m5ttMqGKYddI=
-		</data>
 		<key>VerIDModels/shape_predictor_5_face_landmarks.dat</key>
 		<data>
 		7e7kPG/ObkyFXMY2rWEC8FKxWUk=
@@ -167,7 +163,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			M11q15DYXnwdaFUfhDR31Uui3V1r62agKXlME1H7/NQ=
+			NQpVv2BQaFikU08+KGrNdYD/RS9buTgEy2e1i8X3nj0=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -216,7 +212,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EVdGHSxgf8zVYpXMyig+R3Ngm2tk3bQ2z4pZR5EpDWM=
+			Xj+utDkmHGLNtgJGNfKAzusIrYeC3iMtlGT+Hp85jSY=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
@@ -230,7 +226,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1JYB4v5eyteVa23Lm7XqmDSagv0DNnrRoMUGovVKo3Q=
+			L7WIF+Xu15o9dBckEK8F7y54AZdktoD5N7rNJuOjYnk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -244,7 +240,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rw8ZMANG0IPww7WgZzykBOyKJHjlUNiQl1ULjfyzN60=
+			tgot324Bj6ge0U8LovRd1bZvzZQQjbOGGBNhDWIA1kY=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
@@ -329,13 +325,6 @@
 			<key>hash2</key>
 			<data>
 			vkZ7Gnb0gmk947D2of+R0JIxm+cVI9TUsGKPalP8uHo=
-			</data>
-		</dict>
-		<key>VerIDModels/rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			sB+oVQ5qGl+ea23QsDWsUHGUKbyrYX2vq1x3bzpsRF0=
 			</data>
 		</dict>
 		<key>VerIDModels/shape_predictor_5_face_landmarks.dat</key>
