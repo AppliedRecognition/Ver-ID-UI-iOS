@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/VerIDSerialization-Swift.h</key>
 		<data>
-		K5skR4bNH1V2bCI4MpIZGOovhf4=
+		gRYSPnN7OgsEu4pJjvt+EMX+jvM=
 		</data>
 		<key>Headers/VerIDSerialization.h</key>
 		<data>
@@ -14,27 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Z42b0sJYbbO2OUjgYnC9fTyAGsg=
+		/eLA+TGdCYBmRSEHwwig8lT0fRc=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		CkgZ0D+VYZb+aDS5Iqd5sloellQ=
+		yT0u987CDDCqq119c7WjdYhji+Y=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		ZdXwD5h7EOFT3dMu1awgvS4T1FU=
+		xmSVUjVgXB+QkA4BZG7nPt2u1NE=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		FsX42oIJjGZAx+0s1QaylghEU5w=
+		uBgA4BkBPkVqwb6EPiIYDXh+3yQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		R+ZzQzOB/+zxtHlBE85TW1HfJbU=
-		</data>
-		<key>Ver-ID-Serialization.podspec</key>
-		<data>
-		npcPL+7ZmpB1SMpgHSR0PRzODAo=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -43,7 +39,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qNQgv1rv20QD45d/JpZJ+a/QZf1tE3watQ5O+0s/S+g=
+			wNSmBaVhB6eExeRKYSA3GuqLVyaPQM7/1LYBE5r4DI8=
 			</data>
 		</dict>
 		<key>Headers/VerIDSerialization.h</key>
@@ -57,21 +53,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1/hbxsKY7E2yv9sDvvd/9r7VRNsF628G/BkJIUPS4lc=
+			qAetYa/3MeN2GCOEFHmz5KaYG2uW0Xo3+DH/TGOZyfI=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			d7FrS5OVH9oltVoR1iOyesyLPxgHa18iBhkxo88casI=
+			RE3GmJ8vUxVbmC31llTDDn52b8mjRUpPFwtSVn8cMcc=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eC/WCiWHgdJbZTwVkX9UQsyKpeWqlypdhLwEC1IgMzY=
+			5FIWiy2udd+DRthRYebVqtd2qdEh1ZX5ydlm93svbbc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -79,13 +75,6 @@
 			<key>hash2</key>
 			<data>
 			MX4wImppv16Wj8PUUeosyLeJ/y9nEVSmwypEo85fgjM=
-			</data>
-		</dict>
-		<key>Ver-ID-Serialization.podspec</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6BJb17MjDzt75ufXrI/0qGFnmO+WtlZ4ezVpOy/sXlc=
 			</data>
 		</dict>
 	</dict>
