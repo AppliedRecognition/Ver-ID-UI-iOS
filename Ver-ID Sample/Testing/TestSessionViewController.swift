@@ -37,7 +37,6 @@ class TestSessionViewController: UIViewController, VerIDViewControllerProtocol, 
                     return
                 }
                 let size = CGSize(width: 750, height: 1000)
-                let image = VerIDImage(grayscalePixels: [UInt8](repeating: 0, count: Int(size.width*size.height)), size: size)
                 DispatchQueue.main.async {
                     let viewSize = self.view.bounds.size
                     self.queue.async {
