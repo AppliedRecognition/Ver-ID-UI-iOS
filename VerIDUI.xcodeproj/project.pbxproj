@@ -65,10 +65,6 @@
 		3B34722D286C6CF900969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
 		3B347232286C708100969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
 		3B347233286C708100969D79 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B347246286D0F5700969D79 /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; };
-		3B347247286D0F5700969D79 /* VerIDSerialization.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3B347248286D0F7F00969D79 /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; };
-		3B34724A286D0F8700969D79 /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */; };
 		3B443BDB2733F24C002C6CAA /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3B443BDA2733F24C002C6CAA /* Documentation.docc */; };
 		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
 		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
@@ -102,6 +98,8 @@
 		3B749B4726D9680A00AFC328 /* VerIDUISessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B749B4626D9680A00AFC328 /* VerIDUISessionError.swift */; };
 		3B86C3B522F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B86C3B422F39DFE00FA9FC7 /* VerIDSessionViewDelegate.swift */; };
 		3B8C109F240D87900087ACA5 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8C109E240D87900087ACA5 /* Globals.swift */; };
+		3B8C69D8289688E900613703 /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */; };
+		3B8C69D9289688E900613703 /* VerIDSerialization.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */; };
 		3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */; };
 		3B9BFCC8246DE64A00C4B2D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB8246DE64900C4B2D1 /* SettingsViewController.swift */; };
@@ -128,6 +126,8 @@
 		3BB55B85252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB55B83252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift */; };
 		3BB55BA1252DCC9600D153A3 /* TestSessionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB55BA0252DCC9600D153A3 /* TestSessionFunctions.swift */; };
 		3BC55B6C2236E37E00BCDD9D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */; };
+		3BC884292894491F00C10CBE /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */; };
+		3BC8842A2894491F00C10CBE /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */; };
 		3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36E220AF128002C11BE /* Assets.xcassets */; };
 		3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
 		3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -205,7 +205,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3B347247286D0F5700969D79 /* VerIDSerialization.xcframework in Embed Frameworks */,
+				3B8C69D9289688E900613703 /* VerIDSerialization.xcframework in Embed Frameworks */,
 				3BE9F37C220AF8DC002C11BE /* VerIDUI.framework in Embed Frameworks */,
 				3B347233286C708100969D79 /* VerIDCore.xcframework in Embed Frameworks */,
 			);
@@ -277,7 +277,6 @@
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDSerialization.xcframework; path = Frameworks/VerIDSerialization.xcframework; sourceTree = SOURCE_ROOT; };
 		3B443BDA2733F24C002C6CAA /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionViewController.swift; sourceTree = "<group>"; };
 		3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageProvider.swift; sourceTree = "<group>"; };
@@ -336,6 +335,7 @@
 		3BB55B83252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDiagnosticsViewController.swift; sourceTree = "<group>"; };
 		3BB55BA0252DCC9600D153A3 /* TestSessionFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionFunctions.swift; sourceTree = "<group>"; };
 		3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDSerialization.xcframework; path = Frameworks/VerIDSerialization.xcframework; sourceTree = SOURCE_ROOT; };
 		3BE9F365220AF125002C11BE /* Ver-ID Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BE9F36E220AF128002C11BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BE9F373220AF128002C11BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B347248286D0F7F00969D79 /* VerIDSerialization.xcframework in Frameworks */,
+				3BC884292894491F00C10CBE /* VerIDSerialization.xcframework in Frameworks */,
 				3B45BAC4247D94B100273FAF /* QuickLookThumbnailing.framework in Frameworks */,
 				D80C36361D251AE897C541C6 /* Pods_Ver_ID_Thumbnails.framework in Frameworks */,
 			);
@@ -398,7 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B34724A286D0F8700969D79 /* VerIDSerialization.xcframework in Frameworks */,
+				3BC8842A2894491F00C10CBE /* VerIDSerialization.xcframework in Frameworks */,
 				3B45BAD6247D94C000273FAF /* QuickLook.framework in Frameworks */,
 				5270C89D748E3DD6D44A14F9 /* Pods_Ver_ID_Preview.framework in Frameworks */,
 			);
@@ -409,9 +409,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BE9F37B220AF8DC002C11BE /* VerIDUI.framework in Frameworks */,
+				3B8C69D8289688E900613703 /* VerIDSerialization.xcframework in Frameworks */,
 				9A4B9BEA526F687E0B6D98AB /* Pods_Ver_ID_Ver_ID_Sample.framework in Frameworks */,
 				3B347232286C708100969D79 /* VerIDCore.xcframework in Frameworks */,
-				3B347246286D0F5700969D79 /* VerIDSerialization.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +542,7 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */,
 				3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */,
 				3B51D30627C815A2008A97FE /* Version.xcconfig */,
 				3B749B4626D9680A00AFC328 /* VerIDUISessionError.swift */,
@@ -650,7 +651,6 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
-				3B347244286D0F4A00969D79 /* VerIDSerialization.xcframework */,
 				3B0228FA273C36FB00D5630C /* ContinuousLivenessViewController.swift */,
 				3B0228FB273C36FB00D5630C /* IncompatibleFacesViewController.swift */,
 				3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */,
