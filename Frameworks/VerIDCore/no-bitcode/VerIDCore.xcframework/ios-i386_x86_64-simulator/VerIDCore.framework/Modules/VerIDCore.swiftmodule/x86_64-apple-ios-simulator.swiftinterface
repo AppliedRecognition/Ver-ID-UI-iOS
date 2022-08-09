@@ -612,6 +612,7 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   @objc convenience public init?(url: Foundation.URL)
   public init(grayscalePixels: [Swift.UInt8], size: CoreGraphics.CGSize)
   @objc public init?(uiImage: UIKit.UIImage)
+  public init(faceDetectionImage: VerIDCore.FaceDetectionImage)
   public var grayscalePixels: [Swift.UInt8]?
   public var argbPixels: [Swift.UInt8]?
   public var rgbPixels: [Swift.UInt8]?
