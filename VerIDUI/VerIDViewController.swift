@@ -148,21 +148,15 @@ import VerIDCore
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    override open func configureOutputs() {
-        super.configureOutputs()
-        self.videoDataOutput?.alwaysDiscardsLateVideoFrames = true
-        let pixelFormat: OSType = kCVPixelFormatType_32BGRA
-//        let pixelFormat: OSType = kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
-        if let pixelFormats = self.videoDataOutput?.availableVideoPixelFormatTypes, pixelFormats.contains(pixelFormat) {
-            self.videoDataOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:pixelFormat]
-        }
-        self.videoDataOutput?.setSampleBufferDelegate(self, queue: self.captureSessionQueue)
-    }
-    
     override open func cameraBecameUnavailable(reason: String) {
         super.cameraBecameUnavailable(reason: reason)
         self.noCameraLabel.isHidden = false
         self.noCameraLabel.text = reason
+    }
+    
+    open override func configureOutputs() {
+        super.configureOutputs()
+        self.videoDataOutput?.setSampleBufferDelegate(self, queue: self.captureSessionQueue)
     }
     
     // MARK: -

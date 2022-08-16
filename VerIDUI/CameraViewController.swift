@@ -21,6 +21,7 @@ import AVFoundation
     private var setupResult: SessionSetupResult = .success
     private(set) var isSessionRunning = false
     private(set) internal var cameraPreviewView: CameraPreviewView!
+    private var sessionRunningObservation: NSKeyValueObservation?
     
     private enum SessionSetupResult {
         case success, notAuthorized, configurationFailed
@@ -28,24 +29,37 @@ import AVFoundation
     
     private var observeSession: Bool = false {
         didSet {
-            if oldValue != observeSession && observeSession {
-                self.captureSession.addObserver(self, forKeyPath: "running", options: .new, context: &self.sessionRunningObserveContext)
-                
-                NotificationCenter.default.addObserver(self, selector: #selector(sessionRuntimeError), name: Notification.Name("AVCaptureSessionRuntimeErrorNotification"), object: self.captureSession)
-                
-                /*
-                 A session can only run when the app is full screen. It will be interrupted
-                 in a multi-app layout, introduced in iOS 9, see also the documentation of
-                 AVCaptureSessionInterruptionReason. Add observers to handle these session
-                 interruptions and show a preview is paused message. See the documentation
-                 of AVCaptureSessionWasInterruptedNotification for other interruption reasons.
-                 */
-                NotificationCenter.default.addObserver(self, selector: #selector(sessionWasInterrupted), name: Notification.Name("AVCaptureSessionWasInterruptedNotification"), object: self.captureSession)
-                NotificationCenter.default.addObserver(self, selector: #selector(sessionInterruptionEnded), name: Notification.Name("AVCaptureSessionInterruptionEndedNotification"), object: self.captureSession)
-            } else if oldValue != observeSession {
-                NotificationCenter.default.removeObserver(self)
-                
-                self.captureSession.removeObserver(self, forKeyPath: "running", context: &sessionRunningObserveContext)
+            OperationQueue.main.addOperation { [weak self] in
+                guard let `self` = self, self.isViewLoaded else {
+                    return
+                }
+                if oldValue != self.observeSession && self.observeSession && self.sessionRunningObservation == nil {
+                    self.sessionRunningObservation = self.captureSession.observe(\.isRunning, options: [.new]) { [weak self] session, change in
+                        OperationQueue.main.addOperation { [weak self] in
+                            guard let `self` = self, self.isViewLoaded, let isSessionRunning = change.newValue else {
+                                return
+                            }
+                            if isSessionRunning {
+                                self.cameraBecameAvailable()
+                            }
+                            self.isSessionRunning = isSessionRunning
+                        }
+                    }
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionRuntimeError), name: Notification.Name("AVCaptureSessionRuntimeErrorNotification"), object: self.captureSession)
+                    
+                    /*
+                     A session can only run when the app is full screen. It will be interrupted
+                     in a multi-app layout, introduced in iOS 9, see also the documentation of
+                     AVCaptureSessionInterruptionReason. Add observers to handle these session
+                     interruptions and show a preview is paused message. See the documentation
+                     of AVCaptureSessionWasInterruptedNotification for other interruption reasons.
+                     */
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionWasInterrupted), name: Notification.Name("AVCaptureSessionWasInterruptedNotification"), object: self.captureSession)
+                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionInterruptionEnded), name: Notification.Name("AVCaptureSessionInterruptionEndedNotification"), object: self.captureSession)
+                } else if oldValue != self.observeSession {
+                    NotificationCenter.default.removeObserver(self)
+                    self.sessionRunningObservation = nil
+                }
             }
         }
     }
@@ -321,12 +335,11 @@ import AVFoundation
     // MARK: Override in subclasses
     
     open func configureOutputs() {
-        let pixelFormatType = kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
-        guard self.videoDataOutput != nil else {
-            return
+        self.videoDataOutput?.alwaysDiscardsLateVideoFrames = true
+        let pixelFormat: OSType = kCVPixelFormatType_32BGRA
+        if let pixelFormats = self.videoDataOutput?.availableVideoPixelFormatTypes, pixelFormats.contains(pixelFormat) {
+            self.videoDataOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String:pixelFormat]
         }
-        assert(self.videoDataOutput!.availableVideoPixelFormatTypes.contains(pixelFormatType))
-        self.videoDataOutput!.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as String): pixelFormatType]
     }
     
     private func captureSessionInterrupted() {
@@ -379,26 +392,6 @@ import AVFoundation
     }
     
     // MARK: KVO and Notifications
-    
-    private var sessionRunningObserveContext = 0
-    
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &self.sessionRunningObserveContext {
-            let newValue = change?[.newKey] as AnyObject?
-            guard let isSessionRunning = newValue?.boolValue else {
-                return
-            }
-            
-            DispatchQueue.main.async { [weak self] in
-                if isSessionRunning {
-                    self?.cameraBecameAvailable()
-                }
-                self?.isSessionRunning = isSessionRunning
-            }
-        } else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        }
-    }
     
     @objc private func sessionRuntimeError(notification: NSNotification) {
         guard let errorValue = notification.userInfo?[AVCaptureSessionErrorKey] as? NSError else {
