@@ -16,7 +16,6 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
     
     var currentImageOrientation: CGImagePropertyOrientation = .right
     var faceDetectionSubscription: Disposable?
-    let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
     let imagePublisher = PublishSubject<Image>()
     let disposeBag = DisposeBag()
     @IBOutlet var cameraOverlay: UIView!
