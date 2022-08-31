@@ -21,6 +21,7 @@ import RxSwift
     @objc var delegate: VerIDViewControllerDelegate? { get set }
     @objc var sessionSettings: VerIDSessionSettings? { get set }
     @objc var cameraPosition: AVCaptureDevice.Position { get set }
+    @objc var videoWriter: VideoWriterService? { get set }
     @objc optional func addFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult, prompt: String?)
     @objc optional func addFaceCapture(_ faceCapture: FaceCapture)
     @objc optional func clearOverlays()
@@ -64,6 +65,8 @@ public protocol ImagePublisher {
     public var sessionSettings: VerIDSessionSettings?
     
     public var cameraPosition: AVCaptureDevice.Position = .front
+    
+    public var videoWriter: VideoWriterService?
     
     weak var speechDelegate: SpeechDelegate?
     
