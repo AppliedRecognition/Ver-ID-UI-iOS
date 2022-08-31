@@ -309,7 +309,10 @@ public protocol ImagePublisher {
     ///   - sampleBuffer: image sample buffer
     ///   - connection: capture connection
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let image = try? VerIDImage(sampleBuffer: sampleBuffer, orientation: self.currentImageOrientation).provideVerIDImage() else {
+        if let videoWriter = self.videoWriter {
+            videoWriter.writeSampleBuffer(sampleBuffer, rotation: self.videoRotation)
+        }
+        guard let image = try? ImageUtil.imageFromSampleBuffer(sampleBuffer, orientation: self.imageOrientation) else {
             return
         }
         image.isMirrored = cameraPosition == .front
