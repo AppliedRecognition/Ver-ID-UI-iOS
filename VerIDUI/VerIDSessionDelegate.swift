@@ -32,4 +32,7 @@ import VerIDCore
     @objc optional func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position
     
     @objc optional func shouldRetrySession(_ session: VerIDSession, afterFailure error: Error) -> Bool
+    
+    /// - Since: 2.7.0
+    @objc optional func shouldDisplayCGHeadGuidanceInSession(_ session: VerIDSession) -> Bool
 }

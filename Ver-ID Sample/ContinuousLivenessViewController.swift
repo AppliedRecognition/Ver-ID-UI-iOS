@@ -16,7 +16,6 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
     
     var currentImageOrientation: CGImagePropertyOrientation = .right
     var faceDetectionSubscription: Disposable?
-    let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
     let imagePublisher = PublishSubject<Image>()
     let disposeBag = DisposeBag()
     @IBOutlet var cameraOverlay: UIView!
@@ -24,7 +23,7 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
     @IBOutlet var successLabel: UILabel!
     
     override var captureDevice: AVCaptureDevice! {
-        return AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
+        return UserDefaults.standard.useBackCamera ? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) : AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
     }
 
     override func viewDidLoad() {
@@ -138,6 +137,10 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
                 self.startSession()
             })
         })
+    }
+    
+    func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
+        UserDefaults.standard.useBackCamera ? .back : .front
     }
     
     // MARK: -

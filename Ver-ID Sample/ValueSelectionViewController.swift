@@ -12,16 +12,15 @@ class ValueSelectionViewController: UITableViewController {
     
     var values: [String] = []
     var selectedIndex: Int?
+    var selectedIndices: Set<Int> = []
+    var allowsMultipleSelection: Bool = false
     weak var delegate: ValueSelectionDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if self.allowsMultipleSelection {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.onDone))
+        }
     }
 
     // MARK: - Table view data source
@@ -35,7 +34,16 @@ class ValueSelectionViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.valueSelectionViewController(self, didSelectValue: self.values[indexPath.row], atIndex: indexPath.row)
+        if self.allowsMultipleSelection {
+            if self.selectedIndices.contains(indexPath.row) {
+                self.selectedIndices.remove(indexPath.row)
+            } else {
+                self.selectedIndices.insert(indexPath.row)
+            }
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+        } else {
+            self.delegate?.valueSelectionViewController(self, didSelectValue: self.values[indexPath.row], atIndex: indexPath.row)
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,10 +51,24 @@ class ValueSelectionViewController: UITableViewController {
         cell.textLabel?.text = self.values[indexPath.row]
         if let selected = self.selectedIndex, selected == indexPath.row {
             cell.accessoryType = .checkmark
+        } else if self.selectedIndices.contains(indexPath.row) {
+            cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
         return cell
+    }
+    
+    // MARK: -
+    
+    @objc private func onDone() {
+        var values: [String] = []
+        for i in 0..<self.values.count {
+            if self.selectedIndices.contains(i) {
+                values.append(self.values[i])
+            }
+        }
+        self.delegate?.valueSelectionViewController(self, didSelectValues: values, atIndices: Array(self.selectedIndices))
     }
 
     /*
@@ -98,4 +120,5 @@ class ValueSelectionViewController: UITableViewController {
 
 protocol ValueSelectionDelegate: AnyObject {
     func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValue value: String, atIndex index: Int)
+    func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValues values: [String], atIndices: [Int])
 }

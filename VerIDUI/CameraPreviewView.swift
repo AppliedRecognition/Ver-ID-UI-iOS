@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 /// View that shows camera preview
-class CameraPreviewView: UIView {
+public class CameraPreviewView: UIView {
 
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         return self.layer as! AVCaptureVideoPreviewLayer
@@ -27,7 +27,7 @@ class CameraPreviewView: UIView {
     
     // MARK: UIView
     
-    override class var layerClass: AnyClass {
+    public override class var layerClass: AnyClass {
         return AVCaptureVideoPreviewLayer.self
     }
 }

@@ -1,0 +1,3809 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "CoreGraphics",
+        "printedName": "CoreGraphics",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SerializationError",
+        "printedName": "SerializationError",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "imageDeserializationFailed",
+            "printedName": "imageDeserializationFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDSerialization.SerializationError.Type) -> VerIDSerialization.SerializationError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SerializationError",
+                    "printedName": "VerIDSerialization.SerializationError",
+                    "usr": "s:18VerIDSerialization18SerializationErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDSerialization.SerializationError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SerializationError",
+                        "printedName": "VerIDSerialization.SerializationError",
+                        "usr": "s:18VerIDSerialization18SerializationErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:18VerIDSerialization18SerializationErrorO26imageDeserializationFailedyA2CmF",
+            "mangledName": "$s18VerIDSerialization18SerializationErrorO26imageDeserializationFailedyA2CmF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "imageSerializationFailed",
+            "printedName": "imageSerializationFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDSerialization.SerializationError.Type) -> VerIDSerialization.SerializationError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SerializationError",
+                    "printedName": "VerIDSerialization.SerializationError",
+                    "usr": "s:18VerIDSerialization18SerializationErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDSerialization.SerializationError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SerializationError",
+                        "printedName": "VerIDSerialization.SerializationError",
+                        "usr": "s:18VerIDSerialization18SerializationErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:18VerIDSerialization18SerializationErrorO05imageC6FailedyA2CmF",
+            "mangledName": "$s18VerIDSerialization18SerializationErrorO05imageC6FailedyA2CmF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "expectedAtLeastOneFace",
+            "printedName": "expectedAtLeastOneFace",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDSerialization.SerializationError.Type) -> VerIDSerialization.SerializationError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SerializationError",
+                    "printedName": "VerIDSerialization.SerializationError",
+                    "usr": "s:18VerIDSerialization18SerializationErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDSerialization.SerializationError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SerializationError",
+                        "printedName": "VerIDSerialization.SerializationError",
+                        "usr": "s:18VerIDSerialization18SerializationErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:18VerIDSerialization18SerializationErrorO22expectedAtLeastOneFaceyA2CmF",
+            "mangledName": "$s18VerIDSerialization18SerializationErrorO22expectedAtLeastOneFaceyA2CmF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "imageCroppingFailed",
+            "printedName": "imageCroppingFailed",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDSerialization.SerializationError.Type) -> VerIDSerialization.SerializationError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SerializationError",
+                    "printedName": "VerIDSerialization.SerializationError",
+                    "usr": "s:18VerIDSerialization18SerializationErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDSerialization.SerializationError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SerializationError",
+                        "printedName": "VerIDSerialization.SerializationError",
+                        "usr": "s:18VerIDSerialization18SerializationErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:18VerIDSerialization18SerializationErrorO19imageCroppingFailedyA2CmF",
+            "mangledName": "$s18VerIDSerialization18SerializationErrorO19imageCroppingFailedyA2CmF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "deserializationUnavailableForType",
+            "printedName": "deserializationUnavailableForType",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDSerialization.SerializationError.Type) -> VerIDSerialization.SerializationError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SerializationError",
+                    "printedName": "VerIDSerialization.SerializationError",
+                    "usr": "s:18VerIDSerialization18SerializationErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDSerialization.SerializationError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SerializationError",
+                        "printedName": "VerIDSerialization.SerializationError",
+                        "usr": "s:18VerIDSerialization18SerializationErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:18VerIDSerialization18SerializationErrorO33deserializationUnavailableForTypeyA2CmF",
+            "mangledName": "$s18VerIDSerialization18SerializationErrorO33deserializationUnavailableForTypeyA2CmF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VerIDSerialization.SerializationError?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SerializationError",
+                    "printedName": "VerIDSerialization.SerializationError",
+                    "usr": "s:18VerIDSerialization18SerializationErrorO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:18VerIDSerialization18SerializationErrorO8rawValueACSgSi_tcfc",
+            "mangledName": "$s18VerIDSerialization18SerializationErrorO8rawValueACSgSi_tcfc",
+            "moduleName": "VerIDSerialization",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization18SerializationErrorO8rawValueSivp",
+            "mangledName": "$s18VerIDSerialization18SerializationErrorO8rawValueSivp",
+            "moduleName": "VerIDSerialization",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization18SerializationErrorO8rawValueSivg",
+                "mangledName": "$s18VerIDSerialization18SerializationErrorO8rawValueSivg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:18VerIDSerialization18SerializationErrorO",
+        "mangledName": "$s18VerIDSerialization18SerializationErrorO",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Deserializer",
+        "printedName": "Deserializer",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "deserialize",
+            "printedName": "deserialize(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:18VerIDSerialization12DeserializerC11deserializeyx10Foundation4DataVKAA12SerializableRzlFZ",
+            "mangledName": "$s18VerIDSerialization12DeserializerC11deserializeyx10Foundation4DataVKAA12SerializableRzlFZ",
+            "moduleName": "VerIDSerialization",
+            "genericSig": "<τ_0_0 where τ_0_0 : VerIDSerialization.Serializable>",
+            "sugared_genericSig": "<T where T : VerIDSerialization.Serializable>",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:18VerIDSerialization12DeserializerC",
+        "mangledName": "$s18VerIDSerialization12DeserializerC",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "CoreGraphics",
+        "printedName": "CoreGraphics",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Registration",
+        "printedName": "Registration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "faces",
+            "printedName": "faces",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.Recognizable]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Recognizable",
+                    "printedName": "VerIDCore.Recognizable",
+                    "usr": "c:objc(pl)VerIDRecognizable"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization12RegistrationV5facesSaySo0A14IDRecognizable_pGvp",
+            "mangledName": "$s18VerIDSerialization12RegistrationV5facesSaySo0A14IDRecognizable_pGvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[VerIDCore.Recognizable]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Recognizable",
+                        "printedName": "VerIDCore.Recognizable",
+                        "usr": "c:objc(pl)VerIDRecognizable"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization12RegistrationV5facesSaySo0A14IDRecognizable_pGvg",
+                "mangledName": "$s18VerIDSerialization12RegistrationV5facesSaySo0A14IDRecognizable_pGvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "image",
+            "printedName": "image",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization12RegistrationV5imageSo7UIImageCvp",
+            "mangledName": "$s18VerIDSerialization12RegistrationV5imageSo7UIImageCvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization12RegistrationV5imageSo7UIImageCvg",
+                "mangledName": "$s18VerIDSerialization12RegistrationV5imageSo7UIImageCvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "systemInfo",
+            "printedName": "systemInfo",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SystemInfo",
+                "printedName": "VerIDCore.SystemInfo",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSystemInfo"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization12RegistrationV10systemInfo0A6IDCore06SystemE0Cvp",
+            "mangledName": "$s18VerIDSerialization12RegistrationV10systemInfo0A6IDCore06SystemE0Cvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SystemInfo",
+                    "printedName": "VerIDCore.SystemInfo",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDSystemInfo"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization12RegistrationV10systemInfo0A6IDCore06SystemE0Cvg",
+                "mangledName": "$s18VerIDSerialization12RegistrationV10systemInfo0A6IDCore06SystemE0Cvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(faces:image:systemInfo:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Registration",
+                "printedName": "VerIDSerialization.Registration",
+                "usr": "s:18VerIDSerialization12RegistrationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.Recognizable]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Recognizable",
+                    "printedName": "VerIDCore.Recognizable",
+                    "usr": "c:objc(pl)VerIDRecognizable"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SystemInfo",
+                "printedName": "VerIDCore.SystemInfo",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSystemInfo"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:18VerIDSerialization12RegistrationV5faces5image10systemInfoACSaySo0A14IDRecognizable_pG_So7UIImageC0A6IDCore06SystemG0CtKcfc",
+            "mangledName": "$s18VerIDSerialization12RegistrationV5faces5image10systemInfoACSaySo0A14IDRecognizable_pG_So7UIImageC0A6IDCore06SystemG0CtKcfc",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "serialized",
+            "printedName": "serialized()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:18VerIDSerialization12RegistrationV10serialized10Foundation4DataVyKF",
+            "mangledName": "$s18VerIDSerialization12RegistrationV10serialized10Foundation4DataVyKF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:18VerIDSerialization12RegistrationV",
+        "mangledName": "$s18VerIDSerialization12RegistrationV",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Serializable",
+            "printedName": "Serializable",
+            "usr": "s:18VerIDSerialization12SerializableP",
+            "mangledName": "$s18VerIDSerialization12SerializableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ImageMetadata",
+        "printedName": "ImageMetadata",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "date",
+            "printedName": "date",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization13ImageMetadataV4date10Foundation4DateVvp",
+            "mangledName": "$s18VerIDSerialization13ImageMetadataV4date10Foundation4DateVvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization13ImageMetadataV4date10Foundation4DateVvg",
+                "mangledName": "$s18VerIDSerialization13ImageMetadataV4date10Foundation4DateVvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "deviceInfo",
+            "printedName": "deviceInfo",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "DeviceInfo",
+                "printedName": "VerIDCore.DeviceInfo",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDDeviceInfo"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization13ImageMetadataV10deviceInfo0A6IDCore06DeviceF0Cvp",
+            "mangledName": "$s18VerIDSerialization13ImageMetadataV10deviceInfo0A6IDCore06DeviceF0Cvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DeviceInfo",
+                    "printedName": "VerIDCore.DeviceInfo",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDDeviceInfo"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization13ImageMetadataV10deviceInfo0A6IDCore06DeviceF0Cvg",
+                "mangledName": "$s18VerIDSerialization13ImageMetadataV10deviceInfo0A6IDCore06DeviceF0Cvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(date:deviceInfo:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ImageMetadata",
+                "printedName": "VerIDSerialization.ImageMetadata",
+                "usr": "s:18VerIDSerialization13ImageMetadataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "DeviceInfo",
+                "printedName": "VerIDCore.DeviceInfo",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDDeviceInfo"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:18VerIDSerialization13ImageMetadataV4date10deviceInfoAC10Foundation4DateV_0A6IDCore06DeviceG0Ctcfc",
+            "mangledName": "$s18VerIDSerialization13ImageMetadataV4date10deviceInfoAC10Foundation4DateV_0A6IDCore06DeviceG0Ctcfc",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "serialized",
+            "printedName": "serialized()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:18VerIDSerialization13ImageMetadataV10serialized10Foundation4DataVyKF",
+            "mangledName": "$s18VerIDSerialization13ImageMetadataV10serialized10Foundation4DataVyKF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:18VerIDSerialization13ImageMetadataV",
+        "mangledName": "$s18VerIDSerialization13ImageMetadataV",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Serializable",
+            "printedName": "Serializable",
+            "usr": "s:18VerIDSerialization12SerializableP",
+            "mangledName": "$s18VerIDSerialization12SerializableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Serializable",
+        "printedName": "Serializable",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "serialized",
+            "printedName": "serialized()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:18VerIDSerialization12SerializableP10serialized10Foundation4DataVyKF",
+            "mangledName": "$s18VerIDSerialization12SerializableP10serialized10Foundation4DataVyKF",
+            "moduleName": "VerIDSerialization",
+            "genericSig": "<τ_0_0 where τ_0_0 : VerIDSerialization.Serializable>",
+            "sugared_genericSig": "<Self where Self : VerIDSerialization.Serializable>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:18VerIDSerialization12SerializableP",
+        "mangledName": "$s18VerIDSerialization12SerializableP",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "VerIDCore",
+        "printedName": "VerIDCore",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Capture",
+        "printedName": "Capture",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "date",
+            "printedName": "date",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization7CaptureV4date10Foundation4DateVvp",
+            "mangledName": "$s18VerIDSerialization7CaptureV4date10Foundation4DateVvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization7CaptureV4date10Foundation4DateVvg",
+                "mangledName": "$s18VerIDSerialization7CaptureV4date10Foundation4DateVvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "image",
+            "printedName": "image",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Image",
+                "printedName": "VerIDCore.Image",
+                "usr": "c:@M@VerIDCore@objc(cs)Image"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization7CaptureV5image0A6IDCore5ImageCvp",
+            "mangledName": "$s18VerIDSerialization7CaptureV5image0A6IDCore5ImageCvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Image",
+                    "printedName": "VerIDCore.Image",
+                    "usr": "c:@M@VerIDCore@objc(cs)Image"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization7CaptureV5image0A6IDCore5ImageCvg",
+                "mangledName": "$s18VerIDSerialization7CaptureV5image0A6IDCore5ImageCvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "faces",
+            "printedName": "faces",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.RecognizableFace]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecognizableFace",
+                    "printedName": "VerIDCore.RecognizableFace",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDRecognizableFace"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization7CaptureV5facesSay0A6IDCore16RecognizableFaceCGvp",
+            "mangledName": "$s18VerIDSerialization7CaptureV5facesSay0A6IDCore16RecognizableFaceCGvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[VerIDCore.RecognizableFace]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "RecognizableFace",
+                        "printedName": "VerIDCore.RecognizableFace",
+                        "usr": "c:@M@VerIDCore@objc(cs)VerIDRecognizableFace"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization7CaptureV5facesSay0A6IDCore16RecognizableFaceCGvg",
+                "mangledName": "$s18VerIDSerialization7CaptureV5facesSay0A6IDCore16RecognizableFaceCGvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "uiImage",
+            "printedName": "uiImage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization7CaptureV7uiImageSo7UIImageCvp",
+            "mangledName": "$s18VerIDSerialization7CaptureV7uiImageSo7UIImageCvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization7CaptureV7uiImageSo7UIImageCvg",
+                "mangledName": "$s18VerIDSerialization7CaptureV7uiImageSo7UIImageCvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "systemInfo",
+            "printedName": "systemInfo",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SystemInfo",
+                "printedName": "VerIDCore.SystemInfo",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSystemInfo"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization7CaptureV10systemInfo0A6IDCore06SystemE0Cvp",
+            "mangledName": "$s18VerIDSerialization7CaptureV10systemInfo0A6IDCore06SystemE0Cvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SystemInfo",
+                    "printedName": "VerIDCore.SystemInfo",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDSystemInfo"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization7CaptureV10systemInfo0A6IDCore06SystemE0Cvg",
+                "mangledName": "$s18VerIDSerialization7CaptureV10systemInfo0A6IDCore06SystemE0Cvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "imageMetadata",
+            "printedName": "imageMetadata",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VerIDSerialization.ImageMetadata?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImageMetadata",
+                    "printedName": "VerIDSerialization.ImageMetadata",
+                    "usr": "s:18VerIDSerialization13ImageMetadataV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:18VerIDSerialization7CaptureV13imageMetadataAA05ImageE0VSgvp",
+            "mangledName": "$s18VerIDSerialization7CaptureV13imageMetadataAA05ImageE0VSgvp",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "VerIDSerialization.ImageMetadata?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ImageMetadata",
+                        "printedName": "VerIDSerialization.ImageMetadata",
+                        "usr": "s:18VerIDSerialization13ImageMetadataV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:18VerIDSerialization7CaptureV13imageMetadataAA05ImageE0VSgvg",
+                "mangledName": "$s18VerIDSerialization7CaptureV13imageMetadataAA05ImageE0VSgvg",
+                "moduleName": "VerIDSerialization",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(date:image:faces:uiImage:systemInfo:imageMetadata:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Capture",
+                "printedName": "VerIDSerialization.Capture",
+                "usr": "s:18VerIDSerialization7CaptureV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Date",
+                "printedName": "Foundation.Date",
+                "usr": "s:10Foundation4DateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Image",
+                "printedName": "VerIDCore.Image",
+                "usr": "c:@M@VerIDCore@objc(cs)Image"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.RecognizableFace]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecognizableFace",
+                    "printedName": "VerIDCore.RecognizableFace",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDRecognizableFace"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIImage",
+                "printedName": "UIKit.UIImage",
+                "usr": "c:objc(cs)UIImage"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SystemInfo",
+                "printedName": "VerIDCore.SystemInfo",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSystemInfo"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VerIDSerialization.ImageMetadata?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImageMetadata",
+                    "printedName": "VerIDSerialization.ImageMetadata",
+                    "usr": "s:18VerIDSerialization13ImageMetadataV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:18VerIDSerialization7CaptureV4date5image5faces7uiImage10systemInfo0E8MetadataAC10Foundation4DateV_0A6IDCore0H0CSayAM16RecognizableFaceCGSo7UIImageCAM06SystemJ0CAA0hK0VSgtKcfc",
+            "mangledName": "$s18VerIDSerialization7CaptureV4date5image5faces7uiImage10systemInfo0E8MetadataAC10Foundation4DateV_0A6IDCore0H0CSayAM16RecognizableFaceCGSo7UIImageCAM06SystemJ0CAA0hK0VSgtKcfc",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "serialized",
+            "printedName": "serialized()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:18VerIDSerialization7CaptureV10serialized10Foundation4DataVyKF",
+            "mangledName": "$s18VerIDSerialization7CaptureV10serialized10Foundation4DataVyKF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:18VerIDSerialization7CaptureV",
+        "mangledName": "$s18VerIDSerialization7CaptureV",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Serializable",
+            "printedName": "Serializable",
+            "usr": "s:18VerIDSerialization12SerializableP",
+            "mangledName": "$s18VerIDSerialization12SerializableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftProtobuf",
+        "printedName": "SwiftProtobuf",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "CoreGraphics",
+        "printedName": "CoreGraphics",
+        "declKind": "Import",
+        "moduleName": "VerIDSerialization"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "VerIDFace",
+        "printedName": "VerIDFace",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "serialized",
+            "printedName": "serialized()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore0A6IDFaceC0A15IDSerializationE10serialized10Foundation4DataVyKF",
+            "mangledName": "$s9VerIDCore0A6IDFaceC0A15IDSerializationE10serialized10Foundation4DataVyKF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@VerIDCore@objc(cs)VerIDFace",
+        "mangledName": "$s9VerIDCore0A6IDFaceC",
+        "moduleName": "VerIDCore",
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ReactiveCompatible",
+            "printedName": "ReactiveCompatible",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ReactiveBase",
+                "printedName": "ReactiveBase",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSObject",
+                    "printedName": "ObjectiveC.NSObject",
+                    "usr": "c:objc(cs)NSObject"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7RxSwift18ReactiveCompatibleP",
+            "mangledName": "$s7RxSwift18ReactiveCompatibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Serializable",
+            "printedName": "Serializable",
+            "usr": "s:18VerIDSerialization12SerializableP",
+            "mangledName": "$s18VerIDSerialization12SerializableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Image",
+        "printedName": "Image",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "serialized",
+            "printedName": "serialized()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore5ImageC0A15IDSerializationE10serialized10Foundation4DataVyKF",
+            "mangledName": "$s9VerIDCore5ImageC0A15IDSerializationE10serialized10Foundation4DataVyKF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@VerIDCore@objc(cs)Image",
+        "mangledName": "$s9VerIDCore5ImageC",
+        "moduleName": "VerIDCore",
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ImageProvider",
+            "printedName": "ImageProvider",
+            "usr": "c:@M@VerIDCore@objc(pl)VerIDImageProvider",
+            "mangledName": "$s9VerIDCore13ImageProviderP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ReactiveCompatible",
+            "printedName": "ReactiveCompatible",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ReactiveBase",
+                "printedName": "ReactiveBase",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSObject",
+                    "printedName": "ObjectiveC.NSObject",
+                    "usr": "c:objc(cs)NSObject"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7RxSwift18ReactiveCompatibleP",
+            "mangledName": "$s7RxSwift18ReactiveCompatibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Serializable",
+            "printedName": "Serializable",
+            "usr": "s:18VerIDSerialization12SerializableP",
+            "mangledName": "$s18VerIDSerialization12SerializableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SystemInfo",
+        "printedName": "SystemInfo",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "serialized",
+            "printedName": "serialized()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore10SystemInfoC0A15IDSerializationE10serialized10Foundation4DataVyKF",
+            "mangledName": "$s9VerIDCore10SystemInfoC0A15IDSerializationE10serialized10Foundation4DataVyKF",
+            "moduleName": "VerIDSerialization",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@VerIDCore@objc(cs)VerIDSystemInfo",
+        "mangledName": "$s9VerIDCore10SystemInfoC",
+        "moduleName": "VerIDCore",
+        "objc_name": "VerIDSystemInfo",
+        "declAttributes": [
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "isExternal": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ReactiveCompatible",
+            "printedName": "ReactiveCompatible",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ReactiveBase",
+                "printedName": "ReactiveBase",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSObject",
+                    "printedName": "ObjectiveC.NSObject",
+                    "usr": "c:objc(cs)NSObject"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:7RxSwift18ReactiveCompatibleP",
+            "mangledName": "$s7RxSwift18ReactiveCompatibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Serializable",
+            "printedName": "Serializable",
+            "usr": "s:18VerIDSerialization12SerializableP",
+            "mangledName": "$s18VerIDSerialization12SerializableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4430,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4631,
+      "length": 16,
+      "value": "\".VeridSettings\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4711,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4731,
+      "length": 22,
+      "value": "\"confidence_threshold\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4760,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4780,
+      "length": 12,
+      "value": "\"size_range\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4799,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4819,
+      "length": 18,
+      "value": "\"roll_range_large\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4844,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4864,
+      "length": 18,
+      "value": "\"roll_range_small\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4889,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4909,
+      "length": 17,
+      "value": "\"yaw_range_large\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4933,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4953,
+      "length": 17,
+      "value": "\"yaw_range_small\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4977,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4997,
+      "length": 18,
+      "value": "\"landmark_options\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5022,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5042,
+      "length": 25,
+      "value": "\"matrix_template_version\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5074,
+      "length": 1,
+      "value": "9"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5094,
+      "length": 19,
+      "value": "\"yaw_pitch_variant\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5120,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5141,
+      "length": 23,
+      "value": "\"eye_detection_variant\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5171,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5192,
+      "length": 26,
+      "value": "\"default_template_version\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5225,
+      "length": 2,
+      "value": "12"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5246,
+      "length": 31,
+      "value": "\"reduce_confidence_calculation\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5284,
+      "length": 2,
+      "value": "13"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5305,
+      "length": 17,
+      "value": "\"lighting_matrix\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5329,
+      "length": 2,
+      "value": "14"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5350,
+      "length": 23,
+      "value": "\"lighting_compensation\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5380,
+      "length": 2,
+      "value": "15"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5401,
+      "length": 14,
+      "value": "\"pose_variant\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5422,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5443,
+      "length": 19,
+      "value": "\"pose_compensation\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5469,
+      "length": 2,
+      "value": "17"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5490,
+      "length": 14,
+      "value": "\"detect_smile\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5511,
+      "length": 2,
+      "value": "18"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5532,
+      "length": 19,
+      "value": "\"quality_threshold\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5558,
+      "length": 2,
+      "value": "19"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5579,
+      "length": 25,
+      "value": "\"attempt_multi_threading\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5611,
+      "length": 2,
+      "value": "20"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5632,
+      "length": 32,
+      "value": "\"face_extract_quality_threshold\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5671,
+      "length": 2,
+      "value": "21"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5692,
+      "length": 37,
+      "value": "\"landmark_tracking_quality_threshold\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5811,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5841,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5877,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5913,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5948,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5983,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6020,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6063,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6100,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6141,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6185,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6232,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6272,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6314,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6347,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6385,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6416,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6457,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6498,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6550,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/verid_settings.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6603,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 369,
+      "length": 24,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 480,
+      "length": 22,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 545,
+      "length": 19,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 657,
+      "length": 33,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 369,
+      "length": 24,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 480,
+      "length": 22,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 545,
+      "length": 19,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 657,
+      "length": 33,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 369,
+      "length": 24,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 480,
+      "length": 22,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 545,
+      "length": 19,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/VerIDSerialization\/SerializationError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 657,
+      "length": 33,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1090,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1115,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1145,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1175,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2803,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2996,
+      "length": 8,
+      "value": "\".Image\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3068,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3084,
+      "length": 6,
+      "value": "\"data\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3097,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3113,
+      "length": 7,
+      "value": "\"width\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3127,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3143,
+      "length": 8,
+      "value": "\"height\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3158,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3178,
+      "length": 15,
+      "value": "\"bytes_per_row\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3200,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3216,
+      "length": 13,
+      "value": "\"orientation\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3236,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3252,
+      "length": 8,
+      "value": "\"format\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5593,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5609,
+      "length": 11,
+      "value": "\"GRAYSCALE\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5627,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5643,
+      "length": 5,
+      "value": "\"RGB\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5655,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5671,
+      "length": 5,
+      "value": "\"BGR\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5683,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5699,
+      "length": 6,
+      "value": "\"RGBA\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5712,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5728,
+      "length": 6,
+      "value": "\"BGRA\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5741,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5757,
+      "length": 6,
+      "value": "\"ARGB\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5770,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 5786,
+      "length": 6,
+      "value": "\"ABGR\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3549,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3744,
+      "length": 10,
+      "value": "\".Capture\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3818,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3834,
+      "length": 6,
+      "value": "\"date\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3847,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3867,
+      "length": 13,
+      "value": "\"verid_image\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3887,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3903,
+      "length": 7,
+      "value": "\"faces\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3917,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3933,
+      "length": 7,
+      "value": "\"image\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3947,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3967,
+      "length": 12,
+      "value": "\"face_image\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3986,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4006,
+      "length": 13,
+      "value": "\"system_info\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4026,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 4046,
+      "length": 16,
+      "value": "\"image_metadata\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/capture.pb.swift",
+      "kind": "Array",
+      "offset": 4251,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1770,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "Array",
+      "offset": 2541,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "Array",
+      "offset": 2576,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3120,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3312,
+      "length": 7,
+      "value": "\".Face\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3383,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3399,
+      "length": 8,
+      "value": "\"bounds\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3414,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3430,
+      "length": 7,
+      "value": "\"angle\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3444,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3460,
+      "length": 9,
+      "value": "\"quality\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3476,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3496,
+      "length": 10,
+      "value": "\"left_eye\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3513,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3533,
+      "length": 11,
+      "value": "\"right_eye\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3551,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3567,
+      "length": 11,
+      "value": "\"landmarks\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3585,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3605,
+      "length": 16,
+      "value": "\"dlib_landmarks\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3628,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3644,
+      "length": 12,
+      "value": "\"serialized\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/recognizable_face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2257,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/recognizable_face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2461,
+      "length": 19,
+      "value": "\".RecognizableFace\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/recognizable_face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2544,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/recognizable_face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2560,
+      "length": 6,
+      "value": "\"face\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/recognizable_face.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2573,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/recognizable_face.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2589,
+      "length": 10,
+      "value": "\"template\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face_template.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1107,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face_template.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1434,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face_template.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1634,
+      "length": 15,
+      "value": "\".FaceTemplate\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face_template.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1713,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face_template.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1729,
+      "length": 6,
+      "value": "\"data\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face_template.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1742,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/face_template.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1758,
+      "length": 9,
+      "value": "\"version\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "Array",
+      "offset": 1092,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1904,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2104,
+      "length": 15,
+      "value": "\".Registration\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2183,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2199,
+      "length": 7,
+      "value": "\"faces\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2213,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2229,
+      "length": 7,
+      "value": "\"image\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2243,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/registration.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2263,
+      "length": 13,
+      "value": "\"system_info\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/rect.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2134,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/rect.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2326,
+      "length": 7,
+      "value": "\".Rect\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/rect.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2397,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/rect.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2413,
+      "length": 8,
+      "value": "\"origin\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/rect.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2428,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/rect.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2444,
+      "length": 6,
+      "value": "\"size\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2514,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2712,
+      "length": 13,
+      "value": "\".SystemInfo\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2789,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2809,
+      "length": 13,
+      "value": "\"device_info\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2829,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2849,
+      "length": 15,
+      "value": "\"verid_version\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2871,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2891,
+      "length": 16,
+      "value": "\"verid_settings\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2914,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2934,
+      "length": 27,
+      "value": "\"face_detection_class_name\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2968,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2988,
+      "length": 29,
+      "value": "\"face_recognition_class_name\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3024,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/system_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 3044,
+      "length": 28,
+      "value": "\"user_management_class_name\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image_metadata.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2304,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image_metadata.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2505,
+      "length": 16,
+      "value": "\".ImageMetadata\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image_metadata.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2585,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image_metadata.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2601,
+      "length": 6,
+      "value": "\"date\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image_metadata.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2614,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/image_metadata.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 2634,
+      "length": 13,
+      "value": "\"device_info\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1503,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1701,
+      "length": 13,
+      "value": "\".DeviceInfo\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1778,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1794,
+      "length": 7,
+      "value": "\"model\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1808,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1824,
+      "length": 6,
+      "value": "\"make\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1837,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1853,
+      "length": 4,
+      "value": "\"os\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1864,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/device_info.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1884,
+      "length": 12,
+      "value": "\"os_version\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1061,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1086,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1405,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1597,
+      "length": 7,
+      "value": "\".Size\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1668,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1684,
+      "length": 7,
+      "value": "\"width\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1698,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/size.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1714,
+      "length": 8,
+      "value": "\"height\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1072,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1096,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1119,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1444,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1642,
+      "length": 13,
+      "value": "\".EulerAngle\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1719,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1735,
+      "length": 5,
+      "value": "\"yaw\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1747,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1763,
+      "length": 7,
+      "value": "\"pitch\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1777,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/euler_angle.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1793,
+      "length": 6,
+      "value": "\"roll\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1059,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1079,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1399,
+      "length": 7,
+      "value": "\"verid\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1592,
+      "length": 8,
+      "value": "\".Point\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1664,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1680,
+      "length": 3,
+      "value": "\"x\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1690,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Serialization-Apple\/Protobufs\/point.pb.swift",
+      "kind": "StringLiteral",
+      "offset": 1706,
+      "length": 3,
+      "value": "\"y\""
+    }
+  ]
+}

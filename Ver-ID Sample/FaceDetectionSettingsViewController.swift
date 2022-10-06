@@ -84,6 +84,10 @@ class FaceDetectionSettingsViewController: UITableViewController, ValueSelection
         }
         self.loadFromDefaults()
     }
+    
+    func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValues values: [String], atIndices: [Int]) {
+        
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -37,18 +37,63 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 14, *) {
+            let menu: [UIAction] = [
+                UIAction(title: "Register more faces", image: UIImage(systemName: "plus")) { _ in
+                    self.register()
+                },
+                UIAction(title: "Import faces", image: UIImage(systemName: "square.and.arrow.down")) { _ in
+                    guard let button = self.navigationItem.rightBarButtonItem else {
+                        return
+                    }
+                    self.importRegistration(button)
+                },
+                UIAction(title: "Export registration", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                    guard let button = self.navigationItem.rightBarButtonItem else {
+                        return
+                    }
+                    self.shareRegistration(button)
+                },
+                UIAction(title: "Unregister", image: UIImage(systemName: "trash"), attributes: [.destructive]) { _ in
+                    guard let button = self.navigationItem.rightBarButtonItem else {
+                        return
+                    }
+                    self.reset(button)
+                }
+            ]
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", image: UIImage(systemName: "ellipsis.circle"), primaryAction: nil, menu: UIMenu(children: menu))
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(self.showMenu(_:)))
+        }
         self.updateUserDisplay()
     }
     
     // MARK: -
+    
+    @objc private func showMenu(_ barButtonItem: UIBarButtonItem) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Register more faces", style: .default) { _ in
+            self.register()
+        })
+        alert.addAction(UIAlertAction(title: "Import faces", style: .default) { _ in
+            self.importRegistration(barButtonItem)
+        })
+        alert.addAction(UIAlertAction(title: "Export registration", style: .default) { _ in
+            self.shareRegistration(barButtonItem)
+        })
+        alert.addAction(UIAlertAction(title: "Unregister", style: .destructive) { _ in
+            self.reset(barButtonItem)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.popoverPresentationController?.barButtonItem = barButtonItem
+        self.present(alert, animated: true)
+    }
     
     /// Find out whether the user registered their face. If the user is registered display their profile photo and enable the Authenticate button.
     func updateUserDisplay() {
         guard let url = Globals.profilePictureURL, let image = UIImage(contentsOfFile: url.path) else {
             return
         }
-        self.imageView.layer.cornerRadius = self.imageView.bounds.width / 2
-        self.imageView.layer.masksToBounds = true
         self.imageView.image = image
     }
     
@@ -58,10 +103,9 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     ///
     /// This will delete the registered user
     /// - Parameter sender: Sender of the action
-    @IBAction func reset(_ sender: UITapGestureRecognizer) {
-        assert(sender.view != nil)
+    @IBAction func reset(_ sender: UIBarButtonItem) {
         let alert = UIAlertController.init(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.popoverPresentationController?.sourceView = sender.view
+        alert.popoverPresentationController?.barButtonItem = sender
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Unregister", style: .destructive, handler: { _ in
             guard let verid = Globals.verid else {
@@ -84,7 +128,7 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     ///
     /// Add more faces if the user is already registered
     /// - Parameter sender: Sender of the action
-    @IBAction func register(_ sender: Any) {
+    @IBAction func register(_ sender: Any? = nil) {
         guard let verid = Globals.verid else {
             return
         }
@@ -216,12 +260,10 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
     
     // MARK: - Registration import
     
-    @IBAction func importRegistration(_ button: UIButton) {
+    @IBAction func importRegistration(_ button: UIBarButtonItem) {
         let picker = UIDocumentPickerViewController(documentTypes: [Globals.registrationUTType], in: .import)
-        if #available(iOS 11, *) {
-            picker.allowsMultipleSelection = false
-        }
-        picker.popoverPresentationController?.sourceView = button
+        picker.allowsMultipleSelection = false
+        picker.popoverPresentationController?.barButtonItem = button
         picker.delegate = self
         self.present(picker, animated: true) {
             if Globals.isTesting, let url = Bundle.main.url(forResource: "Test registration", withExtension: "registration") {

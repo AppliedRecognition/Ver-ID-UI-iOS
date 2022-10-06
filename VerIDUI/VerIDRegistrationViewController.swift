@@ -28,7 +28,9 @@ import VerIDCore
         guard let settings = self.sessionSettings as? RegistrationSessionSettings else {
             return
         }
-        if self.detectedFaceStackView.arrangedSubviews.isEmpty {
+        if settings.faceCaptureCount < 2 {
+            self.detectedFaceStackView.isHidden = true
+        } else if self.detectedFaceStackView.arrangedSubviews.isEmpty {
             for i in 0..<settings.faceCaptureCount {
                 let bearingIndex = i % settings.bearingsToRegister.count
                 let bearing = settings.bearingsToRegister[bearingIndex]
@@ -46,6 +48,9 @@ import VerIDCore
     public override func addFaceCapture(_ faceCapture: FaceCapture) {
         self.faceImages.append(faceCapture.faceImage)
         OperationQueue.main.addOperation {
+            guard !self.detectedFaceStackView.isHidden else {
+                return
+            }
             for i in 0..<self.detectedFaceStackView.arrangedSubviews.count {
                 guard let imageView = self.detectedFaceStackView.arrangedSubviews[i] as? UIImageView else {
                     continue

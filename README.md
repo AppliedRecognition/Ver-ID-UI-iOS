@@ -3,7 +3,7 @@
 # Ver-ID SDK for iOS
 
 ## Prerequisites
-Minimum iOS version is 11.
+Minimum iOS version is 12.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
@@ -157,7 +157,20 @@ DispatchQueue.global().async {
 1. In the class that runs the Ver-ID session import `VerIDUI`.
 1. Pass the `VerID` instance to the `VerIDSession` constructor along with the session settings.
 
-### Example
+### Instant liveness check
+Ver-ID 2.7.0 supports a liveness check without asking the user to turn their head.
+
+Instant liveness is available on devices running iOS 13 or newer. The default session settings constructor will set the number of required face captures to 1 on systems where instant liveness is available and 2 otherwise. You can build your own logic to decide whether to ask your users for more than one face capture (head pose).
+
+For example, to ask for 2 head poses when instant liveness is available but 3 when it isn't use:
+
+```swift
+let settings = LivenessDetectionSessionSettings()
+settings.faceCaptureCount = VerIDSessionSettings.supportsInstantLiveness ? 2 : 3
+```
+
+### Session example
+The following example loads Ver-ID and runs a liveness detection session. The example shows the methods available in `VerIDSessionDelegate`.
 
 ~~~swift
 import UIKit
@@ -228,6 +241,11 @@ class MyViewController: UIViewController, VerIDSessionDelegate {
         // For example, you can keep track of how many times the user tried and fail the session on Xth attempt
         runCount += 1
         return runCount < 3
+    }
+    
+    func shouldDisplayCGHeadGuidanceInSession(_ session: VerIDSession) -> Bool {
+        // Return `false` to disable "3D head" guidance
+        return false
     }
 }
 ~~~

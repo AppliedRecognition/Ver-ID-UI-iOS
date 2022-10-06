@@ -17,7 +17,7 @@
     <a title="VerIDSession Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">VerIDUI 2.6.0 Docs</a></p>
+        <p><a href="../index.html">VerIDUI 2.7.0 Docs</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -40,6 +40,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/VerIDSession.html">VerIDSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/VerIDSession/SessionError.html">– SessionError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
@@ -94,16 +97,40 @@
             <a href="../Other%20Classes.html">Other Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)FaceOvalLayer">FaceOvalLayer</a>
+                <a href="../Classes/CameraPreviewView.html">CameraPreviewView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FaceOvalLayer.html">FaceOvalLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FaceOvalView.html">FaceOvalView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FailureViewController.html">FailureViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/HeadView.html">HeadView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ResultViewController.html">ResultViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/SessionDiagnosticsViewController.html">SessionDiagnosticsViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/SuccessViewController.html">SuccessViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TipPageViewController.html">TipPageViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/TipsViewController.html">TipsViewController</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)VerIDRegistrationViewController">VerIDRegistrationViewController</a>
+                <a href="../Classes/VerIDRegistrationViewController.html">VerIDRegistrationViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/VerIDSessionViewControllersFactory.html">VerIDSessionViewControllersFactory</a>
               </li>
             </ul>
           </li>
@@ -113,6 +140,23 @@
               <li class="nav-group-task">
                 <a href="../Enums/FaceDetectionAlertControllerAction.html">FaceDetectionAlertControllerAction</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VerIDSessionViewControllersFactoryError.html">VerIDSessionViewControllersFactoryError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VerIDUISessionError.html">VerIDUISessionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ImagePublisher.html">ImagePublisher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SessionDiagnosticsViewControllerDelegate.html">SessionDiagnosticsViewControllerDelegate</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -121,18 +165,33 @@
         <section>
           <section class="section">
             <h1>VerIDSession</h1>
-              <div class="declaration">
-                <div class="language">
-                  
-                  <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">open</span> <span class="kd">class</span> <span class="kt">VerIDSession</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/VerIDViewControllerDelegate.html">VerIDViewControllerDelegate</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/FaceDetectionAlertControllerDelegate.html">FaceDetectionAlertControllerDelegate</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/ResultViewControllerDelegate.html">ResultViewControllerDelegate</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/TipsViewControllerDelegate.html">TipsViewControllerDelegate</a></span><span class="p">,</span> <span class="kt">UIAdaptivePresentationControllerDelegate</span><span class="p">,</span> <span class="kt">SpeechDelegate</span><span class="p">,</span> <span class="kt">VerIDCore</span><span class="o">.</span><span class="kt">SessionDelegate</span></code></pre>
-
-                </div>
-              </div>
             <p>Ver-ID session</p>
 
           </section>
           <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Enum/SessionError" class="dashAnchor"></a>
+                    <a class="token" href="#/">SessionError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                        <a href="../Classes/VerIDSession/SessionError.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <div class="task-group">
               <div class="task-name-container">
                 <a name="/Public%20properties"></a>
@@ -147,9 +206,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(py)videoWriterFactory"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/videoWriterFactory" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(py)videoWriterFactory">videoWriterFactory</a>
+                    <a class="token" href="#/">videoWriterFactory</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -160,24 +219,15 @@
                         <p>Factory that creates video writer service</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">videoWriterFactory</span><span class="p">:</span> <span class="kt">VideoWriterServiceFactory</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(py)sessionViewControllersFactory"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/sessionViewControllersFactory" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(py)sessionViewControllersFactory">sessionViewControllersFactory</a>
+                    <a class="token" href="#/">sessionViewControllersFactory</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -188,24 +238,15 @@
                         <p>Factory that creates view controllers used in the session</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">sessionViewControllersFactory</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SessionViewControllersFactory.html">SessionViewControllersFactory</a></span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(py)delegate"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(py)delegate">delegate</a>
+                    <a class="token" href="#/">delegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -216,24 +257,15 @@
                         <p>Session delegate</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(py)viewDelegate"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/viewDelegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(py)viewDelegate">viewDelegate</a>
+                    <a class="token" href="#/">viewDelegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -244,24 +276,15 @@
                         <p>Delegate that manages presenting the session views</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">viewDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/VerIDSessionViewDelegate.html">VerIDSessionViewDelegate</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(py)settings"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/settings" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(py)settings">settings</a>
+                    <a class="token" href="#/">settings</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -272,24 +295,15 @@
                         <p>Session settings</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt">VerIDSessionSettings</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(py)environment"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/environment" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(py)environment">environment</a>
+                    <a class="token" href="#/">environment</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -305,24 +319,15 @@
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">let</span> <span class="nv">environment</span><span class="p">:</span> <span class="kt">VerID</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(py)identifier"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/identifier" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(py)identifier">identifier</a>
+                    <a class="token" href="#/">identifier</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -338,14 +343,23 @@
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Property/sessionFunctions" class="dashAnchor"></a>
+                    <a class="token" href="#/">sessionFunctions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
                       </div>
                     </section>
                   </div>
@@ -366,9 +380,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:translatedStrings:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/init(environment:settings:translatedStrings:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:translatedStrings:">init(environment:<wbr>settings:<wbr>translatedStrings:<wbr>)</a>
+                    <a class="token" href="#/">init(environment:<wbr>settings:<wbr>translatedStrings:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -384,67 +398,15 @@
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="kt">VerID</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt">VerIDSessionSettings</span><span class="p">,</span> <span class="nv">translatedStrings</span><span class="p">:</span> <span class="kt"><a href="../Classes/TranslatedStrings.html">TranslatedStrings</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>environment</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Ver-ID environment used by factory classes</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>settings</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Session settings</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>translatedStrings</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Translated strings for the session</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/init(environment:settings:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)initWithEnvironment:settings:">init(environment:<wbr>settings:<wbr>)</a>
+                    <a class="token" href="#/">init(environment:<wbr>settings:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -454,46 +416,6 @@
                       <div class="abstract">
                         <p>Session constructor</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">environment</span><span class="p">:</span> <span class="kt">VerID</span><span class="p">,</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt">VerIDSessionSettings</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>environment</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Ver-ID environment used by factory classes</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>settings</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Session settings</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -514,9 +436,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)start"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/start()" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)start">start()</a>
+                    <a class="token" href="#/">start()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -527,24 +449,15 @@
                         <p>Start the session</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">start</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)cancel"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/cancel()" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)cancel">cancel()</a>
+                    <a class="token" href="#/">cancel()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -555,14 +468,36 @@
                         <p>Cancel the session</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">func</span> <span class="nf">cancel</span><span class="p">()</span></code></pre>
-
-                        </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Override%20to%20provide%20a%20custom%20image%20observable"></a>
+                <a name="//apple_ref/swift/Section/Override to provide a custom image observable" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Override%20to%20provide%20a%20custom%20image%20observable"></a>
+                  <h3 class="section-name"><span>Override to provide a custom image observable</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Method/imageObservable(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">imageObservable(for:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
                       </div>
                     </section>
                   </div>
@@ -583,9 +518,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDCore@objc(pl)SessionDelegate(im)session:didFinishWithResult:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/session(_:didFinishWithResult:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCore@objc(pl)SessionDelegate(im)session:didFinishWithResult:">session(_:<wbr>didFinishWithResult:<wbr>)</a>
+                    <a class="token" href="#/">session(_:<wbr>didFinishWithResult:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -595,23 +530,15 @@
                       <div class="abstract">
                         
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">VerIDCore</span><span class="o">.</span><span class="kt">Session</span><span class="p">,</span> <span class="n">didFinishWithResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">VerIDSessionResult</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDCore@objc(pl)SessionDelegate(im)session:didProduceFaceDetectionResult:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/session(_:didProduceFaceDetectionResult:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCore@objc(pl)SessionDelegate(im)session:didProduceFaceDetectionResult:">session(_:<wbr>didProduceFaceDetectionResult:<wbr>)</a>
+                    <a class="token" href="#/">session(_:<wbr>didProduceFaceDetectionResult:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -620,14 +547,6 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">VerIDCore</span><span class="o">.</span><span class="kt">Session</span><span class="p">,</span> <span class="n">didProduceFaceDetectionResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">FaceDetectionResult</span><span class="p">)</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>
@@ -635,9 +554,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDCore@objc(pl)SessionDelegate(im)session:didProduceFaceCapture:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/session(_:didProduceFaceCapture:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDCore@objc(pl)SessionDelegate(im)session:didProduceFaceCapture:">session(_:<wbr>didProduceFaceCapture:<wbr>)</a>
+                    <a class="token" href="#/">session(_:<wbr>didProduceFaceCapture:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -646,14 +565,6 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">session</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">VerIDCore</span><span class="o">.</span><span class="kt">Session</span><span class="p">,</span> <span class="n">didProduceFaceCapture</span> <span class="nv">faceCapture</span><span class="p">:</span> <span class="kt">FaceCapture</span><span class="p">)</span></code></pre>
-
-                        </div>
                       </div>
                     </section>
                   </div>
@@ -674,9 +585,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)viewControllerDidCancel:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/viewControllerDidCancel(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)viewControllerDidCancel:">viewControllerDidCancel(_:<wbr>)</a>
+                    <a class="token" href="#/">viewControllerDidCancel(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -687,42 +598,15 @@
                         <p>User requested to cancel the session in the view controller</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewControllerDidCancel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Protocols/VerIDViewControllerProtocol.html">VerIDViewControllerProtocol</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>View controller that wants to cancel the session</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)viewController:didFailWithError:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/viewController(_:didFailWithError:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)viewController:didFailWithError:">viewController(_:<wbr>didFailWithError:<wbr>)</a>
+                    <a class="token" href="#/">viewController(_:<wbr>didFailWithError:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -732,45 +616,6 @@
                       <div class="abstract">
                         <p>View controller failed</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Protocols/VerIDViewControllerProtocol.html">VerIDViewControllerProtocol</a></span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>View controller that failed</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>error</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Description of the failure</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -791,9 +636,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)faceDetectionAlertController:didCloseDialogWithAction:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/faceDetectionAlertController(_:didCloseDialogWithAction:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)faceDetectionAlertController:didCloseDialogWithAction:">faceDetectionAlertController(_:<wbr>didCloseDialogWithAction:<wbr>)</a>
+                    <a class="token" href="#/">faceDetectionAlertController(_:<wbr>didCloseDialogWithAction:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -803,45 +648,6 @@
                       <div class="abstract">
                         <p>Called when the user dismisses the dialog that is shown when the session fails due to the user not fulfilling the liveness detection requirements.</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">faceDetectionAlertController</span><span class="p">(</span><span class="n">_</span> <span class="nv">controller</span><span class="p">:</span> <span class="kt"><a href="../Protocols/FaceDetectionAlertControllerProtocol.html">FaceDetectionAlertControllerProtocol</a></span><span class="p">,</span> <span class="n">didCloseDialogWithAction</span> <span class="nv">action</span><span class="p">:</span> <span class="kt"><a href="../Enums/FaceDetectionAlertControllerAction.html">FaceDetectionAlertControllerAction</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>controller</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Alert controller that&rsquo;s being dismissed</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>action</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Action the user selected to dismiss the alert controller</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -862,9 +668,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)didDismissTipsInViewController:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/didDismissTipsInViewController(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)didDismissTipsInViewController:">didDismissTipsInViewController(_:<wbr>)</a>
+                    <a class="token" href="#/">didDismissTipsInViewController(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -874,33 +680,6 @@
                       <div class="abstract">
                         <p>Called after the user views liveness detection session tips</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">didDismissTipsInViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Protocols/TipsViewControllerProtocol.html">TipsViewControllerProtocol</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Tips view controller that&rsquo;s being dismissed</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -921,9 +700,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)resultViewControllerDidCancel:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/resultViewControllerDidCancel(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)resultViewControllerDidCancel:">resultViewControllerDidCancel(_:<wbr>)</a>
+                    <a class="token" href="#/">resultViewControllerDidCancel(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -939,42 +718,15 @@
 </div>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resultViewControllerDidCancel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ResultViewControllerProtocol.html">ResultViewControllerProtocol</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>View controller that requested to cancel the session</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(cs)VerIDSession(im)resultViewController:didFinishWithResult:"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Method/resultViewController(_:didFinishWithResult:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(cs)VerIDSession(im)resultViewController:didFinishWithResult:">resultViewController(_:<wbr>didFinishWithResult:<wbr>)</a>
+                    <a class="token" href="#/">resultViewController(_:<wbr>didFinishWithResult:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -985,44 +737,67 @@
                         <p>Called when the user acknowledges the result of the session</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">resultViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ResultViewControllerProtocol.html">ResultViewControllerProtocol</a></span><span class="p">,</span> <span class="n">didFinishWithResult</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">VerIDSessionResult</span><span class="p">)</span></code></pre>
-
-                        </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/UIAdaptivePresentationControllerDelegate"></a>
+                <a name="//apple_ref/swift/Section/UIAdaptivePresentationControllerDelegate" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/UIAdaptivePresentationControllerDelegate"></a>
+                  <h3 class="section-name"><span>UIAdaptivePresentationControllerDelegate</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Method/presentationControllerDidDismiss(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">presentationControllerDidDismiss(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>View controller that was dismissed after the user viewed the result</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>result</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Session result</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Speech%20delegate"></a>
+                <a name="//apple_ref/swift/Section/Speech delegate" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Speech%20delegate"></a>
+                  <h3 class="section-name"><span>Speech delegate</span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Method/speak(_:language:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">speak(_:<wbr>language:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
                       </div>
                     </section>
                   </div>
@@ -1032,7 +807,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external noopener">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2022-06-29)</p>
+          <p>&copy; 2022 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external noopener">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2022-10-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

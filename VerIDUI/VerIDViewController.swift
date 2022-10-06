@@ -11,6 +11,8 @@ import AVFoundation
 import CoreMedia
 import ImageIO
 import Accelerate
+import SceneKit
+import SceneKit.ModelIO
 import VerIDCore
 import RxCocoa
 import RxSwift
@@ -21,9 +23,12 @@ import RxSwift
     @objc var delegate: VerIDViewControllerDelegate? { get set }
     @objc var sessionSettings: VerIDSessionSettings? { get set }
     @objc var cameraPosition: AVCaptureDevice.Position { get set }
+    @objc var videoWriter: VideoWriterService? { get set }
+    @objc var shouldDisplayCGHeadGuidance: Bool { get set }
     @objc optional func addFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult, prompt: String?)
     @objc optional func addFaceCapture(_ faceCapture: FaceCapture)
     @objc optional func clearOverlays()
+    @objc optional func willFinishWithResult(_ result: VerIDSessionResult, completion: @escaping () -> Void)
 }
 
 public protocol ImagePublisher {
@@ -36,15 +41,21 @@ public protocol ImagePublisher {
     
     /// The view that holds the camera feed.
     @IBOutlet var noCameraLabel: UILabel!
-    @IBOutlet var directionLabel: PaddedRoundedLabel!
-    @IBOutlet var directionLabelYConstraint: NSLayoutConstraint!
+    @IBOutlet var directionLabel: UILabel!
     @IBOutlet var overlayView: UIView!
-    @IBOutlet var cancelButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var faceViewsContainer: UIView!
+    @IBOutlet private var faceOvalView: FaceOvalView!
+    @IBOutlet private var headSceneView: HeadView!
+    @IBOutlet private var faceImageView: UIImageView!
+    private var nextAvailableViewChangeTime: CFTimeInterval?
+    private var latestMisalignTime: CFTimeInterval?
+    private var faceImageViewAnimator: UIViewPropertyAnimator?
     
     // MARK: - Colours
     
     /// Colour behind the face 'cutout'
-    public var backgroundColour = UIColor(white: 0, alpha: 0.5)
+    public var backgroundColour = UIColor.clear
     /// Colour of the face oval and label background when the face is aligned
     public var highlightedColour = UIColor(red: 0.21176470588235, green: 0.68627450980392, blue: 0.0, alpha: 1.0)
     /// Colour of the text when the face is aligned
@@ -65,7 +76,11 @@ public protocol ImagePublisher {
     
     public var cameraPosition: AVCaptureDevice.Position = .front
     
+    public var videoWriter: VideoWriterService?
+    
     weak var speechDelegate: SpeechDelegate?
+    
+    public var shouldDisplayCGHeadGuidance: Bool = true
     
     var focusPointOfInterest: CGPoint? {
         didSet {
@@ -102,6 +117,8 @@ public protocol ImagePublisher {
         }
     }
     let viewSizeLock: NSLock = .init()
+    private var faceMisalignTime: CFTimeInterval?
+    private var faceCaptureCount = 0
     
     public let imagePublisher = PublishSubject<(Image,FaceBounds)>()
     
@@ -119,11 +136,7 @@ public protocol ImagePublisher {
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        self.directionLabel.horizontalInset = 8.0
-        self.directionLabel.layer.masksToBounds = true
-        self.directionLabel.layer.cornerRadius = 10.0
-        self.directionLabel.textColor = UIColor.black
-        self.directionLabel.backgroundColor = UIColor.white
+        self.faceOvalView.isHidden = true
         self.noCameraLabel.isHidden = true
         self.noCameraLabel.text = self.translatedStrings?["Camera access denied"]
         self.updateImageOrientation()
@@ -131,18 +144,33 @@ public protocol ImagePublisher {
             self.noCameraLabel.text = self.translatedStrings?["Please go to settings and enable camera in the settings for %@.", appName]
         }
         self.directionLabel.text = self.translatedStrings?["Preparing face detection"]
-        self.cancelButton.setTitle(self.translatedStrings?["Cancel"], for: .normal)
+        self.directionLabel.isHidden = true
+        self.faceViewsContainer.isHidden = true
     }
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewSize = self.overlayView.bounds.size
-        directionLabel.text = self.translatedStrings?["Preparing face detection"]
-        directionLabel.isHidden = directionLabel.text == nil
-        directionLabel.backgroundColor = UIColor.white
-        directionLabel.textColor = UIColor.black
-        cancelButton.isHidden = false
+        self.updateViewSizes()
+        self.directionLabel.isHidden = directionLabel.text == nil
+        self.faceCaptureCount = 0
         self.startCamera()
+    }
+    
+    func updateFaceOvalDimensions() {
+        if let faceExtents = self.sessionSettings?.expectedFaceExtents {
+            let faceAspectRatio: CGFloat = 4 / 5
+            let viewAspectRatio = self.viewSize.width / self.viewSize.height
+            let faceSize: CGSize
+            if viewAspectRatio > faceAspectRatio {
+                let ovalHeight = self.viewSize.height * faceExtents.proportionOfViewHeight
+                faceSize = CGSize(width: ovalHeight * faceAspectRatio, height: ovalHeight)
+            } else {
+                let ovalWidth = self.viewSize.width * faceExtents.proportionOfViewWidth
+                faceSize = CGSize(width: ovalWidth, height: ovalWidth / faceAspectRatio)
+            }
+            self.faceViewsContainer.translatesAutoresizingMaskIntoConstraints = true
+            self.faceViewsContainer.frame = CGRect(origin: CGPoint(x: self.view.bounds.midX - faceSize.width / 2, y: self.view.bounds.midY - faceSize.height / 2), size: faceSize)
+        }
     }
     
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -152,11 +180,16 @@ public protocol ImagePublisher {
                 return
             }
             if !context.isCancelled {
-                self.updateImageOrientation()
-                self.faceOvalLayer.frame = self.overlayView.layer.bounds
-                self.viewSize = self.overlayView.bounds.size
+                self.updateViewSizes()
             }
         }
+    }
+    
+    func updateViewSizes() {
+        self.overlayView.frame = self.view.bounds
+        self.updateImageOrientation()
+        self.viewSize = self.overlayView.bounds.size
+        self.updateFaceOvalDimensions()
     }
     
     open override var prefersStatusBarHidden: Bool {
@@ -189,6 +222,11 @@ public protocol ImagePublisher {
         super.cameraBecameUnavailable(reason: reason)
         self.noCameraLabel.isHidden = false
         self.noCameraLabel.text = reason
+    }
+    
+    open override func cameraBecameAvailable() {
+        super.cameraBecameAvailable()
+        self.cameraPreviewView.superview?.isHidden = true
     }
     
     private func updateImageOrientation() {
@@ -224,53 +262,219 @@ public protocol ImagePublisher {
     // MARK: - Drawing face guide oval and arrows
     
     public func addFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult, prompt: String?) {
-        OperationQueue.main.addOperation {
-            guard self.isViewLoaded else {
+        OperationQueue.main.addOperation { [weak self] in
+            guard let `self` = self, self.isViewLoaded && !self.isFinishing else {
                 return
             }
+            guard let settings = self.sessionSettings else {
+                return
+            }
+            if self.faceCaptureCount >= settings.faceCaptureCount {
+                return
+            }
+            if faceDetectionResult.status != .faceAligned, let nextAvailableViewChangeTime = self.nextAvailableViewChangeTime, nextAvailableViewChangeTime > CACurrentMediaTime() {
+                return
+            }
+            self.faceViewsContainer.isHidden = false
+            self.activityIndicator.stopAnimating()
+            self.cameraPreviewView.superview?.isHidden = false
             self.overlayView.isHidden = false
-            self.cancelButton.isHidden = false
             self.directionLabel.text = prompt
             self.directionLabel.isHidden = prompt == nil || prompt!.isEmpty
-            self.directionLabel.textColor = self.textColourFromFaceDetectionStatus(faceDetectionResult.status)
-            self.directionLabel.backgroundColor = self.ovalColourFromFaceDetectionStatus(faceDetectionResult.status)
-            let imageSize = CGSize(width: faceDetectionResult.image.width, height: faceDetectionResult.image.height)
-            let defaultFaceBounds = faceDetectionResult.defaultFaceBounds.translatedToImageSize(imageSize)
-            var ovalBounds: CGRect
-            var cutoutBounds: CGRect?
+            
+            
+            self.cameraPreviewView.transform = self.cameraViewTransformFromFaceDetectionResult(faceDetectionResult)
+            self.maskCameraPreviewFromFaceDetectionResult(faceDetectionResult)
+            self.drawArrowFromFaceDetectionResult(faceDetectionResult)
+            
             switch faceDetectionResult.status {
-            case .faceFixed, .faceAligned:
-                ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
-                cutoutBounds = faceDetectionResult.faceBounds
+            case .faceAligned:
+                self.latestMisalignTime = nil
+                self.headSceneView.isHidden = true
+                self.faceCaptureCount += 1
+                if let image = try? faceDetectionResult.image.provideUIImage(), let face = faceDetectionResult.face, let faceImage = ImageUtil.image(image, croppedToFace: self.cameraPosition == .front ? face.flipped(imageSize: image.size) : face) {
+                    if self.cameraPosition == .front {
+                        self.faceImageView.image = faceImage.withHorizontallyFlippedOrientation()
+                    } else {
+                        self.faceImageView.image = faceImage
+                    }
+                    let imageMask = CAShapeLayer()
+                    imageMask.path = UIBezierPath(ovalIn: CGRect(origin: .zero, size: self.faceImageView.bounds.size)).cgPath
+                    self.faceImageView.layer.mask = imageMask
+                    self.faceImageView.isHidden = false
+                    let scale: CGFloat = 0.9
+                    self.faceImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+                    self.cameraPreviewView.superview?.isHidden = true
+                    let animationDuration: TimeInterval = 1.0
+                    if let animator = self.faceImageViewAnimator {
+                        animator.finishAnimation(at: .end)
+                    }
+                    let animator = UIViewPropertyAnimator(duration: animationDuration, dampingRatio: 0.4) {
+                        self.faceImageView.transform = .identity
+                    }
+                    animator.addCompletion { [weak self] position in
+                        guard let `self` = self, position == .end else {
+                            return
+                        }
+                        if self.faceCaptureCount < settings.faceCaptureCount {
+                            self.faceImageView.isHidden = true
+                            self.cameraPreviewView.superview?.isHidden = false
+                            self.faceImageViewAnimator = nil
+                        } else {
+                            self.directionLabel.isHidden = true
+                            self.showAnimatedProgressOnImageViewUsingFace(face)
+                        }
+                    }
+                    animator.startAnimation()
+                    self.faceImageViewAnimator = animator
+                    self.nextAvailableViewChangeTime = CACurrentMediaTime() + animationDuration
+                }
+            case .faceFixed:
+                self.latestMisalignTime = nil
+                self.faceOvalView.isHidden = true
+                self.headSceneView.isHidden = true
             case .faceMisaligned:
-                ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
-                cutoutBounds = faceDetectionResult.faceBounds
-            case .faceTurnedTooFar:
-                ovalBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
-                cutoutBounds = ovalBounds
+                self.faceOvalView.isHidden = false
+                if self.shouldDisplayCGHeadGuidance, let time = self.latestMisalignTime, time + 2.0 < CACurrentMediaTime(), let fromAngle = faceDetectionResult.faceAngle, let toAngle = faceDetectionResult.requestedAngle {
+                    let turnDuration: CFTimeInterval = 1.0
+                    self.headSceneView.isHidden = false
+                    self.cameraPreviewView.superview?.isHidden = true
+                    self.nextAvailableViewChangeTime = CACurrentMediaTime() + turnDuration
+                    self.headSceneView.animateFromAngle(fromAngle, toAngle: toAngle, duration: turnDuration) {
+                        self.headSceneView.isHidden = true
+                        self.faceOvalView.isHidden = false
+                        self.cameraPreviewView.superview?.isHidden = false
+                        self.latestMisalignTime = nil
+                    }
+                } else {
+                    self.headSceneView.isHidden = true
+                }
+                if self.latestMisalignTime == nil {
+                    self.latestMisalignTime = CACurrentMediaTime()
+                }
             default:
-                ovalBounds = defaultFaceBounds
-                cutoutBounds = faceDetectionResult.faceBounds.isNull ? defaultFaceBounds : faceDetectionResult.faceBounds
+                self.latestMisalignTime = nil
+                self.headSceneView.isHidden = true
+                if faceDetectionResult.faceBounds.isNull {
+                    self.faceOvalView.isHidden = true
+                } else {
+                    self.faceOvalView.isHidden = false
+                    self.faceOvalView.isStrokeVisible = true
+                }
             }
-            let scale = max(self.overlayView.bounds.width / imageSize.width, self.overlayView.bounds.height / imageSize.height)
-            let transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(CGAffineTransform(translationX: self.overlayView.bounds.width / 2 - imageSize.width * scale / 2, y: self.overlayView.bounds.height / 2 - imageSize.height * scale / 2))
-            ovalBounds = ovalBounds.applying(transform)
-            cutoutBounds = cutoutBounds?.applying(transform)
-            
-            self.directionLabelYConstraint.constant = min(self.view.bounds.height - self.directionLabel.frame.height, max(ovalBounds.minY - self.directionLabel.frame.height - 16, 0))
-            
-            let angle: CGFloat?
-            let distance: CGFloat?
-            if let offsetAngle = faceDetectionResult.offsetAngleFromBearing {
-                angle = atan2(CGFloat(0.0-offsetAngle.pitch), CGFloat(offsetAngle.yaw))
-                distance = hypot(offsetAngle.yaw, 0-offsetAngle.pitch) * 2;
-            } else {
-                angle = nil
-                distance = nil
-            }
-            let landmarks: [CGPoint] = []//faceDetectionResult.faceLandmarks.map({ $0.applying(transform) })
-            self.faceOvalLayer.setOvalBounds(ovalBounds, cutoutBounds: cutoutBounds, backgroundColour: self.backgroundColour, strokeColour: self.ovalColourFromFaceDetectionStatus(faceDetectionResult.status), faceLandmarks: landmarks, angle: angle, distance: distance)
         }
+    }
+    
+    private func showAnimatedProgressOnImageViewUsingFace(_ face: Face) {
+        let scale = self.faceImageView.bounds.width / face.bounds.width
+        let landmarkTransform = CGAffineTransform(translationX: 0-face.bounds.minX, y: 0-face.bounds.minY).concatenating(CGAffineTransform(scaleX: scale, y: scale))
+        let landmarks = face.landmarks.map({ $0.applying(landmarkTransform) })
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.fillColor = nil
+        shapeLayer.strokeColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        shapeLayer.lineCap = .round
+        shapeLayer.lineWidth = self.faceImageView.bounds.width / 60
+        shapeLayer.lineJoin = .round
+        let startPoints: [Int] = [0,17,22,27,31,36,42,48,60]
+        let closePoints: [Int] = [41,47,59,67]
+        let landmarkPath = UIBezierPath()
+        for i in 17..<landmarks.count {
+            let point = landmarks[i]
+            if startPoints.contains(i) {
+                landmarkPath.move(to: point)
+            } else {
+                landmarkPath.addLine(to: point)
+            }
+            if closePoints.contains(i) {
+                landmarkPath.close()
+            }
+        }
+        shapeLayer.path = landmarkPath.cgPath
+        self.faceImageView.layer.addSublayer(shapeLayer)
+        let strokeStartAnimation = CABasicAnimation(keyPath: "strokeStart")
+        strokeStartAnimation.fromValue = 0.0
+        strokeStartAnimation.toValue = 0.9
+        let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        strokeEndAnimation.fromValue = 0.1
+        strokeEndAnimation.toValue = 1.0
+        let group = CAAnimationGroup()
+        group.fillMode = .forwards
+        group.isRemovedOnCompletion = false
+        group.repeatCount = .infinity
+        group.duration = 1.0
+        group.animations = [strokeStartAnimation, strokeEndAnimation]
+        shapeLayer.add(group, forKey: "stroke")
+    }
+    
+    private func drawArrowFromFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult) {
+        if faceDetectionResult.status == .faceMisaligned, let offsetAngle = faceDetectionResult.offsetAngleFromBearing {
+            let angle: CGFloat = atan2(CGFloat(0.0-offsetAngle.pitch), CGFloat(offsetAngle.yaw))
+            let distance: CGFloat = hypot(offsetAngle.yaw, 0-offsetAngle.pitch) * 2
+            self.faceOvalView.isStrokeVisible = false
+            self.faceOvalView.isHidden = false
+            self.faceOvalView.drawArrow(angle: angle, distance: distance)
+        } else {
+            self.faceOvalView.isHidden = true
+            self.faceOvalView.removeArrow()
+        }
+    }
+    
+    private func defaultFaceRectFromFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult) -> CGRect {
+        return faceDetectionResult.defaultFaceBounds.translatedToImageSize(self.viewSize)
+    }
+    
+    private func cameraViewTransformFromFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult) -> CGAffineTransform {
+        switch faceDetectionResult.status {
+        case .faceFixed, .faceAligned, .faceMisaligned:
+            guard let faceBounds = self.faceBoundsFromFaceDetectionResult(faceDetectionResult) else {
+                return .identity
+            }
+            let faceRect = self.defaultFaceRectFromFaceDetectionResult(faceDetectionResult)
+            let viewScale = faceRect.width / faceBounds.width
+            return CGAffineTransform(translationX: faceRect.midX - faceBounds.midX, y: faceRect.midY - faceBounds.midY).concatenating(CGAffineTransform(scaleX: viewScale, y: viewScale))
+        default:
+            return .identity
+        }
+    }
+    
+    private func faceBoundsFromFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult) -> CGRect? {
+        if faceDetectionResult.faceBounds.isNull {
+            return nil
+        }
+        let imageSize = CGSize(width: faceDetectionResult.image.width, height: faceDetectionResult.image.height)
+        let scale = max(self.viewSize.width / imageSize.width, self.viewSize.height / imageSize.height)
+        let transform = CGAffineTransform(scaleX: scale, y: scale).concatenating(CGAffineTransform(translationX: self.viewSize.width / 2 - imageSize.width * scale / 2, y: self.viewSize.height / 2 - imageSize.height * scale / 2))
+        return faceDetectionResult.faceBounds.applying(transform)
+    }
+    
+    private func maskCameraPreviewFromFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult) {
+        let defaultFaceBounds = self.defaultFaceRectFromFaceDetectionResult(faceDetectionResult)
+        switch faceDetectionResult.status {
+        case .faceFixed, .faceMisaligned, .faceAligned:
+            self.maskCameraPreviewWithOval(in: defaultFaceBounds)
+        default:
+            if let bounds = self.faceBoundsFromFaceDetectionResult(faceDetectionResult) {
+                self.maskCameraPreviewWithOval(in: bounds)
+            } else {
+                self.maskCameraPreviewWithOval(in: defaultFaceBounds)
+            }
+        }
+    }
+    
+    private func maskCameraPreviewWithOval(in bounds: CGRect) {
+        let maskView = self.cameraPreviewView.superview?.mask ?? UIView(frame: bounds)
+        maskView.frame = bounds
+        maskView.backgroundColor = .clear
+        let faceOvalPath = UIBezierPath(ovalIn: CGRect(origin: .zero, size: maskView.bounds.size))
+        if let maskViewLayer: CAShapeLayer = maskView.layer.sublayers?.first(where: { $0 is CAShapeLayer }) as? CAShapeLayer {
+            maskViewLayer.path = faceOvalPath.cgPath
+        } else {
+            let maskViewLayer = CAShapeLayer()
+            maskViewLayer.path = faceOvalPath.cgPath
+            maskViewLayer.fillColor = UIColor.white.cgColor
+            maskView.layer.addSublayer(maskViewLayer)
+        }
+        self.cameraPreviewView.superview?.mask = maskView
     }
     
     public func addFaceCapture(_ faceCapture: FaceCapture) {
@@ -297,7 +501,60 @@ public protocol ImagePublisher {
     public func clearOverlays() {
         self.directionLabel?.isHidden = true
         self.overlayView?.isHidden = true
-        self.cancelButton?.isHidden = true
+        self.headSceneView?.isHidden = true
+        self.faceOvalView?.isHidden = true
+        self.faceImageView?.isHidden = true
+        self.faceCaptureCount = 0
+        self.nextAvailableViewChangeTime = nil
+    }
+    
+    private var isFinishing = false
+    
+    public func willFinishWithResult(_ result: VerIDSessionResult, completion: @escaping () -> Void) {
+        self.directionLabel.isHidden = true
+        self.isFinishing = true
+        self.cameraPreviewView.superview?.removeFromSuperview()
+        self.headSceneView.isHidden = true
+        if result.error == nil, let faceCapture = result.faceCaptures.last {
+            if self.cameraPosition == .front {
+                self.faceImageView.image = faceCapture.faceImage.withHorizontallyFlippedOrientation()
+            } else {
+                self.faceImageView.image = faceCapture.faceImage
+            }
+            self.faceOvalView.isHidden = true
+            self.onCompletionAnimateView(self.faceImageView, completion: completion)
+        } else {
+            self.faceImageView.isHidden = true
+            self.onCompletionAnimateView(self.faceOvalView, completion: completion)
+        }
+    }
+    
+    private func onCompletionAnimateView(_ view: UIView, completion: @escaping () -> Void) {
+        if let animator = self.faceImageViewAnimator, animator.isRunning {
+            animator.addCompletion { position in
+                if position == .end {
+                    self.faceImageViewAnimator = nil
+                    self.onCompletionAnimateView(view, completion: completion)
+                }
+            }
+            return
+        }
+        view.isHidden = false
+        view.transform = .identity
+        let scale: CGFloat = 0.01
+        let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn) {
+            view.transform = scaleTransform
+        }
+        animator.addCompletion { position in
+            if position == .end {
+                view.isHidden = true
+                self.isFinishing = false
+                completion()
+            }
+        }
+        animator.startAnimation()
+        self.faceImageViewAnimator = animator
     }
     
     // MARK: - Sample Capture
@@ -309,26 +566,14 @@ public protocol ImagePublisher {
     ///   - sampleBuffer: image sample buffer
     ///   - connection: capture connection
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let image = try? VerIDImage(sampleBuffer: sampleBuffer, orientation: self.currentImageOrientation).provideVerIDImage() else {
+        if let videoWriter = self.videoWriter {
+            videoWriter.writeSampleBuffer(sampleBuffer, rotation: self.videoRotation)
+        }
+        guard let image = try? ImageUtil.imageFromSampleBuffer(sampleBuffer, orientation: self.imageOrientation) else {
             return
         }
         image.isMirrored = cameraPosition == .front
         self.imagePublisher.onNext((image,FaceBounds(viewSize: self.viewSize, faceExtents: self.sessionSettings?.expectedFaceExtents ?? FaceExtents.defaultExtents)))
-    }
-    
-    // MARK: -
-    
-    private var faceOvalLayer: FaceOvalLayer {
-        if let subs = self.overlayView.layer.sublayers, let faceLayer = subs.compactMap({ $0 as? FaceOvalLayer }).first {
-            faceLayer.frame = self.overlayView.layer.bounds
-            return faceLayer
-        } else {
-            let detectedFaceLayer = FaceOvalLayer(strokeColor: UIColor.black, backgroundColor: UIColor(white: 0, alpha: 0.5))
-            //            detectedFaceLayer.text = self.faceOvalText
-            self.overlayView.layer.addSublayer(detectedFaceLayer)
-            detectedFaceLayer.frame = self.overlayView.layer.bounds
-            return detectedFaceLayer
-        }
     }
     
     // MARK: - AV capture session errors
@@ -367,5 +612,12 @@ public protocol ImagePublisher {
     }
     
     override func sessionInterruptionEnded(notification: NSNotification) {
+    }
+    
+    @IBOutlet private var helpButton: UIImageView!
+    
+    @IBAction func toggleHelp() {
+        self.headSceneView.isHidden = !self.headSceneView.isHidden
+        self.faceOvalView.isHidden = !self.faceOvalView.isHidden
     }
 }

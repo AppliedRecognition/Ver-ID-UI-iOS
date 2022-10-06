@@ -6,6 +6,6 @@ framework module VerIDCore {
 }
 
 module VerIDCore.Swift {
-    header "VerIDCore-Swift.h"
-    requires objc
+  header "VerIDCore-Swift.h"
+  requires objc
 }
