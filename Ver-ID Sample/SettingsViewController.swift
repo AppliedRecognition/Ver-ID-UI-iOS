@@ -26,7 +26,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     @IBOutlet var templateExtractionThresholdCell: UITableViewCell!
     
     enum Section: Int, CaseIterable {
-        case about, security, faceDetection, registration, accessibility, camera
+        case about, registration, security, faceDetection, accessibility, camera
     }
     
     let registrationFaceCounts: [Int] = [1,3]
@@ -38,7 +38,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     var confidenceThresholdObservation: NSKeyValueObservation?
     var faceTemplateExtractionThresholdObservation: NSKeyValueObservation?
     var faceTemplateEncryptionObservation: NSKeyValueObservation?
-    var authenticationThresholdObservation: NSKeyValueObservation?
     var faceDetectorVersionObservation: NSKeyValueObservation?
 
     override func viewDidLoad() {
@@ -55,9 +54,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         self.faceDetectorVersionObservation = UserDefaults.standard.observe(\.faceDetectorVersion, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.faceTemplateExtractionThresholdObservation = UserDefaults.standard.observe(\.faceTemplateExtractionThreshold, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.faceTemplateEncryptionObservation = UserDefaults.standard.observe(\.encryptFaceTemplates, options: [.new], changeHandler: self.defaultsChangeHandler)
-        self.authenticationThresholdObservation = UserDefaults.standard.observe(\.authenticationThreshold, options: [.new]) { userDefaults, _ in
-            Globals.verid?.faceRecognition.authenticationScoreThreshold = NSNumber(value: userDefaults.authenticationThreshold)
-        }
     }
     
     func defaultsChangeHandler<T>(_ defaults: UserDefaults,_ change: NSKeyValueObservedChange<T>) {
@@ -72,7 +68,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
             self.confidenceThresholdObservation = nil
             self.faceTemplateExtractionThresholdObservation = nil
             self.faceTemplateEncryptionObservation = nil
-            self.authenticationThresholdObservation = nil
             self.faceDetectorVersionObservation = nil
             if self.isDirty {
                 (UIApplication.shared.delegate as? AppDelegate)?.reload()
@@ -125,9 +120,15 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         let poseCount: Int = UserDefaults.standard.poseCount
         let yawThreshold: Float = UserDefaults.standard.yawThreshold
         let pitchThreshold: Float = UserDefaults.standard.pitchThreshold
-        let authThreshold: Float = UserDefaults.standard.authenticationThreshold
+        let authThresholds: [VerIDFaceTemplateVersion: Float]
+        if let faceRec = Globals.verid?.faceRecognition as? VerIDFaceRecognition {
+            let thresholds: [(VerIDFaceTemplateVersion,Float)] = VerIDFaceTemplateVersion.all.sorted(by: { $0.rawValue < $1.rawValue }).map({ ($0,faceRec.authenticationScoreThreshold(faceTemplateVersion: $0).floatValue) })
+            authThresholds = Dictionary(uniqueKeysWithValues: thresholds)
+        } else {
+            authThresholds = [:]
+        }
         let registrationPoseCount: Int = UserDefaults.standard.registrationFaceCount
-        let securityPreset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThreshold: authThreshold)
+        let securityPreset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: UserDefaults.standard.poses)
         switch securityPreset {
         case .low:
             self.securityProfileCell.detailTextLabel?.text = "Low"
@@ -171,6 +172,10 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
             UserDefaults.standard.confidenceThreshold = self.confidenceThresholds[index]
         }
         self.loadFromDefaults()
+    }
+    
+    func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValues values: [String], atIndices: [Int]) {
+        
     }
 
     // MARK: - Navigation

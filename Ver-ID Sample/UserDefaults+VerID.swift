@@ -35,12 +35,28 @@ extension UserDefaults {
             self.set(newValue, forKey: "pitchThreshold")
         }
     }
-    @objc var authenticationThreshold: Float {
+    var poses: [Bearing] {
         get {
-            self.float(forKey: "authenticationThreshold")
+            self.stringArray(forKey: "poses")?.compactMap({ Bearing(name: $0) }) ?? []
         }
         set {
-            self.set(newValue, forKey: "authenticationThreshold")
+            self.set(newValue.map({ $0.name }), forKey: "poses")
+        }
+    }
+    var authenticationThresholds: [VerIDFaceTemplateVersion:Float] {
+        get {
+            guard let data = self.data(forKey: "authenticationThresholds") else {
+                return [:]
+            }
+            if let dict = try? JSONDecoder().decode([VerIDFaceTemplateVersion:Float].self, from: data) {
+                return dict
+            }
+            return [:]
+        }
+        set {
+            if let data = try? JSONEncoder().encode(newValue) {
+                self.set(data, forKey: "authenticationThresholds")
+            }
         }
     }
     @objc dynamic var confidenceThreshold: Float {
@@ -136,11 +152,13 @@ extension UserDefaults {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
         let detreclibSettings = DetRecLibSettings(modelsURL: nil)
         let registrationSettings = RegistrationSessionSettings(userId: "")
+        let authThresholds = try? JSONEncoder().encode(securitySettingsPreset.authThresholds)
         self.register(defaults: [
             "poseCount": securitySettingsPreset.poseCount,
             "yawThreshold": securitySettingsPreset.yawThreshold,
             "pitchThreshold": securitySettingsPreset.pitchThreshold,
-            "authenticationThreshold": securitySettingsPreset.authThreshold,
+            "authenticationThresholds": authThresholds ?? Data(),
+            "poses": securitySettingsPreset.poses.map({ $0.name }),
             "useBackCamera": false,
             "enableVideoRecording": false,
             "speakPrompts": false,

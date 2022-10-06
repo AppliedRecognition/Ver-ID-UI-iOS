@@ -13,6 +13,7 @@ import AVFoundation
 import RxSwift
 
 class TestSessionViewController: UIViewController, VerIDViewControllerProtocol, ImagePublisher {
+    var shouldDisplayCGHeadGuidance: Bool = true
     
     var imagePublisher: PublishSubject<(Image, FaceBounds)> = PublishSubject()
     
@@ -21,6 +22,8 @@ class TestSessionViewController: UIViewController, VerIDViewControllerProtocol, 
     var sessionSettings: VerIDSessionSettings?
     
     var cameraPosition: AVCaptureDevice.Position = .front
+    
+    var videoWriter: VideoWriterService? = nil
     
     lazy var queue = DispatchQueue(label: "Test session view controller", qos: .default, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil)
     

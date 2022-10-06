@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDCore
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import ASN1Decoder
 import AVFoundation
 import Accelerate
@@ -8,6 +9,8 @@ import CommonCrypto
 import CoreAudio
 import CoreData
 import CoreGraphics
+import CoreImage
+import CoreML
 import CoreMedia
 import DeviceKit
 import Foundation
@@ -19,8 +22,10 @@ import Swift
 import UIKit
 @_exported import VerIDCore
 import VerIDSDKIdentity
+import Vision
 import ZIPFoundation
 import _Concurrency
+import _StringProcessing
 import os
 import os.signpost
 @_hasMissingDesignatedInitializers @objc(VerIDAuthenticationSessionResult) public class AuthenticationSessionResult : VerIDCore.VerIDSessionResult {
@@ -38,14 +43,11 @@ import os.signpost
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(VerIDSessionSettings) public class VerIDSessionSettings : ObjectiveC.NSObject, Swift.Codable {
+  public static var supportsInstantLiveness: Swift.Bool
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   @available(*, unavailable, message: "Please use session delegate")
   @objc public var showResult: Swift.Bool
-  @VerIDCore.Clamped @objc public var faceCaptureCount: Swift.Int {
-    @objc get
-    @objc set
-    _modify
-  }
+  @objc public var faceCaptureCount: Swift.Int
   @available(*, unavailable, renamed: "faceCaptureCount")
   @objc public var numberOfResultsToCollect: Swift.Int
   @objc public var maxDuration: Swift.Double
@@ -57,18 +59,18 @@ import os.signpost
   @objc public var includeFaceTemplatesInResult: Swift.Bool
   @available(*, unavailable, message: "Please use session delegate")
   @objc public var speakPrompts: Swift.Bool
-  @VerIDCore.Clamped @objc public var yawThreshold: CoreGraphics.CGFloat {
+  @VerIDCore.Clamped @objc public var yawThreshold: CoreFoundation.CGFloat {
     @objc get
     @objc set
     _modify
   }
-  @VerIDCore.Clamped @objc public var pitchThreshold: CoreGraphics.CGFloat {
+  @VerIDCore.Clamped @objc public var pitchThreshold: CoreFoundation.CGFloat {
     @objc get
     @objc set
     _modify
   }
   @available(*, unavailable, renamed: "expectedFaceExtents")
-  @objc public var faceBoundsFraction: CoreGraphics.CGSize
+  @objc public var faceBoundsFraction: CoreFoundation.CGSize
   @VerIDCore.Clamped @objc public var expectedFaceExtents: VerIDCore.FaceExtents {
     @objc get
     @objc set
@@ -90,19 +92,25 @@ import os.signpost
   }
   @objc public var isSessionDiagnosticsEnabled: Swift.Bool
   @objc public var isFaceCoveringDetectionEnabled: Swift.Bool
-  @objc override dynamic public init()
-  @objc public init(maxDuration: Foundation.TimeInterval = 30.0, faceCaptureCount: Swift.Int = 1)
-  required public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
+  @objc public var isSpoofDetectionEnabled: Swift.Bool
+  @objc public var isScreenArtifactDetectionEnabled: Swift.Bool
+  @objc public var faceCoveringConfidenceThreshold: Swift.Float
+  @objc public var spoofConfidenceThreshold: Swift.Float
+  @objc public var minSpoofCaptureCount: Swift.Int
+  @objc public var spoofDetectionModelFileURL: Foundation.URL?
+  @objc public var screenArtifactConfidenceThreshold: Swift.Float
+  @objc public var screenArtifactDetectionModelFileURL: Foundation.URL?
+  @objc override convenience dynamic public init()
+  @objc public init(maxDuration: Foundation.TimeInterval = 30.0, faceCaptureCount: Swift.Int = VerIDSessionSettings.supportsInstantLiveness ? 1 : 2)
   @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
-@objc(VerIDLivenessDetectionSessionSettings) public class LivenessDetectionSessionSettings : VerIDCore.VerIDSessionSettings {
+@_hasMissingDesignatedInitializers @objc(VerIDLivenessDetectionSessionSettings) public class LivenessDetectionSessionSettings : VerIDCore.VerIDSessionSettings {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   public static let defaultBearings: Swift.Set<VerIDCore.Bearing>
   public var bearings: Swift.Set<VerIDCore.Bearing>
-  @objc override dynamic public init()
-  required public init(from decoder: Swift.Decoder) throws
-  override public func encode(to encoder: Swift.Encoder) throws
+  @objc dynamic public init()
   @objc deinit
 }
 @objc(VerIDAuthenticationSessionSettings) public class AuthenticationSessionSettings : VerIDCore.LivenessDetectionSessionSettings {
@@ -110,18 +118,19 @@ import os.signpost
   @objc final public let userId: Swift.String
   @objc public init(userId: Swift.String)
   required public init(from decoder: Swift.Decoder) throws
-  override public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
 }
 @objc(VerIDRegistrationSessionSettings) public class RegistrationSessionSettings : VerIDCore.VerIDSessionSettings {
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  public var bearingsToRegister: [VerIDCore.Bearing]
+  public var bearingsToRegister: [VerIDCore.Bearing] {
+    get
+    set
+  }
   public var useSafeFaceAssignment: Swift.Bool
   @objc public func setRawBearingsToRegister(_ bearings: Swift.Array<Swift.Int>)
   @objc final public let userId: Swift.String
   @objc public init(userId: Swift.String, showResult: Swift.Bool = false)
   required public init(from decoder: Swift.Decoder) throws
-  override public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
 }
 @available(*, deprecated, renamed: "VerIDSessionSettings")
@@ -137,9 +146,10 @@ public class SessionDiagnostics : Swift.Codable {
 }
 @_hasMissingDesignatedInitializers public class DiagnosticImageInfo : Swift.Codable {
   final public let face: VerIDCore.Face?
-  final public let imageSize: CoreGraphics.CGSize
+  final public let imageSize: CoreFoundation.CGSize
   final public let requestedBearing: VerIDCore.Bearing
   final public let timestamp: Foundation.Date
+  final public let spoofConfidence: Swift.Float?
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
@@ -172,7 +182,7 @@ public class SessionDiagnostics : Swift.Codable {
   final public let settings: VerIDCore.VerIDSessionSettings
   public var delegate: VerIDCore.SessionDelegate?
   public var videoWriterService: VerIDCore.VideoWriterService?
-  public var isFaceWithBoundsFixedInImageSize: ((CoreGraphics.CGRect, CoreGraphics.CGRect) -> Swift.Bool)?
+  public var isFaceWithBoundsFixedInImageSize: ((CoreFoundation.CGRect, CoreFoundation.CGRect) -> Swift.Bool)?
   public var sessionFunctions: VerIDCore.SessionFunctions
   public init(verID: VerIDCore.VerID, settings: VerIDCore.VerIDSessionSettings, imageObservable: RxSwift.Observable<(VerIDCore.Image, VerIDCore.FaceBounds)>)
   public func start()
@@ -192,9 +202,9 @@ extension RxSwift.ObservableType {
   @objc final public let data: [Swift.UInt8]
   @objc final public let format: VerIDCore.VerIDImageFormat
   @objc final public let orientation: ImageIO.CGImagePropertyOrientation
-  @objc final public let size: CoreGraphics.CGSize
+  @objc final public let size: CoreFoundation.CGSize
   @objc final public let bytesPerRow: Swift.UInt
-  public init(data: [Swift.UInt8], format: VerIDCore.VerIDImageFormat, orientation: ImageIO.CGImagePropertyOrientation, size: CoreGraphics.CGSize, bytesPerRow: Swift.UInt)
+  public init(data: [Swift.UInt8], format: VerIDCore.VerIDImageFormat, orientation: ImageIO.CGImagePropertyOrientation, size: CoreFoundation.CGSize, bytesPerRow: Swift.UInt)
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   @objc deinit
@@ -253,38 +263,46 @@ extension VerIDCore.UserManagement2 {
 @objc(VerIDUserManagementFactory) public protocol UserManagementFactory {
   @objc func createUserManagement() throws -> VerIDCore.UserManagement
 }
-@propertyWrapper public struct Clamped<T> where T : Swift.Comparable {
+@propertyWrapper public struct Clamped<T> : Swift.Codable where T : Swift.Comparable, T : Swift.Decodable, T : Swift.Encodable {
   public var wrappedValue: T {
     get
     set
   }
   public init(wrappedValue: T, _ range: Swift.ClosedRange<T>)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
 }
 @_inheritsConvenienceInitializers @objc(VerIDImageUtil) public class ImageUtil : ObjectiveC.NSObject {
   @objc public static func grayscaleImage(from image: UIKit.UIImage) throws -> UIKit.UIImage
-  public static func grayscaleBufferFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
-  public static func argbBufferFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
-  public static func rgbBufferFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
+  public static func grayscaleBufferFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
+  public static func argbBufferFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
+  public static func rgbBufferFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
   public static func cgImageFromVerIDImage(_ image: VerIDCore.VerIDImage) -> CoreGraphics.CGImage?
+  public static func image(_ image: UIKit.UIImage, centeredOnFace face: VerIDCore.Face) -> UIKit.UIImage
+  public static func image(_ image: UIKit.UIImage, centeredAndCroppedVerticallyToFace face: VerIDCore.Face) -> UIKit.UIImage
+  public static func image(_ image: UIKit.UIImage, centeredAndCroppedHorizontallyToFace face: VerIDCore.Face) -> UIKit.UIImage
+  public static func pixelBufferFromImage(_ image: CoreGraphics.CGImage) throws -> CoreVideo.CVPixelBuffer
+  public static func sampleBufferFromPixelBuffer(_ pixelBuffer: CoreVideo.CVPixelBuffer, duration: CoreMedia.CMTime, timeStamp: CoreMedia.CMTime) throws -> CoreMedia.CMSampleBuffer
   public static func cgImageFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) -> CoreGraphics.CGImage?
-  public static func sizeOfVerIDImage(_ image: VerIDCore.VerIDImage) throws -> CoreGraphics.CGSize
-  public static func rgbFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
-  public static func rgbFromCGImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
-  public static func argbFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
-  public static func grayscaleBufferFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
-  public static func grayscaleBufferFromCGImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
-  public static func argbBufferFromCGImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreGraphics.CGSize)
+  public static func sizeOfVerIDImage(_ image: VerIDCore.VerIDImage) throws -> CoreFoundation.CGSize
+  public static func rgbFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
+  public static func rgbFromCGImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
+  public static func argbFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
+  public static func grayscaleBufferFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
+  public static func grayscaleBufferFromCGImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
+  public static func argbBufferFromCGImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> (buffer: [Swift.UInt8], size: CoreFoundation.CGSize)
   public static func imageFromSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> VerIDCore.Image
   public static func imageFromUIImage(_ uiImage: UIKit.UIImage) throws -> VerIDCore.Image
   public static func imageFromCGImage(_ cgImage: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> VerIDCore.Image
   public static func cgImageFromImage(_ image: VerIDCore.Image) throws -> CoreGraphics.CGImage
   @objc public static func sharpnessOfImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) -> Swift.Double
   @objc public static func brightnessContrastAndSharpnessOfImage(_ image: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation) throws -> VerIDCore.ImageQualityParams
+  public static func image(_ image: UIKit.UIImage, croppedToFace face: VerIDCore.Face) -> UIKit.UIImage?
   @objc override dynamic public init()
   @objc deinit
 }
 public enum ImageUtilError : Swift.Error {
-  case cgImageConversionError, vImageBufferInitializationError, grayscaleConversionError, cgImageFromBufferError, pixelBufferInitializationError, pixelBufferAddressError, imageMatrixMultiplyError, getAddressOfPlaneError, unsupportedPixelFormat, imageRotationError, invalidVerIDImage, channelPermutationError, yuvConversionError, rgbConversionError, imageAdjustmentError, invalidOrientation, pngConversionError
+  case cgImageConversionError, vImageBufferInitializationError, grayscaleConversionError, cgImageFromBufferError, pixelBufferInitializationError, pixelBufferAddressError, imageMatrixMultiplyError, getAddressOfPlaneError, unsupportedPixelFormat, imageRotationError, invalidVerIDImage, channelPermutationError, yuvConversionError, rgbConversionError, imageAdjustmentError, invalidOrientation, pngConversionError, createFormatDescriptionForImageBufferError, createSampleBufferForImageBufferError
   public static func == (a: VerIDCore.ImageUtilError, b: VerIDCore.ImageUtilError) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
@@ -346,14 +364,16 @@ extension VerIDCore.VerIDImageFormat {
 }
 @objc public class FaceDetectionResult : ObjectiveC.NSObject, Swift.Codable {
   @objc public var face: VerIDCore.Face?
-  @objc public var faceBounds: CoreGraphics.CGRect
+  @objc public var faceBounds: CoreFoundation.CGRect
   @objc public var faceAngle: VerIDCore.EulerAngle?
-  @objc public var faceLandmarks: [CoreGraphics.CGPoint]
+  @objc public var faceLandmarks: [CoreFoundation.CGPoint]
   @objc public var status: VerIDCore.FaceDetectionStatus
   @objc final public let requestedBearing: VerIDCore.Bearing
   @objc final public let image: VerIDCore.Image
   public var defaultFaceBounds: VerIDCore.FaceBounds
   public var offsetAngleFromBearing: VerIDCore.EulerAngle?
+  public var requestedAngle: VerIDCore.EulerAngle?
+  public var spoofConfidence: Swift.Float?
   public init(image: VerIDCore.Image, requestedBearing: VerIDCore.Bearing, defaultFaceBounds: VerIDCore.FaceBounds)
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
@@ -391,7 +411,7 @@ public class FunctionCallReport : VerIDCore.Transaction {
 @objc(VerIDRecognitionFace) public class RecognitionFace : ObjectiveC.NSObject, VerIDCore.Recognizable, Swift.Codable {
   @available(*, deprecated)
   public enum Version : Swift.Int32, Swift.CaseIterable {
-    case unencrypted, encrypted, v20Unencrypted, v20Encrypted
+    case unencrypted, encrypted, v20Unencrypted, v20Encrypted, v21Unencrypted, v21Encrypted
     public init?(rawValue: Swift.Int32)
     public typealias AllCases = [VerIDCore.RecognitionFace.Version]
     public typealias RawValue = Swift.Int32
@@ -453,11 +473,11 @@ public class Smoothing<T> {
   public func reset()
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class CGFloatSmoothing : VerIDCore.Smoothing<CoreGraphics.CGFloat> {
+@_inheritsConvenienceInitializers public class CGFloatSmoothing : VerIDCore.Smoothing<CoreFoundation.CGFloat> {
   override public init(bufferSize: Swift.Int)
   @objc deinit
 }
-@_inheritsConvenienceInitializers public class CGRectSmoothing : VerIDCore.Smoothing<CoreGraphics.CGRect> {
+@_inheritsConvenienceInitializers public class CGRectSmoothing : VerIDCore.Smoothing<CoreFoundation.CGRect> {
   override public init(bufferSize: Swift.Int)
   @objc deinit
 }
@@ -472,6 +492,7 @@ extension VerIDCore.VerIDFaceTemplateVersion {
   public static func isEncryptionEnabledOnSerialNumber(_ serialNumber: Swift.Int32) -> Swift.Bool
   public func stringValue() -> Swift.String
   public init(serialNumber: Swift.Int32) throws
+  public init(stringValue: Swift.String)
 }
 extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
@@ -480,9 +501,12 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
 @objc(VerIDFaceDetectionFactory) public protocol FaceDetectionFactory {
   @objc func createFaceDetection() throws -> VerIDCore.FaceDetection
 }
-@objc @_inheritsConvenienceInitializers public class SpoofingDetection : ObjectiveC.NSObject {
+@objc @_hasMissingDesignatedInitializers public class SpoofingDetection : ObjectiveC.NSObject {
   public var faceAlignment: VerIDCore.FaceAlignmentDetection?
-  @objc override dynamic public init()
+  @available(iOS 13, *)
+  public var livenessDetection: VerIDCore.LivenessDetection? {
+    get
+  }
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class FacePresenceDetection : ObjectiveC.NSObject {
@@ -538,7 +562,7 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   @objc deinit
 }
 @objc public protocol VideoWriterService {
-  @objc func writeSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, rotation: CoreGraphics.CGFloat)
+  @objc func writeSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, rotation: CoreFoundation.CGFloat)
   @objc func finish(completionBlock: @escaping (Foundation.URL?) -> Swift.Void)
 }
 @objc public protocol VideoWriterServiceFactory {
@@ -552,7 +576,7 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class VerIDVideoWriterService : ObjectiveC.NSObject, VerIDCore.VideoWriterService {
-  @objc public func writeSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, rotation: CoreGraphics.CGFloat)
+  @objc public func writeSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, rotation: CoreFoundation.CGFloat)
   @objc public func finish(completionBlock: @escaping (Foundation.URL?) -> Swift.Void)
   @objc deinit
 }
@@ -599,6 +623,9 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   @objc public func facesSuitableForRecognition(withBearing bearing: VerIDCore.Bearing) -> [VerIDCore.RecognizableFace]
   @available(*, unavailable)
   @objc public func imageURLs(withBearing bearing: VerIDCore.Bearing) -> [Foundation.URL]
+  public var spoofConfidenceScore: Swift.Float? {
+    get
+  }
   @objc deinit
 }
 @available(*, deprecated, renamed: "VerIDSessionResult")
@@ -638,6 +665,7 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
 @objc public class Image : ObjectiveC.NSObject, Swift.Codable, VerIDCore.ImageProvider {
   @objc public func provideVerIDImage() throws -> VerIDCore.Image
   @objc public func provideUIImage() throws -> UIKit.UIImage
+  @objc public func isImageMirrored() -> Swift.Bool
   @objc final public let data: Foundation.Data
   @objc final public let width: Swift.Int
   @objc final public let height: Swift.Int
@@ -645,10 +673,14 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
   @objc final public let bytesPerRow: Swift.Int
   @objc final public let format: VerIDCore.VerIDImageFormat
   @objc public var isMirrored: Swift.Bool
+  @objc public var uprightSize: CoreFoundation.CGSize {
+    @objc get
+    @objc set
+  }
   @objc public init(data: Foundation.Data, width: Swift.Int, height: Swift.Int, orientation: ImageIO.CGImagePropertyOrientation, bytesPerRow: Swift.Int, format: VerIDCore.VerIDImageFormat)
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
-  public var size: CoreGraphics.CGSize {
+  public var size: CoreFoundation.CGSize {
     get
     set
   }
@@ -657,10 +689,15 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
 @objc(VerIDImageProvider) public protocol ImageProvider {
   @objc func provideVerIDImage() throws -> VerIDCore.Image
   @objc func provideUIImage() throws -> UIKit.UIImage
+  @objc func isImageMirrored() -> Swift.Bool
+}
+extension VerIDCore.ImageProvider {
+  public func isImageMirrored() -> Swift.Bool
 }
 extension UIKit.UIImage : VerIDCore.ImageProvider {
   @objc dynamic public func provideVerIDImage() throws -> VerIDCore.Image
   @objc dynamic public func provideUIImage() throws -> UIKit.UIImage
+  @objc dynamic public func isImageMirrored() -> Swift.Bool
 }
 public enum FacePresenceError : Foundation.CustomNSError {
   case faceLost(requestedBearing: VerIDCore.Bearing), faceMovedTooFar(requestedBearing: VerIDCore.Bearing), faceNotFound(requestedBearing: VerIDCore.Bearing)
@@ -707,11 +744,40 @@ public struct UserManagementAnalysis {
   public let mostSimilarUsers: (Swift.String, Swift.String, Swift.Float)?
   public let mostDifferentUsers: (Swift.String, Swift.String, Swift.Float)?
 }
+public struct Array2D<T> {
+  public init(data: [T], cols: Swift.Int, rows: Swift.Int) throws
+  public var shape: (Swift.Int, Swift.Int) {
+    get
+  }
+  public mutating func reshape(_ cols: Swift.Int, _ rows: Swift.Int) throws
+  public func column(_ col: Swift.Int) -> [T]
+  public mutating func setValues(_ values: [T], inColumn col: Swift.Int) throws
+  public func row(_ row: Swift.Int) -> [T]
+  public mutating func setValues(_ values: [T], inRow row: Swift.Int) throws
+  public subscript(col: Swift.Int, row: Swift.Int) -> T {
+    get
+    set
+  }
+  public subscript(cols: Swift.Range<Swift.Int>, rows: Swift.Range<Swift.Int>) -> VerIDCore.Array2D<T>? {
+    get
+  }
+  public var array: [[T]] {
+    get
+  }
+}
+public enum Array2DError : Swift.Int, Swift.Error {
+  case wrongDataCount, invalidShape, invalidColumnLength, invalidRowLength
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @objc open class AngleBearingEvaluation : ObjectiveC.NSObject {
   final public let sessionSettings: VerIDCore.VerIDSessionSettings
-  public var pitchThresholdTolerance: CoreGraphics.CGFloat
-  public var yawThresholdTolerance: CoreGraphics.CGFloat
-  public init(sessionSettings: VerIDCore.VerIDSessionSettings, pitchThresholdTolerance: CoreGraphics.CGFloat, yawThresholdTolerance: CoreGraphics.CGFloat)
+  public var pitchThresholdTolerance: CoreFoundation.CGFloat
+  public var yawThresholdTolerance: CoreFoundation.CGFloat
+  public init(sessionSettings: VerIDCore.VerIDSessionSettings, pitchThresholdTolerance: CoreFoundation.CGFloat, yawThresholdTolerance: CoreFoundation.CGFloat)
   public func angle(forBearing bearing: VerIDCore.Bearing) -> VerIDCore.EulerAngle
   @objc open func angle(_ angle: VerIDCore.EulerAngle, matchesBearing bearing: VerIDCore.Bearing) -> Swift.Bool
   @objc open func offsetFromAngle(_ from: VerIDCore.EulerAngle, toBearing bearing: VerIDCore.Bearing) -> VerIDCore.EulerAngle
@@ -753,9 +819,16 @@ public struct UserManagementAnalysis {
     get
   }
 }
+@available(iOS 13, *)
+public class ScreenArtifactDetector {
+  public init(modelURL: Foundation.URL? = nil) throws
+  public func detectScreenArtifactsInImage(_ image: VerIDCore.ImageProvider) throws -> Swift.Double
+  @objc deinit
+}
 @objc public class VerIDImage : ObjectiveC.NSObject, VerIDCore.ImageProvider, Swift.Codable {
   @objc public func provideVerIDImage() throws -> VerIDCore.Image
   @objc public func provideUIImage() throws -> UIKit.UIImage
+  @objc public func isImageMirrored() -> Swift.Bool
   @objc final public let sampleBuffer: CoreMedia.CMSampleBuffer?
   @objc final public let cgImage: CoreGraphics.CGImage?
   @objc final public let orientation: ImageIO.CGImagePropertyOrientation
@@ -768,7 +841,7 @@ public struct UserManagementAnalysis {
   public var grayscalePixels: [Swift.UInt8]?
   public var argbPixels: [Swift.UInt8]?
   public var rgbPixels: [Swift.UInt8]?
-  public var size: CoreGraphics.CGSize?
+  public var size: CoreFoundation.CGSize?
   public var isMirrored: Swift.Bool
   @objc public var grayscaleImageProcessorName: Swift.String?
   required public init(from decoder: Swift.Decoder) throws
@@ -776,7 +849,7 @@ public struct UserManagementAnalysis {
   @objc public init(sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation)
   @objc public init(cgImage: CoreGraphics.CGImage, orientation: ImageIO.CGImagePropertyOrientation)
   @objc convenience public init?(url: Foundation.URL)
-  public init(grayscalePixels: [Swift.UInt8], size: CoreGraphics.CGSize)
+  public init(grayscalePixels: [Swift.UInt8], size: CoreFoundation.CGSize)
   @objc public init?(uiImage: UIKit.UIImage)
   public init(faceDetectionImage: VerIDCore.FaceDetectionImage)
   @objc deinit
@@ -794,6 +867,7 @@ public struct UserManagementAnalysis {
   case faceTemplateVersionMismatch
   case refusingToRunOnMainThread
   case initializationTimeout
+  case featureUnavailable
   public var errorDescription: Swift.String? {
     get
   }
@@ -941,11 +1015,11 @@ extension VerIDCore.Recognizable {
   }
 }
 @_inheritsConvenienceInitializers @objc(VerIDEulerAngle) public class EulerAngle : ObjectiveC.NSObject, Swift.Codable {
-  @objc public var yaw: CoreGraphics.CGFloat
-  @objc public var pitch: CoreGraphics.CGFloat
-  @objc public var roll: CoreGraphics.CGFloat
+  @objc public var yaw: CoreFoundation.CGFloat
+  @objc public var pitch: CoreFoundation.CGFloat
+  @objc public var roll: CoreFoundation.CGFloat
   @objc override dynamic public init()
-  public init(yaw: CoreGraphics.CGFloat, pitch: CoreGraphics.CGFloat, roll: CoreGraphics.CGFloat)
+  public init(yaw: CoreFoundation.CGFloat, pitch: CoreFoundation.CGFloat, roll: CoreFoundation.CGFloat)
   required public init(from decoder: Swift.Decoder) throws
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   public func encode(to encoder: Swift.Encoder) throws
@@ -953,6 +1027,11 @@ extension VerIDCore.Recognizable {
     @objc get
   }
   @objc deinit
+}
+public struct DetectedSpoof {
+  public let boundingBox: CoreFoundation.CGRect
+  public let confidence: Swift.Float
+  public func flipped(imageSize: CoreFoundation.CGSize) -> VerIDCore.DetectedSpoof
 }
 @objc(VerIDFaceDetection) public protocol FaceDetection {
   @objc func startFaceTracking() -> VerIDCore.FaceTracking
@@ -1039,20 +1118,22 @@ public class Report : Swift.Codable {
   @objc deinit
 }
 public enum AntiSpoofingError : Foundation.CustomNSError {
-  case movedOpposite(requestedBearing: VerIDCore.Bearing), movedTooFast(requestedBearing: VerIDCore.Bearing)
+  case movedOpposite(requestedBearing: VerIDCore.Bearing), movedTooFast(requestedBearing: VerIDCore.Bearing), spoofDetected(confidence: Swift.Float), screenArtifactDetected(confidence: Swift.Float)
   public var errorUserInfo: [Swift.String : Any] {
     get
   }
 }
-@objc(VerIDLivenessDetection) public enum LivenessDetection : Swift.Int, Swift.Codable {
-  case none
-  case regular
-  case strict
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
+@available(iOS 13, *)
+public class LivenessDetection {
+  public var minDecrementedSpoofScoreBoxToSideRatio: CoreFoundation.CGFloat
+  public var largeBoxScoreAdjustment: Swift.Float
+  public var shouldAdjustImageBrightnessIfNoSpoofsDetected: Swift.Bool
+  public init(modelFileURL: Foundation.URL? = nil) throws
+  public func confidenceThatFace(_ face: VerIDCore.Face, isSpoofedInImage image: VerIDCore.ImageProvider) throws -> Swift.Float
+  @available(iOS 14, *)
+  public func detectElectronicDevicesInSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> [VerIDCore.DetectedSpoof]
+  public func detectElectronicDevicesInImage(_ image: VerIDCore.ImageProvider) throws -> [VerIDCore.DetectedSpoof]
+  @objc deinit
 }
 @objc public protocol ImageProcessorService {
   @objc func prepareImageForFaceDetection(_ image: VerIDCore.VerIDImage, recalculate: Swift.Bool) throws
@@ -1071,7 +1152,7 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   @objc open var name: Swift.String {
     @objc get
   }
-  @objc open func adjustImageBuffer(_ buffer: [Swift.UInt8], size: CoreGraphics.CGSize) throws -> [Swift.UInt8]
+  @objc open func adjustImageBuffer(_ buffer: [Swift.UInt8], size: CoreFoundation.CGSize) throws -> [Swift.UInt8]
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1079,7 +1160,7 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   @objc override open var name: Swift.String {
     @objc get
   }
-  @objc override open func adjustImageBuffer(_ buffer: [Swift.UInt8], size: CoreGraphics.CGSize) throws -> [Swift.UInt8]
+  @objc override open func adjustImageBuffer(_ buffer: [Swift.UInt8], size: CoreFoundation.CGSize) throws -> [Swift.UInt8]
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1094,7 +1175,7 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   @objc override public var name: Swift.String {
     @objc get
   }
-  @objc override public func adjustImageBuffer(_ buffer: [Swift.UInt8], size: CoreGraphics.CGSize) throws -> [Swift.UInt8]
+  @objc override public func adjustImageBuffer(_ buffer: [Swift.UInt8], size: CoreFoundation.CGSize) throws -> [Swift.UInt8]
   @objc override dynamic public init()
   @objc deinit
 }
@@ -1117,19 +1198,9 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   @objc public func cgImageFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> CoreGraphics.CGImage
   @objc deinit
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class VerIDUserManagementiOS9 : ObjectiveC.NSObject, VerIDCore.UserManagement {
-  @objc public func assignFaces(_ faces: [VerIDCore.Recognizable], toUser userId: Swift.String, completion: VerIDCore.VerIDUserManagementiOS9.ErrorCallback? = nil)
-  @objc public func deleteFaces(_ faces: [VerIDCore.Recognizable], completion: ((Swift.Error?) -> Swift.Void)? = nil)
-  @objc public func users() throws -> [Swift.String]
-  @objc public func facesOfUser(_ userId: Swift.String) throws -> [VerIDCore.Recognizable]
-  @objc public func faces() throws -> [VerIDCore.Recognizable]
-  @objc public func deleteUsers(_ userIds: [Swift.String], completion: ((Swift.Error?) -> Swift.Void)? = nil)
-  @objc public func userInFace(_ face: VerIDCore.Recognizable) throws -> Swift.String
-  @objc deinit
-}
 @objc public class FaceBounds : ObjectiveC.NSObject, Swift.Codable {
-  @objc public init(viewSize: CoreGraphics.CGSize, faceExtents: VerIDCore.FaceExtents)
-  @objc public func translatedToImageSize(_ imageSize: CoreGraphics.CGSize) -> CoreGraphics.CGRect
+  @objc public init(viewSize: CoreFoundation.CGSize, faceExtents: VerIDCore.FaceExtents)
+  @objc public func translatedToImageSize(_ imageSize: CoreFoundation.CGSize) -> CoreFoundation.CGRect
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
@@ -1140,26 +1211,28 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   override public func reset()
   @objc deinit
 }
-@objc(VerIDFaceExtents) public class FaceExtents : ObjectiveC.NSObject, Swift.Comparable {
-  @objc final public let proportionOfViewWidth: CoreGraphics.CGFloat
-  @objc final public let proportionOfViewHeight: CoreGraphics.CGFloat
-  @objc public init(proportionOfViewWidth: CoreGraphics.CGFloat, proportionOfViewHeight: CoreGraphics.CGFloat)
+@objc(VerIDFaceExtents) public class FaceExtents : ObjectiveC.NSObject, Swift.Comparable, Swift.Codable {
+  @objc final public let proportionOfViewWidth: CoreFoundation.CGFloat
+  @objc final public let proportionOfViewHeight: CoreFoundation.CGFloat
+  @objc public init(proportionOfViewWidth: CoreFoundation.CGFloat, proportionOfViewHeight: CoreFoundation.CGFloat)
   @objc public static let defaultExtents: VerIDCore.FaceExtents
   public static func < (lhs: VerIDCore.FaceExtents, rhs: VerIDCore.FaceExtents) -> Swift.Bool
   @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
 }
 public typealias Face = VerIDCore.VerIDFace
 @_inheritsConvenienceInitializers @objc public class VerIDFace : ObjectiveC.NSObject, Swift.Codable {
-  @objc public var bounds: CoreGraphics.CGRect
+  @objc public var bounds: CoreFoundation.CGRect
   @objc public var angle: VerIDCore.EulerAngle
-  @objc public var quality: CoreGraphics.CGFloat
-  @objc public var leftEye: CoreGraphics.CGPoint
-  @objc public var rightEye: CoreGraphics.CGPoint
+  @objc public var quality: CoreFoundation.CGFloat
+  @objc public var leftEye: CoreFoundation.CGPoint
+  @objc public var rightEye: CoreFoundation.CGPoint
   @objc public var data: Foundation.Data
-  @objc public var landmarks: [CoreGraphics.CGPoint]
+  @objc public var landmarks: [CoreFoundation.CGPoint]
   @objc public var attributes: [Swift.String : Any]
   @objc override dynamic public init()
-  public func flipped(imageSize: CoreGraphics.CGSize) -> VerIDCore.Face
+  public func flipped(imageSize: CoreFoundation.CGSize) -> VerIDCore.Face
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
   required public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
@@ -1199,7 +1272,7 @@ public typealias Face = VerIDCore.VerIDFace
   }
   @objc override dynamic public func activityViewController(_ activityViewController: UIKit.UIActivityViewController, dataTypeIdentifierForActivityType activityType: UIKit.UIActivity.ActivityType?) -> Swift.String
   @objc override dynamic public func activityViewController(_ activityViewController: UIKit.UIActivityViewController, subjectForActivityType activityType: UIKit.UIActivity.ActivityType?) -> Swift.String
-  @objc override dynamic public func activityViewController(_ activityViewController: UIKit.UIActivityViewController, thumbnailImageForActivityType activityType: UIKit.UIActivity.ActivityType?, suggestedSize size: CoreGraphics.CGSize) -> UIKit.UIImage?
+  @objc override dynamic public func activityViewController(_ activityViewController: UIKit.UIActivityViewController, thumbnailImageForActivityType activityType: UIKit.UIActivity.ActivityType?, suggestedSize size: CoreFoundation.CGSize) -> UIKit.UIImage?
   @objc deinit
 }
 public struct EnvironmentSettings : Swift.Encodable {
@@ -1280,6 +1353,7 @@ public typealias VerIDDetectedFace = VerIDCore.FaceCapture
   public var diagnosticInfo: VerIDCore.FaceCapture.DiagnosticInfo {
     get
   }
+  final public let faces: [VerIDCore.RecognizableFace]
   @available(*, unavailable, renamed: "init(face:bearing:image:)")
   @objc public init(face: VerIDCore.RecognizableFace, bearing: VerIDCore.Bearing, imageURL: Foundation.URL? = nil)
   @objc convenience public init(face: VerIDCore.RecognizableFace, bearing: VerIDCore.Bearing, image: UIKit.UIImage) throws
@@ -1292,7 +1366,11 @@ public typealias VerIDDetectedFace = VerIDCore.FaceCapture
 }
 extension VerIDCore.FaceCapture {
   public struct DiagnosticInfo : Swift.Codable {
+    @available(*, deprecated, renamed: "faceCoveringScore")
     public var maskScore: Swift.Float? {
+      get
+    }
+    public var faceCoveringScore: Swift.Float? {
       get
     }
     public var brightness: Swift.Double? {
@@ -1302,6 +1380,9 @@ extension VerIDCore.FaceCapture {
       get
     }
     public var sharpness: Swift.Double? {
+      get
+    }
+    public var screenArtifactConfidence: Swift.Double? {
       get
     }
     public init(from decoder: Swift.Decoder) throws
@@ -1321,6 +1402,10 @@ extension VerIDCore.FaceCapture {
   public var stringValue: Swift.String {
     get
   }
+  public var name: Swift.String {
+    get
+  }
+  public init?(name: Swift.String)
   public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
   public init?(rawValue: Swift.Int)
@@ -1417,6 +1502,9 @@ extension VerIDCore.RecognitionFace.Version : Swift.RawRepresentable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.Equatable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.Hashable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.RawRepresentable {}
+extension VerIDCore.Array2DError : Swift.Equatable {}
+extension VerIDCore.Array2DError : Swift.Hashable {}
+extension VerIDCore.Array2DError : Swift.RawRepresentable {}
 extension VerIDCore.Axis : Swift.Equatable {}
 extension VerIDCore.Axis : Swift.Hashable {}
 extension VerIDCore.Axis : Swift.RawRepresentable {}
@@ -1443,9 +1531,6 @@ extension VerIDCore.SessionSharingError : Swift.RawRepresentable {}
 extension VerIDCore.VerIDUserManagementError : Swift.Equatable {}
 extension VerIDCore.VerIDUserManagementError : Swift.Hashable {}
 extension VerIDCore.VerIDUserManagementError : Swift.RawRepresentable {}
-extension VerIDCore.LivenessDetection : Swift.Equatable {}
-extension VerIDCore.LivenessDetection : Swift.Hashable {}
-extension VerIDCore.LivenessDetection : Swift.RawRepresentable {}
 extension VerIDCore.SessionReport.SessionPurpose : Swift.Equatable {}
 extension VerIDCore.SessionReport.SessionPurpose : Swift.Hashable {}
 extension VerIDCore.SessionReport.SessionPurpose : Swift.RawRepresentable {}

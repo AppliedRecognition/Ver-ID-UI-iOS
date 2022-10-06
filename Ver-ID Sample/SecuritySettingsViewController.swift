@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VerIDCore
 
 class SecuritySettingsViewController: UITableViewController, ValueSelectionDelegate {
     
@@ -14,14 +15,13 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
     let yawThresholds: [Float] = [12.0,15.0,18.0,21.0,24.0]
     let pitchThresholds: [Float] = [10.0,12.0,15.0,18.0,21.0]
     let authThresholds: [Float] = [3.0,3.5,4.0,4.5,5.0]
+    let poses: [Bearing] = [.straight, .left, .right, .leftUp, .rightUp]
     
     weak var delegate: SecuritySettingsDelegate?
     
     @IBOutlet var presetControl: UISegmentedControl!
-    @IBOutlet var poseCountCell: UITableViewCell!
-    @IBOutlet var yawThresholdCell: UITableViewCell!
-    @IBOutlet var pitchThresholdCell: UITableViewCell!
-    @IBOutlet var authThresholdCell: UITableViewCell!
+    
+    private var sections: [Section] = [Section(id: .livenessDetection, footer: "", cells: []), Section(id: .authentication, footer: "", cells: [])]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +37,14 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return self.sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return section == 0 ? 3 : 1
+        guard let section = self.sectionAtIndex(section) else {
+            return 0
+        }
+        return section.cells.count
     }
     
     // MARK: -
@@ -62,7 +64,13 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
         UserDefaults.standard.poseCount = preset.poseCount
         UserDefaults.standard.yawThreshold = preset.yawThreshold
         UserDefaults.standard.pitchThreshold = preset.pitchThreshold
-        UserDefaults.standard.authenticationThreshold = preset.authThreshold
+        UserDefaults.standard.poses = preset.poses
+        for (version,threshold) in preset.authThresholds {
+            (Globals.verid?.faceRecognition as? VerIDFaceRecognition)?.setAuthenticationScoreThreshold(NSNumber(value: threshold), faceTemplateVersion: version)
+        }
+        if let faceRec = Globals.verid?.faceRecognition as? VerIDFaceRecognition {
+            UserDefaults.standard.authenticationThresholds = Dictionary(uniqueKeysWithValues: VerIDFaceTemplateVersion.all.map({ ($0, faceRec.authenticationScoreThreshold(faceTemplateVersion: $0).floatValue) }))
+        }
         self.updateFromUserDefaults()
     }
     
@@ -70,37 +78,91 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
         let poseCount: Int = UserDefaults.standard.poseCount
         let yawThreshold: Float = UserDefaults.standard.yawThreshold
         let pitchThreshold: Float = UserDefaults.standard.pitchThreshold
-        let authThreshold: Float = UserDefaults.standard.authenticationThreshold
-        self.poseCountCell.detailTextLabel?.text = String(format: "%d", poseCount)
-        self.yawThresholdCell.detailTextLabel?.text = String(format: "%.01f", yawThreshold)
-        self.pitchThresholdCell.detailTextLabel?.text = String(format: "%.01f", pitchThreshold)
-        self.authThresholdCell.detailTextLabel?.text = String(format: "%.01f", authThreshold)
-        let preset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThreshold: authThreshold)
-        switch preset {
-        case .low:
-            self.presetControl.selectedSegmentIndex = 0
-            self.delegate?.securitySettingsViewController(self, didSetProfile: "Low")
-        case .normal:
-            self.presetControl.selectedSegmentIndex = 1
-            self.delegate?.securitySettingsViewController(self, didSetProfile: "Normal")
-        case .high:
-            self.presetControl.selectedSegmentIndex = 2
-            self.delegate?.securitySettingsViewController(self, didSetProfile: "High")
-        default:
-            self.presetControl.selectedSegmentIndex = 3
-            self.delegate?.securitySettingsViewController(self, didSetProfile: "Custom")
+        let poses: [Bearing] = UserDefaults.standard.poses
+        
+        self.sections[0] = Section(id: .livenessDetection, footer: "Liveness detection prevents spoofing Ver-ID with a picture", cells: [
+            (title: "Pose count", value: String(format: "%d", poseCount)),
+            (title: "Yaw threshold", value: String(format: "%.01f", yawThreshold)),
+            (title: "Pitch threshold", value: String(format: "%.01f", pitchThreshold)),
+            (title: "Poses", value: poses.map({ $0.name }).joined(separator: ", "))
+        ])
+        
+        if let faceRec = Globals.verid?.faceRecognition as? VerIDFaceRecognition {
+            let authThresholds: [VerIDFaceTemplateVersion:Float] = Dictionary(uniqueKeysWithValues: VerIDFaceTemplateVersion.all.sorted(by: { $0.rawValue < $1.rawValue }).map({ ($0, faceRec.authenticationScoreThreshold(faceTemplateVersion: $0).floatValue) }))
+            
+            self.sections[1] = Section(id: .authentication, footer: "Increasing the threshold lowers the chance of false acceptance and increases the chance of false rejection", cells: authThresholds.map({ (title: "Score threshold (\($0.stringValue()))", value: String(format: "%.01f", $1)) }).sorted(by: { $0.title < $1.title }))
+            let preset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: poses)
+            switch preset {
+            case .low:
+                self.presetControl.selectedSegmentIndex = 0
+                self.delegate?.securitySettingsViewController(self, didSetProfile: "Low")
+            case .normal:
+                self.presetControl.selectedSegmentIndex = 1
+                self.delegate?.securitySettingsViewController(self, didSetProfile: "Normal")
+            case .high:
+                self.presetControl.selectedSegmentIndex = 2
+                self.delegate?.securitySettingsViewController(self, didSetProfile: "High")
+            default:
+                self.presetControl.selectedSegmentIndex = 3
+                self.delegate?.securitySettingsViewController(self, didSetProfile: "Custom")
+            }
         }
+        self.tableView.reloadData()
+    }
+    
+    private func sectionAtIndex(_ index: Int) -> Section? {
+        if index >= 0 && index < self.sections.count {
+            return self.sections[index]
+        }
+        return nil
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        if let section = self.sectionAtIndex(indexPath.section) {
+            cell.textLabel?.text = section.cells[indexPath.row].title
+            cell.detailTextLabel?.text = section.cells[indexPath.row].value
+        }
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sec = self.sectionAtIndex(section) else {
+            return nil
+        }
+        return sec.header
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard let sec = self.sectionAtIndex(section) else {
+            return nil
+        }
+        return sec.footer
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = self.sectionAtIndex(indexPath.section) else {
+            return
+        }
+        let cell = section.cells[indexPath.row]
+        switch section.id {
+        case .livenessDetection:
+            switch cell.title {
+            case "Pose count":
+                self.performSegue(withIdentifier: "poseCount", sender: nil)
+            case "Yaw threshold":
+                self.performSegue(withIdentifier: "yawThreshold", sender: nil)
+            case "Pitch threshold":
+                self.performSegue(withIdentifier: "pitchThreshold", sender: nil)
+            case "Poses":
+                self.performSegue(withIdentifier: "poses", sender: nil)
+            default:
+                return
+            }
+        case .authentication:
+            self.performSegue(withIdentifier: "authThreshold", sender: indexPath.row)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -157,10 +219,25 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
                 destination.selectedIndex = self.pitchThresholds.firstIndex(of: pitchThreshold)
                 destination.values = self.pitchThresholds.map{ String(format: "%.01f", $0) }
             case "authThreshold":
-                destination.title = "Authentication Threshold"
-                let authThreshold = UserDefaults.standard.authenticationThreshold
+                guard let index = sender as? Int else {
+                    return
+                }
+                let templateVersion = VerIDFaceTemplateVersion.all.sorted(by: { $0.rawValue < $1.rawValue })[index]
+                guard let authThreshold = (Globals.verid?.faceRecognition as? VerIDFaceRecognition)?.authenticationScoreThreshold(faceTemplateVersion: templateVersion).floatValue else {
+                    return
+                }
+                destination.title = self.titleOfThresholdSettingForTemplateVersion(templateVersion)
                 destination.selectedIndex = self.authThresholds.firstIndex(of: authThreshold)
                 destination.values = self.authThresholds.map{ String(format: "%.01f", $0) }
+            case "poses":
+                destination.title = "Poses"
+                destination.allowsMultipleSelection = true
+                for i in 0..<self.poses.count {
+                    if UserDefaults.standard.poses.contains(self.poses[i]) {
+                        destination.selectedIndices.insert(i)
+                    }
+                }
+                destination.values = self.poses.map({ $0.name })
             default:
                 return
             }
@@ -178,14 +255,47 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
             UserDefaults.standard.yawThreshold = self.yawThresholds[index]
         } else if valueSelectionViewController.title == "Pitch Threshold" {
             UserDefaults.standard.pitchThreshold = self.pitchThresholds[index]
-        } else if valueSelectionViewController.title == "Authentication Threshold" {
-            UserDefaults.standard.authenticationThreshold = self.authThresholds[index]
+        } else if valueSelectionViewController.title?.starts(with: "Authentication Threshold") == .some(true) {
+            for version in VerIDFaceTemplateVersion.all.sorted(by: { $0.rawValue < $1.rawValue }) {
+                if valueSelectionViewController.title == self.titleOfThresholdSettingForTemplateVersion(version) {
+                    (Globals.verid?.faceRecognition as? VerIDFaceRecognition)?.setAuthenticationScoreThreshold(NSNumber(value: self.authThresholds[index]), faceTemplateVersion: version)
+                }
+            }
+            if let faceRec = Globals.verid?.faceRecognition as? VerIDFaceRecognition {
+                UserDefaults.standard.authenticationThresholds = Dictionary(uniqueKeysWithValues: VerIDFaceTemplateVersion.all.map({ ($0, faceRec.authenticationScoreThreshold(faceTemplateVersion: $0).floatValue) }))
+            }
         }
         self.updateFromUserDefaults()
+    }
+    
+    func valueSelectionViewController(_ valueSelectionViewController: ValueSelectionViewController, didSelectValues values: [String], atIndices: [Int]) {
+        self.navigationController?.popViewController(animated: true)
+        if valueSelectionViewController.title == "Poses" {
+            UserDefaults.standard.poses = values.compactMap({ Bearing(name: $0) })
+        }
+        self.updateFromUserDefaults()
+    }
+    
+    private func titleOfThresholdSettingForTemplateVersion(_ templateVersion: VerIDFaceTemplateVersion) -> String {
+        "Authentication Threshold (\(templateVersion.stringValue()))"
     }
 
 }
 
 protocol SecuritySettingsDelegate: AnyObject {
     func securitySettingsViewController(_ securitySettingsViewController: SecuritySettingsViewController, didSetProfile profile: String)
+}
+
+fileprivate enum SectionId: String {
+    case livenessDetection = "Liveness Detection"
+    case authentication = "Authentication"
+}
+
+fileprivate struct Section {
+    let id: SectionId
+    var header: String {
+        self.id.rawValue
+    }
+    let footer: String
+    let cells: [(title: String, value: String)]
 }

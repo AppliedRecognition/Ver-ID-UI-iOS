@@ -90,6 +90,9 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
                 return
             }
             Globals.verid = verid
+            for (templateVersion, threshold) in UserDefaults.standard.authenticationThresholds {
+                (verid.faceRecognition as? VerIDFaceRecognition)?.setAuthenticationScoreThreshold(NSNumber(value: threshold), faceTemplateVersion: templateVersion)
+            }
             if Globals.isTesting, let users = try? verid.userManagement.users(), !users.isEmpty {
                 verid.userManagement.deleteUsers(users) { _ in
                     self.loadInitialViewController()

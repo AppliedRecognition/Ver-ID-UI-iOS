@@ -17,7 +17,6 @@
 		3B0E6F32272099670061A3A3 /* FaceDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F2C272099660061A3A3 /* FaceDetectionTests.swift */; };
 		3B0E6F33272099670061A3A3 /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F2D272099660061A3A3 /* SessionTests.swift */; };
 		3B0E6F34272099670061A3A3 /* FaceRecognitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F2E272099660061A3A3 /* FaceRecognitionTests.swift */; };
-		3B0E6F372720A0240061A3A3 /* FaceTemplateUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 3B0E6F362720A0240061A3A3 /* FaceTemplateUtility */; };
 		3B0E6F42272199970061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E6F41272199970061A3A3 /* license01-20210720ay-vh2ukei%2200-q08.nv */; };
 		3B0E6F442721A6CE0061A3A3 /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0E6F432721A6CE0061A3A3 /* DownloadOperation.swift */; };
 		3B2E36792628BEF50055FE28 /* VerIDUIResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B2E36582628BE6C0055FE28 /* VerIDUIResources.bundle */; };
@@ -125,7 +124,11 @@
 		3BB2046B221428B900B3B312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BB2046D221428B900B3B312 /* Main.storyboard */; };
 		3BB55B85252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB55B83252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift */; };
 		3BB55BA1252DCC9600D153A3 /* TestSessionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB55BA0252DCC9600D153A3 /* TestSessionFunctions.swift */; };
+		3BBCC19028CF6ADB00ECEA26 /* HeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCC18F28CF6ADB00ECEA26 /* HeadView.swift */; };
+		3BBCC19128CF9FC700ECEA26 /* head1.obj in Resources */ = {isa = PBXBuildFile; fileRef = 3BBCC18D28CF6A8900ECEA26 /* head1.obj */; };
+		3BBD2E0228EF3EB000DD2C39 /* FaceTemplateUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 3BBD2E0128EF3EB000DD2C39 /* FaceTemplateUtility */; };
 		3BC55B6C2236E37E00BCDD9D /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */; };
+		3BC7038728AA8FFF00C094EA /* FaceOvalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7038628AA8FFF00C094EA /* FaceOvalView.swift */; };
 		3BC884292894491F00C10CBE /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */; };
 		3BC8842A2894491F00C10CBE /* VerIDSerialization.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */; };
 		3BE9F36F220AF128002C11BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BE9F36E220AF128002C11BE /* Assets.xcassets */; };
@@ -334,7 +337,10 @@
 		3BB2046C221428B900B3B312 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BB55B83252DCB5D00D153A3 /* SessionDiagnosticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDiagnosticsViewController.swift; sourceTree = "<group>"; };
 		3BB55BA0252DCC9600D153A3 /* TestSessionFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionFunctions.swift; sourceTree = "<group>"; };
+		3BBCC18D28CF6A8900ECEA26 /* head1.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = head1.obj; sourceTree = "<group>"; };
+		3BBCC18F28CF6ADB00ECEA26 /* HeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadView.swift; sourceTree = "<group>"; };
 		3BC55B6B2236E37E00BCDD9D /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		3BC7038628AA8FFF00C094EA /* FaceOvalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceOvalView.swift; sourceTree = "<group>"; };
 		3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VerIDSerialization.xcframework; path = Frameworks/VerIDSerialization.xcframework; sourceTree = SOURCE_ROOT; };
 		3BE9F365220AF125002C11BE /* Ver-ID Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ver-ID Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BE9F36E220AF128002C11BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -364,6 +370,7 @@
 			files = (
 				3B0E6F23272098EC0061A3A3 /* VerIDUI.framework in Frameworks */,
 				ED5DE2927C7CF12C3A3EFF50 /* Pods_Ver_ID_VerIDUITests.framework in Frameworks */,
+				3BBD2E0228EF3EB000DD2C39 /* FaceTemplateUtility in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +378,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B0E6F372720A0240061A3A3 /* FaceTemplateUtility in Frameworks */,
 				6FA741F19BF3A00A6AF81A44 /* Pods_Ver_ID_VerIDUI.framework in Frameworks */,
 				3B34722D286C6CF900969D79 /* VerIDCore.xcframework in Frameworks */,
 			);
@@ -450,6 +456,7 @@
 		3B2E369A2628BFAE0055FE28 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3BBCC18D28CF6A8900ECEA26 /* head1.obj */,
 				3B2E369B2628BFAE0055FE28 /* Media.xcassets */,
 				3B2E369C2628BFAE0055FE28 /* Video */,
 				3B2E36B62628BFAE0055FE28 /* FaceDetectionAlertController.xib */,
@@ -542,6 +549,8 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3BBCC18F28CF6ADB00ECEA26 /* HeadView.swift */,
+				3BC7038628AA8FFF00C094EA /* FaceOvalView.swift */,
 				3BC884272894491F00C10CBE /* VerIDSerialization.xcframework */,
 				3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */,
 				3B51D30627C815A2008A97FE /* Version.xcconfig */,
@@ -737,6 +746,9 @@
 				3B0E6F25272098EC0061A3A3 /* PBXTargetDependency */,
 			);
 			name = VerIDUITests;
+			packageProductDependencies = (
+				3BBD2E0128EF3EB000DD2C39 /* FaceTemplateUtility */,
+			);
 			productName = VerIDUITests;
 			productReference = 3B0E6F1F272098EC0061A3A3 /* VerIDUITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -774,7 +786,6 @@
 			);
 			name = VerIDUI;
 			packageProductDependencies = (
-				3B0E6F362720A0240061A3A3 /* FaceTemplateUtility */,
 			);
 			productName = VerIDUI;
 			productReference = 3B326B1622089C88005DAE1E /* VerIDUI.framework */;
@@ -906,7 +917,7 @@
 			);
 			mainGroup = 3B326B0C22089C88005DAE1E;
 			packageReferences = (
-				3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */,
+				3BBD2E0028EF3EAF00DD2C39 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */,
 			);
 			productRefGroup = 3B326B1722089C88005DAE1E /* Products */;
 			projectDirPath = "";
@@ -940,6 +951,7 @@
 				3B2E36E02628BFAF0055FE28 /* VerIDViewController.xib in Resources */,
 				3B2E36D72628BFAF0055FE28 /* up_to_centre_3.mp4 in Resources */,
 				3B2E36E52628BFAF0055FE28 /* translations.py in Resources */,
+				3BBCC19128CF9FC700ECEA26 /* head1.obj in Resources */,
 				3B2E36D92628BFAF0055FE28 /* right_down_3.mp4 in Resources */,
 				3B2E36E22628BFAF0055FE28 /* vi.xml in Resources */,
 				3B2E36D32628BFAF0055FE28 /* registration_3.mp4 in Resources */,
@@ -1194,6 +1206,8 @@
 				3B6A70ED2208CCCF00B137C4 /* VerIDViewControllerDelegate.swift in Sources */,
 				3B6A70DA2208BC3C00B137C4 /* TipsViewController.swift in Sources */,
 				3BEDC48B24DD86B100CFB42B /* VerIDSession.swift in Sources */,
+				3BC7038728AA8FFF00C094EA /* FaceOvalView.swift in Sources */,
+				3BBCC19028CF6ADB00ECEA26 /* HeadView.swift in Sources */,
 				3B749B4726D9680A00AFC328 /* VerIDUISessionError.swift in Sources */,
 				3BACF2BF245384C0000FA3A7 /* SpeechDelegate.swift in Sources */,
 				3B6A70E82208BD8400B137C4 /* CameraPreviewView.swift in Sources */,
@@ -1836,7 +1850,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */ = {
+		3BBD2E0028EF3EAF00DD2C39 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppliedRecognition/Face-Template-Utility-Apple";
 			requirement = {
@@ -1847,9 +1861,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3B0E6F362720A0240061A3A3 /* FaceTemplateUtility */ = {
+		3BBD2E0128EF3EB000DD2C39 /* FaceTemplateUtility */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3B0E6F352720A0240061A3A3 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */;
+			package = 3BBD2E0028EF3EAF00DD2C39 /* XCRemoteSwiftPackageReference "Face-Template-Utility-Apple" */;
 			productName = FaceTemplateUtility;
 		};
 /* End XCSwiftPackageProductDependency section */

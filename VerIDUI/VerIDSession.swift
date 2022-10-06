@@ -68,6 +68,7 @@ import os
     
     private var session: VerIDCore.Session?
     private let sessionPrompts: SessionPrompts
+    private var hapticFeedbackGenerator: UINotificationFeedbackGenerator?
     
     // MARK: - Constructor
 
@@ -108,10 +109,14 @@ import os
                 self.videoWriterService = nil
             }
             do {
+                self.hapticFeedbackGenerator = UINotificationFeedbackGenerator()
+                self.hapticFeedbackGenerator?.prepare()
                 let viewController = try self.sessionViewControllersFactory.makeVerIDViewController()
                 viewController.delegate = self
                 viewController.sessionSettings = self.settings
                 viewController.cameraPosition = self.delegate?.cameraPositionForSession?(self) ?? .front
+                viewController.videoWriter = self.videoWriterService
+                viewController.shouldDisplayCGHeadGuidance = self.delegate?.shouldDisplayCGHeadGuidanceInSession?(self) ?? true
                 self.presentVerIDViewController(viewController)
                 self.viewController = viewController
                 let imagePublisher = try self.imageObservable(for: viewController)
@@ -209,10 +214,12 @@ import os
     ///
     /// - Parameter callback: Callback to be issued when views are closed
     @objc private func closeViews(callback: @escaping () -> Void) {
+        self.hapticFeedbackGenerator = nil
         if let alert = self.alertController {
             alert.dismiss(animated: false, completion: nil)
             self.alertController = nil
         }
+        self.speechSynthesizer.stopSpeaking(at: .word)
         if let viewDelegate = self.viewDelegate {
             viewDelegate.closeViews(callback: callback)
             return
@@ -221,7 +228,6 @@ import os
             callback()
             return
         }
-        self.speechSynthesizer.stopSpeaking(at: .word)
         self.navigationController = nil
         navController.dismiss(animated: true) {
             callback()
@@ -281,6 +287,10 @@ import os
             self.speak(toSay, language: language)
         }
         self.viewController?.addFaceDetectionResult?(result, prompt: prompt)
+        if result.status == .faceAligned {
+            self.hapticFeedbackGenerator?.notificationOccurred(.success)
+            self.hapticFeedbackGenerator?.prepare()
+        }
     }
     
     public func session(_ session: VerIDCore.Session, didProduceFaceCapture faceCapture: FaceCapture) {
@@ -293,17 +303,26 @@ import os
         guard let session = self.session, let viewController = self.viewController else {
             return
         }
+        viewController.clearOverlays?()
         self.presentVerIDViewController(viewController)
         session.delegate = self
         session.start()
     }
     
     private func finishWithResult(_ result: VerIDSessionResult) {
-        self.viewController = nil
         DispatchQueue.main.async {
-            self.closeViews {
-                self.delegate?.didFinishSession(self, withResult: result)
+            if let willFinish = self.viewController?.willFinishWithResult {
+                willFinish(result) {
+                    self.closeViews {
+                        self.delegate?.didFinishSession(self, withResult: result)
+                    }
+                }
+            } else {
+                self.closeViews {
+                    self.delegate?.didFinishSession(self, withResult: result)
+                }
             }
+            self.viewController = nil
         }
     }
     

@@ -52,12 +52,7 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
     }
     
     open func makeVerIDViewController() throws -> UIViewController & VerIDViewControllerProtocol {
-        let viewController: VerIDViewController
-        if self.settings is RegistrationSessionSettings {
-            viewController = VerIDRegistrationViewController()
-        } else {
-            viewController = VerIDViewController(nibName: nil)
-        }
+        let viewController: VerIDViewController = VerIDViewController(nibName: nil)
         viewController.translatedStrings = self.translatedStrings
         viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: self.translatedStrings["Resume session"], style: .plain, target: nil, action: nil)
         return viewController

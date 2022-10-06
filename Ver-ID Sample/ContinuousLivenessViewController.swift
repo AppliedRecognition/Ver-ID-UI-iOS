@@ -23,7 +23,7 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
     @IBOutlet var successLabel: UILabel!
     
     override var captureDevice: AVCaptureDevice! {
-        return AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
+        return UserDefaults.standard.useBackCamera ? AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) : AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
     }
 
     override func viewDidLoad() {
@@ -137,6 +137,10 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
                 self.startSession()
             })
         })
+    }
+    
+    func cameraPositionForSession(_ session: VerIDSession) -> AVCaptureDevice.Position {
+        UserDefaults.standard.useBackCamera ? .back : .front
     }
     
     // MARK: -

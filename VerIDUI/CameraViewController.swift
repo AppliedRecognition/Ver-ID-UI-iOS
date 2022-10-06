@@ -15,38 +15,14 @@ import AVFoundation
     /// Translated strings
     public var translatedStrings: TranslatedStrings?
     
-    let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
+    public let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
     private let captureSession = AVCaptureSession()
     private var setupResult: SessionSetupResult = .success
     private(set) var isSessionRunning = false
-    private(set) internal var cameraPreviewView: CameraPreviewView!
+    private(set) public var cameraPreviewView: CameraPreviewView!
     
     private enum SessionSetupResult {
         case success, notAuthorized, configurationFailed
-    }
-    
-    private var observeSession: Bool = false {
-        didSet {
-            self.captureSessionQueue.async {
-                if oldValue != self.observeSession && self.observeSession {
-                    self.captureSession.addObserver(self, forKeyPath: "running", options: .new, context: &self.sessionRunningObserveContext)
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionRuntimeError), name: Notification.Name("AVCaptureSessionRuntimeErrorNotification"), object: self.captureSession)
-                    
-                    /*
-                     A session can only run when the app is full screen. It will be interrupted
-                     in a multi-app layout, introduced in iOS 9, see also the documentation of
-                     AVCaptureSessionInterruptionReason. Add observers to handle these session
-                     interruptions and show a preview is paused message. See the documentation
-                     of AVCaptureSessionWasInterruptedNotification for other interruption reasons.
-                     */
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionWasInterrupted), name: Notification.Name("AVCaptureSessionWasInterruptedNotification"), object: self.captureSession)
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.sessionInterruptionEnded), name: Notification.Name("AVCaptureSessionInterruptionEndedNotification"), object: self.captureSession)
-                } else if oldValue != self.observeSession {
-                    NotificationCenter.default.removeObserver(self)
-                    self.captureSession.removeObserver(self, forKeyPath: "running", context: &self.sessionRunningObserveContext)
-                }
-            }
-        }
     }
     
     /// Override this if you want to use other than than the back (selfie) camera
@@ -68,26 +44,39 @@ import AVFoundation
     open var metadataOutput: AVCaptureMetadataOutput?
     
     public var avCaptureVideoOrientation: AVCaptureVideoOrientation {
-        switch UIApplication.shared.statusBarOrientation {
-        case .portraitUpsideDown:
-            return .portraitUpsideDown
-        case .landscapeLeft:
-            return .landscapeLeft
-        case .landscapeRight:
-            return .landscapeRight
-        default:
-            return .portrait
+        if #available(iOS 13, *) {
+            if let orientation = self.view.window?.windowScene?.interfaceOrientation {
+                switch orientation {
+                case .portraitUpsideDown:
+                    return .portraitUpsideDown
+                case .landscapeLeft:
+                    return .landscapeLeft
+                case .landscapeRight:
+                    return .landscapeRight
+                default:
+                    return .portrait
+                }
+            } else {
+                return .portrait
+            }
+        } else {
+            switch UIApplication.shared.statusBarOrientation {
+            case .portraitUpsideDown:
+                return .portraitUpsideDown
+            case .landscapeLeft:
+                return .landscapeLeft
+            case .landscapeRight:
+                return .landscapeRight
+            default:
+                return .portrait
+            }
         }
     }
     
-    private (set) internal var imageOrientation: CGImagePropertyOrientation = .right
+    private (set) public var imageOrientation: CGImagePropertyOrientation = .right
     
     var videoGravity: AVLayerVideoGravity {
         return .resizeAspectFill
-    }
-    
-    deinit {
-        self.observeSession = false
     }
 
     override open func viewDidLoad() {
@@ -95,18 +84,13 @@ import AVFoundation
         self.cameraPreviewView = CameraPreviewView(frame: CGRect(origin: CGPoint.zero, size: self.view.frame.size))
         self.cameraPreviewView.isHidden = true
         self.cameraPreviewView.session = self.captureSession
-        self.view.insertSubview(self.cameraPreviewView, at: 0)
+        let cameraPreviewParent = UIView(frame: CGRect(origin: CGPoint.zero, size: self.view.frame.size))
+        cameraPreviewParent.backgroundColor = .red
+        cameraPreviewParent.addSubview(self.cameraPreviewView)
+        cameraPreviewParent.isHidden = true
+        self.view.insertSubview(cameraPreviewParent, at: 0)
         
-        switch UIApplication.shared.statusBarOrientation {
-        case .portraitUpsideDown:
-            self.imageOrientation = .left
-        case .landscapeLeft:
-            self.imageOrientation = .up
-        case .landscapeRight:
-            self.imageOrientation = .down
-        default:
-            self.imageOrientation = .right
-        }
+        self.updateImageOrientation()
         
         switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
         case .authorized:
@@ -132,6 +116,8 @@ import AVFoundation
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.updateImageOrientation()
+        self.updateVideoRotation()
         self.cameraPreviewView.frame.size = self.view.frame.size
     }
     
@@ -143,22 +129,13 @@ import AVFoundation
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animateAlongsideTransition(in: self.view, animation: nil, completion: { context in
             if !context.isCancelled {
-                switch UIApplication.shared.statusBarOrientation {
-                case .portraitUpsideDown:
-                    self.imageOrientation = .left
-                case .landscapeLeft:
-                    self.imageOrientation = .up
-                case .landscapeRight:
-                    self.imageOrientation = .down
-                default:
-                    self.imageOrientation = .right
-                }
+                self.updateImageOrientation()
                 if let preview = self.cameraPreviewView {
                     preview.frame.size = size
                     preview.videoPreviewLayer.videoGravity = self.videoGravity
                 }
                 self.updateVideoRotation()
-                if let videoPreviewLayerConnection = self.cameraPreviewView.videoPreviewLayer.connection {
+                if let videoPreviewLayerConnection = self.cameraPreviewView.videoPreviewLayer.connection, videoPreviewLayerConnection.isVideoOrientationSupported {
                     videoPreviewLayerConnection.videoOrientation = self.avCaptureVideoOrientation
                 }
             }
@@ -168,19 +145,46 @@ import AVFoundation
     private var _videoRotation: CGFloat = 0
     private let videoRotationLock = DispatchSemaphore(value: 1)
     
+    private func updateImageOrientation() {
+        let orientation: UIInterfaceOrientation
+        if #available(iOS 13, *) {
+            orientation = self.view.window?.windowScene?.interfaceOrientation ?? UIApplication.shared.statusBarOrientation
+        } else {
+            orientation = UIApplication.shared.statusBarOrientation
+        }
+        switch (orientation, self.captureDevice.position == .front) {
+        case (.portraitUpsideDown, true):
+            self.imageOrientation = .leftMirrored
+        case (.portraitUpsideDown, false):
+            self.imageOrientation = .left
+        case (.landscapeLeft, true):
+            self.imageOrientation = .upMirrored
+        case (.landscapeLeft, false):
+            self.imageOrientation = .up
+        case (.landscapeRight, true):
+            self.imageOrientation = .downMirrored
+        case (.landscapeRight, false):
+            self.imageOrientation = .down
+        case (.portrait, true):
+            self.imageOrientation = .rightMirrored
+        default:
+            self.imageOrientation = .right
+        }
+    }
+    
     private func updateVideoRotation() {
         let rotation: CGFloat
-        switch self.avCaptureVideoOrientation {
-        case .portrait:
+        switch (self.avCaptureVideoOrientation, self.captureDevice.position) {
+        case (.portrait,.front), (.portrait,.back), (.portrait,.unspecified):
             rotation = 90
-        case .portraitUpsideDown:
+        case (.portraitUpsideDown, .front), (.portraitUpsideDown, .back), (.portraitUpsideDown, .unspecified):
             rotation = 270
-        case .landscapeLeft:
+        case (.landscapeLeft, .back), (.landscapeRight, .front), (.landscapeLeft, .unspecified):
             rotation = 180
-        case .landscapeRight:
+        case (.landscapeRight, .back), (.landscapeLeft, .front), (.landscapeRight, .unspecified):
             rotation = 0
         @unknown default:
-            fatalError()
+            rotation = 0
         }
         videoRotationLock.wait()
         defer {
@@ -189,7 +193,7 @@ import AVFoundation
         _videoRotation = rotation
     }
     
-    var videoRotation: CGFloat {
+    public var videoRotation: CGFloat {
         videoRotationLock.wait()
         defer {
             videoRotationLock.signal()
@@ -207,8 +211,6 @@ import AVFoundation
             self.captureSession.commitConfiguration()
         }
         
-        self.captureSession.sessionPreset = AVCaptureSession.Preset.photo
-        
         do {
             guard let camera = self.captureDevice else {
                 self.setupResult = .configurationFailed
@@ -224,7 +226,10 @@ import AVFoundation
             }
             self.captureSession.addInput(videoDeviceInput)
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let `self` = self, self.isViewLoaded else {
+                    return
+                }
                 self.cameraPreviewView.videoPreviewLayer.videoGravity = self.videoGravity
                 self.cameraPreviewView.videoPreviewLayer.connection?.videoOrientation = self.avCaptureVideoOrientation
                 self.updateVideoRotation()
@@ -265,11 +270,14 @@ import AVFoundation
     }
     
     final public func startCamera() {
-        self.captureSessionQueue.async {
+        self.captureSessionQueue.async { [weak self] in
+            guard let `self` = self else {
+                return
+            }
             switch self.setupResult {
             case .success:
                 // Only setup observers and start the session running if setup succeeded.
-                self.observeSession = true
+                self.startObservingCameraSession()
                 do {
                     try self.captureDevice.lockForConfiguration()
                     if self.captureDevice.isExposureModeSupported(AVCaptureDevice.ExposureMode.continuousAutoExposure) {
@@ -289,17 +297,26 @@ import AVFoundation
                 self.captureDevice.unlockForConfiguration()
                 self.captureSession.startRunning()
                 self.isSessionRunning = self.captureSession.isRunning
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self, self.isViewLoaded else {
+                        return
+                    }
                     self.cameraBecameAvailable()
                 }
             case .notAuthorized:
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self, self.isViewLoaded else {
+                        return
+                    }
                     let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as! String
                     self.cameraBecameUnavailable(reason: "\(appName) doesn't have permission to use the camera, please change privacy settings.")
                 }
                 
             case .configurationFailed:
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self, self.isViewLoaded else {
+                        return
+                    }
                     self.cameraBecameUnavailable(reason: "Unable to configure camera session.")
                 }
             }
@@ -307,11 +324,14 @@ import AVFoundation
     }
     
     final public func stopCamera() {
-        self.captureSessionQueue.async {
+        self.captureSessionQueue.async { [weak self] in
+            guard let `self` = self else {
+                return
+            }
             if self.setupResult == .success {
                 self.captureSession.stopRunning()
                 self.isSessionRunning = self.captureSession.isRunning
-                self.observeSession = false
+                self.stopObservingCameraSession()
             }
         }
     }
@@ -328,7 +348,7 @@ import AVFoundation
     }
     
     private func captureSessionInterrupted() {
-        self.cameraPreviewView.isHidden = true
+        self.cameraPreviewView?.isHidden = true
     }
     
     private func resumeInterruptedCaptureSession() {
@@ -373,29 +393,45 @@ import AVFoundation
     }
     
     open func cameraBecameAvailable() {
+        self.cameraPreviewView.superview?.isHidden = false
         self.cameraPreviewView.isHidden = false
     }
     
     // MARK: KVO and Notifications
     
-    private var sessionRunningObserveContext = 0
+    private var captureSessionObservation: NSKeyValueObservation?
     
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &self.sessionRunningObserveContext {
-            let newValue = change?[.newKey] as AnyObject?
-            guard let isSessionRunning = newValue?.boolValue else {
+    private func startObservingCameraSession() {
+        self.captureSessionObservation = self.captureSession.observe(\.isRunning, options: [.new]) { session, change in
+            guard let isSessionRunning = change.newValue else {
                 return
             }
-            
             DispatchQueue.main.async { [weak self] in
-                if isSessionRunning {
-                    self?.cameraBecameAvailable()
+                guard let `self` = self, self.isViewLoaded else {
+                    return
                 }
-                self?.isSessionRunning = isSessionRunning
+                if isSessionRunning {
+                    self.cameraBecameAvailable()
+                }
+                self.isSessionRunning = isSessionRunning
             }
-        } else {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.sessionRuntimeError), name: Notification.Name("AVCaptureSessionRuntimeErrorNotification"), object: self.captureSession)
+        
+        /*
+         A session can only run when the app is full screen. It will be interrupted
+         in a multi-app layout, introduced in iOS 9, see also the documentation of
+         AVCaptureSessionInterruptionReason. Add observers to handle these session
+         interruptions and show a preview is paused message. See the documentation
+         of AVCaptureSessionWasInterruptedNotification for other interruption reasons.
+         */
+        NotificationCenter.default.addObserver(self, selector: #selector(self.sessionWasInterrupted), name: Notification.Name("AVCaptureSessionWasInterruptedNotification"), object: self.captureSession)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.sessionInterruptionEnded), name: Notification.Name("AVCaptureSessionInterruptionEndedNotification"), object: self.captureSession)
+    }
+    
+    private func stopObservingCameraSession() {
+        self.captureSessionObservation = nil
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func sessionRuntimeError(notification: NSNotification) {

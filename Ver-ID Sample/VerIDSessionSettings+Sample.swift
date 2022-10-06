@@ -16,6 +16,7 @@ extension RegistrationSessionSettings {
         yawThreshold = CGFloat(userDefaults.yawThreshold)
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
         faceCaptureCount = userDefaults.registrationFaceCount
+        bearingsToRegister = faceCaptureCount == 1 ? [.straight] : [.straight,.left,.right]
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
         isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
     }
@@ -28,6 +29,7 @@ extension AuthenticationSessionSettings {
         yawThreshold = CGFloat(userDefaults.yawThreshold)
         pitchThreshold = CGFloat(userDefaults.pitchThreshold)
         faceCaptureCount = userDefaults.poseCount
+        bearings = Set(userDefaults.poses)
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
         isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
     }

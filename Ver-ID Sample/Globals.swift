@@ -14,7 +14,8 @@ struct Globals {
     static var verid: VerID?
     
     static func updateProfilePictureFromSessionResult(_ result: VerIDSessionResult) {
-        if result.error == nil, let profilePictureURL = Globals.profilePictureURL, let faceImage = result.faceCaptures.first(where: { $0.bearing == .straight })?.faceImage {
+        if result.error == nil, let profilePictureURL = Globals.profilePictureURL, let capture = result.faceCaptures.first(where: { $0.bearing == .straight }) {
+            let faceImage = ImageUtil.image(capture.image, centeredOnFace: capture.face)
             if let croppedImageData = faceImage.jpegData(compressionQuality: 1.0) {
                 try? croppedImageData.write(to: profilePictureURL)
             }

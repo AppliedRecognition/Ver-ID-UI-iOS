@@ -90,8 +90,13 @@ import AVFoundation
             if let videoURL = self.sessionResultPackage.result.videoURL {
                 sections.append(("Video",[VideoCellData(url: videoURL)]))
             }
-            let images: [UIImage] = self.sessionResultPackage.result.faceCaptures.map({ $0.faceImage })
-            if !images.isEmpty {
+            if !self.sessionResultPackage.result.faceCaptures.isEmpty {
+                let images: [UIImage]
+                if self.sessionResultPackage.result.faceCaptures.count > 1 {
+                    images = self.sessionResultPackage.result.faceCaptures.map({ $0.faceImage })
+                } else {
+                    images = self.sessionResultPackage.result.faceCaptures.map({ ImageUtil.image($0.image, centeredAndCroppedVerticallyToFace: $0.face )})
+                }
                 sections.append(("Faces",[FacesCellData(images: images)]))
             }
             var resultData: [CellData] = [ValueCellData(title: "Succeeded", value: self.sessionResultPackage.result.error == nil ? "Yes" : "No")]
@@ -113,6 +118,33 @@ import AVFoundation
                     resultData.append(ValueCellData(title: "Face template version", value: faceTemplateVersion.stringValue()))
                 }
             }
+            if let highestSpoofConfidence: Float = self.sessionResultPackage.result.spoofConfidenceScore {
+                resultData.append(ValueCellData(title: "Spoof confidence score", value: String(format: "%.02f", highestSpoofConfidence)))
+            }
+            if !self.sessionResultPackage.result.faceCaptures.isEmpty {
+                let screenArtifactConfidenceScores = self.sessionResultPackage.result.faceCaptures.compactMap({
+                    if let confidence = $0.diagnosticInfo.screenArtifactConfidence {
+                        return String(format: "%.02f", confidence)
+                    }
+                    return nil
+                })
+                if screenArtifactConfidenceScores.count > 1 {
+                    resultData.append(ValueCellData(title: "Screen artifact scores", value: screenArtifactConfidenceScores.joined(separator: ", ")))
+                } else if !screenArtifactConfidenceScores.isEmpty {
+                    resultData.append(ValueCellData(title: "Screen artifact score", value: screenArtifactConfidenceScores[0]))
+                }
+                let maskScores = self.sessionResultPackage.result.faceCaptures.compactMap({
+                    if let score = $0.diagnosticInfo.faceCoveringScore {
+                        return String(format: "%.02f", score)
+                    }
+                    return nil
+                })
+                if maskScores.count > 1 {
+                    resultData.append(ValueCellData(title: "Face covering scores", value: maskScores.joined(separator: ", ")))
+                } else if !maskScores.isEmpty {
+                    resultData.append(ValueCellData(title: "Face covering score", value: maskScores[0]))
+                }
+            }
             sections.append(("Session Result",resultData))
             
             var settingsArray: [ValueCellData] = []
@@ -128,6 +160,18 @@ import AVFoundation
                 settingsArray.append(ValueCellData(title: "Pause duration", value: pause))
             }
             settingsArray.append(ValueCellData(title: "Face capture face count", value: "\(self.sessionResultPackage.settings.faceCaptureFaceCount)"))
+            settingsArray.append(ValueCellData(title: "Screen artifact detection enabled", value: self.sessionResultPackage.settings.isScreenArtifactDetectionEnabled ? "Yes" : "No"))
+            if self.sessionResultPackage.settings.isScreenArtifactDetectionEnabled {
+                settingsArray.append(ValueCellData(title: "Screen artifact confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.screenArtifactConfidenceThreshold)))
+            }
+            settingsArray.append(ValueCellData(title: "Spoof detection enabled", value: self.sessionResultPackage.settings.isSpoofDetectionEnabled ? "Yes" : "No"))
+            if self.sessionResultPackage.settings.isSpoofDetectionEnabled {
+                settingsArray.append(ValueCellData(title: "Spoof confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.spoofConfidenceThreshold)))
+            }
+            settingsArray.append(ValueCellData(title: "Face covering detection enabled", value: self.sessionResultPackage.settings.isFaceCoveringDetectionEnabled ? "Yes" : "No"))
+            if self.sessionResultPackage.settings.isFaceCoveringDetectionEnabled {
+                settingsArray.append(ValueCellData(title: "Face covering confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.faceCoveringConfidenceThreshold)))
+            }
             sections.append(("Session Settings", settingsArray))
             
             var environmentArray: [ValueCellData] = [
@@ -191,7 +235,7 @@ import AVFoundation
         case .video:
             return 300
         case .faces:
-            return 100
+            return 200
         default:
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
