@@ -119,7 +119,7 @@ import AVFoundation
                 }
             }
             if let highestSpoofConfidence: Float = self.sessionResultPackage.result.spoofConfidenceScore {
-                resultData.append(ValueCellData(title: "Spoof confidence score", value: String(format: "%.02f", highestSpoofConfidence)))
+                resultData.append(ValueCellData(title: "Spoof confidence score (object)", value: String(format: "%.02f", highestSpoofConfidence)))
             }
             if !self.sessionResultPackage.result.faceCaptures.isEmpty {
                 let screenArtifactConfidenceScores = self.sessionResultPackage.result.faceCaptures.compactMap({
@@ -129,9 +129,9 @@ import AVFoundation
                     return nil
                 })
                 if screenArtifactConfidenceScores.count > 1 {
-                    resultData.append(ValueCellData(title: "Screen artifact scores", value: screenArtifactConfidenceScores.joined(separator: ", ")))
+                    resultData.append(ValueCellData(title: "Spoof confidence scores (screen)", value: screenArtifactConfidenceScores.joined(separator: ", ")))
                 } else if !screenArtifactConfidenceScores.isEmpty {
-                    resultData.append(ValueCellData(title: "Screen artifact score", value: screenArtifactConfidenceScores[0]))
+                    resultData.append(ValueCellData(title: "Spoof confidence score (screen)", value: screenArtifactConfidenceScores[0]))
                 }
                 let maskScores = self.sessionResultPackage.result.faceCaptures.compactMap({
                     if let score = $0.diagnosticInfo.faceCoveringScore {
@@ -140,9 +140,9 @@ import AVFoundation
                     return nil
                 })
                 if maskScores.count > 1 {
-                    resultData.append(ValueCellData(title: "Face covering scores", value: maskScores.joined(separator: ", ")))
+                    resultData.append(ValueCellData(title: "Face covering confidence scores", value: maskScores.joined(separator: ", ")))
                 } else if !maskScores.isEmpty {
-                    resultData.append(ValueCellData(title: "Face covering score", value: maskScores[0]))
+                    resultData.append(ValueCellData(title: "Face covering confidence score", value: maskScores[0]))
                 }
             }
             sections.append(("Session Result",resultData))
