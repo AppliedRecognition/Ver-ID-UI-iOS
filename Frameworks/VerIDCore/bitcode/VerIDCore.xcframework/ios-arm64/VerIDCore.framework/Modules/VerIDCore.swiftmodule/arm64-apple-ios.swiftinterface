@@ -735,6 +735,7 @@ public enum VerIDImageWriterServiceError : Swift.Error {
   public func safeAssignFaces(_ faces: [VerIDCore.Recognizable], to user: Swift.String, completion: @escaping VerIDCore.UserManagementUtilities.ErrorCallback)
   public func safeAssignFaces(_ faces: [VerIDCore.Recognizable], to user: Swift.String) throws
   public func analyzeUserManagement(completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserManagementAnalysis], Swift.Error>) -> Swift.Void)
+  public func findAvailableFaceTemplateVersions() throws -> Swift.Set<VerIDCore.VerIDFaceTemplateVersion>
   @objc deinit
 }
 public struct UserManagementAnalysis {
