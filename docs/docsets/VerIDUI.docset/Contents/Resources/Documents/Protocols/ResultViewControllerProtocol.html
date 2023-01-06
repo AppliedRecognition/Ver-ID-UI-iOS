@@ -17,7 +17,7 @@
     <a title="ResultViewControllerProtocol Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">VerIDUI 2.6.0 Docs</a></p>
+        <p><a href="../index.html">VerIDUI 2.7.0 Docs</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -40,6 +40,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Classes/VerIDSession.html">VerIDSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/VerIDSession/SessionError.html">– SessionError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
@@ -94,16 +97,40 @@
             <a href="../Other%20Classes.html">Other Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)FaceOvalLayer">FaceOvalLayer</a>
+                <a href="../Classes/CameraPreviewView.html">CameraPreviewView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FaceOvalLayer.html">FaceOvalLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FaceOvalView.html">FaceOvalView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/FailureViewController.html">FailureViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/HeadView.html">HeadView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ResultViewController.html">ResultViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/SessionDiagnosticsViewController.html">SessionDiagnosticsViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/SuccessViewController.html">SuccessViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TipPageViewController.html">TipPageViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/TipsViewController.html">TipsViewController</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Other%20Classes.html#/c:@M@VerIDUI@objc(cs)VerIDRegistrationViewController">VerIDRegistrationViewController</a>
+                <a href="../Classes/VerIDRegistrationViewController.html">VerIDRegistrationViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/VerIDSessionViewControllersFactory.html">VerIDSessionViewControllersFactory</a>
               </li>
             </ul>
           </li>
@@ -113,6 +140,23 @@
               <li class="nav-group-task">
                 <a href="../Enums/FaceDetectionAlertControllerAction.html">FaceDetectionAlertControllerAction</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VerIDSessionViewControllersFactoryError.html">VerIDSessionViewControllersFactoryError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VerIDUISessionError.html">VerIDUISessionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ImagePublisher.html">ImagePublisher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SessionDiagnosticsViewControllerDelegate.html">SessionDiagnosticsViewControllerDelegate</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -121,14 +165,6 @@
         <section>
           <section class="section">
             <h1>ResultViewControllerProtocol</h1>
-              <div class="declaration">
-                <div class="language">
-                  
-                  <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ResultViewControllerProtocol</span></code></pre>
-
-                </div>
-              </div>
             <p>Protocol for view controller that shows the results of Ver-ID sessions</p>
 
           </section>
@@ -138,9 +174,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@VerIDUI@objc(pl)ResultViewControllerProtocol(py)delegate"></a>
+                    <a name="/"></a>
                     <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@VerIDUI@objc(pl)ResultViewControllerProtocol(py)delegate">delegate</a>
+                    <a class="token" href="#/">delegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -151,15 +187,6 @@
                         <p>Result view controller delegate</p>
 
                       </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ResultViewControllerDelegate.html">ResultViewControllerDelegate</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
                     </section>
                   </div>
                 </li>
@@ -168,7 +195,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external noopener">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2022-06-29)</p>
+          <p>&copy; 2022 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external noopener">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2022-10-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

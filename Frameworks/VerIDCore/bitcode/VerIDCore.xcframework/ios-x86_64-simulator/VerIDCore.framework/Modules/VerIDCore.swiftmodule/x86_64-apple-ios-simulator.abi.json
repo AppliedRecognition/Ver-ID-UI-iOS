@@ -24261,6 +24261,36 @@
               "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "findAvailableFaceTemplateVersions",
+            "printedName": "findAvailableFaceTemplateVersions()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Set",
+                "printedName": "Swift.Set<VerIDCore.VerIDFaceTemplateVersion>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  }
+                ],
+                "usr": "s:Sh"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore23UserManagementUtilitiesC33findAvailableFaceTemplateVersionsShySo0a6IDFaceI7VersionVGyKF",
+            "mangledName": "$s9VerIDCore23UserManagementUtilitiesC33findAvailableFaceTemplateVersionsShySo0a6IDFaceI7VersionVGyKF",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -52146,14 +52176,14 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
       "kind": "FloatLiteral",
-      "offset": 1086,
+      "offset": 530,
       "length": 3,
       "value": "4.5"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
       "kind": "FloatLiteral",
-      "offset": 1194,
+      "offset": 1105,
       "length": 3,
       "value": "4.5"
     },
@@ -52162,7 +52192,7 @@
       "kind": "FloatLiteral",
       "offset": 1213,
       "length": 3,
-      "value": "4.8"
+      "value": "4.5"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
@@ -52174,14 +52204,28 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
       "kind": "FloatLiteral",
-      "offset": 1369,
+      "offset": 1251,
+      "length": 3,
+      "value": "4.8"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
+      "kind": "FloatLiteral",
+      "offset": 1270,
+      "length": 3,
+      "value": "4.8"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
+      "kind": "FloatLiteral",
+      "offset": 1407,
       "length": 3,
       "value": "5.4"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
       "kind": "IntegerLiteral",
-      "offset": 1736,
+      "offset": 1774,
       "length": 2,
       "value": "10"
     },
@@ -54372,21 +54416,21 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceCapture.swift",
       "kind": "IntegerLiteral",
-      "offset": 1192,
+      "offset": 1359,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceCapture.swift",
       "kind": "IntegerLiteral",
-      "offset": 1220,
+      "offset": 1387,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceCapture.swift",
       "kind": "Array",
-      "offset": 1493,
+      "offset": 1660,
       "length": 2,
       "value": "[]"
     },

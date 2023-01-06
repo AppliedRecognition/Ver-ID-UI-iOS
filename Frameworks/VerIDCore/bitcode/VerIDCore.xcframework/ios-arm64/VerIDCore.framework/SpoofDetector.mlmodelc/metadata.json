@@ -1,6 +1,6 @@
 [
   {
-    "shortDescription" : "yolov5",
+    "shortDescription" : "Spoof Object Detector (YOLOv5 based)",
     "metadataOutputVersion" : "3.0",
     "outputSchema" : [
       {
@@ -28,13 +28,14 @@
         "shortDescription" : "Boxes × [x, y, width, height] (relative to image size)"
       }
     ],
-    "version" : "1.0",
+    "version" : "1.0.6",
     "modelParameters" : [
 
     ],
-    "author" : "Leon De Andrade",
+    "author" : "David Thielke (PT to CoreML conversion from Leon De Andrade)",
     "specificationVersion" : 4,
     "storagePrecision" : "Float32",
+    "license" : "ARC Restricted",
     "computePrecision" : "Float16",
     "isUpdatable" : "0",
     "availability" : {

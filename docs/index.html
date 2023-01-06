@@ -16,7 +16,7 @@
     <a title="VerIDUI  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">VerIDUI 2.6.0 Docs</a></p>
+        <p><a href="index.html">VerIDUI 2.7.0 Docs</a></p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -39,6 +39,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/VerIDSession.html">VerIDSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/VerIDSession/SessionError.html">– SessionError</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a>
@@ -93,16 +96,40 @@
             <a href="Other%20Classes.html">Other Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Other%20Classes.html#/c:@M@VerIDUI@objc(cs)FaceOvalLayer">FaceOvalLayer</a>
+                <a href="Classes/CameraPreviewView.html">CameraPreviewView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FaceOvalLayer.html">FaceOvalLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FaceOvalView.html">FaceOvalView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FailureViewController.html">FailureViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/HeadView.html">HeadView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ResultViewController.html">ResultViewController</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/SessionDiagnosticsViewController.html">SessionDiagnosticsViewController</a>
               </li>
               <li class="nav-group-task">
+                <a href="Classes/SuccessViewController.html">SuccessViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TipPageViewController.html">TipPageViewController</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/TipsViewController.html">TipsViewController</a>
               </li>
               <li class="nav-group-task">
-                <a href="Other%20Classes.html#/c:@M@VerIDUI@objc(cs)VerIDRegistrationViewController">VerIDRegistrationViewController</a>
+                <a href="Classes/VerIDRegistrationViewController.html">VerIDRegistrationViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/VerIDSessionViewControllersFactory.html">VerIDSessionViewControllersFactory</a>
               </li>
             </ul>
           </li>
@@ -111,6 +138,23 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/FaceDetectionAlertControllerAction.html">FaceDetectionAlertControllerAction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/VerIDSessionViewControllersFactoryError.html">VerIDSessionViewControllersFactoryError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/VerIDUISessionError.html">VerIDUISessionError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other%20Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ImagePublisher.html">ImagePublisher</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SessionDiagnosticsViewControllerDelegate.html">SessionDiagnosticsViewControllerDelegate</a>
               </li>
             </ul>
           </li>
@@ -124,7 +168,7 @@
 <h1 id='ver-id-sdk-for-ios' class='heading'>Ver-ID SDK for iOS</h1>
 <h2 id='prerequisites' class='heading'>Prerequisites</h2>
 
-<p>Minimum iOS version is 11.</p>
+<p>Minimum iOS version is 12.</p>
 
 <p>To build this project and to run the sample app you will need a Apple Mac computer with these applications:</p>
 
@@ -271,7 +315,19 @@ open VerIDUI.xcworkspace
 <li>In the class that runs the Ver-ID session import <code>VerIDUI</code>.</li>
 <li>Pass the <code>VerID</code> instance to the <code><a href="Classes/VerIDSession.html">VerIDSession</a></code> constructor along with the session settings.</li>
 </ol>
-<h3 id='example' class='heading'>Example</h3>
+<h3 id='instant-liveness-check' class='heading'>Instant liveness check</h3>
+
+<p>Ver-ID 2.7.0 supports a liveness check without asking the user to turn their head.</p>
+
+<p>Instant liveness is available on devices running iOS 13 or newer. The default session settings constructor will set the number of required face captures to 1 on systems where instant liveness is available and 2 otherwise. You can build your own logic to decide whether to ask your users for more than one face capture (head pose).</p>
+
+<p>For example, to ask for 2 head poses when instant liveness is available but 3 when it isn&rsquo;t use:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">settings</span> <span class="o">=</span> <span class="kt">LivenessDetectionSessionSettings</span><span class="p">()</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">faceCaptureCount</span> <span class="o">=</span> <span class="kt">VerIDSessionSettings</span><span class="o">.</span><span class="n">supportsInstantLiveness</span> <span class="p">?</span> <span class="mi">2</span> <span class="p">:</span> <span class="mi">3</span>
+</code></pre>
+<h3 id='session-example' class='heading'>Session example</h3>
+
+<p>The following example loads Ver-ID and runs a liveness detection session. The example shows the methods available in <code><a href="Protocols/VerIDSessionDelegate.html">VerIDSessionDelegate</a></code>.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">UIKit</span>
 <span class="kd">import</span> <span class="kt">VerIDCore</span>
 <span class="kd">import</span> <span class="kt">VerIDUI</span>
@@ -341,6 +397,11 @@ open VerIDUI.xcworkspace
         <span class="n">runCount</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">runCount</span> <span class="o">&lt;</span> <span class="mi">3</span>
     <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">shouldDisplayCGHeadGuidanceInSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">VerIDSession</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="c1">// Return `false` to disable "3D head" guidance</span>
+        <span class="k">return</span> <span class="kc">false</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
 <h2 id='api-reference-documentation' class='heading'>API Reference Documentation</h2>
@@ -353,7 +414,7 @@ open VerIDUI.xcworkspace
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external noopener">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2022-06-29)</p>
+          <p>&copy; 2022 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external noopener">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2022-10-06)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
