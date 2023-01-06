@@ -1,7 +1,7 @@
 [
   {
-    "shortDescription" : "Detects moiré screen artifacts.",
     "metadataOutputVersion" : "3.0",
+    "storagePrecision" : "Float32",
     "outputSchema" : [
       {
         "hasShapeFlexibility" : "0",
@@ -14,14 +14,10 @@
         "type" : "MultiArray"
       }
     ],
-    "version" : "1.0",
     "modelParameters" : [
 
     ],
-    "author" : "David Thielke",
     "specificationVersion" : 4,
-    "storagePrecision" : "Float32",
-    "license" : "ARC Restricted",
     "computePrecision" : "Float16",
     "isUpdatable" : "0",
     "availability" : {
@@ -31,64 +27,6 @@
       "iOS" : "13.0",
       "macCatalyst" : "13.0"
     },
-    "modelType" : {
-      "name" : "MLModelType_neuralNetwork"
-    },
-    "inputSchema" : [
-      {
-        "dataType" : "Float32",
-        "hasShapeFlexibility" : "1",
-        "isOptional" : "0",
-        "shapeFlexibility" : "1... × 375 × 500 × 1",
-        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
-        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
-        "type" : "MultiArray",
-        "shape" : "[1, 375, 500, 1]",
-        "name" : "input_5",
-        "shortDescription" : ""
-      },
-      {
-        "dataType" : "Float32",
-        "hasShapeFlexibility" : "1",
-        "isOptional" : "0",
-        "shapeFlexibility" : "1... × 375 × 500 × 1",
-        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
-        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
-        "type" : "MultiArray",
-        "shape" : "[1, 375, 500, 1]",
-        "name" : "input_6",
-        "shortDescription" : ""
-      },
-      {
-        "dataType" : "Float32",
-        "hasShapeFlexibility" : "1",
-        "isOptional" : "0",
-        "shapeFlexibility" : "1... × 375 × 500 × 1",
-        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
-        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
-        "type" : "MultiArray",
-        "shape" : "[1, 375, 500, 1]",
-        "name" : "input_7",
-        "shortDescription" : ""
-      },
-      {
-        "dataType" : "Float32",
-        "hasShapeFlexibility" : "1",
-        "isOptional" : "0",
-        "shapeFlexibility" : "1... × 375 × 500 × 1",
-        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
-        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
-        "type" : "MultiArray",
-        "shape" : "[1, 375, 500, 1]",
-        "name" : "input_8",
-        "shortDescription" : ""
-      }
-    ],
-    "userDefinedMetadata" : {
-      "com.github.apple.coremltools.version" : "6.0",
-      "com.github.apple.coremltools.source" : "tensorflow==2.8.2"
-    },
-    "generatedClassName" : "MoirePatternDetection",
     "neuralNetworkLayerTypeHistogram" : {
       "MultiplyBroadcastable" : 1,
       "PoolingMax" : 7,
@@ -100,6 +38,64 @@
       "InnerProduct" : 2,
       "MaxBroadcastable" : 2
     },
+    "modelType" : {
+      "name" : "MLModelType_neuralNetwork"
+    },
+    "userDefinedMetadata" : {
+      "com.github.apple.coremltools.version" : "6.1",
+      "com.github.apple.coremltools.source" : "tensorflow==2.9.2"
+    },
+    "generatedClassName" : "MoirePatternDetection",
+    "inputSchema" : [
+      {
+        "dataType" : "Float32",
+        "hasShapeFlexibility" : "1",
+        "isOptional" : "0",
+        "shapeFlexibility" : "1... × 375 × 500 × 1",
+        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
+        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
+        "type" : "MultiArray",
+        "shape" : "[1, 375, 500, 1]",
+        "name" : "input_1",
+        "shortDescription" : ""
+      },
+      {
+        "dataType" : "Float32",
+        "hasShapeFlexibility" : "1",
+        "isOptional" : "0",
+        "shapeFlexibility" : "1... × 375 × 500 × 1",
+        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
+        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
+        "type" : "MultiArray",
+        "shape" : "[1, 375, 500, 1]",
+        "name" : "input_2",
+        "shortDescription" : ""
+      },
+      {
+        "dataType" : "Float32",
+        "hasShapeFlexibility" : "1",
+        "isOptional" : "0",
+        "shapeFlexibility" : "1... × 375 × 500 × 1",
+        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
+        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
+        "type" : "MultiArray",
+        "shape" : "[1, 375, 500, 1]",
+        "name" : "input_3",
+        "shortDescription" : ""
+      },
+      {
+        "dataType" : "Float32",
+        "hasShapeFlexibility" : "1",
+        "isOptional" : "0",
+        "shapeFlexibility" : "1... × 375 × 500 × 1",
+        "shapeRange" : "[[1, -1], [375, 375], [500, 500], [1, 1]]",
+        "formattedType" : "MultiArray (Float32 1 × 375 × 500 × 1)",
+        "type" : "MultiArray",
+        "shape" : "[1, 375, 500, 1]",
+        "name" : "input_4",
+        "shortDescription" : ""
+      }
+    ],
     "method" : "predict"
   }
 ]
