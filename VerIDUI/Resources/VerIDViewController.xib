@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -77,10 +77,19 @@
                 <activityIndicatorView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="uZU-np-Yt3">
                     <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                 </activityIndicatorView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lm6-WG-Hee">
+                    <rect key="frame" x="149" y="600" width="77" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="Jei-pA-uzE"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="mT4-EL-2C3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="lm6-WG-Hee" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="5QH-jH-JPf"/>
                 <constraint firstItem="vbV-fj-w3F" firstAttribute="trailing" secondItem="Ocl-Sv-K49" secondAttribute="trailing" id="BLH-H6-WsS"/>
                 <constraint firstItem="nCY-H9-XjJ" firstAttribute="width" secondItem="Ocl-Sv-K49" secondAttribute="width" multiplier="0.65" id="PIf-SY-cJc"/>
                 <constraint firstItem="nCY-H9-XjJ" firstAttribute="centerY" secondItem="Ocl-Sv-K49" secondAttribute="centerY" id="Rew-14-064"/>
@@ -90,6 +99,7 @@
                 <constraint firstItem="cKt-nZ-iLk" firstAttribute="leading" secondItem="Ocl-Sv-K49" secondAttribute="leadingMargin" id="bRx-iH-0hW"/>
                 <constraint firstItem="cKt-nZ-iLk" firstAttribute="centerY" secondItem="Ocl-Sv-K49" secondAttribute="centerY" id="cFc-cb-V8U"/>
                 <constraint firstItem="pFK-rq-7cB" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="hbR-Mq-Uo5"/>
+                <constraint firstItem="mT4-EL-2C3" firstAttribute="bottom" secondItem="lm6-WG-Hee" secondAttribute="bottom" constant="32" id="jT5-Tl-Eks"/>
                 <constraint firstItem="cKt-nZ-iLk" firstAttribute="trailing" secondItem="Ocl-Sv-K49" secondAttribute="trailingMargin" id="lVs-eh-vrC"/>
                 <constraint firstItem="vbV-fj-w3F" firstAttribute="leading" secondItem="Ocl-Sv-K49" secondAttribute="leading" id="mtC-IJ-E1r"/>
                 <constraint firstItem="nCY-H9-XjJ" firstAttribute="centerX" secondItem="Ocl-Sv-K49" secondAttribute="centerX" id="sQl-Em-NJq"/>

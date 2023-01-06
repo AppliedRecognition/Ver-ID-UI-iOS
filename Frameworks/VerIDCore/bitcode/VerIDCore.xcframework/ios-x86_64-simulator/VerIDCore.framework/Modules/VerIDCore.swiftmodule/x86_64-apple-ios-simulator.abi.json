@@ -1405,8 +1405,8 @@
           },
           {
             "kind": "Var",
-            "name": "isSpoofDetectionEnabled",
-            "printedName": "isSpoofDetectionEnabled",
+            "name": "isSpoofDeviceDetectionEnabled",
+            "printedName": "isSpoofDeviceDetectionEnabled",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1416,8 +1416,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)isSpoofDetectionEnabled",
-            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isSpoofDetectionEnabledSbvp",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)isSpoofDeviceDetectionEnabled",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC29isSpoofDeviceDetectionEnabledSbvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -1441,10 +1441,101 @@
                   }
                 ],
                 "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)isSpoofDeviceDetectionEnabled",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC29isSpoofDeviceDetectionEnabledSbvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setIsSpoofDeviceDetectionEnabled:",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC29isSpoofDeviceDetectionEnabledSbvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A17IDSessionSettingsC29isSpoofDeviceDetectionEnabledSbvM",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC29isSpoofDeviceDetectionEnabledSbvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isSpoofDetectionEnabled",
+            "printedName": "isSpoofDetectionEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)isSpoofDetectionEnabled",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isSpoofDetectionEnabledSbvp",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)isSpoofDetectionEnabled",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isSpoofDetectionEnabledSbvg",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1471,7 +1562,6 @@
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setIsSpoofDetectionEnabled:",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isSpoofDetectionEnabledSbvs",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1492,15 +1582,19 @@
                 "usr": "s:9VerIDCore0A17IDSessionSettingsC23isSpoofDetectionEnabledSbvM",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isSpoofDetectionEnabledSbvM",
                 "moduleName": "VerIDCore",
+                "deprecated": true,
                 "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
                 "accessorKind": "_modify"
               }
             ]
           },
           {
             "kind": "Var",
-            "name": "isScreenArtifactDetectionEnabled",
-            "printedName": "isScreenArtifactDetectionEnabled",
+            "name": "isMoireDetectionEnabled",
+            "printedName": "isMoireDetectionEnabled",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1510,8 +1604,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)isScreenArtifactDetectionEnabled",
-            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32isScreenArtifactDetectionEnabledSbvp",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)isMoireDetectionEnabled",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isMoireDetectionEnabledSbvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -1535,10 +1629,101 @@
                   }
                 ],
                 "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)isMoireDetectionEnabled",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isMoireDetectionEnabledSbvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setIsMoireDetectionEnabled:",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isMoireDetectionEnabledSbvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A17IDSessionSettingsC23isMoireDetectionEnabledSbvM",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC23isMoireDetectionEnabledSbvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isScreenArtifactDetectionEnabled",
+            "printedName": "isScreenArtifactDetectionEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)isScreenArtifactDetectionEnabled",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32isScreenArtifactDetectionEnabledSbvp",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)isScreenArtifactDetectionEnabled",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32isScreenArtifactDetectionEnabledSbvg",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1565,7 +1750,6 @@
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setIsScreenArtifactDetectionEnabled:",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32isScreenArtifactDetectionEnabledSbvs",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1586,7 +1770,11 @@
                 "usr": "s:9VerIDCore0A17IDSessionSettingsC32isScreenArtifactDetectionEnabledSbvM",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32isScreenArtifactDetectionEnabledSbvM",
                 "moduleName": "VerIDCore",
+                "deprecated": true,
                 "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
                 "accessorKind": "_modify"
               }
             ]
@@ -1687,8 +1875,8 @@
           },
           {
             "kind": "Var",
-            "name": "spoofConfidenceThreshold",
-            "printedName": "spoofConfidenceThreshold",
+            "name": "spoofDeviceConfidenceThreshold",
+            "printedName": "spoofDeviceConfidenceThreshold",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1698,8 +1886,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)spoofConfidenceThreshold",
-            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC24spoofConfidenceThresholdSfvp",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)spoofDeviceConfidenceThreshold",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC30spoofDeviceConfidenceThresholdSfvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -1723,10 +1911,101 @@
                   }
                 ],
                 "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)spoofDeviceConfidenceThreshold",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC30spoofDeviceConfidenceThresholdSfvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setSpoofDeviceConfidenceThreshold:",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC30spoofDeviceConfidenceThresholdSfvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A17IDSessionSettingsC30spoofDeviceConfidenceThresholdSfvM",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC30spoofDeviceConfidenceThresholdSfvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "spoofConfidenceThreshold",
+            "printedName": "spoofConfidenceThreshold",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)spoofConfidenceThreshold",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC24spoofConfidenceThresholdSfvp",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)spoofConfidenceThreshold",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC24spoofConfidenceThresholdSfvg",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1753,7 +2032,6 @@
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setSpoofConfidenceThreshold:",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC24spoofConfidenceThresholdSfvs",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1774,7 +2052,11 @@
                 "usr": "s:9VerIDCore0A17IDSessionSettingsC24spoofConfidenceThresholdSfvM",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC24spoofConfidenceThresholdSfvM",
                 "moduleName": "VerIDCore",
+                "deprecated": true,
                 "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
                 "accessorKind": "_modify"
               }
             ]
@@ -1795,11 +2077,13 @@
             "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)minSpoofCaptureCount",
             "mangledName": "$s9VerIDCore0A17IDSessionSettingsC20minSpoofCaptureCountSivp",
             "moduleName": "VerIDCore",
+            "deprecated": true,
             "declAttributes": [
               "HasInitialValue",
               "HasStorage",
               "AccessControl",
               "ObjC",
+              "Available",
               "RawDocComment"
             ],
             "hasStorage": true,
@@ -1868,15 +2152,19 @@
                 "usr": "s:9VerIDCore0A17IDSessionSettingsC20minSpoofCaptureCountSivM",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC20minSpoofCaptureCountSivM",
                 "moduleName": "VerIDCore",
+                "deprecated": true,
                 "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
                 "accessorKind": "_modify"
               }
             ]
           },
           {
             "kind": "Var",
-            "name": "spoofDetectionModelFileURL",
-            "printedName": "spoofDetectionModelFileURL",
+            "name": "spoofDeviceDetectionModelFileURL",
+            "printedName": "spoofDeviceDetectionModelFileURL",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1894,8 +2182,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)spoofDetectionModelFileURL",
-            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26spoofDetectionModelFileURL10Foundation0I0VSgvp",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)spoofDeviceDetectionModelFileURL",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32spoofDeviceDetectionModelFileURL10Foundation0J0VSgvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -1927,10 +2215,125 @@
                   }
                 ],
                 "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)spoofDeviceDetectionModelFileURL",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32spoofDeviceDetectionModelFileURL10Foundation0J0VSgvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.URL?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setSpoofDeviceDetectionModelFileURL:",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32spoofDeviceDetectionModelFileURL10Foundation0J0VSgvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A17IDSessionSettingsC32spoofDeviceDetectionModelFileURL10Foundation0J0VSgvM",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC32spoofDeviceDetectionModelFileURL10Foundation0J0VSgvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "spoofDetectionModelFileURL",
+            "printedName": "spoofDetectionModelFileURL",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URL?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)spoofDetectionModelFileURL",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26spoofDetectionModelFileURL10Foundation0I0VSgvp",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.URL?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)spoofDetectionModelFileURL",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26spoofDetectionModelFileURL10Foundation0I0VSgvg",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1965,7 +2368,6 @@
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setSpoofDetectionModelFileURL:",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26spoofDetectionModelFileURL10Foundation0I0VSgvs",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -1986,15 +2388,19 @@
                 "usr": "s:9VerIDCore0A17IDSessionSettingsC26spoofDetectionModelFileURL10Foundation0I0VSgvM",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26spoofDetectionModelFileURL10Foundation0I0VSgvM",
                 "moduleName": "VerIDCore",
+                "deprecated": true,
                 "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
                 "accessorKind": "_modify"
               }
             ]
           },
           {
             "kind": "Var",
-            "name": "screenArtifactConfidenceThreshold",
-            "printedName": "screenArtifactConfidenceThreshold",
+            "name": "moireDetectionConfidenceThreshold",
+            "printedName": "moireDetectionConfidenceThreshold",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -2004,8 +2410,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)screenArtifactConfidenceThreshold",
-            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33screenArtifactConfidenceThresholdSfvp",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)moireDetectionConfidenceThreshold",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33moireDetectionConfidenceThresholdSfvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -2029,10 +2435,101 @@
                   }
                 ],
                 "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)moireDetectionConfidenceThreshold",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33moireDetectionConfidenceThresholdSfvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setMoireDetectionConfidenceThreshold:",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33moireDetectionConfidenceThresholdSfvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A17IDSessionSettingsC33moireDetectionConfidenceThresholdSfvM",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33moireDetectionConfidenceThresholdSfvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "screenArtifactConfidenceThreshold",
+            "printedName": "screenArtifactConfidenceThreshold",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)screenArtifactConfidenceThreshold",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33screenArtifactConfidenceThresholdSfvp",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)screenArtifactConfidenceThreshold",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33screenArtifactConfidenceThresholdSfvg",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -2059,7 +2556,6 @@
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setScreenArtifactConfidenceThreshold:",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33screenArtifactConfidenceThresholdSfvs",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -2080,15 +2576,19 @@
                 "usr": "s:9VerIDCore0A17IDSessionSettingsC33screenArtifactConfidenceThresholdSfvM",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC33screenArtifactConfidenceThresholdSfvM",
                 "moduleName": "VerIDCore",
+                "deprecated": true,
                 "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
                 "accessorKind": "_modify"
               }
             ]
           },
           {
             "kind": "Var",
-            "name": "screenArtifactDetectionModelFileURL",
-            "printedName": "screenArtifactDetectionModelFileURL",
+            "name": "moireDetectionModelFileURL",
+            "printedName": "moireDetectionModelFileURL",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -2106,8 +2606,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)screenArtifactDetectionModelFileURL",
-            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC35screenArtifactDetectionModelFileURL10Foundation0J0VSgvp",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)moireDetectionModelFileURL",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26moireDetectionModelFileURL10Foundation0I0VSgvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -2139,10 +2639,125 @@
                   }
                 ],
                 "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)moireDetectionModelFileURL",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26moireDetectionModelFileURL10Foundation0I0VSgvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.URL?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setMoireDetectionModelFileURL:",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26moireDetectionModelFileURL10Foundation0I0VSgvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A17IDSessionSettingsC26moireDetectionModelFileURL10Foundation0I0VSgvM",
+                "mangledName": "$s9VerIDCore0A17IDSessionSettingsC26moireDetectionModelFileURL10Foundation0I0VSgvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "screenArtifactDetectionModelFileURL",
+            "printedName": "screenArtifactDetectionModelFileURL",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.URL?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "URL",
+                    "printedName": "Foundation.URL",
+                    "usr": "s:10Foundation3URLV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(py)screenArtifactDetectionModelFileURL",
+            "mangledName": "$s9VerIDCore0A17IDSessionSettingsC35screenArtifactDetectionModelFileURL10Foundation0J0VSgvp",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "Available"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Foundation.URL?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "URL",
+                        "printedName": "Foundation.URL",
+                        "usr": "s:10Foundation3URLV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)screenArtifactDetectionModelFileURL",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC35screenArtifactDetectionModelFileURL10Foundation0J0VSgvg",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -2177,7 +2792,6 @@
                 "usr": "c:@M@VerIDCore@objc(cs)VerIDSessionSettings(im)setScreenArtifactDetectionModelFileURL:",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC35screenArtifactDetectionModelFileURL10Foundation0J0VSgvs",
                 "moduleName": "VerIDCore",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -2198,7 +2812,11 @@
                 "usr": "s:9VerIDCore0A17IDSessionSettingsC35screenArtifactDetectionModelFileURL10Foundation0J0VSgvM",
                 "mangledName": "$s9VerIDCore0A17IDSessionSettingsC35screenArtifactDetectionModelFileURL10Foundation0J0VSgvM",
                 "moduleName": "VerIDCore",
+                "deprecated": true,
                 "implicit": true,
+                "declAttributes": [
+                  "Available"
+                ],
                 "accessorKind": "_modify"
               }
             ]
@@ -4087,71 +4705,6 @@
                 "declKind": "Accessor",
                 "usr": "s:9VerIDCore19DiagnosticImageInfoC9timestamp10Foundation4DateVvg",
                 "mangledName": "$s9VerIDCore19DiagnosticImageInfoC9timestamp10Foundation4DateVvg",
-                "moduleName": "VerIDCore",
-                "implicit": true,
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "spoofConfidence",
-            "printedName": "spoofConfidence",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.Float?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Float",
-                    "printedName": "Swift.Float",
-                    "usr": "s:Sf"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:9VerIDCore19DiagnosticImageInfoC15spoofConfidenceSfSgvp",
-            "mangledName": "$s9VerIDCore19DiagnosticImageInfoC15spoofConfidenceSfSgvp",
-            "moduleName": "VerIDCore",
-            "declAttributes": [
-              "Final",
-              "HasStorage",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.Float?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Float",
-                        "printedName": "Swift.Float",
-                        "usr": "s:Sf"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:9VerIDCore19DiagnosticImageInfoC15spoofConfidenceSfSgvg",
-                "mangledName": "$s9VerIDCore19DiagnosticImageInfoC15spoofConfidenceSfSgvg",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "declAttributes": [
@@ -14058,116 +14611,6 @@
             ]
           },
           {
-            "kind": "Var",
-            "name": "spoofConfidence",
-            "printedName": "spoofConfidence",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.Float?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Float",
-                    "printedName": "Swift.Float",
-                    "usr": "s:Sf"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvp",
-            "mangledName": "$s9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvp",
-            "moduleName": "VerIDCore",
-            "declAttributes": [
-              "HasInitialValue",
-              "HasStorage",
-              "AccessControl"
-            ],
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.Float?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Float",
-                        "printedName": "Swift.Float",
-                        "usr": "s:Sf"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvg",
-                "mangledName": "$s9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvg",
-                "moduleName": "VerIDCore",
-                "implicit": true,
-                "accessorKind": "get"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Set",
-                "printedName": "Set()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.Float?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Float",
-                        "printedName": "Swift.Float",
-                        "usr": "s:Sf"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvs",
-                "mangledName": "$s9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvs",
-                "moduleName": "VerIDCore",
-                "implicit": true,
-                "accessorKind": "set"
-              },
-              {
-                "kind": "Accessor",
-                "name": "Modify",
-                "printedName": "Modify()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Void",
-                    "printedName": "()"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvM",
-                "mangledName": "$s9VerIDCore19FaceDetectionResultC15spoofConfidenceSfSgvM",
-                "moduleName": "VerIDCore",
-                "implicit": true,
-                "accessorKind": "_modify"
-              }
-            ]
-          },
-          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(image:requestedBearing:defaultFaceBounds:)",
@@ -16871,6 +17314,59 @@
           },
           {
             "kind": "Function",
+            "name": "compareRegisteredFaceTemplates",
+            "printedName": "compareRegisteredFaceTemplates(hashUserNames:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[VerIDCore.VerIDFaceTemplateVersion : [VerIDCore.UserFaceComparison]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[VerIDCore.UserFaceComparison]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UserFaceComparison",
+                        "printedName": "VerIDCore.UserFaceComparison",
+                        "usr": "s:9VerIDCore18UserFaceComparisonV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore23FaceTemplateDiagnosticsC017compareRegisteredC9Templates13hashUserNamesSDySo0a6IDFaceD7VersionVSayAA0jC10ComparisonVGGSb_tYaKF",
+            "mangledName": "$s9VerIDCore23FaceTemplateDiagnosticsC017compareRegisteredC9Templates13hashUserNamesSDySo0a6IDFaceD7VersionVSayAA0jC10ComparisonVGGSb_tYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "compareUserFaceTemplates",
             "printedName": "compareUserFaceTemplates(_:completion:)",
             "children": [
@@ -16974,6 +17470,80 @@
           },
           {
             "kind": "Function",
+            "name": "compareUserFaceTemplates",
+            "printedName": "compareUserFaceTemplates(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[VerIDCore.VerIDFaceTemplateVersion : [VerIDCore.UserFaceComparison]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[VerIDCore.UserFaceComparison]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UserFaceComparison",
+                        "printedName": "VerIDCore.UserFaceComparison",
+                        "usr": "s:9VerIDCore18UserFaceComparisonV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : [VerIDCore.Recognizable]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[VerIDCore.Recognizable]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Recognizable",
+                        "printedName": "VerIDCore.Recognizable",
+                        "usr": "c:objc(pl)VerIDRecognizable"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore23FaceTemplateDiagnosticsC011compareUserC9TemplatesySDySo0a6IDFaceD7VersionVSayAA0gC10ComparisonVGGSDySSSaySo0A14IDRecognizable_pGGYaKF",
+            "mangledName": "$s9VerIDCore23FaceTemplateDiagnosticsC011compareUserC9TemplatesySDySo0a6IDFaceD7VersionVSayAA0gC10ComparisonVGGSDySSSaySo0A14IDRecognizable_pGGYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "compareFaceTemplates",
             "printedName": "compareFaceTemplates(_:completion:)",
             "children": [
@@ -17068,6 +17638,71 @@
           },
           {
             "kind": "Function",
+            "name": "compareFaceTemplates",
+            "printedName": "compareFaceTemplates(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[(VerIDCore.Recognizable, VerIDCore.Recognizable, Swift.Float)]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(VerIDCore.Recognizable, VerIDCore.Recognizable, Swift.Float)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Recognizable",
+                        "printedName": "VerIDCore.Recognizable",
+                        "usr": "c:objc(pl)VerIDRecognizable"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Recognizable",
+                        "printedName": "VerIDCore.Recognizable",
+                        "usr": "c:objc(pl)VerIDRecognizable"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.Recognizable]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Recognizable",
+                    "printedName": "VerIDCore.Recognizable",
+                    "usr": "c:objc(pl)VerIDRecognizable"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore23FaceTemplateDiagnosticsC07compareC9TemplatesySaySo0A14IDRecognizable_p_SoAE_pSftGSaySoAE_pGYaKF",
+            "mangledName": "$s9VerIDCore23FaceTemplateDiagnosticsC07compareC9TemplatesySaySo0A14IDRecognizable_p_SoAE_pSftGSaySoAE_pGYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "findMostSimilarUsers",
             "printedName": "findMostSimilarUsers(hashUserNames:completion:)",
             "children": [
@@ -17142,6 +17777,51 @@
           },
           {
             "kind": "Function",
+            "name": "findMostSimilarUsers",
+            "printedName": "findMostSimilarUsers(hashUserNames:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UserFaceComparison",
+                    "printedName": "VerIDCore.UserFaceComparison",
+                    "usr": "s:9VerIDCore18UserFaceComparisonV"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore23FaceTemplateDiagnosticsC20findMostSimilarUsers13hashUserNamesSDySo0a6IDFaceD7VersionVAA0kC10ComparisonVGSb_tYaKF",
+            "mangledName": "$s9VerIDCore23FaceTemplateDiagnosticsC20findMostSimilarUsers13hashUserNamesSDySo0a6IDFaceD7VersionVAA0kC10ComparisonVGSb_tYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "findMostDifferentUsers",
             "printedName": "findMostDifferentUsers(hashUserNames:completion:)",
             "children": [
@@ -17212,6 +17892,51 @@
               "AccessControl",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "findMostDifferentUsers",
+            "printedName": "findMostDifferentUsers(hashUserNames:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UserFaceComparison",
+                    "printedName": "VerIDCore.UserFaceComparison",
+                    "usr": "s:9VerIDCore18UserFaceComparisonV"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore23FaceTemplateDiagnosticsC22findMostDifferentUsers13hashUserNamesSDySo0a6IDFaceD7VersionVAA0kC10ComparisonVGSb_tYaKF",
+            "mangledName": "$s9VerIDCore23FaceTemplateDiagnosticsC22findMostDifferentUsers13hashUserNamesSDySo0a6IDFaceD7VersionVAA0kC10ComparisonVGSb_tYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -17955,64 +18680,6 @@
             ]
           },
           {
-            "kind": "Var",
-            "name": "livenessDetection",
-            "printedName": "livenessDetection",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "VerIDCore.LivenessDetection?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "LivenessDetection",
-                    "printedName": "VerIDCore.LivenessDetection",
-                    "usr": "s:9VerIDCore17LivenessDetectionC"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:9VerIDCore17SpoofingDetectionC08livenessD0AA08LivenessD0CSgvp",
-            "mangledName": "$s9VerIDCore17SpoofingDetectionC08livenessD0AA08LivenessD0CSgvp",
-            "moduleName": "VerIDCore",
-            "intro_iOS": "13",
-            "declAttributes": [
-              "AccessControl",
-              "Available"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "VerIDCore.LivenessDetection?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "LivenessDetection",
-                        "printedName": "VerIDCore.LivenessDetection",
-                        "usr": "s:9VerIDCore17LivenessDetectionC"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:9VerIDCore17SpoofingDetectionC08livenessD0AA08LivenessD0CSgvg",
-                "mangledName": "$s9VerIDCore17SpoofingDetectionC08livenessD0AA08LivenessD0CSgvg",
-                "moduleName": "VerIDCore",
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -18048,7 +18715,7 @@
           "ObjC"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
-        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
         "superclassNames": [
           "ObjectiveC.NSObject"
         ],
@@ -19406,6 +20073,30 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Function",
+            "name": "createVerID",
+            "printedName": "createVerID()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "VerID",
+                "printedName": "VerIDCore.VerID",
+                "usr": "c:@M@VerIDCore@objc(cs)VerID"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore0A9IDFactoryC06createA2IDAA0aE0CyYaKF",
+            "mangledName": "$s9VerIDCore0A9IDFactoryC06createA2IDAA0aE0CyYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(veridPassword:)",
@@ -19941,6 +20632,65 @@
             "moduleName": "VerIDCore",
             "declAttributes": [
               "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "detectRecognizableFacesInImage",
+            "printedName": "detectRecognizableFacesInImage(_:limit:faceTemplateVersions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.RecognizableFace]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecognizableFace",
+                    "printedName": "VerIDCore.RecognizableFace",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDRecognizableFace"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ImageProvider",
+                "printedName": "VerIDCore.ImageProvider",
+                "usr": "c:@M@VerIDCore@objc(pl)VerIDImageProvider"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.VerIDFaceTemplateVersion]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore22FaceDetectionUtilitiesC30detectRecognizableFacesInImage_5limit20faceTemplateVersionsSayAA0gC0CGAA0J8Provider_p_SiSaySo0a6IDFaceM7VersionVGtYaKF",
+            "mangledName": "$s9VerIDCore22FaceDetectionUtilitiesC30detectRecognizableFacesInImage_5limit20faceTemplateVersionsSayAA0gC0CGAA0J8Provider_p_SiSaySo0a6IDFaceM7VersionVGtYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
             ],
             "throwing": true,
             "funcSelfKind": "NonMutating"
@@ -21557,8 +22307,10 @@
             "usr": "s:9VerIDCore0A15IDSessionResultC20spoofConfidenceScoreSfSgvp",
             "mangledName": "$s9VerIDCore0A15IDSessionResultC20spoofConfidenceScoreSfSgvp",
             "moduleName": "VerIDCore",
+            "deprecated": true,
             "declAttributes": [
-              "AccessControl"
+              "AccessControl",
+              "Available"
             ],
             "accessors": [
               {
@@ -24186,6 +24938,49 @@
               }
             ],
             "declKind": "Func",
+            "usr": "s:9VerIDCore23UserManagementUtilitiesC15safeAssignFaces_2toySaySo0A14IDRecognizable_pG_SStYaKF",
+            "mangledName": "$s9VerIDCore23UserManagementUtilitiesC15safeAssignFaces_2toySaySo0A14IDRecognizable_pG_SStYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "safeAssignFaces",
+            "printedName": "safeAssignFaces(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.Recognizable]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Recognizable",
+                    "printedName": "VerIDCore.Recognizable",
+                    "usr": "c:objc(pl)VerIDRecognizable"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
             "usr": "s:9VerIDCore23UserManagementUtilitiesC15safeAssignFaces_2toySaySo0A14IDRecognizable_pG_SStKF",
             "mangledName": "$s9VerIDCore23UserManagementUtilitiesC15safeAssignFaces_2toySaySo0A14IDRecognizable_pG_SStKF",
             "moduleName": "VerIDCore",
@@ -24260,6 +25055,44 @@
               "AccessControl",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "analyzeUserManagement",
+            "printedName": "analyzeUserManagement()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserManagementAnalysis]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UserManagementAnalysis",
+                    "printedName": "VerIDCore.UserManagementAnalysis",
+                    "usr": "s:9VerIDCore22UserManagementAnalysisV"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore23UserManagementUtilitiesC07analyzecD0SDySo0A21IDFaceTemplateVersionVAA0cD8AnalysisVGyYaKF",
+            "mangledName": "$s9VerIDCore23UserManagementUtilitiesC07analyzecD0SDySo0A21IDFaceTemplateVersionVAA0cD8AnalysisVGyYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -24740,13 +25573,42 @@
             "usr": "s:9VerIDCore7Array2DV4data4cols4rowsACyxGSayxG_S2itKcfc",
             "mangledName": "$s9VerIDCore7Array2DV4data4cols4rowsACyxGSayxG_S2itKcfc",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "AccessControl"
             ],
             "throwing": true,
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore7Array2DV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s9VerIDCore7Array2DV6encode2toys7Encoder_p_tKF",
+            "moduleName": "VerIDCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Var",
@@ -24810,8 +25672,8 @@
                 "usr": "s:9VerIDCore7Array2DV5shapeSi_Sitvg",
                 "mangledName": "$s9VerIDCore7Array2DV5shapeSi_Sitvg",
                 "moduleName": "VerIDCore",
-                "genericSig": "<τ_0_0>",
-                "sugared_genericSig": "<T>",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+                "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
                 "accessorKind": "get"
               }
             ]
@@ -24843,8 +25705,8 @@
             "usr": "s:9VerIDCore7Array2DV7reshapeyySi_SitKF",
             "mangledName": "$s9VerIDCore7Array2DV7reshapeyySi_SitKF",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "Mutating",
               "AccessControl"
@@ -24881,8 +25743,8 @@
             "usr": "s:9VerIDCore7Array2DV6columnySayxGSiF",
             "mangledName": "$s9VerIDCore7Array2DV6columnySayxGSiF",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "AccessControl"
             ],
@@ -24922,8 +25784,8 @@
             "usr": "s:9VerIDCore7Array2DV9setValues_8inColumnySayxG_SitKF",
             "mangledName": "$s9VerIDCore7Array2DV9setValues_8inColumnySayxG_SitKF",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "Mutating",
               "AccessControl"
@@ -24960,8 +25822,8 @@
             "usr": "s:9VerIDCore7Array2DV3rowySayxGSiF",
             "mangledName": "$s9VerIDCore7Array2DV3rowySayxGSiF",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "AccessControl"
             ],
@@ -25001,8 +25863,8 @@
             "usr": "s:9VerIDCore7Array2DV9setValues_5inRowySayxG_SitKF",
             "mangledName": "$s9VerIDCore7Array2DV9setValues_5inRowySayxG_SitKF",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "Mutating",
               "AccessControl"
@@ -25037,8 +25899,8 @@
             "usr": "s:9VerIDCore7Array2DVyxSi_Sitcip",
             "mangledName": "$s9VerIDCore7Array2DVyxSi_Sitcip",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "AccessControl"
             ],
@@ -25070,8 +25932,8 @@
                 "usr": "s:9VerIDCore7Array2DVyxSi_Sitcig",
                 "mangledName": "$s9VerIDCore7Array2DVyxSi_Sitcig",
                 "moduleName": "VerIDCore",
-                "genericSig": "<τ_0_0>",
-                "sugared_genericSig": "<T>",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+                "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
                 "accessorKind": "get"
               },
               {
@@ -25106,8 +25968,8 @@
                 "usr": "s:9VerIDCore7Array2DVyxSi_Sitcis",
                 "mangledName": "$s9VerIDCore7Array2DVyxSi_Sitcis",
                 "moduleName": "VerIDCore",
-                "genericSig": "<τ_0_0>",
-                "sugared_genericSig": "<T>",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+                "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
                 "accessorKind": "set"
               },
               {
@@ -25137,8 +25999,8 @@
                 "usr": "s:9VerIDCore7Array2DVyxSi_SitciM",
                 "mangledName": "$s9VerIDCore7Array2DVyxSi_SitciM",
                 "moduleName": "VerIDCore",
-                "genericSig": "<τ_0_0>",
-                "sugared_genericSig": "<T>",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+                "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
                 "implicit": true,
                 "accessorKind": "_modify"
               }
@@ -25203,8 +26065,8 @@
             "usr": "s:9VerIDCore7Array2DVyACyxGSgSnySiG_AFtcip",
             "mangledName": "$s9VerIDCore7Array2DVyACyxGSgSnySiG_AFtcip",
             "moduleName": "VerIDCore",
-            "genericSig": "<τ_0_0>",
-            "sugared_genericSig": "<T>",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
             "declAttributes": [
               "AccessControl"
             ],
@@ -25268,8 +26130,8 @@
                 "usr": "s:9VerIDCore7Array2DVyACyxGSgSnySiG_AFtcig",
                 "mangledName": "$s9VerIDCore7Array2DVyACyxGSgSnySiG_AFtcig",
                 "moduleName": "VerIDCore",
-                "genericSig": "<τ_0_0>",
-                "sugared_genericSig": "<T>",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+                "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
                 "accessorKind": "get"
               }
             ]
@@ -25340,21 +26202,72 @@
                 "usr": "s:9VerIDCore7Array2DV5arraySaySayxGGvg",
                 "mangledName": "$s9VerIDCore7Array2DV5arraySaySayxGGvg",
                 "moduleName": "VerIDCore",
-                "genericSig": "<τ_0_0>",
-                "sugared_genericSig": "<T>",
+                "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+                "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array2D",
+                "printedName": "VerIDCore.Array2D<τ_0_0>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ],
+                "usr": "s:9VerIDCore7Array2DV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:9VerIDCore7Array2DV4fromACyxGs7Decoder_p_tKcfc",
+            "mangledName": "$s9VerIDCore7Array2DV4fromACyxGs7Decoder_p_tKcfc",
+            "moduleName": "VerIDCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+            "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
         "usr": "s:9VerIDCore7Array2DV",
         "mangledName": "$s9VerIDCore7Array2DV",
         "moduleName": "VerIDCore",
-        "genericSig": "<τ_0_0>",
-        "sugared_genericSig": "<T>",
+        "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable, τ_0_0 : Swift.Encodable>",
+        "sugared_genericSig": "<T where T : Swift.Decodable, T : Swift.Encodable>",
         "declAttributes": [
           "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          }
         ]
       },
       {
@@ -27578,8 +28491,8 @@
       },
       {
         "kind": "TypeDecl",
-        "name": "ScreenArtifactDetector",
-        "printedName": "ScreenArtifactDetector",
+        "name": "MoireDetector",
+        "printedName": "MoireDetector",
         "children": [
           {
             "kind": "Constructor",
@@ -27588,9 +28501,9 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "ScreenArtifactDetector",
-                "printedName": "VerIDCore.ScreenArtifactDetector",
-                "usr": "s:9VerIDCore22ScreenArtifactDetectorC"
+                "name": "MoireDetector",
+                "printedName": "VerIDCore.MoireDetector",
+                "usr": "s:9VerIDCore13MoireDetectorC"
               },
               {
                 "kind": "TypeNominal",
@@ -27609,8 +28522,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:9VerIDCore22ScreenArtifactDetectorC8modelURLAC10Foundation0G0VSg_tKcfc",
-            "mangledName": "$s9VerIDCore22ScreenArtifactDetectorC8modelURLAC10Foundation0G0VSg_tKcfc",
+            "usr": "s:9VerIDCore13MoireDetectorC8modelURLAC10Foundation0F0VSg_tKcfc",
+            "mangledName": "$s9VerIDCore13MoireDetectorC8modelURLAC10Foundation0F0VSg_tKcfc",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "AccessControl"
@@ -27637,8 +28550,38 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:9VerIDCore22ScreenArtifactDetectorC06detectC16ArtifactsInImageySdAA0I8Provider_pKF",
-            "mangledName": "$s9VerIDCore22ScreenArtifactDetectorC06detectC16ArtifactsInImageySdAA0I8Provider_pKF",
+            "usr": "s:9VerIDCore13MoireDetectorC28detectScreenArtifactsInImageySdAA0I8Provider_pKF",
+            "mangledName": "$s9VerIDCore13MoireDetectorC28detectScreenArtifactsInImageySdAA0I8Provider_pKF",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "detectMoireInImage",
+            "printedName": "detectMoireInImage(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ImageProvider",
+                "printedName": "VerIDCore.ImageProvider",
+                "usr": "c:@M@VerIDCore@objc(pl)VerIDImageProvider"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore13MoireDetectorC06detectC7InImageySdAA0G8Provider_pKF",
+            "mangledName": "$s9VerIDCore13MoireDetectorC06detectC7InImageySdAA0G8Provider_pKF",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "AccessControl"
@@ -27648,8 +28591,8 @@
           }
         ],
         "declKind": "Class",
-        "usr": "s:9VerIDCore22ScreenArtifactDetectorC",
-        "mangledName": "$s9VerIDCore22ScreenArtifactDetectorC",
+        "usr": "s:9VerIDCore13MoireDetectorC",
+        "mangledName": "$s9VerIDCore13MoireDetectorC",
         "moduleName": "VerIDCore",
         "intro_iOS": "13",
         "declAttributes": [
@@ -38379,6 +39322,67 @@
             "declKind": "EnumElement",
             "usr": "s:9VerIDCore17AntiSpoofingErrorO13spoofDetectedyACSf_tcACmF",
             "mangledName": "$s9VerIDCore17AntiSpoofingErrorO13spoofDetectedyACSf_tcACmF",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "Available"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "spoofDeviceDetected",
+            "printedName": "spoofDeviceDetected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDCore.AntiSpoofingError.Type) -> (Swift.Float) -> VerIDCore.AntiSpoofingError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Float) -> VerIDCore.AntiSpoofingError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntiSpoofingError",
+                        "printedName": "VerIDCore.AntiSpoofingError",
+                        "usr": "s:9VerIDCore17AntiSpoofingErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(confidence: Swift.Float)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Float",
+                            "printedName": "Swift.Float",
+                            "usr": "s:Sf"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDCore.AntiSpoofingError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntiSpoofingError",
+                        "printedName": "VerIDCore.AntiSpoofingError",
+                        "usr": "s:9VerIDCore17AntiSpoofingErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9VerIDCore17AntiSpoofingErrorO19spoofDeviceDetectedyACSf_tcACmF",
+            "mangledName": "$s9VerIDCore17AntiSpoofingErrorO19spoofDeviceDetectedyACSf_tcACmF",
             "moduleName": "VerIDCore"
           },
           {
@@ -38436,6 +39440,67 @@
             "declKind": "EnumElement",
             "usr": "s:9VerIDCore17AntiSpoofingErrorO22screenArtifactDetectedyACSf_tcACmF",
             "mangledName": "$s9VerIDCore17AntiSpoofingErrorO22screenArtifactDetectedyACSf_tcACmF",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "Available"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "moireDetected",
+            "printedName": "moireDetected",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDCore.AntiSpoofingError.Type) -> (Swift.Float) -> VerIDCore.AntiSpoofingError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Float) -> VerIDCore.AntiSpoofingError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntiSpoofingError",
+                        "printedName": "VerIDCore.AntiSpoofingError",
+                        "usr": "s:9VerIDCore17AntiSpoofingErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(confidence: Swift.Float)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Float",
+                            "printedName": "Swift.Float",
+                            "usr": "s:Sf"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDCore.AntiSpoofingError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntiSpoofingError",
+                        "printedName": "VerIDCore.AntiSpoofingError",
+                        "usr": "s:9VerIDCore17AntiSpoofingErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9VerIDCore17AntiSpoofingErrorO13moireDetectedyACSf_tcACmF",
+            "mangledName": "$s9VerIDCore17AntiSpoofingErrorO13moireDetectedyACSf_tcACmF",
             "moduleName": "VerIDCore"
           },
           {
@@ -38562,8 +39627,8 @@
       },
       {
         "kind": "TypeDecl",
-        "name": "LivenessDetection",
-        "printedName": "LivenessDetection",
+        "name": "SpoofDeviceDetector",
+        "printedName": "SpoofDeviceDetector",
         "children": [
           {
             "kind": "Var",
@@ -38578,8 +39643,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio14CoreFoundation7CGFloatVvp",
-            "mangledName": "$s9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio12CoreGraphics7CGFloatVvp",
+            "usr": "s:9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio14CoreFoundation7CGFloatVvp",
+            "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio12CoreGraphics7CGFloatVvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -38601,8 +39666,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio14CoreFoundation7CGFloatVvg",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio12CoreGraphics7CGFloatVvg",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio14CoreFoundation7CGFloatVvg",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio12CoreGraphics7CGFloatVvg",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "get"
@@ -38625,8 +39690,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio14CoreFoundation7CGFloatVvs",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio12CoreGraphics7CGFloatVvs",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio14CoreFoundation7CGFloatVvs",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio12CoreGraphics7CGFloatVvs",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "set"
@@ -38643,8 +39708,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio14CoreFoundation7CGFloatVvM",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC38minDecrementedSpoofScoreBoxToSideRatio12CoreGraphics7CGFloatVvM",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC014minDecrementedC19ScoreBoxToSideRatio12CoreGraphics7CGFloatVvM",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -38664,8 +39729,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvp",
-            "mangledName": "$s9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvp",
+            "usr": "s:9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvp",
+            "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -38687,8 +39752,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvg",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvg",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvg",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvg",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "get"
@@ -38711,8 +39776,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvs",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvs",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvs",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvs",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "set"
@@ -38729,8 +39794,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvM",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC23largeBoxScoreAdjustmentSfvM",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvM",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC23largeBoxScoreAdjustmentSfvM",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -38750,8 +39815,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvp",
-            "mangledName": "$s9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvp",
+            "usr": "s:9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvp",
+            "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "HasInitialValue",
@@ -38773,8 +39838,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvg",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvg",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvg",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvg",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "get"
@@ -38797,8 +39862,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvs",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvs",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvs",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvs",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "set"
@@ -38815,8 +39880,8 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvM",
-                "mangledName": "$s9VerIDCore17LivenessDetectionC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvM",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvM",
+                "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC45shouldAdjustImageBrightnessIfNoSpoofsDetectedSbvM",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "accessorKind": "_modify"
@@ -38830,9 +39895,9 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "LivenessDetection",
-                "printedName": "VerIDCore.LivenessDetection",
-                "usr": "s:9VerIDCore17LivenessDetectionC"
+                "name": "SpoofDeviceDetector",
+                "printedName": "VerIDCore.SpoofDeviceDetector",
+                "usr": "s:9VerIDCore19SpoofDeviceDetectorC"
               },
               {
                 "kind": "TypeNominal",
@@ -38851,8 +39916,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:9VerIDCore17LivenessDetectionC12modelFileURLAC10Foundation0G0VSg_tKcfc",
-            "mangledName": "$s9VerIDCore17LivenessDetectionC12modelFileURLAC10Foundation0G0VSg_tKcfc",
+            "usr": "s:9VerIDCore19SpoofDeviceDetectorC12modelFileURLAC10Foundation0H0VSg_tKcfc",
+            "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC12modelFileURLAC10Foundation0H0VSg_tKcfc",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "AccessControl"
@@ -38885,8 +39950,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:9VerIDCore17LivenessDetectionC18confidenceThatFace_16isSpoofedInImageSfAA0A6IDFaceC_AA0K8Provider_ptKF",
-            "mangledName": "$s9VerIDCore17LivenessDetectionC18confidenceThatFace_16isSpoofedInImageSfAA0A6IDFaceC_AA0K8Provider_ptKF",
+            "usr": "s:9VerIDCore19SpoofDeviceDetectorC18confidenceThatFace_16isSpoofedInImageSfAA0A6IDFaceC_AA0L8Provider_ptKF",
+            "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC18confidenceThatFace_16isSpoofedInImageSfAA0A6IDFaceC_AA0L8Provider_ptKF",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "AccessControl"
@@ -38927,8 +39992,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:9VerIDCore17LivenessDetectionC37detectElectronicDevicesInSampleBuffer_11orientationSayAA13DetectedSpoofVGSo08CMSampleJ3Refa_So26CGImagePropertyOrientationVtKF",
-            "mangledName": "$s9VerIDCore17LivenessDetectionC37detectElectronicDevicesInSampleBuffer_11orientationSayAA13DetectedSpoofVGSo08CMSampleJ3Refa_So26CGImagePropertyOrientationVtKF",
+            "usr": "s:9VerIDCore19SpoofDeviceDetectorC37detectElectronicDevicesInSampleBuffer_11orientationSayAA08DetectedC0VGSo08CMSampleK3Refa_So26CGImagePropertyOrientationVtKF",
+            "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC37detectElectronicDevicesInSampleBuffer_11orientationSayAA08DetectedC0VGSo08CMSampleK3Refa_So26CGImagePropertyOrientationVtKF",
             "moduleName": "VerIDCore",
             "intro_iOS": "14",
             "declAttributes": [
@@ -38965,8 +40030,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:9VerIDCore17LivenessDetectionC30detectElectronicDevicesInImageySayAA13DetectedSpoofVGAA0I8Provider_pKF",
-            "mangledName": "$s9VerIDCore17LivenessDetectionC30detectElectronicDevicesInImageySayAA13DetectedSpoofVGAA0I8Provider_pKF",
+            "usr": "s:9VerIDCore19SpoofDeviceDetectorC30detectElectronicDevicesInImageySayAA08DetectedC0VGAA0J8Provider_pKF",
+            "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC30detectElectronicDevicesInImageySayAA08DetectedC0VGAA0J8Provider_pKF",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "AccessControl"
@@ -38976,8 +40041,8 @@
           }
         ],
         "declKind": "Class",
-        "usr": "s:9VerIDCore17LivenessDetectionC",
-        "mangledName": "$s9VerIDCore17LivenessDetectionC",
+        "usr": "s:9VerIDCore19SpoofDeviceDetectorC",
+        "mangledName": "$s9VerIDCore19SpoofDeviceDetectorC",
         "moduleName": "VerIDCore",
         "intro_iOS": "13",
         "declAttributes": [
@@ -42925,6 +43990,65 @@
           },
           {
             "kind": "Function",
+            "name": "identifyUsersInFace",
+            "printedName": "identifyUsersInFace(_:progress:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.Float]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Recognizable",
+                "printedName": "VerIDCore.Recognizable",
+                "usr": "c:objc(pl)VerIDRecognizable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Progress?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Progress",
+                    "printedName": "Foundation.Progress",
+                    "usr": "c:objc(cs)NSProgress"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore18UserIdentificationC19identifyUsersInFace_8progressSDySSSfGSo0A14IDRecognizable_p_So10NSProgressCSgtYaKF",
+            "mangledName": "$s9VerIDCore18UserIdentificationC19identifyUsersInFace_8progressSDySSSfGSo0A14IDRecognizable_p_So10NSProgressCSgtYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "findFacesSimilarTo",
             "printedName": "findFacesSimilarTo(_:in:threshold:)",
             "children": [
@@ -42986,6 +44110,73 @@
               "AccessControl",
               "ObjC",
               "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "findFacesSimilarTo",
+            "printedName": "findFacesSimilarTo(_:in:threshold:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.FaceWithScore]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FaceWithScore",
+                    "printedName": "VerIDCore.FaceWithScore",
+                    "usr": "c:@M@VerIDCore@objc(cs)FaceWithScore"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Recognizable",
+                "printedName": "VerIDCore.Recognizable",
+                "usr": "c:objc(pl)VerIDRecognizable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.Recognizable]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Recognizable",
+                    "printedName": "VerIDCore.Recognizable",
+                    "usr": "c:objc(pl)VerIDRecognizable"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.NSNumber?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSNumber",
+                    "printedName": "Foundation.NSNumber",
+                    "usr": "c:objc(cs)NSNumber"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore18UserIdentificationC18findFacesSimilarTo_2in9thresholdSayAA13FaceWithScoreCGSo0A14IDRecognizable_p_SaySoAJ_pGSo8NSNumberCSgtYaKF",
+            "mangledName": "$s9VerIDCore18UserIdentificationC18findFacesSimilarTo_2in9thresholdSayAA13FaceWithScoreCGSo0A14IDRecognizable_p_SaySoAJ_pGSo8NSNumberCSgtYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
             ],
             "throwing": true,
             "funcSelfKind": "NonMutating"
@@ -43099,6 +44290,88 @@
               "AccessControl",
               "RawDocComment"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "findFacesSimilarTo",
+            "printedName": "findFacesSimilarTo(_:in:threshold:progress:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.FaceWithScore]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FaceWithScore",
+                    "printedName": "VerIDCore.FaceWithScore",
+                    "usr": "c:@M@VerIDCore@objc(cs)FaceWithScore"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Recognizable",
+                "printedName": "VerIDCore.Recognizable",
+                "usr": "c:objc(pl)VerIDRecognizable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.Recognizable]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Recognizable",
+                    "printedName": "VerIDCore.Recognizable",
+                    "usr": "c:objc(pl)VerIDRecognizable"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Progress?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Progress",
+                    "printedName": "Foundation.Progress",
+                    "usr": "c:objc(cs)NSProgress"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore18UserIdentificationC18findFacesSimilarTo_2in9threshold8progressSayAA13FaceWithScoreCGSo0A14IDRecognizable_p_SaySoAK_pGSfSgSo10NSProgressCSgtYaKF",
+            "mangledName": "$s9VerIDCore18UserIdentificationC18findFacesSimilarTo_2in9threshold8progressSayAA13FaceWithScoreCGSo0A14IDRecognizable_p_SaySoAK_pGSfSgSo10NSProgressCSgtYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -47464,8 +48737,8 @@
               },
               {
                 "kind": "Var",
-                "name": "screenArtifactConfidence",
-                "printedName": "screenArtifactConfidence",
+                "name": "moireConfidence",
+                "printedName": "moireConfidence",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -47483,8 +48756,8 @@
                   }
                 ],
                 "declKind": "Var",
-                "usr": "s:9VerIDCore11FaceCaptureC14DiagnosticInfoV24screenArtifactConfidenceSdSgvp",
-                "mangledName": "$s9VerIDCore11FaceCaptureC14DiagnosticInfoV24screenArtifactConfidenceSdSgvp",
+                "usr": "s:9VerIDCore11FaceCaptureC14DiagnosticInfoV15moireConfidenceSdSgvp",
+                "mangledName": "$s9VerIDCore11FaceCaptureC14DiagnosticInfoV15moireConfidenceSdSgvp",
                 "moduleName": "VerIDCore",
                 "declAttributes": [
                   "HasInitialValue",
@@ -47515,8 +48788,128 @@
                       }
                     ],
                     "declKind": "Accessor",
+                    "usr": "s:9VerIDCore11FaceCaptureC14DiagnosticInfoV15moireConfidenceSdSgvg",
+                    "mangledName": "$s9VerIDCore11FaceCaptureC14DiagnosticInfoV15moireConfidenceSdSgvg",
+                    "moduleName": "VerIDCore",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "screenArtifactConfidence",
+                "printedName": "screenArtifactConfidence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Double?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9VerIDCore11FaceCaptureC14DiagnosticInfoV24screenArtifactConfidenceSdSgvp",
+                "mangledName": "$s9VerIDCore11FaceCaptureC14DiagnosticInfoV24screenArtifactConfidenceSdSgvp",
+                "moduleName": "VerIDCore",
+                "deprecated": true,
+                "declAttributes": [
+                  "AccessControl",
+                  "SetterAccess",
+                  "Available"
+                ],
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Double?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Double",
+                            "printedName": "Swift.Double",
+                            "usr": "s:Sd"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
                     "usr": "s:9VerIDCore11FaceCaptureC14DiagnosticInfoV24screenArtifactConfidenceSdSgvg",
                     "mangledName": "$s9VerIDCore11FaceCaptureC14DiagnosticInfoV24screenArtifactConfidenceSdSgvg",
+                    "moduleName": "VerIDCore",
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "spoofDeviceConfidence",
+                "printedName": "spoofDeviceConfidence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Float?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9VerIDCore11FaceCaptureC14DiagnosticInfoV21spoofDeviceConfidenceSfSgvp",
+                "mangledName": "$s9VerIDCore11FaceCaptureC14DiagnosticInfoV21spoofDeviceConfidenceSfSgvp",
+                "moduleName": "VerIDCore",
+                "declAttributes": [
+                  "HasInitialValue",
+                  "HasStorage",
+                  "AccessControl",
+                  "SetterAccess"
+                ],
+                "hasStorage": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.Float?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Float",
+                            "printedName": "Swift.Float",
+                            "usr": "s:Sf"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:9VerIDCore11FaceCaptureC14DiagnosticInfoV21spoofDeviceConfidenceSfSgvg",
+                    "mangledName": "$s9VerIDCore11FaceCaptureC14DiagnosticInfoV21spoofDeviceConfidenceSfSgvg",
                     "moduleName": "VerIDCore",
                     "implicit": true,
                     "accessorKind": "get"
@@ -50102,6 +51495,73 @@
           },
           {
             "kind": "Function",
+            "name": "createRecognizableFacesFromFaces",
+            "printedName": "createRecognizableFacesFromFaces(_:in:faceTemplateVersions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.RecognizableFace]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecognizableFace",
+                    "printedName": "VerIDCore.RecognizableFace",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDRecognizableFace"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.VerIDFace]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFace",
+                    "printedName": "VerIDCore.VerIDFace",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDFace"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ImageProvider",
+                "printedName": "VerIDCore.ImageProvider",
+                "usr": "c:@M@VerIDCore@objc(pl)VerIDImageProvider"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.VerIDFaceTemplateVersion]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore24FaceRecognitionUtilitiesC027createRecognizableFacesFromH0_2in20faceTemplateVersionsSayAA0gC0CGSayAA0A6IDFaceCG_AA13ImageProvider_pSaySo0anL7VersionVGtYaKF",
+            "mangledName": "$s9VerIDCore24FaceRecognitionUtilitiesC027createRecognizableFacesFromH0_2in20faceTemplateVersionsSayAA0gC0CGSayAA0A6IDFaceCG_AA13ImageProvider_pSaySo0anL7VersionVGtYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "compareFaceInImage",
             "printedName": "compareFaceInImage(_:toFaceInImage:using:completion:)",
             "children": [
@@ -50269,6 +51729,76 @@
           },
           {
             "kind": "Function",
+            "name": "compareFaceInImage",
+            "printedName": "compareFaceInImage(_:toFaceInImage:using:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Tuple",
+                "printedName": "(VerIDCore.RecognizableFace, VerIDCore.RecognizableFace, Swift.Float)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecognizableFace",
+                    "printedName": "VerIDCore.RecognizableFace",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDRecognizableFace"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RecognizableFace",
+                    "printedName": "VerIDCore.RecognizableFace",
+                    "usr": "c:@M@VerIDCore@objc(cs)VerIDRecognizableFace"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ImageProvider",
+                "printedName": "VerIDCore.ImageProvider",
+                "usr": "c:@M@VerIDCore@objc(pl)VerIDImageProvider"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ImageProvider",
+                "printedName": "VerIDCore.ImageProvider",
+                "usr": "c:@M@VerIDCore@objc(pl)VerIDImageProvider"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "VerIDCore.VerIDFaceTemplateVersion?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "VerIDFaceTemplateVersion",
+                    "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                    "usr": "c:@E@VerIDFaceTemplateVersion"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore24FaceRecognitionUtilitiesC07compareC7InImage_02tocgH05usingAA012RecognizableC0C_AHSftAA0H8Provider_p_AaI_pSo0A21IDFaceTemplateVersionVSgtYaKF",
+            "mangledName": "$s9VerIDCore24FaceRecognitionUtilitiesC07compareC7InImage_02tocgH05usingAA012RecognizableC0C_AHSftAA0H8Provider_p_AaI_pSo0A21IDFaceTemplateVersionVSgtYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "identifyUsersInImage",
             "printedName": "identifyUsersInImage(_:limit:completion:)",
             "children": [
@@ -50378,6 +51908,50 @@
             "moduleName": "VerIDCore",
             "declAttributes": [
               "AccessControl"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "identifyUsersInImage",
+            "printedName": "identifyUsersInImage(_:limit:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[VerIDCore.UserIdentificationResult]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UserIdentificationResult",
+                    "printedName": "VerIDCore.UserIdentificationResult",
+                    "usr": "s:9VerIDCore24UserIdentificationResultV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ImageProvider",
+                "printedName": "VerIDCore.ImageProvider",
+                "usr": "c:@M@VerIDCore@objc(pl)VerIDImageProvider"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore24FaceRecognitionUtilitiesC20identifyUsersInImage_5limitSayAA24UserIdentificationResultVGAA0I8Provider_p_SitYaKF",
+            "mangledName": "$s9VerIDCore24FaceRecognitionUtilitiesC20identifyUsersInImage_5limitSayAA24UserIdentificationResultVGAA0I8Provider_p_SitYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
             ],
             "throwing": true,
             "funcSelfKind": "NonMutating"
@@ -52015,98 +53589,98 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 4766,
+      "offset": 4772,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 4940,
+      "offset": 5221,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 5091,
+      "offset": 5647,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 5235,
+      "offset": 5797,
       "length": 3,
       "value": "0.3"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 5391,
+      "offset": 6272,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 5785,
+      "offset": 6982,
       "length": 3,
       "value": "0.5"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "FloatLiteral",
-      "offset": 6462,
+      "offset": 8252,
       "length": 4,
       "value": "30.0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 6539,
+      "offset": 8329,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "IntegerLiteral",
-      "offset": 6543,
+      "offset": 8333,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "StringLiteral",
-      "offset": 8379,
+      "offset": 10169,
       "length": 32,
       "value": "\"VerIDCore.LivenessDetectionSessionSettings\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "StringLiteral",
-      "offset": 10019,
+      "offset": 11809,
       "length": 29,
       "value": "\"VerIDCore.AuthenticationSessionSettings\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 12280,
+      "offset": 14070,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "BooleanLiteral",
-      "offset": 12911,
+      "offset": 14701,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
       "kind": "StringLiteral",
-      "offset": 11367,
+      "offset": 13157,
       "length": 27,
       "value": "\"VerIDCore.RegistrationSessionSettings\""
     },
@@ -52246,7 +53820,7 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Session.swift",
       "kind": "StringLiteral",
-      "offset": 7545,
+      "offset": 7217,
       "length": 15,
       "value": "\"VerIDCore.AuthorizationOp\""
     },
@@ -52526,56 +54100,56 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "StringLiteral",
-      "offset": 5100,
+      "offset": 5131,
       "length": 41,
       "value": "\"spoofingDetection.faceAlignment not set\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "StringLiteral",
-      "offset": 5252,
+      "offset": 5283,
       "length": 36,
       "value": "\"faceAlignment.facePresence not set\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "StringLiteral",
-      "offset": 5407,
+      "offset": 5438,
       "length": 42,
       "value": "\"facePresence.sessionFaceTracking not set\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "StringLiteral",
-      "offset": 5547,
+      "offset": 5578,
       "length": 30,
       "value": "\"faceProcessing.image not set\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "StringLiteral",
-      "offset": 5692,
+      "offset": 5723,
       "length": 42,
       "value": "\"faceProcessing.defaultFaceBounds not set\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "Array",
-      "offset": 6101,
+      "offset": 6065,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "StringLiteral",
-      "offset": 6374,
+      "offset": 6338,
       "length": 26,
       "value": "\"facePresence.face is nil\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceDetectionResult.swift",
       "kind": "IntegerLiteral",
-      "offset": 7564,
+      "offset": 7528,
       "length": 1,
       "value": "1"
     },
@@ -52750,21 +54324,42 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateDiagnostics.swift",
       "kind": "BooleanLiteral",
-      "offset": 7545,
+      "offset": 3341,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateDiagnostics.swift",
       "kind": "BooleanLiteral",
-      "offset": 8082,
+      "offset": 9655,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateDiagnostics.swift",
       "kind": "BooleanLiteral",
-      "offset": 9234,
+      "offset": 10248,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateDiagnostics.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10875,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateDiagnostics.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11472,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateDiagnostics.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12716,
       "length": 4,
       "value": "true"
     },
@@ -52778,44 +54373,30 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "IntegerLiteral",
-      "offset": 1422,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2970,
+      "offset": 2011,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 3004,
+      "offset": 2045,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 3197,
+      "offset": 2238,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 3373,
+      "offset": 2414,
       "length": 4,
       "value": "true"
-    },
-    {
-      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
-      "kind": "StringLiteral",
-      "offset": 191,
-      "length": 17,
-      "value": "\"VerIDCore.SpoofingDetection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FacePresenceDetection.swift",
@@ -52925,14 +54506,14 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 5537,
+      "offset": 5818,
       "length": 16,
       "value": "\"VerIDCore.SDKAuthOperation\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 6035,
+      "offset": 6316,
       "length": 18,
       "value": "\"VerIDCore.VerIDLoadOperation\""
     },
@@ -53170,63 +54751,63 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2661,
+      "offset": 3072,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2675,
+      "offset": 3086,
       "length": 19,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2696,
+      "offset": 3107,
       "length": 16,
       "value": "3"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2661,
+      "offset": 3072,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2675,
+      "offset": 3086,
       "length": 19,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2696,
+      "offset": 3107,
       "length": 16,
       "value": "3"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2661,
+      "offset": 3072,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2675,
+      "offset": 3086,
       "length": 19,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/Array2D.swift",
       "kind": "IntegerLiteral",
-      "offset": 2696,
+      "offset": 3107,
       "length": 16,
       "value": "3"
     },
@@ -53301,18 +54882,39 @@
       "value": "3"
     },
     {
-      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ScreenArtifactDetector.swift",
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/MoireDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 321,
+      "offset": 422,
       "length": 4,
       "value": "1000"
     },
     {
-      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ScreenArtifactDetector.swift",
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/MoireDetector.swift",
       "kind": "IntegerLiteral",
-      "offset": 364,
+      "offset": 465,
       "length": 3,
       "value": "750"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/MoireDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9990,
+      "length": 28,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/MoireDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9990,
+      "length": 28,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/MoireDetector.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9990,
+      "length": 28,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDImage.swift",
@@ -54129,49 +55731,49 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/LivenessDetection.swift",
       "kind": "FloatLiteral",
-      "offset": 335,
+      "offset": 454,
       "length": 3,
       "value": "0.9"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/LivenessDetection.swift",
       "kind": "FloatLiteral",
-      "offset": 387,
+      "offset": 506,
       "length": 3,
       "value": "0.0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/LivenessDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 460,
+      "offset": 579,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/LivenessDetection.swift",
       "kind": "IntegerLiteral",
-      "offset": 620,
+      "offset": 739,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/LivenessDetection.swift",
       "kind": "Array",
-      "offset": 4520,
+      "offset": 4638,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/LivenessDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 4680,
+      "offset": 4798,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/LivenessDetection.swift",
       "kind": "StringLiteral",
-      "offset": 4364,
+      "offset": 4482,
       "length": 18,
       "value": "\"VerIDCore.DetectionOperation\""
     },
@@ -54276,14 +55878,14 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserIdentification.swift",
       "kind": "StringLiteral",
-      "offset": 8566,
+      "offset": 10361,
       "length": 14,
       "value": "\"Atomic Int64\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserIdentification.swift",
       "kind": "StringLiteral",
-      "offset": 9024,
+      "offset": 10819,
       "length": 13,
       "value": "\"VerIDCore.FaceWithScore\""
     },

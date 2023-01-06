@@ -118,20 +118,28 @@ import AVFoundation
                     resultData.append(ValueCellData(title: "Face template version", value: faceTemplateVersion.stringValue()))
                 }
             }
-            if let highestSpoofConfidence: Float = self.sessionResultPackage.result.spoofConfidenceScore {
-                resultData.append(ValueCellData(title: "Spoof confidence score (object)", value: String(format: "%.02f", highestSpoofConfidence)))
-            }
             if !self.sessionResultPackage.result.faceCaptures.isEmpty {
-                let screenArtifactConfidenceScores = self.sessionResultPackage.result.faceCaptures.compactMap({
-                    if let confidence = $0.diagnosticInfo.screenArtifactConfidence {
+                let spoofDeviceConfidenceScores = self.sessionResultPackage.result.faceCaptures.compactMap({
+                    if let confidence = $0.diagnosticInfo.spoofDeviceConfidence {
                         return String(format: "%.02f", confidence)
                     }
                     return nil
                 })
-                if screenArtifactConfidenceScores.count > 1 {
-                    resultData.append(ValueCellData(title: "Spoof confidence scores (screen)", value: screenArtifactConfidenceScores.joined(separator: ", ")))
-                } else if !screenArtifactConfidenceScores.isEmpty {
-                    resultData.append(ValueCellData(title: "Spoof confidence score (screen)", value: screenArtifactConfidenceScores[0]))
+                if spoofDeviceConfidenceScores.count > 1 {
+                    resultData.append(ValueCellData(title: "Spoof confidence scores (object)", value: spoofDeviceConfidenceScores.joined(separator: ", ")))
+                } else if !spoofDeviceConfidenceScores.isEmpty {
+                    resultData.append(ValueCellData(title: "Spoof confidence score (object)", value: spoofDeviceConfidenceScores[0]))
+                }
+                let moireConfidenceScores = self.sessionResultPackage.result.faceCaptures.compactMap({
+                    if let confidence = $0.diagnosticInfo.moireConfidence {
+                        return String(format: "%.02f", confidence)
+                    }
+                    return nil
+                })
+                if moireConfidenceScores.count > 1 {
+                    resultData.append(ValueCellData(title: "Spoof confidence scores (screen)", value: moireConfidenceScores.joined(separator: ", ")))
+                } else if !moireConfidenceScores.isEmpty {
+                    resultData.append(ValueCellData(title: "Spoof confidence score (screen)", value: moireConfidenceScores[0]))
                 }
                 let maskScores = self.sessionResultPackage.result.faceCaptures.compactMap({
                     if let score = $0.diagnosticInfo.faceCoveringScore {
@@ -160,13 +168,13 @@ import AVFoundation
                 settingsArray.append(ValueCellData(title: "Pause duration", value: pause))
             }
             settingsArray.append(ValueCellData(title: "Face capture face count", value: "\(self.sessionResultPackage.settings.faceCaptureFaceCount)"))
-            settingsArray.append(ValueCellData(title: "Screen artifact detection enabled", value: self.sessionResultPackage.settings.isScreenArtifactDetectionEnabled ? "Yes" : "No"))
-            if self.sessionResultPackage.settings.isScreenArtifactDetectionEnabled {
-                settingsArray.append(ValueCellData(title: "Screen artifact confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.screenArtifactConfidenceThreshold)))
+            settingsArray.append(ValueCellData(title: "Moire detection enabled", value: self.sessionResultPackage.settings.isMoireDetectionEnabled ? "Yes" : "No"))
+            if self.sessionResultPackage.settings.isMoireDetectionEnabled {
+                settingsArray.append(ValueCellData(title: "Moire detection confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.moireDetectionConfidenceThreshold)))
             }
-            settingsArray.append(ValueCellData(title: "Spoof detection enabled", value: self.sessionResultPackage.settings.isSpoofDetectionEnabled ? "Yes" : "No"))
+            settingsArray.append(ValueCellData(title: "Spoof device detection enabled", value: self.sessionResultPackage.settings.isSpoofDetectionEnabled ? "Yes" : "No"))
             if self.sessionResultPackage.settings.isSpoofDetectionEnabled {
-                settingsArray.append(ValueCellData(title: "Spoof confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.spoofConfidenceThreshold)))
+                settingsArray.append(ValueCellData(title: "Spoof device confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.spoofConfidenceThreshold)))
             }
             settingsArray.append(ValueCellData(title: "Face covering detection enabled", value: self.sessionResultPackage.settings.isFaceCoveringDetectionEnabled ? "Yes" : "No"))
             if self.sessionResultPackage.settings.isFaceCoveringDetectionEnabled {

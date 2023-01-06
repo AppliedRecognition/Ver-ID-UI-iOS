@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		pPwrVIb/+pdp8twwwakkkJi2t/U=
+		AqmTuO4cpp1Uy6PKm6dBk5Oy6oY=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,27 +50,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		FTY8PvOrzWkKVbOrty9Hwyq8SOU=
+		LVw66S8AlHFqpullw4TmBQTUvlY=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		GAvBNdvtTVi6Qb/nmTHjoYeqHeI=
+		RzI2mcsbjrJCV6FixovDwaFF3Vk=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		PVYEuwxCvx7SVPXS0Ny7KkvC5c8=
+		cDbi+yLrXExnZQuQ7DDvBlxoPbY=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		0n15a/onQVq8afwODMoOTYU2Jng=
+		Px1pLwvbLJlDEFP0CkXE52QgHZw=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		PVYEuwxCvx7SVPXS0Ny7KkvC5c8=
+		cDbi+yLrXExnZQuQ7DDvBlxoPbY=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		lzj4jv0SDUcT4e8pIYrAmrUrKUA=
+		2x2qckdEuQPryo8Hj8clKFNNldg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -78,27 +78,27 @@
 		</data>
 		<key>MoirePatternDetection.mlmodelc/analytics/coremldata.bin</key>
 		<data>
-		oawqJyBfnKZLsKsePZWTp7BZIOs=
+		H6sru2YWlw282fk7EQn36Sek3ZI=
 		</data>
 		<key>MoirePatternDetection.mlmodelc/coremldata.bin</key>
 		<data>
-		7iasq0LPXdSFf7eykLbBFNQ2lzU=
+		T3A6K0gZrEjjeWCpqupIHakghSk=
 		</data>
 		<key>MoirePatternDetection.mlmodelc/metadata.json</key>
 		<data>
-		LRgRc7Idomt7rfgCwJglj32Nxn0=
+		+DSno8/WneyQNoIKveruYwNSad4=
 		</data>
 		<key>MoirePatternDetection.mlmodelc/model.espresso.net</key>
 		<data>
-		lNS+Qgis0nsLEpjTV+0vzBmG0sY=
+		uyEF7b+tnAdaEiMxQb2vueioYik=
 		</data>
 		<key>MoirePatternDetection.mlmodelc/model.espresso.shape</key>
 		<data>
-		e/X9T/O40rtj1xG6JR8jYOrPsBY=
+		I2yPKAyExlXw5pmGsdUXQ47PlyQ=
 		</data>
 		<key>MoirePatternDetection.mlmodelc/model.espresso.weights</key>
 		<data>
-		UpOYhK5vd6q4kQkjn2b98oovvBo=
+		2IkKP3OiD/+jn00capRLHAlnXWo=
 		</data>
 		<key>MoirePatternDetection.mlmodelc/model/coremldata.bin</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
-		Z80+QEmxtyqBe5Y3PcVmN2c2V/o=
+		yA5Yxxlux+Yz7MRExhvR9S9TLBo=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
 		<data>
@@ -263,7 +263,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WV+w3QejfxAXSG3DuzrhIy118DDX2ki5B6UlrboZgPc=
+			DPZGisZxV0JnFRxn+85S+Bmm11PGHwq3x1wfE4/RgqM=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -312,35 +312,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BLKRt9+gupXrZCh2/nVYQJozXATtVQTeezWJKM4WwsI=
+			O4nej3WeHM/wIUUCP2dVXh5urEdKfQ6vOk+JDcjaufc=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yl10B0Sh8PYQ+iHlFykEnYyXOvTVCTphqwb1CIt/d/4=
+			KQmc7L6yorMCouY4fTJzIq6h5cbNBOjAeLpeZprO1UY=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kEQIWgt0A/IGBHlDncmBgFF+GHCJnZ6qiDyMkhEkq6k=
+			KHkJ+ChVdQN2n8VHatQPceV/UH/sU1FL+DKfkB6ptQQ=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yl10B0Sh8PYQ+iHlFykEnYyXOvTVCTphqwb1CIt/d/4=
+			KQmc7L6yorMCouY4fTJzIq6h5cbNBOjAeLpeZprO1UY=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oQA2LXaGyYcrvwqpXT1vkV2+oeJbgx7sH1JbGj7TCLk=
+			m3ChB6kMGO4uLknLOeQGES27jSbj+n6gxjUqfZ9CEZ4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -354,42 +354,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pyYdDJpGBWlCwRoT8TeogBXBdLTIggiNKsRL9A2HlBw=
+			v351imQpDdTSv4AR+20Zx2C12Xu6mVUYE+Sl6Plx7fA=
 			</data>
 		</dict>
 		<key>MoirePatternDetection.mlmodelc/coremldata.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eH99HEHBZBaBQpgsaROdEYRyoe5qV4t+bkS6K51aU2Q=
+			Fu+LCfyyUjm1WISv+wf7H4bLiYdhF1l2r1X1q2leZyY=
 			</data>
 		</dict>
 		<key>MoirePatternDetection.mlmodelc/metadata.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mUrNe7l0WQdXNvoGml0KKyR9JkkhDClRC9tQPYTr914=
+			zG9fBwkf6vrT1i1iYu8tP6nvyStAL4KHbr7Tznwi1m4=
 			</data>
 		</dict>
 		<key>MoirePatternDetection.mlmodelc/model.espresso.net</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cAUadLuLPqetYRKMVtcQEUX7hMrr0Bg51vuDrtaMCck=
+			gnsiwdP2lGunfpSKv2cds6d0Letebigb2Zx6WoFZgLw=
 			</data>
 		</dict>
 		<key>MoirePatternDetection.mlmodelc/model.espresso.shape</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			flyTZ2q9AlrvPmlYdVZYoV09ePwr1bLC70zGKZxWMRI=
+			3JixKna5fEHXFrjhJpfpaf1IMRAlxFtJ2USpGFdOxX8=
 			</data>
 		</dict>
 		<key>MoirePatternDetection.mlmodelc/model.espresso.weights</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			C1BMAMr+fVVL+G9ogYDVpJUP02DwyGiJG7EmFXaNxjQ=
+			QMkZlFYJeiNVWWXrqQIBo93G8lkKB0IZDLy+Hln2qxw=
 			</data>
 		</dict>
 		<key>MoirePatternDetection.mlmodelc/model/coremldata.bin</key>
@@ -494,7 +494,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			d3quzkuYEUb41EJwjR5XVxbJXokr91VwWmtD0dax7HU=
+			e/pa6UY8weqnptd5L2MSR9z47d8Amk3L5Xkn0MA5J94=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
