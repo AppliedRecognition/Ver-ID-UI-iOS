@@ -8,5 +8,5 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
-MARKETING_VERSION = 2.8.0
-CURRENT_PROJECT_VERSION = 2008000
+MARKETING_VERSION = 2.9.0
+CURRENT_PROJECT_VERSION = 2009000

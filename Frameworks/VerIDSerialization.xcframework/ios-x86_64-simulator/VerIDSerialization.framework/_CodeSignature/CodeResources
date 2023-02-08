@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/VerIDSerialization-Swift.h</key>
 		<data>
-		lIjoofnDk92olCNzvvduFncvpJ4=
+		NR6heA2aOYZWcCyRh7g6ruufhDU=
 		</data>
 		<key>Headers/VerIDSerialization.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		H9jznDWKylYFkY0sFMKeVFXpQ/8=
+		lDGN9/Fce7C8oka5Phd9qAPWw8w=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -22,19 +22,19 @@
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		zj+D8M4PaPJmDbgFuTCJIyHPXXk=
+		HJ1DN6czjZBClj+ZJOr41gX8AZ0=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		hBszzu3JfLts1xWA8sipEgmsboE=
+		9x6KWE+K9AlawJZYxwAMwnZqqfQ=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		zj+D8M4PaPJmDbgFuTCJIyHPXXk=
+		HJ1DN6czjZBClj+ZJOr41gX8AZ0=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		NdzCgeElwDGxWIcjdEEsrWuhhdM=
+		e22/DnskEmoI3Odgzn7cKci2Rd8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oxfJhycZTIzOuBYIJH82nU869WxjhT5L/U0FaCKBDrQ=
+			qj6auWdrU46IyyAxyi2EVS8WxP9xDleYAGzA5izROOE=
 			</data>
 		</dict>
 		<key>Headers/VerIDSerialization.h</key>
@@ -68,28 +68,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NrZNiHVnOG3zwi0iWWroeG6Ih5Yzf3cBsrpcLdY2e/c=
+			p2DEzXLprxMmpR2fyrfyxFT1AbMhNkfnLzd0KtVW5bA=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GM66bYIUdU8ReB4SkJhRG5OO2gbrDmvKXcUnjX4IDic=
+			FtxggkjkeRRIm6aelfE5vbz991O3bq2qJ97ezBBDn1U=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NrZNiHVnOG3zwi0iWWroeG6Ih5Yzf3cBsrpcLdY2e/c=
+			p2DEzXLprxMmpR2fyrfyxFT1AbMhNkfnLzd0KtVW5bA=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			M7t1tSI9jmw3i74xx3YpsbynsrlaWdZMr1oJy7ShDaQ=
+			vUjK0Yl0USXZaxqUCIzX6OJaosNWpfN4mob6P/cEUv8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

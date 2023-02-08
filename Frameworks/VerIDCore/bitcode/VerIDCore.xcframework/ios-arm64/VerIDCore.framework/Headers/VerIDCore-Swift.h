@@ -1409,6 +1409,7 @@ typedef SWIFT_ENUM(NSInteger, VerIDError, open) {
   VerIDErrorRefusingToRunOnMainThread = 18,
   VerIDErrorInitializationTimeout = 19,
   VerIDErrorFeatureUnavailable = 20,
+  VerIDErrorUnavailableFaceTemplateVersion = 21,
 };
 static NSString * _Nonnull const VerIDErrorDomain = @"VerIDCore.VerIDError";
 
@@ -1505,6 +1506,12 @@ SWIFT_CLASS("_TtC9VerIDCore36VerIDFaceDetectionRecognitionFactory")
 /// since:
 /// 2.2.0
 - (nonnull instancetype)init;
+/// Constructor
+/// since:
+/// 2.9.0
+/// \param settings Detection/recognition library settings
+///
+- (nonnull instancetype)initWithSettings:(DetRecLibSettings * _Nonnull)settings;
 /// Create an instance of <code>VerIDFaceDetection</code>
 ///
 /// throws:

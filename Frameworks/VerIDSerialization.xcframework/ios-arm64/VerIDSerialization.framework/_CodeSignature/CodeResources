@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/VerIDSerialization-Swift.h</key>
 		<data>
-		+cP4DVcl35ghkAHP3brcKlrW6jA=
+		MB5vM8ScI3/jAqxikfaj9ldVPfA=
 		</data>
 		<key>Headers/VerIDSerialization.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		3r05Gb3KsmgVDg+jh6o+hY+QGpg=
+		n2UdNr4omXRug2dWwtX155W5VcM=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
@@ -22,19 +22,19 @@
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		SuFwy10YbZd1c4WCV53ifLOPrzg=
+		nzew+GwiR4N3odMmQ2/QEh9SslE=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		0T2znsxkFQskaXZWblSJfOHHRL0=
+		Wq2UZsRmkf840UUJE9zcSQn693Y=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		SuFwy10YbZd1c4WCV53ifLOPrzg=
+		nzew+GwiR4N3odMmQ2/QEh9SslE=
 		</data>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		w5dySab7kfecUy/4OPbGwLtnKjU=
+		FEqyS8CT4tVKKcDSg2eIuJcYhZg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oVEdoBuS8heuSzsj8zLMWfexcpveLVXkgrwJcjuzWg4=
+			m20s2IfofHSFsCvwK1isZ8iZOZOnA0oc1CwCTM+hRt0=
 			</data>
 		</dict>
 		<key>Headers/VerIDSerialization.h</key>
@@ -68,28 +68,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NLL2ltwhNmiT81fNNWcdkwnuSbUlGaokKKT2aVAuAyw=
+			uHMWCGi6Y786QNY7NieugRZC6mdAlIwbHglL610DCDc=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0Ytelho0QZ0n1NoJPaez4CJXhgk6p2IXNRUrpJJfirk=
+			2XrSXQVcQfw1wPhPYq+oowOaF5KOTORXOtNTP0YmmPQ=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NLL2ltwhNmiT81fNNWcdkwnuSbUlGaokKKT2aVAuAyw=
+			uHMWCGi6Y786QNY7NieugRZC6mdAlIwbHglL610DCDc=
 			</data>
 		</dict>
 		<key>Modules/VerIDSerialization.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			15OWnXhcNF3M5ypEIzmab+FVGZOnaM1PYfgcKuFZQOI=
+			zEEA5U3YNUJzRRkqgHm5rmHUCx2VgOcszpnH1praF0I=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

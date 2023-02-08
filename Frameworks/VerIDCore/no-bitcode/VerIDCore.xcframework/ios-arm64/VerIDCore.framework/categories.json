@@ -1,0 +1,53 @@
+{
+    "face-recognition": {
+        "v16": [
+            "dlib_face_recognition_resnet_model_v1.dat"
+        ],
+        "v20": [
+            "facenet-20170512.nv"
+        ],
+        "v21": [
+            "rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv"
+        ],
+        "v24": [
+            "mobilefacenet-opt.bin",
+            "mobilefacenet-opt.param",
+            "mobilefacenet-q12.nv"
+        ]
+    },
+    "face-detection": {
+        "v3": [
+            "fhogcascade_face_frontal.dat"
+        ],
+        "v6": [
+            "RFB-320.bin",
+            "RFB-320.nv",
+            "RFB-320.param"
+        ]
+    },
+    "landmark-detection": {
+        "v1": [
+            "shape_predictor_5_face_landmarks.dat",
+            "shape_predictor_68_face_landmarks.dat"
+        ]
+    },
+    "classifiers": {
+        "face-mask": [
+            "facemask-20200720-dut23td+1700-251149%3000.nv"
+        ]
+    },
+    "liveness-detection": {
+        "spoof-device-detection-coreml": [
+            "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61.mlmodel"
+        ],
+        "spoof-device-detection-tflite": [
+            "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61-fp16.tflite"
+        ],
+        "moire-detection-coreml": [
+            "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.mlmodel"
+        ],
+        "moire-detection-tflite": [
+            "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.tflite"
+        ]
+    }
+}

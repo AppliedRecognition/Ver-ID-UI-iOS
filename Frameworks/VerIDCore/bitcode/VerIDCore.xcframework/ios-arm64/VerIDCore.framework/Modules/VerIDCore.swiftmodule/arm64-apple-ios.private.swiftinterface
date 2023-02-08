@@ -9,11 +9,10 @@ import CommonCrypto
 import CoreAudio
 import CoreData
 import CoreGraphics
-import CoreImage
-import CoreML
 import CoreMedia
 import DeviceKit
 import Foundation
+import LivenessDetection
 import MobileCoreServices
 import RxSwift
 import SQLite3
@@ -22,7 +21,6 @@ import Swift
 import UIKit
 @_exported import VerIDCore
 import VerIDSDKIdentity
-import Vision
 import ZIPFoundation
 import _Concurrency
 import _StringProcessing
@@ -197,6 +195,7 @@ public class SessionDiagnostics : Swift.Codable {
   @objc final public let maxAuthenticationScore: Foundation.NSNumber
   @objc public var imageProcessors: [VerIDCore.ImageProcessorService]
   @objc final public let defaultFaceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion
+  final public let availableFaceTemplateVersions: Swift.Set<VerIDCore.VerIDFaceTemplateVersion>
   @objc public func authenticationScoreThreshold(faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) -> Foundation.NSNumber
   @objc public func setAuthenticationScoreThreshold(_ value: Foundation.NSNumber, faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion)
   @objc public func createRecognizableFacesFromFaces(_ faces: [VerIDCore.Face], inImage image: VerIDCore.ImageProvider, faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) throws -> [VerIDCore.Recognizable]
@@ -282,6 +281,11 @@ extension RxSwift.ObservableType {
   @objc func countFacesWithVersion(_ version: VerIDCore.VerIDFaceTemplateVersion) throws -> Foundation.NSNumber
   @objc optional func addUsersWithFaces(_ userFaces: [Swift.String : [VerIDCore.Recognizable]], completion: Self.ErrorCallback?)
   @objc func deleteAll(completion: Self.ErrorCallback?)
+}
+extension VerIDCore.UserManagement {
+  public var faceTemplateVersions: Swift.Set<VerIDCore.VerIDFaceTemplateVersion> {
+    get
+  }
 }
 extension VerIDCore.UserManagement2 {
   public func users(faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) throws -> [Swift.String]
@@ -710,6 +714,7 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
   @objc final public let faceDetection: VerIDCore.FaceDetection
   @objc final public let faceRecognition: VerIDCore.FaceRecognition
   @objc final public let userManagement: VerIDCore.UserManagement
+  final public let livenessDetection: VerIDCore.VerIDLivenessDetection?
   public var utilities: VerIDCore.VerIDUtilities? {
     get
     set
@@ -812,37 +817,6 @@ public struct UserManagementAnalysis {
   public let mostSimilarUsers: (Swift.String, Swift.String, Swift.Float)?
   public let mostDifferentUsers: (Swift.String, Swift.String, Swift.Float)?
 }
-public struct Array2D<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
-  public init(data: [T], cols: Swift.Int, rows: Swift.Int) throws
-  public func encode(to encoder: Swift.Encoder) throws
-  public var shape: (Swift.Int, Swift.Int) {
-    get
-  }
-  public mutating func reshape(_ cols: Swift.Int, _ rows: Swift.Int) throws
-  public func column(_ col: Swift.Int) -> [T]
-  public mutating func setValues(_ values: [T], inColumn col: Swift.Int) throws
-  public func row(_ row: Swift.Int) -> [T]
-  public mutating func setValues(_ values: [T], inRow row: Swift.Int) throws
-  public subscript(col: Swift.Int, row: Swift.Int) -> T {
-    get
-    set
-  }
-  public subscript(cols: Swift.Range<Swift.Int>, rows: Swift.Range<Swift.Int>) -> VerIDCore.Array2D<T>? {
-    get
-  }
-  public var array: [[T]] {
-    get
-  }
-  public init(from decoder: Swift.Decoder) throws
-}
-public enum Array2DError : Swift.Int, Swift.Error {
-  case wrongDataCount, invalidShape, invalidColumnLength, invalidRowLength
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 @objc open class AngleBearingEvaluation : ObjectiveC.NSObject {
   final public let sessionSettings: VerIDCore.VerIDSessionSettings
   public var pitchThresholdTolerance: CoreFoundation.CGFloat
@@ -869,8 +843,10 @@ public enum Array2DError : Swift.Int, Swift.Error {
   @objc public var faceRecognitionImageProcessors: [VerIDCore.ImageProcessorService]
   @objc public var defaultFaceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion
   @objc public var additionalFaceClassifiers: [VerIDCore.Classifier]
+  public var faceTemplateVersions: Swift.Set<VerIDCore.VerIDFaceTemplateVersion>
   @objc public init(apiSecret: Swift.String?, settings: VerIDCore.DetRecLibSettings? = nil)
   @objc override convenience dynamic public init()
+  @objc convenience public init(settings: VerIDCore.DetRecLibSettings)
   @objc public func createFaceDetection() throws -> VerIDCore.FaceDetection
   @objc public func createFaceRecognition() throws -> VerIDCore.FaceRecognition
   @objc deinit
@@ -888,16 +864,6 @@ public enum Array2DError : Swift.Int, Swift.Error {
   public var rawValue: Swift.Int {
     get
   }
-}
-@available(*, unavailable, renamed: "MoireDetector")
-public typealias ScreenArtifactDetector = VerIDCore.MoireDetector
-@available(iOS 13, *)
-public class MoireDetector {
-  public init(modelURL: Foundation.URL? = nil) throws
-  @available(*, deprecated, renamed: "detectMoireInImage(_:)")
-  public func detectScreenArtifactsInImage(_ image: VerIDCore.ImageProvider) throws -> Swift.Double
-  public func detectMoireInImage(_ image: VerIDCore.ImageProvider) throws -> Swift.Double
-  @objc deinit
 }
 @objc public class VerIDImage : ObjectiveC.NSObject, VerIDCore.ImageProvider, Swift.Codable {
   @objc public func provideVerIDImage() throws -> VerIDCore.Image
@@ -942,6 +908,7 @@ public class MoireDetector {
   case refusingToRunOnMainThread
   case initializationTimeout
   case featureUnavailable
+  case unavailableFaceTemplateVersion
   public var errorDescription: Swift.String? {
     get
   }
@@ -1102,11 +1069,6 @@ extension VerIDCore.Recognizable {
   }
   @objc deinit
 }
-public struct DetectedSpoof {
-  public let boundingBox: CoreFoundation.CGRect
-  public let confidence: Swift.Float
-  public func flipped(imageSize: CoreFoundation.CGSize) -> VerIDCore.DetectedSpoof
-}
 @objc(VerIDFaceDetection) public protocol FaceDetection {
   @objc func startFaceTracking() -> VerIDCore.FaceTracking
   @objc func detectFacesInImage(_ image: VerIDCore.ImageProvider, limit: Swift.Int32, options: Swift.UInt) throws -> [VerIDCore.Face]
@@ -1203,20 +1165,6 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
     get
   }
 }
-@available(*, unavailable, renamed: "SpoofDeviceDetector")
-public typealias LivenessDetection = VerIDCore.SpoofDeviceDetector
-@available(iOS 13, *)
-public class SpoofDeviceDetector {
-  public var minDecrementedSpoofScoreBoxToSideRatio: CoreFoundation.CGFloat
-  public var largeBoxScoreAdjustment: Swift.Float
-  public var shouldAdjustImageBrightnessIfNoSpoofsDetected: Swift.Bool
-  public init(modelFileURL: Foundation.URL? = nil) throws
-  public func confidenceThatFace(_ face: VerIDCore.Face, isSpoofedInImage image: VerIDCore.ImageProvider) throws -> Swift.Float
-  @available(iOS 14, *)
-  public func detectElectronicDevicesInSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, orientation: ImageIO.CGImagePropertyOrientation) throws -> [VerIDCore.DetectedSpoof]
-  public func detectElectronicDevicesInImage(_ image: VerIDCore.ImageProvider) throws -> [VerIDCore.DetectedSpoof]
-  @objc deinit
-}
 @objc public protocol ImageProcessorService {
   @objc func prepareImageForFaceDetection(_ image: VerIDCore.VerIDImage, recalculate: Swift.Bool) throws
   @objc func cgImageFromVerIDImage(_ image: VerIDCore.VerIDImage) throws -> CoreGraphics.CGImage
@@ -1286,6 +1234,11 @@ public class SpoofDeviceDetector {
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
   required public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class VerIDLivenessDetection {
+  final public let moireDetector: LivenessDetection.MoireDetector
+  final public let spoofDeviceDetector: LivenessDetection.SpoofDeviceDetector
+  @objc deinit
 }
 @_inheritsConvenienceInitializers public class AngleSmoothing : VerIDCore.Smoothing<VerIDCore.EulerAngle> {
   override public init(bufferSize: Swift.Int)
@@ -1476,14 +1429,17 @@ extension VerIDCore.FaceCapture {
     public var sharpness: Swift.Double? {
       get
     }
-    public var moireConfidence: Swift.Double? {
+    public var moireConfidence: Swift.Float? {
       get
     }
     @available(*, deprecated, renamed: "moireConfidence")
-    public var screenArtifactConfidence: Swift.Double? {
+    public var screenArtifactConfidence: Swift.Float? {
       get
     }
     public var spoofDeviceConfidence: Swift.Float? {
+      get
+    }
+    public var spoofDevices: [LivenessDetection.DetectedSpoofDevice] {
       get
     }
     public init(from decoder: Swift.Decoder) throws
@@ -1615,9 +1571,6 @@ extension VerIDCore.RecognitionFace.Version : Swift.RawRepresentable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.Equatable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.Hashable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.RawRepresentable {}
-extension VerIDCore.Array2DError : Swift.Equatable {}
-extension VerIDCore.Array2DError : Swift.Hashable {}
-extension VerIDCore.Array2DError : Swift.RawRepresentable {}
 extension VerIDCore.Axis : Swift.Equatable {}
 extension VerIDCore.Axis : Swift.Hashable {}
 extension VerIDCore.Axis : Swift.RawRepresentable {}

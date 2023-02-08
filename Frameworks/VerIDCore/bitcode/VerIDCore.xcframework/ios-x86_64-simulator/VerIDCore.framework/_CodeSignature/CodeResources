@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/DetRecLib.h</key>
 		<data>
-		MjpEZSuHplYKX3ncqaIrarRuWfA=
+		wo+89EfJXvoyYMmgr+9MZIVBmEM=
 		</data>
 		<key>Headers/DetRecLibSettings.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		HKdkxNYRL15eHufNHi/wCHjhzA0=
+		BdJobLkBFCGtcDyx6ZsUaHIhJ08=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,111 +50,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		DowaOHencqhzmJdV1pggzgdTrtA=
+		7T7bPxYDlPGad55CQYDnAKOCH1E=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		RzI2mcsbjrJCV6FixovDwaFF3Vk=
+		tFmDbKpTzNENkRjqHuxKbADyCrc=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		pjBzLSfZ6EsMSX27B6tNBJsAQBQ=
+		MeDBv+qJen3uwj+4ZoC2MQdcXLU=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		yuvA2YCp5Wo8Wh5w0KMXFtEF65s=
+		I0SNp/kPGw7ue4ve+Z3FTXDm1a0=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		pjBzLSfZ6EsMSX27B6tNBJsAQBQ=
+		MeDBv+qJen3uwj+4ZoC2MQdcXLU=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		A8CNJWZIBkHSQhbvMGE29TDBFlM=
+		yr04ASYbhtO5m78Q62cLOr032x8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		O2Z+ffitU4xxZHNT/Ijcu5/edPo=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/analytics/coremldata.bin</key>
-		<data>
-		H6sru2YWlw282fk7EQn36Sek3ZI=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/coremldata.bin</key>
-		<data>
-		7L/7tchjNbCcMHDCUIcf2AKMi9Y=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/metadata.json</key>
-		<data>
-		+DSno8/WneyQNoIKveruYwNSad4=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/model.espresso.net</key>
-		<data>
-		uyEF7b+tnAdaEiMxQb2vueioYik=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/model.espresso.shape</key>
-		<data>
-		I2yPKAyExlXw5pmGsdUXQ47PlyQ=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/model.espresso.weights</key>
-		<data>
-		2IkKP3OiD/+jn00capRLHAlnXWo=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/model/coremldata.bin</key>
-		<data>
-		yNfQ7w7t+oLS6hqlkoRbmm1LArc=
-		</data>
-		<key>MoirePatternDetection.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<data>
-		tkgF5pxT7RlO+9uypQti9obolyA=
-		</data>
-		<key>Resources.plist</key>
-		<data>
-		zvIGvX1LAffbWle5VG4XPUJSUF0=
-		</data>
-		<key>SpoofDetector.mlmodelc/analytics/coremldata.bin</key>
-		<data>
-		GHCgLr242/tZsC4742ObMrEYRtI=
-		</data>
-		<key>SpoofDetector.mlmodelc/coremldata.bin</key>
-		<data>
-		Mm+VghqbmuPZ23DS2BVjh9oJZmw=
-		</data>
-		<key>SpoofDetector.mlmodelc/metadata.json</key>
-		<data>
-		QVo/lfCP6g0Qkpk3opGmNRYQyo0=
-		</data>
-		<key>SpoofDetector.mlmodelc/model0/analytics/coremldata.bin</key>
-		<data>
-		1S1UXR9Tcxq/sUw/URTN25j0N2g=
-		</data>
-		<key>SpoofDetector.mlmodelc/model0/coremldata.bin</key>
-		<data>
-		jGU24Zr12fU7j/SArLdn69K6NOE=
-		</data>
-		<key>SpoofDetector.mlmodelc/model0/model.espresso.net</key>
-		<data>
-		Kmdh3tPWOV/fFXG67ZJz1iy7KJM=
-		</data>
-		<key>SpoofDetector.mlmodelc/model0/model.espresso.shape</key>
-		<data>
-		SgiXtJPAD1evTlB8/MEo+Kv0hlo=
-		</data>
-		<key>SpoofDetector.mlmodelc/model0/model.espresso.weights</key>
-		<data>
-		QlbrQ1ugwdn0eJQusJwx4gehco0=
-		</data>
-		<key>SpoofDetector.mlmodelc/model0/model/coremldata.bin</key>
-		<data>
-		tGU7K8v0jbmLrWPOZkDsl7EBsZk=
-		</data>
-		<key>SpoofDetector.mlmodelc/model0/neural_network_optionals/coremldata.bin</key>
-		<data>
-		tkgF5pxT7RlO+9uypQti9obolyA=
-		</data>
-		<key>SpoofDetector.mlmodelc/model1/coremldata.bin</key>
-		<data>
-		7dadUoJdvuNN7hoQifQLdEttmfo=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
@@ -168,65 +88,13 @@
 		<data>
 		ezAolVkgGBvNTTx9QWDyiPtRmwM=
 		</data>
-		<key>VerIDModels/.gitattributes</key>
+		<key>categories.json</key>
 		<data>
-		8DVgYHcjXyl2tR5pdni2qG72ZKE=
+		yb9dlFlHdQywsjhvUapM62KIVGc=
 		</data>
-		<key>VerIDModels/RFB-320.bin</key>
+		<key>hashes.json</key>
 		<data>
-		ka45VsYrFBduIk0Jl7j2k/mRNhI=
-		</data>
-		<key>VerIDModels/RFB-320.nv</key>
-		<data>
-		T/ZMLKHIPpeGQ4E6f2u1BRPQiVY=
-		</data>
-		<key>VerIDModels/RFB-320.param</key>
-		<data>
-		NyccPk29sh5/4ZOee0b/iPyXjbo=
-		</data>
-		<key>VerIDModels/dlib_face_recognition_resnet_model_v1.dat</key>
-		<data>
-		aT7KVi7fnRq17HG+T+7xWGdB/qc=
-		</data>
-		<key>VerIDModels/facemask-20200720-dut23td+1700-251149%3000.nv</key>
-		<data>
-		VpVb/170iWkj/aJeueGVP+Z6/hQ=
-		</data>
-		<key>VerIDModels/facenet-20170512.nv</key>
-		<data>
-		7kk8ELSfZxLT+ZRpelidA+oNg6Q=
-		</data>
-		<key>VerIDModels/fhogcascade_face_frontal.dat</key>
-		<data>
-		8Z15+509g3JbrrBJNVUW8tyHEGg=
-		</data>
-		<key>VerIDModels/mmod_human_face_detector.dat</key>
-		<data>
-		t8GLA469R9qNdHz7aQIklCosSoo=
-		</data>
-		<key>VerIDModels/mobilefacenet-opt.bin</key>
-		<data>
-		hmKCpHjCRV+zni54jvoHcW7FnZE=
-		</data>
-		<key>VerIDModels/mobilefacenet-opt.param</key>
-		<data>
-		razilEV/Mrn6LNw6gpvGbViaB1U=
-		</data>
-		<key>VerIDModels/mobilefacenet-q12.nv</key>
-		<data>
-		RVVTEtD97zBBpLdX8mWKv3YCubo=
-		</data>
-		<key>VerIDModels/rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv</key>
-		<data>
-		aSwHpz0njROp/10m5ttMqGKYddI=
-		</data>
-		<key>VerIDModels/shape_predictor_5_face_landmarks.dat</key>
-		<data>
-		7e7kPG/ObkyFXMY2rWEC8FKxWUk=
-		</data>
-		<key>VerIDModels/shape_predictor_68_face_landmarks.dat</key>
-		<data>
-		U20wf9KHcKk5RRWidU7gpiO0UdE=
+		QFVdJiLFKi6r54JgvcutGmemMO0=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -235,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yxwfzTWfSskaKo9mekOgBmazIs5RQb5N6S5S9PrwHzU=
+			GoFX6KrkxrEeLucRFS1kUsp6wxFkxUZ+cOFNCtkVVTI=
 			</data>
 		</dict>
 		<key>Headers/DetRecLibSettings.h</key>
@@ -263,7 +131,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FppYwKhtWdbQF+qGxinRwpE6qaUqzu1Z8fBEF+Ukkvc=
+			tGPZTtu9Ifh37Q02rUOvqWSGJZG5xWDtMAlvcFTo3kE=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -312,35 +180,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			O4nej3WeHM/wIUUCP2dVXh5urEdKfQ6vOk+JDcjaufc=
+			BwJZcp6RNtgzOT0eAo83TLKCIzwiEM2whTP/2ddvcno=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			B1gHkyjbXTp58Twp5HAjEMxapElnqqKsiR3dxxNhWR4=
+			Ie5J710Mj/jt2MJrfmhV0r3uXRhLgIbYPiybl8/1PZQ=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FFYiBDYfkuhXMRvEtY0tCAI662DyUWDwOlTh79qoVMo=
+			b5HySdgcZnzOJcpNQcLFh98ZGob0t9vBEl0agqEBWc8=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			B1gHkyjbXTp58Twp5HAjEMxapElnqqKsiR3dxxNhWR4=
+			Ie5J710Mj/jt2MJrfmhV0r3uXRhLgIbYPiybl8/1PZQ=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			j2o2A/38bQZxiGMFoktDKN6dvV1ceZjbBpf241Zsh2U=
+			zmULeFv62aHOFWjsxiSnX5lGOaPVng9VFlbN2PKCyLk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -348,146 +216,6 @@
 			<key>hash2</key>
 			<data>
 			Ml7050QZvQvYKCuvzik/qE0EZlQmToVwpN1grMOy8PE=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/analytics/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			v351imQpDdTSv4AR+20Zx2C12Xu6mVUYE+Sl6Plx7fA=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			XQWWiy2GqOCi9dYUOIkvHEIinJuCuP7uiNvTv5P7ZCY=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/metadata.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			zG9fBwkf6vrT1i1iYu8tP6nvyStAL4KHbr7Tznwi1m4=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/model.espresso.net</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			gnsiwdP2lGunfpSKv2cds6d0Letebigb2Zx6WoFZgLw=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/model.espresso.shape</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			3JixKna5fEHXFrjhJpfpaf1IMRAlxFtJ2USpGFdOxX8=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/model.espresso.weights</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QMkZlFYJeiNVWWXrqQIBo93G8lkKB0IZDLy+Hln2qxw=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/model/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9aX9QtFqIDAnmO9u0wmXm0MAPSMg2fDo6pgxqSdZ+0s=
-			</data>
-		</dict>
-		<key>MoirePatternDetection.mlmodelc/neural_network_optionals/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			WTG9U2xFUClKISxvyNPBvuddqBeYC6C2cchgPa+zYjg=
-			</data>
-		</dict>
-		<key>Resources.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			8FmoACtFRkrrLSyWw3CmBu08je7OjSKSBSl3oKWHaTs=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/analytics/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			IkJ2CglpQE4JYtd454PYX441w2jDXyP+aHaF8tIFaxI=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			3vIPDutEK7sXFldLel8uTqhqMOgskoo9PaJmwcOwfgk=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/metadata.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ED7nf8T8pTzeUFhjjpz1cAdMp1I+SqpIkxL0i9uRQI4=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model0/analytics/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			dLsKY2ZBypAU33q+QhjMfJb+C9sGCYqiIXgNLpRmXC0=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model0/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			pwBavkHpTqvINL0HN3JJEWmE3ayxjREZFvIn0fR4nuo=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model0/model.espresso.net</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			oN8Bj1zyMeFSJyKbYr86TdEsprWG6lZeMi+ttu6xr7E=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model0/model.espresso.shape</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			YOsZuujlQqTjOY+SV5fQMFAWeoMaUTwtb1bb07exbbY=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model0/model.espresso.weights</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			RAilC4/B8551QeVqCvxz+XT08kdo002827hsdusUS2k=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model0/model/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			JsMfzXP3J1PCXEF2nqub8rHW9vXpXkr2ag9c2kxRcE8=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model0/neural_network_optionals/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			WTG9U2xFUClKISxvyNPBvuddqBeYC6C2cchgPa+zYjg=
-			</data>
-		</dict>
-		<key>SpoofDetector.mlmodelc/model1/coremldata.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			hTvvOjtqogPPa00fF6apOndQJmHbr1ru5/hYTW7tOUk=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
@@ -511,109 +239,18 @@
 			Kf2lM2Qb7gd6R8T6BRsIxu/VbE9GQDiCJXDx0sELom8=
 			</data>
 		</dict>
-		<key>VerIDModels/.gitattributes</key>
+		<key>categories.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KNFgdzw7qFVozlak2Rm0Rp7OOQVirzEt1nz2fLccS5E=
+			Os1npqpiVNHQF6J0d9cHDD5JXZ2fdqEHawscB6DoR4A=
 			</data>
 		</dict>
-		<key>VerIDModels/RFB-320.bin</key>
+		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			TyVUQmk06WI/DiXAglw6FOgHJ3vf+6itaapIgak1v0c=
-			</data>
-		</dict>
-		<key>VerIDModels/RFB-320.nv</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Eb9fBDDuadRqUBu1r+eBKwtBiKmuzEKPv0QpvB+j1F0=
-			</data>
-		</dict>
-		<key>VerIDModels/RFB-320.param</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			+94guplrxUnrnt23qBcgkpk0zoezZimBxI7hQu2b7mI=
-			</data>
-		</dict>
-		<key>VerIDModels/dlib_face_recognition_resnet_model_v1.dat</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			b4F95U7Stn5zY7j66erXrgqybgArcf2JQblWuWQwpp0=
-			</data>
-		</dict>
-		<key>VerIDModels/facemask-20200720-dut23td+1700-251149%3000.nv</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Ol6DQlT52gJAZQllGoUUgV+FfYfeZvAsDkgt5RG18V0=
-			</data>
-		</dict>
-		<key>VerIDModels/facenet-20170512.nv</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			TNszQNUOCkIyZUTBc8M1ORXeleg/CbBPBZ7qURHi57o=
-			</data>
-		</dict>
-		<key>VerIDModels/fhogcascade_face_frontal.dat</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			H5gKyHS0B7dUCZF4wrIK9BTohRIAysy8+Rlg+BNf6t0=
-			</data>
-		</dict>
-		<key>VerIDModels/mmod_human_face_detector.dat</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			vkZ7Gnb0gmk947D2of+R0JIxm+cVI9TUsGKPalP8uHo=
-			</data>
-		</dict>
-		<key>VerIDModels/mobilefacenet-opt.bin</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			2LX7YUlDnbBmee6etkKzYsKn0hk0D4J77+h9QIXQvz0=
-			</data>
-		</dict>
-		<key>VerIDModels/mobilefacenet-opt.param</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			t+EnoNJ8orUnv7qF0Rv2yaLJ07Hig1XlepjYWAmsteI=
-			</data>
-		</dict>
-		<key>VerIDModels/mobilefacenet-q12.nv</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			1eEyixt/OZXNX2SU3XDLAaMyq+5F/THy5uxlHizdVjc=
-			</data>
-		</dict>
-		<key>VerIDModels/rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			sB+oVQ5qGl+ea23QsDWsUHGUKbyrYX2vq1x3bzpsRF0=
-			</data>
-		</dict>
-		<key>VerIDModels/shape_predictor_5_face_landmarks.dat</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			xLHpgEeScH06QFwsFqgKICaeZnUCH2SkHTD/+vvEGIg=
-			</data>
-		</dict>
-		<key>VerIDModels/shape_predictor_68_face_landmarks.dat</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			CpvI7YCkClwGtFbC2eEkRALY2UCyNWbPrxpoV4H/Y9M=
+			nhtSAEzA0KPCtcziVUtuSbkx2CgHFao0sx+H3n95qh4=
 			</data>
 		</dict>
 	</dict>
