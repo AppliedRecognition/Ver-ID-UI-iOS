@@ -48,6 +48,8 @@ public protocol ImagePublisher {
     @IBOutlet private var faceOvalView: FaceOvalView!
     @IBOutlet private var headSceneView: HeadView!
     @IBOutlet private var faceImageView: UIImageView!
+    @IBOutlet private var faceOvalWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private var faceOvalHeightConstraint: NSLayoutConstraint!
     private var nextAvailableViewChangeTime: CFTimeInterval?
     private var latestMisalignTime: CFTimeInterval?
     private var faceImageViewAnimator: UIViewPropertyAnimator?
@@ -158,18 +160,20 @@ public protocol ImagePublisher {
     
     func updateFaceOvalDimensions() {
         if let faceExtents = self.sessionSettings?.expectedFaceExtents {
-            let faceAspectRatio: CGFloat = 4 / 5
-            let viewAspectRatio = self.viewSize.width / self.viewSize.height
-            let faceSize: CGSize
-            if viewAspectRatio > faceAspectRatio {
-                let ovalHeight = self.viewSize.height * faceExtents.proportionOfViewHeight
-                faceSize = CGSize(width: ovalHeight * faceAspectRatio, height: ovalHeight)
-            } else {
-                let ovalWidth = self.viewSize.width * faceExtents.proportionOfViewWidth
-                faceSize = CGSize(width: ovalWidth, height: ovalWidth / faceAspectRatio)
-            }
-            self.faceViewsContainer.translatesAutoresizingMaskIntoConstraints = true
-            self.faceViewsContainer.frame = CGRect(origin: CGPoint(x: self.view.bounds.midX - faceSize.width / 2, y: self.view.bounds.midY - faceSize.height / 2), size: faceSize)
+//            let faceAspectRatio: CGFloat = 4 / 5
+//            let viewAspectRatio = self.viewSize.width / self.viewSize.height
+//            let faceSize: CGSize
+//            if viewAspectRatio > faceAspectRatio {
+//                let ovalHeight = self.viewSize.height * faceExtents.proportionOfViewHeight
+//                faceSize = CGSize(width: ovalHeight * faceAspectRatio, height: ovalHeight)
+//            } else {
+//                let ovalWidth = self.viewSize.width * faceExtents.proportionOfViewWidth
+//                faceSize = CGSize(width: ovalWidth, height: ovalWidth / faceAspectRatio)
+//            }
+            self.faceOvalWidthConstraint = self.faceOvalWidthConstraint.copyWithMultiplier(faceExtents.proportionOfViewWidth)
+            self.faceOvalHeightConstraint = self.faceOvalHeightConstraint.copyWithMultiplier(faceExtents.proportionOfViewHeight)
+//            self.faceViewsContainer.translatesAutoresizingMaskIntoConstraints = true
+//            self.faceViewsContainer.frame = CGRect(origin: CGPoint(x: self.view.bounds.midX - faceSize.width / 2, y: self.view.bounds.midY - faceSize.height / 2), size: faceSize)
         }
     }
     
