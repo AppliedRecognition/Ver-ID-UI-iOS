@@ -240,28 +240,20 @@ import os
         DispatchQueue.main.async {
             session.delegate = nil
             if let err = result.error, self.delegate?.shouldRetrySession?(self, afterFailure: err) == .some(true) {
-                func showErrorController() {
-                    do {
-                        let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
-                        controller.delegate = self
-                        controller.modalPresentationStyle = .overFullScreen
-                        if var speechDelegatable = controller as? SpeechDelegatable {
-                            speechDelegatable.speechDelegate = self
-                        }
-                        self.alertController = controller
-                        self.viewController?.present(controller, animated: true)
-                    } catch {
-                        self.session = nil
-                        self.finishWithResult(result)
+                do {
+                    let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
+                    controller.delegate = self
+                    controller.modalPresentationStyle = .overFullScreen
+                    if var speechDelegatable = controller as? SpeechDelegatable {
+                        speechDelegatable.speechDelegate = self
                     }
+                    self.alertController = controller
+                    self.viewController?.present(controller, animated: true)
+                } catch {
+                    self.session = nil
+                    self.finishWithResult(result)
                 }
-                if case VerIDSessionError.faceIsCovered = err {
-                    showErrorController()
-                    return
-                } else if err is AntiSpoofingError || err is FacePresenceError {
-                    showErrorController()
-                    return
-                }
+                return
             }
             self.session = nil
             if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
