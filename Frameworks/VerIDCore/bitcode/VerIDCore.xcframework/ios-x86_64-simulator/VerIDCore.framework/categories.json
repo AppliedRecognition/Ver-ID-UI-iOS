@@ -43,6 +43,9 @@
         "spoof-device-detection-tflite": [
             "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61-fp16.tflite"
         ],
+        "spoof-device-detection-torchscript": [
+            "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61_opt.torchscript"
+        ],
         "moire-detection-coreml": [
             "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.mlmodel"
         ],
