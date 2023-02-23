@@ -25,7 +25,7 @@ import AVFoundation
     @objc var delegate: FaceDetectionAlertControllerDelegate? { get set }
 }
 
-class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControllerProtocol, SpeechDelegatable {
+open class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControllerProtocol, SpeechDelegatable {
     
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var messageLabelBackgroundView: UIView!
@@ -43,9 +43,9 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
     let videoURL: URL?
     let image: UIImage?
     let showStrikeThrough: Bool
-    var delegate: FaceDetectionAlertControllerDelegate?
+    public var delegate: FaceDetectionAlertControllerDelegate?
     var looper: Any?
-    var translatedStrings: TranslatedStrings?
+    public var translatedStrings: TranslatedStrings?
     var speechDelegate: SpeechDelegate?
     
     public init(message: String?, videoURL: URL?) {
@@ -64,11 +64,11 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
         super.init(nibName: "FaceDetectionAlertController", bundle: ResourceHelper.bundle)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         if let translatedStrings = self.translatedStrings {
             self.cancelButton.title = translatedStrings["Cancel"]
@@ -93,7 +93,7 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let url = self.videoURL {
             if #available(iOS 10, *) {
@@ -134,7 +134,7 @@ class FaceDetectionAlertController: UIViewController, FaceDetectionAlertControll
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if #available(iOS 10, *) {
             (self.looper as? AVPlayerLooper)?.disableLooping()
