@@ -14,6 +14,7 @@ extension VerIDFactory {
     convenience init(userDefaults: UserDefaults) {
         self.init()
         let detRecFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil)
+        detRecFactory.faceTemplateVersions = [.V24]
         detRecFactory.settings.confidenceThreshold = userDefaults.confidenceThreshold
         detRecFactory.settings.faceExtractQualityThreshold = userDefaults.faceTemplateExtractionThreshold
         detRecFactory.settings.detectorVersion = UInt32(userDefaults.faceDetectorVersion)
