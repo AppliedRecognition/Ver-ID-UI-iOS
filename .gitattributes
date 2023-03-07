@@ -1,2 +1,16 @@
 Frameworks/**/*.dat filter=lfs diff=lfs merge=lfs -text
 Frameworks/**/VerIDCore filter=lfs diff=lfs merge=lfs -text
+*.dat filter=lfs diff=lfs merge=lfs -text
+**/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/bitcode/VerIDCore.xcframework/ios-arm64/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/bitcode/VerIDCore.xcframework/ios-arm64_armv7/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/bitcode/VerIDCore.xcframework/ios-i386_x86_64-simulator/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/bitcode/VerIDCore.xcframework/ios-arm64/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/bitcode/VerIDCore.xcframework/ios-x86_64-simulator/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/no-bitcode/VerIDCore.xcframework/ios-arm64/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/no-bitcode/VerIDCore.xcframework/ios-x86_64-simulator/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/bitcode/VerIDCore.xcframework/ios-arm64/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/bitcode/VerIDCore.xcframework/ios-x86_64-simulator/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/no-bitcode/VerIDCore.xcframework/ios-arm64/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+Frameworks/VerIDCore/no-bitcode/VerIDCore.xcframework/ios-x86_64-simulator/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
