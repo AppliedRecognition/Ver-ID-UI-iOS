@@ -222,8 +222,6 @@ import AVFoundation
             self.captureSession.commitConfiguration()
         }
         
-        self.captureSession.sessionPreset = AVCaptureSession.Preset.photo
-        
         do {
             guard let camera = self.captureDevice else {
                 setupResult = .configurationFailed
@@ -240,7 +238,10 @@ import AVFoundation
             self.captureSession.addInput(videoDeviceInput)
             self.cameraInput = videoDeviceInput
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let `self` = self, self.isViewLoaded else {
+                    return
+                }
                 self.cameraPreviewView.videoPreviewLayer.videoGravity = self.videoGravity
                 self.cameraPreviewView.videoPreviewLayer.connection?.videoOrientation = self.avCaptureVideoOrientation
                 self.updateVideoRotation()
