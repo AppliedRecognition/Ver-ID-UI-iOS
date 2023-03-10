@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		BdJobLkBFCGtcDyx6ZsUaHIhJ08=
+		qt36vmP5vJElOCoFzJYxqVoskxM=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,27 +50,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		/RmEh/3+CfdHasyfBxlRCLyB+JA=
+		NuukeJ9dctEvwn72V6okQyq7QYw=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		tFmDbKpTzNENkRjqHuxKbADyCrc=
+		G2OKxONyD81bXAbNzLKdD+LeliM=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		MeDBv+qJen3uwj+4ZoC2MQdcXLU=
+		xJtEH++WXpDA0tBVJ9FE4L+hHGc=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		I0SNp/kPGw7ue4ve+Z3FTXDm1a0=
+		akiHX5OXZ8zKRd7ZOBXHehsBgeg=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		MeDBv+qJen3uwj+4ZoC2MQdcXLU=
+		xJtEH++WXpDA0tBVJ9FE4L+hHGc=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		mIvEB44rUSTjICGFeTfvAFHdxe0=
+		Jx4eRltPtXXz8O7BJ0rKMPLVGfo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -90,11 +90,11 @@
 		</data>
 		<key>categories.json</key>
 		<data>
-		7j2j3BZmpIFk5IGQNpYhSSgVP3k=
+		SqTGD+fsRAGjjwJRMJ6lJvQb4jY=
 		</data>
 		<key>hashes.json</key>
 		<data>
-		o5VK+2QQXbCDmiXyvyABYrcdTpI=
+		ESXsju3KIwwq4HCCYNUCe1NOP1w=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -131,7 +131,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tGPZTtu9Ifh37Q02rUOvqWSGJZG5xWDtMAlvcFTo3kE=
+			H2zKHSwyZrlSPc89AW8IOzVgblvQL2GOo1l+ikssNQY=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -180,35 +180,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BwJZcp6RNtgzOT0eAo83TLKCIzwiEM2whTP/2ddvcno=
+			lYECa2UQ6JmrW5OKt3brapgQ++iHr+uBd+r/IlnbPQI=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ie5J710Mj/jt2MJrfmhV0r3uXRhLgIbYPiybl8/1PZQ=
+			13zq75Ek/BzVdbrMICSmgQA7RAR1j22F7Bic64cca+Q=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			b5HySdgcZnzOJcpNQcLFh98ZGob0t9vBEl0agqEBWc8=
+			6BS9gpPSwh6l7xD+pbRsRpNaGqy+wCQjk3XLB/QK3z4=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ie5J710Mj/jt2MJrfmhV0r3uXRhLgIbYPiybl8/1PZQ=
+			13zq75Ek/BzVdbrMICSmgQA7RAR1j22F7Bic64cca+Q=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KHFmT5oiUM3gSejT0OSln9t5c/dlFI04mA2pTUp12tc=
+			/6jJhTSCOqyFEaSSDPWoZC7RjSOPGqTEw3mt/NeTUGI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -243,14 +243,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Gw6OHTAolusqx4HmCqO2Bb3Qzm1UWy+JItRG7g7pAl8=
+			5R8kPBQsr4dvtaE7IMBwIS9luRQhyFIoZ/NzbaejgY8=
 			</data>
 		</dict>
 		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k4j1GQnTIOdsC/TKwXt+UTE+kSCtNyfCpxf9HZD86Fc=
+			zkHbfdX0smb7rznI/pdi7lzmYjc9MRhxGc3+jBHsi8E=
 			</data>
 		</dict>
 	</dict>
