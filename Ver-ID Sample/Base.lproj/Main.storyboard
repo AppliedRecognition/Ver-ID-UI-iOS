@@ -29,23 +29,39 @@
         <!--Ver-ID Sample-->
         <scene sceneID="tA5-mL-RNX">
             <objects>
-                <viewController storyboardIdentifier="loading" id="dLL-lT-wXe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loading" id="dLL-lT-wXe" customClass="LoadingViewController" customModule="Ver_ID_Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qP1-xh-YDx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="esB-RB-AdK">
-                                <rect key="frame" x="169" y="387.66666666666669" width="37" height="37"/>
-                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aXf-te-ZeB">
+                                <rect key="frame" x="16" y="373.33333333333331" width="343" height="65.333333333333314"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="esB-RB-AdK">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="37"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Ver-ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjU-3L-nCC">
+                                        <rect key="frame" x="0.0" y="45" width="343" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zOB-eY-fDm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="esB-RB-AdK" firstAttribute="centerX" secondItem="qP1-xh-YDx" secondAttribute="centerX" id="FF5-iw-Rse"/>
-                            <constraint firstItem="esB-RB-AdK" firstAttribute="centerY" secondItem="qP1-xh-YDx" secondAttribute="centerY" id="N09-2O-nY5"/>
+                            <constraint firstItem="aXf-te-ZeB" firstAttribute="centerX" secondItem="qP1-xh-YDx" secondAttribute="centerX" id="1IG-lp-yLr"/>
+                            <constraint firstItem="aXf-te-ZeB" firstAttribute="centerY" secondItem="qP1-xh-YDx" secondAttribute="centerY" id="AtR-kt-u4c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aXf-te-ZeB" secondAttribute="trailing" id="Tjy-Cv-VXu"/>
+                            <constraint firstItem="aXf-te-ZeB" firstAttribute="leading" secondItem="qP1-xh-YDx" secondAttribute="leadingMargin" id="gbZ-Zi-goO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ver-ID Sample" id="8Zp-bI-rFx"/>
+                    <connections>
+                        <outlet property="label" destination="vjU-3L-nCC" id="spj-QW-735"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5K-8k-saS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1310,6 +1326,24 @@
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="poseCount"/>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="checkcell" textLabel="zVZ-wA-QPb" style="IBUITableViewCellStyleDefault" id="Byc-8n-aMV">
+                                <rect key="frame" x="0.0" y="99" width="375" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Byc-8n-aMV" id="SR6-RW-Hky">
+                                    <rect key="frame" x="0.0" y="0.0" width="331" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Pose count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zVZ-wA-QPb">
+                                            <rect key="frame" x="20" y="0.0" width="303" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="poseCount"/>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -1395,7 +1429,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DZS-YW-XlO"/>
+        <segue reference="SuI-BO-eMf"/>
         <segue reference="SDk-1s-Gds"/>
     </inferredMetricsTieBreakers>
     <resources>

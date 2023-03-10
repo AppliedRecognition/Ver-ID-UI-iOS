@@ -14,6 +14,7 @@ extension VerIDFactory {
     convenience init(userDefaults: UserDefaults) {
         self.init()
         let detRecFactory = VerIDFaceDetectionRecognitionFactory(apiSecret: nil)
+        detRecFactory.faceTemplateVersions = [.V24]
         detRecFactory.settings.confidenceThreshold = userDefaults.confidenceThreshold
         detRecFactory.settings.faceExtractQualityThreshold = userDefaults.faceTemplateExtractionThreshold
         detRecFactory.settings.detectorVersion = UInt32(userDefaults.faceDetectorVersion)
@@ -21,5 +22,15 @@ extension VerIDFactory {
         self.faceDetectionFactory = detRecFactory
         self.faceRecognitionFactory = detRecFactory
         self.userManagementFactory = VerIDUserManagementFactory(disableEncryption: !userDefaults.encryptFaceTemplates || Globals.isTesting, isAutomaticFaceTemplateMigrationEnabled: false)
+        self.spoofDetectorModels = []
+        if userDefaults.useSpoofDeviceDetector {
+            self.spoofDetectorModels.insert(.spoofDevice)
+        }
+        if userDefaults.useMoireDetector {
+            self.spoofDetectorModels.insert(.moire)
+        }
+        if userDefaults.useSpoofDetector3 {
+            self.spoofDetectorModels.insert(.spoof3)
+        }
     }
 }

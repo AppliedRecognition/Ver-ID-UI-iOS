@@ -65,6 +65,9 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
         UserDefaults.standard.yawThreshold = preset.yawThreshold
         UserDefaults.standard.pitchThreshold = preset.pitchThreshold
         UserDefaults.standard.poses = preset.poses
+        UserDefaults.standard.useSpoofDeviceDetector = preset.useSpoofDeviceDetector
+        UserDefaults.standard.useMoireDetector = preset.useMoireDetector
+        UserDefaults.standard.useSpoofDetector3 = preset.useSpoofDetector3
         for (version,threshold) in preset.authThresholds {
             (Globals.verid?.faceRecognition as? VerIDFaceRecognition)?.setAuthenticationScoreThreshold(NSNumber(value: threshold), faceTemplateVersion: version)
         }
@@ -81,17 +84,20 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
         let poses: [Bearing] = UserDefaults.standard.poses
         
         self.sections[0] = Section(id: .livenessDetection, footer: "Liveness detection prevents spoofing Ver-ID with a picture", cells: [
-            (title: "Pose count", value: String(format: "%d", poseCount)),
-            (title: "Yaw threshold", value: String(format: "%.01f", yawThreshold)),
-            (title: "Pitch threshold", value: String(format: "%.01f", pitchThreshold)),
-            (title: "Poses", value: poses.map({ $0.name }).joined(separator: ", "))
+            (title: "Pose count", value: String(format: "%d", poseCount), isCheckCell: false),
+            (title: "Yaw threshold", value: String(format: "%.01f", yawThreshold), isCheckCell: false),
+            (title: "Pitch threshold", value: String(format: "%.01f", pitchThreshold), isCheckCell: false),
+            (title: "Poses", value: poses.map({ $0.name }).joined(separator: ", "), isCheckCell: false),
+            (title: "Use spoof device detector", value: UserDefaults.standard.useSpoofDeviceDetector ? "checked" : "unchecked", isCheckCell: true),
+            (title: "Use moire detector", value: UserDefaults.standard.useMoireDetector ? "checked" : "unchecked", isCheckCell: true),
+            (title: "Use spoof detector 3", value: UserDefaults.standard.useSpoofDetector3 ? "checked" : "unchecked", isCheckCell: true),
         ])
         
         if let faceRec = Globals.verid?.faceRecognition as? VerIDFaceRecognition {
             let authThresholds: [VerIDFaceTemplateVersion:Float] = Dictionary(uniqueKeysWithValues: VerIDFaceTemplateVersion.all.sorted(by: { $0.rawValue < $1.rawValue }).map({ ($0, faceRec.authenticationScoreThreshold(faceTemplateVersion: $0).floatValue) }))
             
-            self.sections[1] = Section(id: .authentication, footer: "Increasing the threshold lowers the chance of false acceptance and increases the chance of false rejection", cells: authThresholds.map({ (title: "Score threshold (\($0.stringValue()))", value: String(format: "%.01f", $1)) }).sorted(by: { $0.title < $1.title }))
-            let preset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: poses)
+            self.sections[1] = Section(id: .authentication, footer: "Increasing the threshold lowers the chance of false acceptance and increases the chance of false rejection", cells: authThresholds.map({ (title: "Score threshold (\($0.stringValue()))", value: String(format: "%.01f", $1), isCheckCell: false) }).sorted(by: { $0.title < $1.title }))
+            let preset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: poses, useSpoofDeviceDetector: UserDefaults.standard.useSpoofDeviceDetector, useMoireDetector: UserDefaults.standard.useMoireDetector, useSpoofDetector3: UserDefaults.standard.useSpoofDetector3)
             switch preset {
             case .low:
                 self.presetControl.selectedSegmentIndex = 0
@@ -118,10 +124,23 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell: UITableViewCell
         if let section = self.sectionAtIndex(indexPath.section) {
+            let identifier: String
+            if section.cells[indexPath.row].isCheckCell {
+                identifier = "checkcell"
+            } else {
+                identifier = "cell"
+            }
+            cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
             cell.textLabel?.text = section.cells[indexPath.row].title
-            cell.detailTextLabel?.text = section.cells[indexPath.row].value
+            if !section.cells[indexPath.row].isCheckCell {
+                cell.detailTextLabel?.text = section.cells[indexPath.row].value
+            } else {
+                cell.accessoryType = section.cells[indexPath.row].value == "checked" ? .checkmark : .none
+            }
+        } else {
+            cell = UITableViewCell()
         }
         return cell
     }
@@ -145,6 +164,7 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
             return
         }
         let cell = section.cells[indexPath.row]
+        let actualCell = self.tableView(tableView, cellForRowAt: indexPath)
         switch section.id {
         case .livenessDetection:
             switch cell.title {
@@ -156,6 +176,15 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
                 self.performSegue(withIdentifier: "pitchThreshold", sender: nil)
             case "Poses":
                 self.performSegue(withIdentifier: "poses", sender: nil)
+            case "Use spoof device detector":
+                UserDefaults.standard.useSpoofDeviceDetector = actualCell.accessoryType == .none
+                self.updateFromUserDefaults()
+            case "Use moire detector":
+                UserDefaults.standard.useMoireDetector = actualCell.accessoryType == .none
+                self.updateFromUserDefaults()
+            case "Use spoof detector 3":
+                UserDefaults.standard.useSpoofDetector3 = actualCell.accessoryType == .none
+                self.updateFromUserDefaults()
             default:
                 return
             }
@@ -297,5 +326,5 @@ fileprivate struct Section {
         self.id.rawValue
     }
     let footer: String
-    let cells: [(title: String, value: String)]
+    let cells: [(title: String, value: String, isCheckCell: Bool)]
 }
