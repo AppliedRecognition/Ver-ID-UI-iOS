@@ -62,7 +62,9 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
             return
         }
         Globals.verid = nil
-        navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
+        DispatchQueue.main.async {
+            navigationController.setViewControllers([storyboard.instantiateViewController(withIdentifier: "loading")], animated: false)
+        }
         // Load Ver-ID
         let veridFactory = VerIDFactory(userDefaults: UserDefaults.standard)
         veridFactory.shouldDeleteIncompatibleFaces = deleteIncompatibleFaces

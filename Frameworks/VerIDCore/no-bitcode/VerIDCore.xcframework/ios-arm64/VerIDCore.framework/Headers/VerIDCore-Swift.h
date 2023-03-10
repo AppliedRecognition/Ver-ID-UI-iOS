@@ -405,7 +405,7 @@ SWIFT_CLASS_NAMED("VerIDSessionSettings")
 /// Spoof detection confidence threshold (0.0–1.0)
 /// since:
 /// 2.7.0
-@property (nonatomic) float spoofDeviceConfidenceThreshold;
+@property (nonatomic) float spoofDeviceConfidenceThreshold SWIFT_DEPRECATED;
 @property (nonatomic) float spoofConfidenceThreshold SWIFT_DEPRECATED_MSG("", "spoofDeviceConfidenceThreshold");
 /// Number of spoof captures before the session fails with spoof error
 /// since:
@@ -416,20 +416,24 @@ SWIFT_CLASS_NAMED("VerIDSessionSettings")
 /// Default model shipped with the SDK will be used if the URL is set to <code>nil</code>
 /// since:
 /// 2.7.0
-@property (nonatomic, copy) NSURL * _Nullable spoofDeviceDetectionModelFileURL;
+@property (nonatomic, copy) NSURL * _Nullable spoofDeviceDetectionModelFileURL SWIFT_DEPRECATED;
 @property (nonatomic, copy) NSURL * _Nullable spoofDetectionModelFileURL SWIFT_DEPRECATED_MSG("", "spoofDeviceDetectionModelFileURL");
 /// Moire spoof confidence threshold (0.0–1.0)
 /// since:
 /// 2.7.0
-@property (nonatomic) float moireDetectionConfidenceThreshold;
+@property (nonatomic) float moireDetectionConfidenceThreshold SWIFT_DEPRECATED;
 @property (nonatomic) float screenArtifactConfidenceThreshold SWIFT_DEPRECATED_MSG("", "moireDetectionConfidenceThreshold");
 /// URL of the model file used for moire detection
 /// note:
 /// Default model shipped with the SDK will be used if the URL is set to <code>nil</code>
 /// since:
 /// 2.7.0
-@property (nonatomic, copy) NSURL * _Nullable moireDetectionModelFileURL;
+@property (nonatomic, copy) NSURL * _Nullable moireDetectionModelFileURL SWIFT_DEPRECATED;
 @property (nonatomic, copy) NSURL * _Nullable screenArtifactDetectionModelFileURL SWIFT_DEPRECATED_MSG("", "moireDetectionModelFileURL");
+/// Set to <code>true</code> to enable passive liveness
+/// since:
+/// 2.10.0
+@property (nonatomic) BOOL isPassiveLivenessDetectionEnabled;
 - (nonnull instancetype)init;
 /// Constructor
 /// \param maxDuration Time the user has to complete the session

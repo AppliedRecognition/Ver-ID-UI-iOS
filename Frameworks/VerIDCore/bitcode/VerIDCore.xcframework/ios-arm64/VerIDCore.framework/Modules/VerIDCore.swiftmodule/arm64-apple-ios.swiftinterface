@@ -103,6 +103,7 @@ import os.signpost
     @objc set
   }
   @objc public var faceCoveringConfidenceThreshold: Swift.Float
+  @available(*, deprecated)
   @objc public var spoofDeviceConfidenceThreshold: Swift.Float
   @available(*, deprecated, renamed: "spoofDeviceConfidenceThreshold")
   @objc public var spoofConfidenceThreshold: Swift.Float {
@@ -111,24 +112,28 @@ import os.signpost
   }
   @available(*, deprecated)
   @objc public var minSpoofCaptureCount: Swift.Int
+  @available(*, deprecated)
   @objc public var spoofDeviceDetectionModelFileURL: Foundation.URL?
   @available(*, deprecated, renamed: "spoofDeviceDetectionModelFileURL")
   @objc public var spoofDetectionModelFileURL: Foundation.URL? {
     @objc get
     @objc set
   }
+  @available(*, deprecated)
   @objc public var moireDetectionConfidenceThreshold: Swift.Float
   @available(*, deprecated, renamed: "moireDetectionConfidenceThreshold")
   @objc public var screenArtifactConfidenceThreshold: Swift.Float {
     @objc get
     @objc set
   }
+  @available(*, deprecated)
   @objc public var moireDetectionModelFileURL: Foundation.URL?
   @available(*, deprecated, renamed: "moireDetectionModelFileURL")
   @objc public var screenArtifactDetectionModelFileURL: Foundation.URL? {
     @objc get
     @objc set
   }
+  @objc public var isPassiveLivenessDetectionEnabled: Swift.Bool
   @objc override convenience dynamic public init()
   @objc public init(maxDuration: Foundation.TimeInterval = 30.0, faceCaptureCount: Swift.Int = VerIDSessionSettings.supportsInstantLiveness ? 1 : 2)
   @objc deinit
@@ -588,6 +593,7 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   }
   @objc public var userManagementFactory: VerIDCore.UserManagementFactory
   @objc public var shouldDeleteIncompatibleFaces: Swift.Bool
+  public var spoofDetectorModels: Swift.Set<VerIDCore.SpoofDetectorModel>
   @objc public init(userManagementFactory: VerIDCore.UserManagementFactory)
   @objc override convenience dynamic public init()
   @objc public func createVerID()
@@ -1155,12 +1161,11 @@ public class Report : Swift.Codable {
 }
 public enum AntiSpoofingError : Foundation.CustomNSError {
   case movedOpposite(requestedBearing: VerIDCore.Bearing), movedTooFast(requestedBearing: VerIDCore.Bearing)
-  @available(*, deprecated, renamed: "spoofDeviceDetected")
-  case spoofDetected(confidence: Swift.Float)
   case spoofDeviceDetected(confidence: Swift.Float)
   @available(*, deprecated, renamed: "moireDetected")
   case screenArtifactDetected(confidence: Swift.Float)
   case moireDetected(confidence: Swift.Float)
+  case spoofDetected
   public var errorUserInfo: [Swift.String : Any] {
     get
   }
@@ -1236,9 +1241,20 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   required public init(from decoder: Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers public class VerIDLivenessDetection {
-  final public let moireDetector: LivenessDetection.MoireDetector
-  final public let spoofDeviceDetector: LivenessDetection.SpoofDeviceDetector
+  @available(*, deprecated)
+  final public let moireDetector: LivenessDetection.MoireDetector!
+  @available(*, deprecated)
+  final public let spoofDeviceDetector: LivenessDetection.SpoofDeviceDetector!
+  final public let spoofDetection: LivenessDetection.SpoofDetection
   @objc deinit
+}
+public enum SpoofDetectorModel {
+  case spoofDevice, moire, spoof3
+  public static func == (a: VerIDCore.SpoofDetectorModel, b: VerIDCore.SpoofDetectorModel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 @_inheritsConvenienceInitializers public class AngleSmoothing : VerIDCore.Smoothing<VerIDCore.EulerAngle> {
   override public init(bufferSize: Swift.Int)
@@ -1429,6 +1445,7 @@ extension VerIDCore.FaceCapture {
     public var sharpness: Swift.Double? {
       get
     }
+    @available(*, deprecated)
     public var moireConfidence: Swift.Float? {
       get
     }
@@ -1436,10 +1453,18 @@ extension VerIDCore.FaceCapture {
     public var screenArtifactConfidence: Swift.Float? {
       get
     }
+    @available(*, deprecated)
     public var spoofDeviceConfidence: Swift.Float? {
       get
     }
+    @available(*, deprecated)
     public var spoofDevices: [LivenessDetection.DetectedSpoofDevice] {
+      get
+    }
+    public var isSpoof: Swift.Bool? {
+      get
+    }
+    public var spoofConfidenceScores: [Swift.String : Swift.Float] {
       get
     }
     public init(from decoder: Swift.Decoder) throws
@@ -1597,6 +1622,8 @@ extension VerIDCore.SessionSharingError : Swift.RawRepresentable {}
 extension VerIDCore.VerIDUserManagementError : Swift.Equatable {}
 extension VerIDCore.VerIDUserManagementError : Swift.Hashable {}
 extension VerIDCore.VerIDUserManagementError : Swift.RawRepresentable {}
+extension VerIDCore.SpoofDetectorModel : Swift.Equatable {}
+extension VerIDCore.SpoofDetectorModel : Swift.Hashable {}
 extension VerIDCore.SessionReport.SessionPurpose : Swift.Equatable {}
 extension VerIDCore.SessionReport.SessionPurpose : Swift.Hashable {}
 extension VerIDCore.SessionReport.SessionPurpose : Swift.RawRepresentable {}

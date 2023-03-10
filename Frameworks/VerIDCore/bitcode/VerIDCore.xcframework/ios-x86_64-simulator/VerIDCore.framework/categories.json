@@ -51,6 +51,12 @@
         ],
         "moire-detection-tflite": [
             "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.tflite"
+        ],
+        "spoof-detection3-coreml": [
+            "ARC_PSD-003_1.0.16_TRCD.mlmodel"
+        ],
+        "spoof-detection3-torchscript": [
+            "ARC_PSD-003_1.0.16_TRCD_OPTD_LITE.torchscript"
         ]
     }
 }
