@@ -64,6 +64,7 @@
 		3B34722D286C6CF900969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
 		3B347232286C708100969D79 /* VerIDCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; };
 		3B347233286C708100969D79 /* VerIDCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51D30727C82A8E008A97FE /* VerIDCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B41997A29BB9160003AB87E /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B41997929BB9160003AB87E /* LoadingViewController.swift */; };
 		3B443BDB2733F24C002C6CAA /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3B443BDA2733F24C002C6CAA /* Documentation.docc */; };
 		3B45BAA8247D8A3C00273FAF /* TestSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */; };
 		3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */; };
@@ -281,6 +282,7 @@
 		3B326B1622089C88005DAE1E /* VerIDUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VerIDUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B326B1922089C88005DAE1E /* VerIDUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerIDUI.h; sourceTree = "<group>"; };
 		3B326B1A22089C88005DAE1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B41997929BB9160003AB87E /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		3B443BDA2733F24C002C6CAA /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3B45BAA3247D8A3C00273FAF /* TestSessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSessionViewController.swift; sourceTree = "<group>"; };
 		3B45BAA7247D8A3C00273FAF /* TestImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestImageProvider.swift; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 		3BE9F366220AF125002C11BE /* Ver-ID Sample */ = {
 			isa = PBXGroup;
 			children = (
+				3B41997929BB9160003AB87E /* LoadingViewController.swift */,
 				3B0228FA273C36FB00D5630C /* ContinuousLivenessViewController.swift */,
 				3B0228FB273C36FB00D5630C /* IncompatibleFacesViewController.swift */,
 				3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */,
@@ -1271,6 +1274,7 @@
 				3BB204672214263600B3B312 /* AppDelegate.swift in Sources */,
 				3B03D6732548A0BC0098292B /* IdentificationResultViewController.swift in Sources */,
 				3B9BFCCF246DE64A00C4B2D1 /* FaceSizeSettingsViewController.swift in Sources */,
+				3B41997A29BB9160003AB87E /* LoadingViewController.swift in Sources */,
 				3B9BFCCD246DE64A00C4B2D1 /* VerIDFactory+Sample.swift in Sources */,
 				3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */,
 				3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */,
