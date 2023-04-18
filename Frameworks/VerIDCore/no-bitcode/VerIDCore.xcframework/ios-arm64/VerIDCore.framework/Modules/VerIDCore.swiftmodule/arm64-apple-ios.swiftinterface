@@ -582,6 +582,19 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class VerIDFactory : ObjectiveC.NSObject {
+  @objc public enum Task : Swift.Int {
+    case creatingUserManagement
+    case checkingForIncompatibleFaces
+    case gettingRequiredFaceTemplateVersions
+    case loadingResources
+    case initializingLivenessDetection
+    case checkingLicence
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
   @objc weak public var delegate: (any VerIDCore.VerIDFactoryDelegate)?
   @objc public var faceDetectionFactory: any VerIDCore.FaceDetectionFactory {
     @objc get
@@ -715,6 +728,7 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
 @objc public protocol VerIDFactoryDelegate {
   @objc optional func veridFactory(_ factory: VerIDCore.VerIDFactory, didCreateVerID verID: VerIDCore.VerID)
   @objc func veridFactory(_ factory: VerIDCore.VerIDFactory, didFailWithError error: any Swift.Error)
+  @objc optional func veridFactory(_ factory: VerIDCore.VerIDFactory, didExecuteTask task: VerIDCore.VerIDFactory.Task, progress: Swift.Float)
 }
 @_hasMissingDesignatedInitializers @objc public class VerID : ObjectiveC.NSObject {
   @objc final public let faceDetection: any VerIDCore.FaceDetection
@@ -1048,7 +1062,9 @@ open class SessionFunctions {
   @objc deinit
 }
 public enum VerIDSessionError : Foundation.CustomNSError {
-  case timeout, livenessFailure, faceDetectionEvaluationError, other(cause: any Swift.Error), cameraAccessDenied, faceIsCovered, imageObservableUnavailable, similarFaceAlreadyRegistered(users: [Swift.String]), missingFaceTemplateVersions(Swift.Set<VerIDCore.VerIDFaceTemplateVersion>), emptyFacesProvidedToFaceCaptureConstructor
+  case timeout, livenessFailure, faceDetectionEvaluationError, other(cause: any Swift.Error), cameraAccessDenied, faceIsCovered, imageObservableUnavailable, missingFaceTemplateVersions(Swift.Set<VerIDCore.VerIDFaceTemplateVersion>), emptyFacesProvidedToFaceCaptureConstructor, userWithSimilarFaceAlreadyRegistered(user: Swift.String, score: Swift.Float)
+  @available(*, deprecated, message: "Deprecated in Ver-ID 2.11.0. Please use `userWithSimilarFaceAlreadyRegistered` instead.")
+  case similarFaceAlreadyRegistered(users: [Swift.String])
   public var errorCode: Swift.Int {
     get
   }
@@ -1596,6 +1612,9 @@ extension VerIDCore.RecognitionFace.Version : Swift.RawRepresentable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.Equatable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.Hashable {}
 extension VerIDCore.FacePresenceDetection.Status : Swift.RawRepresentable {}
+extension VerIDCore.VerIDFactory.Task : Swift.Equatable {}
+extension VerIDCore.VerIDFactory.Task : Swift.Hashable {}
+extension VerIDCore.VerIDFactory.Task : Swift.RawRepresentable {}
 extension VerIDCore.Axis : Swift.Equatable {}
 extension VerIDCore.Axis : Swift.Hashable {}
 extension VerIDCore.Axis : Swift.RawRepresentable {}

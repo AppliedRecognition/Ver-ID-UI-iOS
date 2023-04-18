@@ -3,7 +3,7 @@
     "shape_predictor_68_face_landmarks.dat": "0a9bc8ed80a40a5c06b456c2d9e1244402d8d940b23566cfaf1a685781ff63d3",
     "mobilefacenet-opt.param": "b7e127a0d27ca2b527bfba85d11bf6c9a2c9d3b1e28355e57a98d85809acb5e2",
     "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61_opt.torchscript": "92a39c8b5548118192d2036b0dc247b92cd19e0cacf10038958d7d56f9533b7c",
-    "ARC_PSD-003_1.0.16_TRCD_OPTD_LITE.torchscript": "51206fb1ada53f2809abd91260fccebf613b990f3fe956f0bea0660a1d2b0226",
+    "ARC_PSD-003_1.0.16_TRCD_OPTD_LITE.torchscript": "8cb7b63c90e09cc9263ff1ef444ab8eb2585cfc23cb4fed2753a5b48fd696d5c",
     "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61-fp16.tflite": "9826374923fbe881bc79c55729fc3e45fd5fa99fe4664ee0911502582bb7e5f7",
     "mobilefacenet-q12.nv": "d5e1328b1b7f3995cd5f6494dd70cb01a332abee45fd31f2e6ec651e2cdd5637",
     "RFB-320.nv": "11bf5f0430ee69d46a501bb5afe7812b0b4188a9aecc428fbf4429bc1fa3d45d",

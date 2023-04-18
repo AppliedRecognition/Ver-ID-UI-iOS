@@ -19687,6 +19687,379 @@
         "printedName": "VerIDFactory",
         "children": [
           {
+            "kind": "TypeDecl",
+            "name": "Task",
+            "printedName": "Task",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "creatingUserManagement",
+                "printedName": "creatingUserManagement",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(VerIDCore.VerIDFactory.Task.Type) -> VerIDCore.VerIDFactory.Task",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Task",
+                        "printedName": "VerIDCore.VerIDFactory.Task",
+                        "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "VerIDCore.VerIDFactory.Task.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Task",
+                            "printedName": "VerIDCore.VerIDFactory.Task",
+                            "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO22creatingUserManagementyA2EmF",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO22creatingUserManagementyA2EmF",
+                "moduleName": "VerIDCore",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "fixedbinaryorder": 0
+              },
+              {
+                "kind": "Var",
+                "name": "checkingForIncompatibleFaces",
+                "printedName": "checkingForIncompatibleFaces",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(VerIDCore.VerIDFactory.Task.Type) -> VerIDCore.VerIDFactory.Task",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Task",
+                        "printedName": "VerIDCore.VerIDFactory.Task",
+                        "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "VerIDCore.VerIDFactory.Task.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Task",
+                            "printedName": "VerIDCore.VerIDFactory.Task",
+                            "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO28checkingForIncompatibleFacesyA2EmF",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO28checkingForIncompatibleFacesyA2EmF",
+                "moduleName": "VerIDCore",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "fixedbinaryorder": 1
+              },
+              {
+                "kind": "Var",
+                "name": "gettingRequiredFaceTemplateVersions",
+                "printedName": "gettingRequiredFaceTemplateVersions",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(VerIDCore.VerIDFactory.Task.Type) -> VerIDCore.VerIDFactory.Task",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Task",
+                        "printedName": "VerIDCore.VerIDFactory.Task",
+                        "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "VerIDCore.VerIDFactory.Task.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Task",
+                            "printedName": "VerIDCore.VerIDFactory.Task",
+                            "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO35gettingRequiredFaceTemplateVersionsyA2EmF",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO35gettingRequiredFaceTemplateVersionsyA2EmF",
+                "moduleName": "VerIDCore",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "fixedbinaryorder": 2
+              },
+              {
+                "kind": "Var",
+                "name": "loadingResources",
+                "printedName": "loadingResources",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(VerIDCore.VerIDFactory.Task.Type) -> VerIDCore.VerIDFactory.Task",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Task",
+                        "printedName": "VerIDCore.VerIDFactory.Task",
+                        "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "VerIDCore.VerIDFactory.Task.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Task",
+                            "printedName": "VerIDCore.VerIDFactory.Task",
+                            "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO16loadingResourcesyA2EmF",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO16loadingResourcesyA2EmF",
+                "moduleName": "VerIDCore",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "fixedbinaryorder": 3
+              },
+              {
+                "kind": "Var",
+                "name": "initializingLivenessDetection",
+                "printedName": "initializingLivenessDetection",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(VerIDCore.VerIDFactory.Task.Type) -> VerIDCore.VerIDFactory.Task",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Task",
+                        "printedName": "VerIDCore.VerIDFactory.Task",
+                        "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "VerIDCore.VerIDFactory.Task.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Task",
+                            "printedName": "VerIDCore.VerIDFactory.Task",
+                            "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO29initializingLivenessDetectionyA2EmF",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO29initializingLivenessDetectionyA2EmF",
+                "moduleName": "VerIDCore",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "fixedbinaryorder": 4
+              },
+              {
+                "kind": "Var",
+                "name": "checkingLicence",
+                "printedName": "checkingLicence",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(VerIDCore.VerIDFactory.Task.Type) -> VerIDCore.VerIDFactory.Task",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Task",
+                        "printedName": "VerIDCore.VerIDFactory.Task",
+                        "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "VerIDCore.VerIDFactory.Task.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Task",
+                            "printedName": "VerIDCore.VerIDFactory.Task",
+                            "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO15checkingLicenceyA2EmF",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO15checkingLicenceyA2EmF",
+                "moduleName": "VerIDCore",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "fixedbinaryorder": 5
+              },
+              {
+                "kind": "Constructor",
+                "name": "init",
+                "printedName": "init(rawValue:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "VerIDCore.VerIDFactory.Task?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Task",
+                        "printedName": "VerIDCore.VerIDFactory.Task",
+                        "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Constructor",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO8rawValueAESgSi_tcfc",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO8rawValueAESgSi_tcfc",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "init_kind": "Designated"
+              },
+              {
+                "kind": "Var",
+                "name": "rawValue",
+                "printedName": "rawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO8rawValueSivp",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO8rawValueSivp",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:9VerIDCore0A9IDFactoryC4TaskO8rawValueSivg",
+                    "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO8rawValueSivg",
+                    "moduleName": "VerIDCore",
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:9VerIDCore0A9IDFactoryC4TaskO",
+            "mangledName": "$s9VerIDCore0A9IDFactoryC4TaskO",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "enumRawTypeName": "Int",
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Hashable",
+                "printedName": "Hashable",
+                "usr": "s:SH",
+                "mangledName": "$sSH"
+              },
+              {
+                "kind": "Conformance",
+                "name": "RawRepresentable",
+                "printedName": "RawRepresentable",
+                "children": [
+                  {
+                    "kind": "TypeWitness",
+                    "name": "RawValue",
+                    "printedName": "RawValue",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:SY",
+                "mangledName": "$sSY"
+              }
+            ]
+          },
+          {
             "kind": "Var",
             "name": "delegate",
             "printedName": "delegate",
@@ -23254,6 +23627,50 @@
             "sugared_genericSig": "<Self where Self : VerIDCore.VerIDFactoryDelegate>",
             "protocolReq": true,
             "declAttributes": [
+              "ObjC",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "veridFactory",
+            "printedName": "veridFactory(_:didExecuteTask:progress:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VerIDFactory",
+                "printedName": "VerIDCore.VerIDFactory",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDFactory"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Task",
+                "printedName": "VerIDCore.VerIDFactory.Task",
+                "usr": "s:9VerIDCore0A9IDFactoryC4TaskO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@VerIDCore@objc(pl)VerIDFactoryDelegate(im)veridFactory:didExecuteTask:progress:",
+            "mangledName": "$s9VerIDCore0A17IDFactoryDelegateP12veridFactory_14didExecuteTask8progressyAA0aC0C_AH0I0OSftF",
+            "moduleName": "VerIDCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : VerIDCore.VerIDFactoryDelegate>",
+            "sugared_genericSig": "<Self where Self : VerIDCore.VerIDFactoryDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "Optional",
               "ObjC",
               "RawDocComment"
             ],
@@ -34716,71 +35133,6 @@
           },
           {
             "kind": "Var",
-            "name": "similarFaceAlreadyRegistered",
-            "printedName": "similarFaceAlreadyRegistered",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(VerIDCore.VerIDSessionError.Type) -> ([Swift.String]) -> VerIDCore.VerIDSessionError",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "([Swift.String]) -> VerIDCore.VerIDSessionError",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "VerIDSessionError",
-                        "printedName": "VerIDCore.VerIDSessionError",
-                        "usr": "s:9VerIDCore0A14IDSessionErrorO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Tuple",
-                        "printedName": "(users: [Swift.String])",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Array",
-                            "printedName": "[Swift.String]",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "String",
-                                "printedName": "Swift.String",
-                                "usr": "s:SS"
-                              }
-                            ],
-                            "usr": "s:Sa"
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "VerIDCore.VerIDSessionError.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "VerIDSessionError",
-                        "printedName": "VerIDCore.VerIDSessionError",
-                        "usr": "s:9VerIDCore0A14IDSessionErrorO"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "s:9VerIDCore0A14IDSessionErrorO28similarFaceAlreadyRegisteredyACSaySSG_tcACmF",
-            "mangledName": "$s9VerIDCore0A14IDSessionErrorO28similarFaceAlreadyRegisteredyACSaySSG_tcACmF",
-            "moduleName": "VerIDCore"
-          },
-          {
-            "kind": "Var",
             "name": "missingFaceTemplateVersions",
             "printedName": "missingFaceTemplateVersions",
             "children": [
@@ -34873,6 +35225,138 @@
             "usr": "s:9VerIDCore0A14IDSessionErrorO42emptyFacesProvidedToFaceCaptureConstructoryA2CmF",
             "mangledName": "$s9VerIDCore0A14IDSessionErrorO42emptyFacesProvidedToFaceCaptureConstructoryA2CmF",
             "moduleName": "VerIDCore"
+          },
+          {
+            "kind": "Var",
+            "name": "userWithSimilarFaceAlreadyRegistered",
+            "printedName": "userWithSimilarFaceAlreadyRegistered",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDCore.VerIDSessionError.Type) -> (Swift.String, Swift.Float) -> VerIDCore.VerIDSessionError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String, Swift.Float) -> VerIDCore.VerIDSessionError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "VerIDSessionError",
+                        "printedName": "VerIDCore.VerIDSessionError",
+                        "usr": "s:9VerIDCore0A14IDSessionErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(user: Swift.String, score: Swift.Float)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Float",
+                            "printedName": "Swift.Float",
+                            "usr": "s:Sf"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDCore.VerIDSessionError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "VerIDSessionError",
+                        "printedName": "VerIDCore.VerIDSessionError",
+                        "usr": "s:9VerIDCore0A14IDSessionErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9VerIDCore0A14IDSessionErrorO36userWithSimilarFaceAlreadyRegisteredyACSS_SftcACmF",
+            "mangledName": "$s9VerIDCore0A14IDSessionErrorO36userWithSimilarFaceAlreadyRegisteredyACSS_SftcACmF",
+            "moduleName": "VerIDCore"
+          },
+          {
+            "kind": "Var",
+            "name": "similarFaceAlreadyRegistered",
+            "printedName": "similarFaceAlreadyRegistered",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(VerIDCore.VerIDSessionError.Type) -> ([Swift.String]) -> VerIDCore.VerIDSessionError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([Swift.String]) -> VerIDCore.VerIDSessionError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "VerIDSessionError",
+                        "printedName": "VerIDCore.VerIDSessionError",
+                        "usr": "s:9VerIDCore0A14IDSessionErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(users: [Swift.String])",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[Swift.String]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "String",
+                                "printedName": "Swift.String",
+                                "usr": "s:SS"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "VerIDCore.VerIDSessionError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "VerIDSessionError",
+                        "printedName": "VerIDCore.VerIDSessionError",
+                        "usr": "s:9VerIDCore0A14IDSessionErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:9VerIDCore0A14IDSessionErrorO28similarFaceAlreadyRegisteredyACSaySSG_tcACmF",
+            "mangledName": "$s9VerIDCore0A14IDSessionErrorO28similarFaceAlreadyRegisteredyACSaySSG_tcACmF",
+            "moduleName": "VerIDCore",
+            "deprecated": true,
+            "declAttributes": [
+              "Available"
+            ]
           },
           {
             "kind": "Var",
@@ -53655,281 +54139,407 @@
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 535,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "BooleanLiteral",
-      "offset": 1017,
+      "offset": 1091,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 1046,
+      "offset": 1120,
       "length": 15,
       "value": "\"Ver-ID-Models\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "BooleanLiteral",
-      "offset": 1076,
+      "offset": 1150,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "BooleanLiteral",
-      "offset": 1188,
+      "offset": 1262,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "BooleanLiteral",
-      "offset": 1381,
+      "offset": 1455,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 2353,
+      "offset": 1597,
+      "length": 25,
+      "value": "\"Checking resource files\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2284,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 2347,
+      "length": 18,
+      "value": "\"Resources loaded\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "FloatLiteral",
+      "offset": 2506,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 2641,
       "length": 15,
       "value": "\"Ver-ID-Models\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3047,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 2996,
+      "offset": 3110,
+      "length": 18,
+      "value": "\"Resources loaded\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 3403,
       "length": 21,
       "value": "\"verid.resource.cdns\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 3298,
+      "offset": 3705,
       "length": 27,
       "value": "\"com.appliedrec.verid.cdns\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 3465,
+      "offset": 3872,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4102,
-      "length": 1,
-      "value": "0"
+      "kind": "FloatLiteral",
+      "offset": 4032,
+      "length": 3,
+      "value": "0.1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 4199,
+      "offset": 4239,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 4250,
+      "offset": 4298,
+      "length": 18,
+      "value": "\"Resources loaded\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4656,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4787,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4840,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 4891,
       "length": 27,
       "value": "\"Ver-ID resource downloads\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 5030,
+      "offset": 5648,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "FloatLiteral",
+      "offset": 5714,
+      "length": 3,
+      "value": "0.9"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 5798,
+      "length": 30,
+      "value": "\"Downloaded file %.0f of %.0f\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5991,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 5177,
+      "offset": 6138,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 5987,
+      "offset": 6948,
       "length": 7,
       "value": "\".hash\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "Array",
-      "offset": 6644,
+      "offset": 7605,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7646,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7758,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7825,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 8091,
+      "offset": 7895,
+      "length": 41,
+      "value": "\"Checking integrity of resource %d of %d\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 9422,
       "length": 6,
       "value": "\"hash\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 8251,
+      "offset": 9582,
       "length": 8,
       "value": "\"hashes\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 8276,
+      "offset": 9607,
       "length": 6,
       "value": "\"json\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 8589,
+      "offset": 9920,
       "length": 3,
       "value": "\"\/\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 8786,
+      "offset": 10117,
       "length": 12,
       "value": "\"categories\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 8815,
+      "offset": 10146,
       "length": 6,
       "value": "\"json\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 9254,
+      "offset": 10585,
       "length": 3,
       "value": "\"\/\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "Array",
-      "offset": 9541,
+      "offset": 10872,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 9651,
+      "offset": 10982,
       "length": 18,
       "value": "\"face-recognition\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10004,
+      "offset": 11335,
       "length": 16,
       "value": "\"face-detection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10038,
+      "offset": 11369,
       "length": 5,
       "value": "\"v%d\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10311,
+      "offset": 11642,
       "length": 20,
       "value": "\"landmark-detection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10334,
+      "offset": 11665,
       "length": 4,
       "value": "\"v1\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10580,
+      "offset": 11911,
       "length": 13,
       "value": "\"classifiers\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10596,
+      "offset": 11927,
       "length": 11,
       "value": "\"face-mask\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10917,
+      "offset": 12248,
       "length": 20,
       "value": "\"liveness-detection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 10940,
+      "offset": 12271,
       "length": 31,
       "value": "\"spoof-device-detection-coreml\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11293,
+      "offset": 12624,
       "length": 20,
       "value": "\"liveness-detection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11316,
+      "offset": 12647,
       "length": 24,
       "value": "\"moire-detection-coreml\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11658,
+      "offset": 12989,
       "length": 20,
       "value": "\"liveness-detection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11681,
+      "offset": 13012,
       "length": 25,
       "value": "\"spoof-detection3-coreml\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 12045,
+      "offset": 13376,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12177,
+      "offset": 13508,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12201,
+      "offset": 13532,
       "length": 6,
       "value": "\"%02x\""
     },
@@ -57449,162 +58059,295 @@
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 402,
+      "length": 28,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 444,
+      "length": 35,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 493,
+      "length": 16,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 523,
+      "length": 29,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 566,
+      "length": 15,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 402,
+      "length": 28,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 444,
+      "length": 35,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 493,
+      "length": 16,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 523,
+      "length": 29,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 566,
+      "length": 15,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "BooleanLiteral",
-      "offset": 1299,
+      "offset": 1618,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 2945,
+      "offset": 3264,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "BooleanLiteral",
-      "offset": 3351,
+      "offset": 3940,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 5872,
+      "offset": 6731,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "BooleanLiteral",
-      "offset": 5953,
+      "offset": 6812,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 6268,
+      "offset": 7127,
       "length": 16,
       "value": "\"VerIDCore.SDKAuthOperation\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "BooleanLiteral",
-      "offset": 7866,
+      "offset": 8782,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "Array",
-      "offset": 8019,
+      "offset": 8935,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 8090,
+      "offset": 9006,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 8094,
+      "offset": 9010,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 8099,
+      "offset": 9015,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 9421,
+      "length": 4,
+      "value": "0.05"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 9623,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 9986,
+      "length": 4,
+      "value": "0.15"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "Array",
-      "offset": 9063,
+      "offset": 10177,
       "length": 5,
       "value": "[3, 6]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 10260,
+      "length": 3,
+      "value": "0.2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 10392,
+      "length": 3,
+      "value": "0.2"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10447,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 10482,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "Array",
-      "offset": 9446,
+      "offset": 11026,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 11058,
+      "length": 4,
+      "value": "0.90"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 9562,
+      "offset": 11209,
       "length": 7,
       "value": "\"Moire\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 9587,
+      "offset": 11234,
       "length": 10,
       "value": "\".mlmodel\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 9989,
+      "offset": 11636,
       "length": 7,
       "value": "\"Spoof\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 10014,
+      "offset": 11661,
       "length": 10,
       "value": "\".mlmodel\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 10450,
+      "offset": 12097,
       "length": 13,
       "value": "\"ARC_PSD-003\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 10481,
+      "offset": 12128,
       "length": 10,
       "value": "\".mlmodel\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "FloatLiteral",
+      "offset": 12789,
+      "length": 4,
+      "value": "0.95"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "Dictionary",
-      "offset": 13194,
+      "offset": 14894,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 14611,
+      "offset": 16311,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "FloatLiteral",
-      "offset": 14802,
+      "offset": 16502,
       "length": 4,
       "value": "10.0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "StringLiteral",
-      "offset": 6766,
+      "offset": 7625,
       "length": 18,
       "value": "\"VerIDCore.VerIDLoadOperation\""
     },
@@ -58423,105 +59166,105 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Dictionary",
-      "offset": 5442,
+      "offset": 5448,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Dictionary",
-      "offset": 5518,
+      "offset": 5524,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Array",
-      "offset": 6286,
+      "offset": 6292,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Dictionary",
-      "offset": 6691,
+      "offset": 6697,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "BooleanLiteral",
-      "offset": 7330,
+      "offset": 7336,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "BooleanLiteral",
-      "offset": 7384,
+      "offset": 7390,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Dictionary",
-      "offset": 7986,
+      "offset": 7992,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Dictionary",
-      "offset": 8081,
+      "offset": 8087,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "BooleanLiteral",
-      "offset": 8193,
+      "offset": 8199,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "IntegerLiteral",
-      "offset": 9304,
+      "offset": 9310,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "IntegerLiteral",
-      "offset": 9340,
+      "offset": 9346,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Array",
-      "offset": 9392,
+      "offset": 9398,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Array",
-      "offset": 10514,
+      "offset": 10520,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Dictionary",
-      "offset": 11000,
+      "offset": 11006,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserManagementUtilities.swift",
       "kind": "Array",
-      "offset": 11423,
+      "offset": 11429,
       "length": 2,
       "value": "[]"
     },
@@ -59606,91 +60349,112 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 634,
+      "offset": 838,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 686,
+      "offset": 890,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 751,
+      "offset": 955,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 803,
+      "offset": 1007,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 858,
+      "offset": 1062,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 908,
+      "offset": 1112,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 971,
+      "offset": 1175,
       "length": 1,
       "value": "7"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 1046,
+      "offset": 1250,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 1110,
+      "offset": 1314,
       "length": 1,
       "value": "9"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "IntegerLiteral",
-      "offset": 1189,
+      "offset": 1393,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1486,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "StringLiteral",
-      "offset": 1347,
+      "offset": 1644,
       "length": 7,
       "value": "\"cause\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "StringLiteral",
-      "offset": 1480,
+      "offset": 1777,
       "length": 7,
       "value": "\"users\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
+      "kind": "StringLiteral",
+      "offset": 1934,
+      "length": 8,
+      "value": "\"userId\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
+      "kind": "StringLiteral",
+      "offset": 1950,
+      "length": 7,
+      "value": "\"score\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDSessionError.swift",
       "kind": "Dictionary",
-      "offset": 1521,
+      "offset": 1991,
       "length": 3,
       "value": "[]"
     },

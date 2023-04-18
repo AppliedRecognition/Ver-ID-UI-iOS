@@ -1681,6 +1681,18 @@ SWIFT_CLASS("_TtC9VerIDCore12VerIDFactory")
 - (VerID * _Nullable)createVerIDSyncAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 @end
 
+/// Loading task
+/// since:
+/// 2.11.0
+typedef SWIFT_ENUM(NSInteger, Task, open) {
+  TaskCreatingUserManagement = 0,
+  TaskCheckingForIncompatibleFaces = 1,
+  TaskGettingRequiredFaceTemplateVersions = 2,
+  TaskLoadingResources = 3,
+  TaskInitializingLivenessDetection = 4,
+  TaskCheckingLicence = 5,
+};
+
 @class VerIDIdentity;
 
 @interface VerIDFactory (SWIFT_EXTENSION(VerIDCore))
@@ -1716,6 +1728,17 @@ SWIFT_PROTOCOL("_TtP9VerIDCore20VerIDFactoryDelegate_")
 /// \param error Error that describes the failure
 ///
 - (void)veridFactory:(VerIDFactory * _Nonnull)factory didFailWithError:(NSError * _Nonnull)error;
+@optional
+/// Called as Ver-ID loads
+/// since:
+/// 2.11.0
+/// \param factory Factory that’s creating the Ver-ID instance
+///
+/// \param task Task that’s been executed
+///
+/// \param progress Progress of the loading operation (0–1, where 1 is fully loaded)
+///
+- (void)veridFactory:(VerIDFactory * _Nonnull)factory didExecuteTask:(enum Task)task progress:(float)progress;
 @end
 
 
