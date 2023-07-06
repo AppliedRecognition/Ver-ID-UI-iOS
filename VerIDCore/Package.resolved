@@ -1,0 +1,52 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ASN1Decoder",
+        "repositoryURL": "https://github.com/filom/ASN1Decoder.git",
+        "state": {
+          "branch": null,
+          "revision": "65953a42a0f039f53c73e48fd88c02809f7db607",
+          "version": "1.8.0"
+        }
+      },
+      {
+        "package": "DeviceKit",
+        "repositoryURL": "https://github.com/devicekit/DeviceKit.git",
+        "state": {
+          "branch": null,
+          "revision": "691fe8112cca20ebf0020a1709d4e0205400311c",
+          "version": "5.0.0"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "cec68169a048a079f461ba203fe85636548d7a89",
+          "version": "5.1.3"
+        }
+      },
+      {
+        "package": "Ver-ID-SDK-Identity",
+        "repositoryURL": "https://github.com/AppliedRecognition/Ver-ID-SDK-Identity-Apple.git",
+        "state": {
+          "branch": null,
+          "revision": "e699cd929e650d2c488296b79eafdd306b06d753",
+          "version": "3.0.3"
+        }
+      },
+      {
+        "package": "ZIPFoundation",
+        "repositoryURL": "https://github.com/weichsel/ZIPFoundation.git",
+        "state": {
+          "branch": null,
+          "revision": "43ec568034b3731101dbf7670765d671c30f54f3",
+          "version": "0.9.16"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

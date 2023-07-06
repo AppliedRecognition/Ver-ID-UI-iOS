@@ -67,7 +67,6 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
         }
         // Load Ver-ID
         let veridFactory = VerIDFactory(userDefaults: UserDefaults.standard)
-        veridFactory.shouldDeleteIncompatibleFaces = deleteIncompatibleFaces
         veridFactory.createVerID { result in
             switch result {
             case .success(let verid):
