@@ -330,6 +330,7 @@ public protocol ImagePublisher {
                     self.cameraPreviewView.superview?.isHidden = true
                     let animationDuration: TimeInterval = 1.0
                     if let animator = self.faceImageViewAnimator {
+                        animator.stopAnimation(false)
                         animator.finishAnimation(at: .end)
                     }
                     let animator = UIViewPropertyAnimator(duration: animationDuration, dampingRatio: 0.4) {
