@@ -171,6 +171,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "useSpoofDetector3")
         }
     }
+    @objc dynamic var useSpoofDetector4: Bool {
+        get {
+            self.bool(forKey: "useSpoofDetector4")
+        }
+        set {
+            self.set(newValue, forKey: "useSpoofDetector4")
+        }
+    }
     
     func registerVerIDDefaults() {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
@@ -194,9 +202,10 @@ extension UserDefaults {
             "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
             "enableFaceCoveringDetection": false,
             "faceDetectorVersion": detreclibSettings.detectorVersion,
-            "useSpoofDeviceDetector": true,
+            "useSpoofDeviceDetector": false,
             "useMoireDetector": true,
-            "useSpoofDetector3": true
+            "useSpoofDetector3": true,
+            "useSpoofDetector4": true
         ])
     }
 }

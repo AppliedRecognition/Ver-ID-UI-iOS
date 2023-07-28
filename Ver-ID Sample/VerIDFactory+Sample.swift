@@ -32,5 +32,8 @@ extension VerIDFactory {
         if userDefaults.useSpoofDetector3 {
             self.spoofDetectorModels.insert(.spoof3)
         }
+        if userDefaults.useSpoofDetector4 {
+            self.spoofDetectorModels.insert(.spoof4)
+        }
     }
 }
