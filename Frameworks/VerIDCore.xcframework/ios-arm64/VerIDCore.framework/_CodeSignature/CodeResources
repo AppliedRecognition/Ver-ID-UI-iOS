@@ -50,15 +50,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MPtidgeAN3eix+XrMrtj83anoLk=
+		YDK0QmC0xr0S4mvwvjv+UqSuNk4=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		9KmLskgaQb7YFpqB8Zc21MUnmxE=
+		RMaxtIB14wzKEC9mHyp5jOQ/Oxk=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		25AT4057KT8HEoX0KA+R4ViJeuY=
+		m3TtFX/EwWR8B0bEBVykN3Nlq8Y=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -66,11 +66,11 @@
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		25AT4057KT8HEoX0KA+R4ViJeuY=
+		m3TtFX/EwWR8B0bEBVykN3Nlq8Y=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		6fnKG74GcFJCQR5VXnofXbwOwmo=
+		CNymFTa+O+KQRBJQpX6RRBRz4Sw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -90,11 +90,11 @@
 		</data>
 		<key>categories.json</key>
 		<data>
-		SqTGD+fsRAGjjwJRMJ6lJvQb4jY=
+		6HemEMe3r8Fxz4gRH+svDePYDHE=
 		</data>
 		<key>hashes.json</key>
 		<data>
-		1iIN2bBNPB5xi6YCyOmPLyUS3Rc=
+		ihAb1GAFxrYUCndNtCeL98yD3kU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -180,14 +180,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			t/jyFLQ7RjkwZZxYAvFWSRrwLq/up3TjBBKJAGW3gfY=
+			yRXgSjhXhekybfQQ69WPb685Gi6r4L7pvLVpndmMZGI=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9F8IB1NQvMtbt2t7/FK/6qw+4s9gY2jfGTb82XTlxAI=
+			Kn5tXyipEYov70S3O/d66GlN5WcwuDnpwgpCSQjsCo4=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -201,14 +201,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9F8IB1NQvMtbt2t7/FK/6qw+4s9gY2jfGTb82XTlxAI=
+			Kn5tXyipEYov70S3O/d66GlN5WcwuDnpwgpCSQjsCo4=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UjT7Jze5laV8b3vRHrGYxGgYnS1X2O6M6jU+09NOtWw=
+			OK4wJPljDaV1H7BxPPRkXe5woM1AxjCFC8BouhMubcA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -243,14 +243,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5R8kPBQsr4dvtaE7IMBwIS9luRQhyFIoZ/NzbaejgY8=
+			tPGmvldmFnU7ZTDzMAFI8CjoMH+aBiOXCGA8BaJ5rWk=
 			</data>
 		</dict>
 		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SIFQPAB8pNBzR5Xu2MseQhByXa6BHHgwfjbdw6wDLKU=
+			1nipIfiI2JXHooTtzv6oJOMvCkkzCYVE88dCa9vFi24=
 			</data>
 		</dict>
 	</dict>
