@@ -128,7 +128,7 @@ import AVFoundation
         super.viewDidAppear(animated)
         self.updateImageOrientation()
         self.updateVideoRotation()
-        self.cameraPreviewView.frame.size = self.view.frame.size
+        self.resizeCameraPreviewToViewSize()
     }
     
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -140,6 +140,7 @@ import AVFoundation
         coordinator.animateAlongsideTransition(in: self.view, animation: nil, completion: { context in
             if !context.isCancelled {
                 self.updateImageOrientation()
+                self.resizeCameraPreviewToViewSize()
                 if let preview = self.cameraPreviewView {
                     preview.frame.size = size
                     preview.videoPreviewLayer.videoGravity = self.videoGravity
@@ -154,6 +155,11 @@ import AVFoundation
     
     private var _videoRotation: CGFloat = 0
     private let videoRotationLock = DispatchSemaphore(value: 1)
+    
+    private func resizeCameraPreviewToViewSize() {
+        self.cameraPreviewView.superview?.frame.size = self.view.frame.size
+        self.cameraPreviewView.frame.size = self.view.frame.size
+    }
     
     private func updateImageOrientation() {
         let orientation: UIInterfaceOrientation
