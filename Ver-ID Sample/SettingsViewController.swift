@@ -42,6 +42,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     var useSpoofDeviceDetectorObservation: NSKeyValueObservation?
     var useMoireDetectorObservation: NSKeyValueObservation?
     var useSpoofDetector3Observation: NSKeyValueObservation?
+    var useSpoofDetector4Observation: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         self.useSpoofDeviceDetectorObservation = UserDefaults.standard.observe(\.useSpoofDeviceDetector, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.useMoireDetectorObservation = UserDefaults.standard.observe(\.useMoireDetector, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.useSpoofDetector3Observation = UserDefaults.standard.observe(\.useSpoofDetector3, options: [.new], changeHandler: self.defaultsChangeHandler)
+        self.useSpoofDetector4Observation = UserDefaults.standard.observe(\.useSpoofDetector4, options: [.new], changeHandler: self.defaultsChangeHandler)
     }
     
     func defaultsChangeHandler<T>(_ defaults: UserDefaults,_ change: NSKeyValueObservedChange<T>) {
@@ -134,7 +136,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
             authThresholds = [:]
         }
         let registrationPoseCount: Int = UserDefaults.standard.registrationFaceCount
-        let securityPreset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: UserDefaults.standard.poses, useSpoofDeviceDetector: UserDefaults.standard.useSpoofDeviceDetector, useMoireDetector: UserDefaults.standard.useMoireDetector, useSpoofDetector3: UserDefaults.standard.useSpoofDetector3)
+        let securityPreset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: UserDefaults.standard.poses, useSpoofDeviceDetector: UserDefaults.standard.useSpoofDeviceDetector, useMoireDetector: UserDefaults.standard.useMoireDetector, useSpoofDetector3: UserDefaults.standard.useSpoofDetector3, useSpoofDetector4: UserDefaults.standard.useSpoofDetector4)
         switch securityPreset {
         case .low:
             self.securityProfileCell.detailTextLabel?.text = "Low"

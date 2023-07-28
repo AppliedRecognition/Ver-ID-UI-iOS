@@ -14,6 +14,16 @@ import AVFoundation
     
     /// Translated strings
     public var translatedStrings: TranslatedStrings?
+    /// Background colour of the camera preview view
+    /// - Since: 2.12.1
+    public var cameraPreviewBackgroundColor: UIColor = .red {
+        didSet {
+            guard self.isViewLoaded else {
+                return
+            }
+            self.view.subviews.first?.backgroundColor = self.cameraPreviewBackgroundColor
+        }
+    }
     
     public let captureSessionQueue = DispatchQueue(label: "com.appliedrec.avcapture")
     private let captureSession = AVCaptureSession()
@@ -85,7 +95,7 @@ import AVFoundation
         self.cameraPreviewView.isHidden = true
         self.cameraPreviewView.session = self.captureSession
         let cameraPreviewParent = UIView(frame: CGRect(origin: CGPoint.zero, size: self.view.frame.size))
-        cameraPreviewParent.backgroundColor = .red
+        cameraPreviewParent.backgroundColor = self.cameraPreviewBackgroundColor
         cameraPreviewParent.addSubview(self.cameraPreviewView)
         cameraPreviewParent.isHidden = true
         self.view.insertSubview(cameraPreviewParent, at: 0)
@@ -118,7 +128,7 @@ import AVFoundation
         super.viewDidAppear(animated)
         self.updateImageOrientation()
         self.updateVideoRotation()
-        self.cameraPreviewView.frame.size = self.view.frame.size
+        self.resizeCameraPreviewToViewSize()
     }
     
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -130,6 +140,7 @@ import AVFoundation
         coordinator.animateAlongsideTransition(in: self.view, animation: nil, completion: { context in
             if !context.isCancelled {
                 self.updateImageOrientation()
+                self.resizeCameraPreviewToViewSize()
                 if let preview = self.cameraPreviewView {
                     preview.frame.size = size
                     preview.videoPreviewLayer.videoGravity = self.videoGravity
@@ -144,6 +155,11 @@ import AVFoundation
     
     private var _videoRotation: CGFloat = 0
     private let videoRotationLock = DispatchSemaphore(value: 1)
+    
+    private func resizeCameraPreviewToViewSize() {
+        self.cameraPreviewView.superview?.frame.size = self.view.frame.size
+        self.cameraPreviewView.frame.size = self.view.frame.size
+    }
     
     private func updateImageOrientation() {
         let orientation: UIInterfaceOrientation

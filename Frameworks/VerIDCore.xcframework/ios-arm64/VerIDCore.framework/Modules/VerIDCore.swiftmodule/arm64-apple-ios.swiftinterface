@@ -1265,14 +1265,14 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
 }
 @_hasMissingDesignatedInitializers public class VerIDLivenessDetection {
   @available(*, deprecated)
-  final public let moireDetector: LivenessDetection.MoireDetector!
+  final public let moireDetector: Any!
   @available(*, deprecated)
   final public let spoofDeviceDetector: LivenessDetection.SpoofDeviceDetector!
   final public let spoofDetection: LivenessDetection.SpoofDetection
   @objc deinit
 }
 public enum SpoofDetectorModel {
-  case spoofDevice, moire, spoof3
+  case spoofDevice, moire, spoof3, spoof4
   public static func == (a: VerIDCore.SpoofDetectorModel, b: VerIDCore.SpoofDetectorModel) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {

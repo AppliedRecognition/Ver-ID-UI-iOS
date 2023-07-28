@@ -11,7 +11,7 @@ abstract_target 'Ver-ID' do
   pod 'DeviceKit', '~> 4.4'
   pod 'ASN1Decoder', '~> 1.8'
   pod 'Ver-ID-SDK-Identity', '>= 3.0.2', '< 4.0'
-  pod 'LivenessDetection', '~> 1.1'
+  pod 'LivenessDetection', '~> 1.2'
   
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|

@@ -50,15 +50,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		3++aPuuEyN7Er2AHt4Yb/QPLCXU=
+		hatEjA/lZLiHjQAJz0gDmYLLels=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		9KmLskgaQb7YFpqB8Zc21MUnmxE=
+		RMaxtIB14wzKEC9mHyp5jOQ/Oxk=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		fRsqjxeCL8a8K4XZozfxrAjtjDs=
+		JyWFt8+RH72anQfEg9pxSDBRkgs=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -66,11 +66,11 @@
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		fRsqjxeCL8a8K4XZozfxrAjtjDs=
+		JyWFt8+RH72anQfEg9pxSDBRkgs=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ejJ2ufkH+AEqCfGGF2Z9CwrL3z4=
+		E21ymdYHbWuMVLVKZNOya72ac/0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -90,11 +90,11 @@
 		</data>
 		<key>categories.json</key>
 		<data>
-		SqTGD+fsRAGjjwJRMJ6lJvQb4jY=
+		6HemEMe3r8Fxz4gRH+svDePYDHE=
 		</data>
 		<key>hashes.json</key>
 		<data>
-		1iIN2bBNPB5xi6YCyOmPLyUS3Rc=
+		ihAb1GAFxrYUCndNtCeL98yD3kU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -180,14 +180,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			t/jyFLQ7RjkwZZxYAvFWSRrwLq/up3TjBBKJAGW3gfY=
+			yRXgSjhXhekybfQQ69WPb685Gi6r4L7pvLVpndmMZGI=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XdiA2GVhjMnv2BRVdYtNw146jOLdqlhJLL+8CI0rPug=
+			ko/9W6Y5/jilOz3N0/avoKm0r5+pWOVH8FVUQRhqRvo=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -201,14 +201,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XdiA2GVhjMnv2BRVdYtNw146jOLdqlhJLL+8CI0rPug=
+			ko/9W6Y5/jilOz3N0/avoKm0r5+pWOVH8FVUQRhqRvo=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VHh1LOmE1vdm/eVeinVF/kVR5aB81cOawtq84PUzrbs=
+			pA8WqgeULyxD4om+ULNnwnMgM6SrwQaxjKbc0ooMpM8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -243,14 +243,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5R8kPBQsr4dvtaE7IMBwIS9luRQhyFIoZ/NzbaejgY8=
+			tPGmvldmFnU7ZTDzMAFI8CjoMH+aBiOXCGA8BaJ5rWk=
 			</data>
 		</dict>
 		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SIFQPAB8pNBzR5Xu2MseQhByXa6BHHgwfjbdw6wDLKU=
+			1nipIfiI2JXHooTtzv6oJOMvCkkzCYVE88dCa9vFi24=
 			</data>
 		</dict>
 	</dict>
