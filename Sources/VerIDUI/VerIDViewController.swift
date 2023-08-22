@@ -361,7 +361,7 @@ public protocol ImagePublisher {
                     self.faceImageViewAnimator = animator
                     self.nextAvailableViewChangeTime = CACurrentMediaTime() + animationDuration
                 }
-            case (.faceFixed, false):
+            case (.faceFixed, true):
                 self.latestMisalignTime = nil
                 self.faceOvalView.isHidden = true
                 self.headSceneView.isHidden = true
@@ -384,7 +384,7 @@ public protocol ImagePublisher {
                 if self.latestMisalignTime == nil {
                     self.latestMisalignTime = CACurrentMediaTime()
                 }
-            case (_, true):
+            case (_, false):
                 self.latestMisalignTime = nil
                 self.faceOvalView.isHidden = true
                 self.headSceneView.isHidden = true
@@ -485,7 +485,7 @@ public protocol ImagePublisher {
     
     private func maskCameraPreviewFromFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult) {
         let defaultFaceBounds = self.defaultFaceRectFromFaceDetectionResult(faceDetectionResult)
-        if self.isTrackedFaceHighlightEnabled {
+        if !self.isTrackedFaceHighlightEnabled {
             self.maskCameraPreviewWithOval(in: defaultFaceBounds)
         } else {
             switch faceDetectionResult.status {
