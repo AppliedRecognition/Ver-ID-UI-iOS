@@ -58,17 +58,25 @@ public protocol ImagePublisher {
     // MARK: - Colours
     
     /// Colour behind the face 'cutout'
+    @available(*, deprecated)
     public var backgroundColour = UIColor.clear
     /// Colour of the face oval and label background when the face is aligned
+    @available(*, deprecated)
     public var highlightedColour = UIColor(red: 0.21176470588235, green: 0.68627450980392, blue: 0.0, alpha: 1.0)
     /// Colour of the text when the face is aligned
+    @available(*, deprecated)
     public var highlightedTextColour = UIColor.white
     /// Colour of the face oval and label background when the face is not aligned or not detected
+    @available(*, deprecated)
     public var neutralColour = UIColor.white
     /// Colour of the text when the face is not aligned or not detected
+    @available(*, deprecated)
     public var neutralTextColour = UIColor.black
     
     public var shouldShowCancelButton: Bool = true
+    /// Set to `false` to disable visual tracking of the detected face prior to alignment in the requested face bounds
+    /// - Since: 2.13.0
+    public var isTrackedFaceHighlightEnabled: Bool = true
     
     // MARK: -
     
@@ -310,8 +318,8 @@ public protocol ImagePublisher {
             self.maskCameraPreviewFromFaceDetectionResult(faceDetectionResult)
             self.drawArrowFromFaceDetectionResult(faceDetectionResult)
             
-            switch faceDetectionResult.status {
-            case .faceAligned:
+            switch (faceDetectionResult.status, self.isTrackedFaceHighlightEnabled) {
+            case (.faceAligned, _):
                 self.latestMisalignTime = nil
                 self.headSceneView.isHidden = true
                 self.faceCaptureCount += 1
@@ -353,11 +361,11 @@ public protocol ImagePublisher {
                     self.faceImageViewAnimator = animator
                     self.nextAvailableViewChangeTime = CACurrentMediaTime() + animationDuration
                 }
-            case .faceFixed:
+            case (.faceFixed, false):
                 self.latestMisalignTime = nil
                 self.faceOvalView.isHidden = true
                 self.headSceneView.isHidden = true
-            case .faceMisaligned:
+            case (.faceMisaligned, _):
                 self.faceOvalView.isHidden = false
                 if self.shouldDisplayCGHeadGuidance, let time = self.latestMisalignTime, time + 2.0 < CACurrentMediaTime(), let fromAngle = faceDetectionResult.faceAngle, let toAngle = faceDetectionResult.requestedAngle {
                     let turnDuration: CFTimeInterval = 1.0
@@ -376,6 +384,10 @@ public protocol ImagePublisher {
                 if self.latestMisalignTime == nil {
                     self.latestMisalignTime = CACurrentMediaTime()
                 }
+            case (_, true):
+                self.latestMisalignTime = nil
+                self.faceOvalView.isHidden = true
+                self.headSceneView.isHidden = true
             default:
                 self.latestMisalignTime = nil
                 self.headSceneView.isHidden = true
@@ -473,14 +485,18 @@ public protocol ImagePublisher {
     
     private func maskCameraPreviewFromFaceDetectionResult(_ faceDetectionResult: FaceDetectionResult) {
         let defaultFaceBounds = self.defaultFaceRectFromFaceDetectionResult(faceDetectionResult)
-        switch faceDetectionResult.status {
-        case .faceFixed, .faceMisaligned, .faceAligned:
+        if self.isTrackedFaceHighlightEnabled {
             self.maskCameraPreviewWithOval(in: defaultFaceBounds)
-        default:
-            if let bounds = self.faceBoundsFromFaceDetectionResult(faceDetectionResult) {
-                self.maskCameraPreviewWithOval(in: bounds)
-            } else {
+        } else {
+            switch faceDetectionResult.status {
+            case .faceFixed, .faceMisaligned, .faceAligned:
                 self.maskCameraPreviewWithOval(in: defaultFaceBounds)
+            default:
+                if let bounds = self.faceBoundsFromFaceDetectionResult(faceDetectionResult) {
+                    self.maskCameraPreviewWithOval(in: bounds)
+                } else {
+                    self.maskCameraPreviewWithOval(in: defaultFaceBounds)
+                }
             }
         }
     }
