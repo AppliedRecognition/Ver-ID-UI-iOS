@@ -1229,6 +1229,13 @@ SWIFT_CLASS("_TtC9VerIDCore20SessionResultPackage")
 /// \param result Session result
 ///
 - (nonnull instancetype)initWithVerID:(VerID * _Nonnull)verID settings:(VerIDSessionSettings * _Nonnull)settings result:(VerIDSessionResult * _Nonnull)result OBJC_DESIGNATED_INITIALIZER;
+/// Create in-memory zip archive of the session result package
+/// since:
+/// 2.13.2
+///
+/// returns:
+/// Zip archive with the session result package
+- (NSData * _Nullable)createInMemoryArchiveAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (NSURL * _Nullable)createArchiveAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (SessionItemActivityProvider * _Nonnull)createItemActivityProviderWithArchiveURL:(NSURL * _Nonnull)archiveURL SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
