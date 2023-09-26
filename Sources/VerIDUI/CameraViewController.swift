@@ -94,6 +94,7 @@ import AVFoundation
         self.cameraPreviewView = CameraPreviewView(frame: CGRect(origin: CGPoint.zero, size: self.view.frame.size))
         self.cameraPreviewView.isHidden = true
         self.cameraPreviewView.session = self.captureSession
+        self.cameraPreviewView.videoPreviewLayer.videoGravity = self.videoGravity
         let cameraPreviewParent = UIView(frame: CGRect(origin: CGPoint.zero, size: self.view.frame.size))
         cameraPreviewParent.backgroundColor = self.cameraPreviewBackgroundColor
         cameraPreviewParent.addSubview(self.cameraPreviewView)
@@ -141,16 +142,22 @@ import AVFoundation
             if !context.isCancelled {
                 self.updateImageOrientation()
                 self.resizeCameraPreviewToViewSize()
-                if let preview = self.cameraPreviewView {
-                    preview.frame.size = size
-                    preview.videoPreviewLayer.videoGravity = self.videoGravity
-                }
                 self.updateVideoRotation()
                 if let videoPreviewLayerConnection = self.cameraPreviewView.videoPreviewLayer.connection, videoPreviewLayerConnection.isVideoOrientationSupported {
                     videoPreviewLayerConnection.videoOrientation = self.avCaptureVideoOrientation
                 }
             }
         })
+    }
+    
+    open override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        if parent == nil {
+            return
+        }
+        self.updateImageOrientation()
+        self.updateVideoRotation()
+        self.resizeCameraPreviewToViewSize()
     }
     
     private var _videoRotation: CGFloat = 0

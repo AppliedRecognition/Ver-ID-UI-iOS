@@ -100,6 +100,12 @@ public enum VerIDSessionViewControllersFactoryError: Int, Error {
         } catch VerIDSessionError.faceIsCovered {
             requestedBearing = .straight
             message = self.translatedStrings["Please remove face coverings"]
+        } catch FacePresenceError.faceLost(requestedBearing: let bearing) {
+            requestedBearing = bearing
+            message = self.translatedStrings["Align your face with the oval"]
+        } catch AntiSpoofingError.spoofDetected {
+            requestedBearing = .straight
+            message = self.translatedStrings["Ensure you are in a well-lit environment in light that doesn't throw sharp shadows."]
         }
         
         let density = UIScreen.main.scale

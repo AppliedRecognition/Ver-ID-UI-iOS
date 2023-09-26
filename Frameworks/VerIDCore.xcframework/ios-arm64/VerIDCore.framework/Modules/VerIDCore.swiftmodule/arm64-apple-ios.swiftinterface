@@ -1348,6 +1348,7 @@ public typealias Face = VerIDCore.VerIDFace
     get
     set
   }
+  @objc public func createInMemoryArchive() throws -> Foundation.Data
   @objc public func createArchive() throws -> Foundation.URL
   @objc public func createItemActivityProvider(archiveURL: Foundation.URL) -> VerIDCore.SessionItemActivityProvider
   @objc deinit
