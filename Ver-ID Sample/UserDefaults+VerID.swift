@@ -202,10 +202,10 @@ extension UserDefaults {
             "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
             "enableFaceCoveringDetection": false,
             "faceDetectorVersion": detreclibSettings.detectorVersion,
-            "useSpoofDeviceDetector": false,
+            "useSpoofDeviceDetector": true,
             "useMoireDetector": true,
-            "useSpoofDetector3": true,
-            "useSpoofDetector4": true
+            "useSpoofDetector3": false,
+            "useSpoofDetector4": false
         ])
     }
 }

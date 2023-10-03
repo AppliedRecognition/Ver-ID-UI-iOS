@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
         ss.dependency 'RxCocoa', '~> 5'
         ss.dependency 'DeviceKit', '~> 4.4'
         ss.dependency 'ASN1Decoder', '~> 1.8'
-        ss.dependency 'LivenessDetection', '~> 1.1'
+        ss.dependency 'LivenessDetection', '>= 1.2.1', '< 2.0.0'
         ss.vendored_framework = "Frameworks/VerIDCore.xcframework"
     end
 end

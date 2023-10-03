@@ -38,25 +38,21 @@
     },
     "liveness-detection": {
         "spoof-device-detection-coreml": [
-            "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61.mlmodel"
+            "ARC_PSD-001_1.1.29_bst_yl80_NMS_ult145_cml620.mlmodel"
         ],
-        "spoof-device-detection-tflite": [
-            "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61-fp16.tflite"
-        ],
-        "spoof-device-detection-torchscript": [
-            "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61_opt.torchscript"
+        "spoof-device-detection-ncnn": [
+            "ARC_PSD-001_1.1.29_bst_yl80.bin",
+            "ARC_PSD-001_1.1.29_bst_yl80.param"
         ],
         "moire-detection-coreml": [
             "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.mlmodel"
         ],
-        "moire-detection-tflite": [
-            "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.tflite"
+        "moire-detection-ncnn": [
+            "ARC_PSD-002_e100_ntrn-627p-620n_02_res-98-99-96-0-5_opt.bin",
+            "ARC_PSD-002_e100_ntrn-627p-620n_02_res-98-99-96-0-5_opt.param"
         ],
         "spoof-detection3-coreml": [
             "ARC_PSD-003_1.0.16_TRCD.mlmodel"
-        ],
-        "spoof-detection3-torchscript": [
-            "ARC_PSD-003_1.0.16_TRCD_OPTD_LITE.torchscript"
         ],
         "spoof-detection3-ncnn": [
             "ARC_PSD-003.bin",

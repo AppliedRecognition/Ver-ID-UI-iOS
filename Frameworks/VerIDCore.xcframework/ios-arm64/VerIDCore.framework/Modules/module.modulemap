@@ -1,7 +1,7 @@
 framework module VerIDCore {
   umbrella header "VerIDCore.h"
-
   export *
+
   module * { export * }
 }
 
