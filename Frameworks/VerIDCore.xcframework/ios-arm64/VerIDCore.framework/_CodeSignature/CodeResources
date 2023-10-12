@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		auWedFjUsDSgr1KD/WID3KRbXBs=
+		Yqed/I/2Sc9Tb6npvHkvDoQckrw=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,35 +50,35 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		WAyo7KNxC45vgT9dWCS/GflPYX4=
+		mWWgRyelpe2XAc7nCYbX1EE8FmU=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		Xiq2SoH6ICGoKqDmHRN621IQFpE=
+		VyNwsJNM7C99EQ2y0ALNds+eWG8=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		eCri0qa78sfzCf/1nZVtW7WF7tU=
+		bZ6O5cNp8eZmpl/0NXPgaAq5+HI=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		Yp2N73O2CDnUXstYIC2u5MQeNOg=
+		YBLhoq4oHfmm4JnJX8F3hlomwFU=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		eCri0qa78sfzCf/1nZVtW7WF7tU=
+		bZ6O5cNp8eZmpl/0NXPgaAq5+HI=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		HQFPx42p9Qr3Y+nQ4E05FYS6ZpA=
+		31YnTHgv7HBz6EW8GNkpnfxXUJA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		O2Z+ffitU4xxZHNT/Ijcu5/edPo=
+		frXgD0L3c7L/IcY+8TdzSKFG740=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
-		UXzGc265KD8aYZ+gEbE4JdmdsaA=
+		G0dnFSkDGSt0MTv3TsYVkG5Vkkg=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
 		<data>
@@ -86,15 +86,15 @@
 		</data>
 		<key>VerIDModel.momd/VersionInfo.plist</key>
 		<data>
-		ezAolVkgGBvNTTx9QWDyiPtRmwM=
+		LZ+cQTy5MUaKE1xRcVDP07vxv9A=
 		</data>
 		<key>categories.json</key>
 		<data>
-		6HemEMe3r8Fxz4gRH+svDePYDHE=
+		j9WPZglbztkBSAXUwfns+CWGc8Q=
 		</data>
 		<key>hashes.json</key>
 		<data>
-		ihAb1GAFxrYUCndNtCeL98yD3kU=
+		0vE7edT6CEu8lUXQ1AO8s+j/QME=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -131,7 +131,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			y0dCs+kI23ThC2qr7LI0Tq4ybIIL7pTRtcyQbi52Qtg=
+			kCZlfqYcwebztPXHWpZPtHSm7eDk9IsS3OJ6NnKlV9M=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -180,49 +180,49 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UJsMwaGBFDNg8HGFvwOTFp7Ax31Yswsi9MVRXY9/Dy0=
+			LBxaLYAjeEGg9QHbGpj8GyGZKoylr0twVHaIOjigF4o=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xIHPg17wG/cy6cFlmxd6NGTh+KmIkWVCeiWJ01Dhzcg=
+			OFgPUn1bGimHWP61Hdg+fu0+fQ0S+gnom+JcliOd6LE=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I5b5IB2qPdsORuKbiLWFEMT0YvmcoVsQSAQIHaRjiV0=
+			xyeCDYT9Lt5XzFac93ojymtsTSKVCdbNHdRywqqzKwY=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xIHPg17wG/cy6cFlmxd6NGTh+KmIkWVCeiWJ01Dhzcg=
+			OFgPUn1bGimHWP61Hdg+fu0+fQ0S+gnom+JcliOd6LE=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			acalN/+pEJdUM43W8Bn64AHBEZDk/T4O7uT1QdTZFCw=
+			7oD2y3mbe60GIenQBXLzqOHiGLhYs8wg37hNt7Ll9dI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ml7050QZvQvYKCuvzik/qE0EZlQmToVwpN1grMOy8PE=
+			GBFQklGKRL3STnl1HJQR+IXahjNZRDSh1vS0XqIrAH0=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kq6yJVSo4PrWNyxudlD2lctzvRMwCj9ssOaE60kJgMA=
+			MRAaeWlt/ZSecy81k9E/t3d/KP3klsAalSqnt7/T1hU=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
@@ -236,21 +236,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kf2lM2Qb7gd6R8T6BRsIxu/VbE9GQDiCJXDx0sELom8=
+			ugc1VjiQJQz3BnSeBwn5QNYNKamhUpt39WAJ5SV67fw=
 			</data>
 		</dict>
 		<key>categories.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tPGmvldmFnU7ZTDzMAFI8CjoMH+aBiOXCGA8BaJ5rWk=
+			h4QvMz1gPyyUd2hvYkQ85aC0khKhqZRF5DqcplpjV7k=
 			</data>
 		</dict>
 		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1nipIfiI2JXHooTtzv6oJOMvCkkzCYVE88dCa9vFi24=
+			rGxgIdC6O6mi5J7TN9pf2zLPrSF9sbwRmOSBiXwIG7Y=
 			</data>
 		</dict>
 	</dict>

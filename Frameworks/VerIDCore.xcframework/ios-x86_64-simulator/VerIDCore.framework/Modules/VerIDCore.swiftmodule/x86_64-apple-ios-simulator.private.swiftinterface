@@ -743,7 +743,7 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
   @objc final public let faceDetection: any VerIDCore.FaceDetection
   @objc final public let faceRecognition: any VerIDCore.FaceRecognition
   @objc final public let userManagement: any VerIDCore.UserManagement
-  final public let livenessDetection: VerIDCore.VerIDLivenessDetection?
+  public var livenessDetection: VerIDCore.VerIDLivenessDetection?
   public var utilities: VerIDCore.VerIDUtilities? {
     get
     set
@@ -1265,12 +1265,13 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers public class VerIDLivenessDetection {
+public class VerIDLivenessDetection {
   @available(*, deprecated)
   final public let moireDetector: Any!
   @available(*, deprecated)
   final public let spoofDeviceDetector: LivenessDetection.SpoofDeviceDetector!
   final public let spoofDetection: LivenessDetection.SpoofDetection
+  public init(spoofDetection: LivenessDetection.SpoofDetection)
   @objc deinit
 }
 public enum SpoofDetectorModel {
@@ -1350,7 +1351,6 @@ public typealias Face = VerIDCore.VerIDFace
     get
     set
   }
-  @objc public func createInMemoryArchive() throws -> Foundation.Data
   @objc public func createArchive() throws -> Foundation.URL
   @objc public func createItemActivityProvider(archiveURL: Foundation.URL) -> VerIDCore.SessionItemActivityProvider
   @objc deinit

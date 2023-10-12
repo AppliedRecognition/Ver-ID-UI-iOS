@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		NIFqS9yG4yNY3vcaVlwLnYdfJcE=
+		hVZhPGpzwNNGi0g1V6yhf8jFdZU=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,35 +50,35 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		eoYO1B3p+GfUu6/zKR91juv2kGY=
+		G/ButbGX+otWfwYZ9egWAxgOlKE=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Xiq2SoH6ICGoKqDmHRN621IQFpE=
+		VyNwsJNM7C99EQ2y0ALNds+eWG8=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		R62SeAAihI3f2DYfDLzYlNVG0BQ=
+		Im9+zL6yE+vagarwIXGkOzIZACI=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		lkiWoCcPYlWP4o7ZECV3F018Am4=
+		Zc6PAEYMWOpFwLke4Y/Na3+zS7E=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		R62SeAAihI3f2DYfDLzYlNVG0BQ=
+		Im9+zL6yE+vagarwIXGkOzIZACI=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		u92VqrGyuKIS49a1WY8gzhVlAcQ=
+		6O5zYFgXzCuejA0dX8TNzoxROYk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		O2Z+ffitU4xxZHNT/Ijcu5/edPo=
+		frXgD0L3c7L/IcY+8TdzSKFG740=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
-		UXzGc265KD8aYZ+gEbE4JdmdsaA=
+		G0dnFSkDGSt0MTv3TsYVkG5Vkkg=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
 		<data>
@@ -86,15 +86,15 @@
 		</data>
 		<key>VerIDModel.momd/VersionInfo.plist</key>
 		<data>
-		ezAolVkgGBvNTTx9QWDyiPtRmwM=
+		LZ+cQTy5MUaKE1xRcVDP07vxv9A=
 		</data>
 		<key>categories.json</key>
 		<data>
-		6HemEMe3r8Fxz4gRH+svDePYDHE=
+		j9WPZglbztkBSAXUwfns+CWGc8Q=
 		</data>
 		<key>hashes.json</key>
 		<data>
-		ihAb1GAFxrYUCndNtCeL98yD3kU=
+		0vE7edT6CEu8lUXQ1AO8s+j/QME=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -131,7 +131,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6HVmPupkYL+1CBUAlrcHyhrkefNFf5AX8y3QfkTDkOY=
+			wzycc3g+7WqMnuUtVPyLaNLGVkJJanNlYYs2p/M1quQ=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -180,49 +180,49 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			UJsMwaGBFDNg8HGFvwOTFp7Ax31Yswsi9MVRXY9/Dy0=
+			LBxaLYAjeEGg9QHbGpj8GyGZKoylr0twVHaIOjigF4o=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I3HGEIZx3gaWqtSaObDbp04DIQGatC60kqPj6Sgeb2M=
+			xPC1KxjakqkGyA4BToe/jqEIkqBampo3OSFggI+fuic=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ek7B/RlmrLooTAvkZVQmSomkfo44abbvJW1abcvmJVY=
+			Ih4C1iXwkakJ+wdhq9UYItfrYQcZaxomj18JemE3HWs=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I3HGEIZx3gaWqtSaObDbp04DIQGatC60kqPj6Sgeb2M=
+			xPC1KxjakqkGyA4BToe/jqEIkqBampo3OSFggI+fuic=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RPkf3k5FZlDiXWIgRVfcZEUquhs6tYlcXeDyqU7wVuE=
+			mm0PZrGs6pf2upE8wSa3mefd2Bp5B6QGyLPhA9+renA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ml7050QZvQvYKCuvzik/qE0EZlQmToVwpN1grMOy8PE=
+			GBFQklGKRL3STnl1HJQR+IXahjNZRDSh1vS0XqIrAH0=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kq6yJVSo4PrWNyxudlD2lctzvRMwCj9ssOaE60kJgMA=
+			MRAaeWlt/ZSecy81k9E/t3d/KP3klsAalSqnt7/T1hU=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
@@ -236,21 +236,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kf2lM2Qb7gd6R8T6BRsIxu/VbE9GQDiCJXDx0sELom8=
+			ugc1VjiQJQz3BnSeBwn5QNYNKamhUpt39WAJ5SV67fw=
 			</data>
 		</dict>
 		<key>categories.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tPGmvldmFnU7ZTDzMAFI8CjoMH+aBiOXCGA8BaJ5rWk=
+			h4QvMz1gPyyUd2hvYkQ85aC0khKhqZRF5DqcplpjV7k=
 			</data>
 		</dict>
 		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1nipIfiI2JXHooTtzv6oJOMvCkkzCYVE88dCa9vFi24=
+			rGxgIdC6O6mi5J7TN9pf2zLPrSF9sbwRmOSBiXwIG7Y=
 			</data>
 		</dict>
 	</dict>
