@@ -4,6 +4,8 @@
     "shape_predictor_68_face_landmarks.dat": "0a9bc8ed80a40a5c06b456c2d9e1244402d8d940b23566cfaf1a685781ff63d3",
     "mobilefacenet-opt.param": "b7e127a0d27ca2b527bfba85d11bf6c9a2c9d3b1e28355e57a98d85809acb5e2",
     "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61_opt.torchscript": "92a39c8b5548118192d2036b0dc247b92cd19e0cacf10038958d7d56f9533b7c",
+    ".DS_Store": "d65165279105ca6773180500688df4bdc69a2c7b771752f0a46ef120b7fd8ec3",
+    "ARC_PSD-001_1.1.29_bst_yl80.param": "dfaaefd8c6b990702f06e159915da53055e02be0c55fad7432724c4834bc6aaf",
     "ARC_PSD-003.bin": "d4aacfaa0b6e1241d5afd0285f6010904a86e5ca3a53bc602a522f9d0be659f7",
     "ARC_PSD-003_1.0.16_TRCD_OPTD_LITE.torchscript": "8cb7b63c90e09cc9263ff1ef444ab8eb2585cfc23cb4fed2753a5b48fd696d5c",
     "SpoofDetectorModel_1.0.7_bst_2022-11-26_yl61-fp16.tflite": "9826374923fbe881bc79c55729fc3e45fd5fa99fe4664ee0911502582bb7e5f7",
@@ -17,7 +19,9 @@
     "ARC_PSD-004_model_1.bin": "e774aea90460c3ea7d1574892b891ca0a2fd0feda902977f5204b066926a37b9",
     "facemask-20200720-dut23td+1700-251149%3000.nv": "3a5e834254f9da02406509651a8514815f857d87de66f02c0e482de511b5f15d",
     "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.tflite": "4143bf82a1e5a897d7b46c8e0a3275c8573330065dd635b4fd468fb75b3fd413",
+    "ARC_PSD-001_1.1.29_bst_yl80.bin": "6b95cb9d81dcaf9a63617a8b681c3e166e23385d31e526dfed6a0c91598747b1",
     "facenet-20170512.nv": "4cdb3340d50e0a42326544c173c3353915de95e83f09b04f059eea5111e2e7ba",
+    "ARC_PSD-002_e100_ntrn-627p-620n_02_res-98-99-96-0-5_opt.bin": "7cf052376096533046ee30d5bf3810bd6ea8c6e827789900ec6dd7411b3bacec",
     "ARC_PSD-003_1.0.16_TRCD.mlmodel": "d69d345bbbc62d7ef041da2fe06f04883b66ddb7e5ed87bb554eb2becdb6b92e",
     "rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv": "b01fa8550e6a1a5f9e6b6dd0b035ac50719429bcab617dafab5c776f3a6c445d",
     "RFB-320.param": "fbde20ba996bc549eb9eddb7a81720929934ce87b3662981c48ee142ed9bee62",
@@ -26,5 +30,7 @@
     "dlib_face_recognition_resnet_model_v1.dat": "6f817de54ed2b67e7363b8fae9ead7ae0ab26e002b71fd8941b956b96430a69d",
     "mobilefacenet-opt.bin": "d8b5fb6149439db06679ee9eb642b362c2a7d219340f827befe87d4085d0bf3d",
     "ARC_PSD-003.param": "40d2311971e92bea28afda9df1b682e9259e69a5dac72294afd5615d08a74648",
-    "shape_predictor_5_face_landmarks.dat": "c4b1e9804792707d3a405c2c16a80a20269e6675021f64a41d30fffafbc41888"
+    "shape_predictor_5_face_landmarks.dat": "c4b1e9804792707d3a405c2c16a80a20269e6675021f64a41d30fffafbc41888",
+    "ARC_PSD-002_e100_ntrn-627p-620n_02_res-98-99-96-0-5_opt.param": "9d235d065381d30e3d612aa3308407019991941d026cffcc10792c23ce4d184a",
+    "ARC_PSD-001_1.1.29_bst_yl80_NMS_ult145_cml620.mlmodel": "0f62846c4db8053014d1588ed3123e1c201790582e9e4be050e218bbebde9b12"
 }

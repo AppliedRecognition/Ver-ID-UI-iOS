@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3B0228FC273C36FB00D5630C /* ContinuousLivenessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0228FA273C36FB00D5630C /* ContinuousLivenessViewController.swift */; };
 		3B0228FD273C36FB00D5630C /* IncompatibleFacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0228FB273C36FB00D5630C /* IncompatibleFacesViewController.swift */; };
+		3B0358A72AE855C70005C8C3 /* DiagnosticUploadPermissionDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0358A52AE855C70005C8C3 /* DiagnosticUploadPermissionDialog.swift */; };
+		3B0358A82AE855C70005C8C3 /* SessionDiagnosticUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0358A62AE855C70005C8C3 /* SessionDiagnosticUpload.swift */; };
 		3B03D6722548A0BC0098292B /* IdentificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6702548A0BC0098292B /* IdentificationViewController.swift */; };
 		3B03D6732548A0BC0098292B /* IdentificationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */; };
 		3B0E6F23272098EC0061A3A3 /* VerIDUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B326B1622089C88005DAE1E /* VerIDUI.framework */; };
@@ -227,6 +229,8 @@
 		35EC92189732BD799A7E8BD2 /* Pods-Ver-ID-Ver-ID Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ver-ID-Ver-ID Sample.debug.xcconfig"; path = "Target Support Files/Pods-Ver-ID-Ver-ID Sample/Pods-Ver-ID-Ver-ID Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		3B0228FA273C36FB00D5630C /* ContinuousLivenessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinuousLivenessViewController.swift; sourceTree = "<group>"; };
 		3B0228FB273C36FB00D5630C /* IncompatibleFacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncompatibleFacesViewController.swift; sourceTree = "<group>"; };
+		3B0358A52AE855C70005C8C3 /* DiagnosticUploadPermissionDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagnosticUploadPermissionDialog.swift; sourceTree = "<group>"; };
+		3B0358A62AE855C70005C8C3 /* SessionDiagnosticUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDiagnosticUpload.swift; sourceTree = "<group>"; };
 		3B03D6702548A0BC0098292B /* IdentificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationViewController.swift; sourceTree = "<group>"; };
 		3B03D6712548A0BC0098292B /* IdentificationResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentificationResultViewController.swift; sourceTree = "<group>"; };
 		3B09E2DB25647A3D00ED224D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -638,6 +642,8 @@
 		3B9BFCD5246DE6B100C4B2D1 /* Session Sharing */ = {
 			isa = PBXGroup;
 			children = (
+				3B0358A52AE855C70005C8C3 /* DiagnosticUploadPermissionDialog.swift */,
+				3B0358A62AE855C70005C8C3 /* SessionDiagnosticUpload.swift */,
 				3B9BFCB9246DE64900C4B2D1 /* S3UploadActivity.swift */,
 			);
 			name = "Session Sharing";
@@ -1286,9 +1292,11 @@
 				3BB20464221425BF00B3B312 /* RegistrationImportViewController.swift in Sources */,
 				3BB20465221425BF00B3B312 /* ErrorViewController.swift in Sources */,
 				3B8C109F240D87900087ACA5 /* Globals.swift in Sources */,
+				3B0358A82AE855C70005C8C3 /* SessionDiagnosticUpload.swift in Sources */,
 				3B9BFCCA246DE64A00C4B2D1 /* SecuritySettingsViewController.swift in Sources */,
 				3B0228FD273C36FB00D5630C /* IncompatibleFacesViewController.swift in Sources */,
 				3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */,
+				3B0358A72AE855C70005C8C3 /* DiagnosticUploadPermissionDialog.swift in Sources */,
 				3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */,
 				3B9BFCCE246DE64A00C4B2D1 /* RegistrationImport.swift in Sources */,
 				3B0228FC273C36FB00D5630C /* ContinuousLivenessViewController.swift in Sources */,

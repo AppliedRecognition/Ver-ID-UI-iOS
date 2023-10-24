@@ -161,6 +161,18 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
         session.start()
     }
     
+    // MARK: - Session diagnostics upload
+    
+    @available(iOS 13, *)
+    func uploadSessionDiagnosticPackage(_ sessionDiagnosticPackage: SessionResultPackage, viewController: UIViewController) {
+        let upload = SessionDiagnosticUpload()
+        upload.askForUserConsent(in: viewController) { granted in
+            if granted {
+                upload.uploadPackage(sessionDiagnosticPackage)
+            }
+        }
+    }
+    
     // MARK: - Ver-ID Session Delegate
     
     func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
@@ -173,7 +185,8 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
         } else {
-            let viewController = SessionDiagnosticsViewController.create(sessionResultPackage: SessionResultPackage(verID: session.environment, settings: session.settings, result: result))
+            let sessionResultPackage = SessionResultPackage(verID: session.environment, settings: session.settings, result: result)
+            let viewController = SessionDiagnosticsViewController.create(sessionResultPackage: sessionResultPackage)
             if result.error != nil {
                 viewController.title = "Session Failed"
             } else {
@@ -181,6 +194,11 @@ class MainViewController: UIViewController, VerIDSessionDelegate, UIDocumentPick
             }
             viewController.delegate = self
             self.navigationController?.pushViewController(viewController, animated: true)
+            if #available(iOS 13, *) {
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                    self.uploadSessionDiagnosticPackage(sessionResultPackage, viewController: viewController)
+                }
+            }
         }
     }
     

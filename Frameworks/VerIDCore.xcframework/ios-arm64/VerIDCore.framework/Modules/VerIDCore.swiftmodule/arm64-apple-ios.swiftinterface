@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDCore
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import ASN1Decoder
@@ -24,6 +24,7 @@ import VerIDSDKIdentity
 import ZIPFoundation
 import _Concurrency
 import _StringProcessing
+import _SwiftConcurrencyShims
 import os
 import os.signpost
 @_hasMissingDesignatedInitializers @objc(VerIDAuthenticationSessionResult) public class AuthenticationSessionResult : VerIDCore.VerIDSessionResult {
@@ -43,19 +44,19 @@ import os.signpost
 @_inheritsConvenienceInitializers @objc(VerIDSessionSettings) public class VerIDSessionSettings : ObjectiveC.NSObject, Swift.Codable {
   public static var supportsInstantLiveness: Swift.Bool
   @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
-  @available(*, unavailable, message: "Please use session delegate")
   @objc public var showResult: Swift.Bool
   @objc public var faceCaptureCount: Swift.Int
-  @available(*, unavailable, renamed: "faceCaptureCount")
-  @objc public var numberOfResultsToCollect: Swift.Int
+  @objc public var numberOfResultsToCollect: Swift.Int {
+    @objc get
+    @objc set
+  }
   @objc public var maxDuration: Swift.Double
-  @available(*, unavailable, renamed: "maxDuration")
-  @objc public var expiryTime: Swift.Double
-  @available(*, unavailable, message: "Please use session delegate")
+  @objc public var expiryTime: Foundation.TimeInterval {
+    @objc get
+    @objc set
+  }
   @objc public var videoURL: Foundation.URL?
-  @available(*, unavailable, message: "As of 2.0 all facess now include face templates")
   @objc public var includeFaceTemplatesInResult: Swift.Bool
-  @available(*, unavailable, message: "Please use session delegate")
   @objc public var speakPrompts: Swift.Bool
   @VerIDCore.Clamped @objc public var yawThreshold: CoreFoundation.CGFloat {
     @objc get
@@ -67,17 +68,20 @@ import os.signpost
     @objc set
     _modify
   }
-  @available(*, unavailable, renamed: "expectedFaceExtents")
-  @objc public var faceBoundsFraction: CoreFoundation.CGSize
+  @objc public var faceBoundsFraction: CoreFoundation.CGSize {
+    @objc get
+    @objc set
+  }
   @VerIDCore.Clamped @objc public var expectedFaceExtents: VerIDCore.FaceExtents {
     @objc get
     @objc set
     _modify
   }
-  @available(*, unavailable, message: "Please use session delegate")
   @objc public var useFrontCamera: Swift.Bool
-  @available(*, unavailable, renamed: "faceCaptureFaceCount")
-  @objc public var faceBufferSize: Swift.Int
+  @objc public var faceBufferSize: Swift.Int {
+    @objc get
+    @objc set
+  }
   @VerIDCore.Clamped @objc public var faceCaptureFaceCount: Swift.Int {
     @objc get
     @objc set
@@ -183,7 +187,6 @@ public class SessionDiagnostics : Swift.Codable {
   final public let imageSize: CoreFoundation.CGSize
   final public let requestedBearing: VerIDCore.Bearing
   final public let timestamp: Foundation.Date
-  @available(*, unavailable)
   final public let spoofConfidence: Swift.Float?
   required public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
@@ -414,7 +417,6 @@ extension VerIDCore.VerIDImageFormat {
   public var defaultFaceBounds: VerIDCore.FaceBounds
   public var offsetAngleFromBearing: VerIDCore.EulerAngle?
   public var requestedAngle: VerIDCore.EulerAngle?
-  @available(*, unavailable)
   public var spoofConfidence: Swift.Float?
   public init(image: VerIDCore.Image, requestedBearing: VerIDCore.Bearing, defaultFaceBounds: VerIDCore.FaceBounds)
   required public init(from decoder: any Swift.Decoder) throws
@@ -741,7 +743,7 @@ public typealias SessionResult = VerIDCore.VerIDSessionResult
   @objc final public let faceDetection: any VerIDCore.FaceDetection
   @objc final public let faceRecognition: any VerIDCore.FaceRecognition
   @objc final public let userManagement: any VerIDCore.UserManagement
-  final public let livenessDetection: VerIDCore.VerIDLivenessDetection?
+  public var livenessDetection: VerIDCore.VerIDLivenessDetection?
   public var utilities: VerIDCore.VerIDUtilities? {
     get
     set
@@ -1263,12 +1265,13 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers public class VerIDLivenessDetection {
+public class VerIDLivenessDetection {
   @available(*, deprecated)
   final public let moireDetector: Any!
   @available(*, deprecated)
   final public let spoofDeviceDetector: LivenessDetection.SpoofDeviceDetector!
   final public let spoofDetection: LivenessDetection.SpoofDetection
+  public init(spoofDetection: LivenessDetection.SpoofDetection)
   @objc deinit
 }
 public enum SpoofDetectorModel {
@@ -1348,7 +1351,6 @@ public typealias Face = VerIDCore.VerIDFace
     get
     set
   }
-  @objc public func createInMemoryArchive() throws -> Foundation.Data
   @objc public func createArchive() throws -> Foundation.URL
   @objc public func createItemActivityProvider(archiveURL: Foundation.URL) -> VerIDCore.SessionItemActivityProvider
   @objc deinit
@@ -1429,7 +1431,6 @@ public typealias VerIDDetectedFace = VerIDCore.FaceCapture
     @objc get
   }
   @objc public var bearing: VerIDCore.Bearing
-  @available(*, unavailable, message: "Use `image` property instead")
   @objc public var imageURL: Foundation.URL?
   @objc public var image: UIKit.UIImage
   @objc public var faceImage: UIKit.UIImage {

@@ -179,6 +179,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "useSpoofDetector4")
         }
     }
+    @objc dynamic var sessionDiagnosticUploadPermission: SessionDiagnosticUploadPermission {
+        get {
+            SessionDiagnosticUploadPermission(rawValue: self.integer(forKey: "sessionDiagnosticUpload")) ?? .ask
+        }
+        set {
+            self.set(newValue.rawValue, forKey: "sessionDiagnosticUpload")
+        }
+    }
     
     func registerVerIDDefaults() {
         let securitySettingsPreset: SecuritySettingsPreset = .normal
@@ -202,10 +210,15 @@ extension UserDefaults {
             "faceHeightFraction": registrationSettings.expectedFaceExtents.proportionOfViewHeight,
             "enableFaceCoveringDetection": false,
             "faceDetectorVersion": detreclibSettings.detectorVersion,
-            "useSpoofDeviceDetector": false,
+            "useSpoofDeviceDetector": true,
             "useMoireDetector": true,
-            "useSpoofDetector3": true,
-            "useSpoofDetector4": true
+            "useSpoofDetector3": false,
+            "useSpoofDetector4": false,
+            "sessionDiagnosticUpload": SessionDiagnosticUploadPermission.ask.rawValue
         ])
     }
+}
+
+@objc enum SessionDiagnosticUploadPermission: Int {
+    case ask = 0, deny = 1, allow = 2
 }
