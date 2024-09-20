@@ -139,6 +139,14 @@ extension UserDefaults {
             self.set(newValue, forKey: "enableFaceCoveringDetection")
         }
     }
+    @objc dynamic var enableSunglassesDetection: Bool {
+        get {
+            self.bool(forKey: "enableSunglassesDetection")
+        }
+        set {
+            self.set(newValue, forKey: "enableSunglassesDetection")
+        }
+    }
     @objc dynamic var faceDetectorVersion: Int {
         get {
             self.integer(forKey: "faceDetectorVersion")
@@ -153,30 +161,6 @@ extension UserDefaults {
         }
         set {
             self.set(newValue, forKey: "useSpoofDeviceDetector")
-        }
-    }
-    @objc dynamic var useMoireDetector: Bool {
-        get {
-            self.bool(forKey: "useMoireDetector")
-        }
-        set {
-            self.set(newValue, forKey: "useMoireDetector")
-        }
-    }
-    @objc dynamic var useSpoofDetector3: Bool {
-        get {
-            self.bool(forKey: "useSpoofDetector3")
-        }
-        set {
-            self.set(newValue, forKey: "useSpoofDetector3")
-        }
-    }
-    @objc dynamic var useSpoofDetector4: Bool {
-        get {
-            self.bool(forKey: "useSpoofDetector4")
-        }
-        set {
-            self.set(newValue, forKey: "useSpoofDetector4")
         }
     }
     @objc dynamic var sessionDiagnosticUploadPermission: SessionDiagnosticUploadPermission {
@@ -211,10 +195,8 @@ extension UserDefaults {
             "enableFaceCoveringDetection": false,
             "faceDetectorVersion": detreclibSettings.detectorVersion,
             "useSpoofDeviceDetector": true,
-            "useMoireDetector": true,
-            "useSpoofDetector3": false,
-            "useSpoofDetector4": false,
-            "sessionDiagnosticUpload": SessionDiagnosticUploadPermission.ask.rawValue
+            "sessionDiagnosticUpload": SessionDiagnosticUploadPermission.ask.rawValue,
+            "enableSunglassesDetection": false
         ])
     }
 }

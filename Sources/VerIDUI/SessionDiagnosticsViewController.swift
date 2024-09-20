@@ -131,8 +131,30 @@ import AVFoundation
                 })
                 if maskScores.count > 1 {
                     resultData.append(ValueCellData(title: "Face covering confidence scores", value: maskScores.joined(separator: ", ")))
-                } else if !maskScores.isEmpty {
-                    resultData.append(ValueCellData(title: "Face covering confidence score", value: maskScores[0]))
+                } else if let maskScore = maskScores.first {
+                    resultData.append(ValueCellData(title: "Face covering confidence score", value: maskScore))
+                }
+                let glassesScores = self.sessionResultPackage.result.faceCaptures.compactMap({
+                    if let score = $0.diagnosticInfo.glassesScore {
+                        return String(format: "%.02f", score)
+                    }
+                    return nil
+                })
+                if glassesScores.count > 1 {
+                    resultData.append(ValueCellData(title: "Glasses confidence scores", value: glassesScores.joined(separator: ", ")))
+                } else if let glassesScore = glassesScores.first {
+                    resultData.append(ValueCellData(title: "Glasses confidence score", value: glassesScore))
+                }
+                let sunglassesScores = self.sessionResultPackage.result.faceCaptures.compactMap({
+                    if let score = $0.diagnosticInfo.sunglassesScore {
+                        return String(format: "%.02f", score)
+                    }
+                    return nil
+                })
+                if sunglassesScores.count > 1 {
+                    resultData.append(ValueCellData(title: "Sunglasses confidence scores", value: sunglassesScores.joined(separator: ", ")))
+                } else if let sunglassesScore = sunglassesScores.first {
+                    resultData.append(ValueCellData(title: "Sunglasses confidence score", value: sunglassesScore))
                 }
             }
             sections.append(("Session Result",resultData))
@@ -171,6 +193,10 @@ import AVFoundation
             settingsArray.append(ValueCellData(title: "Face covering detection enabled", value: self.sessionResultPackage.settings.isFaceCoveringDetectionEnabled ? "Yes" : "No"))
             if self.sessionResultPackage.settings.isFaceCoveringDetectionEnabled {
                 settingsArray.append(ValueCellData(title: "Face covering confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.faceCoveringConfidenceThreshold)))
+            }
+            settingsArray.append(ValueCellData(title: "Sunglasses detection enabled", value: self.sessionResultPackage.settings.isSunglassesDetectionEnabled ? "Yes" : "No"))
+            if self.sessionResultPackage.settings.isSunglassesDetectionEnabled {
+                settingsArray.append(ValueCellData(title: "Sunglasses confidence threshold", value: String(format: "%.02f", self.sessionResultPackage.settings.sunglassesConfidenceThreshold)))
             }
             sections.append(("Session Settings", settingsArray))
             

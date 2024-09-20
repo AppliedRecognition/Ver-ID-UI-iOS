@@ -16,13 +16,10 @@ struct SecuritySettingsPreset: Equatable {
     let authThresholds: [VerIDFaceTemplateVersion: Float]
     let poses: [Bearing]
     let useSpoofDeviceDetector: Bool
-    let useMoireDetector: Bool
-    let useSpoofDetector3: Bool
-    let useSpoofDetector4: Bool
     
-    static let low: SecuritySettingsPreset = SecuritySettingsPreset(poseCount: 1, yawThreshold: 12.0, pitchThreshold: 10.0, authThresholds: [.V16: 3.5, .V20: 3.0, .V21: 3.0, .V24: 3.5], poses: [.straight], useSpoofDeviceDetector: false, useMoireDetector: true, useSpoofDetector3: false, useSpoofDetector4: true)
-    static let normal: SecuritySettingsPreset = SecuritySettingsPreset(poseCount: 1, yawThreshold: 15.0, pitchThreshold: 12.0, authThresholds: [.V16: 4.0, .V20: 4.0, .V21: 4.0, .V24: 4.0], poses: [.straight], useSpoofDeviceDetector: false, useMoireDetector: true, useSpoofDetector3: false, useSpoofDetector4: true)
-    static let high: SecuritySettingsPreset = SecuritySettingsPreset(poseCount: 2, yawThreshold: 18.0, pitchThreshold: 15.0, authThresholds: [.V16: 4.5, .V20: 4.0, .V21: 4.0, .V24: 4.5], poses: [.straight, .left, .leftUp, .right, .rightUp], useSpoofDeviceDetector: false, useMoireDetector: true, useSpoofDetector3: true, useSpoofDetector4: true)
+    static let low: SecuritySettingsPreset = SecuritySettingsPreset(poseCount: 1, yawThreshold: 15.0, pitchThreshold: 10.0, authThresholds: [.V16: 3.5, .V20: 3.0, .V21: 3.0, .V24: 3.5], poses: [.straight], useSpoofDeviceDetector: false)
+    static let normal: SecuritySettingsPreset = SecuritySettingsPreset(poseCount: 1, yawThreshold: 21.0, pitchThreshold: 12.0, authThresholds: [.V16: 4.0, .V20: 4.0, .V21: 4.0, .V24: 4.0], poses: [.straight], useSpoofDeviceDetector: true)
+    static let high: SecuritySettingsPreset = SecuritySettingsPreset(poseCount: 2, yawThreshold: 24.0, pitchThreshold: 15.0, authThresholds: [.V16: 4.5, .V20: 4.0, .V21: 4.0, .V24: 4.5], poses: [.straight, .left, .leftUp, .right, .rightUp], useSpoofDeviceDetector: true)
 }
 
 struct FaceDetectionSettingsPreset: Equatable {

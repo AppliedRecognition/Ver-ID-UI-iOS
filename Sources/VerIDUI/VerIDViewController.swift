@@ -16,6 +16,7 @@ import SceneKit.ModelIO
 import VerIDCore
 import RxCocoa
 import RxSwift
+import Combine
 
 /// Ver-ID view controller protocol – displays the Ver-ID session progress
 @objc public protocol VerIDViewControllerProtocol: AnyObject {
@@ -36,8 +37,18 @@ public protocol ImagePublisher {
     var imagePublisher: PublishSubject<(Image,FaceBounds)> { get }
 }
 
+public protocol ImageCapturePublisher {
+    
+    var imageCapture: AnyPublisher<ImageCapture,Error> { get }
+}
+
 /// Ver-ID SDK's default implementation of the `VerIDViewControllerProtocol`
-@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol, AVCaptureVideoDataOutputSampleBufferDelegate, SpeechDelegatable, ImagePublisher {
+@objc open class VerIDViewController: CameraViewController, VerIDViewControllerProtocol, AVCaptureVideoDataOutputSampleBufferDelegate, SpeechDelegatable, ImagePublisher, ImageCapturePublisher {
+    
+    private var imageCaptureSubject: PassthroughSubject<VerIDCore.ImageCapture, Error> = PassthroughSubject()
+    public var imageCapture: AnyPublisher<VerIDCore.ImageCapture, Error> {
+        self.imageCaptureSubject.eraseToAnyPublisher()
+    }
     
     /// The view that holds the camera feed.
     @IBOutlet var noCameraLabel: UILabel!
@@ -372,11 +383,11 @@ public protocol ImagePublisher {
                     self.headSceneView.isHidden = false
                     self.cameraPreviewView.superview?.isHidden = true
                     self.nextAvailableViewChangeTime = CACurrentMediaTime() + turnDuration
-                    self.headSceneView.animateFromAngle(fromAngle, toAngle: toAngle, duration: turnDuration) {
-                        self.headSceneView.isHidden = true
-                        self.faceOvalView.isHidden = false
-                        self.cameraPreviewView.superview?.isHidden = false
-                        self.latestMisalignTime = nil
+                    self.headSceneView.animateFromAngle(fromAngle, toAngle: toAngle, duration: turnDuration) { [weak self] in
+                        self?.headSceneView.isHidden = true
+                        self?.faceOvalView.isHidden = false
+                        self?.cameraPreviewView.superview?.isHidden = false
+                        self?.latestMisalignTime = nil
                     }
                 } else {
                     self.headSceneView.isHidden = true
@@ -613,6 +624,8 @@ public protocol ImagePublisher {
             return
         }
         image.isMirrored = cameraPosition == .front
+        let imageCapture = ImageCapture(image: image, faceBounds: FaceBounds(viewSize: self.viewSize, faceExtents: self.sessionSettings?.expectedFaceExtents ?? FaceExtents.defaultExtents))
+        self.imageCaptureSubject.send(imageCapture)
         self.imagePublisher.onNext((image,FaceBounds(viewSize: self.viewSize, faceExtents: self.sessionSettings?.expectedFaceExtents ?? FaceExtents.defaultExtents)))
     }
     

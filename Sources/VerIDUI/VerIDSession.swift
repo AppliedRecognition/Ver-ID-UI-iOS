@@ -12,9 +12,10 @@ import CoreMedia
 import AVFoundation
 import RxSwift
 import os
+import Combine
 
 /// Ver-ID session
-@objc open class VerIDSession: NSObject, VerIDViewControllerDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SpeechDelegate, VerIDCore.SessionDelegate {
+@objc open class VerIDSession: NSObject, VerIDViewControllerDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SpeechDelegate, SessionDelegate {
     
     @objc public enum SessionError: Int, Error {
         case failedToStart
@@ -67,8 +68,11 @@ import os
     private var lastSpokenText: String?
     
     private var session: VerIDCore.Session?
+    private var coreSession: CoreSession?
     private let sessionPrompts: SessionPrompts
     private var hapticFeedbackGenerator: UINotificationFeedbackGenerator?
+    private var cancellable: AnyCancellable?
+    private var cancellables: Set<AnyCancellable> = []
     
     // MARK: - Constructor
 
@@ -127,7 +131,6 @@ import os
                 self.session?.start()
             } catch {
                 self.finishWithResult(VerIDSessionResult(error: error))
-                return
             }
         }
     }
@@ -135,6 +138,10 @@ import os
     /// Cancel the session
     @objc public func cancel() {
         self.session?.cancel()
+        self.cancellable?.cancel()
+        self.cancellable = nil
+        self.coreSession?.cancel()
+        self.coreSession = nil
         self.session = nil
         self.viewController = nil
         DispatchQueue.main.async {
@@ -148,6 +155,13 @@ import os
     
     public func imageObservable(for viewController: UIViewController & VerIDViewControllerProtocol) throws -> Observable<(Image, FaceBounds)> {
         if let publisher = (viewController as? ImagePublisher)?.imagePublisher {
+            return publisher
+        }
+        throw VerIDSessionError.imageObservableUnavailable
+    }
+    
+    public func imageCapture(for viewController: UIViewController & VerIDViewControllerProtocol) throws -> AnyPublisher<ImageCapture,Error> {
+        if let publisher = (viewController as? ImageCapturePublisher)?.imageCapture {
             return publisher
         }
         throw VerIDSessionError.imageObservableUnavailable
@@ -236,40 +250,41 @@ import os
     
     // MARK: - Session delegate
     
-    public func session(_ session: VerIDCore.Session, didFinishWithResult result: VerIDSessionResult) {
-        DispatchQueue.main.async {
-            session.delegate = nil
-            if let err = result.error, self.delegate?.shouldRetrySession?(self, afterFailure: err) == .some(true) {
-                do {
-                    let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
-                    controller.delegate = self
-                    controller.modalPresentationStyle = .overFullScreen
-                    if var speechDelegatable = controller as? SpeechDelegatable {
-                        speechDelegatable.speechDelegate = self
-                    }
-                    self.alertController = controller
-                    self.viewController?.present(controller, animated: true)
-                } catch {
-                    self.session = nil
-                    self.finishWithResult(result)
+    public func session(_ session: VerIDCore.Session, didFinishWithResult result: VerIDCore.VerIDSessionResult) {
+        session.delegate = nil
+        self.session = nil
+        if let err = result.error, self.delegate?.shouldRetrySession?(self, afterFailure: err) == .some(true) {
+            do {
+                let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
+                controller.delegate = self
+                controller.modalPresentationStyle = .overFullScreen
+                if var speechDelegatable = controller as? SpeechDelegatable {
+                    speechDelegatable.speechDelegate = self
                 }
-                return
+                self.alertController = controller
+                self.viewController?.present(controller, animated: true)
+            } catch {
+                self.finishWithResult(result)
             }
-            self.session = nil
-            if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
-                do {
-                    let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
-                    resultViewController.delegate = self
-                    self.presentResultViewController(resultViewController)
-                    return
-                } catch {
-                }
-            }
-            self.finishWithResult(result)
+            return
         }
+        if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
+            do {
+                let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
+                resultViewController.delegate = self
+                self.presentResultViewController(resultViewController)
+                return
+            } catch {
+            }
+        }
+        self.finishWithResult(result)
     }
     
-    public func session(_ session: VerIDCore.Session, didProduceFaceDetectionResult result: FaceDetectionResult) {
+    public func session(_ session: Session, didProduceFaceCapture faceCapture: FaceCapture) {
+        self.viewController?.addFaceCapture?(faceCapture)
+    }
+    
+    public func session(_ session: Session, didProduceFaceDetectionResult result: FaceDetectionResult) {
         let prompt: String? = self.sessionPrompts.promptForFaceDetectionResult(result)
         if self.delegate?.shouldSpeakPromptsInSession?(self) == .some(true), let toSay = prompt {
             var language = self.sessionPrompts.translatedStrings.resolvedLanguage
@@ -285,9 +300,7 @@ import os
         }
     }
     
-    public func session(_ session: VerIDCore.Session, didProduceFaceCapture faceCapture: FaceCapture) {
-        self.viewController?.addFaceCapture?(faceCapture)
-    }
+    // MARK: -
     
     // MARK: - Private methods
     

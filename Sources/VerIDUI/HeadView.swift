@@ -39,6 +39,13 @@ public class HeadView: SCNView {
         self.setup()
     }
     
+    deinit {
+        for observer in self.animationObservers {
+            observer.invalidate()
+        }
+        self.animationObservers.removeAll()
+    }
+    
     private func setup() {
         if #available(iOS 13, *) {
             self.backgroundColor = .secondarySystemBackground
@@ -104,12 +111,14 @@ public class HeadView: SCNView {
         camera.fieldOfView /= self.bounds.height / CGFloat(bottomRight.x - topLeft.x)
         
         let index = self.animationObservers.count
-        self.animationObservers.append(self.observe(\.isAnimating, options: [.new]) { view, change in
+        let observation = self.observe(\.isAnimating, options: [.new]) { [weak self] view, change in
             if change.newValue == false {
-                self.animationObservers.remove(at: index)
+                self?.animationObservers[index].invalidate()
+                self?.animationObservers.remove(at: index)
                 completion()
             }
-        })
+        }
+        self.animationObservers.append(observation)
         let yawAnimation = CABasicAnimation(keyPath: "eulerAngles.y")
         yawAnimation.fromValue = Float(Measurement(value: fromAngle.yaw, unit: UnitAngle.degrees).converted(to: .radians).value)
         yawAnimation.toValue = Float(Measurement(value: toAngle.yaw, unit: UnitAngle.degrees).converted(to: .radians).value)

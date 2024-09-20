@@ -21,6 +21,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     @IBOutlet var faceWidthFractionCell: UITableViewCell!
     @IBOutlet var faceHeightFractionCell: UITableViewCell!
     @IBOutlet var faceCoveringDetectionCell: UITableViewCell!
+    @IBOutlet var sunglassesDetectionCell: UITableViewCell!
     @IBOutlet var confidenceThresholdCell: UITableViewCell!
     @IBOutlet var detectorVersionCell: UITableViewCell!
     @IBOutlet var templateExtractionThresholdCell: UITableViewCell!
@@ -30,7 +31,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     }
     
     let registrationFaceCounts: [Int] = [1,3]
-    let faceDetectorVersions: [Int] = [3,6]
+    let faceDetectorVersions: [Int] = [6,7]
     let confidenceThresholds: [Float] = [Float](stride(from:-0.5, through: 1, by: 0.25))
     var isDirty: Bool = false
     var faceWidthFractionObservation: NSKeyValueObservation?
@@ -40,9 +41,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
     var faceTemplateEncryptionObservation: NSKeyValueObservation?
     var faceDetectorVersionObservation: NSKeyValueObservation?
     var useSpoofDeviceDetectorObservation: NSKeyValueObservation?
-    var useMoireDetectorObservation: NSKeyValueObservation?
-    var useSpoofDetector3Observation: NSKeyValueObservation?
-    var useSpoofDetector4Observation: NSKeyValueObservation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +57,6 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         self.faceTemplateExtractionThresholdObservation = UserDefaults.standard.observe(\.faceTemplateExtractionThreshold, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.faceTemplateEncryptionObservation = UserDefaults.standard.observe(\.encryptFaceTemplates, options: [.new], changeHandler: self.defaultsChangeHandler)
         self.useSpoofDeviceDetectorObservation = UserDefaults.standard.observe(\.useSpoofDeviceDetector, options: [.new], changeHandler: self.defaultsChangeHandler)
-        self.useMoireDetectorObservation = UserDefaults.standard.observe(\.useMoireDetector, options: [.new], changeHandler: self.defaultsChangeHandler)
-        self.useSpoofDetector3Observation = UserDefaults.standard.observe(\.useSpoofDetector3, options: [.new], changeHandler: self.defaultsChangeHandler)
-        self.useSpoofDetector4Observation = UserDefaults.standard.observe(\.useSpoofDetector4, options: [.new], changeHandler: self.defaultsChangeHandler)
     }
     
     func defaultsChangeHandler<T>(_ defaults: UserDefaults,_ change: NSKeyValueObservedChange<T>) {
@@ -95,7 +90,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         }
         switch sectionEnum {
         case .faceDetection:
-            return 4
+            return 5
         case .about, .registration, .camera:
             return 2
         case .security:
@@ -118,6 +113,8 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
             UserDefaults.standard.speakPrompts = !UserDefaults.standard.speakPrompts
         } else if indexPath.section == Section.faceDetection.rawValue && indexPath.row == 1 {
             UserDefaults.standard.enableFaceCoveringDetection = !UserDefaults.standard.enableFaceCoveringDetection
+        } else if indexPath.section == Section.faceDetection.rawValue && indexPath.row == 2 {
+            UserDefaults.standard.enableSunglassesDetection = !UserDefaults.standard.enableSunglassesDetection
         } else {
             return
         }
@@ -136,7 +133,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
             authThresholds = [:]
         }
         let registrationPoseCount: Int = UserDefaults.standard.registrationFaceCount
-        let securityPreset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: UserDefaults.standard.poses, useSpoofDeviceDetector: UserDefaults.standard.useSpoofDeviceDetector, useMoireDetector: UserDefaults.standard.useMoireDetector, useSpoofDetector3: UserDefaults.standard.useSpoofDetector3, useSpoofDetector4: UserDefaults.standard.useSpoofDetector4)
+        let securityPreset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: UserDefaults.standard.poses, useSpoofDeviceDetector: UserDefaults.standard.useSpoofDeviceDetector)
         switch securityPreset {
         case .low:
             self.securityProfileCell.detailTextLabel?.text = "Low"
@@ -157,6 +154,7 @@ class SettingsViewController: UITableViewController, SecuritySettingsDelegate, V
         let encryptTemplates = UserDefaults.standard.encryptFaceTemplates
         templateEncryptionCell.accessoryType = encryptTemplates ? .checkmark : .none
         faceCoveringDetectionCell.accessoryType = UserDefaults.standard.enableFaceCoveringDetection ? .checkmark : .none
+        sunglassesDetectionCell.accessoryType = UserDefaults.standard.enableSunglassesDetection ? .checkmark : .none
         confidenceThresholdCell.detailTextLabel?.text = String(format: "%.02f", UserDefaults.standard.confidenceThreshold)
         detectorVersionCell.detailTextLabel?.text = String(format: "%d", UserDefaults.standard.faceDetectorVersion)
         templateExtractionThresholdCell.detailTextLabel?.text = String(format: "%.0f", UserDefaults.standard.faceTemplateExtractionThreshold)

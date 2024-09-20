@@ -19,6 +19,7 @@ extension RegistrationSessionSettings {
         bearingsToRegister = faceCaptureCount == 1 ? [.straight] : [.straight,.left,.right]
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
         isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
+        isSunglassesDetectionEnabled = userDefaults.enableSunglassesDetection
     }
 }
 
@@ -32,5 +33,6 @@ extension AuthenticationSessionSettings {
         bearings = Set(userDefaults.poses)
         expectedFaceExtents = FaceExtents(proportionOfViewWidth: CGFloat(userDefaults.faceWidthFraction), proportionOfViewHeight: CGFloat(userDefaults.faceHeightFraction))
         isFaceCoveringDetectionEnabled = userDefaults.enableFaceCoveringDetection
+        isSunglassesDetectionEnabled = userDefaults.enableSunglassesDetection
     }
 }

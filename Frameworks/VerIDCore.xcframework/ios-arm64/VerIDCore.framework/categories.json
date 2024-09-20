@@ -1,48 +1,73 @@
 {
     "face-recognition": {
-        "v16": [
+        "v16-DLIB": [
             "dlib_face_recognition_resnet_model_v1.dat"
         ],
-        "v20": [
+        "v20-DLIB": [
             "facenet-20170512.nv"
         ],
-        "v21": [
+        "v21-DLIB": [
             "rec21-recfull-20211108vw-fn23i-s8597c-b144f6-c1062-t100m10-r14s3000-q06.nv"
         ],
-        "v24": [
-            "mobilefacenet-opt.bin",
-            "mobilefacenet-opt.param",
-            "mobilefacenet-q12.nv"
+        "v24-NCNN": [
+            "rec24-mobilefacenet-opt.bin",
+            "rec24-mobilefacenet-opt.param"
+        ],
+        "v24-DLIB": [
+            "rec24-mobilefacenet-q12.nv"
         ]
     },
     "face-detection": {
-        "v3": [
-            "fhogcascade_face_frontal.dat"
+        "v6-DLIB": [
+            "RFB-320.nv"
         ],
-        "v6": [
+        "v6-NCNN": [
             "RFB-320.bin",
-            "RFB-320.nv",
             "RFB-320.param"
+        ],
+        "v7-DLIB": [
+            "mnet.25-opt.nv"
+        ],
+        "v7-NCNN": [
+            "mnet.25-opt.bin",
+            "mnet.25-opt.param"
         ]
     },
     "landmark-detection": {
         "v1": [
             "shape_predictor_5_face_landmarks.dat",
             "shape_predictor_68_face_landmarks.dat"
+        ],
+        "facemesh-NCNN": [
+            "facemesh68.bin",
+            "facemesh68.param"
+        ],
+        "facemesh-DLIB": [
+            "facemesh68.nv"
         ]
     },
     "classifiers": {
         "face-mask": [
             "facemask-20200720-dut23td+1700-251149%3000.nv"
+        ],
+        "glasses": [
+            "glasses-20231216na-ffv2702_fft4539_clbatl3641_detface94_detface18-mutate-mirror-rgb-yolo100-log-r12s4000-q08.nv"
+        ],
+        "face-quality": [
+            "facequal-s102559-ms-r12s2000-q08.nv"
         ]
     },
     "liveness-detection": {
         "spoof-device-detection-coreml": [
-            "ARC_PSD-001_1.1.29_bst_yl80_NMS_ult145_cml620.mlmodel"
+            "ARC_PSD-001_1.1.122_bst_yl80201_NMS_ult201_cml70.mlpackage"
         ],
         "spoof-device-detection-ncnn": [
-            "ARC_PSD-001_1.1.29_bst_yl80.bin",
-            "ARC_PSD-001_1.1.29_bst_yl80.param"
+            "ARC_PSD-001_1.1.122_bst_yl80201.bin",
+            "ARC_PSD-001_1.1.122_bst_yl80201.param"
+        ],
+        "spoof-device-detection-tflite": [
+            "ARC_PSD-001_1.1.122_bst_yl80201_float32.tflite",
+            "ARC_PSD-001_1.1.122_bst_yl80201_float16.tflite"
         ],
         "moire-detection-coreml": [
             "MoireDetectorModel_ep100_ntrn-627p-620n_02_res-98-99-96-0-5.mlmodel"

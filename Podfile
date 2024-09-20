@@ -1,7 +1,7 @@
 project 'VerIDUI.xcodeproj'
 workspace 'VerIDUI.xcworkspace'
 
-platform :ios, '12'
+platform :ios, '13'
 use_frameworks!
 
 abstract_target 'Ver-ID' do
@@ -11,7 +11,7 @@ abstract_target 'Ver-ID' do
   pod 'DeviceKit', '~> 4.4'
   pod 'ASN1Decoder', '~> 1.8'
   pod 'Ver-ID-SDK-Identity', '>= 3.0.2', '< 4.0'
-  pod 'LivenessDetection', '1.2.1'
+  pod 'SpoofDeviceDetection/Model', '~> 1.1'
   
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|
