@@ -9,6 +9,7 @@
 import UIKit
 import VerIDCore
 import VerIDSDKIdentity
+import SpoofDeviceDetection
 
 class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDelegate {
 

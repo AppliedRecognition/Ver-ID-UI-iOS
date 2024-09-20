@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
     s.name = "Ver-ID"
     s.module_name = "VerIDUI"
-    s.version = "2.13.3"
+    s.version = "2.14.0"
     s.summary = "Face detection and recognition"
     s.homepage = "https://github.com/AppliedRecognition"
     s.license = { :type => "COMMERCIAL", :file => "LICENCE.txt" }
     s.author = "Jakub Dolejs"
-    s.platform = :ios, "12"
+    s.platform = :ios, "13"
     s.swift_version = "5"
     s.documentation_url = "https://appliedrecognition.github.io/Ver-ID-Core-Apple"
     s.source = { :git => "https://github.com/AppliedRecognition/Ver-ID-UI-iOS.git", :tag => "v#{s.version}" }
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
         ss.dependency 'RxCocoa', '~> 5'
         ss.dependency 'DeviceKit', '~> 4.4'
         ss.dependency 'ASN1Decoder', '~> 1.8'
-        ss.dependency 'LivenessDetection', '>= 1.2.1', '< 2.0.0'
+        ss.dependency 'SpoofDeviceDetection/Model', '~> 1.1'
         ss.vendored_framework = "Frameworks/VerIDCore.xcframework"
     end
 end

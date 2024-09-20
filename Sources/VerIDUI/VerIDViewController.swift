@@ -383,11 +383,11 @@ public protocol ImageCapturePublisher {
                     self.headSceneView.isHidden = false
                     self.cameraPreviewView.superview?.isHidden = true
                     self.nextAvailableViewChangeTime = CACurrentMediaTime() + turnDuration
-                    self.headSceneView.animateFromAngle(fromAngle, toAngle: toAngle, duration: turnDuration) {
-                        self.headSceneView.isHidden = true
-                        self.faceOvalView.isHidden = false
-                        self.cameraPreviewView.superview?.isHidden = false
-                        self.latestMisalignTime = nil
+                    self.headSceneView.animateFromAngle(fromAngle, toAngle: toAngle, duration: turnDuration) { [weak self] in
+                        self?.headSceneView.isHidden = true
+                        self?.faceOvalView.isHidden = false
+                        self?.cameraPreviewView.superview?.isHidden = false
+                        self?.latestMisalignTime = nil
                     }
                 } else {
                     self.headSceneView.isHidden = true

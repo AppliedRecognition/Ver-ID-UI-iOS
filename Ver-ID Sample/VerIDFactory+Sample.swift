@@ -25,15 +25,9 @@ extension VerIDFactory {
         self.spoofDetectorModels = []
         if userDefaults.useSpoofDeviceDetector {
             self.spoofDetectorModels.insert(.spoofDevice)
-        }
-        if userDefaults.useMoireDetector {
-            self.spoofDetectorModels.insert(.moire)
-        }
-        if userDefaults.useSpoofDetector3 {
-            self.spoofDetectorModels.insert(.spoof3)
-        }
-        if userDefaults.useSpoofDetector4 {
-            self.spoofDetectorModels.insert(.spoof4)
+//            if let modelURLs = Bundle.main.urls(forResourcesWithExtension: "mlmodelc", subdirectory: nil)?.filter({ $0.lastPathComponent.starts(with: "ARC_PSD-001")}), !modelURLs.isEmpty {
+//                self.additionalSpoofDeviceDetectorModelFileURLs = modelURLs
+//            }
         }
     }
 }

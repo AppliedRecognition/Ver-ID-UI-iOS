@@ -25,7 +25,9 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>QLSupportedContentTypes</key>
-			<array/>
+            <array>
+                <string>com.appliedrec.verid.Registration</string>
+            </array>
 			<key>QLSupportsSearchableItems</key>
 			<false/>
 		</dict>

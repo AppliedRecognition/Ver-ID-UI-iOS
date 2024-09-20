@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IKg-96-7AY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IKg-96-7AY">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1225,8 +1225,26 @@
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="faceDetectionProfile"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3R8-EE-wG3" detailTextLabel="zra-Pq-mIA" style="IBUITableViewCellStyleValue1" id="A7K-Tg-qWN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" textLabel="0kI-jl-3nT" style="IBUITableViewCellStyleDefault" id="Che-v8-bWt">
                                         <rect key="frame" x="0.0" y="616.33334159851074" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Che-v8-bWt" id="MI1-Vz-c0A">
+                                            <rect key="frame" x="0.0" y="0.0" width="331" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Enable sunglasses detection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0kI-jl-3nT">
+                                                    <rect key="frame" x="20" y="0.0" width="303" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="faceDetectionProfile"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="3R8-EE-wG3" detailTextLabel="zra-Pq-mIA" style="IBUITableViewCellStyleValue1" id="A7K-Tg-qWN">
+                                        <rect key="frame" x="0.0" y="660.00000953674316" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A7K-Tg-qWN" id="tJU-XZ-dAB">
                                             <rect key="frame" x="0.0" y="0.0" width="344.66666666666669" height="43.666667938232422"/>
@@ -1254,7 +1272,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ILv-D2-3N7" detailTextLabel="e5X-xO-5AO" style="IBUITableViewCellStyleValue1" id="sSE-eq-GtO">
-                                        <rect key="frame" x="0.0" y="660.00000953674316" width="375" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="703.66667747497559" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sSE-eq-GtO" id="1rw-EC-FUO">
                                             <rect key="frame" x="0.0" y="0.0" width="344.66666666666669" height="43.666667938232422"/>
@@ -1286,7 +1304,7 @@
                             <tableViewSection headerTitle="Accessibility" id="t3T-ur-qEO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" textLabel="ufl-S0-Lvz" style="IBUITableViewCellStyleDefault" id="3VP-5i-nHz">
-                                        <rect key="frame" x="0.0" y="759.66667747497559" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="803.33334541320801" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3VP-5i-nHz" id="JPo-Jw-Kpc">
                                             <rect key="frame" x="0.0" y="0.0" width="331" height="44"/>
@@ -1307,14 +1325,14 @@
                             <tableViewSection headerTitle="Camera" id="GSA-ph-2s8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="pbQ-Xq-PMl" style="IBUITableViewCellStyleDefault" id="diM-gp-sDN">
-                                        <rect key="frame" x="0.0" y="859.66667747497559" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="903.33334541320801" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="diM-gp-sDN" id="9Hw-Vv-B2u">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Use back camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pbQ-Xq-PMl">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="44"/>
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1324,7 +1342,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="T7O-QS-M0a" style="IBUITableViewCellStyleDefault" id="IgN-xm-aPk">
-                                        <rect key="frame" x="0.0" y="903.66667747497559" width="375" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="947.33334541320801" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IgN-xm-aPk" id="Ox0-Ck-zHz">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
@@ -1361,6 +1379,7 @@
                         <outlet property="registrationFaceCountCell" destination="SpQ-cr-fTc" id="4uv-k9-3zj"/>
                         <outlet property="securityProfileCell" destination="cFc-3w-Ssv" id="nEP-sg-6uZ"/>
                         <outlet property="speakPromptsCell" destination="3VP-5i-nHz" id="WWF-eE-gqB"/>
+                        <outlet property="sunglassesDetectionCell" destination="Che-v8-bWt" id="RQW-Mj-Pew"/>
                         <outlet property="templateEncryptionCell" destination="ZF7-uM-SdV" id="kAT-m2-yox"/>
                         <outlet property="templateExtractionThresholdCell" destination="zeH-fQ-g1z" id="MOs-zu-cSr"/>
                         <outlet property="versionCell" destination="ZaF-dh-gU8" id="Tv7-Dg-PSN"/>
@@ -1546,7 +1565,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SuI-BO-eMf"/>
+        <segue reference="DZS-YW-XlO"/>
         <segue reference="SDk-1s-Gds"/>
     </inferredMetricsTieBreakers>
     <resources>

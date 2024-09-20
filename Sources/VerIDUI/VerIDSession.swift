@@ -15,7 +15,7 @@ import os
 import Combine
 
 /// Ver-ID session
-@objc open class VerIDSession: NSObject, VerIDViewControllerDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SpeechDelegate, CoreSessionDelegate {
+@objc open class VerIDSession: NSObject, VerIDViewControllerDelegate, FaceDetectionAlertControllerDelegate, ResultViewControllerDelegate, TipsViewControllerDelegate, UIAdaptivePresentationControllerDelegate, SpeechDelegate, SessionDelegate {
     
     @objc public enum SessionError: Int, Error {
         case failedToStart
@@ -123,16 +123,12 @@ import Combine
                 viewController.shouldDisplayCGHeadGuidance = self.delegate?.shouldDisplayCGHeadGuidanceInSession?(self) ?? true
                 self.presentVerIDViewController(viewController)
                 self.viewController = viewController
-                let imageCapturePublisher = try self.imageCapture(for: viewController)
                 let imagePublisher = try self.imageObservable(for: viewController)
-                self.coreSession = VerIDCore.CoreSession(verID: self.environment, settings: self.settings, imageCapturePublisher: imageCapturePublisher)
-                self.coreSession?.delegate = self
-                self.coreSession?.start()
-//                self.session = VerIDCore.Session(verID: self.environment, settings: self.settings, imageObservable: imagePublisher)
-//                self.session?.videoWriterService = self.videoWriterService
-//                self.session?.sessionFunctions = self.sessionFunctions
-//                self.session?.delegate = self
-//                self.session?.start()
+                self.session = VerIDCore.Session(verID: self.environment, settings: self.settings, imageObservable: imagePublisher)
+                self.session?.videoWriterService = self.videoWriterService
+                self.session?.sessionFunctions = self.sessionFunctions
+                self.session?.delegate = self
+                self.session?.start()
             } catch {
                 self.finishWithResult(VerIDSessionResult(error: error))
             }
@@ -252,11 +248,11 @@ import Combine
         }
     }
     
+    // MARK: - Session delegate
     
-    // MARK: - CoreSessionDelegate
-    
-    public func session(_ session: VerIDCore.CoreSession, didFinishWithResult result: VerIDCore.VerIDSessionResult) {
+    public func session(_ session: VerIDCore.Session, didFinishWithResult result: VerIDCore.VerIDSessionResult) {
         session.delegate = nil
+        self.session = nil
         if let err = result.error, self.delegate?.shouldRetrySession?(self, afterFailure: err) == .some(true) {
             do {
                 let controller = try self.sessionViewControllersFactory.makeFaceDetectionAlertController(settings: self.settings, error: err)
@@ -268,12 +264,10 @@ import Combine
                 self.alertController = controller
                 self.viewController?.present(controller, animated: true)
             } catch {
-                self.session = nil
                 self.finishWithResult(result)
             }
             return
         }
-        self.coreSession = nil
         if self.delegate?.shouldDisplayResult?(result, ofSession: self) == .some(true) {
             do {
                 let resultViewController = try self.sessionViewControllersFactory.makeResultViewController(result: result)
@@ -286,7 +280,11 @@ import Combine
         self.finishWithResult(result)
     }
     
-    public func session(_ session: VerIDCore.CoreSession, didProduceFaceDetectionResult result: VerIDCore.FaceDetectionResult) {
+    public func session(_ session: Session, didProduceFaceCapture faceCapture: FaceCapture) {
+        self.viewController?.addFaceCapture?(faceCapture)
+    }
+    
+    public func session(_ session: Session, didProduceFaceDetectionResult result: FaceDetectionResult) {
         let prompt: String? = self.sessionPrompts.promptForFaceDetectionResult(result)
         if self.delegate?.shouldSpeakPromptsInSession?(self) == .some(true), let toSay = prompt {
             var language = self.sessionPrompts.translatedStrings.resolvedLanguage
@@ -300,10 +298,6 @@ import Combine
             self.hapticFeedbackGenerator?.notificationOccurred(.success)
             self.hapticFeedbackGenerator?.prepare()
         }
-    }
-    
-    public func session(_ session: VerIDCore.CoreSession, didProduceFaceCapture faceCapture: VerIDCore.FaceCapture) {
-        self.viewController?.addFaceCapture?(faceCapture)
     }
     
     // MARK: -

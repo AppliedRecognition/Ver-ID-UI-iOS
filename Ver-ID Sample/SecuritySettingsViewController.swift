@@ -12,9 +12,9 @@ import VerIDCore
 class SecuritySettingsViewController: UITableViewController, ValueSelectionDelegate {
     
     let poseCounts: [String] = ["1 pose (easy)","2 poses","3 poses (difficult)"]
-    let yawThresholds: [Float] = [12.0,15.0,18.0,21.0,24.0]
+    let yawThresholds: [Float] = [12.0,15.0,18.0,21.0,24.0,27.0]
     let pitchThresholds: [Float] = [10.0,12.0,15.0,18.0,21.0]
-    let authThresholds: [Float] = [3.0,3.5,4.0,4.5,5.0]
+    let authThresholds: [Float] = [3.0,3.5,4.0,4.5,5.0,5.5]
     let poses: [Bearing] = [.straight, .left, .right, .leftUp, .rightUp]
     
     weak var delegate: SecuritySettingsDelegate?
@@ -66,9 +66,6 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
         UserDefaults.standard.pitchThreshold = preset.pitchThreshold
         UserDefaults.standard.poses = preset.poses
         UserDefaults.standard.useSpoofDeviceDetector = preset.useSpoofDeviceDetector
-        UserDefaults.standard.useMoireDetector = preset.useMoireDetector
-        UserDefaults.standard.useSpoofDetector3 = preset.useSpoofDetector3
-        UserDefaults.standard.useSpoofDetector4 = preset.useSpoofDetector4
         for (version,threshold) in preset.authThresholds {
             (Globals.verid?.faceRecognition as? VerIDFaceRecognition)?.setAuthenticationScoreThreshold(NSNumber(value: threshold), faceTemplateVersion: version)
         }
@@ -89,17 +86,14 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
             (title: "Yaw threshold", value: String(format: "%.01f", yawThreshold), isCheckCell: false),
             (title: "Pitch threshold", value: String(format: "%.01f", pitchThreshold), isCheckCell: false),
             (title: "Poses", value: poses.map({ $0.name }).joined(separator: ", "), isCheckCell: false),
-            (title: "Use spoof device detector", value: UserDefaults.standard.useSpoofDeviceDetector ? "checked" : "unchecked", isCheckCell: true),
-            (title: "Use moire detector", value: UserDefaults.standard.useMoireDetector ? "checked" : "unchecked", isCheckCell: true),
-            (title: "Use spoof detector 3", value: UserDefaults.standard.useSpoofDetector3 ? "checked" : "unchecked", isCheckCell: true),
-            (title: "Use spoof detector 4", value: UserDefaults.standard.useSpoofDetector4 ? "checked" : "unchecked", isCheckCell: true)
+            (title: "Enable passive liveness detection", value: UserDefaults.standard.useSpoofDeviceDetector ? "checked" : "unchecked", isCheckCell: true)
         ])
         
         if let faceRec = Globals.verid?.faceRecognition as? VerIDFaceRecognition {
             let authThresholds: [VerIDFaceTemplateVersion:Float] = Dictionary(uniqueKeysWithValues: VerIDFaceTemplateVersion.all.sorted(by: { $0.rawValue < $1.rawValue }).map({ ($0, faceRec.authenticationScoreThreshold(faceTemplateVersion: $0).floatValue) }))
             
             self.sections[1] = Section(id: .authentication, footer: "Increasing the threshold lowers the chance of false acceptance and increases the chance of false rejection", cells: authThresholds.map({ (title: "Score threshold (\($0.stringValue()))", value: String(format: "%.01f", $1), isCheckCell: false) }).sorted(by: { $0.title < $1.title }))
-            let preset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: poses, useSpoofDeviceDetector: UserDefaults.standard.useSpoofDeviceDetector, useMoireDetector: UserDefaults.standard.useMoireDetector, useSpoofDetector3: UserDefaults.standard.useSpoofDetector3, useSpoofDetector4: UserDefaults.standard.useSpoofDetector4)
+            let preset = SecuritySettingsPreset(poseCount: poseCount, yawThreshold: yawThreshold, pitchThreshold: pitchThreshold, authThresholds: authThresholds, poses: poses, useSpoofDeviceDetector: UserDefaults.standard.useSpoofDeviceDetector)
             switch preset {
             case .low:
                 self.presetControl.selectedSegmentIndex = 0
@@ -178,17 +172,8 @@ class SecuritySettingsViewController: UITableViewController, ValueSelectionDeleg
                 self.performSegue(withIdentifier: "pitchThreshold", sender: nil)
             case "Poses":
                 self.performSegue(withIdentifier: "poses", sender: nil)
-            case "Use spoof device detector":
+            case "Enable passive liveness detection":
                 UserDefaults.standard.useSpoofDeviceDetector = actualCell.accessoryType == .none
-                self.updateFromUserDefaults()
-            case "Use moire detector":
-                UserDefaults.standard.useMoireDetector = actualCell.accessoryType == .none
-                self.updateFromUserDefaults()
-            case "Use spoof detector 3":
-                UserDefaults.standard.useSpoofDetector3 = actualCell.accessoryType == .none
-                self.updateFromUserDefaults()
-            case "Use spoof detector 4":
-                UserDefaults.standard.useSpoofDetector4 = actualCell.accessoryType == .none
                 self.updateFromUserDefaults()
             default:
                 return
