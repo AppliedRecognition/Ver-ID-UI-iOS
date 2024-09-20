@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "face-template-utility-apple",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AppliedRecognition/Face-Template-Utility-Apple",
+      "state" : {
+        "revision" : "e131f5607bc514a7ec2aae2f760201db0692a4bc",
+        "version" : "2.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}

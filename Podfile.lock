@@ -1,13 +1,18 @@
 PODS:
   - ASN1Decoder (1.8.0)
   - DeviceKit (4.5.0)
-  - LivenessDetection (1.2.0)
+  - LivenessDetectionCore (1.1.0)
   - RxCocoa (5.1.3):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
   - RxRelay (5.1.3):
     - RxSwift (~> 5)
   - RxSwift (5.1.3)
+  - SpoofDeviceDetection/Core (1.1.0):
+    - LivenessDetectionCore (~> 1.1)
+  - SpoofDeviceDetection/Model (1.1.0):
+    - LivenessDetectionCore (~> 1.1)
+    - SpoofDeviceDetection/Core
   - SwiftProtobuf (1.19.0)
   - Ver-ID-SDK-Identity (3.0.2)
   - ZIPFoundation (0.9.11)
@@ -15,9 +20,9 @@ PODS:
 DEPENDENCIES:
   - ASN1Decoder (~> 1.8)
   - DeviceKit (~> 4.4)
-  - LivenessDetection (~> 1.2)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - SpoofDeviceDetection/Model (~> 1.1)
   - SwiftProtobuf (~> 1.19)
   - Ver-ID-SDK-Identity (< 4.0, >= 3.0.2)
   - ZIPFoundation (~> 0.9)
@@ -26,10 +31,11 @@ SPEC REPOS:
   trunk:
     - ASN1Decoder
     - DeviceKit
-    - LivenessDetection
+    - LivenessDetectionCore
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SpoofDeviceDetection
     - SwiftProtobuf
     - Ver-ID-SDK-Identity
     - ZIPFoundation
@@ -37,14 +43,15 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   ASN1Decoder: 6110fdeacfdb41559b1481457a1645be716610aa
   DeviceKit: b68cded46afdaefc5d2253d631d441ba7049a7fe
-  LivenessDetection: 20b557cda758644fefb47f0dca684f6a09abacf6
+  LivenessDetectionCore: 2719530ea528bf9f839bc45e885892790b77adae
   RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
   RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
   RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  SpoofDeviceDetection: 741249a9b3660b7e6e1e625ab0edb4a9961b2a81
   SwiftProtobuf: 6ef3f0e422ef90d6605ca20b21a94f6c1324d6b3
   Ver-ID-SDK-Identity: c6918807b640dc19ae08bbb79c2766df5a3bb377
   ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
 
-PODFILE CHECKSUM: c76300c4b4bc02ded9e438b84a2ec12878b560fb
+PODFILE CHECKSUM: e498e6ec6fbffd27b262c53f8489bebe152a8386
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.15.2

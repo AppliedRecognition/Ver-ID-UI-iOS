@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
     s.default_subspecs = 'Core', 'UI'
     s.static_framework = true
     s.cocoapods_version = ">= 1.10"
-    s.preserve_paths = 'VerIDUI/*.xcconfig'
+    s.preserve_paths = 'Sources/VerIDUI/*.xcconfig'
     s.script_phase = { :name => "Check Ver-ID fully downloaded", :script => 'filesize=$(wc -c <"${PODS_XCFRAMEWORKS_BUILD_DIR}/VerIDCore/VerIDCore.framework/VerIDCore"); if [ $filesize -lt 1000000 ]; then echo "error: Ver-ID framework files not fully downloaded. Please install Git LFS, clear the Ver-ID pod cache using pod cache clean Ver-ID and run pod install."; exit 1; else echo "Ver-ID installed successfully"; fi', :execution_position => :before_compile }
     s.subspec 'UI' do |ss|
         ss.source_files = "Sources/VerIDUI/*.swift"
