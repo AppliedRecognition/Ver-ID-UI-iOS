@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/DetRecLib.h</key>
 		<data>
-		wo+89EfJXvoyYMmgr+9MZIVBmEM=
+		DPNpAK5OnNowYWwo13ZUfyOz3e8=
 		</data>
 		<key>Headers/DetRecLibSettings.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		hVZhPGpzwNNGi0g1V6yhf8jFdZU=
+		lUTm+I297nirXdjCjetSAMRZO6k=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,27 +50,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		G/ButbGX+otWfwYZ9egWAxgOlKE=
+		jA2KEIKTO0tJdHo0HVhsNmIeUEI=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		VyNwsJNM7C99EQ2y0ALNds+eWG8=
+		C35ZNp0a9M/bCz/2IaHAjrBwtYI=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		Im9+zL6yE+vagarwIXGkOzIZACI=
+		XLrqvDYUP+8Kg1f3sT1d8eTsaY4=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		Zc6PAEYMWOpFwLke4Y/Na3+zS7E=
+		4IF2GExLjtqRAeE1mpuDv4q6mqs=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Im9+zL6yE+vagarwIXGkOzIZACI=
+		XLrqvDYUP+8Kg1f3sT1d8eTsaY4=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		6O5zYFgXzCuejA0dX8TNzoxROYk=
+		7PrksOGxZnE5hwpguiUi5Cd3S4k=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
-		G0dnFSkDGSt0MTv3TsYVkG5Vkkg=
+		pJ5i6evY46AV0cRGpj0M6h9hjxc=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
 		<data>
@@ -90,11 +90,11 @@
 		</data>
 		<key>categories.json</key>
 		<data>
-		j9WPZglbztkBSAXUwfns+CWGc8Q=
+		w436wJA79W8V2DCXOx3SF7cHGFM=
 		</data>
 		<key>hashes.json</key>
 		<data>
-		0vE7edT6CEu8lUXQ1AO8s+j/QME=
+		2qIV3WluaSwSYySf5deW3Gu8zjg=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -103,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GoFX6KrkxrEeLucRFS1kUsp6wxFkxUZ+cOFNCtkVVTI=
+			c2fcHUnLKk4OWHEICPD7rrM5f4jAdlwo0awTl7mJ+Mk=
 			</data>
 		</dict>
 		<key>Headers/DetRecLibSettings.h</key>
@@ -131,7 +131,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wzycc3g+7WqMnuUtVPyLaNLGVkJJanNlYYs2p/M1quQ=
+			kHZ8cCdteHsOMbRMA8OwU5i5RiBJBRIHzIDmobwBO9E=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -180,35 +180,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LBxaLYAjeEGg9QHbGpj8GyGZKoylr0twVHaIOjigF4o=
+			O8J0RPpXhtlnV9wOtNp8uewGaRwSskLh2e71Fn3ht90=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xPC1KxjakqkGyA4BToe/jqEIkqBampo3OSFggI+fuic=
+			6VBSwy7lfCFJg3RUeyCAULbBSyppnIxMuXXYPnYyn1M=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Ih4C1iXwkakJ+wdhq9UYItfrYQcZaxomj18JemE3HWs=
+			vyE8FylmEuNQLLoFCBgUd0dWEi5j6qtEzaVNJiXf6Cw=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xPC1KxjakqkGyA4BToe/jqEIkqBampo3OSFggI+fuic=
+			6VBSwy7lfCFJg3RUeyCAULbBSyppnIxMuXXYPnYyn1M=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mm0PZrGs6pf2upE8wSa3mefd2Bp5B6QGyLPhA9+renA=
+			1ZEa2a8pihK9EzC4wQrJnVv/7pUvFh5lrxFj+C1SZZs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -222,7 +222,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MRAaeWlt/ZSecy81k9E/t3d/KP3klsAalSqnt7/T1hU=
+			WEJf2ddw/X2dpsfnJyFxzAqvzuHLrmQsT6ndPQXF77Y=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
@@ -243,14 +243,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h4QvMz1gPyyUd2hvYkQ85aC0khKhqZRF5DqcplpjV7k=
+			A1HazW7WKBq1AXD/1t6vkpIqkPGLfa42eRyAz9U4zRE=
 			</data>
 		</dict>
 		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rGxgIdC6O6mi5J7TN9pf2zLPrSF9sbwRmOSBiXwIG7Y=
+			BiakPMKeLOPI0A8FqlYH3JCbk/F+xD79yn+p4CoG2Bk=
 			</data>
 		</dict>
 	</dict>

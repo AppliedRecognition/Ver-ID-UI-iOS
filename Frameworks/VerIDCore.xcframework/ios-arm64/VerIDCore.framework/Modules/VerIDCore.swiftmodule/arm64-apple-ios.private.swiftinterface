@@ -1,10 +1,11 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
-// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDCore
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDCore
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import ASN1Decoder
 import AVFoundation
 import Accelerate
+import Combine
 import CommonCrypto
 import CoreAudio
 import CoreData
@@ -17,6 +18,7 @@ import MobileCoreServices
 import RxSwift
 import SQLite3
 import Security
+import SpoofDeviceDetection
 import Swift
 import UIKit
 @_exported import VerIDCore
@@ -94,6 +96,7 @@ import os.signpost
   }
   @objc public var isSessionDiagnosticsEnabled: Swift.Bool
   @objc public var isFaceCoveringDetectionEnabled: Swift.Bool
+  @objc public var isSunglassesDetectionEnabled: Swift.Bool
   @objc public var isSpoofDeviceDetectionEnabled: Swift.Bool
   @available(*, deprecated, renamed: "isSpoofDeviceDetectionEnabled")
   @objc public var isSpoofDetectionEnabled: Swift.Bool {
@@ -107,6 +110,7 @@ import os.signpost
     @objc set
   }
   @objc public var faceCoveringConfidenceThreshold: Swift.Float
+  @objc public var sunglassesConfidenceThreshold: Swift.Float
   @available(*, deprecated)
   @objc public var spoofDeviceConfidenceThreshold: Swift.Float
   @available(*, deprecated, renamed: "spoofDeviceConfidenceThreshold")
@@ -252,6 +256,8 @@ extension RxSwift.ObservableType {
   @objc final public let name: Swift.String
   @objc final public let filename: Swift.String?
   @objc public static let faceCovering: VerIDCore.Classifier
+  @objc public static let glasses: VerIDCore.Classifier
+  @objc public static let faceQuality: VerIDCore.Classifier
   @objc public init(name: Swift.String, filename: Swift.String? = nil)
   @objc deinit
 }
@@ -608,6 +614,7 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   }
   @objc public var userManagementFactory: any VerIDCore.UserManagementFactory
   public var spoofDetectorModels: Swift.Set<VerIDCore.SpoofDetectorModel>
+  public var additionalSpoofDeviceDetectorModelFileURLs: [Foundation.URL]
   @objc public init(userManagementFactory: any VerIDCore.UserManagementFactory)
   @objc override convenience dynamic public init()
   @objc public func createVerID()
@@ -1019,7 +1026,10 @@ public enum InvalidParameterError : Foundation.LocalizedError {
   }
 }
 @_hasMissingDesignatedInitializers public class SessionFaceTracking {
-  public var requestedBearing: VerIDCore.Bearing
+  public var requestedBearing: VerIDCore.Bearing {
+    get
+    set
+  }
   public var image: VerIDCore.Image?
   public var defaultFaceBounds: VerIDCore.FaceBounds?
   public var face: VerIDCore.Face?
@@ -1071,7 +1081,7 @@ open class SessionFunctions {
   @objc deinit
 }
 public enum VerIDSessionError : Foundation.CustomNSError {
-  case timeout, livenessFailure, faceDetectionEvaluationError, other(cause: any Swift.Error), cameraAccessDenied, faceIsCovered, imageObservableUnavailable, missingFaceTemplateVersions(Swift.Set<VerIDCore.VerIDFaceTemplateVersion>), emptyFacesProvidedToFaceCaptureConstructor, userWithSimilarFaceAlreadyRegistered(user: Swift.String, score: Swift.Float)
+  case timeout, livenessFailure, faceDetectionEvaluationError, other(cause: any Swift.Error), cameraAccessDenied, faceIsCovered, imageObservableUnavailable, missingFaceTemplateVersions(Swift.Set<VerIDCore.VerIDFaceTemplateVersion>), emptyFacesProvidedToFaceCaptureConstructor, userWithSimilarFaceAlreadyRegistered(user: Swift.String, score: Swift.Float), sunglassesDetected
   @available(*, deprecated, message: "Deprecated in Ver-ID 2.11.0. Please use `userWithSimilarFaceAlreadyRegistered` instead.")
   case similarFaceAlreadyRegistered(users: [Swift.String])
   public var errorCode: Swift.Int {
@@ -1265,13 +1275,18 @@ public enum AntiSpoofingError : Foundation.CustomNSError {
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
+@available(iOS 13, *)
 public class VerIDLivenessDetection {
   @available(*, deprecated)
   final public let moireDetector: Any!
   @available(*, deprecated)
-  final public let spoofDeviceDetector: LivenessDetection.SpoofDeviceDetector!
-  final public let spoofDetection: LivenessDetection.SpoofDetection
-  public init(spoofDetection: LivenessDetection.SpoofDetection)
+  final public let spoofDeviceDetector: SpoofDeviceDetection.SpoofDeviceDetector!
+  @available(*, deprecated)
+  final public let spoofDetection: Any?
+  final public let spoofDetectors: [any LivenessDetection.SpoofDetector]
+  public init(spoofDetectors: [any LivenessDetection.SpoofDetector])
+  @available(*, deprecated)
+  public init(spoofDetection: Any)
   @objc deinit
 }
 public enum SpoofDetectorModel {
@@ -1286,6 +1301,21 @@ public enum SpoofDetectorModel {
   override public init(bufferSize: Swift.Int)
   override public func addSample(_ sample: VerIDCore.EulerAngle)
   override public func reset()
+  @objc deinit
+}
+public protocol CoreSessionDelegate {
+  func session(_ session: VerIDCore.CoreSession, didFinishWithResult result: VerIDCore.VerIDSessionResult)
+  func session(_ session: VerIDCore.CoreSession, didProduceFaceDetectionResult result: VerIDCore.FaceDetectionResult)
+  func session(_ session: VerIDCore.CoreSession, didProduceFaceCapture faceCapture: VerIDCore.FaceCapture)
+}
+@objc public class CoreSession : ObjectiveC.NSObject {
+  final public let verID: VerIDCore.VerID
+  final public let settings: VerIDCore.VerIDSessionSettings
+  final public let imageCapturePublisher: Combine.AnyPublisher<VerIDCore.ImageCapture, any Swift.Error>
+  public var delegate: (any VerIDCore.CoreSessionDelegate)?
+  public init(verID: VerIDCore.VerID, settings: VerIDCore.VerIDSessionSettings, imageCapturePublisher: Combine.AnyPublisher<VerIDCore.ImageCapture, any Swift.Error>)
+  public func start()
+  public func cancel()
   @objc deinit
 }
 @objc(VerIDFaceExtents) public class FaceExtents : ObjectiveC.NSObject, Swift.Comparable, Swift.Codable {
@@ -1351,6 +1381,7 @@ public typealias Face = VerIDCore.VerIDFace
     get
     set
   }
+  @objc public func createInMemoryArchive() throws -> Foundation.Data
   @objc public func createArchive() throws -> Foundation.URL
   @objc public func createItemActivityProvider(archiveURL: Foundation.URL) -> VerIDCore.SessionItemActivityProvider
   @objc deinit
@@ -1390,6 +1421,7 @@ public struct EnvironmentSettings : Swift.Encodable {
   @objc public func detectFacesInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int32, options: Swift.UInt) throws -> [VerIDCore.Face]
   @objc public func startFaceTracking() -> any VerIDCore.FaceTracking
   @objc public func extractAttributeFromFace(_ face: VerIDCore.Face, image: any VerIDCore.ImageProvider, using classifier: Swift.String) throws -> Foundation.NSNumber
+  public func detectGlassesInFace(_ face: VerIDCore.Face, image: any VerIDCore.ImageProvider) throws -> VerIDCore.GlassesScores
   @objc public var faceAttributeClassifiers: [Swift.String] {
     @objc get
     @objc set
@@ -1399,6 +1431,15 @@ public struct EnvironmentSettings : Swift.Encodable {
 @_hasMissingDesignatedInitializers @objc public class VerIDFaceTracking : ObjectiveC.NSObject, VerIDCore.FaceTracking {
   @objc public func trackFaceInImage(_ image: any VerIDCore.ImageProvider) throws -> VerIDCore.Face
   @objc deinit
+}
+public struct GlassesScores {
+  public let glasses: Swift.Float
+  public let sunglasses: Swift.Float
+}
+public struct ImageCapture {
+  public let image: VerIDCore.Image
+  public let faceBounds: VerIDCore.FaceBounds
+  public init(image: VerIDCore.Image, faceBounds: VerIDCore.FaceBounds)
 }
 public class SessionReport : VerIDCore.Transaction {
   public enum SessionPurpose : Swift.String, Swift.Codable {
@@ -1461,6 +1502,15 @@ extension VerIDCore.FaceCapture {
     public var faceCoveringScore: Swift.Float? {
       get
     }
+    public var glassesScore: Swift.Float? {
+      get
+    }
+    public var sunglassesScore: Swift.Float? {
+      get
+    }
+    public var faceQualityScore: Swift.Float? {
+      get
+    }
     public var brightness: Swift.Double? {
       get
     }
@@ -1483,7 +1533,7 @@ extension VerIDCore.FaceCapture {
       get
     }
     @available(*, deprecated)
-    public var spoofDevices: [LivenessDetection.DetectedSpoofDevice] {
+    public var spoofDevices: [Any] {
       get
     }
     public var isSpoof: Swift.Bool? {

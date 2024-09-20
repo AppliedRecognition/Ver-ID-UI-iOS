@@ -116,7 +116,7 @@ NS_ASSUME_NONNULL_BEGIN
                            exifOrientation:(int)exifOrientation
                                      error:(NSError **)error;
 
-- (float) extractFaceAttributeFromFace:(VerIDFace *)face
+- (NSArray<NSNumber *> *) extractFaceAttributeFromFace:(VerIDFace *)face
                          inImageBuffer:(unsigned char *)imageBuffer
                                  width:(int)width
                                 height:(int)height

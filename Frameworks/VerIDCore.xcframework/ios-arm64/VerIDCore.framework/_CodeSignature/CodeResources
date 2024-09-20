@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/DetRecLib.h</key>
 		<data>
-		wo+89EfJXvoyYMmgr+9MZIVBmEM=
+		DPNpAK5OnNowYWwo13ZUfyOz3e8=
 		</data>
 		<key>Headers/DetRecLibSettings.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/VerIDCore-Swift.h</key>
 		<data>
-		Yqed/I/2Sc9Tb6npvHkvDoQckrw=
+		yvlBXAoJSwDErMHpI82cXO2W4aA=
 		</data>
 		<key>Headers/VerIDCore.h</key>
 		<data>
@@ -50,27 +50,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		mWWgRyelpe2XAc7nCYbX1EE8FmU=
+		mJSTADx7/fVPMm65f5bgN/DqXc4=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		VyNwsJNM7C99EQ2y0ALNds+eWG8=
+		C35ZNp0a9M/bCz/2IaHAjrBwtYI=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		bZ6O5cNp8eZmpl/0NXPgaAq5+HI=
+		773Q4bAeFD0A76vN4zgrc59qmj8=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		YBLhoq4oHfmm4JnJX8F3hlomwFU=
+		+EdYIGPHtHr0E/XbAnWNZrI2C7U=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		bZ6O5cNp8eZmpl/0NXPgaAq5+HI=
+		773Q4bAeFD0A76vN4zgrc59qmj8=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		31YnTHgv7HBz6EW8GNkpnfxXUJA=
+		pVLoDxTRNf9fQR/xHs1RuGKATqM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>VerIDModel.momd/VerIDModel.mom</key>
 		<data>
-		G0dnFSkDGSt0MTv3TsYVkG5Vkkg=
+		pJ5i6evY46AV0cRGpj0M6h9hjxc=
 		</data>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
 		<data>
@@ -90,11 +90,11 @@
 		</data>
 		<key>categories.json</key>
 		<data>
-		j9WPZglbztkBSAXUwfns+CWGc8Q=
+		w436wJA79W8V2DCXOx3SF7cHGFM=
 		</data>
 		<key>hashes.json</key>
 		<data>
-		0vE7edT6CEu8lUXQ1AO8s+j/QME=
+		2qIV3WluaSwSYySf5deW3Gu8zjg=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -103,7 +103,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GoFX6KrkxrEeLucRFS1kUsp6wxFkxUZ+cOFNCtkVVTI=
+			c2fcHUnLKk4OWHEICPD7rrM5f4jAdlwo0awTl7mJ+Mk=
 			</data>
 		</dict>
 		<key>Headers/DetRecLibSettings.h</key>
@@ -131,7 +131,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kCZlfqYcwebztPXHWpZPtHSm7eDk9IsS3OJ6NnKlV9M=
+			aIyfUYYDV6GG7J2J5k2fbaSgReq3dEPFpFSAlAT1hPA=
 			</data>
 		</dict>
 		<key>Headers/VerIDCore.h</key>
@@ -180,35 +180,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LBxaLYAjeEGg9QHbGpj8GyGZKoylr0twVHaIOjigF4o=
+			O8J0RPpXhtlnV9wOtNp8uewGaRwSskLh2e71Fn3ht90=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OFgPUn1bGimHWP61Hdg+fu0+fQ0S+gnom+JcliOd6LE=
+			/ALdJFvUKWPz/MfO+JqTGHu/TrvnWx6VR9r1emu5EsI=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xyeCDYT9Lt5XzFac93ojymtsTSKVCdbNHdRywqqzKwY=
+			6SQqYS3/ZgUjeb3OyhQk61Jg1eLBGkbeqs+hlaC0xPQ=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OFgPUn1bGimHWP61Hdg+fu0+fQ0S+gnom+JcliOd6LE=
+			/ALdJFvUKWPz/MfO+JqTGHu/TrvnWx6VR9r1emu5EsI=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7oD2y3mbe60GIenQBXLzqOHiGLhYs8wg37hNt7Ll9dI=
+			kl4bVjW/E0KInx7pbwJ8lwIoQ5FL0fc7u0DFdwTUQes=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -222,7 +222,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MRAaeWlt/ZSecy81k9E/t3d/KP3klsAalSqnt7/T1hU=
+			WEJf2ddw/X2dpsfnJyFxzAqvzuHLrmQsT6ndPQXF77Y=
 			</data>
 		</dict>
 		<key>VerIDModel.momd/VerIDModel.omo</key>
@@ -243,14 +243,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h4QvMz1gPyyUd2hvYkQ85aC0khKhqZRF5DqcplpjV7k=
+			A1HazW7WKBq1AXD/1t6vkpIqkPGLfa42eRyAz9U4zRE=
 			</data>
 		</dict>
 		<key>hashes.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rGxgIdC6O6mi5J7TN9pf2zLPrSF9sbwRmOSBiXwIG7Y=
+			BiakPMKeLOPI0A8FqlYH3JCbk/F+xD79yn+p4CoG2Bk=
 			</data>
 		</dict>
 	</dict>
