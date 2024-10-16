@@ -57555,175 +57555,196 @@
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11003,
+      "offset": 11004,
       "length": 18,
       "value": "\"face-recognition\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11024,
+      "offset": 11025,
       "length": 43,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11061,
+      "offset": 11062,
       "length": 1,
       "value": "\"-NCNN\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11145,
-      "length": 60,
+      "offset": 11226,
+      "length": 18,
+      "value": "\"face-recognition\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 11247,
+      "length": 43,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 11284,
+      "length": 1,
+      "value": "\"-DLIB\""
+    },
+    {
+      "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 11489,
+      "length": 55,
       "value": "\"face-recognition\/\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11199,
-      "length": 1,
-      "value": "\"-NCNN\""
+      "offset": 11543,
+      "length": 2,
+      "value": "\"\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11435,
+      "offset": 11677,
       "length": 16,
       "value": "\"face-detection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11469,
+      "offset": 11711,
       "length": 10,
       "value": "\"v%d-NCNN\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11579,
+      "offset": 11821,
       "length": 67,
       "value": "\"face-detection\/\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11612,
+      "offset": 11854,
       "length": 10,
       "value": "\"v%d-NCNN\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 11645,
+      "offset": 11887,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12107,
+      "offset": 12349,
       "length": 20,
       "value": "\"landmark-detection\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12130,
+      "offset": 12372,
       "length": 15,
       "value": "\"facemesh-NCNN\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12219,
+      "offset": 12461,
       "length": 34,
       "value": "\"landmark-detection\/facemesh-NCNN\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12438,
+      "offset": 12680,
       "length": 13,
       "value": "\"classifiers\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12454,
+      "offset": 12696,
       "length": 11,
       "value": "\"face-mask\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12539,
+      "offset": 12781,
       "length": 23,
       "value": "\"classifiers\/face-mask\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12739,
+      "offset": 12981,
       "length": 13,
       "value": "\"classifiers\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12755,
+      "offset": 12997,
       "length": 9,
       "value": "\"glasses\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 12838,
+      "offset": 13080,
       "length": 21,
       "value": "\"classifiers\/glasses\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 13039,
+      "offset": 13281,
       "length": 13,
       "value": "\"classifiers\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 13055,
+      "offset": 13297,
       "length": 14,
       "value": "\"face-quality\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 13143,
+      "offset": 13385,
       "length": 26,
       "value": "\"classifiers\/face-quality\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 14960,
+      "offset": 15202,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 15092,
+      "offset": 15334,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/jakub\/Applied-Recognition\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "StringLiteral",
-      "offset": 15116,
+      "offset": 15358,
       "length": 6,
       "value": "\"%02x\""
     },

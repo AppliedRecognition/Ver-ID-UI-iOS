@@ -54,7 +54,7 @@
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		7uG+Ufsd0lCzb556xeD4/zGabSo=
+		/Ajv/xIy2FC8jCZtFdwd6Q13U38=
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		tw2kSomveWEby8xV0zMvCGqDyKE=
+		HIh4GQAwSbRjALu5t0/plzHi7mA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -180,7 +180,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uJyHJD03Nc1/lPA07se0wYdM/DUMLs0tvrc673Yc9ws=
+			Ke/q89MH/O2GILIMw6+MigHwm0K8mDZ0cQp3V7Pu298=
 			</data>
 		</dict>
 		<key>Modules/VerIDCore.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
@@ -208,7 +208,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PR+VNXcpUoEbf2CaLuRVnK1JzX3uf73ZHNp1AZdxx1U=
+			BXGS48PjOxHljfEhdVAvwTJI6GDVIUuq1VbSm9E6ztE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
