@@ -1,9 +1,9 @@
-[![Tests](https://github.com/AppliedRecognition/Ver-ID-UI-iOS/actions/workflows/main.yml/badge.svg)](https://github.com/AppliedRecognition/Ver-ID-UI-iOS/actions/workflows/main.yml) ![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID)
+![Cocoapods](https://img.shields.io/cocoapods/v/Ver-ID)
 
 # Ver-ID SDK for iOS
 
 ## Prerequisites
-Minimum iOS version is 12.
+Minimum iOS version is 13.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
@@ -72,15 +72,19 @@ To build this project and to run the sample app you will need a Apple Mac comput
         # to YES and removes the setting from the pod dependencies. Without it the
         # project will compile but it will fail to run. 
         post_install do |installer|
-            installer.pods_project.build_configurations.each do |config|
-                config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-            end
-            installer.pods_project.targets.each do |target|
-                target.build_configurations.each do |config|
-                    config.build_settings.delete 'BUILD_LIBRARY_FOR_DISTRIBUTION'
-                end
-            end
-        end
+	    installer.pods_project.build_configurations.each do |config|
+		config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+		config.build_settings['ENABLE_BITCODE'] = 'NO'
+		config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+	    end
+	    installer.pods_project.targets.each do |target|
+	        target.build_configurations.each do |config|
+		    config.build_settings.delete 'BUILD_LIBRARY_FOR_DISTRIBUTION'
+		    config.build_settings.delete 'ENABLE_BITCODE'
+		    config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+		end
+	    end
+  	end
     end
     ~~~
     #### Please ensure that you include the `post_install` script. Your app will crash without it.
