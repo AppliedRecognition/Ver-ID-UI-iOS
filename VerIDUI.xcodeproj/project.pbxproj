@@ -119,6 +119,7 @@
 		3BAC00B32A560D3B007244AD /* SessionTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC00B22A560D3B007244AD /* SessionTheme.swift */; };
 		3BACF2BE245384C0000FA3A7 /* SpeechDelegatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF2BC245384C0000FA3A7 /* SpeechDelegatable.swift */; };
 		3BACF2BF245384C0000FA3A7 /* SpeechDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */; };
+		3BAEB9D42D8E0FD10074E38C /* PrivacyInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BAEB9D32D8E0FD10074E38C /* PrivacyInfo.json */; };
 		3BB2045A221425BF00B3B312 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044E221425BE00B3B312 /* MainViewController.swift */; };
 		3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB2044F221425BE00B3B312 /* VerIDUser.swift */; };
 		3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB20456221425BF00B3B312 /* IntroViewController.swift */; };
@@ -333,6 +334,7 @@
 		3BAC00B22A560D3B007244AD /* SessionTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionTheme.swift; path = Sources/VerIDUI/SessionTheme.swift; sourceTree = "<group>"; };
 		3BACF2BC245384C0000FA3A7 /* SpeechDelegatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeechDelegatable.swift; path = Sources/VerIDUI/SpeechDelegatable.swift; sourceTree = "<group>"; };
 		3BACF2BD245384C0000FA3A7 /* SpeechDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeechDelegate.swift; path = Sources/VerIDUI/SpeechDelegate.swift; sourceTree = "<group>"; };
+		3BAEB9D32D8E0FD10074E38C /* PrivacyInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PrivacyInfo.json; path = Sources/VerIDUI/PrivacyInfo.json; sourceTree = "<group>"; };
 		3BB2044E221425BE00B3B312 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3BB2044F221425BE00B3B312 /* VerIDUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerIDUser.swift; sourceTree = "<group>"; };
 		3BB20456221425BF00B3B312 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 		3B326B1822089C88005DAE1E /* VerIDUI */ = {
 			isa = PBXGroup;
 			children = (
+				3BAEB9D32D8E0FD10074E38C /* PrivacyInfo.json */,
 				3BAC00B22A560D3B007244AD /* SessionTheme.swift */,
 				3BC2BC5629A7D5D500A22715 /* NSLayoutConstraint+VerID.swift */,
 				3BBCC18F28CF6ADB00ECEA26 /* HeadView.swift */,
@@ -1007,6 +1010,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BAEB9D42D8E0FD10074E38C /* PrivacyInfo.json in Resources */,
 				3B2E36792628BEF50055FE28 /* VerIDUIResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

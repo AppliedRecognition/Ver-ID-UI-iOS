@@ -72,19 +72,19 @@ class ContinuousLivenessViewController: CameraViewController, AVCaptureVideoData
                 let face = try? faceTracking.trackFaceInImage($0)
                 return face != nil
             })
-            .takeUntil(.inclusive , predicate: until)
+            .take(until: until, behavior: .inclusive)
             .ignoreElements()
             .do(onSubscribe: {
                 self.startCamera()
             }, onDispose: {
                 self.stopCamera()
             })
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
-            .subscribe(onCompleted: {
-                completion()
-            }, onError: { error in
+            .subscribe(on: SerialDispatchQueueScheduler(qos: .default))
+            .observe(on: MainScheduler.instance)
+            .subscribe(onError: { error in
                 NSLog("Face detection failed: %@", error.localizedDescription)
+            }, onCompleted: {
+                completion()
             })
         self.faceDetectionSubscription?.disposed(by: self.disposeBag)
     }

@@ -4,14 +4,42 @@ workspace 'VerIDUI.xcworkspace'
 platform :ios, '13'
 use_frameworks!
 
-abstract_target 'Ver-ID' do
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
+def rx
+  pod 'RxSwift', '~> 6.9'
+  pod 'RxCocoa', '~> 6.9'
+end
+
+def zip
   pod 'ZIPFoundation', '~> 0.9'
-  pod 'DeviceKit', '~> 4.4'
-  pod 'ASN1Decoder', '~> 1.8'
+end
+  
+def devicekit
+  pod 'DeviceKit', '~> 5.5'
+end
+
+def asn1
+  pod 'ASN1Decoder', '~> 1.9'
+end
+
+def identity
   pod 'Ver-ID-SDK-Identity', '>= 3.0.2', '< 4.0'
+end
+
+def spoofdetection
   pod 'SpoofDeviceDetection/Model', '~> 1.1'
+end
+
+def protobuf
+  pod 'SwiftProtobuf', '~> 1.19'
+end
+
+abstract_target 'Ver-ID' do
+  rx
+  zip
+  devicekit
+  asn1
+  identity
+  spoofdetection
   
   post_install do |installer|
     installer.pods_project.build_configurations.each do |config|
@@ -30,13 +58,13 @@ abstract_target 'Ver-ID' do
   
   target 'VerIDUI'
   target 'Ver-ID Sample' do
-    pod 'SwiftProtobuf', '~> 1.19'
+    protobuf
   end
   target 'Preview' do
-    pod 'SwiftProtobuf', '~> 1.19'
+    protobuf
   end
   target 'Thumbnails' do
-    pod 'SwiftProtobuf', '~> 1.19'
+    protobuf
   end
   target 'VerIDUITests'
 end

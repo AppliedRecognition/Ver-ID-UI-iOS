@@ -39,13 +39,6 @@ public class HeadView: SCNView {
         self.setup()
     }
     
-    deinit {
-        for observer in self.animationObservers {
-            observer.invalidate()
-        }
-        self.animationObservers.removeAll()
-    }
-    
     private func setup() {
         if #available(iOS 13, *) {
             self.backgroundColor = .secondarySystemBackground
@@ -110,11 +103,8 @@ public class HeadView: SCNView {
         let bottomRight = self.projectPoint(SCNVector3(headNode.boundingSphere.radius, headNode.boundingSphere.radius, 0))
         camera.fieldOfView /= self.bounds.height / CGFloat(bottomRight.x - topLeft.x)
         
-        let index = self.animationObservers.count
-        let observation = self.observe(\.isAnimating, options: [.new]) { [weak self] view, change in
+        let observation = self.observe(\.isAnimating, options: [.new]) { _, change in
             if change.newValue == false {
-                self?.animationObservers[index].invalidate()
-                self?.animationObservers.remove(at: index)
                 completion()
             }
         }
