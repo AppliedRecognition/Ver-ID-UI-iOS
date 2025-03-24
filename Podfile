@@ -1,14 +1,12 @@
 project 'VerIDUI.xcodeproj'
 workspace 'VerIDUI.xcworkspace'
 
-platform :ios, '10.3'
+platform :ios, '13.4'
 use_frameworks!
 
 abstract_target 'Ver-ID' do
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
+  pod 'DeviceKit', '~> 5.5'
   pod 'ZIPFoundation', '~> 0.9'
-  pod 'DeviceKit', '~> 4.4'
   pod 'Ver-ID-SDK-Identity', '>= 3.0.2', '< 4.0'
   
   post_install do |installer|

@@ -1,0 +1,8 @@
+{
+    "dataCollection": {
+        "camera": {
+            "purpose": "Capture faces",
+            "isOptional": false
+        }
+    }
+}
