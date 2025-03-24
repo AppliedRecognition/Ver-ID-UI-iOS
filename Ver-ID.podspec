@@ -19,9 +19,9 @@ Pod::Spec.new do |s|
         ss.source_files = "Sources/VerIDUI/*.swift"
         ss.resource_bundles = { "VerIDUIResources" => ["Sources/VerIDUI/Resources/Video/*.mp4", "Sources/VerIDUI/Resources/Localization/*.xml", "Sources/VerIDUI/Resources/*.xcassets", "Sources/VerIDUI/Resources/**.{storyboard,xib}", "Sources/VerIDUI/Resources/*.obj"] }
         ss.dependency "Ver-ID/Core"
-        ss.dependency 'RxSwift', '~> 5'
-        ss.dependency 'RxCocoa', '~> 5'
-        ss.dependency 'DeviceKit', '~> 4.4'
+        ss.dependency 'RxSwift', '~> 6.9'
+        ss.dependency 'RxCocoa', '~> 6.9'
+        ss.dependency 'DeviceKit', '~> 5.5'
         ss.pod_target_xcconfig = {
             "ENABLE_BITCODE" => "NO"
         }
