@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
-// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VerIDCore
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name VerIDCore
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import ASN1Decoder
 import AVFoundation
 import Accelerate
@@ -405,7 +405,7 @@ extension VerIDCore.VerIDImageFormat {
   public init?(rawValue: Swift.Int)
   public typealias AllCases = [VerIDCore.FaceDetectionStatus]
   public typealias RawValue = Swift.Int
-  public static var allCases: [VerIDCore.FaceDetectionStatus] {
+  nonisolated public static var allCases: [VerIDCore.FaceDetectionStatus] {
     get
   }
   public var rawValue: Swift.Int {
@@ -463,9 +463,11 @@ public class FunctionCallReport : VerIDCore.Transaction {
   public enum Version : Swift.Int32, Swift.CaseIterable {
     case unencrypted, encrypted, v20Unencrypted, v20Encrypted, v21Unencrypted, v21Encrypted
     public init?(rawValue: Swift.Int32)
+    @available(*, deprecated)
     public typealias AllCases = [VerIDCore.RecognitionFace.Version]
+    @available(*, deprecated)
     public typealias RawValue = Swift.Int32
-    public static var allCases: [VerIDCore.RecognitionFace.Version] {
+    nonisolated public static var allCases: [VerIDCore.RecognitionFace.Version] {
       get
     }
     public var rawValue: Swift.Int32 {
@@ -500,30 +502,20 @@ public class FaceTemplateDiagnostics {
   final public let verID: VerIDCore.VerID
   public init(verID: VerIDCore.VerID)
   public func compareRegisteredFaceTemplates(hashUserNames: Swift.Bool = true, completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : [VerIDCore.UserFaceComparison]], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func compareRegisteredFaceTemplates(hashUserNames: Swift.Bool = true) async throws -> [VerIDCore.VerIDFaceTemplateVersion : [VerIDCore.UserFaceComparison]]
-  #endif
   public func compareUserFaceTemplates(_ userFaceTemplates: [Swift.String : [any VerIDCore.Recognizable]], completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : [VerIDCore.UserFaceComparison]], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func compareUserFaceTemplates(_ userFaceTemplates: [Swift.String : [any VerIDCore.Recognizable]]) async throws -> [VerIDCore.VerIDFaceTemplateVersion : [VerIDCore.UserFaceComparison]]
-  #endif
   public func compareFaceTemplates(_ templates: [any VerIDCore.Recognizable], completion: @escaping (Swift.Result<[(any VerIDCore.Recognizable, any VerIDCore.Recognizable, Swift.Float)], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func compareFaceTemplates(_ templates: [any VerIDCore.Recognizable]) async throws -> [(any VerIDCore.Recognizable, any VerIDCore.Recognizable, Swift.Float)]
-  #endif
   public func findMostSimilarUsers(hashUserNames: Swift.Bool = true, completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func findMostSimilarUsers(hashUserNames: Swift.Bool = true) async throws -> [VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison]
-  #endif
   public func findMostDifferentUsers(hashUserNames: Swift.Bool = true, completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func findMostDifferentUsers(hashUserNames: Swift.Bool = true) async throws -> [VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserFaceComparison]
-  #endif
   public func findMostSimilarUsers(in comparisons: [VerIDCore.UserFaceComparison]) -> VerIDCore.UserFaceComparison?
   public func findMostDifferentUsers(in comparisons: [VerIDCore.UserFaceComparison]) -> VerIDCore.UserFaceComparison?
   public func compareAllFaces(_ faces: [(Swift.String, any VerIDCore.Recognizable, Swift.Int)]) throws -> [VerIDCore.UserFaceComparison]
@@ -620,10 +612,8 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   @objc public func createVerID()
   @objc public func createVerIDSync() throws -> VerIDCore.VerID
   public func createVerID(completion: ((Swift.Result<VerIDCore.VerID, any Swift.Error>) -> Swift.Void)?)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func createVerID() async throws -> VerIDCore.VerID
-  #endif
   @objc deinit
 }
 public struct CorruptFaceTemplate {
@@ -645,10 +635,8 @@ public enum UserManagementCreationError : Swift.Error {
   }
   public func detectRecognizableFacesInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int, faceTemplateVersions: [VerIDCore.VerIDFaceTemplateVersion] = VerIDFaceTemplateVersion.all, completion: @escaping (Swift.Result<[VerIDCore.RecognizableFace], any Swift.Error>) -> Swift.Void)
   public func detectRecognizableFacesInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int, faceTemplateVersions: [VerIDCore.VerIDFaceTemplateVersion] = VerIDFaceTemplateVersion.all) throws -> [VerIDCore.RecognizableFace]
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func detectRecognizableFacesInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int, faceTemplateVersions: [VerIDCore.VerIDFaceTemplateVersion] = VerIDFaceTemplateVersion.all) async throws -> [VerIDCore.RecognizableFace]
-  #endif
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class FaceTemplateEncryption {
@@ -833,16 +821,12 @@ public enum VerIDImageWriterServiceError : Swift.Error {
 @_hasMissingDesignatedInitializers public class UserManagementUtilities {
   public typealias ErrorCallback = ((any Swift.Error)?) -> Swift.Void
   public func safeAssignFaces(_ faces: [any VerIDCore.Recognizable], to user: Swift.String, completion: @escaping VerIDCore.UserManagementUtilities.ErrorCallback)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func safeAssignFaces(_ faces: [any VerIDCore.Recognizable], to user: Swift.String) async throws
-  #endif
   public func safeAssignFaces(_ faces: [any VerIDCore.Recognizable], to user: Swift.String) throws
   public func analyzeUserManagement(completion: @escaping (Swift.Result<[VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserManagementAnalysis], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func analyzeUserManagement() async throws -> [VerIDCore.VerIDFaceTemplateVersion : VerIDCore.UserManagementAnalysis]
-  #endif
   public func findAvailableFaceTemplateVersions() throws -> Swift.Set<VerIDCore.VerIDFaceTemplateVersion>
   @objc deinit
 }
@@ -1350,20 +1334,14 @@ public typealias Face = VerIDCore.VerIDFace
   @objc public init(verid: VerIDCore.VerID)
   @objc public func identifyUsersInFace(_ face: any VerIDCore.Recognizable) throws -> [Swift.String : Swift.Float]
   public func identifyUsersInFace(_ face: any VerIDCore.Recognizable, progress: Foundation.Progress? = nil, completion: @escaping (Swift.Result<[Swift.String : Swift.Float], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func identifyUsersInFace(_ face: any VerIDCore.Recognizable, progress: Foundation.Progress? = nil) async throws -> [Swift.String : Swift.Float]
-  #endif
   @objc public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) throws -> [VerIDCore.FaceWithScore]
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) async throws -> [VerIDCore.FaceWithScore]
-  #endif
   public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Swift.Float? = nil, progress: Foundation.Progress? = nil, completion: @escaping (Swift.Result<[VerIDCore.FaceWithScore], any Swift.Error>) -> Swift.Void)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Swift.Float? = nil, progress: Foundation.Progress? = nil) async throws -> [VerIDCore.FaceWithScore]
-  #endif
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class FaceWithScore : ObjectiveC.NSObject, Swift.Comparable {
@@ -1568,7 +1546,7 @@ extension VerIDCore.FaceCapture {
   public init?(rawValue: Swift.Int)
   public typealias AllCases = [VerIDCore.Bearing]
   public typealias RawValue = Swift.Int
-  public static var allCases: [VerIDCore.Bearing] {
+  nonisolated public static var allCases: [VerIDCore.Bearing] {
     get
   }
   public var rawValue: Swift.Int {
@@ -1623,22 +1601,16 @@ extension VerIDCore.VerIDFactory {
   }
   public func createRecognizableFacesFromFaces(_ faces: [VerIDCore.Face], in image: any VerIDCore.ImageProvider, faceTemplateVersions: [VerIDCore.VerIDFaceTemplateVersion] = VerIDFaceTemplateVersion.all, completion: @escaping (Swift.Result<[VerIDCore.RecognizableFace], any Swift.Error>) -> Swift.Void)
   public func createRecognizableFacesFromFaces(_ faces: [VerIDCore.Face], in image: any VerIDCore.ImageProvider, faceTemplateVersions: [VerIDCore.VerIDFaceTemplateVersion] = VerIDFaceTemplateVersion.all) throws -> [VerIDCore.RecognizableFace]
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func createRecognizableFacesFromFaces(_ faces: [VerIDCore.Face], in image: any VerIDCore.ImageProvider, faceTemplateVersions: [VerIDCore.VerIDFaceTemplateVersion] = VerIDFaceTemplateVersion.all) async throws -> [VerIDCore.RecognizableFace]
-  #endif
   public func compareFaceInImage(_ image1: any VerIDCore.ImageProvider, toFaceInImage image2: any VerIDCore.ImageProvider, using faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion? = nil, completion: @escaping (Swift.Result<(VerIDCore.RecognizableFace, VerIDCore.RecognizableFace, Swift.Float), any Swift.Error>) -> Swift.Void)
   public func compareFaceInImage(_ image1: any VerIDCore.ImageProvider, toFaceInImage image2: any VerIDCore.ImageProvider, using faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion? = nil) throws -> (VerIDCore.RecognizableFace, VerIDCore.RecognizableFace, Swift.Float)
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func compareFaceInImage(_ image1: any VerIDCore.ImageProvider, toFaceInImage image2: any VerIDCore.ImageProvider, using faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion? = nil) async throws -> (VerIDCore.RecognizableFace, VerIDCore.RecognizableFace, Swift.Float)
-  #endif
   public func identifyUsersInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int, completion: @escaping (Swift.Result<[VerIDCore.UserIdentificationResult], any Swift.Error>) -> Swift.Void)
   public func identifyUsersInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int) throws -> [VerIDCore.UserIdentificationResult]
-  #if compiler(>=5.3) && $AsyncAwait
   @available(iOS 13, *)
   public func identifyUsersInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int) async throws -> [VerIDCore.UserIdentificationResult]
-  #endif
   @objc deinit
 }
 public struct UserIdentificationResult : Swift.Hashable {
