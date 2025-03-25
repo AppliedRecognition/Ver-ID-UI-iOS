@@ -52,75 +52,42 @@ import VerIDCore
         guard let settings = self.delegate?.settings as? RegistrationSessionSettings else {
             return
         }
-        let group = DispatchGroup()
-        for view in detectedFaceStackView.arrangedSubviews {
-            guard let imageView = view as? UIImageView else {
+        guard let imageView = self.detectedFaceStackView.arrangedSubviews.first(where: { $0 is UIImageView && $0.alpha < 1.0 }) as? UIImageView else {
+            return
+        }
+        func image(at url: URL, croppedToBoundsOfFace face: Face, inSize size: CGSize) -> UIImage? {
+            guard let faceImage = UIImage(contentsOfFile: url.path) else {
+                return nil
+            }
+            var scaledBoundsSize = CGSize(width: face.bounds.width, height: face.bounds.height)
+            if size.width / size.height > face.bounds.width / face.bounds.height {
+                // View is "fatter" match widths
+                scaledBoundsSize.width = size.width
+                scaledBoundsSize.height = size.width / face.bounds.width * face.bounds.height
+            } else {
+                scaledBoundsSize.height = size.height
+                scaledBoundsSize.width = size.height / face.bounds.height * face.bounds.width
+            }
+            let transform = CGAffineTransform(scaleX: scaledBoundsSize.width / face.bounds.width, y: scaledBoundsSize.height / face.bounds.height)
+            let bounds = face.bounds.applying(transform)
+            let scaledImageSize = faceImage.size.applying(transform)
+            return UIGraphicsImageRenderer(size: bounds.size).image { _ in
+                faceImage.draw(in: CGRect(x: 0-bounds.minX, y: 0-bounds.minY, width: scaledImageSize.width, height: scaledImageSize.height))
+            }
+        }
+        let viewSize = imageView.frame.size
+        DispatchQueue.global().async { [weak imageView] in
+            guard let faceImage = image(at: url, croppedToBoundsOfFace: face, inSize: viewSize) else {
                 return
             }
-            for sub in imageView.subviews {
-                sub.removeFromSuperview()
-            }
-            guard imageView.alpha < 1.0 else {
-                continue
-            }
-            let viewSize = imageView.frame.size
-            imageView.alpha = 1.0
-            DispatchQueue.global().async {
-                guard let faceImage = UIImage(contentsOfFile: url.path) else {
-                    DispatchQueue.main.async {
-                        imageView.alpha = 0.5
-                    }
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self, let imageView = imageView else {
                     return
                 }
-                group.enter()
-                let originalBounds = face.bounds
-                var scaledBoundsSize = CGSize(width: originalBounds.width, height: originalBounds.height)
-                if viewSize.width / viewSize.height > originalBounds.width / originalBounds.height {
-                    // View is "fatter" match widths
-                    scaledBoundsSize.width = viewSize.width
-                    scaledBoundsSize.height = viewSize.width / originalBounds.width * originalBounds.height
-                } else {
-                    scaledBoundsSize.height = viewSize.height
-                    scaledBoundsSize.width = viewSize.height / originalBounds.height * originalBounds.width
-                }
-                let transform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
-                let bounds = originalBounds.applying(transform)
-                let imageTransform = CGAffineTransform(scaleX: scaledBoundsSize.width / originalBounds.width, y: scaledBoundsSize.height / originalBounds.height)
-                let scaledImageSize = faceImage.size.applying(imageTransform)
-                UIGraphicsBeginImageContext(bounds.size)
-                faceImage.draw(in: CGRect(x: 0-bounds.minX, y: 0-bounds.minY, width: scaledImageSize.width, height: scaledImageSize.height))
-                let image = UIGraphicsGetImageFromCurrentImageContext()
-                UIGraphicsEndImageContext()
-                DispatchQueue.main.async {
-                    defer {
-                        group.leave()
-                    }
-                    guard self.isViewLoaded else {
-                        return
-                    }
-                    guard let image = image else {
-                        imageView.alpha = 0.5
-                        return
-                    }
-                    imageView.alpha = 1.0
-                    if settings.useFrontCamera {
-                        imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
-                    }
-                    imageView.image = image
-                }
-            }
-            break
-        }
-        DispatchQueue.global().async {
-            group.wait()
-            DispatchQueue.main.async {
-                guard self.isViewLoaded else {
-                    return
-                }
-                if let imageView = self.detectedFaceStackView.arrangedSubviews.filter({ $0.alpha == 1.0 }).last {
-                    let activityIndicatorView = UIActivityIndicatorView(frame: imageView.bounds)
-                    activityIndicatorView.startAnimating()
-                    imageView.addSubview(activityIndicatorView)
+                imageView.image = faceImage
+                imageView.alpha = 1.0
+                if settings.useFrontCamera {
+                    imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
                 }
             }
         }
