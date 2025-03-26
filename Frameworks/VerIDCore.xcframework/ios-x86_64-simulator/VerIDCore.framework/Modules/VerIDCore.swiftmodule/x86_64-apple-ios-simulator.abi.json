@@ -58461,7 +58461,7 @@
       "kind": "IntegerLiteral",
       "offset": 2959,
       "length": 2,
-      "value": "20"
+      "value": "24"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionSettings.swift",
@@ -59278,28 +59278,35 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "IntegerLiteral",
-      "offset": 2050,
+      "offset": 1613,
       "length": 1,
-      "value": "1"
+      "value": "3"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 2084,
+      "offset": 2055,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2092,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 2277,
+      "offset": 2285,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 2453,
+      "offset": 2461,
       "length": 4,
       "value": "true"
     },
