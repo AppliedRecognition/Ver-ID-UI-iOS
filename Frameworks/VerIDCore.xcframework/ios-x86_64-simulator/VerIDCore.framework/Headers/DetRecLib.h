@@ -178,7 +178,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) loadClassifier:(VerIDClassifier *)classifier;
 
-- (void) loadModelFileForFaceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion;
+- (BOOL) loadModelFileForFaceTemplateVersion:(VerIDFaceTemplateVersion)faceTemplateVersion
+                                       error:(NSError **)error;
 
 - (NSArray<NSString *> *)classifiers;
 

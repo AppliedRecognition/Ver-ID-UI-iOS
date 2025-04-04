@@ -22631,6 +22631,92 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "isVerIDFactoryLoggingEnabled",
+            "printedName": "isVerIDFactoryLoggingEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvp",
+            "mangledName": "$s9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvp",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvg",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvs",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvM",
+                "mangledName": "$s9VerIDCore0A9IDFactoryC02isaC14LoggingEnabledSbvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(userManagementFactory:)",
@@ -58857,24 +58943,38 @@
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "BooleanLiteral",
+      "offset": 616,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 15388,
+      "offset": 18560,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "IntegerLiteral",
-      "offset": 15424,
+      "offset": 18596,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
       "kind": "BooleanLiteral",
-      "offset": 15531,
+      "offset": 18703,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ResourceLoader.swift",
+      "kind": "StringLiteral",
+      "offset": 19251,
+      "length": 17,
+      "value": "\"download errors\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceRecognition.swift",
@@ -59418,23 +59518,37 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "BooleanLiteral",
-      "offset": 8945,
+      "offset": 1908,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9144,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "BooleanLiteral",
-      "offset": 9006,
+      "offset": 9205,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
       "kind": "Array",
-      "offset": 9071,
+      "offset": 9270,
       "length": 2,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFactory.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9306,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateEncryption.swift",
@@ -59593,21 +59707,21 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceDetectionRecognitionFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 4653,
+      "offset": 4867,
       "length": 32,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceDetectionRecognitionFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 4754,
+      "offset": 4968,
       "length": 42,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDFaceDetectionRecognitionFactory.swift",
       "kind": "IntegerLiteral",
-      "offset": 4855,
+      "offset": 5069,
       "length": 22,
       "value": "3"
     },

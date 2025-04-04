@@ -607,6 +607,7 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   @objc public var userManagementFactory: any VerIDCore.UserManagementFactory
   public var spoofDetectorModels: Swift.Set<VerIDCore.SpoofDetectorModel>
   public var additionalSpoofDeviceDetectorModelFileURLs: [Foundation.URL]
+  public var isVerIDFactoryLoggingEnabled: Swift.Bool
   @objc public init(userManagementFactory: any VerIDCore.UserManagementFactory)
   @objc override convenience dynamic public init()
   @objc public func createVerID()

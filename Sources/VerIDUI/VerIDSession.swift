@@ -120,6 +120,7 @@ import Combine
                 viewController.sessionSettings = self.settings
                 viewController.cameraPosition = self.delegate?.cameraPositionForSession?(self) ?? .front
                 viewController.videoWriter = self.videoWriterService
+                viewController.modalPresentationStyle = .pageSheet
                 viewController.shouldDisplayCGHeadGuidance = self.delegate?.shouldDisplayCGHeadGuidanceInSession?(self) ?? true
                 self.presentVerIDViewController(viewController)
                 self.viewController = viewController
