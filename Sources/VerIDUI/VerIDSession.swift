@@ -191,6 +191,7 @@ import Combine
             }
             self.navigationController = UINavigationController(rootViewController: viewController)
             self.navigationController?.presentationController?.delegate = self
+            self.navigationController?.modalPresentationStyle = .pageSheet
             root.present(self.navigationController!, animated: true)
         } else {
             self.navigationController!.viewControllers = [viewController]
