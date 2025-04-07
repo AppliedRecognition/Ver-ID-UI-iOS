@@ -45,6 +45,8 @@ import Combine
     /// - Since: 2.0.0
     @objc public lazy var identifier: String = UUID().uuidString
     
+    public var modalPresentationStyle: UIModalPresentationStyle = .pageSheet
+    
     public var sessionFunctions: SessionFunctions
     
     private var viewController: (UIViewController & VerIDViewControllerProtocol)?
@@ -120,7 +122,7 @@ import Combine
                 viewController.sessionSettings = self.settings
                 viewController.cameraPosition = self.delegate?.cameraPositionForSession?(self) ?? .front
                 viewController.videoWriter = self.videoWriterService
-                viewController.modalPresentationStyle = .pageSheet
+                viewController.modalPresentationStyle = self.modalPresentationStyle
                 viewController.shouldDisplayCGHeadGuidance = self.delegate?.shouldDisplayCGHeadGuidanceInSession?(self) ?? true
                 self.presentVerIDViewController(viewController)
                 self.viewController = viewController
@@ -190,9 +192,10 @@ import Combine
                 root = presented
             }
             self.navigationController = UINavigationController(rootViewController: viewController)
-            self.navigationController?.presentationController?.delegate = self
-            self.navigationController?.modalPresentationStyle = .pageSheet
-            root.present(self.navigationController!, animated: true)
+            self.navigationController?.modalPresentationStyle = self.modalPresentationStyle
+            root.present(self.navigationController!, animated: true) {
+                self.navigationController?.presentationController?.delegate = self
+            }
         } else {
             self.navigationController!.viewControllers = [viewController]
         }
