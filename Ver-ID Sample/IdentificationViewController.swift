@@ -80,104 +80,96 @@ class IdentificationViewController: UIViewController, VerIDSessionDelegate {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.startAnimating()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
-        let concurrentQueue = DispatchQueue(label: "Face generation", qos: .default, attributes: .concurrent)
-        let serialQueue = OperationQueue()
-        serialQueue.maxConcurrentOperationCount = 1
-        concurrentQueue.async {
+        DispatchQueue.global().async {
             do {
-                // Only report every hundredth of progress to avoid overwhelming the UI thread
-                let reportingIndex = Int(roundf(Float(facesToGenerate) / 100))
-                var version: VerIDFaceTemplateVersion = .other
-                let defaultVersion = (verid.faceRecognition as? VerIDFaceRecognition)?.defaultFaceTemplateVersion ?? .V16
-                var defaultUserFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
-                if defaultUserFaces.contains(where: { $0.faceTemplateVersion == defaultVersion }) {
-                    version = defaultVersion
-                } else {
-                    for v in VerIDFaceTemplateVersion.all.filter({ $0 != defaultVersion }).sorted(by: { $0.rawValue > $1.rawValue }) {
-                        if defaultUserFaces.contains(where: { $0.faceTemplateVersion == v }) {
-                            version = v
-                            break
-                        }
-                    }
+                let userFaces = try verid.userManagement.facesOfUser(VerIDUser.defaultUserId)
+                guard let faceTemplateVersion = Array(Set(userFaces.map { $0.faceTemplateVersion })).sorted().last else {
+                    throw VerIDError.userMissingRequiredFaceTemplates
                 }
-                defaultUserFaces = defaultUserFaces.filter({ $0.faceTemplateVersion == version })
-                self.faces = []
-                DispatchQueue.concurrentPerform(iterations: facesToGenerate) { i in
-                    do {
-                        let template = try faceRec.generateRandomFaceTemplate(version: version)
-                        serialQueue.addOperation {
-                            self.faces.append(template)
-                        }
-                        if i % reportingIndex == 0 {
-                            DispatchQueue.main.async {
-                                self.progressBar.isHidden = false
-                                self.progressBar.progress = Float(i) / Float(facesToGenerate)
-                            }
-                        }
-                    } catch {
-                    }
-                }
-                serialQueue.waitUntilAllOperationsAreFinished()
-                self.faces.append(contentsOf: defaultUserFaces)
+                let generatedFaces = try faceRec.generate(NSNumber(value: facesToGenerate), templatesWithVersion: faceTemplateVersion)
+                self.faces = generatedFaces + userFaces.filter({ $0.faceTemplateVersion == faceTemplateVersion })
                 DispatchQueue.main.async {
                     self.progressBar.isHidden = true
-                    self.registredUserFaces = defaultUserFaces
+                    self.registredUserFaces = userFaces
                     self.startSession()
                 }
             } catch {
-                
+                DispatchQueue.main.async {
+                    self.progressBar.isHidden = true
+                    self.label.text = "Faces to generate"
+                    self.facesTextField.isHidden = false
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(self.start))
+                    let alert = UIAlertController(title: nil, message: "Failed to generate faces for testing", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(alert, animated: true)
+                }
             }
         }
     }
     
     func didFinishSession(_ session: VerIDSession, withResult result: VerIDSessionResult) {
-        guard let face = result.faceCaptures.first(where: { $0.bearing == .straight })?.face else {
+        guard let faceCapture = result.faceCaptures.first(where: { $0.bearing == .straight }) else {
             return
+        }
+        let faceTemplateVersion = self.faces.first!.faceTemplateVersion
+        do {
+            let face: Recognizable
+            if let f = faceCapture.faces.first(where: { $0.faceTemplateVersion == faceTemplateVersion }) {
+                face = f
+            } else {
+                face = try (session.environment.faceRecognition as! VerIDFaceRecognition).createRecognizableFacesFromFaces([faceCapture.face], inImage: faceCapture.verIDImage, faceTemplateVersion: faceTemplateVersion) as! any Recognizable
+            }
+            self.label.text = "Identifying"
+            self.facesTextField.isHidden = true
+            let identification = UserIdentification(verid: session.environment)
+            let progress = Progress()
+            var progressObservation: NSKeyValueObservation? = progress.observe(\.fractionCompleted) { (progressInstance, completed) in
+                self.label.text = "Looking at face \(progressInstance.completedUnitCount) of \(progressInstance.totalUnitCount)"
+            }
+            self.progressBar.observedProgress = progress
+            self.progressBar.isHidden = false
+            identification.findFacesSimilarTo(face, in: self.faces, threshold: nil, progress: progress) { result in
+                progressObservation = nil
+                self.progressBar.isHidden = true
+                self.progressBar.observedProgress = nil
+                let message: String
+                let succeeded: Bool
+                if case Result.success(let identifiedFaces) = result, let bestFace = identifiedFaces.first?.face {
+                    if self.registredUserFaces.contains(where: { $0.recognitionData == bestFace.recognitionData }) {
+                        message = "You've been identified among \(self.faces.count) faces"
+                        succeeded = true
+                    } else {
+                        message = "You have been misidentified"
+                        succeeded = false
+                    }
+                } else {
+                    message = "We were unable to identify you"
+                    succeeded = false
+                }
+                self.label.text = "Faces to generate"
+                self.facesTextField.isHidden = false
+                if succeeded {
+                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "identificationSuccess") as? IdentificationResultViewController else {
+                        return
+                    }
+                    viewController.message = message
+                    if let url = Globals.profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
+                        viewController.image = image
+                    }
+                    self.present(viewController, animated: true)
+                } else {
+                    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+                    self.present(alert, animated: true)
+                }
+            }
+        } catch {
+            let alert = UIAlertController(title: nil, message: "Failed to extract \(faceTemplateVersion.stringValue()) face from capture.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            self.present(alert, animated: true)
         }
         self.label.text = "Identifying"
         self.facesTextField.isHidden = true
-        let identification = UserIdentification(verid: session.environment)
-        let progress = Progress()
-        var progressObservation: NSKeyValueObservation? = progress.observe(\.fractionCompleted) { (progressInstance, completed) in
-            self.label.text = "Looking at face \(progressInstance.completedUnitCount) of \(progressInstance.totalUnitCount)"
-        }
-        self.progressBar.observedProgress = progress
-        self.progressBar.isHidden = false
-        identification.findFacesSimilarTo(face, in: self.faces, threshold: nil, progress: progress) { result in
-            progressObservation = nil
-            self.progressBar.isHidden = true
-            self.progressBar.observedProgress = nil
-            let message: String
-            let succeeded: Bool
-            if case Result.success(let identifiedFaces) = result, let bestFace = identifiedFaces.first?.face {
-                if self.registredUserFaces.contains(where: { $0.recognitionData == bestFace.recognitionData }) {
-                    message = "You've been identified among \(self.faces.count) faces"
-                    succeeded = true
-                } else {
-                    message = "You have been misidentified"
-                    succeeded = false
-                }
-            } else {
-                message = "We were unable to identify you"
-                succeeded = false
-            }
-            self.label.text = "Faces to generate"
-            self.facesTextField.isHidden = false
-            if succeeded {
-                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "identificationSuccess") as? IdentificationResultViewController else {
-                    return
-                }
-                viewController.message = message
-                if let url = Globals.profilePictureURL, let image = UIImage(contentsOfFile: url.path) {
-                    viewController.image = image
-                }
-                self.present(viewController, animated: true)
-            } else {
-                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                self.present(alert, animated: true)
-            }
-        }
     }
 
     /*
