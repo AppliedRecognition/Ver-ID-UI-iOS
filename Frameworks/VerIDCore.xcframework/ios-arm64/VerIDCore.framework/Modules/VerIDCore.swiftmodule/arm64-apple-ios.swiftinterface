@@ -215,6 +215,7 @@ public class SessionDiagnostics : Swift.Codable {
   @objc public func compareSubjectFaces(_ subjectFaces: [any VerIDCore.Recognizable], toFaces faces: [any VerIDCore.Recognizable]) throws -> Foundation.NSNumber
   @objc public func rawFaceTemplate(fromFace face: any VerIDCore.Recognizable) throws -> [Foundation.NSNumber]
   @objc public func generateRandomFaceTemplate(version: VerIDCore.VerIDFaceTemplateVersion) throws -> any VerIDCore.Recognizable
+  @objc public func generate(_ count: Foundation.NSNumber, templatesWithVersion version: VerIDCore.VerIDFaceTemplateVersion) throws -> [any VerIDCore.Recognizable]
   @objc public func generateRandomFaceTemplateWithScore(_ score: Foundation.NSNumber, againstFace face: any VerIDCore.Recognizable) throws -> any VerIDCore.Recognizable
   public func versionOfFaceTemplate(_ faceTemplate: any VerIDCore.Recognizable) throws -> VerIDCore.VerIDFaceTemplateVersion
   @objc deinit
@@ -272,9 +273,11 @@ extension RxSwift.ObservableType {
 @_inheritsConvenienceInitializers @objc public class VerIDUserManagementFactory : ObjectiveC.NSObject, VerIDCore.UserManagementFactory {
   @objc final public let disableEncryption: Swift.Bool
   @objc final public let isAutomaticFaceTemplateMigrationEnabled: Swift.Bool
+  final public let keepFaceTemplatesInMemory: Swift.Bool
+  public var faceTemplateEncryption: any VerIDCore.FaceTemplateEncryptionProtocol
   @objc convenience override dynamic public init()
   @objc convenience public init(disableEncryption: Swift.Bool)
-  @objc public init(disableEncryption: Swift.Bool, isAutomaticFaceTemplateMigrationEnabled: Swift.Bool)
+  @objc public init(disableEncryption: Swift.Bool, isAutomaticFaceTemplateMigrationEnabled: Swift.Bool, keepFaceTemplatesInMemory: Swift.Bool = true)
   @objc public func createUserManagement() throws -> any VerIDCore.UserManagement
   @objc deinit
 }
@@ -309,6 +312,7 @@ extension VerIDCore.UserManagement2 {
   public func addUsersWithFaces(_ userFaces: [Swift.String : [any VerIDCore.Recognizable]], completion: Self.ErrorCallback?)
   public func inferDefaultFaceTemplateVersion() -> VerIDCore.VerIDFaceTemplateVersion
   public func deleteAll(completion: Self.ErrorCallback?)
+  public func latestCommonFaceTemplateVersion() throws -> VerIDCore.VerIDFaceTemplateVersion
 }
 @objc(VerIDUserManagementFactory) public protocol UserManagementFactory {
   @objc func createUserManagement() throws -> any VerIDCore.UserManagement
@@ -560,6 +564,9 @@ extension VerIDCore.VerIDFaceTemplateVersion : Swift.Codable {
   public init(from decoder: any Swift.Decoder) throws
   public func encode(to encoder: any Swift.Encoder) throws
 }
+extension VerIDCore.VerIDFaceTemplateVersion : Swift.Comparable {
+  public static func < (lhs: VerIDCore.VerIDFaceTemplateVersion, rhs: VerIDCore.VerIDFaceTemplateVersion) -> Swift.Bool
+}
 @objc(VerIDFaceDetectionFactory) public protocol FaceDetectionFactory {
   @objc func createFaceDetection() throws -> any VerIDCore.FaceDetection
 }
@@ -640,10 +647,14 @@ public enum UserManagementCreationError : Swift.Error {
   public func detectRecognizableFacesInImage(_ image: any VerIDCore.ImageProvider, limit: Swift.Int, faceTemplateVersions: [VerIDCore.VerIDFaceTemplateVersion] = VerIDFaceTemplateVersion.all) async throws -> [VerIDCore.RecognizableFace]
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class FaceTemplateEncryption {
+@_hasMissingDesignatedInitializers public class FaceTemplateEncryption : VerIDCore.FaceTemplateEncryptionProtocol {
   public func encryptFaceTemplate(_ faceTemplate: any VerIDCore.Recognizable) throws -> any VerIDCore.Recognizable
   public func decryptFaceTemplate(_ faceTemplate: any VerIDCore.Recognizable) throws -> any VerIDCore.Recognizable
   @objc deinit
+}
+public protocol FaceTemplateEncryptionProtocol {
+  func encryptFaceTemplate(_ faceTemplate: any VerIDCore.Recognizable) throws -> any VerIDCore.Recognizable
+  func decryptFaceTemplate(_ faceTemplate: any VerIDCore.Recognizable) throws -> any VerIDCore.Recognizable
 }
 @objc public protocol VideoWriterService {
   @objc func writeSampleBuffer(_ sampleBuffer: CoreMedia.CMSampleBuffer, rotation: CoreFoundation.CGFloat)
@@ -1134,9 +1145,10 @@ public struct CircularBuffer<T> : Swift.Sequence, Swift.IteratorProtocol {
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 10.0, *)
 public class VerIDUserManagement : ObjectiveC.NSObject, VerIDCore.UserManagement2 {
-  final public let faceTemplateEncryption: VerIDCore.FaceTemplateEncryption
+  final public let faceTemplateEncryption: any VerIDCore.FaceTemplateEncryptionProtocol
   final public let isEncryptionDisabled: Swift.Bool
   final public let isAutomaticFaceTemplateMigrationEnabled: Swift.Bool
+  final public let keepFaceTemplatesInMemory: Swift.Bool
   public var callbackQueue: Dispatch.DispatchQueue
   @objc public func assignFaces(_ faces: [any VerIDCore.Recognizable], toUser userId: Swift.String, completion: VerIDCore.VerIDUserManagement.ErrorCallback? = nil)
   @objc public func addUsersWithFaces(_ userFaces: [Swift.String : [any VerIDCore.Recognizable]], completion: VerIDCore.VerIDUserManagement.ErrorCallback?)
@@ -1151,6 +1163,7 @@ public class VerIDUserManagement : ObjectiveC.NSObject, VerIDCore.UserManagement
   @objc public func facesOfUser(_ userId: Swift.String, faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion) throws -> [any VerIDCore.Recognizable]
   @objc public func countFacesWithVersion(_ version: VerIDCore.VerIDFaceTemplateVersion) throws -> Foundation.NSNumber
   @objc public func deleteAll(completion: VerIDCore.VerIDUserManagement.ErrorCallback?)
+  public func latestCommonFaceTemplateVersion() throws -> VerIDCore.VerIDFaceTemplateVersion
   @objc deinit
 }
 public enum VerIDUserManagementError : Swift.Int, Swift.Error {
@@ -1337,6 +1350,9 @@ public typealias Face = VerIDCore.VerIDFace
   public func identifyUsersInFace(_ face: any VerIDCore.Recognizable, progress: Foundation.Progress? = nil, completion: @escaping (Swift.Result<[Swift.String : Swift.Float], any Swift.Error>) -> Swift.Void)
   @available(iOS 13, *)
   public func identifyUsersInFace(_ face: any VerIDCore.Recognizable, progress: Foundation.Progress? = nil) async throws -> [Swift.String : Swift.Float]
+  @available(iOS 13, *)
+  public func identifyUsersInFaceCapture(_ faceCapture: VerIDCore.FaceCapture) async throws -> [Swift.String : Swift.Float]
+  public func identifyUsersInFaceCapture(_ faceCapture: VerIDCore.FaceCapture, thresholdSupplier: ((VerIDCore.VerIDFaceTemplateVersion) -> Swift.Float)? = nil, completion: @escaping (Swift.Result<[Swift.String : Swift.Float], any Swift.Error>) -> Swift.Void)
   @objc public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) throws -> [VerIDCore.FaceWithScore]
   @available(iOS 13, *)
   public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) async throws -> [VerIDCore.FaceWithScore]

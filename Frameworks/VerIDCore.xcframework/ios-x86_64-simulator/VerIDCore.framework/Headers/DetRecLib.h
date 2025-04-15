@@ -169,6 +169,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSData *) generateFaceTemplateWithVersion:(VerIDFaceTemplateVersion)version
                                                 error:(NSError **)error;
 
+- (nullable NSArray<NSData *> *) generate:(NSNumber *)count
+           templatesWithVersion:(VerIDFaceTemplateVersion)version
+                          error:(NSError **)error;
+
 - (nullable NSData *) generateFaceTemplateWithScore:(NSNumber *)score
                                         againstFace:(id<VerIDRecognizable>)face
                                               error:(NSError **)error;

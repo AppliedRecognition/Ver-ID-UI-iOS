@@ -1680,6 +1680,7 @@ SWIFT_CLASS("_TtC9VerIDCore20VerIDFaceRecognition")
 - (NSNumber * _Nullable)compareSubjectFaces:(NSArray<id <VerIDRecognizable>> * _Nonnull)subjectFaces toFaces:(NSArray<id <VerIDRecognizable>> * _Nonnull)faces error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (NSArray<NSNumber *> * _Nullable)rawFaceTemplateFromFace:(id <VerIDRecognizable> _Nonnull)face error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (id <VerIDRecognizable> _Nullable)generateRandomFaceTemplateWithVersion:(VerIDFaceTemplateVersion)version error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+- (NSArray<id <VerIDRecognizable>> * _Nullable)generate:(NSNumber * _Nonnull)count templatesWithVersion:(VerIDFaceTemplateVersion)version error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (id <VerIDRecognizable> _Nullable)generateRandomFaceTemplateWithScore:(NSNumber * _Nonnull)score againstFace:(id <VerIDRecognizable> _Nonnull)face error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -2007,7 +2008,9 @@ SWIFT_CLASS("_TtC9VerIDCore26VerIDUserManagementFactory")
 ///
 /// \param isAutomaticFaceTemplateMigrationEnabled <code>true</code> to automatically gradually migrate face templates to newer versions as users register more faces
 ///
-- (nonnull instancetype)initWithDisableEncryption:(BOOL)disableEncryption isAutomaticFaceTemplateMigrationEnabled:(BOOL)isAutomaticFaceTemplateMigrationEnabled OBJC_DESIGNATED_INITIALIZER;
+/// \param keepFaceTemplatesInMemory <code>false</code> to always fetch faces from database (may be slow if <code>disableEncryption</code> is <code>true</code>)
+///
+- (nonnull instancetype)initWithDisableEncryption:(BOOL)disableEncryption isAutomaticFaceTemplateMigrationEnabled:(BOOL)isAutomaticFaceTemplateMigrationEnabled keepFaceTemplatesInMemory:(BOOL)keepFaceTemplatesInMemory OBJC_DESIGNATED_INITIALIZER;
 /// Create an instance of <code>VerIDUserManagement</code>
 ///
 /// throws:

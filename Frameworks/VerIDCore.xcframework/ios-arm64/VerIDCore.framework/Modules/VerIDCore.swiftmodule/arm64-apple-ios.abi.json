@@ -7090,6 +7090,49 @@
           },
           {
             "kind": "Function",
+            "name": "generate",
+            "printedName": "generate(_:templatesWithVersion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[any VerIDCore.Recognizable]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Recognizable",
+                    "printedName": "any VerIDCore.Recognizable",
+                    "usr": "c:objc(pl)VerIDRecognizable"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSNumber",
+                "printedName": "Foundation.NSNumber",
+                "usr": "c:objc(cs)NSNumber"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VerIDFaceTemplateVersion",
+                "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                "usr": "c:@E@VerIDFaceTemplateVersion"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDFaceRecognition(im)generate:templatesWithVersion:error:",
+            "mangledName": "$s9VerIDCore0A17IDFaceRecognitionC8generate_20templatesWithVersionSaySo0A14IDRecognizable_pGSo8NSNumberC_So0ac8TemplateH0VtKF",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "generateRandomFaceTemplateWithScore",
             "printedName": "generateRandomFaceTemplateWithScore(_:againstFace:)",
             "children": [
@@ -9956,6 +9999,140 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "keepFaceTemplatesInMemory",
+            "printedName": "keepFaceTemplatesInMemory",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9VerIDCore0A23IDUserManagementFactoryC25keepFaceTemplatesInMemorySbvp",
+            "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC25keepFaceTemplatesInMemorySbvp",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A23IDUserManagementFactoryC25keepFaceTemplatesInMemorySbvg",
+                "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC25keepFaceTemplatesInMemorySbvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "faceTemplateEncryption",
+            "printedName": "faceTemplateEncryption",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FaceTemplateEncryptionProtocol",
+                "printedName": "any VerIDCore.FaceTemplateEncryptionProtocol",
+                "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvp",
+            "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvp",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FaceTemplateEncryptionProtocol",
+                    "printedName": "any VerIDCore.FaceTemplateEncryptionProtocol",
+                    "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvg",
+                "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FaceTemplateEncryptionProtocol",
+                    "printedName": "any VerIDCore.FaceTemplateEncryptionProtocol",
+                    "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvs",
+                "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvs",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvM",
+                "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC22faceTemplateEncryptionAA04FacegH8Protocol_pvM",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -10017,7 +10194,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(disableEncryption:isAutomaticFaceTemplateMigrationEnabled:)",
+            "printedName": "init(disableEncryption:isAutomaticFaceTemplateMigrationEnabled:keepFaceTemplatesInMemory:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -10036,13 +10213,20 @@
                 "name": "Bool",
                 "printedName": "Swift.Bool",
                 "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Constructor",
-            "usr": "c:@M@VerIDCore@objc(cs)VerIDUserManagementFactory(im)initWithDisableEncryption:isAutomaticFaceTemplateMigrationEnabled:",
-            "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC17disableEncryption39isAutomaticFaceTemplateMigrationEnabledACSb_Sbtcfc",
+            "usr": "c:@M@VerIDCore@objc(cs)VerIDUserManagementFactory(im)initWithDisableEncryption:isAutomaticFaceTemplateMigrationEnabled:keepFaceTemplatesInMemory:",
+            "mangledName": "$s9VerIDCore0A23IDUserManagementFactoryC17disableEncryption39isAutomaticFaceTemplateMigrationEnabled04keepJ17TemplatesInMemoryACSb_S2btcfc",
             "moduleName": "VerIDCore",
-            "objc_name": "initWithDisableEncryption:isAutomaticFaceTemplateMigrationEnabled:",
+            "objc_name": "initWithDisableEncryption:isAutomaticFaceTemplateMigrationEnabled:keepFaceTemplatesInMemory:",
             "declAttributes": [
               "AccessControl",
               "ObjC",
@@ -11265,6 +11449,28 @@
             "genericSig": "<τ_0_0 where τ_0_0 : VerIDCore.UserManagement2>",
             "sugared_genericSig": "<Self where Self : VerIDCore.UserManagement2>",
             "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "latestCommonFaceTemplateVersion",
+            "printedName": "latestCommonFaceTemplateVersion()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "VerIDFaceTemplateVersion",
+                "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                "usr": "c:@E@VerIDFaceTemplateVersion"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore15UserManagement2PAAE31latestCommonFaceTemplateVersionSo0a6IDFacehI0VyKF",
+            "mangledName": "$s9VerIDCore15UserManagement2PAAE31latestCommonFaceTemplateVersionSo0a6IDFacehI0VyKF",
+            "moduleName": "VerIDCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : VerIDCore.UserManagement2>",
+            "sugared_genericSig": "<Self where Self : VerIDCore.UserManagement2>",
+            "isFromExtension": true,
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           }
         ],
@@ -23905,6 +24111,101 @@
             "printedName": "Escapable",
             "usr": "s:s9EscapableP",
             "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "FaceTemplateEncryptionProtocol",
+            "printedName": "FaceTemplateEncryptionProtocol",
+            "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP",
+            "mangledName": "$s9VerIDCore30FaceTemplateEncryptionProtocolP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FaceTemplateEncryptionProtocol",
+        "printedName": "FaceTemplateEncryptionProtocol",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "encryptFaceTemplate",
+            "printedName": "encryptFaceTemplate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Recognizable",
+                "printedName": "any VerIDCore.Recognizable",
+                "usr": "c:objc(pl)VerIDRecognizable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Recognizable",
+                "printedName": "any VerIDCore.Recognizable",
+                "usr": "c:objc(pl)VerIDRecognizable"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP07encryptcD0ySo0A14IDRecognizable_pSoAE_pKF",
+            "mangledName": "$s9VerIDCore30FaceTemplateEncryptionProtocolP07encryptcD0ySo0A14IDRecognizable_pSoAE_pKF",
+            "moduleName": "VerIDCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : VerIDCore.FaceTemplateEncryptionProtocol>",
+            "sugared_genericSig": "<Self where Self : VerIDCore.FaceTemplateEncryptionProtocol>",
+            "protocolReq": true,
+            "throwing": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "decryptFaceTemplate",
+            "printedName": "decryptFaceTemplate(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Recognizable",
+                "printedName": "any VerIDCore.Recognizable",
+                "usr": "c:objc(pl)VerIDRecognizable"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Recognizable",
+                "printedName": "any VerIDCore.Recognizable",
+                "usr": "c:objc(pl)VerIDRecognizable"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP07decryptcD0ySo0A14IDRecognizable_pSoAE_pKF",
+            "mangledName": "$s9VerIDCore30FaceTemplateEncryptionProtocolP07decryptcD0ySo0A14IDRecognizable_pSoAE_pKF",
+            "moduleName": "VerIDCore",
+            "genericSig": "<τ_0_0 where τ_0_0 : VerIDCore.FaceTemplateEncryptionProtocol>",
+            "sugared_genericSig": "<Self where Self : VerIDCore.FaceTemplateEncryptionProtocol>",
+            "protocolReq": true,
+            "throwing": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP",
+        "mangledName": "$s9VerIDCore30FaceTemplateEncryptionProtocolP",
+        "moduleName": "VerIDCore",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
           }
         ]
       },
@@ -39980,14 +40281,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "FaceTemplateEncryption",
-                "printedName": "VerIDCore.FaceTemplateEncryption",
-                "usr": "s:9VerIDCore22FaceTemplateEncryptionC"
+                "name": "FaceTemplateEncryptionProtocol",
+                "printedName": "any VerIDCore.FaceTemplateEncryptionProtocol",
+                "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP"
               }
             ],
             "declKind": "Var",
-            "usr": "s:9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG0Cvp",
-            "mangledName": "$s9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG0Cvp",
+            "usr": "s:9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG8Protocol_pvp",
+            "mangledName": "$s9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG8Protocol_pvp",
             "moduleName": "VerIDCore",
             "declAttributes": [
               "Final",
@@ -40005,14 +40306,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "FaceTemplateEncryption",
-                    "printedName": "VerIDCore.FaceTemplateEncryption",
-                    "usr": "s:9VerIDCore22FaceTemplateEncryptionC"
+                    "name": "FaceTemplateEncryptionProtocol",
+                    "printedName": "any VerIDCore.FaceTemplateEncryptionProtocol",
+                    "usr": "s:9VerIDCore30FaceTemplateEncryptionProtocolP"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG0Cvg",
-                "mangledName": "$s9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG0Cvg",
+                "usr": "s:9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG8Protocol_pvg",
+                "mangledName": "$s9VerIDCore0A16IDUserManagementC22faceTemplateEncryptionAA04FacefG8Protocol_pvg",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "declAttributes": [
@@ -40111,6 +40412,54 @@
                 "declKind": "Accessor",
                 "usr": "s:9VerIDCore0A16IDUserManagementC39isAutomaticFaceTemplateMigrationEnabledSbvg",
                 "mangledName": "$s9VerIDCore0A16IDUserManagementC39isAutomaticFaceTemplateMigrationEnabledSbvg",
+                "moduleName": "VerIDCore",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "keepFaceTemplatesInMemory",
+            "printedName": "keepFaceTemplatesInMemory",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:9VerIDCore0A16IDUserManagementC25keepFaceTemplatesInMemorySbvp",
+            "mangledName": "$s9VerIDCore0A16IDUserManagementC25keepFaceTemplatesInMemorySbvp",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:9VerIDCore0A16IDUserManagementC25keepFaceTemplatesInMemorySbvg",
+                "mangledName": "$s9VerIDCore0A16IDUserManagementC25keepFaceTemplatesInMemorySbvg",
                 "moduleName": "VerIDCore",
                 "implicit": true,
                 "declAttributes": [
@@ -40855,6 +41204,28 @@
               "ObjC",
               "AccessControl"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "latestCommonFaceTemplateVersion",
+            "printedName": "latestCommonFaceTemplateVersion()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "VerIDFaceTemplateVersion",
+                "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                "usr": "c:@E@VerIDFaceTemplateVersion"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore0A16IDUserManagementC31latestCommonFaceTemplateVersionSo0a6IDFacehI0VyKF",
+            "mangledName": "$s9VerIDCore0A16IDUserManagementC31latestCommonFaceTemplateVersionSo0a6IDFacehI0VyKF",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           }
         ],
@@ -47989,6 +48360,150 @@
               "Available"
             ],
             "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "identifyUsersInFaceCapture",
+            "printedName": "identifyUsersInFaceCapture(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.Float]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FaceCapture",
+                "printedName": "VerIDCore.FaceCapture",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDFaceCapture"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore18UserIdentificationC26identifyUsersInFaceCaptureySDySSSfGAA0hI0CYaKF",
+            "mangledName": "$s9VerIDCore18UserIdentificationC26identifyUsersInFaceCaptureySDySSSfGAA0hI0CYaKF",
+            "moduleName": "VerIDCore",
+            "intro_iOS": "13",
+            "declAttributes": [
+              "AccessControl",
+              "Available"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "identifyUsersInFaceCapture",
+            "printedName": "identifyUsersInFaceCapture(_:thresholdSupplier:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FaceCapture",
+                "printedName": "VerIDCore.FaceCapture",
+                "usr": "c:@M@VerIDCore@objc(cs)VerIDFaceCapture"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((VerIDCore.VerIDFaceTemplateVersion) -> Swift.Float)?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(VerIDCore.VerIDFaceTemplateVersion) -> Swift.Float",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "VerIDFaceTemplateVersion",
+                        "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                        "usr": "c:@E@VerIDFaceTemplateVersion"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.Result<[Swift.String : Swift.Float], any Swift.Error>) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Result",
+                    "printedName": "Swift.Result<[Swift.String : Swift.Float], any Swift.Error>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Swift.Float]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Float",
+                            "printedName": "Swift.Float",
+                            "usr": "s:Sf"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Error",
+                        "printedName": "any Swift.Error",
+                        "usr": "s:s5ErrorP"
+                      }
+                    ],
+                    "usr": "s:s6ResultO"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:9VerIDCore18UserIdentificationC26identifyUsersInFaceCapture_17thresholdSupplier10completionyAA0hI0C_SfSo0A21IDFaceTemplateVersionVcSgys6ResultOySDySSSfGs5Error_pGctF",
+            "mangledName": "$s9VerIDCore18UserIdentificationC26identifyUsersInFaceCapture_17thresholdSupplier10completionyAA0hI0C_SfSo0A21IDFaceTemplateVersionVcSgys6ResultOySDySSSfGs5Error_pGctF",
+            "moduleName": "VerIDCore",
+            "declAttributes": [
+              "AccessControl"
+            ],
             "funcSelfKind": "NonMutating"
           },
           {
@@ -57938,6 +58453,41 @@
             "isFromExtension": true,
             "throwing": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "<",
+            "printedName": "<(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VerIDFaceTemplateVersion",
+                "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                "usr": "c:@E@VerIDFaceTemplateVersion"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "VerIDFaceTemplateVersion",
+                "printedName": "VerIDCore.VerIDFaceTemplateVersion",
+                "usr": "c:@E@VerIDFaceTemplateVersion"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:So24VerIDFaceTemplateVersionV0A6IDCoreE1loiySbAB_ABtFZ",
+            "mangledName": "$sSo24VerIDFaceTemplateVersionV0A6IDCoreE1loiySbAB_ABtFZ",
+            "moduleName": "VerIDCore",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Enum",
@@ -58024,6 +58574,13 @@
             "printedName": "Encodable",
             "usr": "s:SE",
             "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Comparable",
+            "printedName": "Comparable",
+            "usr": "s:SL",
+            "mangledName": "$sSL"
           }
         ]
       },
@@ -59082,6 +59639,13 @@
       "value": "1"
     },
     {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagementFactory.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1890,
+      "length": 4,
+      "value": "true"
+    },
+    {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/ImageUtil.swift",
       "kind": "IntegerLiteral",
       "offset": 394,
@@ -59553,7 +60117,7 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/FaceTemplateEncryption.swift",
       "kind": "IntegerLiteral",
-      "offset": 4526,
+      "offset": 4289,
       "length": 21,
       "value": "1"
     },
@@ -60001,142 +60565,170 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "BooleanLiteral",
-      "offset": 1048,
+      "offset": 1108,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "BooleanLiteral",
-      "offset": 1181,
+      "offset": 1241,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
-      "kind": "BooleanLiteral",
-      "offset": 23644,
-      "length": 5,
-      "value": "false"
+      "kind": "Array",
+      "offset": 1304,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1442,
+      "length": 1,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "BooleanLiteral",
-      "offset": 23843,
+      "offset": 1796,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "BooleanLiteral",
-      "offset": 24070,
+      "offset": 30792,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
+      "kind": "BooleanLiteral",
+      "offset": 30991,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
+      "kind": "BooleanLiteral",
+      "offset": 31218,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25041,
+      "offset": 32448,
       "length": 12,
       "value": "\"VerIDModel\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25199,
+      "offset": 32606,
       "length": 6,
       "value": "\"momd\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25237,
+      "offset": 32644,
       "length": 37,
       "value": "\"Error loading model URL from bundle\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25347,
+      "offset": 32754,
       "length": 19,
       "value": "\"VersionInfo.plist\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25504,
+      "offset": 32911,
       "length": 41,
       "value": "\"NSManagedObjectModel_CurrentVersionName\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25601,
+      "offset": 33008,
       "length": 16,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25612,
+      "offset": 33019,
       "length": 1,
       "value": "\".mom\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25726,
+      "offset": 33133,
       "length": 43,
       "value": "\"Error initializing model from \""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 25768,
+      "offset": 33175,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 26949,
+      "offset": 34356,
       "length": 46,
       "value": "\"Unresolved error \""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 26975,
+      "offset": 34382,
       "length": 1,
       "value": "\", \""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 26994,
+      "offset": 34401,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "IntegerLiteral",
-      "offset": 27133,
+      "offset": 34540,
       "length": 16,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "IntegerLiteral",
-      "offset": 27151,
+      "offset": 34558,
       "length": 25,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "IntegerLiteral",
-      "offset": 27178,
+      "offset": 34585,
       "length": 25,
       "value": "3"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
+      "kind": "IntegerLiteral",
+      "offset": 35067,
+      "length": 1,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SessionShareItem.swift",
@@ -60477,7 +61069,7 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/UserIdentification.swift",
       "kind": "StringLiteral",
-      "offset": 10361,
+      "offset": 13675,
       "length": 14,
       "value": "\"Atomic Int64\""
     },
