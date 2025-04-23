@@ -60600,133 +60600,133 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "BooleanLiteral",
-      "offset": 30792,
+      "offset": 31196,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "BooleanLiteral",
-      "offset": 30991,
+      "offset": 31395,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "BooleanLiteral",
-      "offset": 31218,
+      "offset": 31622,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 32448,
+      "offset": 32852,
       "length": 12,
       "value": "\"VerIDModel\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 32606,
+      "offset": 33010,
       "length": 6,
       "value": "\"momd\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 32644,
+      "offset": 33048,
       "length": 37,
       "value": "\"Error loading model URL from bundle\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 32754,
+      "offset": 33158,
       "length": 19,
       "value": "\"VersionInfo.plist\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 32911,
+      "offset": 33315,
       "length": 41,
       "value": "\"NSManagedObjectModel_CurrentVersionName\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 33008,
+      "offset": 33412,
       "length": 16,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 33019,
+      "offset": 33423,
       "length": 1,
       "value": "\".mom\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 33133,
+      "offset": 33537,
       "length": 43,
       "value": "\"Error initializing model from \""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 33175,
+      "offset": 33579,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 34356,
+      "offset": 34760,
       "length": 46,
       "value": "\"Unresolved error \""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 34382,
+      "offset": 34786,
       "length": 1,
       "value": "\", \""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "StringLiteral",
-      "offset": 34401,
+      "offset": 34805,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "IntegerLiteral",
-      "offset": 34540,
+      "offset": 34944,
       "length": 16,
       "value": "1"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "IntegerLiteral",
-      "offset": 34558,
+      "offset": 34962,
       "length": 25,
       "value": "2"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "IntegerLiteral",
-      "offset": 34585,
+      "offset": 34989,
       "length": 25,
       "value": "3"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/VerIDUserManagement.swift",
       "kind": "IntegerLiteral",
-      "offset": 35067,
+      "offset": 35678,
       "length": 1,
       "value": "1"
     },
