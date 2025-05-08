@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     s.script_phase = { :name => "Check Ver-ID fully downloaded", :script => 'filesize=$(wc -c <"${PODS_XCFRAMEWORKS_BUILD_DIR}/VerIDCore/VerIDCore.framework/VerIDCore"); if [ $filesize -lt 1000000 ]; then echo "error: Ver-ID framework files not fully downloaded. Please install Git LFS, clear the Ver-ID pod cache using pod cache clean Ver-ID and run pod install."; exit 1; else echo "Ver-ID installed successfully"; fi', :execution_position => :before_compile }
     s.subspec 'UI' do |ss|
         ss.source_files = "VerIDUI/*.swift"
-        ss.resource_bundles = { "VerIDUIResources" => ["VerIDUIResources/Video/*.mp4", "VerIDUIResources/Localization/*.xml", "VerIDUI/Resources/*.xcassets", "VerIDUIResources/**.{storyboard,xib}"] }
+        ss.resource_bundles = { "VerIDUIResources" => ["VerIDUIResources/Video/*.mp4", "VerIDUIResources/Localization/*.xml", "VerIDUIResources/*.xcassets", "VerIDUIResources/**.{storyboard,xib}"] }
         ss.dependency "Ver-ID/Core"
         ss.pod_target_xcconfig = {
             "ENABLE_BITCODE" => "NO"
