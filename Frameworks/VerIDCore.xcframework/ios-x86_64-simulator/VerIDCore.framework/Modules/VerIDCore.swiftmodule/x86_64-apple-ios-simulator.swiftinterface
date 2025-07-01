@@ -70,6 +70,9 @@ import os.signpost
     @objc set
     _modify
   }
+  @objc public var yawThresholdTolerance: CoreFoundation.CGFloat
+  @objc public var pitchThresholdTolerance: CoreFoundation.CGFloat
+  public var frameBufferSize: Swift.Int
   @objc public var faceBoundsFraction: CoreFoundation.CGSize {
     @objc get
     @objc set
@@ -853,7 +856,7 @@ public struct UserManagementAnalysis {
   final public let sessionSettings: VerIDCore.VerIDSessionSettings
   public var pitchThresholdTolerance: CoreFoundation.CGFloat
   public var yawThresholdTolerance: CoreFoundation.CGFloat
-  public init(sessionSettings: VerIDCore.VerIDSessionSettings, pitchThresholdTolerance: CoreFoundation.CGFloat, yawThresholdTolerance: CoreFoundation.CGFloat)
+  public init(sessionSettings: VerIDCore.VerIDSessionSettings)
   public func angle(forBearing bearing: VerIDCore.Bearing) -> VerIDCore.EulerAngle
   @objc open func angle(_ angle: VerIDCore.EulerAngle, matchesBearing bearing: VerIDCore.Bearing) -> Swift.Bool
   @objc open func offsetFromAngle(_ from: VerIDCore.EulerAngle, toBearing bearing: VerIDCore.Bearing) -> VerIDCore.EulerAngle
@@ -1353,6 +1356,9 @@ public typealias Face = VerIDCore.VerIDFace
   @available(iOS 13, *)
   public func identifyUsersInFaceCapture(_ faceCapture: VerIDCore.FaceCapture) async throws -> [Swift.String : Swift.Float]
   public func identifyUsersInFaceCapture(_ faceCapture: VerIDCore.FaceCapture, thresholdSupplier: ((VerIDCore.VerIDFaceTemplateVersion) -> Swift.Float)? = nil, completion: @escaping (Swift.Result<[Swift.String : Swift.Float], any Swift.Error>) -> Swift.Void)
+  @available(iOS 13, *)
+  public func identifyUsersUsingBestFaceTemplateInFaceCapture(_ faceCapture: VerIDCore.FaceCapture, thresholdSupplier: ((VerIDCore.VerIDFaceTemplateVersion) -> Swift.Float)? = nil) async throws -> [VerIDCore.IdentificationResult]
+  public func identifyUsersUsingBestFaceTemplateInFaceCapture(_ faceCapture: VerIDCore.FaceCapture, thresholdSupplier: ((VerIDCore.VerIDFaceTemplateVersion) -> Swift.Float)? = nil, completion: @escaping (Swift.Result<[VerIDCore.IdentificationResult], any Swift.Error>) -> Swift.Void)
   @objc public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) throws -> [VerIDCore.FaceWithScore]
   @available(iOS 13, *)
   public func findFacesSimilarTo(_ face: any VerIDCore.Recognizable, in faces: [any VerIDCore.Recognizable], threshold: Foundation.NSNumber? = nil) async throws -> [VerIDCore.FaceWithScore]
@@ -1366,6 +1372,13 @@ public typealias Face = VerIDCore.VerIDFace
   @objc final public let face: any VerIDCore.Recognizable
   @objc final public let score: Swift.Float
   @objc deinit
+}
+public struct IdentificationResult : Swift.Comparable {
+  public static func < (lhs: VerIDCore.IdentificationResult, rhs: VerIDCore.IdentificationResult) -> Swift.Bool
+  public let userId: Swift.String
+  public let score: Swift.Float
+  public let faceTemplateVersion: VerIDCore.VerIDFaceTemplateVersion
+  public static func == (a: VerIDCore.IdentificationResult, b: VerIDCore.IdentificationResult) -> Swift.Bool
 }
 @objc public class SessionResultPackage : ObjectiveC.NSObject {
   final public let verID: VerIDCore.VerID

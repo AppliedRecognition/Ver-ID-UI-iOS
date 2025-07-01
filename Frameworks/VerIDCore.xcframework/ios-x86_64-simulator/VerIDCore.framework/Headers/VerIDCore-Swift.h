@@ -434,6 +434,8 @@ SWIFT_CLASS_NAMED("VerIDSessionSettings")
 /// Vertical (pitch) threshold where face is considered to be at an angle.
 /// For example, a value of 15 indicates that a face with pitch -15 and below is oriented up and a face with pitch 15 or above is oriented down.
 @property (nonatomic) CGFloat pitchThreshold;
+@property (nonatomic) CGFloat yawThresholdTolerance;
+@property (nonatomic) CGFloat pitchThresholdTolerance;
 /// Fraction of the view width and height that represents the size of the face oval in the view.
 /// note:
 /// Renamed to <code>expectedFaceExtents</code>
