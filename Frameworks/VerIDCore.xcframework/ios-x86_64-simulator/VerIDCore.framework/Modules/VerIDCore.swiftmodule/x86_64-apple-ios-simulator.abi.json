@@ -60624,36 +60624,36 @@
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1613,
-      "length": 1,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 2055,
+      "offset": 1070,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2068,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 2092,
+      "offset": 2102,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 2285,
+      "offset": 2295,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/SpoofingDetection.swift",
       "kind": "BooleanLiteral",
-      "offset": 2461,
+      "offset": 2471,
       "length": 4,
       "value": "true"
     },
@@ -60919,7 +60919,7 @@
     {
       "filePath": "\/Users\/ec2-user\/Ver-ID-Apple\/VerIDCoreSource\/VerIDCore\/AngleBearingEvaluation.swift",
       "kind": "IntegerLiteral",
-      "offset": 10187,
+      "offset": 10190,
       "length": 3,
       "value": "1"
     },
