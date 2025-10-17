@@ -1,8 +1,9 @@
 **/*.bcsymbolmap filter=lfs diff=lfs merge=lfs -text
 **/*.dat filter=lfs diff=lfs merge=lfs -text
-**/VerIDCore filter=lfs diff=lfs merge=lfs -text
 **/*.nv filter=lfs diff=lfs merge=lfs -text
 *.obj filter=lfs diff=lfs merge=lfs -text
 *.weights filter=lfs diff=lfs merge=lfs -text
 *.bin filter=lfs diff=lfs merge=lfs -text
-*/VerIDCore.framework/VerIDCore filter=lfs diff=lfs merge=lfs -text
+**/arm64-apple-ios-simulator.abi.json filter=lfs diff=lfs merge=lfs -text
+**/x86_64-apple-ios-simulator.abi.json filter=lfs diff=lfs merge=lfs -text
+**/*.xcframework/**/*.framework/* filter=lfs diff=lfs merge=lfs -text
