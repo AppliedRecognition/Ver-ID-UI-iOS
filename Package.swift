@@ -16,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "5.0.0"),
-        .package(url: "https://github.com/weichsel/ZIPFoundation.git", from: "0.9.16"),
+        .package(url: "https://github.com/weichsel/ZIPFoundation.git", from: "0.9.18"),
         .package(url: "https://github.com/devicekit/DeviceKit.git", from: "5.0.0"),
         .package(url: "https://github.com/filom/ASN1Decoder.git", from: "1.8.0"),
         .package(url: "https://github.com/AppliedRecognition/Liveness-Detection-Apple.git", from: "1.1.1"),

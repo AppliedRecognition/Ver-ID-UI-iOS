@@ -15,7 +15,7 @@ PODS:
     - SpoofDeviceDetection/Core
   - SwiftProtobuf (1.19.0)
   - Ver-ID-SDK-Identity (3.0.2)
-  - ZIPFoundation (0.9.11)
+  - ZIPFoundation (0.9.20)
 
 DEPENDENCIES:
   - ASN1Decoder (~> 1.9)
@@ -50,7 +50,7 @@ SPEC CHECKSUMS:
   SpoofDeviceDetection: 741249a9b3660b7e6e1e625ab0edb4a9961b2a81
   SwiftProtobuf: 6ef3f0e422ef90d6605ca20b21a94f6c1324d6b3
   Ver-ID-SDK-Identity: c6918807b640dc19ae08bbb79c2766df5a3bb377
-  ZIPFoundation: b1f0de4eed33e74a676f76e12559ab6b75990197
+  ZIPFoundation: dfd3d681c4053ff7e2f7350bc4e53b5dba3f5351
 
 PODFILE CHECKSUM: 7838d8161be25383e76d7b695a038f25a8dad111
 
