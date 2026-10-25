@@ -3,7 +3,7 @@
 # Ver-ID SDK for iOS
 
 ## Prerequisites
-Minimum iOS version is 13.
+Minimum iOS version is 14.
 
 To build this project and to run the sample app you will need a Apple Mac computer with these applications:
 
@@ -75,7 +75,7 @@ To build this project and to run the sample app you will need a Apple Mac comput
 	    installer.pods_project.build_configurations.each do |config|
 		config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
 		config.build_settings['ENABLE_BITCODE'] = 'NO'
-		config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+		config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
 	    end
 	    installer.pods_project.targets.each do |target|
 	        target.build_configurations.each do |config|
