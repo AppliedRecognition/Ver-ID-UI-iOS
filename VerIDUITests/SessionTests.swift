@@ -12,7 +12,7 @@ import VerIDCore
 
 class SessionTests: VerIDBaseTest {
     
-    var images: [Bearing:VerIDImage] = [:]
+    var images: [Bearing: Image] = [:]
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -24,7 +24,7 @@ class SessionTests: VerIDBaseTest {
         downloadQueue.maxConcurrentOperationCount = poseImages.count
         downloadQueue.addOperations(downloads, waitUntilFinished: true)
         try downloads.forEach { op in
-            guard let data = op.data, let image = UIImage(data: data), let veridImage = VerIDImage(uiImage: image) else {
+            guard let data = op.data, let image = UIImage(data: data), let veridImage = try? ImageUtil.imageFromUIImage(image) else {
                 throw TestingError(message: "Failed to download test image from \(op.url)")
             }
             if op.url.contains("left.jpg") {
@@ -54,13 +54,13 @@ class SessionTests: VerIDBaseTest {
 
 class SessionTester: SessionDelegate {
     
-    let images: [Bearing:VerIDImage]
-    let imageObservable = PublishSubject<(VerIDImage,FaceBounds)>()
+    let images: [Bearing: Image]
+    let imageObservable = PublishSubject<(Image,FaceBounds)>()
     let expectation: XCTestExpectation
     var bearing: Bearing = .straight
     var isStopped = false
     
-    init(images: [Bearing:VerIDImage]) {
+    init(images: [Bearing: Image]) {
         self.images = images
         self.expectation = XCTestExpectation()
     }
@@ -68,9 +68,10 @@ class SessionTester: SessionDelegate {
     func start() throws {
         DispatchQueue.global().async {
             while (!self.isStopped) {
-                guard let image = self.images[self.bearing], let imageSize = image.size else {
+                guard let image = self.images[self.bearing] else {
                     return
                 }
+                let imageSize = image.size
                 self.imageObservable.onNext((image,FaceBounds(viewSize: imageSize, faceExtents: .defaultExtents)))
             }
         }
