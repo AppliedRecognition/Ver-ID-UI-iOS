@@ -106,7 +106,6 @@
 		3B9849AD2406C08300DF2B5F /* Ver-ID identity.p12 in Resources */ = {isa = PBXBuildFile; fileRef = 3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */; };
 		3B9BFCC6246DE64A00C4B2D1 /* RegistrationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */; };
 		3B9BFCC8246DE64A00C4B2D1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB8246DE64900C4B2D1 /* SettingsViewController.swift */; };
-		3B9BFCC9246DE64A00C4B2D1 /* S3UploadActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCB9246DE64900C4B2D1 /* S3UploadActivity.swift */; };
 		3B9BFCCA246DE64A00C4B2D1 /* SecuritySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBA246DE64900C4B2D1 /* SecuritySettingsViewController.swift */; };
 		3B9BFCCC246DE64A00C4B2D1 /* ValueSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBC246DE64900C4B2D1 /* ValueSelectionViewController.swift */; };
 		3B9BFCCD246DE64A00C4B2D1 /* VerIDFactory+Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9BFCBD246DE64900C4B2D1 /* VerIDFactory+Sample.swift */; };
@@ -321,7 +320,6 @@
 		3B9849AC2406C08300DF2B5F /* Ver-ID identity.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ver-ID identity.p12"; sourceTree = "<group>"; };
 		3B9BFCB6246DE64900C4B2D1 /* RegistrationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationProvider.swift; sourceTree = "<group>"; };
 		3B9BFCB8246DE64900C4B2D1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		3B9BFCB9246DE64900C4B2D1 /* S3UploadActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3UploadActivity.swift; sourceTree = "<group>"; };
 		3B9BFCBA246DE64900C4B2D1 /* SecuritySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsViewController.swift; sourceTree = "<group>"; };
 		3B9BFCBC246DE64900C4B2D1 /* ValueSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueSelectionViewController.swift; sourceTree = "<group>"; };
 		3B9BFCBD246DE64900C4B2D1 /* VerIDFactory+Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VerIDFactory+Sample.swift"; sourceTree = "<group>"; };
@@ -647,7 +645,6 @@
 			children = (
 				3B0358A52AE855C70005C8C3 /* DiagnosticUploadPermissionDialog.swift */,
 				3B0358A62AE855C70005C8C3 /* SessionDiagnosticUpload.swift */,
-				3B9BFCB9246DE64900C4B2D1 /* S3UploadActivity.swift */,
 			);
 			name = "Session Sharing";
 			sourceTree = "<group>";
@@ -1302,7 +1299,6 @@
 				3B0228FC273C36FB00D5630C /* ContinuousLivenessViewController.swift in Sources */,
 				3BB55BA1252DCC9600D153A3 /* TestSessionFunctions.swift in Sources */,
 				3BB2045B221425BF00B3B312 /* VerIDUser.swift in Sources */,
-				3B9BFCC9246DE64A00C4B2D1 /* S3UploadActivity.swift in Sources */,
 				3B45BAAC247D8A3C00273FAF /* TestImageProvider.swift in Sources */,
 				3B9BFCD4246DE64A00C4B2D1 /* SettingsPresets.swift in Sources */,
 				3BB20462221425BF00B3B312 /* IntroViewController.swift in Sources */,
