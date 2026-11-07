@@ -7,3 +7,10 @@ updates:
     open-pull-requests-limit: 5
     commit-message:
       prefix: "deps"
+    # A major needs a migration, not a bot. RxSwift 5 to 6 changes APIs, and this stack
+    # is released rarely, so an unreviewed major would sit in the default branch for
+    # months before anyone noticed. Raise them deliberately.
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
