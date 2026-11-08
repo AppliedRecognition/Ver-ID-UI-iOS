@@ -134,7 +134,13 @@ class VerIDSampleUITests: XCTestCase {
         XCTAssertTrue(app.tables.cells.matching(identifier: "poseCount").staticTexts["\(preset.poseCount)"].exists)
         XCTAssertTrue(app.tables.cells.matching(identifier: "yawThreshold").staticTexts[String(format: "%.01f", preset.yawThreshold)].exists)
         XCTAssertTrue(app.tables.cells.matching(identifier: "pitchThreshold").staticTexts[String(format: "%.01f", preset.pitchThreshold)].exists)
-        XCTAssertTrue(app.tables.cells.matching(identifier: "scoreThreshold").staticTexts[String(format: "%.01f", preset.authThreshold)].exists)
+        for (version, threshold) in preset.authThresholds {
+            let title = "Score threshold (\(version.stringValue()))"
+            let value = String(format: "%.01f", threshold)
+            let row = app.tables.cells.containing(NSPredicate(format: "label CONTAINS %@", title)).firstMatch
+            XCTAssertTrue(row.exists, "Missing \(title) row")
+            XCTAssertTrue(row.staticTexts[value].exists, "\(title) should show \(value)")
+        }
         
         app.segmentedControls.firstMatch.buttons["Low"].tap()
         
@@ -143,7 +149,13 @@ class VerIDSampleUITests: XCTestCase {
         XCTAssertTrue(app.tables.cells.matching(identifier: "poseCount").staticTexts["\(preset.poseCount)"].exists)
         XCTAssertTrue(app.tables.cells.matching(identifier: "yawThreshold").staticTexts[String(format: "%.01f", preset.yawThreshold)].exists)
         XCTAssertTrue(app.tables.cells.matching(identifier: "pitchThreshold").staticTexts[String(format: "%.01f", preset.pitchThreshold)].exists)
-        XCTAssertTrue(app.tables.cells.matching(identifier: "scoreThreshold").staticTexts[String(format: "%.01f", preset.authThreshold)].exists)
+        for (version, threshold) in preset.authThresholds {
+            let title = "Score threshold (\(version.stringValue()))"
+            let value = String(format: "%.01f", threshold)
+            let row = app.tables.cells.containing(NSPredicate(format: "label CONTAINS %@", title)).firstMatch
+            XCTAssertTrue(row.exists, "Missing \(title) row")
+            XCTAssertTrue(row.staticTexts[value].exists, "\(title) should show \(value)")
+        }
         
         app.segmentedControls.firstMatch.buttons["Normal"].tap()
         
@@ -152,7 +164,13 @@ class VerIDSampleUITests: XCTestCase {
         XCTAssertTrue(app.tables.cells.matching(identifier: "poseCount").staticTexts["\(preset.poseCount)"].exists)
         XCTAssertTrue(app.tables.cells.matching(identifier: "yawThreshold").staticTexts[String(format: "%.01f", preset.yawThreshold)].exists)
         XCTAssertTrue(app.tables.cells.matching(identifier: "pitchThreshold").staticTexts[String(format: "%.01f", preset.pitchThreshold)].exists)
-        XCTAssertTrue(app.tables.cells.matching(identifier: "scoreThreshold").staticTexts[String(format: "%.01f", preset.authThreshold)].exists)
+        for (version, threshold) in preset.authThresholds {
+            let title = "Score threshold (\(version.stringValue()))"
+            let value = String(format: "%.01f", threshold)
+            let row = app.tables.cells.containing(NSPredicate(format: "label CONTAINS %@", title)).firstMatch
+            XCTAssertTrue(row.exists, "Missing \(title) row")
+            XCTAssertTrue(row.staticTexts[value].exists, "\(title) should show \(value)")
+        }
         
         app.tables.cells.matching(identifier: "poseCount").firstMatch.tap()
         
