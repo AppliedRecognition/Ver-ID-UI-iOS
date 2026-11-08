@@ -22,7 +22,7 @@ DEPENDENCIES:
   - DeviceKit (~> 5.5)
   - RxCocoa (~> 6.9)
   - RxSwift (~> 6.9)
-  - SpoofDeviceDetection/Model (~> 1.1)
+  - SpoofDeviceDetection/Model (= 1.1.0)
   - SwiftProtobuf (~> 1.19)
   - Ver-ID-SDK-Identity (< 4.0, >= 3.0.2)
   - ZIPFoundation (~> 0.9)
@@ -52,6 +52,6 @@ SPEC CHECKSUMS:
   Ver-ID-SDK-Identity: c6918807b640dc19ae08bbb79c2766df5a3bb377
   ZIPFoundation: dfd3d681c4053ff7e2f7350bc4e53b5dba3f5351
 
-PODFILE CHECKSUM: 7838d8161be25383e76d7b695a038f25a8dad111
+PODFILE CHECKSUM: eee177ff296e91f961d4dddf1c9295dbc5a25803
 
 COCOAPODS: 1.16.2
