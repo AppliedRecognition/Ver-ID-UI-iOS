@@ -22,23 +22,40 @@ class BaseAppDelegate: UIResponder, UIApplicationDelegate, RegistrationImportDel
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         Globals.profilePictureURL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("profilePicture").appendingPathExtension("jpg")
         UserDefaults.standard.registerVerIDDefaults()
-        if launchOptions?.keys.contains(.url) == .some(true) {
-            return true
-        }
-        self.reload()
+        // Ver-ID is loaded from the scene delegate, once the scene's window exists.
         return true
+    }
+    
+    /// Called by the scene delegate when the scene connects
+    func sceneDidConnect(connectionOptions: UIScene.ConnectionOptions) {
+        let urls = connectionOptions.urlContexts.map({ $0.url })
+        if urls.isEmpty {
+            self.reload()
+        } else {
+            self.openRegistrationURLs(urls)
+        }
+    }
+    
+    /// Open one or more registration documents
+    func openRegistrationURLs(_ urls: [URL]) {
+        for url in urls {
+            guard url.pathExtension == "registration" else {
+                continue
+            }
+            guard let importViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "registrationImport") as? RegistrationImportViewController else {
+                continue
+            }
+            importViewController.url = url
+            importViewController.delegate = self
+            (self.window?.rootViewController as? UINavigationController)?.viewControllers = [importViewController]
+        }
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         guard url.pathExtension == "registration" else {
             return false
         }
-        guard let importViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "registrationImport") as? RegistrationImportViewController else {
-            return false
-        }
-        importViewController.url = url
-        importViewController.delegate = self
-        (self.window?.rootViewController as? UINavigationController)?.viewControllers = [importViewController]
+        self.openRegistrationURLs([url])
         return true
     }
     

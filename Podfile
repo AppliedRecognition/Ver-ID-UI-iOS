@@ -26,7 +26,13 @@ def identity
 end
 
 def spoofdetection
-  pod 'SpoofDeviceDetection/Model', '~> 1.1'
+  # Pinned to 1.1.0 on purpose, not a caret range. VerIDCore ships prebuilt as
+  # Frameworks/VerIDCore.xcframework and dispatches to SpoofDeviceDetector through a
+  # compile-time vtable slot. 1.1.1 renamed init(compiledModelURL:identifier:) to
+  # init(compiledModelURL:identifier:configuration:), so an app built against 1.1.1
+  # calls a slot that no longer exists and traps on launch with a null program counter.
+  # Do not raise this without rebuilding VerIDCore against the new API.
+  pod 'SpoofDeviceDetection/Model', '1.1.0'
 end
 
 def protobuf
