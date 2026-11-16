@@ -32,6 +32,14 @@ let package = Package(
             dependencies: [
                 .target(
                     name: "VerIDCore"
+                ),
+                .product(
+                    name: "RxSwift",
+                    package: "RxSwift"
+                ),
+                .product(
+                    name: "RxCocoa",
+                    package: "RxSwift"
                 )
             ],
             exclude: [
